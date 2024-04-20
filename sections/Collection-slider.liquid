@@ -74,7 +74,6 @@
 .collection-ss-img-2{
     width: 100%;
     height: 200px;
-    border: 2px solid black;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -88,9 +87,16 @@
 .ss-padding-2{
     width: 100%;
     height: 100%;
-    padding: 8px;
+    padding: 5px;
     border-radius: 50%;
     background: linear-gradient(purple,blue,red);
+}
+.collection-link-ss-2{
+    text-decoration: none;
+    color: black;
+}
+.arrows-d9-28 .ss-padding-2{
+    padding: 2px !important;
 }
 </style>
 
@@ -98,14 +104,14 @@
 
     <div class="wraper-d9-28">
         <div class="arrows-d9-28">
-        <div id="left-d9-28" class="slider-button-d9-28 prev-d9-28">&larr;</div>
-        <div id="right-d9-28" class="slider-button-d9-28 next-d9-28">&rarr;</div>
+        <div id="left-d9-28" class="slider-button-d9-28 prev-d9-28"> <div class="ss-padding-2">&larr;</div></div>
+        <div id="right-d9-28" class="slider-button-d9-28 next-d9-28"> <div class="ss-padding-2">&rarr;</div></div>
         </div>
         <div class="carousel-d9-28">
         {% for block in section.blocks %}
             {%  assign collection = block.settings.collection %}
             <div class="carousel-img-d9-28" draggable="false">
-                <a href="{{ collection.url }}">
+                <a class="collection-link-ss-2" href="{{ collection.url }}">
                 <div class="collection-ss-2">
                     <div class="collection-ss-img-2">
                         <div class="ss-padding-2">
