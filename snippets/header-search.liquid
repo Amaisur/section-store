@@ -1,21 +1,4 @@
-<style>
-@media(max-width:450px){
-  .search-modal__form{
-    position:absolute;
-    top:30px;
-    left:50%;
-    width: 80%;
-    transform:translateX(-50%);
-  }
-  .header{
-  padding: 10px 3rem 50px 3rem !important;
-}
-}
-
-  
-</style>
-
-{% comment %} {% comment %}
+{% comment %}
   Renders a header search modal. Should be used with 'header.liquid'
 
   Accepts:
@@ -51,13 +34,13 @@
       <div
         class="search-modal__content{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} search-modal__content-top{% else %} search-modal__content-bottom{% endif %}"
         tabindex="-1"
-      >{% endcomment %}
+      >
         {%- if settings.predictive_search_enabled -%}
           <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
         {%- else -%}
           <search-form class="search-modal__form">
-        {%- endif -%} 
-        <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form" style="min-width: 200px !important;">
+        {%- endif -%}
+        <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
           <div class="field">
             <input
               class="search__input field__input"
@@ -110,7 +93,7 @@
         {%- else -%}
           </search-form>
         {%- endif -%}
-        <!-- <button
+        <button
           type="button"
           class="search-modal__close-button modal__close-button link link--text focus-inset"
           aria-label="{{ 'accessibility.close' | t }}"
@@ -118,8 +101,8 @@
           <svg class="icon icon-close" aria-hidden="true" focusable="false">
             <use href="#icon-close">
           </svg>
-        </button> -->
-      <!-- </div>
+        </button>
+      </div>
     </div>
   </details>
-</details-modal> -->
+</details-modal>
