@@ -1,0 +1,849 @@
+
+ <style>
+ #shopify-section-{{ section.id }} .qp-9-slider-container {
+    position: relative;
+    width: 100%; /* adjust as needed */
+    overflow: hidden;
+    margin: 0 auto;
+  }
+ #shopify-section-{{ section.id }} .qp-9-slider {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+ #shopify-section-{{ section.id }} .qp-9-slide {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+ #shopify-section-{{ section.id }} .qp-9-slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 5;
+    background-color: rgba(255, 255, 255, 1);
+    padding:5px 7px 0px 7px!important;
+    border-radius: 50%;
+    transition: all .3s;
+    user-select:none;
+  }
+   #shopify-section-{{ section.id }} .qp-9-slider-button:hover{
+      background-color: rgba(0, 0, 0, 1);
+      color:#fff;
+    }
+    #shopify-section-{{ section.id }} .qp-9-slider-button:hover svg path{
+      fill:#fff;
+    }
+ #shopify-section-{{ section.id }} .qp-9-prev {
+    left: 10px;
+  }
+ #shopify-section-{{ section.id }} .qp-9-next {
+    right: 10px;
+  }
+ #shopify-section-{{ section.id }} .qp-9-dots {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 3px;
+  }
+ #shopify-section-{{ section.id }} .qp-9-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background-color: rgba(0, 0, 0, .3);
+    border-radius: 50%;
+    margin:1.5px !important;
+  }
+ #shopify-section-{{ section.id }} .qp-9-dot.active {
+    background-color: #000;
+  }
+</style>
+ 
+ 
+ <style>
+    #shopify-section-{{ section.id }} .collection-title-9{
+      width:90%;
+      margin: 20px auto !important;
+    }
+   #shopify-section-{{ section.id }} .collection-title-9 h2{
+     font-size:{{section.settings.d-f-size-h}}px !important;
+     font-weight: 700 !important;
+     font-family: Libre Baskerville !important;
+     font-style: normal;
+     line-height: normal;
+   }
+     #shopify-section-{{ section.id }} .collection-title-9 p{
+     font-size:{{section.settings.d-f-size-p}}px !important;
+     font-weight: 400 !important;
+     margin:20px 0 30px !important;
+     color:#555 !important;
+     font-family: Source Sans Pro;
+   }
+    #shopify-section-{{ section.id }} .collection-title-9 span{
+      color: #4A7875 !important;
+       font-size:{{section.settings.d-f-size-h}}px !important;
+    }
+   #shopify-section-{{ section.id }} .product-inner-9{
+        position:relative;
+        width: 90%;
+        margin: 0 auto;
+        display: grid;
+        align-items: center;
+        justify-content:center;
+        gap: 30px;
+        /* overflow: hidden; */
+        scroll-behaviour: smooth;
+        grid-template-columns:repeat(4, 1fr);
+    }
+     #shopify-section-{{ section.id }} .product-card-9{
+        /* min-width: 250px; */
+        width: 100%;
+        background: #fff;
+        border-radius: 15px;
+        padding:0 0 20px;
+        margin: 0 !important;
+        transition: all .5s;
+    }
+    #shopify-section-{{ section.id }} .d9-arrow-btn{
+      display:none;
+    }
+  
+   #shopify-section-{{ section.id }} *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+   #shopify-section-{{ section.id }} .product-main-9{
+        width: 100%;
+        padding: 40px 0 0;
+        position:relative;
+    }
+   #shopify-section-{{ section.id }} .product-inner-9 a{
+        text-decoration: none;
+    }
+
+    /* .product-card-9:hover{
+        transform: translateY(-10px);
+        box-shadow: 0 10px 10px 0px rgba(0, 0, 0, .05);
+    } */
+   #shopify-section-{{ section.id }} .product-img-9, .qp-9-slide{
+        width: 100%;
+        height: 300px;
+        overflow:hidden;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+         position:relative;
+    }
+   #shopify-section-{{ section.id }} .product-img-9 img, .qp-9-slide img{
+       width:100%;
+       height:100%;
+       transition:all .4s;
+       position:absolute;
+       top:0;
+       left:0;
+       object-fit: cover;
+    }
+    #shopify-section-{{ section.id }} .product-img-9 img:hover ,.qp-9-slide img:hover{
+       transform:scale(1.07)
+    }
+   #shopify-section-{{ section.id }} .product-content-9{
+        margin: 20px 0 0;
+    }
+   #shopify-section-{{ section.id }} .product-button-9{
+        display: flex;
+         width:100%;
+        justify-content: center;
+    }
+   #shopify-section-{{ section.id }} .d9-button-style{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        width:100% !important;
+        height: 50px;
+        font-size:18px;
+        padding:0 !important;
+        border-radius: 50px;
+        outline: none;
+        border: transparent;
+        background: #4A7875;
+        color: #fff;
+        font-weight: 400;
+        cursor: pointer;
+        transition: .4s;
+    }
+         .d9-button-style svg, .d9-button-style svg{
+         transition: .3s;
+           opacity:0;
+         }
+        .d9-button-style svg, .d9-button-style svg path{
+          fill: #fff;
+          width: 20px;
+        }
+  #shopify-section-{{ section.id }} .d9-button-style:hover svg {
+      margin-left: 50px !important;
+      opacity:1 !important;
+    }
+   #shopify-section-{{ section.id }} .product-title-9{
+        margin: 10px 0;
+        text-align: left;
+    }
+   #shopify-section-{{ section.id }} .product-title-9 p.title-9{
+        font-size: 18px;
+        color: #333;
+        margin: 15px 0 10px;
+    }
+   #shopify-section-{{ section.id }} .product-title-9 p.price-9{
+        font-size: 20px;
+        font-weight: 600;
+        color: black;
+    }
+   #shopify-section-{{ section.id }} .product-stars-9{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        margin: 12px 0 0;
+    }
+   #shopify-section-{{ section.id }} .product-stars-9 p{
+        font-size: 14px;
+        color: #444;
+    }
+   #shopify-section-{{ section.id }} .close-popup-9{
+        color: #555555;
+        transition: all .5s;
+        font-weight: 200;
+        cursor: pointer;
+        transform: rotate(45deg);
+        user-select: none;
+        font-size: 35px;
+        line-height:0;
+    }
+   #shopify-section-{{ section.id }} .close-popup-9:hover{
+        color: black;
+    }
+   #shopify-section-{{ section.id }} .product-popup-9{
+        max-width: 400px;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        border-radius: 15px;
+        display: none;
+         z-index:7;
+    }
+   #shopify-section-{{ section.id }} .product-popup-9.popup-opened-9{
+        display: block !important;
+    }
+   #shopify-section-{{ section.id }} .product-popup-title-9{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, .4);
+    }
+   #shopify-section-{{ section.id }} .product-popup-main-9{
+        width: 90%;
+        margin: 0px auto;
+    }
+   #shopify-section-{{ section.id }} .product-popup-variant-img-9{
+        width: 200px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-left: 10px;
+    }
+   #shopify-section-{{ section.id }} .product-popup-variant-img-9 img{
+        height: 50px;
+        max-width: 100px;
+    }
+   #shopify-section-{{ section.id }} .product-popup-variant-9{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content:flex-start;
+        gap: 5px;
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, .4)
+    }
+   #shopify-section-{{ section.id }} .product-popup-variant-9 label{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+   #shopify-section-{{ section.id }} .product-popup-main-9 .product-popup-button-9{
+        margin: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+  #shopify-section-{{ section.id }} .quic-overlay-9{
+    width:100%;
+    height: 100vh;
+    background:rgba(0, 0 , 0, .3);
+    color:transparent;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:5;
+    display:none;
+  }
+ #shopify-section-{{ section.id }} .quic-overlay-9.overlay9-active{
+    display:block !important;
+  }
+ #shopify-section-{{ section.id }} .product-button-9 button svg path{
+    fill:#fff;
+  }
+ #shopify-section-{{ section.id }} .sucsess-msg-9{
+    font-size: 16px;
+    color:#444;
+    text-align:center;
+    margin:10px 0 0 !important;
+    display:none;
+  }
+  #shopify-section-{{ section.id }} .sucsess-msg-9.success-msg-open-9{
+    display:block !important;
+  }
+ #shopify-section-{{ section.id }} .sucsess-msg-9 span{
+    color:rgb(0, 174, 255);
+  }
+  #shopify-section-{{ section.id }} .d9-arrow-btn button{
+    position:absolute;
+    top:50%;
+    transform: translateY(-50%);
+    width:40px;
+    height:40px;
+    background: rgba(255,255,255,.4);
+    border-radius:50%;
+    border:none;
+    outline:none;
+    transition:all .3s;
+  }
+   .title-height-8 {
+     height: 30px;
+   }
+   #shopify-section-{{ section.id }} .d9-arrow-btn button:hover{
+      background: rgba(255,255,255,.8);
+   }
+  #shopify-section-{{ section.id }} .d9-slider-button-left{
+    left:20px;
+  }
+  #shopify-section-{{ section.id }} .d9-slider-button-right{
+    right: 20px;
+  }
+        @media (max-width:1130px){
+   #shopify-section-{{ section.id }} .product-inner-9{
+      grid-template-columns:repeat(3, 1fr);
+   }
+}
+                @media (max-width:830px){
+   #shopify-section-{{ section.id }} .product-inner-9{
+      grid-template-columns:repeat(2, 1fr);
+   }
+}
+     @media (max-width:560px){ 
+        #shopify-section-{{ section.id }} .product-title-9 p.title-9{
+        margin: 0px 0 0px;
+    }
+       .d9-button-style svg, .d9-button-style svg{
+         transition: .3s;
+           opacity:0;
+         display:none;
+         }
+       #shopify-section-{{ section.id }} .collection-title-9 h2{
+     font-size:{{section.settings.m-f-size-h}}px !important;
+   }
+      #shopify-section-{{ section.id }} .collection-title-9 span{
+      color: #4A7875 !important;
+       font-size:{{section.settings.m-f-size-h}}px !important;
+    }
+     #shopify-section-{{ section.id }} .collection-title-9 p{
+     font-size:{{section.settings.m-f-size-p}}px !important;
+      margin:10px 0 !important;
+   }
+      #shopify-section-{{ section.id }} .d9-button-style{
+      font-size:16px;
+        margin: -10px 0 0;
+       }
+      #shopify-section-{{ section.id }} .product-img-9 , .qp-9-slide{
+        height:250px;
+    }
+  /* #shopify-section-{{ section.id }} .product-img-9 img{
+       width:110%;
+       min-height:250px !important;
+       transition:all .4s;
+    } */
+}
+    @media (max-width:450px){
+        #shopify-section-{{ section.id }} .product-img-9 , .qp-9-slide{
+        height:200px;
+    }
+    }
+                        @media (max-width:375px){
+   #shopify-section-{{ section.id }} .product-inner-9{
+      grid-template-columns:repeat(1, 1fr);
+   }
+   #shopify-section-{{ section.id }} .product-img-9, .qp-9-slide{
+        height:250px;
+    }
+}
+</style>
+    <div class="quic-overlay-9">.</div>
+    <div class="product-main-9">
+        <div class="collection-title-9">
+    <h2>{{ section.settings.collection-title-9 }} <span>{{ section.settings.collection-title-9-c }}</span></h2>
+    <p>{{ section.settings.collection-subhead-9 }}</p>
+  </div>
+          
+        <div class="product-inner-9">
+
+
+{% for collection in collections %}
+  {% if collection.handle == section.settings['collection-section-43'] %}
+
+
+       {% for product in collection.products %}
+            <div class="product-card-9">
+                
+                <div class="product-row-9">
+                  {% if section.settings.all-img-f-img == 'f-img' %}
+                    <a href="{{ product.url }}">
+                   <div class="product-img-9">
+                        <img src="{{ product.featured_image | img_url:'master' }}" alt="" width="" height="">    
+                   </div>
+                    </a>
+                    {% elsif section.settings.all-img-f-img == 'all-img' %}
+
+                    <div class="qp-9-slider-container">
+                      <div class="qp-9-slider">
+                        {% for image in product.images %}
+                        
+                       <div class="qp-9-slide">
+                          <a href="{{ product.url }}">
+ <img class="lazy"  src="{{ image | img_url: 'master' }}" loading="lazy" alt="">
+      
+      </a>
+                       </div>
+                         
+           {% endfor %}
+            </div>
+            <div class="qp-9-slider-button qp-9-prev" style="display: none;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+  <path transform="scale(-1, 1) translate(-24, 0)" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
+</svg>
+
+            </div>
+            <div class="qp-9-slider-button qp-9-next" style="display: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+  <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
+</svg>
+
+            </div>
+            <div class="qp-9-dots"></div>
+          </div>
+
+  {% endif %}
+
+<a href="{{ product.url }}">
+
+
+                    
+                        <div class="product-title-9">
+                          <p class="price-9" style="font-size:14px; color:#333;"><b>{{ product.price | money }}</b></p>
+                            <p class="title-9 title-height-8">{{ product.title | truncate:'30' }}</p> 
+                            <div class="product-stars-9" style="color: rgb(0, 174, 255);"> 
+                            </div>
+                        </div>
+              </a>
+                    <div class="product-content-9">
+                        <div class="product-button-9">
+                            {%- if section.settings.collection-btn == 'add-product' -%}
+
+                            {% if product.variants.size > 1 %}
+                          <button class="option-btn-9 d9-button-style">Options
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/></svg>
+                          </button>
+                        {% else %}
+                         <form method="post" action="/cart/add" class="add-to-cart-form" style="width:100%;">
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+              <button type="submit" class="add-to-cart-btn d9-button-style">
+              Add
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/></svg>
+                </button>
+  
+            </form>
+                          {% endif %}
+
+                                {%- elsif section.settings.collection-btn== 'view-product'-%}
+                                 <a href="{{ product.url }}" class="d9-button-style">View Product
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/></svg>
+                          </a>
+                                
+                                 {%- endif -%}
+                              
+                        </div>
+            
+                    </div>
+                </div>
+         
+<div class="product-popup-9">
+    <div class="product-popup-main-9">
+        <div class="product-popup-title-9">
+            <p class="title-9" style="color:black; font-weight:600;">{{ product.title | truncate:'30' }}</p>
+            <span class="close-popup-9">+</span>
+        </div>
+        <div class="product-variant-container-9">
+            {% for variant in product.variants %}
+            <div class="product-popup-variant-9">
+                <input type="radio" name="variant_id" value="{{ variant.id }}" id="variant_{{ variant.id }}">
+                <label for="variant_{{ variant.id }}">
+                    <div class="product-popup-variant-img-9">
+                        {% if variant.image %}
+                        <img src="{{ variant.image | img_url:'master' }}" alt="" width="" height="">
+                        {% endif %}
+                        <p class="title-9">{{ variant.title | truncate:'30' }}</p>
+                    </div>
+                    <p>{{ variant.price | money }}</p>
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+      <p class="sucsess-msg-9"><span class="color-9"> Thank you </span> product added to cart <span class="color-9">successfully!</span></p>
+        <div class="product-popup-button-9">
+            <form id="add-to-cart-form" class="add-to-cart-form" style="width:100%;"> 
+                <input type="hidden" name="quantity" value="1">
+                <button type="button" class="add-to-cart-btn d9-button-style">Add To Cart
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+        </div>
+        {% endfor %}
+      {% endif %}
+          {% endfor %}
+
+
+        </div>
+    </div>
+
+
+<!-- images loading -->
+<!-- 
+                  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyLoadImages = document.querySelectorAll('.qp-9-slide img');
+
+  lazyLoadImages.forEach(function(img) {
+    var dataImages = img.getAttribute('data-images');
+    img.onload = function() {
+      if (dataImages) {
+        var imagesToLoad = dataImages.split(',');
+        imagesToLoad.forEach(function(src) {
+          var newImg = new Image();
+          newImg.src = src;
+        });
+      }
+    };
+    img.src = img.getAttribute('src');
+  });
+});
+</script> -->
+                  
+<!-- product slider -->
+<script>
+  function initializeSlider() {
+    document.querySelectorAll('.qp-9-slider-container').forEach(function(container) {
+      const slider = container.querySelector('.qp-9-slider');
+      const slides = container.querySelectorAll('.qp-9-slide');
+      const prevBtn = container.querySelector('.qp-9-prev');
+      const nextBtn = container.querySelector('.qp-9-next');
+      const dotsContainer = container.querySelector('.qp-9-dots');
+
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+
+      function updateButtons() {
+        if (totalSlides <= 1) {
+          prevBtn.style.display = 'none';
+          nextBtn.style.display = 'none';
+        } else {
+          if (currentIndex === 0) {
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'block';
+          } else if (currentIndex === totalSlides - 1) {
+            prevBtn.style.display = 'block';
+            nextBtn.style.display = 'none';
+          } else {
+            prevBtn.style.display = 'block';
+            nextBtn.style.display = 'block';
+          }
+        }
+      }
+
+      function updateDots() {
+        dotsContainer.innerHTML = '';
+        if (totalSlides > 1) {
+          for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('span');
+            dot.classList.add('qp-9-dot');
+            if (i === currentIndex) {
+              dot.classList.add('active');
+            }
+            dotsContainer.appendChild(dot);
+          }
+        }
+      }
+
+      function goToSlide(index) {
+        currentIndex = index;
+        const offset = -currentIndex * 100;
+        slider.style.transform = `translateX(${offset}%)`;
+        updateButtons();
+        updateDots();
+      }
+
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          goToSlide(currentIndex - 1);
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (currentIndex < totalSlides - 1) {
+          goToSlide(currentIndex + 1);
+        }
+      });
+
+      updateButtons();
+      updateDots();
+    });
+  }
+
+  initializeSlider();
+</script>
+<!-- this is for lazy load image -->
+                  <script>
+  // Define a callback function to handle intersection changes
+  function lazyLoadImage(entries, observer) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const image = entry.target;
+        const src = image.getAttribute('data-src');
+        if (src) {
+          image.src = src;
+          observer.unobserve(image);
+        }
+      }
+    });
+  }
+
+  // Create an Intersection Observer instance
+  const observer = new IntersectionObserver(lazyLoadImage, {
+    rootMargin: '0px',
+    threshold: 0.1 // Trigger the callback when 10% of the image is visible
+  });
+
+  // Observe all elements with the 'lazy' class
+  const lazyImages = document.querySelectorAll('.lazy');
+  lazyImages.forEach(image => observer.observe(image));
+
+                  </script>
+
+
+
+                  
+
+                                          
+<!-- this script will redirect to cart page  -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+
+    addToCartBtns.forEach(function(btn) {
+        btn.addEventListener('click', async function() {
+            const popup = this.closest('.product-popup-main-9');
+            const selectedVariant = popup.querySelector('input[name="variant_id"]:checked');
+            if (!selectedVariant) {
+                console.log('Please select a variant before adding to cart.');
+                return;
+            }
+
+            const variantId = selectedVariant.value;
+            const form = popup.querySelector('.add-to-cart-form');
+            const quantityInput = form.querySelector('input[name="quantity"]');
+            quantityInput.value = 1; // Set default quantity to 1
+            const formData = new FormData(form);
+            formData.set('id', variantId); // Set the variant ID in the form data
+
+            try {
+                const response = await fetch('/cart/add', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                // Redirect to the cart page
+                window.location.href = '/cart'; // Adjust the URL if necessary
+
+            } catch (error) {
+                // Handle errors, e.g., log the error
+                console.error('Error adding product to cart:', error);
+            }
+        });
+    });
+});
+</script>
+
+                                             
+    <script>
+        const optionBtns = document.querySelectorAll('.option-btn-9');
+      const overlay9 = document.querySelector('.quic-overlay-9')
+            
+
+        optionBtns.forEach((optionBtn) => {
+            optionBtn.addEventListener('click', () => {
+                const parent = optionBtn.closest('.product-card-9');
+                const popupVariant = parent.querySelector('.product-popup-9');
+              
+                if (popupVariant) {
+                    // Close all other popups
+                    document.querySelectorAll('.product-popup-9').forEach((popup) => {
+                        popup.classList.remove('popup-opened-9');
+                    });
+    
+                    // Add the class to open the clicked popup
+                    popupVariant.classList.add('popup-opened-9');
+                    overlay9.classList.add('overlay9-active');
+                }
+            });
+        });
+    
+        const closeButtons = document.querySelectorAll('.close-popup-9');
+        closeButtons.forEach((closeBtn) => {
+            closeBtn.addEventListener('click', () => {
+                const parentPopup = closeBtn.closest('.product-popup-9');
+                parentPopup.classList.remove('popup-opened-9');
+                 overlay9.classList.remove('overlay9-active');
+            });
+        });
+    </script>
+
+
+
+
+{% schema %}
+  {
+    "name": "Grid Collection",
+    "settings": [
+       {
+      "type": "collection",
+      "id": "collection-section-43",
+      "label": "Select Collection"
+    },
+       {
+        "type": "radio",
+        "id": "all-img-f-img",
+        "label": "Which images do you want to show?",
+        "default": "all-img",
+        "options": [
+          {
+            "value": "all-img",
+            "label": "All Images"
+          },
+          {
+            "value": "f-img",
+            "label": "Featured Image"
+          }
+        ]
+      },
+      {
+      "type":"text",
+      "id":"collection-title-9",
+      "label":"Your Title"
+      },
+       {
+      "type":"text",
+      "id":"collection-title-9-c",
+      "label":"Your Green Title"
+      },
+      {
+      "type": "range",
+      "id": "d-f-size-h",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop Font size",
+      "default": 36
+      },
+         {
+      "type": "range",
+      "id": "m-f-size-h",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Font size",
+      "default": 25
+      },
+       {
+      "type":"text",
+      "id":"collection-subhead-9",
+      "label":"Your Subtitle"
+      },
+          {
+      "type": "range",
+      "id": "d-f-size-p",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop Font size",
+      "default": 18
+      },
+         {
+      "type": "range",
+      "id": "m-f-size-p",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Font size",
+      "default": 14
+      },
+       {
+        "type": "radio",
+        "id": "collection-btn",
+        "label": "Which button do you want to show?",
+        "default": "view-product",
+        "options": [
+          {
+            "value": "view-product",
+            "label": "View Product"
+          },
+          {
+            "value": "add-product",
+            "label": "Add to cart"
+          }
+        ]
+      }
+    ],
+    "presets":[
+      {
+        "name":"Grid Collection"
+      }
+    ]
+  }
+{% endschema %}

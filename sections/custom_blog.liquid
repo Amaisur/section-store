@@ -1,0 +1,28 @@
+{% if section.settings.selected_blog_post %}
+  
+  <div class="temp-blog">
+    {% assign selectedArticle = section.settings.selected_blog_post %}
+    <h1>{{ selectedArticle.title }}</h1>
+    <img src="{{ selectedArticle.image | img_url:'master'}}" width="400px" height="">
+    <p>{{ selectedArticle.content }}</p>
+  </div>
+
+{% endif %}
+
+{% schema %}
+{
+  "name": "temp blog post",
+  "settings": [
+    {
+      "type": "article",
+      "id": "selected_blog_post",
+      "label": "Select a Blog Post"
+    }
+  ],
+  "presets":[
+    {
+      "name":"temp blog post"
+    }
+  ]
+}
+{% endschema %}

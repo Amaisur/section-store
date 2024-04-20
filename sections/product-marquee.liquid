@@ -1,0 +1,405 @@
+<style>
+  
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: {{ section.settings.padding_left_mobile }}px;
+      padding-right: {{ section.settings.padding_right_mobile }}px;
+      border-radius: 0px;
+     background: #fff; 
+      max-width: 100%;
+      margin: auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-left: {{ section.settings.padding_left }}px;
+      padding-right: {{ section.settings.padding_right }}px;
+    }
+    #shopify-section-{{ section.id }}{
+    padding: 0px 0px;
+  }
+  }
+  #shopify-section-{{ section.id }} .custom-slider-container-wrapper{
+      max-width: 100%;
+      overflow: hidden;
+      padding-left: 0px;
+      padding-right: 0px;
+      background: transparent !important;
+      
+
+    }
+    #shopify-section-{{ section.id }} .announcement-text{
+      color: white;
+    }
+    #shopify-section-{{ section.id }} .custom-slider-wrapper{
+      display: flex;
+      justify-content: flex-start;
+      overflow: hidden;
+      min-width: max-content;
+      margin: auto;
+      height: 86px;
+      background: #fff;
+    }
+    #shopify-section-{{ section.id }} .custom-slider-wrapper-inner{
+      display: flex;
+      gap: 0px;
+      min-width: fit-content;
+      width: fit-content;
+      align-items: center;
+      animation: logoslide {{ section.settings.smooth_speed }}s infinite cubic-bezier(0, 0, 0, 0);
+    }
+
+#shopify-section-{{ section.id }} .custom-slider-wrapper:hover .custom-slider-wrapper-inner {
+  animation-play-state: paused;
+}  
+
+#shopify-section-{{ section.id }} .logo-container img{
+      cursor: pointer;
+}
+
+#shopify-section-{{ section.id }} .logo-container:hover {
+      background: #d8e9de;
+}
+
+  
+  
+    #shopify-section-{{ section.id }} .announcement-link{
+      display: flex;
+      gap: 10px;
+      min-width: fit-content;
+      align-items: center;
+      justify-content: flex-start;
+      padding-right: 100px;
+    }
+
+    #shopify-section-{{ section.id }} .announcement-icon{
+      padding-left: 100px;
+      height: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .slide-logo{
+      height: auto;
+      max-height: 100px;
+   /   min-height: 32px; /
+      max-width: 140px;
+      object-fit: contain;
+    }
+    @media (width > 768px) {
+      #shopify-section-{{ section.id }} .slide-logo{
+        max-height: 120px;
+        max-width: 200px;
+        max-width: 414px;
+        height: 39px;
+        width: auto;
+      }
+      #shopify-section-{{ section.id }} .custom-slider-wrapper{
+        height: 86px;
+      }
+    }
+
+
+  
+    #shopify-section-{{ section.id }} .logo-container{
+      padding-right: {{ section.settings.logos_gap }}px;
+  /* /    border:  2px solid red; / */
+      padding-left: {{ section.settings.logos_gap }}px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      margin-right:0px;
+    }
+
+      #shopify-section-{{ section.id }} .logo-container:hover {
+      background-color: #fff;
+    }
+
+    @keyframes logoslide {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+
+
+    #shopify-section-{{ section.id }} .logo-scroll__heading {
+      color: #025751;
+      font-family: sk-modernist-bold;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-align: center;
+      display: none;
+  }
+
+  @media (width > 768px) {
+    #shopify-section-{{ section.id }} .logo-scroll__heading {
+      font-size: 32px;
+      display: none;
+    }
+  }
+
+  .announcement-bar__logo-scroll {
+    padding-bottom: 0;
+  }
+  @media only screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} .logo-container{
+      padding-right: {{ section.settings.logos_gap_mobile }}px;
+      {% comment %} height: 16px; {% endcomment %}
+    }
+
+     
+  }
+
+@media screen and (min-width:2500px) {
+      #shopify-section-{{ section.id }} .custom-slider-wrapper-inner{
+      display: flex;
+      gap: 0px;
+      min-width: fit-content;
+      width: fit-content;
+      align-items: center;
+      animation: logoslide 25s infinite cubic-bezier(0, 0, 0, 0);
+    }
+}
+  
+@media screen and (min-width:1800px) and (max-width:2499px) {
+      #shopify-section-{{ section.id }} .custom-slider-wrapper-inner{
+      display: flex;
+      gap: 0px;
+      min-width: fit-content;
+      width: fit-content;
+      align-items: center;
+      animation: logoslide 31s infinite cubic-bezier(0, 0, 0, 0);
+    }
+}
+  
+@media screen and (max-width:480px) {
+  #shopify-section-{{section.id}} {
+    / display:none; /
+  }
+  #shopify-section-{{ section.id }} .logo-container{
+      padding: 0;
+    }
+  #shopify-section-{{ section.id }} .custom-slider-wrapper-inner{
+    gap: 40px;
+  }
+  #announcement-smooth-{{ section.id }}{
+    padding-right: 20px;
+  }
+}
+  
+</style>
+
+{% comment %}
+  <div class="main-logo-section">
+      <div class="main-container">
+          {% for i in (1..4) %}
+          <div class="custom-slider-wrapper-inner">
+              {% for block in section.blocks %}
+              {% if block.type == "logo" %}
+              <img loading="lazy" src="{{ block.settings.logo | image_url }}" width="{{ block.settings.logo.width }}" height="{{ block.settings.logo.height }}" />
+              {% endif %}
+              {% endfor %}
+          </div>
+          {% endfor %}
+      </div>
+  </div>
+{% endcomment %}
+<section class="section page-width__logo-scroll section-{{ section.id }}-padding">
+  <h2 class="logo-scroll__heading">{{ section.settings.heading }}</h2>
+  <div class="custom-announcement-bar announcement-bar__logo-scroll">
+    <div class="page-width custom-slider-container-wrapper">
+      <div class="custom-slider-wrapper">
+     {% comment %}   {% for i in (1..2) %} {% endcomment %}
+          <div
+            class="custom-slider-wrapper-inner"
+           {% comment %} id="{% if forloop.first %}{%  else %}duplicate{{ i }}-{% endif %}announcement-smooth-{{ section.id }}" {% endcomment %}
+          >
+            {%- for block in section.blocks -%}
+              {% if block.type == 'logo' %}
+                {% assign product = all_products[block.settings.product] %}
+                 <!-- <div class="logo-container" onclick="window.open('{{ block.settings.logo-url }}', '_blank')">
+                -->
+                <div class="logo-container">
+                  <a href="{{ product.url }}">
+                 <img
+    class="slide-logo my-slide-logo-{{ block.id }}"
+    loading="lazy"
+    src="{{ product.featured_image | img_url:'master'}}"
+    width="250"
+    height="{{ section.settings.my-height }}px"
+>
+                  </a>
+                  <p style="margin-left:60px !important; font-size: 25px; color:black;" >{{ product.title }}</p>
+                  {% if section.settings.my-height %}
+                  <style>
+                    .my-slide-logo-{{ block.id }} {
+                      height:{{section.settings.my-height}}px !important;
+                    }
+                  </style>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {%- endfor -%}
+          </div>
+      
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+    "name": "Custom Logo Slider",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+        },
+                {
+                    "type": "number",
+                    "id": "my-height",
+                    "label": "Logo Height"
+                },
+        {
+        "type":"number",
+        "id":"smooth_speed",
+        "label":"Smooth slider speed",
+        "default":10
+      },
+      {
+        "type": "header",
+        "content": "Desktop configuration"
+      },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom Left",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom Right",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "logos_gap",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Logos gap",
+      "default": 90
+    },
+    {
+      "type": "header",
+      "content": "Mobile configuration"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Top Padding Mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom Padding Mobile",
+      "default": 50
+    },
+      {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Left Padding Mobile",
+      "default": 50
+    },
+      {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Right Padding Mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "logos_gap_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Logos gap mobile",
+      "default": 40
+    }
+    ],
+    "blocks": [
+        {
+            "type":"logo",
+            "name": "Logo",
+            "settings": [
+               {
+                 "type":"product",
+                 "id":"product",
+                 "label":"Product"
+               }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Custom Product Slider"
+        }
+    ]
+}
+{% endschema %}

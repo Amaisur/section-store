@@ -1,0 +1,205 @@
+
+  <style>
+
+       #shopify-section-{{ section.id }}  *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+         #shopify-section-{{ section.id }} .main-cm-15{
+            padding: 40px 0;
+            width: 100%;
+            background: #041d31;
+        }
+         #shopify-section-{{ section.id }} .inner-cm-15{
+            width: 90%;
+            margin: 0 auto !important;
+        }
+         #shopify-section-{{ section.id }} .row-cm-15{
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto !important;
+        }
+         #shopify-section-{{ section.id }} .img-cm-15{
+            width: 40%;
+            border-radius: 25px;
+            overflow: hidden;
+        }
+         #shopify-section-{{ section.id }} .img-cm-15 img{
+            width: 100%;
+            border-radius: 25px;
+        }
+         #shopify-section-{{ section.id }} .dates-cm-15{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+         #shopify-section-{{ section.id }} .c-date-cm-15{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
+            width: 80px;
+            min-width: 80px;
+            height: 80px;
+            min-height: 80px;
+            margin-right: 20px;
+            padding: 20px;
+            border-radius: 100%;
+            text-align: center;
+            background: #f0b504;
+        }
+         #shopify-section-{{ section.id }} .c-date-cm-15 p{
+            font-size: 16px;
+            font-weight: 800;
+            color: #fff;
+            line-height:12px;
+        }
+         #shopify-section-{{ section.id }} .text-cm-15{
+            color: #fff;
+        }
+         #shopify-section-{{ section.id }} .text-cm-15 h4{
+            font-size: 16px;
+            font-weight: 900;
+            color: #fff;
+        }
+        #shopify-section-{{ section.id }} .text-cm-15 p{
+            color: #fff;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 500 !important;
+            margin: 3px 0;
+        }
+        #shopify-section-{{ section.id }}  .text-cm-15 a{
+            text-decoration: none;
+            color: #f0b504;
+        }
+        #shopify-section-{{ section.id }}  .inner-cm-15 h2{
+            font-size: 20px;
+            color: #fff;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #shopify-section-{{ section.id }} .text-content-15{
+            width: 60%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            gap: 20px;
+        }
+        @media (max-width:850px){
+             #shopify-section-{{ section.id }} .row-cm-15{
+                flex-direction: column;
+            }
+             #shopify-section-{{ section.id }} .text-content-15{
+                width: 100%;
+                align-items: flex-start;
+            }
+             #shopify-section-{{ section.id }} .img-cm-15{
+                width: 100%;
+            }
+        }
+    </style>
+
+
+
+    <div class="main-cm-15">
+        <div class="inner-cm-15">
+            <h2>{{ section.settings.up-head-15 }}</h2>
+            <div class="row-cm-15">
+                <div class="img-cm-15">
+                    <img src="{{ section.settings.up-img-15 | img_url:'master'}}" alt="">
+                </div>
+                <div class="text-content-15">
+                  {% for block in section.blocks %}
+                <div class="dates-cm-15">
+                    <div class="c-date-cm-15"><p>{{ block.settings.s-month }}</p><p>{{ block.settings.s-date }}</p></div>
+                    <div class="text-cm-15">
+                        <h4>{{ block.settings.event-head }}</h4>
+                       
+                        <p>{{ block.settings.event-para }}</p>
+                            <p>{{ block.settings.e-date }} &nbsp; — &nbsp;&nbsp;<a href="{{ block.settings.e-btn-link }}">{{ block.settings.e-btn-text }}</a> </p>
+                        
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% schema %}
+  {
+    "name": "Upcoming Events",
+    "settings": [
+      {
+        "type":"text",
+        "id":"up-head-15",
+        "label":"Section Heading",
+        "default":"UPCOMING EVENTS"
+      },
+      {
+        "type":"image_picker",
+        "id":"up-img-15",
+        "label":"Upload image"
+      }
+    ],
+    "blocks":[
+      {
+        "name":"Dates",
+        "type":"date",
+        "settings":[
+             {
+            "type":"text",
+            "id":"s-month",
+            "label":"Month in Circle"
+          },
+           {
+            "type":"text",
+            "id":"s-date",
+            "label":"Date in Circle"
+          },
+             {
+            "type":"text",
+            "id":"event-head",
+            "label":"Event Heading"
+          },
+             {
+            "type":"text",
+            "id":"event-para",
+            "label":"Event Description"
+          },
+             {
+            "type":"text",
+            "id":"e-date",
+            "label":"Event Date"
+          },
+             {
+            "type":"text",
+            "id":"e-btn-text",
+            "label":"Button Label",
+            "default":"LEARN MORE + RSVP"
+          },
+             {
+            "type":"text",
+            "id":"e-btn-link",
+            "label":"Button Link"
+          }
+        ]
+      }
+    ],
+    "presets":[
+      {
+        "name":"upcoming events"
+      }
+    ]
+  }
+{% endschema %}

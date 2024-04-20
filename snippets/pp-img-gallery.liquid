@@ -1,0 +1,185 @@
+{% comment %} 
+    <style>
+       #shopify-section-{{ section.id }}  * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #shopify-section-{{ section.id }} .container {
+            width: 40%;
+            margin: 50px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #shopify-section-{{ section.id }} .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 100%;
+        }
+
+        #shopify-section-{{ section.id }} .large-image {
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 100%;
+        }
+
+        #shopify-section-{{ section.id }} .large-image img {
+            max-width: 100%;
+            height: auto;
+        }
+		 #shopify-section-{{ section.id }} .slider-images-arrow{
+			position: relative;
+		}
+        #shopify-section-{{ section.id }} .thumbnails {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 10px;
+            overflow-x:hidden;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            max-width: 100%;
+			position: relative;
+        }
+
+		 #shopify-section-{{ section.id }} .thumbnail {
+            overflow: hidden;
+            scroll-snap-align: start;
+            flex: 0 0 auto; /* Add this */
+			width: 100px;
+        }
+
+        #shopify-section-{{ section.id }} .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: border 0.3s ease;
+        }
+
+        #shopify-section-{{ section.id }} .thumbnail img.active {
+            border: 2px solid red;
+        }
+
+        #shopify-section-{{ section.id }} .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 1;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            font-size: 18px;
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #shopify-section-{{ section.id }} .slider-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        #shopify-section-{{ section.id }} .left-arrow {
+            left: 10px;
+        }
+
+        #shopify-section-{{ section.id }} .right-arrow {
+            right: 10px;
+        }
+
+        #shopify-section-{{ section.id }} .hide {
+            display: none;
+        }
+    </style>
+
+
+<div class="container">
+    <div class="gallery">
+     {% assign product = all_products[settings.product] %}
+        <div class="large-image">
+         
+            <img id="largeImage" src="" alt="Large Image">
+        </div>
+		<div class="slider-images-arrow">
+			<div class="slider-arrow left-arrow hide" onclick="moveSlider('left')">&lt;</div>
+        <div class="slider-arrow right-arrow" onclick="moveSlider('right')">&gt;</div>
+        <div class="thumbnails">
+			 {% for image in product.images %}
+            <div class="thumbnail">
+                <img src="{{ image | img_url:'master' }}" alt="Thumbnail 1" onclick="changeImage(this)">
+            </div>
+               {% endfor %}
+            </div>
+		</div>
+         
+        </div>
+        
+    </div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var largeImage = document.getElementById('largeImage');
+        var thumbnails = document.querySelectorAll('.thumbnail img');
+        var firstThumbnail = thumbnails[0];
+
+        largeImage.setAttribute('src', firstThumbnail.getAttribute('src'));
+        firstThumbnail.classList.add('active');
+
+        var thumbnailsContainer = document.querySelector('.thumbnails');
+        var leftArrow = document.querySelector('.left-arrow');
+        var rightArrow = document.querySelector('.right-arrow');
+
+        var canScroll = thumbnailsContainer.scrollWidth > thumbnailsContainer.offsetWidth;
+        leftArrow.classList.toggle('hide', !canScroll);
+        rightArrow.classList.toggle('hide', !canScroll);
+    });
+
+    function changeImage(element) {
+        var largeImage = document.getElementById('largeImage');
+        var src = element.getAttribute('src');
+        largeImage.setAttribute('src', src);
+
+        var thumbnails = document.querySelectorAll('.thumbnail img');
+        thumbnails.forEach(function(thumbnail) {
+            thumbnail.classList.remove('active');
+        });
+
+        element.classList.add('active');
+    }
+
+    function moveSlider(direction) {
+        var thumbnailsContainer = document.querySelector('.thumbnails');
+        var leftArrow = document.querySelector('.left-arrow');
+        var rightArrow = document.querySelector('.right-arrow');
+        var thumbnails = document.querySelectorAll('.thumbnail img');
+        var activeThumbnail = document.querySelector('.thumbnail img.active');
+        var thumbnailWidth = thumbnails[0].offsetWidth;
+
+        if (direction === 'left') {
+            thumbnailsContainer.scrollLeft -= thumbnailWidth;
+            if (activeThumbnail.previousElementSibling) {
+                activeThumbnail.previousElementSibling.classList.add('active');
+                activeThumbnail.classList.remove('active');
+            }
+        } else if (direction === 'right') {
+            thumbnailsContainer.scrollLeft += thumbnailWidth;
+            if (activeThumbnail.nextElementSibling) {
+                activeThumbnail.nextElementSibling.classList.add('active');
+                activeThumbnail.classList.remove('active');
+            }
+        }
+
+        var canScroll = thumbnailsContainer.scrollWidth > thumbnailsContainer.offsetWidth;
+        leftArrow.classList.toggle('hide', !canScroll);
+        rightArrow.classList.toggle('hide', !canScroll);
+    }
+</script>
+
+
+
+ {% endcomment %}

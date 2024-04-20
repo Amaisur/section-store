@@ -1,0 +1,36 @@
+
+<button id="add-to-cart-btn">Add to Cart</button>
+
+<script>
+document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+    // Check the customer's login status using AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/account/login', true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // User is logged in, show success message
+                alert('Item would be added to cart!'); // Change this message as needed
+            } else {
+                // User is not logged in, redirect to login page
+                window.location.href = '/account/login';
+            }
+        }
+    };
+    xhr.send();
+});
+</script>
+
+
+
+{% schema %}
+  {
+    "name": "Add to cart login",
+    "settings": [],
+    "presets":[
+      {
+        "name":"Add to cart login"
+      }
+    ]
+  }
+{% endschema %}

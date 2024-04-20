@@ -1,0 +1,179 @@
+<style>
+   #shopify-section-{{ section.id }}   *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family:serif;
+    }
+    #shopify-section-{{ section.id }}  .main-sb-13{
+        width: 100%;
+        background:{{section.settings.background}};
+        padding: 20px;
+        margin:30px 0 !important;
+    }
+    #shopify-section-{{ section.id }}  .inner-sb-13{
+        border: 1px solid red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    #shopify-section-{{ section.id }}  .row-sb-13{
+        width: 60%;
+        padding: 5% 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+    }
+    #shopify-section-{{ section.id }}  .line-sb-13{
+        width: 1px;
+        color: transparent;
+        height: 200px;
+        background: red;
+    }
+    #shopify-section-{{ section.id }}  .col-sb-13{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #shopify-section-{{ section.id }}  .col-sb-13 h1{
+        font-size: 100px;
+        text-align: left !important;
+    }
+    #shopify-section-{{ section.id }}  .col-sb-13 h2{
+        font-size: 35px;
+        text-align: left !important;
+    }
+    #shopify-section-{{ section.id }}  .col-sb-13 p{
+        font-size: 18px;
+        margin: 10px 0;
+        text-align: left !important;
+    }
+    #shopify-section-{{ section.id }}  .col-sb-13 h3{
+        font-size: 25px;
+        text-align: left !important;
+    }
+    #shopify-section-{{ section.id }}  .col-sb-13{
+        width: 50%;
+    }
+    #shopify-section-{{ section.id }}  .col-sb-13 a{
+        display: block;
+        width: 170px;
+        padding: 12px 0;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        background: red;
+        margin: 20px 0;
+    }
+    #shopify-section-{{ section.id }}  .col-sb-13 a:hover{
+        background: rgb(164, 14, 14);
+    }
+    @media (max-width:768px){
+        #shopify-section-{{ section.id }}  .row-sb-13{
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding-left: 30px;
+        }
+        #shopify-section-{{ section.id }}  .line-sb-13{
+            height: 1px;
+            width: 200px;
+        }
+        #shopify-section-{{ section.id }}  .inner-sb-13{
+            justify-content: flex-start;
+            width: 100%;
+        }
+        #shopify-section-{{ section.id }}  .col-sb-13{
+            justify-content: flex-start;
+        }
+    }
+
+</style>
+
+    <div class="main-sb-13">
+        <div class="inner-sb-13">
+            <div class="row-sb-13">
+                <div class="col-sb-13 left-sb-13">
+                    <div class="col-inner-13">
+                    <h3>{{ section.settings.sect13-1 }}</h3>
+                    <h1>{{ section.settings.sect13-2 }}</h1>
+                    <p>{{ section.settings.sect13-3 }}</p>
+                </div>
+                </div>
+                <div class="line-sb-13">.</div>
+                <div class="col-sb-13">
+                    <div class="col-inner-13">
+                    <h2>{{ section.settings.sect13-4 }}</h2>
+                    <p>{{ section.settings.sect13-5 }}
+                    </p>
+                    <a href="{{ section.settings.sect13-7 }}">{{ section.settings.sect13-6 }}</a>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+{% schema %}
+  {
+    "name": "Sales Banner",
+    "settings": [
+      {
+        "type": "color_background",
+        "id": "background",
+        "label": "Background",
+        "default": " radial-gradient(rgba(252, 238, 158, 1), rgba(250, 230, 223, 1) 100%)"
+      },
+      {
+        "type":"text",
+        "id":"sect13-1",
+        "label":"Your Text",
+        "default":"UP TO 50% OFF *"
+      },
+         {
+        "type":"text",
+        "id":"sect13-2",
+        "label":"Your Text",
+        "default":"SALE"   
+      },
+         {
+        "type":"text",
+        "id":"sect13-3",
+        "label":"Your Text",
+        "default":"*Ends September 30, 2023, 11:59 PST. T&C's Apply"
+      },
+         {
+        "type":"text",
+        "id":"sect13-4",
+        "label":"Your Text",
+        "default":"BIGGER MARKDOWNS"
+      },
+         {
+        "type":"text",
+        "id":"sect13-5",
+        "label":"Your Text",
+        "default":"We've refreshed our sale with discounts of up to 50% on select styles."
+      },
+         {
+        "type":"text",
+        "id":"sect13-6",
+        "label":"Button Label",
+        "default":"SHOP THE SALE"
+      },
+         {
+        "type":"url",
+        "id":"sect13-7",
+        "label":"Your Link"
+      }
+    ],
+    "presets":[
+      {
+        "name":"Sales banner"
+      }
+    ]
+  }
+{% endschema %}

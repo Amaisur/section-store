@@ -1,0 +1,441 @@
+
+    <style>
+       #shopify-section-{{ section.id }}  * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #shopify-section-{{ section.id }} .container {
+            width: 90%;
+            margin: 50px auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+      @media(max-width:768px){
+  #shopify-section-{{ section.id }} .container {
+            width: 90%;
+            margin: 50px auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction:column;
+        }
+          #shopify-section-{{ section.id }} .pp-row-10{
+        width: 90%;
+        padding: 20px 10px;
+        margin-left:0;
+    }
+      }
+
+        #shopify-section-{{ section.id }} .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        #shopify-section-{{ section.id }} .large-image {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 100%;
+            position:relative;
+            min-height: 400px;
+        }
+
+        #shopify-section-{{ section.id }} .large-image img {
+            width: 100%;
+            position:absolute;
+            top:0;
+            left:0;
+            height:100%;
+            object-fit:cover;
+        }
+		 #shopify-section-{{ section.id }} .slider-images-arrow{
+			position: relative;
+		}
+        #shopify-section-{{ section.id }} .thumbnails {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 10px;
+            overflow-x:hidden;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            max-width: 100%;
+			position: relative;
+        }
+
+		 #shopify-section-{{ section.id }} .thumbnail {
+            overflow: hidden;
+            scroll-snap-align: start;
+            flex: 0 0 auto; /* Add this */
+			width: 100px;
+            height:80px;
+            position:relative;
+        }
+
+        #shopify-section-{{ section.id }} .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            position:absolute;
+            transition: border 0.3s ease;
+        }
+
+        #shopify-section-{{ section.id }} .thumbnail img.active {
+            border: 2px solid red;
+        }
+
+        #shopify-section-{{ section.id }} .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 1;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            font-size: 18px;
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #shopify-section-{{ section.id }} .slider-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        #shopify-section-{{ section.id }} .left-arrow {
+            left: 10px;
+        }
+
+        #shopify-section-{{ section.id }} .right-arrow {
+            right: 10px;
+        }
+
+        #shopify-section-{{ section.id }} .hide {
+            display: none;
+        }
+        #shopify-section-{{ section.id }}  .pp-main-10{
+        width: 100%;
+    }
+   #shopify-section-{{ section.id }} .pp-inner-10{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+    }
+   #shopify-section-{{ section.id }} .pp-row-10{
+        width: 90%;
+        padding: 20px 10px;
+        margin-left:auto;
+    }
+   #shopify-section-{{ section.id }} .pp-title-10 h2{
+        font-size: 35px;
+        color: black;
+        font-weight: 600;
+    }
+   #shopify-section-{{ section.id }} .pp-price-10{
+        color: #555;
+        font-size: 20px;
+        margin: 15px 0;
+    }
+   #shopify-section-{{ section.id }} .pp-variant-head{
+        font-size: 18px;
+        color: black;
+        font-weight: 500;
+    }
+   #shopify-section-{{ section.id }} .pp-quantity-select-buutons, .pp-quantity-select-input{
+        outline: none;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #55555555;
+    }
+   #shopify-section-{{ section.id }} .pp-quantity-select-input{
+        border: 1.5px solid #555;
+        width: 45px;
+        text-align: center;
+    }
+   #shopify-section-{{ section.id }} .quantity-form-10{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 20px 0;
+    }
+   #shopify-section-{{ section.id }} .add-cart-10{
+        width: 100%;
+        height: 50px;
+        margin-left: 20px;
+    }
+   #shopify-section-{{ section.id }} .buy-10{
+        margin: 0;
+    }
+    .variant-10-flex{
+      display:flex;
+      align-items:flex-start;
+      justify-content:flex-start;
+      gap:5px;
+      margin:10px 0 !important;
+      flex-wrap:wrap;
+    }
+    .variant-10{
+      padding: 5px 10px !important;
+      border-radius:40px;
+      border:2px solid;
+      min-width:60px !important;
+      text-align:center;
+      transition: all .5s;
+    }
+     .variant-10:hover, .variant-10.active-variant{
+       color:#fff;
+       background:#555;
+       border: 2px solid;
+     }
+    </style>
+
+
+<div class="container">
+    <div class="gallery">
+    {% assign product = all_products[section.settings.product] %}
+        <div class="large-image">
+         
+            <img id="largeImage" src="{{ product.featured_image | img_url:'master' }}" alt="Large Image">
+        </div>
+		<div class="slider-images-arrow">
+			<div class="slider-arrow left-arrow hide" onclick="moveSlider('left')">&lt;</div>
+        <div class="slider-arrow right-arrow" onclick="moveSlider('right')">&gt;</div>
+        <div class="thumbnails">
+			{% for image in product.images %}
+            <div class="thumbnail">
+                <img src="{{ image | img_url:'master' }}" alt="Thumbnail 1" onclick="changeImage(this)">
+            </div>
+              {% endfor %}
+               
+            </div>
+		</div>
+
+        </div>
+
+
+    <div class="pp-main-10">
+        <div class="pp-inner-10">
+            <div class="pp-row-10">
+                <div class="pp-title-10">
+                    <h2>Heading</h2>
+                </div>
+                <div class="pp-price-10">
+                    <p>$543</p>
+                </div>
+ <form method="post" action="/cart/add" class="pp-form-10">
+   {% for option in product.options_with_values %}
+    <h4>{{ option.name }}</h4>
+    <div class="variant-10-flex">
+     {% for value in option.values %}
+    <label>
+      <input type="radio" name="{{ option.name }}" {% if forloop.first %}checked{% endif %}>
+      <div class="variant-10">
+        {{ value }}
+      </div>
+    </label>
+  {% endfor %}
+    </div>
+{% endfor %}
+
+
+    <h4 class="pp-variant-head">Quantity</h4>
+    <div class="quantity-form-10"> 
+        <button class="pp-quantity-select-buutons quantity-pp-minus" type="button">-</button>
+        <input type="text" class="pp-quantity-select-input" value="1" name="quantity">
+        <button class="pp-quantity-select-buutons quantity-pp-plus" type="button">+</button> 
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+        <input type="hidden" name="variant_id" value="" id="selected_variant">
+        <button class="add-cart-10" type="submit">Add to Cart</button>
+    </div>
+    <button class="add-cart-10 buy-10">Buy Now</button>
+</form>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+  
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('input[type="radio"]').forEach(function(input) {
+    input.addEventListener('change', function() {
+      // Remove 'active-variant' class from all divs inside labels
+      document.querySelectorAll('label').forEach(function(label) {
+        var div = label.querySelector('.variant-10');
+        if (div) {
+          div.classList.remove('active-variant');
+        }
+      });
+
+      // Add 'active-variant' class to the div inside the clicked label
+      var label = input.parentElement;
+      var div = label.querySelector('.variant-10');
+      if (div) {
+        div.classList.add('active-variant');
+      }
+    });
+  });
+});
+
+</script>
+
+    
+<!-- <script>
+function checkRadio(label) {
+  var input = label.querySelector('input[type="radio"]');
+  input.checked = !input.checked;
+}
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const optionContainers = document.querySelectorAll('.variant-10-flex');
+
+    optionContainers.forEach(function(container) {
+        const variants = container.querySelectorAll('.variant-10');
+
+        variants.forEach(function(variant) {
+            variant.addEventListener('click', function() {
+               
+                variants.forEach(function(v) {
+                    v.classList.remove('active-variant');
+                });
+
+  
+                this.classList.add('active-variant');
+            });
+        });
+    });
+});
+</script>
+ -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const quantityInput = document.querySelector('.pp-quantity-select-input');
+    const minusButton = document.querySelector('.quantity-pp-minus');
+    const plusButton = document.querySelector('.quantity-pp-plus');
+    const addToCartButton = document.querySelector('.add-cart-10');
+    
+    // Decrease quantity
+    minusButton.addEventListener('click', function() {
+        let quantity = parseInt(quantityInput.value);
+        if (quantity > 1) {
+            quantity--;
+            quantityInput.value = quantity;
+        }
+    });
+    
+    // Increase quantity
+    plusButton.addEventListener('click', function() {
+        let quantity = parseInt(quantityInput.value);
+        quantity++;
+        quantityInput.value = quantity;
+    });
+    
+    // Add to cart
+    addToCartButton.addEventListener('click', function() {
+        const quantity = parseInt(quantityInput.value);
+        addToCart(quantity);
+    });
+    
+    function addToCart(quantity) {
+        // Here you would write code to add the product to the cart with the specified quantity
+        console.log(`Adding ${quantity} item(s) to cart`);
+        // You can implement your actual cart functionality here
+    }
+});
+
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var largeImage = document.getElementById('largeImage');
+        var thumbnails = document.querySelectorAll('.thumbnail img');
+        var firstThumbnail = thumbnails[0];
+
+        largeImage.setAttribute('src', firstThumbnail.getAttribute('src'));
+        firstThumbnail.classList.add('active');
+
+        var thumbnailsContainer = document.querySelector('.thumbnails');
+        var leftArrow = document.querySelector('.left-arrow');
+        var rightArrow = document.querySelector('.right-arrow');
+
+        var canScroll = thumbnailsContainer.scrollWidth > thumbnailsContainer.offsetWidth;
+        leftArrow.classList.toggle('hide', !canScroll);
+        rightArrow.classList.toggle('hide', !canScroll);
+    });
+
+    function changeImage(element) {
+        var largeImage = document.getElementById('largeImage');
+        var src = element.getAttribute('src');
+        largeImage.setAttribute('src', src);
+
+        var thumbnails = document.querySelectorAll('.thumbnail img');
+        thumbnails.forEach(function(thumbnail) {
+            thumbnail.classList.remove('active');
+        });
+
+        element.classList.add('active');
+    }
+
+    function moveSlider(direction) {
+        var thumbnailsContainer = document.querySelector('.thumbnails');
+        var leftArrow = document.querySelector('.left-arrow');
+        var rightArrow = document.querySelector('.right-arrow');
+        var thumbnails = document.querySelectorAll('.thumbnail img');
+        var activeThumbnail = document.querySelector('.thumbnail img.active');
+        var thumbnailWidth = thumbnails[0].offsetWidth;
+
+        if (direction === 'left') {
+            thumbnailsContainer.scrollLeft -= thumbnailWidth;
+            if (activeThumbnail.previousElementSibling) {
+                activeThumbnail.previousElementSibling.classList.add('active');
+                activeThumbnail.classList.remove('active');
+            }
+        } else if (direction === 'right') {
+            thumbnailsContainer.scrollLeft += thumbnailWidth;
+            if (activeThumbnail.nextElementSibling) {
+                activeThumbnail.nextElementSibling.classList.add('active');
+                activeThumbnail.classList.remove('active');
+            }
+        }
+
+        var canScroll = thumbnailsContainer.scrollWidth > thumbnailsContainer.offsetWidth;
+        leftArrow.classList.toggle('hide', !canScroll);
+        rightArrow.classList.toggle('hide', !canScroll);
+    }
+</script>
+
+
+
+
+{% render 'pp-img-gallery' %}
+{% schema %}
+  {
+    "name": "pp 10",
+    "settings": [
+      {
+  "type": "product",
+  "id": "product",
+  "label": "Product"
+}
+    ],
+    "presets":[
+      {
+        "name":"pp 10"
+      }
+    ]
+  }
+{% endschema %}

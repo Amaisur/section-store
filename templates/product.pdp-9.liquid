@@ -1,0 +1,600 @@
+
+    <style>
+         * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+          .container {
+            width: 90%;
+            margin: 50px auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            position:relative;
+        }
+     
+
+        .gallery {
+            position:sticky;
+            left:0;
+            top:50px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 50%;
+        }
+
+         .large-image {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 100%;
+            position:relative;
+            min-height: 400px;
+        }
+
+          .large-image img {
+            width: 100%;
+            position:absolute;
+            top:0;
+            left:0;
+            height:100%;
+            object-fit:cover;
+        }
+		 .slider-images-arrow{
+			position: relative;
+		}
+         .thumbnails {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 10px;
+            overflow-x:hidden;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            max-width: 100%;
+			position: relative;
+        }
+
+		 .thumbnail {
+            overflow: hidden;
+            scroll-snap-align: start;
+            flex: 0 0 auto; /* Add this */
+			width: 100px;
+            height:80px;
+            position:relative;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            position:absolute;
+            transition: border 0.3s ease;
+        }
+
+        .thumbnail img.active {
+            border: 2px solid red;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 1;
+            width:30px;
+            height:30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            font-size: 18px;
+            color: #fff;
+            text-align:center;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: 1px solid black;
+        }
+        .slider-arrow svg path{
+          fill: #fff;
+        }
+         .slider-arrow:hover, .slider-arrow:hover svg path {
+            background-color: rgba(255, 255, 255, 1);
+            border: 1px solid black;
+            color:black;
+            fill:black;
+        }
+
+        .left-arrow {
+            left: 10px;
+        }
+
+         .right-arrow {
+            right: 10px;
+        }
+
+         .hide {
+            display: none;
+        }
+          .pp-main-10{
+        width: 50%;
+    }
+   .pp-inner-10{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+    }
+   .pp-row-10{
+        width: 90%;
+        padding: 20px 10px;
+        margin-left:auto;
+    }
+    .pp-title-10 h2{
+        font-size: 35px;
+        color: black;
+        font-weight: 600;
+    }
+    .pp-price-10{
+        color: #555;
+        font-size: 20px;
+        margin: 15px 0;
+    }
+    .pp-variant-head{
+        font-size: 18px;
+        color: black;
+        font-weight: 500;
+    }
+    .pp-quantity-select-buutons, .pp-quantity-select-input{
+        outline: none;
+        width: 50px;
+        height: 40px;
+        border: 1px solid #55555555;
+        user-select:none;
+    }
+    .pp-quantity-select-input{
+        border: 1.5px solid #555;
+        width: 45px;
+        text-align: center;
+    }
+    .quantity-form-10{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 20px 0;
+    }
+    .add-cart-10 , .add-cart-10-sold{
+        width: 100%;
+        height: 50px;
+        margin-left: 20px;
+    }
+    .buy-10{
+        margin: 0;
+    }
+    .variant-10-flex{
+      display:flex;
+      align-items:flex-start;
+      justify-content:flex-start;
+      gap:5px;
+      margin:10px 0 !important;
+      flex-wrap:wrap;
+    }
+    .variant-10{
+      padding: 5px 10px !important;
+      border-radius:40px;
+      border:2px solid;
+      min-width:60px !important;
+      text-align:center;
+      transition: all .5s;
+    }
+     .variant-10:hover, .variant-10.active-variant{
+       color:#fff;
+       background:#555;
+       border: 2px solid black;
+     }
+      .buy-btn-10{
+        margin-left:0;
+      }
+      .description-10{
+        margin: 20px 0 10px;
+      }
+       @media(max-width:768px){
+   .container {
+            width: 90%;
+            margin: 50px auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction:column;
+        }
+        .pp-row-10{
+        width: 100%;
+        padding: 20px 10px;
+        margin-left:0 !important;
+    }
+        .pp-main-10{
+          width:100% !important;
+        }
+        .gallery{
+          width:100% !important;
+          position: static !important;
+        }
+        .large-image {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 100%;
+            position:relative;
+        }
+           .pp-row-10{
+        width: 90%;
+        padding: 20px 10px;
+        margin-left:0;
+    }
+      }
+    </style>
+
+
+<div class="container">
+    <div class="gallery">
+        <div class="large-image">
+         
+            <img id="largeImage" src="{{ product.featured_image | img_url:'master' }}" alt="Large Image">
+        </div>
+		<div class="slider-images-arrow">
+			<div class="slider-arrow left-arrow hide" onclick="moveSlider('left')">
+               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"/></svg>
+            </div>
+        <div class="slider-arrow right-arrow" onclick="moveSlider('right')">
+           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"/></svg>
+        </div>
+        <div class="thumbnails">
+			{% for image in product.images %}
+            <div class="thumbnail">
+                <img src="{{ image | img_url:'master' }}" alt="Thumbnail 1" onclick="changeImage(this)">
+            </div>
+              {% endfor %}
+               
+            </div>
+		</div>
+
+        </div>
+
+
+    <div class="pp-main-10">
+        <div class="pp-inner-10">
+            <div class="pp-row-10">
+                <div class="pp-title-10">
+                    <h2>{{ product.title }}</h2>
+                </div>
+                <div class="pp-price-10">
+                    <p>$543</p>
+                </div>
+<form method="post" class="pp-form-10" id="product_form_id-2">
+  {% if product.variants.size > 1 %}
+    {% for option in product.options_with_values %}
+    <h4>{{ option.name }}</h4>
+    <div class="variant-10-flex">
+        {% for value in option.values %}
+            <div class="variant-10" data-variant="{{ product.variants.id }}">
+                {{ value }}
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}
+
+  {% endif %}
+
+  <h4 class="pp-variant-head">Quantity</h4>
+  <div class="quantity-form-10"> 
+    <button class="pp-quantity-select-buutons quantity-pp-minus" type="button">-</button>
+    <input type="text" class="pp-quantity-select-input" value="1" name="quantity" disabled>
+    <button class="pp-quantity-select-buutons quantity-pp-plus" type="button">+</button> 
+    <input type="hidden" name="id" value="{{ variant.id }}">
+    <input type="hidden" name="variant_id" id="selected_variant">
+    {% if product.available %}
+      <button class="add-cart-10" type="button">Add to Cart</button>
+    {% else %}
+      <button class="add-cart-10-sold" style="cursor: not-allowed; pointer-events: none;">Sold out</button>
+    {% endif %}
+  </div>
+ <button class="add-cart-10 buy-btn-10">Buy Now</button>
+</form>
+                <div class="description-10">
+                  <p>
+                    {{ product.description }}
+                  </p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Variant selection
+        document.querySelectorAll('.variant-10-flex').forEach(function(optionGroup) {
+            var firstOption = optionGroup.querySelector('.variant-10');
+            if (firstOption) {
+                firstOption.classList.add('active-variant');
+            }
+            
+            optionGroup.addEventListener('click', function(event) {
+                var clickedOption = event.target.closest('.variant-10');
+                if (!clickedOption) return;
+
+                // Remove active class from all variants within the same option group
+                optionGroup.querySelectorAll('.variant-10').forEach(function(variant) {
+                    variant.classList.remove('active-variant');
+                });
+
+                // Add active class to the clicked variant
+                clickedOption.classList.add('active-variant');
+            });
+        });
+
+        // Quantity selection
+        var quantityInput = document.querySelector('.pp-quantity-select-input');
+
+        quantityInput.addEventListener('change', function() {
+            var currentValue = parseInt(quantityInput.value);
+
+            if (currentValue < 1 || isNaN(currentValue)) {
+                quantityInput.value = 1;
+            }
+        });
+
+        document.querySelector('.quantity-pp-minus').addEventListener('click', function() {
+            var currentValue = parseInt(quantityInput.value);
+
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+
+        document.querySelector('.quantity-pp-plus').addEventListener('click', function() {
+            var currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        });
+
+        // Add to cart button
+        var productVariants = {{ product.variants | json }};
+
+        document.querySelector(".add-cart-10").addEventListener("click", async function() {
+            const selectedVariants = document.querySelectorAll('.active-variant');
+
+            // If no variant is selected, default to the first variant
+            if (selectedVariants.length === 0) {
+                const firstVariant = document.querySelector('.variant-10');
+                firstVariant.classList.add('active-variant');
+            }
+
+            // Get the selected variant after checking
+            const selectedVariant = document.querySelector('.active-variant');
+
+            const selectedOptions = [];
+
+            selectedVariants.forEach(function(selectedVariant) {
+                selectedOptions.push(selectedVariant.innerText.trim());
+            });
+
+            const matchingVariant = productVariants.find(function(variant) {
+                return variant.options.every(function(option, index) {
+                    return option === selectedOptions[index];
+                });
+            });
+
+            if (!matchingVariant) {
+                console.log('Variant not found in product variants array.');
+                return;
+            }
+
+            const productId = matchingVariant.id;
+            const quantity = parseInt(quantityInput.value) || 1;
+
+            const formData = new FormData();
+            formData.append('id', productId);
+            formData.append('quantity', quantity);
+
+            try {
+                const response = await fetch('/cart/add.js', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to add product to cart');
+                }
+
+                console.log('Product added to cart successfully');
+                window.location.href = '/cart'; // Redirect to cart page
+            } catch (error) {
+                console.error('Error adding product to cart:', error);
+            }
+        });
+    });
+</script>
+
+
+
+    
+
+{% comment %}
+
+<!-- 
+    <script>
+       var productVariants = {{ product.variants | json }};
+        document.querySelector(".add-cart-10").addEventListener("click", async function() {
+            const productId = '39740984950913'; 
+            const quantity = 1;
+
+            const formData = new FormData();
+            formData.append('id', productId);
+            formData.append('quantity', quantity);
+
+            try {
+                const response = await fetch('/cart/add.js', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to add product to cart');
+                }
+
+                console.log('Product added to cart successfully');
+                // You can redirect to the cart page or perform any other action here
+            } catch (error) {
+                console.error('Error adding product to cart:', error);
+            }
+        });
+    </script>
+ -->
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.variant-10').forEach(function(variantDiv) {
+            variantDiv.addEventListener('click', function() {
+                // Remove active class from all variants within the same option group
+                var optionGroup = variantDiv.parentElement;
+                optionGroup.querySelectorAll('.variant-10').forEach(function(variant) {
+                    variant.classList.remove('active-variant');
+                });
+
+                // Add active class to the clicked variant
+                variantDiv.classList.add('active-variant');
+            });
+        });
+
+        var productVariants = {{ product.variants | json }};
+        document.querySelector(".add-cart-10").addEventListener("click", async function() {
+            const selectedVariants = document.querySelectorAll('.active-variant');
+
+            // Check if any variant is selected
+            if (selectedVariants.length === 0) {
+                console.log('Please select a variant before adding to cart.');
+                return;
+            }
+
+            // Create an array to store the selected options
+            const selectedOptions = [];
+
+            // Loop through each selected variant and store its value
+            selectedVariants.forEach(function(selectedVariant) {
+                selectedOptions.push(selectedVariant.innerText.trim()); // Trim whitespace
+            });
+
+            // Find the variant ID based on the selected options
+            const matchingVariant = productVariants.find(function(variant) {
+                return variant.options.every(function(option, index) {
+                    return option === selectedOptions[index];
+                });
+            });
+
+            if (!matchingVariant) {
+                console.log('Variant not found in product variants array.');
+                return;
+            }
+
+            const productId = matchingVariant.id;
+            const quantity = 1;
+
+            const formData = new FormData();
+            formData.append('id', productId);
+            formData.append('quantity', quantity);
+
+            try {
+                const response = await fetch('/cart/add.js', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to add product to cart');
+                }
+
+                console.log('Product added to cart successfully');
+                // You can redirect to the cart page or perform any other action here
+            } catch (error) {
+                console.error('Error adding product to cart:', error);
+            }
+        });
+      
+    });
+</script>
+
+
+{% endcomment %}
+
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var largeImage = document.getElementById('largeImage');
+        var thumbnails = document.querySelectorAll('.thumbnail img');
+        var firstThumbnail = thumbnails[0];
+
+        largeImage.setAttribute('src', firstThumbnail.getAttribute('src'));
+        firstThumbnail.classList.add('active');
+
+        var thumbnailsContainer = document.querySelector('.thumbnails');
+        var leftArrow = document.querySelector('.left-arrow');
+        var rightArrow = document.querySelector('.right-arrow');
+
+        var canScroll = thumbnailsContainer.scrollWidth > thumbnailsContainer.offsetWidth;
+        leftArrow.classList.toggle('hide', !canScroll);
+        rightArrow.classList.toggle('hide', !canScroll);
+    });
+
+    function changeImage(element) {
+        var largeImage = document.getElementById('largeImage');
+        var src = element.getAttribute('src');
+        largeImage.setAttribute('src', src);
+
+        var thumbnails = document.querySelectorAll('.thumbnail img');
+        thumbnails.forEach(function(thumbnail) {
+            thumbnail.classList.remove('active');
+        });
+
+        element.classList.add('active');
+    }
+
+    function moveSlider(direction) {
+        var thumbnailsContainer = document.querySelector('.thumbnails');
+        var leftArrow = document.querySelector('.left-arrow');
+        var rightArrow = document.querySelector('.right-arrow');
+        var thumbnails = document.querySelectorAll('.thumbnail img');
+        var activeThumbnail = document.querySelector('.thumbnail img.active');
+        var thumbnailWidth = thumbnails[0].offsetWidth;
+
+        if (direction === 'left') {
+            thumbnailsContainer.scrollLeft -= thumbnailWidth;
+            if (activeThumbnail.previousElementSibling) {
+                activeThumbnail.previousElementSibling.classList.add('active');
+                activeThumbnail.classList.remove('active');
+            }
+        } else if (direction === 'right') {
+            thumbnailsContainer.scrollLeft += thumbnailWidth;
+            if (activeThumbnail.nextElementSibling) {
+                activeThumbnail.nextElementSibling.classList.add('active');
+                activeThumbnail.classList.remove('active');
+            }
+        }
+
+        var canScroll = thumbnailsContainer.scrollWidth > thumbnailsContainer.offsetWidth;
+        leftArrow.classList.toggle('hide', !canScroll);
+        rightArrow.classList.toggle('hide', !canScroll);
+    }
+</script>
+
+

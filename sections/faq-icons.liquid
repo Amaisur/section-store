@@ -1,0 +1,294 @@
+
+   <style>
+
+         #shopify-section-{{ section.id }} *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            text-align:left;
+        }
+         #shopify-section-{{ section.id }} .main-faq-16{
+            width: 100%;
+            max-width: 1000px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 30px auto !important;
+            background: rgb(249,243,241);
+            padding: 30px 20px;
+        }
+         #shopify-section-{{ section.id }} .inner-faq-16{
+            width: 95%;
+            margin: 0 auto !important;
+        }
+         #shopify-section-{{ section.id }} .row-faq-16{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+         #shopify-section-{{ section.id }} .left-faq-16{
+            width: 35%;
+        }
+         #shopify-section-{{ section.id }} .right-faq-16{
+            width: 50%;
+            
+        }
+         #shopify-section-{{ section.id }} .l-head-16 h1{
+            font-size: 40px;
+            color: black;
+        }
+         #shopify-section-{{ section.id }} .l-head-16 p{
+            color: #5a5656;
+            font-size: 17px;
+
+        }
+         #shopify-section-{{ section.id }} .min-faq-16{
+            margin: 20px 0;
+        }
+         #shopify-section-{{ section.id }} .min-faq-16 h4{
+            font-size: 14px;
+            font-weight: 600;
+        }
+         #shopify-section-{{ section.id }} .min-faq-16 p{
+            font-size: 16px;
+        }
+         #shopify-section-{{ section.id }} p{
+            margin: 2px 0 5px !important;
+        }
+
+        ------------
+     #shopify-section-{{ section.id }} .faq-16 {
+      display: flex;
+      flex-direction: column;
+      background: #fff !important;
+      margin: 5px 0;
+      overflow: hidden;
+      transition: all 0.3s;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+     #shopify-section-{{ section.id }} .img-head{
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+     #shopify-section-{{ section.id }} .quest-16 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      transition: all 0.3s;
+      padding: 10px;
+    }
+     #shopify-section-{{ section.id }} .quest-16 h3{
+      font-weight: 200;
+    }
+
+     #shopify-section-{{ section.id }} .answer-16 {
+      padding: 0 10px;
+      color: #555;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s;
+    }
+    #shopify-section-{{ section.id }} .answer-16 p{
+      font-size:14px;
+    }
+     #shopify-section-{{ section.id }} .faq-16.active .answer-16 {
+      max-height: 500px;
+    }
+
+     #shopify-section-{{ section.id }} .faq-16.active .minus-16 {
+      display: block !important;
+      width: 27px;
+      height: 27px;
+    }
+     #shopify-section-{{ section.id }} .faq-16.active .plus-16{
+        display: none;
+    }
+     #shopify-section-{{ section.id }} .icon-16 {
+      width: 27px;
+      height: 27px;
+      color: black;
+      border: 1px solid black;
+      background: transparent;
+      border-radius: 50%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 700;
+    }
+     #shopify-section-{{ section.id }} .minus-16{
+        display: none;
+    }
+     #shopify-section-{{ section.id }} .icon-16 svg{
+        width: 12px;
+        height: 12px;
+    }
+     #shopify-section-{{ section.id }} .faq-16{
+        display: flex;
+      flex-direction: column;
+      background: #fff !important;
+      margin: 5px 0;
+      overflow: hidden;
+      transition: all 0.3s;
+      cursor: pointer;
+      border-radius: 10px;
+      padding: 10px 5px;
+    }
+      @media (max-width:768px){
+        #shopify-section-{{ section.id }} .row-faq-16{
+            flex-direction: column;
+            justify-content: center;
+            /* align-items:center; */
+        }
+        #shopify-section-{{ section.id }} .left-faq-16{
+            width: 100%;
+        }
+         #shopify-section-{{ section.id }} .right-faq-16{
+           width:100%;
+         }
+        #shopify-section-{{ section.id }} *{
+            text-align: center;
+        }
+        #shopify-section-{{ section.id }} .answer-16 p{
+            text-align: left !important;
+        }
+       #shopify-section-{{ section.id }} .quest-16 h3{
+          text-align:left !important;
+        }
+    }
+    </style>
+
+    
+    <div class="main-faq-16">
+        <div class="inner-faq-16">
+            <div class="row-faq-16">
+                <div class="left-faq-16">
+                    <div class="l-head-16">
+                    <h1>{{ section.settings.faq-head }}</h1>
+                    <p>{{ section.settings.faq-para }}</p>
+                </div>
+                <div class="l-details-16">
+                  {% for block in section.blocks %}
+                    {% if block.type == 'mini-faq' %}
+                    <div class="min-faq-16">   
+                    <h4 class="d-head-16">{{ block.settings.mini-head }}</h4>
+                    <p class="d-para-16">{{ block.settings.mini-para }}</p>
+                    </div>
+                      {% endif %}
+                  {% endfor %}
+
+                </div>
+                </div>
+                <div class="right-faq-16">
+                  {% for block in section.blocks %}
+                    {% if block.type == 'main-faq' %}
+                    <div class="faq-16">
+                        <div class="quest-16">
+                            <div class="img-head">
+                             
+                        {% if block.settings.quest-img %}
+                          <img src="{{ block.settings.quest-img | image_url }}" alt="" width="40px" height="40px">
+                      {% endif %} 
+                            
+                          <h3>{{ block.settings.quest }}</h3>
+                        </div>
+                          <div class="icon-open plus-icon">
+                            <div class="plus-16">
+                              <div class="icon-16">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M240 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H176V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H240V80z"/></svg>
+                            </div>
+                      </div>
+                            <div class="minus-16">
+                            <div class="icon-16">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 256c0 17.7-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg>
+                            </div>
+                                </div>
+                          </div>
+                        </div>
+                        <div class="answer-16 answer0">
+                          <p>{{ block.settings.quest-ans }}</p>
+                        </div>
+                      </div>
+                      {% endif %}
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const faqssix = document.querySelectorAll(".faq-16");
+    
+        faqssix.forEach((faq) => {
+          faq.addEventListener("click", () => {
+            faq.classList.toggle("active");
+          });
+        });
+      </script>
+
+{% schema %}
+  {
+    "name": "FAQ",
+    "settings": [
+      {
+        "type":"text",
+        "id":"faq-head",
+        "label":"Your Heading",
+        "default":"NEED HELP?"
+      },
+         {
+        "type":"text",
+        "id":"faq-para",
+        "label":"Your Para",
+        "default":"We offer support via email."
+      }
+    ],
+    "blocks":[
+      {
+        "name":"mini-block",
+        "type":"mini-faq",
+        "settings":[
+          {
+            "type":"text",
+            "id":"mini-head",
+            "label":"Mini heading"
+          },
+          {
+            "type":"text",
+            "id":"mini-para",
+            "label":"Mini Para"
+          }
+        ]
+      },
+      {
+        "name":"main-block",
+        "type":"main-faq",
+        "settings":[
+          {
+            "type":"text",
+            "id":"quest",
+            "label":"Your Question"
+          },
+            {
+            "type":"image_picker",
+            "id":"quest-img",
+            "label":"Question Image"
+          },
+         {
+            "type":"text",
+            "id":"quest-ans",
+            "label":"Your Answer"
+          }
+        ]
+      }
+    ],
+    "presets":[
+      {
+        "name":"FAQ"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,215 @@
+
+  <style>
+       #shopify-section-{{ section.id }}  *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+       #shopify-section-{{ section.id }}  .main-pt-14{
+            width: 100%;
+            margin: 50px 0;
+            background: rgba(230, 227, 226, 0.705);
+            padding: 50px 0;
+        }
+        #shopify-section-{{ section.id }} .inner-pt-14{
+            width: 95%;
+            margin: 0 auto !important;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        #shopify-section-{{ section.id }} .inner-pt-14 h2{
+            font-size: 22px;
+            color: black;
+            font-weight:600;
+        }
+       #shopify-section-{{ section.id }}  .tab-content-14{
+            width: auto;
+        }
+        #shopify-section-{{ section.id }} .tab-content-14{
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        #shopify-section-{{ section.id }} .product-pt-14{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-radius: 7px;
+            background: #fff;
+        }
+        #shopify-section-{{ section.id }} .tabs-b-pt-14{
+            display: flex;
+            width: 70%;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        #shopify-section-{{ section.id }} .tabs-b-pt-14 button{
+            padding: 12px;
+            border: 2px solid #dad0d0;
+            color: rgb(39, 109, 223);
+            border-radius: 7px;
+            cursor:pointer;
+        }
+        #shopify-section-{{ section.id }} .tab-button.active{
+            border: 2px solid rgb(39, 109, 223);
+        }
+    @media (max-width:1250px){
+        #shopify-section-{{ section.id }} .tab-content-14{
+            grid-template-columns: repeat(3, 1fr) ;
+        }
+    }
+    @media (max-width:1000px){
+       #shopify-section-{{ section.id }}  .tab-content-14{
+            grid-template-columns: repeat(2, 1fr) ;
+        }
+    }
+    @media (max-width:640px){
+        #shopify-section-{{ section.id }} .tab-content-14{
+            grid-template-columns: repeat(1, 1fr) ;
+        }
+    }
+        #shopify-section-{{ section.id }} .product-info-14{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            width:70%;
+        }
+        #shopify-section-{{ section.id }} .product-pt-14 h4{
+            font-size: 18px;
+            color: black;
+            font-weight: 600;
+        }
+       #shopify-section-{{ section.id }}  .product-pt-14 p{
+            font-size: 12px;
+            color: #666;
+        }
+        #shopify-section-{{ section.id }} .product-pt-14:hover .product-info-14 h4{
+            color: rgb(39, 109, 223);
+        }
+        
+    </style>
+
+
+        <div class="main-pt-14">
+            <div class="inner-pt-14">
+                <h2>Recomended product</h2>
+                <div class="tabs-b-pt-14" id="tabButtons">
+                </div>
+                
+                  {% for block in section.blocks %}
+  {% assign collectionmy = block.settings.collection-section-11 %}
+              
+                <div id="tabContent" class="tabs-c-pt-14">
+                    <p class="tab-button" style="display: none;">{{ block.settings.tab-btn }}</p>
+                    <div class="tab-content-14">
+                      {% for product in collectionmy.products %}
+                        <a href="{{ product.url }}" style="text-decoration:none;">
+                    <div class="product-pt-14">
+                        <div class="product-info-14">
+                        <div class="img-pt-14">
+                            <img src="{{ product.featured_image | img_url}}" alt="" width="" height="">
+                        </div>
+                        <div class="title-pt-14">
+                            <p style="text-align:left;">{{ block.settings.p-14-txt }}</p>
+                            <h4>{{ product.title | truncate:'20' }}</h4>
+                        </div>
+                    </div>
+                        <div class="price-pt-14">
+                            <h4>{{ product.price | money }}</h4>
+                        </div>
+                    </div>
+                        </a>
+                        {% endfor %}
+                        
+                </div>
+                </div>
+
+                  {% endfor %}
+            </div>
+        </div>
+
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tabContents = document.querySelectorAll('.tabs-c-pt-14');
+
+  tabContents.forEach((tabContent, index) => {
+    const tabButton = document.createElement('button');
+    tabButton.textContent = tabContent.querySelector('p.tab-button').textContent;
+    tabButton.classList.add('tab-button');
+
+    tabButton.addEventListener('click', function() {
+      tabContents.forEach((tab) => {
+        tab.style.display = 'none';
+      });
+
+      tabContent.style.display = 'block';
+
+      document.querySelectorAll('.tab-button').forEach((button) => {
+        button.classList.remove('active');
+      });
+
+      tabButton.classList.add('active');
+    });
+
+    document.getElementById('tabButtons').appendChild(tabButton);
+
+    if (index !== 0) {
+      tabContent.style.display = 'none';
+    } else {
+      tabButton.classList.add('active');
+    }
+  });
+});
+</script>
+
+
+
+{% schema %}
+  {
+    "name": "Product Tabs",
+    "settings": [
+      {
+        "type":"text",
+        "id":"sect-head",
+        "label":"Section Heading",
+        "default":"Recommended for You"
+      }
+    ],
+     "blocks": [
+     {
+       "name": "Tab",
+       "type": "Tab",
+       "settings": [
+           {
+              "type": "collection",
+              "id": "collection-section-11",
+              "label": "Select collection"
+            },
+            {
+           "type":"text",
+           "id":"tab-btn",
+           "label":"Tab Heading"
+         },
+         {
+           "type":"text",
+           "id":"p-14-txt",
+           "label":"Product Label",
+           "default":"STOCKMART"
+         }
+       
+       ]
+     }
+     ],
+    "presets":[
+      {
+        "name":"product tabs"
+      }
+    ]
+  }
+{% endschema %}
