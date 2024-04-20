@@ -98,14 +98,25 @@
 .arrows-d9-28 .ss-padding-2{
     padding: 2px !important;
 }
+.icon-inner-ss-2{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
 </style>
 
 
 
     <div class="wraper-d9-28">
         <div class="arrows-d9-28">
-        <div id="left-d9-28" class="slider-button-d9-28 prev-d9-28"> <div class="ss-padding-2">&larr;</div></div>
-        <div id="right-d9-28" class="slider-button-d9-28 next-d9-28"> <div class="ss-padding-2">&rarr;</div></div>
+        <div id="left-d9-28" class="slider-button-d9-28 prev-d9-28"> <div class="ss-padding-2">
+            <div class="icon-inner-ss-2">
+                &larr;
+                </div>
+            </div></div>
+        <div id="right-d9-28" class="slider-button-d9-28 next-d9-28"> <div class="ss-padding-2">
+            <div class="icon-inner-ss-2"> &rarr;</div>
+            </div></div>
         </div>
         <div class="carousel-d9-28">
         {% for block in section.blocks %}
