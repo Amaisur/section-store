@@ -101,6 +101,7 @@
     height: 100%;
     border-radius: 50%;
     background: linear-gradient(purple,blue,red);
+    animation:rotate-ss 3s linear infinite;
 }
 .icon-inner-ss-2{
     width: 100%;
@@ -125,6 +126,11 @@
 }
 .collection-link-ss-2:hover .line-ss-2{
     width: 100%;
+}
+@keyframes rotate-ss{
+    100%{
+        transform: rotate(360deg);
+    }
 }
 </style>
 
