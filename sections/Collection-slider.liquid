@@ -108,16 +108,18 @@
 }
 .collection-ss-title-2{
     margin: 15px 0 0;
-}
-.collection-ss-title-2 p{
-    display: inline;
+    display: inline-block;
 }
 .line-ss-2{
-    width: 100%;
+    width: 0%;
     display: block !important;
-    height: 2px;
+    height: 3px;
     border-radius: 5px;
     background: linear-gradient(purple,blue,red);
+    transition: all .3s;
+}
+.collection-link-ss-2:hover .line-ss-2{
+    width: 100%;
 }
 </style>
 
