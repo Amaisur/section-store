@@ -214,15 +214,10 @@
       
                 <div class="logo-container">
                     <a {% if block.settings.logo-url %} href="{{ block.settings.logo-url }}" {% endif %}>
-                 <img
+                 <p
     class="slide-logo my-slide-logo-{{ block.id }}"
-    loading="lazy"
-    srcset="{{ block.settings.logo | img_url: '250x' }} 1x,
-            {{ block.settings.logo | img_url: '500x' }} 2x"
-          
-    width="250"
-    height="{{ block.settings.logo.height }}"
->
+     style="height:{{ block.settings.logo.height }};"
+>{{ block.settings.text }}</p>
                     </a>
                   {% if block.settings.my-height %}
                   <style>
@@ -376,9 +371,10 @@
             "name": "Logo",
             "settings": [
                 {
-                    "type": "image_picker",
-                    "id": "logo",
-                    "label": "Logo"
+                    "type": "text",
+                    "id": "text",
+                    "label": "Anoouncement",
+                    "default": "Wellcome to my store!"
                 },
                 {
                     "type": "url",
