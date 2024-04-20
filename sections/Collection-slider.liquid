@@ -83,6 +83,7 @@
     object-fit: cover;
     display: block;
     border-radius: 50%;
+    transition: all 1s;
 }
 .ss-padding-2-img{
     width: 100%;
@@ -101,7 +102,6 @@
     height: 100%;
     border-radius: 50%;
     background: linear-gradient(purple,blue,red);
-    animation:rotate-ss 3s linear infinite;
 }
 .icon-inner-ss-2{
     width: 100%;
@@ -127,11 +127,10 @@
 .collection-link-ss-2:hover .line-ss-2{
     width: 100%;
 }
-@keyframes rotate-ss{
-    100%{
-        transform: rotate(360deg);
-    }
+.collection-link-ss-2:hover img{
+    transform: scale(1.2);
 }
+
 </style>
 
 
