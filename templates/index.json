@@ -81,11 +81,39 @@
           "settings": {
             "collection": "ice-cream-1"
           }
+        },
+        "collection_ipVmrE": {
+          "type": "Collection",
+          "settings": {
+            "collection": "all"
+          }
+        },
+        "collection_3WfmUy": {
+          "type": "Collection",
+          "settings": {
+            "collection": "stickers"
+          }
+        },
+        "collection_qWRBmR": {
+          "type": "Collection",
+          "settings": {
+            "collection": "watch"
+          }
+        },
+        "collection_RGLQWp": {
+          "type": "Collection",
+          "settings": {
+            "collection": "little-lights"
+          }
         }
       },
       "block_order": [
         "collection_iP99EY",
-        "collection_xjgpaL"
+        "collection_xjgpaL",
+        "collection_ipVmrE",
+        "collection_3WfmUy",
+        "collection_qWRBmR",
+        "collection_RGLQWp"
       ],
       "settings": {
       }
