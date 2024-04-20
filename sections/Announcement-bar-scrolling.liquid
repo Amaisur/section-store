@@ -196,7 +196,9 @@
    #shopify-section-{{ section.id }} a:hover{
     cursor: default;
   }
-  
+  #shopify-section-{{ section.id }} .slide-logo{
+    color: {{ section.settings.text-color }};
+  }
 </style>
 
 <section class="section page-width__logo-scroll section-{{ section.id }}-padding">
@@ -249,6 +251,12 @@
         "id": "background",
         "label": "Background",
         "default": "linear-gradient(#ffffff, #ffffff)"
+      },
+      {
+        "type": "color",
+        "id": "text-color",
+        "label": "Text Color",
+        "default": "black"
       },
         {
         "type":"number",
