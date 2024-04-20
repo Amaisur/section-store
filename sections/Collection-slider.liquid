@@ -84,6 +84,11 @@
     object-fit: cover;
     display: block;
 }
+.ss-padding-2{
+    width: 100%;
+    height: 100%;
+    padding: 3px;
+}
 </style>
 
 
@@ -100,7 +105,9 @@
                 <a href="{{ collection.url }}">
                 <div class="collection-ss-2">
                     <div class="collection-ss-img-2">
+                        <div class="ss-padding-2">
                         <img src="{{ collection.featured_image |  img_url: 'master' }}">
+                        </div>
                     </div>
                     <div class="collection-ss-title-2">
                         <p> {{ collection.title }} </p>
