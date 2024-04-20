@@ -28,7 +28,7 @@
       ],
       "settings": {
         "heading": "",
-        "background": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 100%)",
+        "background": "linear-gradient(180deg, rgba(196, 102, 238, 1), rgba(82, 218, 236, 1) 100%)",
         "smooth_speed": 10,
         "padding_top": 0,
         "padding_bottom": 0,
@@ -56,6 +56,7 @@
       "block_order": [
         "announcement-bar-0"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-1",
         "show_line_separator": true,
