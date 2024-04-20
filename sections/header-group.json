@@ -12,10 +12,19 @@
             "logo-url": "",
             "my-height": 0
           }
+        },
+        "logo_6hhfga": {
+          "type": "logo",
+          "settings": {
+            "text": "Wellcome to my store!",
+            "logo-url": "",
+            "my-height": 0
+          }
         }
       },
       "block_order": [
-        "logo_GNx9AN"
+        "logo_GNx9AN",
+        "logo_6hhfga"
       ],
       "settings": {
         "heading": "",
