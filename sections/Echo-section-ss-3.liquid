@@ -1,0 +1,128 @@
+<style>
+.main-ss-echo-3{
+    width: 100%;
+    margin: 50px 0;
+}
+.inner-ss-echo-3{
+    width: 90%;
+    margin: 0 auto;
+}
+.row-ss-echo-3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+.col-ss-echo-3{
+    width: 50%;
+}
+.text-ss-3 a{
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 50%;
+    text-decoration: none;
+    border: 1px solid black;
+}
+.blocks-ss-3{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.block-ss-3-img{
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.block-ss-3-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.block-ss-3-main{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+</style>
+        <div class="main-ss-echo-3">
+
+        <div class="inner-ss-echo-3">
+            <div class="row-ss-echo-3">
+                <div class="col-ss-echo-3 text-ss-3">
+                    <h3>{{ section.settings.main-head }}</h3>
+                    <p> {{ section.settings.main-subtext }} </p>
+                    <a class="btn-ss-3" href=" {{ section.settings.main-btn-l }} ">{{ section.settings.main-btn-t }}</a>
+                </div>
+                <div class="col-ss-echo-3 blocks-ss-3">
+                    {%  for block in section.blocks %}  
+                    <div class="block-ss-3-main">
+                        <div class="block-ss-3-img">
+                            <img src="{{ block.settings.block-img |  img_url: 'master' }}" alt="">
+                        </div>
+                        <div class="block-ss-3-text">
+                            <p>{{ block.settings.block-text }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+
+
+
+{% schema %}
+{
+    "name": "Echo Section 1",
+    "settings": [
+        {
+            "type": "text",
+            "id": "main-head",
+            "label": "Heading"
+        },
+        {
+            "type": "text",
+            "id": "main-subtext",
+            "label": "Sub Text"
+        },
+        {
+            "type": "text",
+            "id": "main-btn-t",
+            "label": "Button Label",
+            "default": "Get in touch"
+        },
+        {
+            "type": "url",
+            "id": "main-btn-l",
+            "label": "Button Link"
+        }
+        ],
+        "blocks": [
+            {
+                "name": "Box",
+                "type": "Box",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "block-img",
+                        "label": "Your Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "block-text",
+                        "label": "Text"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Echo Section 1"
+            }
+        ]
+}
+{% endschema %}
