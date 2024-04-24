@@ -168,14 +168,6 @@
             "block-text": "Kills 99% of all bacteria",
             "block-link": ""
           }
-        },
-        "box_Kx4iYb": {
-          "type": "Box",
-          "settings": {
-            "block-img": "shopify:\/\/shop_images\/LunarNewYearStickers2023.webp",
-            "block-text": "",
-            "block-link": ""
-          }
         }
       },
       "block_order": [
@@ -184,8 +176,7 @@
         "box_bXKbFJ",
         "box_rjMP8U",
         "box_3a4VVy",
-        "box_qPTFGd",
-        "box_Kx4iYb"
+        "box_qPTFGd"
       ],
       "settings": {
         "main-head": "OUTSTANDING QUALITY BACKED BY A NUMBER OF REASONS. \u2028OUR PRODUCT IS SETTING NEW BOUNDARIES FOR THE SO FAR EXISTING HAND SANITIZERS.",
