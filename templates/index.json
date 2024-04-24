@@ -117,11 +117,21 @@
       ],
       "settings": {
       }
+    },
+    "echo_section_ss_3_Tp6ghe": {
+      "type": "Echo-section-ss-3",
+      "settings": {
+        "main-head": "OUTSTANDING QUALITY BACKED BY A NUMBER OF REASONS. \u2028OUR PRODUCT IS SETTING NEW BOUNDARIES FOR THE SO FAR EXISTING HAND SANITIZERS.",
+        "main-subtext": "Special offer to get a discount after testing one of our new products so better take the chance now before it’s to late.",
+        "main-btn-t": "Get in touch",
+        "main-btn-l": ""
+      }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
-    "collection_slider_iHc74y"
+    "collection_slider_iHc74y",
+    "echo_section_ss_3_Tp6ghe"
   ]
 }
