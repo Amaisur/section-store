@@ -125,42 +125,48 @@
           "type": "Box",
           "settings": {
             "block-img": "shopify:\/\/shop_images\/RicepuffyLittleLight1.webp",
-            "block-text": "Kills 99% of all bacteria"
+            "block-text": "Kills 99% of all bacteria",
+            "block-link": ""
           }
         },
         "box_DLjAwc": {
           "type": "Box",
           "settings": {
             "block-img": "shopify:\/\/shop_images\/RicelogiLittleLight1.webp",
-            "block-text": "Kills 99% of all bacteria"
+            "block-text": "Kills 99% of all bacteria",
+            "block-link": ""
           }
         },
         "box_bXKbFJ": {
           "type": "Box",
           "settings": {
             "block-img": "shopify:\/\/shop_images\/RicemoguLittleLight1.webp",
-            "block-text": "Kills 99% of all bacteria"
+            "block-text": "Kills 99% of all bacteria",
+            "block-link": ""
           }
         },
         "box_rjMP8U": {
           "type": "Box",
           "settings": {
             "block-img": "shopify:\/\/shop_images\/RicedinoLittleLight1.webp",
-            "block-text": "Kills 99% of all bacteria"
+            "block-text": "Kills 99% of all bacteria",
+            "block-link": ""
           }
         },
         "box_3a4VVy": {
           "type": "Box",
           "settings": {
             "block-img": "shopify:\/\/shop_images\/RicemintyLittleLight1.webp",
-            "block-text": "Kills 99% of all bacteria"
+            "block-text": "Kills 99% of all bacteria",
+            "block-link": ""
           }
         },
         "box_qPTFGd": {
           "type": "Box",
           "settings": {
             "block-img": "shopify:\/\/shop_images\/RicepuddingLittleLight1.webp",
-            "block-text": "Kills 99% of all bacteria"
+            "block-text": "Kills 99% of all bacteria",
+            "block-link": ""
           }
         }
       },
@@ -174,9 +180,11 @@
       ],
       "settings": {
         "main-head": "OUTSTANDING QUALITY BACKED BY A NUMBER OF REASONS. \u2028OUR PRODUCT IS SETTING NEW BOUNDARIES FOR THE SO FAR EXISTING HAND SANITIZERS.",
+        "font-size-head": 35,
         "main-subtext": "Special offer to get a discount after testing one of our new products so better take the chance now before it’s to late.",
         "main-btn-t": "Get in touch",
-        "main-btn-l": ""
+        "main-btn-l": "",
+        "section-color": "#e41212"
       }
     }
   },
