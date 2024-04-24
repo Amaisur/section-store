@@ -1,4 +1,7 @@
 <style>
+    :root{
+        --text-color: {{ section.settings.font-size-head }}
+    }
 .main-ss-echo-3{
     width: 100%;
     margin: 50px 0;
@@ -20,13 +23,17 @@
     padding: 15px 30px;
     border-radius: 30px;
     text-decoration: none;
-    border: 1px solid black;
-    box-shadow: 3px 3px 0px 1px black;
+    border: 1px solid var(--text-color);
+    box-shadow: 3px 3px 0px 1px var(--text-color);
     transition: all .3s;
-    color: black;
+    color: var(--text-color);
 }
 .text-ss-3 a:hover, .block-ss-3-main:hover{
-    box-shadow: -3px -3px 0px 1px black;
+    box-shadow: -3px -3px 0px 1px var(--text-color);
+}
+.text-ss-3 h3{
+    font-size: {{ section.settings.font-size-head }}px;
+    font-weight: 600;
 }
 .blocks-ss-3{
     display: grid;
@@ -53,12 +60,12 @@
     overflow: hidden;
     padding: 20px 0;
     text-align: center;
-    box-shadow: 3px 3px 0px 1px black;
+    box-shadow: 3px 3px 0px 1px var(--text-color);
     transition: all .3s;
 }
 .block-ss-3-main a{
     text-decoration: none;
-    color: black;
+    color: var(--text-color);
 }
 @media (min-width: 768px) and (max-width: 1150px){
     .blocks-ss-3{
@@ -130,6 +137,16 @@
             "label": "Heading"
         },
         {
+            "type": "range",
+            "id": "font-size-head",
+            "label": "Heading size",
+            "min": 10,
+            "max": 60,
+            "default": "35",
+            "step": 1,
+            "unit": "px"
+        },
+        {
             "type": "text",
             "id": "main-subtext",
             "label": "Sub Text"
@@ -144,6 +161,12 @@
             "type": "url",
             "id": "main-btn-l",
             "label": "Button Link"
+        },
+        {
+            "type": "color",
+            "id": "section-color",
+            "default": "black",
+            "label": "Color Schema"
         }
         ],
         "blocks": [
