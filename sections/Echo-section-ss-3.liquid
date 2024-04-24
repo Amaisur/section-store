@@ -43,6 +43,8 @@
     border: 1px solid black;
     border-radius: 30px;
     overflow: hidden;
+    padding: 20px 0;
+    text-align: center;
 }
 
 </style>
@@ -58,12 +60,14 @@
                 <div class="col-ss-echo-3 blocks-ss-3">
                     {%  for block in section.blocks %}  
                     <div class="block-ss-3-main">
+                        <a href="{{ block.settings.block-link }}">
                         <div class="block-ss-3-img">
                             <img src="{{ block.settings.block-img |  img_url: 'master' }}" alt="">
                         </div>
                         <div class="block-ss-3-text">
                             <p>{{ block.settings.block-text }}</p>
                         </div>
+                        </a>
                     </div>
                 {% endfor %}
                 </div>
@@ -115,6 +119,11 @@
                         "type": "text",
                         "id": "block-text",
                         "label": "Text"
+                    },
+                    {
+                        "type": "url",
+                        "id": "block-link",
+                        "label": "Box Link"
                     }
                 ]
             }
