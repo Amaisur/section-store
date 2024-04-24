@@ -9,7 +9,6 @@
 }
 .row-ss-echo-3{
     display: flex;
-    align-items: center;
     justify-content: center;
     gap: 50px;
 }
@@ -64,6 +63,11 @@
 @media (min-width: 768px) and (max-width: 1150px){
     .blocks-ss-3{
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 768px){
+    .row-ss-echo-3{
+        flex-direction: column;
     }
 }
 
