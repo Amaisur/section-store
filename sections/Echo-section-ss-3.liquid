@@ -1,5 +1,5 @@
 <style>
-    *{
+   #shopify-section-{{ section.id }} *{
         padding: 0;
         margin: 0;
         box-sizing: border-box;
@@ -7,23 +7,23 @@
     :root{
         --text-color: {{ section.settings.section-color }};
     }
-.main-ss-echo-3{
+    #shopify-section-{{ section.id }} .main-ss-echo-3{
     width: 100%;
     margin: 50px 0;
 }
-.inner-ss-echo-3{
+#shopify-section-{{ section.id }} .inner-ss-echo-3{
     width: 90%;
     margin: 0 auto;
 }
-.row-ss-echo-3{
+#shopify-section-{{ section.id }} .row-ss-echo-3{
     display: flex;
     justify-content: center;
     gap: 50px;
 }
-.text-ss-3{
+#shopify-section-{{ section.id }} .text-ss-3{
     width: 40%;
 }
-.text-ss-3 a{
+#shopify-section-{{ section.id }} .text-ss-3 a{
     display: inline-block;
     padding: 17px 40px;
     border-radius: 100px;
@@ -35,39 +35,40 @@
     font-size: 20px;
     letter-spacing: 1px;
     font-weight: 600;
+    margin: 25px 0 0;
 }
-.text-ss-3 a:hover, .block-ss-3-main:hover{
+#shopify-section-{{ section.id }} .text-ss-3 a:hover, .block-ss-3-main:hover{
     box-shadow: -3px -3px 0px 1px var(--text-color);
 }
-.text-ss-3 h3{
+#shopify-section-{{ section.id }} .text-ss-3 h3{
     font-size: {{ section.settings.font-size-head }}px;
     font-weight: 600;
     color: var(--text-color);
 }
-.text-ss-3 p{
+#shopify-section-{{ section.id }} .text-ss-3 p{
     color: var(--text-color);
     font-size: 16px;
     letter-spacing: .5px;
 }
-.blocks-ss-3{
+#shopify-section-{{ section.id }} .blocks-ss-3{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
-.blocks-ss-3{
+#shopify-section-{{ section.id }} .blocks-ss-3{
     width: 60%;
 }
-.block-ss-3-img{
+#shopify-section-{{ section.id }} .block-ss-3-img{
     width: 80%;
     margin: 0 auto;
     overflow: hidden;
 }
-.block-ss-3-img img{
+#shopify-section-{{ section.id }} .block-ss-3-img img{
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.block-ss-3-main{
+#shopify-section-{{ section.id }} .block-ss-3-main{
     width: 100%;
     border: 1px solid var(--text-color);
     border-radius: 30px;
@@ -77,34 +78,34 @@
     box-shadow: 3px 3px 0px 1px var(--text-color);
     transition: all .3s;
 }
-.block-ss-3-main a{
+#shopify-section-{{ section.id }} .block-ss-3-main a{
     text-decoration: none;
     color: var(--text-color);
 }
 @media (min-width: 768px) and (max-width: 1150px){
-    .blocks-ss-3{
+    #shopify-section-{{ section.id }} .blocks-ss-3{
         grid-template-columns: repeat(2, 1fr);
     }
 }
 @media (max-width: 768px){
-    .row-ss-echo-3{
+    #shopify-section-{{ section.id }} .row-ss-echo-3{
         flex-direction: column;
     }
-    .col-ss-echo-3{
+    #shopify-section-{{ section.id }} .col-ss-echo-3{
         width: 100% !important;
     }
-    .text-ss-3 a{
-        margin: 10px auto 0 !important;
+    #shopify-section-{{ section.id }} .text-ss-3 a{
+        margin: 25px auto 15px !important;
         display: table;
     }
 }
 @media (max-width: 540px){
-    .blocks-ss-3{
+    #shopify-section-{{ section.id }} .blocks-ss-3{
         grid-template-columns: repeat(2, 1fr);
     }
 }
 @media (max-width: 370px){
-    .blocks-ss-3{
+    #shopify-section-{{ section.id }} .blocks-ss-3{
         grid-template-columns: repeat(1, 1fr);
     }
 }
