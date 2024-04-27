@@ -186,12 +186,39 @@
         "main-btn-l": "",
         "section-color": "#233e16"
       }
+    },
+    "details_slider_iWGfm4": {
+      "type": "details-slider",
+      "blocks": {
+        "block_xtCJGC": {
+          "type": "block",
+          "settings": {
+            "img-ss-4": "shopify:\/\/shop_images\/Self-loveStickers.webp",
+            "heading": "Plan",
+            "richtext": "<h3><\/h3><p>They say an idiot with a plan can beat a genius without a plan. But what if we can do both? Team up with Arctic Grey & get paired with your new team that specializes in all things Commerce, and create a <strong>plan of action<\/strong> for world domination.<\/p><p><\/p>"
+          }
+        },
+        "block_CcjddU": {
+          "type": "block",
+          "settings": {
+            "heading": "",
+            "richtext": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_xtCJGC",
+        "block_CcjddU"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
     "collection_slider_iHc74y",
-    "echo_section_ss_3_Tp6ghe"
+    "echo_section_ss_3_Tp6ghe",
+    "details_slider_iWGfm4"
   ]
 }
