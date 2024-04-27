@@ -201,14 +201,24 @@
         "block_CcjddU": {
           "type": "block",
           "settings": {
-            "heading": "",
-            "richtext": ""
+            "img-ss-4": "shopify:\/\/shop_images\/HalloweenStickersC.webp",
+            "heading": "Design",
+            "richtext": "<h3><\/h3><p>Steve Jobs said design is not just what it looks like and feels like. <strong>Design is how it works.<\/strong> Partner with Arctic Grey to build an intuitive user experience designed to improve conversion rates & average order values.<\/p>"
+          }
+        },
+        "block_Rhn4p8": {
+          "type": "block",
+          "settings": {
+            "img-ss-4": "shopify:\/\/shop_images\/featured-tab-collection-img.webp",
+            "heading": "Develop",
+            "richtext": "<h3><\/h3><p>Your online store is the heart of your business - <strong>don't let bad development slow you down<\/strong>. Let our Shopify experts take the reins on development so you can focus on your customer experience, not your back end. <a href=\"https:\/\/arcticgrey.com\/#\" title=\"#\">🍑<\/a><\/p>"
           }
         }
       },
       "block_order": [
         "block_xtCJGC",
-        "block_CcjddU"
+        "block_CcjddU",
+        "block_Rhn4p8"
       ],
       "settings": {
       }
