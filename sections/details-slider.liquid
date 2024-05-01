@@ -65,6 +65,17 @@
 #shopify-section-{{ section.id }} .prev-d9-31:hover{
     left: 10px;
 }
+.line-ss-4{
+    width: 100%;
+    height: 0;
+    border-bottom: 1px dotted black;
+}
+.img-ss-4-col{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
 </style>
 <div class="wraper-d9-31">
     <div class="arrows-d9-31">
@@ -83,9 +94,9 @@
            <div class="main-ss-4">
             <div class="col-ss-4 img-ss-4-col">
                 <div class="img-ss-4">
-                    <img src="{{ block.settings.img-ss-4 |  img_url: 'master' }}" alt="">
+                    <img src="{{ block.settings.img-ss-4 |  img_url: 'master' }}" alt="" width="48" height="48">
                 </div>
-                <div class="line-ss-4"></div>
+                <div class="line-ss-4">.</div>
             </div>
             <div class="col-ss-4 text-ss-4-col">
                 <h2> {{ block.settings.heading }} </h2>
