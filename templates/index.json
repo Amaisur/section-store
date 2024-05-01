@@ -213,14 +213,37 @@
             "heading": "Develop",
             "richtext": "<h3><\/h3><p>Your online store is the heart of your business - <strong>don't let bad development slow you down<\/strong>. Let our Shopify experts take the reins on development so you can focus on your customer experience, not your back end. <a href=\"https:\/\/arcticgrey.com\/#\" title=\"#\">🍑<\/a><\/p>"
           }
+        },
+        "block_gzGYh8": {
+          "type": "block",
+          "settings": {
+            "img-ss-4": "shopify:\/\/shop_images\/featured-tab-collection-img.webp",
+            "heading": "Deploy",
+            "richtext": "<h3><\/h3><p>We have created a deployment process to <strong>launch everything from complex feature upgrades to brand new site builds<\/strong> via Github for perfect version control. No more, “oops! that update broke something on the live site!”<\/p>"
+          }
+        },
+        "block_AzXkGj": {
+          "type": "block",
+          "settings": {
+            "img-ss-4": "shopify:\/\/shop_images\/RicesantaFaceMask.webp",
+            "heading": "A\/B Testing",
+            "richtext": "<h3><\/h3><p>Take the guess work out of everything! <strong>A\/B Testing is the cheat code to success<\/strong>. Let us help you make decisions backed by data, showing you what changes actually work and what doesn't.<\/p>"
+          }
         }
       },
       "block_order": [
         "block_xtCJGC",
         "block_CcjddU",
-        "block_Rhn4p8"
+        "block_Rhn4p8",
+        "block_gzGYh8",
+        "block_AzXkGj"
       ],
       "settings": {
+        "heading-size": 35,
+        "font-weight": "bold",
+        "heading-color": "#222",
+        "para-size": 18,
+        "para-color": "#222"
       }
     }
   },
