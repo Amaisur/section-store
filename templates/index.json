@@ -225,6 +225,7 @@
         "block_AzXkGj": {
           "type": "block",
           "settings": {
+            "img-ss-4": "shopify:\/\/shop_images\/RicesantaFaceMask.webp",
             "heading": "A\/B Testing",
             "richtext": "<h3><\/h3><p>Take the guess work out of everything! <strong>A\/B Testing is the cheat code to success<\/strong>. Let us help you make decisions backed by data, showing you what changes actually work and what doesn't.<\/p>"
           }
