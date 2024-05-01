@@ -78,7 +78,7 @@
     gap: 30px;
 }
 .text-ss-4-col{
-    margin-top: 30px !important;
+    margin-top: 20px !important;
 }
 .text-ss-4-col h2{
     font-size: {{ section.settings.heading-size }}px;
@@ -87,6 +87,11 @@
         {%  else %}
         light
     {% endif %};
+    color: {{ section.settings.heading-color }};
+}
+.text-ss-4-col p{
+    font-size: {{ section.settings.para-size }};
+    color: {{ section.settings.para-color }};
 }
 </style>
 <div class="wraper-d9-31">
@@ -216,7 +221,29 @@
                     "label":"Light"
                 }
             ]
-        }
+        },
+        {
+            "type": "color",
+            "id": "heading-color",
+            "label": "Heading Color",
+            "default": "#222"
+        },
+        {
+            "type": "range",
+            "id": "para-size",
+            "min": 10,
+            "max": 30,
+            "default": 18,
+            "step": 1,
+            "unit": "px",
+            "label": "Paragraph Font Size"
+        },
+        {
+            "type": "color",
+            "id": "para-color",
+            "label": "Paragraph Color",
+            "default": "#222"
+        },
         
         ],
         "blocks": [
