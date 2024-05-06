@@ -703,11 +703,11 @@
     for (var i = 0; i < tabButtons.length; i++) {
       tabButtons[i].classList.remove('active');
     }
-    document.getElementById(tabName).style.display = 'flex';
+    document.getElementById(tabName).style.display = 'grid;
     evt.currentTarget.classList.add('active');
   }
 
-  document.getElementById('tab1').style.display = 'flex';
+  document.getElementById('tab1').style.display = 'grid';
   document.querySelector('.custom__tab-btn-show-item.active').classList.add('active');
 
   function openProductModal(title, imageUrl, price) {
