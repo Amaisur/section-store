@@ -1,6 +1,809 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+<style>
+
+     .custom-hubs-tab--1-main {
+      max-width: 100%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .custom__tab-btn-show-item {
+      background-color: #f0f0f0;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px 5px 0 0;
+      margin: 0 5px;
+    }
+
+    .custom__tab-btn-show-item.active {
+      background-color: #ccc;
+    }
+
+    /* Other consolidated CSS rules... */
+
+    /* Responsive adjustments... */
+
+
+
+
+      .custom-hubs_1_tab-content {
+        display: none;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-top: none;
+        border-radius: 0 5px 5px 5px;
+      }
+
+      .custom-hubs_1_tab-content.active {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Display two products per row */
+        gap: 20px; /* Add gap between grid items */
+      }
+    @media (max-width: 767px) {
+      .custom-hubs_1_tab-content.active {
+        display: grid;
+        grid-template-columns: 1fr; /* Adjust for mobile */
+      }
+    }
+      .custom-grid-box {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .custom-grid-box img {
+        width: 100%;
+        height: 224px;
+        border-radius: 8px 8px 0 0;
+      }
+
+      .custom-grid-text h2 {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 10px;
+      }
+
+      .custom-grid-price h3 {
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 5px;
+      }
+
+
+
+      /* Adjustments for mobile view */
+      @media (max-width: 767px) {
+        .custom-hubs_1_tab-content.active {
+          display: grid;
+          grid-template-columns:repeat(2, 1fr); /* Display one product per row on mobile */
+        }
+      }
+
+      /* Additional styles for other elements */
+      .product-inner-9 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        margin-top: 20px;
+        width: 100%;
+        max-width: 1200px; /* Adjust max-width as needed */
+        margin: 0 auto;
+      }
+
+      .product-card-9 {
+        width: 100%; /* Ensure product card occupies full width */
+        max-width: 400px; /* Adjust maximum width of product card */
+        height: auto;
+        background: #fff;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+        margin: 20px;
+        transition: all 0.5s;
+      }
+
+      .d9-arrow-btn {
+        display: none; /* Hide slider arrows on mobile */
+      }
+
+
+
+
+
+
+
+
+
+
+
+          }
+
+          .custom-hubs_1_tab-content.active { display: block;}
+
+          .custom-grid-container { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; margin-top: 20px;     width: 50%; margin: 0 auto;
+          }
+
+
+
+
+
+          .custom-grid-text h2 { text-align: center; font-size: 18px; font-weight: 700; margin-top: 10px;
+          }
+
+          .custom-grid-price h3 { text-align: center; font-size: 16px; font-weight: 500; margin-top: 5px;
+          }
+
+          .custom-grid-star {  position: absolute;
+         top: 10px;  right: 10px;
+         font-size: 24px;  color: go
+          }
+
+
+
+
+
+
+
+        {%- if section.settings.desk-view == 'desk-grid-v' -%}
+            #shopify-section-{{ section.id }} .product-inner-9{
+                 width: 90%;
+                 margin: 0 auto;
+                 display: flex;
+                 align-items: center;
+                 justify-content:center;
+                 gap: 30px;
+                 / overflow: hidden; /
+                 scroll-behaviour: smooth;
+                 padding:5px;
+                 flex-wrap:wrap;
+             }
+              #shopify-section-{{ section.id }} .product-card-9{
+                 min-width: 250px;
+                 width: calc(25% - 40px);
+                 height: 400px;
+                 background: #fff;
+                 border-radius: 15px;
+                 padding: 20px;
+                 box-shadow: 0 0 5px 1px rgba(0, 0, 0, .5);
+                 margin: 0 !important;
+                 transition: all .5s;
+             }
+             #shopify-section-{{ section.id }} .d9-arrow-btn{
+               display:none;
+             }
+         {%- elsif section.settings.desk-view == 'desk-slidr-v'-%}
+              #shopify-section-{{ section.id }} .product-inner-9{
+                 width: 90%;
+                 margin: 0 auto;
+                 display: flex;
+                 align-items: center;
+                 justify-content:flex-start;
+                 gap: 30px;
+                 overflow: hidden;
+                 scroll-behaviour: smooth;
+                 padding:5px;
+                 / flex-wrap:wrap; /
+             }
+            #shopify-section-{{ section.id }} .d9-arrow-btn{
+               display:block;
+             }
+                 #shopify-section-{{ section.id }} .product-card-9{
+                 min-width: 250px;
+                 width: calc(25% - 40px);
+                 height: 400px;
+                 background: #fff;
+                 border-radius: 15px;
+                 padding: 20px;
+                 box-shadow: 0 0 5px 1px rgba(0, 0, 0, .5);
+                 margin: 20px o !important;
+                 transition: all .5s;
+             }
+          {%- endif -%}
+
+             / grid and slider view for mobile /
+
+
+
+           @media (max-width:767px){
+             {%- if section.settings.mobl-view == 'mobl-grid-v' -%}
+            #shopify-section-{{ section.id }} .product-inner-9{
+                 width: 90%;
+                 margin: 0 auto;
+                 display: flex;
+                 align-items: center;
+                 justify-content:center;
+                 gap: 30px;
+                 / overflow: hidden; /
+                 scroll-behaviour: smooth;
+                 padding:5px;
+                 flex-wrap:wrap;
+             }
+              #shopify-section-{{ section.id }} .product-card-9{
+                 min-width: 250px;
+                 width: calc(25% - 40px);
+                 height: 400px;
+                 background: #fff;
+                 border-radius: 15px;
+                 padding: 20px;
+                 box-shadow: 0 0 5px 1px rgba(0, 0, 0, .5);
+                 margin: 0 !important;
+                 transition: all .5s;
+             }
+             #shopify-section-{{ section.id }} .d9-arrow-btn{
+               display:none;
+             }
+             {%- elsif section.settings.mobl-view == 'mobl-slidr-v'-%}
+                 #shopify-section-{{ section.id }} .product-inner-9{
+                 width: 90%;
+                 margin: 0 auto;
+                 display: flex;
+                 align-items: center;
+                 justify-content:flex-start;
+                 gap: 30px;
+                 overflow: hidden;
+                 scroll-behaviour: smooth;
+                 padding:5px;
+                 flex-wrap:nowrap;
+             }
+            #shopify-section-{{ section.id }} .d9-arrow-btn{
+               display:block;
+             }
+                 #shopify-section-{{ section.id }} .product-card-9{
+                 min-width: 250px;
+                 width: calc(25% - 40px);
+                 height: 400px;
+                 background: #fff;
+                 border-radius: 15px;
+                 padding: 20px;
+                 box-shadow: 0 0 5px 1px rgba(0, 0, 0, .5);
+                 margin: 20px o !important;
+                 transition: all .5s;
+             }
+
+          {%- endif -%}
+           }
+
+
+
+
+            #shopify-section-{{ section.id }} *{
+
+                 margin: 0;
+                 box-sizing: border-box;
+             }
+            #shopify-section-{{ section.id }} .product-main-9{
+                 width: 100%;
+                 background: rgba(216, 214, 214, 0.555);
+                 padding: 40px 0;
+                 position:relative;
+             }
+            #shopify-section-{{ section.id }} .product-inner-9 a{
+                 text-decoration: none;
+             }
+
+             /* .product-card-9:hover{
+                 transform: translateY(-10px);
+                 box-shadow: 0 10px 10px 0px rgba(0, 0, 0, .05);
+             } */
+            #shopify-section-{{ section.id }} .product-img-9{
+                 width: 90%;
+                 min-height: 180px;
+                 margin: 0 auto;
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;
+             }
+            #shopify-section-{{ section.id }} .product-img-9 img{
+                max-width:90%;
+                 max-height: 180px;
+                 height: 90%;
+             }
+            #shopify-section-{{ section.id }} .product-content-9{
+                 margin: 20px 0 0;
+             }
+            #shopify-section-{{ section.id }} .product-button-9{
+                 display: flex;
+                 justify-content: center;
+             }
+            #shopify-section-{{ section.id }} .product-button-9 button, .product-popup-button-9 button{
+                 padding: 12px 60px !important;
+              display:block;
+              width:80%;
+                 border-radius: 5px;
+
+                 border: transparent;
+                 border-bottom: 2px solid black;
+                 background: black;
+                 color: #fff;
+                 font-weight: 700;
+                 cursor: pointer;
+                 transition: all .3s;
+             }
+           #shopify-section-{{ section.id }} .product-button-9 button:hover, .product-popup-button-9 button:hover{
+                 transform:translateY(-1px);
+                 background:#ddd;
+             }
+            #shopify-section-{{ section.id }} .product-title-9{
+                 margin: 10px 0;
+                 text-align: center;
+             }
+            #shopify-section-{{ section.id }} .product-title-9 p.title-9{
+                 font-size: 18px;
+                 color: #333;
+                 margin: 15px 0 10px;
+             }
+            #shopify-section-{{ section.id }} .product-title-9 p.price-9{
+                 font-size: 20px;
+                 font-weight: 600;
+                 color: black;
+             }
+
+            #shopify-section-{{ section.id }} .close-popup-9{
+                 color: #555555;
+                 transition: all .5s;
+                 font-weight: 200;
+                 cursor: pointer;
+                 transform: rotate(45deg);
+                 user-select: none;
+                 font-size: 35px;
+                 line-height:0;
+             }
+            #shopify-section-{{ section.id }} .close-popup-9:hover{
+                 color: black;
+             }
+            #shopify-section-{{ section.id }} .product-popup-9{
+                 max-width: 400px;
+                 position: fixed;
+                 left: 50%;
+                 top: 50%;
+                 transform: translate(-50%, -50%);
+                 background: #fff;
+                 border-radius: 15px;
+                 display: none;
+                  z-index:7;
+             }
+            #shopify-section-{{ section.id }} .product-popup-9.popup-opened-9{
+                 display: block !important;
+             }
+            #shopify-section-{{ section.id }} .product-popup-title-9{
+                 display: flex;
+                 align-items: center;
+                 justify-content: space-between;
+                 padding: 20px 0;
+                 border-bottom: 1px solid rgba(0, 0, 0, .4);
+             }
+            #shopify-section-{{ section.id }} .product-popup-main-9{
+                 width: 90%;
+                 margin: 0px auto;
+             }
+            #shopify-section-{{ section.id }} .product-popup-variant-img-9{
+                 width: 200px;
+                 display: flex;
+                 align-items: center;
+                 gap: 20px;
+                 margin-left: 10px;
+             }
+            #shopify-section-{{ section.id }} .product-popup-variant-img-9 img{
+                 height: 50px;
+                 max-width: 100px;
+             }
+            #shopify-section-{{ section.id }} .product-popup-variant-9{
+                 width: 100%;
+                 display: flex;
+                 align-items: center;
+                 justify-content:flex-start;
+                 gap: 5px;
+                 padding: 15px 20px;
+                 border-bottom: 1px solid rgba(0, 0, 0, .4)
+             }
+            #shopify-section-{{ section.id }} .product-popup-variant-9 label{
+                 display: flex;
+                 align-items: center;
+                 justify-content: space-between;
+                 width: 100%;
+             }
+            #shopify-section-{{ section.id }} .product-popup-main-9 .product-popup-button-9{
+                 margin: 20px 0;
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;
+             }
+           #shopify-section-{{ section.id }} .quic-overlay-9{
+             width:100%;
+             height: 100vh;
+             background:rgba(0, 0 , 0, .3);
+             color:transparent;
+             position:fixed;
+             top:0;
+             left:0;
+             z-index:5;
+             display:none;
+           }
+          #shopify-section-{{ section.id }} .quic-overlay-9.overlay9-active{
+             display:block !important;
+           }
+          #shopify-section-{{ section.id }} .product-button-9 button svg path{
+             fill:#fff;
+           }
+          #shopify-section-{{ section.id }} .sucsess-msg-9{
+             font-size: 16px;
+             color:#444;
+             text-align:center;
+             margin:10px 0 0 !important;
+             display:none;
+           }
+           #shopify-section-{{ section.id }} .sucsess-msg-9.success-msg-open-9{
+             display:block !important;
+           }
+          #shopify-section-{{ section.id }} .sucsess-msg-9 span{
+             color:rgb(0, 174, 255);
+           }
+           #shopify-section-{{ section.id }} .d9-arrow-btn button{
+             position:absolute;
+             top:50%;
+             transform: translateY(-50%);
+             width:40px;
+             height:40px;
+             background: rgba(255,255,255,.4);
+             border-radius:50%;
+             border:none;
+             outline:none;
+             transition:all .3s;
+           }
+            #shopify-section-{{ section.id }} .d9-arrow-btn button:hover{
+               background: rgba(255,255,255,.8);
+            }
+           #shopify-section-{{ section.id }} .d9-slider-button-left{
+             left:20px;
+           }
+           #shopify-section-{{ section.id }} .d9-slider-button-right{
+             right: 20px;
+           }
+
+
+
+
+
+
+
+
+
+
+          @media only screen and (max-width: 700px) {
+            .custom-grid-box {
+              width: 100%;
+            }
+          }
+</style>
+
+<div class="custom-hubs-tab--1-main">
+  {% for block in section.blocks %}
+    <button
+      class="custom__tab-btn-show-item{% if forloop.first %} active{% endif %}"
+      onclick="openTab(event, 'tab{{ forloop.index }}')"
+    >
+      {{ block.settings['leeger-coll-text__12'] }}
+    </button>
+  {% endfor %}
+
+  {% for block in section.blocks %}
+    <div id="tab{{ forloop.index }}" class="custom-hubs_1_tab-content{% if forloop.first %} active{% endif %}">
+      {% for collection in collections %}
+        {% if collection.handle == block.settings['leeger-coll'] %}
+          {% for product in collection.products %}
+            <div class="custom-grid-box">
+              <div class="quic-overlay-9">.</div>
+              <div class="product-main-9">
+                <div class="product-inner-9">
+                  <div class="product-card-9">
+                    <div class="product-row-9">
+                      <a href="{{ product.url }}">
+                        <div class="product-img-9">
+                          <img src="{{ product.featured_image | img_url:'master' }}" alt="" width="" height="">
+                        </div>
+                      </a>
+
+                      <a href="{{ product.url }}">
+                        <div class="product-title-9">
+                          <p class="title-9">{{ product.title | truncate: '30' }}</p>
+                          <p class="price-9">
+                            <b>{{ product.price | money }}</b>
+                          </p>
+                        </div>
+                      </a>
+                      <div class="product-content-9">
+                        <div class="product-button-9" style="width:100%;display:block;margin: 0 0 0 41px;">
+                          {% if product.variants.size > 1 %}
+                            <button class="option-btn-9">Options</button>
+                          {% else %}
+                            <form method="post" action="/cart/add" class="add-to-cart-form">
+                              <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                              <button type="submit" class="add-to-cart-btn">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  width="12px"
+                                  height="12px"
+                                >
+                                  <path fill-rule="evenodd" d="M 11 2 L 11 11 L 2 11 L 2 13 L 11 13 L 11 22 L 13 22 L 13 13 L 22 13 L 22 11 L 13 11 L 13 2 Z"/>
+                                </svg>
+                                Add
+                              </button>
+                            </form>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="product-popup-9">
+                      <div class="product-popup-main-9">
+                        <div class="product-popup-title-9">
+                          <p class="title-9" style="color:black; font-weight:600;">
+                            {{ product.title | truncate: '20' }}
+                          </p>
+                          <span class="close-popup-9">+</span>
+                        </div>
+                        <div class="product-variant-container-9">
+                          {% for variant in product.variants %}
+                            <div class="product-popup-variant-9">
+                              <input
+                                type="radio"
+                                name="variant_id"
+                                value="{{ variant.id }}"
+                                id="variant_{{ variant.id }}"
+                              >
+                              <label for="variant_{{ variant.id }}">
+                                <div class="product-popup-variant-img-9">
+                                  {% if variant.image %}
+                                    <img src="{{ variant.image | img_url:'master' }}" alt="" width="" height="">
+                                  {% endif %}
+                                  <p class="title-9">{{ variant.title | truncate: '30' }}</p>
+                                </div>
+                                <p>{{ variant.price | money }}</p>
+                              </label>
+                            </div>
+                          {% endfor %}
+                        </div>
+
+                        <div class="product-popup-button-9">
+                          <form id="add-to-cart-form" class="add-to-cart-form">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="button" class="add-to-cart-btn">Add To Cart</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>
+<script>
+    function saveViewPreference(view) {
+    localStorage.setItem('productViewPreference', view);
   }
+
+  function getViewPreference() {
+    return localStorage.getItem('productViewPreference') || 'desk-grid-v'; // Default to grid view
+  }
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const viewPreference = getViewPreference();
+
+    const productInner = document.querySelector('.product-inner-9');
+    if (productInner) {
+      productInner.classList.add(viewPreference); // Apply the stored view preference class
+    }
+  });
+</script>
+//ghghghgh
+<script>
+  function slidequickCards(direction) {
+      const quickcontainer = document.querySelector('.product-inner-9');
+      const quickscrollAmount = 280; // Adjust as needed
+      quickcontainer.scrollLeft += quickscrollAmount * direction;
+  }
+</script>
+
+<!-- this script will redirect to cart page -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+
+      addToCartBtns.forEach(function(btn) {
+          btn.addEventListener('click', async function() {
+              const popup = this.closest('.product-popup-main-9');
+              const selectedVariant = popup.querySelector('input[name="variant_id"]:checked');
+              if (!selectedVariant) {
+                  console.log('Please select a variant before adding to cart.');
+                  return;
+              }
+
+              const variantId = selectedVariant.value;
+              const form = popup.querySelector('.add-to-cart-form');
+              const quantityInput = form.querySelector('input[name="quantity"]');
+              quantityInput.value = 1; // Set default quantity to 1
+              const formData = new FormData(form);
+              formData.set('id', variantId); // Set the variant ID in the form data
+
+              try {
+                  const response = await fetch('/cart/add', {
+                      method: 'POST',
+                      body: formData
+                  });
+
+                  if (!response.ok) {
+                      throw new Error('Network response was not ok');
+                  }
+
+                  // Redirect to the cart page
+                  window.location.href = '/cart'; // Adjust the URL if necessary
+
+              } catch (error) {
+                  // Handle errors, e.g., log the error
+                  console.error('Error adding product to cart:', error);
+              }
+          });
+      });
+  });
+</script>
+
+<script>
+    const optionBtns = document.querySelectorAll('.option-btn-9');
+  const overlay9 = document.querySelector('.quic-overlay-9')
+
+
+    optionBtns.forEach((optionBtn) => {
+        optionBtn.addEventListener('click', () => {
+            const parent = optionBtn.closest('.product-card-9');
+            const popupVariant = parent.querySelector('.product-popup-9');
+
+            if (popupVariant) {
+                // Close all other popups
+                document.querySelectorAll('.product-popup-9').forEach((popup) => {
+                    popup.classList.remove('popup-opened-9');
+                });
+
+                // Add the class to open the clicked popup
+                popupVariant.classList.add('popup-opened-9');
+                overlay9.classList.add('overlay9-active');
+            }
+        });
+    });
+
+    const closeButtons = document.querySelectorAll('.close-popup-9');
+    closeButtons.forEach((closeBtn) => {
+        closeBtn.addEventListener('click', () => {
+            const parentPopup = closeBtn.closest('.product-popup-9');
+            parentPopup.classList.remove('popup-opened-9');
+             overlay9.classList.remove('overlay9-active');
+        });
+    });
+</script>
+
+<script>
+  function openTab(evt, tabName) {
+    var tabContents = document.getElementsByClassName('custom-hubs_1_tab-content');
+    for (var i = 0; i < tabContents.length; i++) {
+      tabContents[i].style.display = 'none';
+    }
+    var tabButtons = document.getElementsByClassName('custom__tab-btn-show-item');
+    for (var i = 0; i < tabButtons.length; i++) {
+      tabButtons[i].classList.remove('active');
+    }
+    document.getElementById(tabName).style.display = 'flex';
+    evt.currentTarget.classList.add('active');
+  }
+
+  document.getElementById('tab1').style.display = 'flex';
+  document.querySelector('.custom__tab-btn-show-item.active').classList.add('active');
+
+  function openProductModal(title, imageUrl, price) {
+    document.getElementById('modalProductTitle').textContent = title;
+    document.getElementById('modalProductImage').src = imageUrl;
+    document.getElementById('modalProductPrice').textContent = price;
+    document.getElementById('customModal').style.display = 'flex';
+  }
+
+  function closeProductModal() {
+    document.getElementById('customModal').style.display = 'none';
+  }
+
+  function updateMainImage(newImageUrl) {
+    document.getElementById('modalProductImage').src = newImageUrl;
+  }
+
+  function addToCart() {
+    // Implement your add to cart logic here
+    alert('Product added to cart!'); // For demonstration purposes
+    closeProductModal(); // Close the modal after adding to cart
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add click event listener to all variant images
+    var variantImages = document.querySelectorAll('.custom-varitn-img-art-image img');
+
+    variantImages.forEach(function(image) {
+      image.addEventListener('click', function() {
+        var variantSrc = image.src;
+        updateMainImage(variantSrc);
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Tab popup Products",
+  "settings": [  {
+        "type": "radio",
+        "id": "desk-view",
+        "label": "Desktop product view",
+
+        "options": [
+          {
+            "value": "desk-slidr-v",
+            "label": "Slider view"
+          },
+          {
+            "value": "desk-grid-v",
+            "label": "Grid view"
+          }
+        ],
+           "default": "desk-grid-v"
+
+
+      },
+      {
+        "type": "radio",
+        "id": "mobl-view",
+        "label": "Mobile product view",
+        "default": "mobl-grid-v",
+        "options": [
+          {
+            "value": "mobl-slidr-v",
+            "label": "Slider view"
+          },
+          {
+            "value": "mobl-grid-v",
+            "label": "Grid view"
+          }
+        ]
+      }],
+  "blocks": [
+    {
+      "name": "Collection Block",
+      "type": "name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "leeger-coll-text__12",
+          "label": "Tab Text"
+        },
+        {
+          "type": "collection",
+          "id": "leeger-coll",
+          "label": "Choose Collection to Show"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Tab popup Products"
+    }
+  ]
+}
 {% endschema %}
