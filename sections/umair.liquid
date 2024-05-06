@@ -495,11 +495,12 @@
     <div id="tab{{ forloop.index }}" class="custom-hubs_1_tab-content{% if forloop.first %} active{% endif %}">
       {% for collection in collections %}
         {% if collection.handle == block.settings['leeger-coll'] %}
-          {% for product in collection.products %}
+          
             <div class="custom-grid-box">
               <div class="quic-overlay-9">.</div>
               <div class="product-main-9">
                 <div class="product-inner-9">
+          {% for product in collection.products %}
                   <div class="product-card-9">
                     <div class="product-row-9">
                       <a href="{{ product.url }}">
@@ -579,10 +580,11 @@
                       </div>
                     </div>
                   </div>
+            {% endfor %}
                 </div>
               </div>
             </div>
-          {% endfor %}
+          
         {% endif %}
       {% endfor %}
     </div>
