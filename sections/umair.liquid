@@ -707,14 +707,14 @@
     evt.currentTarget.classList.add('active');
   }
 
-  document.getElementById('tab1').style.display = 'flex';
+  document.getElementById('tab1').style.display = 'block';
   document.querySelector('.custom__tab-btn-show-item.active').classList.add('active');
 
   function openProductModal(title, imageUrl, price) {
     document.getElementById('modalProductTitle').textContent = title;
     document.getElementById('modalProductImage').src = imageUrl;
     document.getElementById('modalProductPrice').textContent = price;
-    document.getElementById('customModal').style.display = 'flex';
+    document.getElementById('customModal').style.display = 'block';
   }
 
   function closeProductModal() {
