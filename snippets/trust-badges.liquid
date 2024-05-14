@@ -1,0 +1,127 @@
+  <style>
+    .main-trust-3-d9{
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .inner-trust-3-d9{
+        width: 100%;
+        padding: {{ section.settings.padding-vertical }}rem  {{ section.settings.padding-horizontal }}rem ;
+    }
+    .row-trust-3-d9{
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .col-trust-3-d9{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0 10px;
+        gap: 10px;
+    }
+    .col-trust-3-d9 .img-trust-3-d9{
+        width: 30px;
+        height: 30px;
+        overflow: hidden;
+    }
+    .col-trust-3-d9 .img-trust-3-d9 img, .col-trust-3-d9 .img-trust-3-d9 svg{
+        width: 100%;
+    }
+    .col-trust-3-d9:nth-child(odd){
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+    }
+    .col-trust-3-d9:nth-child(-n+2){
+        border-top: none;
+    }
+    .col-trust-3-d9:nth-child(even){
+        border-bottom: 1px solid;
+    }
+    </style>
+
+    <div class="main-trust-3-d9">
+        <div class="inner-trust-3-d9"> 
+            <div class="row-trust-3-d9">
+                <div class="col-trust-3-d9">
+                    <div class="img-trust-3-d9">
+                        {% if block.settings.emoji-img_1 %}
+                        <img src="{{ block.settings.emoji-img_1 |  image_url: width: 200, height: 200  }}">
+                        {% endif %}
+                        <span> {{ block.settings.emoji-svg_1 }} </span>
+                    </div>
+                    <div class="content-trust-3-d9">
+                        <h4> {{ block.settings.heading_1 }} </h4>
+                        <p> {{ block.settings.text_1 }} </p>
+                    </div>
+                </div>
+
+
+                 <div class="col-trust-3-d9">
+                    <div class="img-trust-3-d9">
+                        {% if block.settings.emoji-img_2 %}
+                        <img src="{{ block.settings.emoji-img_2 |  image_url: width: 200, height: 200  }}">
+                        {% endif %}
+                        <span> {{ block.settings.emoji-svg_2 }} </span>
+                    </div>
+                    <div class="content-trust-3-d9">
+                        <h4> {{ block.settings.heading_2 }} </h4>
+                        <p> {{ block.settings.text_2 }} </p>
+                    </div>
+                </div>
+
+               <div class="col-trust-3-d9">
+                    <div class="img-trust-3-d9">
+                        {% if block.settings.emoji-img_3 %}
+                        <img src="{{ block.settings.emoji-img_3 |  image_url: width: 200, height: 200  }}">
+                        {% endif %}
+                        <span> {{ block.settings.emoji-svg_3 }} </span>
+                    </div>
+                    <div class="content-trust-3-d9">
+                        <h4> {{ block.settings.heading_3 }} </h4>
+                        <p> {{ block.settings.text_3 }} </p>
+                    </div>
+                </div>
+
+
+               <div class="col-trust-3-d9">
+                    <div class="img-trust-3-d9">
+                        {% if block.settings.emoji-img_4 %}
+                        <img src="{{ block.settings.emoji-img_4 |  image_url: width: 200, height: 200  }}">
+                        {% endif %}
+                        <span> {{ block.settings.emoji-svg_4 }} </span>
+                    </div>
+                    <div class="content-trust-3-d9">
+                        <h4> {{ block.settings.heading_4 }} </h4>
+                        <p> {{ block.settings.text_4 }} </p>
+                    </div>
+                </div>
+
+               <div class="col-trust-3-d9">
+                    <div class="img-trust-3-d9">
+                        {% if block.settings.emoji-img_5 %}
+                        <img src="{{ block.settings.emoji-img_5 |  image_url: width: 200, height: 200  }}">
+                        {% endif %}
+                        <span> {{ block.settings.emoji-svg_5 }} </span>
+                    </div>
+                    <div class="content-trust-3-d9">
+                        <h4> {{ block.settings.heading_5 }} </h4>
+                        <p> {{ block.settings.text_5 }} </p>
+                    </div>
+                </div>
+
+
+               <div class="col-trust-3-d9">
+                    <div class="img-trust-3-d9">
+                        {% if block.settings.emoji-img_6 %}
+                        <img src="{{ block.settings.emoji-img_6 |  image_url: width: 200, height: 200  }}">
+                        {% endif %}
+                        <span> {{ block.settings.emoji-svg_6 }} </span>
+                    </div>
+                    <div class="content-trust-3-d9">
+                        <h4> {{ block.settings.heading_6 }} </h4>
+                        <p> {{ block.settings.text_6 }} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
