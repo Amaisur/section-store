@@ -1,0 +1,125 @@
+
+    
+    
+    <style>
+    .main-trust-3-d9{
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .inner-trust-3-d9{
+        width: 100%;
+        padding: {{ section.settings.padding-vertical }}rem  {{ section.settings.padding-horizontal }}rem ;
+    }
+    .row-trust-3-d9{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .col-trust-3-d9{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0 10px;
+        gap: 10px;
+    }
+    .col-trust-3-d9 .img-trust-3-d9{
+        width: 30px;
+        height: 30px;
+        overflow: hidden;
+    }
+    .col-trust-3-d9 .img-trust-3-d9 img, .col-trust-3-d9 .img-trust-3-d9 svg{
+        width: 100%;
+    }
+    </style>
+
+    <div class="main-trust-3-d9">
+        <div class="inner-trust-3-d9">
+            <div class="row-trust-3-d9">
+                {% for block in section.blocks %}
+                <div class="col-trust-3-d9">
+                    <div class="img-trust-3-d9">
+                        {% if block.settings.emoji-img %}
+                        <img src="{{ block.settings.emoji-img |  image_url: width: 200px, height: 200px  }}">
+                        {% endif %}
+                        <span> {{ block.settings.emoji-svg }} </span>
+                    </div>
+                    <div class="content-trust-3-d9">
+                        <h4> {{ block.settings.heading }} </h4>
+                        <p> {{ block.settings.text }} </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% schema %}
+{
+    "name": "Trust badges",
+    "settings": [
+
+            {
+                "type": "range",
+                "id": "padding-horizontal",
+                "label": "Horizonta Padding",
+                "max": 50,
+                "min": 0,
+                "step": 1,
+                "unit": "rem",
+                "default": 2
+            },
+            {
+                "type": "range",
+                "id": "padding-vertical",
+                "label": "Vertical Padding",
+                "max": 50,
+                "min": 0,
+                "step": 1,
+                "unit": "rem",
+                "default": 2
+            }
+
+        
+        ],
+        "blocks": [
+            {
+                "name": "Block",
+                "type": "Block",
+                "limit": 10,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "emoji-img",
+                        "label": "Upload Image",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "emoji-svg",
+                        "label": "Add SVG code",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "heading",
+                        "label": "Heaing",
+                        "default": "Ships Free + Saves"
+                    },
+                    {
+                        "type": "text",
+                        "id": "text",
+                        "label": "Subtext"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Trust Badges"
+            }
+        ]
+}
+{% endschema %}
