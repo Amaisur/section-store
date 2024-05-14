@@ -84,6 +84,10 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
+
+            {% when 'trust-badge' %}
+              {% render 'trust-badges' %}
+              
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -782,6 +786,38 @@
     {
       "type": "@app"
     },
+
+    {
+      "type": "trust-badge",
+      "name": "Trust Badges",
+      "settings": [
+       {
+                        "type": "image_picker",
+                        "id": "emoji-img",
+                        "label": "Upload Image",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "emoji-svg",
+                        "label": "Add SVG code",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "heading",
+                        "label": "Heaing",
+                        "default": "Ships Free + Saves"
+                    },
+                    {
+                        "type": "text",
+                        "id": "text",
+                        "label": "Subtext"
+                    }
+      ]
+    },
+
+    
     {
       "type": "text",
       "name": "t:sections.main-product.blocks.text.name",
