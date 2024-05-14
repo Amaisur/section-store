@@ -86,7 +86,7 @@
                 {% render block %}
 
             {% when 'trust-badge' %}
-              {% render 'trust-badges' %}
+              {% render 'trust-badges', block: block %}
               
               {%- when 'text' -%}
                 <p
