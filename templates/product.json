@@ -53,9 +53,9 @@
         "trust_badge_HJXUTF": {
           "type": "trust-badge",
           "settings": {
-            "emoji-svg": "🏆",
-            "heading": "Ships Free + Saves",
-            "text": ""
+            "emoji-svg_1": "🏆",
+            "heading_1": "Ships Free + Saves",
+            "text_1": ""
           }
         }
       },
