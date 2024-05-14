@@ -272,6 +272,71 @@
         "desk-view": "desk-grid-v",
         "mobl-view": "mobl-grid-v"
       }
+    },
+    "trust_badges_GrcVBx": {
+      "type": "trust-badges",
+      "blocks": {
+        "block_nB6nLA": {
+          "type": "Block",
+          "settings": {
+            "emoji-svg": "🏆",
+            "heading": "Ships Free + Saves",
+            "text": "Subscribe and save"
+          }
+        },
+        "block_dwAfLz": {
+          "type": "Block",
+          "settings": {
+            "emoji-svg": "🌎",
+            "heading": "100% Plastic free",
+            "text": "Refillable tin jar"
+          }
+        },
+        "block_zTnPBF": {
+          "type": "Block",
+          "settings": {
+            "emoji-svg": "",
+            "heading": "Ships Free + Saves",
+            "text": ""
+          }
+        },
+        "block_P64zDN": {
+          "type": "Block",
+          "settings": {
+            "emoji-svg": "",
+            "heading": "Ships Free + Saves",
+            "text": ""
+          }
+        },
+        "block_zVMWiV": {
+          "type": "Block",
+          "settings": {
+            "emoji-svg": "",
+            "heading": "Ships Free + Saves",
+            "text": ""
+          }
+        },
+        "block_RKQAXt": {
+          "type": "Block",
+          "settings": {
+            "emoji-svg": "",
+            "heading": "Ships Free + Saves",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_nB6nLA",
+        "block_dwAfLz",
+        "block_zTnPBF",
+        "block_P64zDN",
+        "block_zVMWiV",
+        "block_RKQAXt"
+      ],
+      "settings": {
+        "padding-horizontal": 2,
+        "padding-vertical": 2
+      }
     }
   },
   "order": [
@@ -280,6 +345,7 @@
     "collection_slider_iHc74y",
     "echo_section_ss_3_Tp6ghe",
     "details_slider_iWGfm4",
-    "umair_V9hqMn"
+    "umair_V9hqMn",
+    "trust_badges_GrcVBx"
   ]
 }
