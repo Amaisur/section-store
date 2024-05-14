@@ -13,7 +13,7 @@
     }
     .row-trust-3-d9{
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .col-trust-3-d9{
         display: flex;
@@ -29,6 +29,13 @@
     }
     .col-trust-3-d9 .img-trust-3-d9 img, .col-trust-3-d9 .img-trust-3-d9 svg{
         width: 100%;
+    }
+    .col-trust-3-d9:nth-child(odd){
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+    }
+    .col-trust-3-d9:nth-child(-n+2){
+        border-top: none;
     }
     </style>
 
