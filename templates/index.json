@@ -295,33 +295,33 @@
         "block_zTnPBF": {
           "type": "Block",
           "settings": {
-            "emoji-svg": "",
-            "heading": "Ships Free + Saves",
+            "emoji-svg": "💪",
+            "heading": "Tackles sensitivity",
             "text": ""
           }
         },
         "block_P64zDN": {
           "type": "Block",
           "settings": {
-            "emoji-svg": "",
-            "heading": "Ships Free + Saves",
+            "emoji-svg": "🍃",
+            "heading": "Clean ingredients",
             "text": ""
           }
         },
         "block_zVMWiV": {
           "type": "Block",
           "settings": {
-            "emoji-svg": "",
-            "heading": "Ships Free + Saves",
-            "text": ""
+            "emoji-svg": "🐰",
+            "heading": "Cruelty Free",
+            "text": "100% Vegan"
           }
         },
         "block_RKQAXt": {
           "type": "Block",
           "settings": {
-            "emoji-svg": "",
-            "heading": "Ships Free + Saves",
-            "text": ""
+            "emoji-svg": "📮",
+            "heading": "Free returns",
+            "text": "30 days"
           }
         }
       },
