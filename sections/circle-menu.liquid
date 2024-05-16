@@ -29,7 +29,7 @@
     height: {{ section.settings.img-size }}rem;
     border-radius: 50%;
     overflow: hidden;
-    padding: 5px;
+    padding: {{ section.settings.border-size }}px;
     position: relative;
 } 
 .img-cm-32-d9:before{
@@ -39,7 +39,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(red, yellow, orange);
+    background: {{ section.settings.border-color }};
     transition: all .5s ease-in-out;
 }
 .img-cm-32-d9 img {
@@ -373,7 +373,22 @@
             "label": "Title Color",
             "default": "#000"
         },
-
+        {
+            "type": "range",
+            "id": "border-size",
+            "label": "Border Size",
+            "max": 20,
+            "min": 0,
+            "default": 5,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "color_background",
+            "id": "border-color",
+            "label": "Border Color",
+            "default": "linear-gradient(red, yellow, orange)"
+        },
         {
             "type": "header",
             "content": "Slider Configurations"
