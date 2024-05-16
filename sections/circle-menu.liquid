@@ -20,8 +20,8 @@
             justify-content: center;
         }
         .img-cm-32-d9{
-            width: {{ section.settings.img-size }}px; 
-            height: {{ section.settings.img-size }}px;
+            width: {{ section.settings.img-size }}::-moz-range-thumb; 
+            height: {{ section.settings.img-size }}rem;
             border-radius: 50%;
             overflow: hidden;
         }
@@ -139,11 +139,11 @@
             "type": "range",
             "id": "img-size",
             "label": "Image Size",
-            "max": 300,
-            "min": 50,
-            "default": 100,
+            "max": 60,
+            "min": 3,
+            "default": 5,
             "step": 1,
-            "unit": "px"
+            "unit": "rem"
         },
         {
             "type": "range",
