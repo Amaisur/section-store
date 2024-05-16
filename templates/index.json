@@ -365,12 +365,19 @@
             "text-1": "Link",
             "c-link": ""
           }
+        },
+        "product_cVLKeL": {
+          "type": "product",
+          "settings": {
+            "product": "flash-masking-tape"
+          }
         }
       },
       "block_order": [
         "menu_UgdJtY",
         "menu_RBrbnE",
-        "menu_wkDmAR"
+        "menu_wkDmAR",
+        "product_cVLKeL"
       ],
       "settings": {
       }
