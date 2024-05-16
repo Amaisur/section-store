@@ -135,7 +135,7 @@
 
 
                     <script>
-   document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     const sliderWrapper = document.querySelector(".slider-wrapper");
     const leftArrow = document.querySelector(".left-arrow");
     const rightArrow = document.querySelector(".right-arrow");
@@ -146,27 +146,28 @@
     // Function to update arrow visibility
     function updateArrows() {
         const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
-        console.log("Scroll Position:", scrollPosition);
-        console.log("Max Scroll Left:", maxScrollLeft);
-        console.log("Slider Wrapper Client Width:", sliderWrapper.clientWidth);
-        console.log("Slider Wrapper Scroll Width:", sliderWrapper.scrollWidth);
 
-        // Disable or enable arrows based on scroll position
-        leftArrow.style.display = scrollPosition <= 0 ? 'none' : 'block';
-        rightArrow.style.display = scrollPosition >= maxScrollLeft ? 'none' : 'block';
+        // Update arrow visibility
+        leftArrow.style.display = scrollPosition > 0 ? 'block' : 'none';
+        rightArrow.style.display = scrollPosition < maxScrollLeft ? 'block' : 'none';
 
-        // Hide both arrows if there's no need for scrolling
+        // Hide arrows if there's no need for scrolling
         if (sliderWrapper.scrollWidth <= sliderWrapper.clientWidth) {
             leftArrow.style.display = 'none';
             rightArrow.style.display = 'none';
         }
 
+        console.log("Scroll Position:", scrollPosition);
+        console.log("Max Scroll Left:", maxScrollLeft);
+        console.log("Slider Wrapper Client Width:", sliderWrapper.clientWidth);
+        console.log("Slider Wrapper Scroll Width:", sliderWrapper.scrollWidth);
         console.log("Left Arrow Display:", leftArrow.style.display);
         console.log("Right Arrow Display:", rightArrow.style.display);
     }
 
     // Event listeners for arrows
     leftArrow.addEventListener("click", () => {
+        console.log("Left Arrow Clicked");
         if (scrollPosition > 0) {
             scrollPosition -= slideWidth;
             if (scrollPosition < 0) scrollPosition = 0;
@@ -176,6 +177,7 @@
     });
 
     rightArrow.addEventListener("click", () => {
+        console.log("Right Arrow Clicked");
         const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
         if (scrollPosition < maxScrollLeft) {
             scrollPosition += slideWidth;
@@ -191,6 +193,7 @@
     // Update arrows on window resize
     window.addEventListener("resize", updateArrows);
 });
+
 
 
                     </script>
