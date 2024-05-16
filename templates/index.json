@@ -394,6 +394,16 @@
         "product_LMqYRK"
       ],
       "settings": {
+        "title": "Circle Menus",
+        "h-font": 34,
+        "h-color": "#000",
+        "h-weight": "bold",
+        "p-top": 3,
+        "p-bottom": 3,
+        "img-size": 26,
+        "t-size": 20,
+        "t-color": "#000",
+        "sl-gd-view": "grid"
       }
     }
   },
