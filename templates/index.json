@@ -403,7 +403,7 @@
         "img-size": 15,
         "t-size": 20,
         "t-color": "#000",
-        "sl-gd-view": "grid"
+        "sl-gd-view": "slider"
       }
     }
   },
