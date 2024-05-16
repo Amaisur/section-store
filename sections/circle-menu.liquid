@@ -47,6 +47,7 @@
     top: 0;
     left: 0;
     background: linear-gradient(red, yellow, orange);
+    transition: all .5s ease-in-out;
 }
 .img-cm-32-d9 img {
     width: 100%;
@@ -57,7 +58,9 @@
     position: relative;
     z-index: 2;
 }
-
+.row-cm-32-d9 a:hover .img-cm-32-d9:before{
+    transform: rotate(360deg);
+}
 .row-cm-32-d9 a {
     text-decoration: none;
     text-align: center;
