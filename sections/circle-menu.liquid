@@ -1,92 +1,171 @@
 
     <style>
-        *{
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-        .main-cm-32-d9{
-            width: 100%;
-            margin: 0 auto;
-        }
-        .inner-cm-32-d9{
-            max-width: 1440px;
-            margin: 0 auto;
-            width: 95%;
-            padding-top: {{ section.settings.p-top }}rem;
-            padding-bottom: {{ section.settings.p-bottom }}rem;
-        }
-        .row-cm-32-d9{
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-        }
-        .img-cm-32-d9{
-            width: {{ section.settings.img-size }}rem; 
-            height: {{ section.settings.img-size }}rem;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-        .img-cm-32-d9 img{
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-        .row-cm-32-d9 a{
-            text-decoration: none;
-            text-align: center;
-        }
-        .title-cm-32-d9 h4{
-            text-align: center;
-            color: {{ section.settings.t-color }};
-            font-size: {{ section.settings.t-size }}px !important;
-            font-weight: 500;
-        }
-        .inner-cm-32-d9 .title-d9{
-            font-size: {{ section.settings.h-font }}px !important;
-            color: {{ section.settings.h-color }};
-            font-weight: {% if section.settings.h-weight == 'light' %}light {% else %} bold {% endif %};
-            text-align: center; 
-        }
+     * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main-cm-32-d9 {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.inner-cm-32-d9 {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 95%;
+    padding-top: {{ section.settings.p-top }}rem;
+    padding-bottom: {{ section.settings.p-bottom }}rem;
+    position: relative;
+}
+
+.row-cm-32-d9 {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    overflow: hidden; /* Ensure content overflow is hidden */
+}
+
+.img-cm-32-d9 {
+    width: {{ section.settings.img-size }}rem;
+    height: {{ section.settings.img-size }}rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.img-cm-32-d9 img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.row-cm-32-d9 a {
+    text-decoration: none;
+    text-align: center;
+}
+
+.title-cm-32-d9 h4 {
+    text-align: center;
+    color: {{ section.settings.t-color }};
+    font-size: {{ section.settings.t-size }}px !important;
+    font-weight: 500;
+}
+
+.inner-cm-32-d9 .title-d9 {
+    font-size: {{ section.settings.h-font }}px !important;
+    color: {{ section.settings.h-color }};
+    font-weight: {% if section.settings.h-weight == 'light' %}light {% else %} bold {% endif %};
+    text-align: center;
+}
+
+.slide {
+    min-width: 300px; /* Set a minimum width for slides */
+    flex-shrink: 0;
+}
+
+/* Slider Navigation */
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
     </style>
 
 
 
-        <div class="main-cm-32-d9">
-            <div class="inner-cm-32-d9">
 
-                <h2 class="title-d9">{{ section.settings.title }}</h2>
+    <div class="main-cm-32-d9 slider-container">
+        <div class="inner-cm-32-d9">
 
-                <div class="row-cm-32-d9">
-                    {% for block in section.blocks %}
+            <h2 class="title-d9">{{ section.settings.title }}</h2>
 
+            <div class="row-cm-32-d9 slider-wrapper">
+                {% for block in section.blocks %}
                     {% if block.type == 'menu' %}    
-                    <div class="col-cm-32-d9">
-                    <a href="{{ block.settings.c-link }}">
-                    <div class="img-cm-32-d9"> <img src="{{ block.settings.c-img |  image_url: width: 300, height: 300  }}" alt=""> </div>
-                    <div class="title-cm-32-d9">
-                        <h4> {{ block.settings.text-1 }} </h4>
-                    </div>
-                    </a>
+                    <div class="col-cm-32-d9 slide">
+                        <a href="{{ block.settings.c-link }}">
+                            <div class="img-cm-32-d9">
+                                <img src="{{ block.settings.c-img |  image_url: width: 300, height: 300 }}" alt="">
+                            </div>
+                            <div class="title-cm-32-d9">
+                                <h4>{{ block.settings.text-1 }}</h4>
+                            </div>
+                        </a>
                     </div>
                     {% endif %}
                     {% if block.type == 'product' %}
-                        {%  assign product = block.settings.product %}
-                        <div class="col-cm-32-d9">
-                            <a href="{{ product.url }}">
-                            <div class="img-cm-32-d9"> <img src="{{ product.featured_image |  image_url: width: 300, height: 300  }}" alt=""> </div>
+                    {% assign product = block.settings.product %}
+                    <div class="col-cm-32-d9 slide">
+                        <a href="{{ product.url }}">
+                            <div class="img-cm-32-d9">
+                                <img src="{{ product.featured_image |  image_url: width: 300, height: 300 }}" alt="">
+                            </div>
                             <div class="title-cm-32-d9">
-                                <h4> {{ product.title |  escape | truncate: 20 }} </h4>
+                                <h4>{{ product.title | escape | truncate: 20 }}</h4>
                             </div>
-                            </a>
-                            </div>
-                            {% endif %}
-                    {% endfor %}
-                </div>
+                        </a>
+                    </div>
+                    {% endif %}
+                {% endfor %}
             </div>
+            
+          
+            <button class="slider-nav left-arrow" disabled>&lt;</button>
+            <button class="slider-nav right-arrow">&gt;</button>
         </div>
+    </div>
 
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+    const sliderWrapper = document.querySelector(".slider-wrapper");
+    const leftArrow = document.querySelector(".left-arrow");
+    const rightArrow = document.querySelector(".right-arrow");
+
+    let scrollPosition = 0;
+    const slideWidth = sliderWrapper.querySelector(".slide").offsetWidth + 30; // 30 is the gap
+
+    // Function to update arrow visibility
+    function updateArrows() {
+        leftArrow.disabled = scrollPosition === 0;
+        rightArrow.disabled = scrollPosition >= sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
+    }
+
+    // Event listeners for arrows
+    leftArrow.addEventListener("click", () => {
+        scrollPosition -= slideWidth;
+        sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
+        updateArrows();
+    });
+
+    rightArrow.addEventListener("click", () => {
+        scrollPosition += slideWidth;
+        sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
+        updateArrows();
+    });
+
+    // Initial arrow update
+    updateArrows();
+});
+
+                    </script>
 
 
 {% schema %}
