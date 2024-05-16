@@ -20,8 +20,8 @@
             justify-content: center;
         }
         .img-cm-32-d9{
-            width: 100px;
-            height: 100px;
+            width: {{ section.settings.img-size }}px;
+            height: {{ section.settings.img-size }}px;
             border-radius: 50%;
             overflow: hidden;
         }
@@ -31,12 +31,25 @@
             object-fit: contain;
             display: block;
         }
+        .row-cm-32-d9 a{
+            text-decoration: none;
+            text-align: center;
+        }
+        .title-cm-32-d9 h4{
+            text-align: center;
+            color: {{ section.settings.t-color }};
+            font-size: {{ section.settings.t-size }}px;
+            font-weight: 500;
+        }
     </style>
 
 
 
         <div class="main-cm-32-d9">
             <div class="inner-cm-32-d9">
+
+                <h2 class="title-d9"></h2>
+
                 <div class="row-cm-32-d9">
                     {% for block in section.blocks %}
 
@@ -56,7 +69,7 @@
                             <a href="{{ product.url }}">
                             <div class="img-cm-32-d9"> <img src="{{ product.featured_image |  image_url: width: 300, height: 300  }}" alt=""> </div>
                             <div class="title-cm-32-d9">
-                                <h4> {{ product.title }} </h4>
+                                <h4> {{ product.title |  escape | truncate: 20 }} </h4>
                             </div>
                             </a>
                             </div>
@@ -72,7 +85,82 @@
 {
     "name": "Circle Menu",
     "settings": [
-        
+        {
+            "type": "header",
+            "content": "Dektop Configurations"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Circle Menus"
+        },
+        {
+            "type": "range",
+            "id": "h-font",
+            "label": "Heading Size",
+            "max": 70,
+            "min": 10,
+            "default": 34,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "color",
+            "id": "h-color",
+            "label": "Heading Color",
+            "default": "#000"
+        },
+        {
+            "type": "range",
+            "id": "p-top",
+            "label": "Padding Top",
+            "max": 30,
+            "min": 0,
+            "default": 33,
+            "step": 1,
+            "unit": "px"
+        }, 
+          {
+            "type": "range",
+            "id": "p-bottom",
+            "label": "Padding Bottom",
+            "max": 30,
+            "min": 0,
+            "default": 3,
+            "step": 1,
+            "unit": "rem"
+        },
+        {
+            "type": "header",
+            "content": "Menu Configurations"
+        },
+        {
+            "type": "range",
+            "id": "img-size",
+            "label": "Image Size",
+            "max": 300,
+            "min": 50,
+            "default": 100,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "t-size",
+            "label": "Title Size",
+            "max": 30,
+            "min": 10,
+            "default": 20,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "color",
+            "id": "t-color",
+            "label": "Title Color",
+            "default": "#000"
+        }
         ],
         "blocks": [
             {
