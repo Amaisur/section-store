@@ -135,7 +135,7 @@
 
 
                     <script>
-                      document.addEventListener("DOMContentLoaded", function () {
+                document.addEventListener("DOMContentLoaded", function () {
     const sliderWrapper = document.querySelector(".slider-wrapper");
     const leftArrow = document.querySelector(".left-arrow");
     const rightArrow = document.querySelector(".right-arrow");
@@ -145,33 +145,45 @@
 
     // Function to update arrow visibility
     function updateArrows() {
-        leftArrow.disabled = scrollPosition === 0;
-        rightArrow.disabled = scrollPosition + sliderWrapper.clientWidth >= sliderWrapper.scrollWidth;
-        
+        const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
+        console.log("Scroll Position:", scrollPosition);
+        console.log("Max Scroll Left:", maxScrollLeft);
+        console.log("Slider Wrapper Client Width:", sliderWrapper.clientWidth);
+        console.log("Slider Wrapper Scroll Width:", sliderWrapper.scrollWidth);
+
+        leftArrow.disabled = scrollPosition <= 0;
+        rightArrow.disabled = scrollPosition >= maxScrollLeft;
+
         // Hide arrows if there are not enough slides to scroll
-        const totalSlidesWidth = sliderWrapper.scrollWidth;
-        const containerWidth = sliderWrapper.clientWidth;
-        if (totalSlidesWidth <= containerWidth) {
+        if (sliderWrapper.scrollWidth <= sliderWrapper.clientWidth) {
             leftArrow.style.display = 'none';
             rightArrow.style.display = 'none';
         } else {
             leftArrow.style.display = 'block';
             rightArrow.style.display = 'block';
         }
+
+        console.log("Left Arrow Disabled:", leftArrow.disabled);
+        console.log("Right Arrow Disabled:", rightArrow.disabled);
+        console.log("Left Arrow Display:", leftArrow.style.display);
+        console.log("Right Arrow Display:", rightArrow.style.display);
     }
 
     // Event listeners for arrows
     leftArrow.addEventListener("click", () => {
         if (scrollPosition > 0) {
             scrollPosition -= slideWidth;
+            if (scrollPosition < 0) scrollPosition = 0;
             sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
             updateArrows();
         }
     });
 
     rightArrow.addEventListener("click", () => {
-        if (scrollPosition + sliderWrapper.clientWidth < sliderWrapper.scrollWidth) {
+        const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
+        if (scrollPosition < maxScrollLeft) {
             scrollPosition += slideWidth;
+            if (scrollPosition > maxScrollLeft) scrollPosition = maxScrollLeft;
             sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
             updateArrows();
         }
@@ -183,6 +195,7 @@
     // Update arrows on window resize
     window.addEventListener("resize", updateArrows);
 });
+
 
                     </script>
 
