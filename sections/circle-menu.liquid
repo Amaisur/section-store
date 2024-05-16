@@ -1,84 +1,84 @@
 
-<style>
-    * {
-   padding: 0;
-   margin: 0;
-   box-sizing: border-box;
+    <style>
+     * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .main-cm-32-d9 {
-   width: 100%;
-   margin: 0 auto;
-   padding-top: {{ section.settings.p-top }}rem;
-   padding-bottom: {{ section.settings.p-bottom }}rem;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: {{ section.settings.p-top }}rem;
+    padding-bottom: {{ section.settings.p-bottom }}rem;
 }
 
 .inner-cm-32-d9 {
-   max-width: 1440px;
-   margin: 0 auto;
-   width: 95%;
-   position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 95%;
+    position: relative;
 }
 
 
 ::-webkit-scrollbar{
-   display: none;
+    display: none;
 }
 .img-cm-32-d9 {
-   width: {{ section.settings.img-size }}rem;
-   height: {{ section.settings.img-size }}rem;
-   border-radius: 50%;
-   overflow: hidden;
-   padding: {{ section.settings.border-size }}px;
-   position: relative;
+    width: {{ section.settings.img-size }}rem;
+    height: {{ section.settings.img-size }}rem;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: {{ section.settings.border-size }}px;
+    position: relative;
 } 
 .img-cm-32-d9:before{
-   content: "";
-   width: 100%;
-   height: 100%;
-   position: absolute;
-   top: 0;
-   left: 0;
-   background: {{ section.settings.border-color }};
-   transition: all .5s ease-in-out;
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: {{ section.settings.border-color }};
+    transition: all .5s ease-in-out;
 }
 .img-cm-32-d9 img {
-   width: 100%;
-   height: 100%;
-   object-fit: contain;
-   display: block;
-   border-radius: 50%;
-   position: relative;
-   z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
 }
 {% if section.settings.menu-hover %}
 .row-cm-32-d9 a:hover .img-cm-32-d9:before{
-   transform: rotate(360deg);
+    transform: rotate(360deg);
 }
   {% endif %}
 .row-cm-32-d9 a {
-   text-decoration: none;
-   text-align: center;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   flex-direction: column;
-   gap: 20px;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .title-cm-32-d9 h4 {
-   text-align: center !important;
-   color: {{ section.settings.t-color }};
-   font-size: {{ section.settings.t-size }}px !important;
-   font-weight: 500;
+    text-align: center !important;
+    color: {{ section.settings.t-color }};
+    font-size: {{ section.settings.t-size }}px !important;
+    font-weight: 500;
 }
 
 .main-cm-32-d9 .title-d9 {
-   font-size: {{ section.settings.h-font }}px !important;
-   color: {{ section.settings.h-color }};
-   font-weight: {% if section.settings.h-weight == 'light' %}light {% else %} bold {% endif %};
-   text-align: center;
-   margin-bottom: 50px;
+    font-size: {{ section.settings.h-font }}px !important;
+    color: {{ section.settings.h-color }};
+    font-weight: {% if section.settings.h-weight == 'light' %}light {% else %} bold {% endif %};
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 
@@ -89,52 +89,52 @@
     flex-shrink: 0;
 }
 .slider-wrapper {
-   display: flex;
-   gap: {{ section.settings.gap-d }}px;
-   justify-content: flex-start;
-   scroll-snap-type: x mandatory;
-   overflow-x: scroll;
-   -webkit-overflow-scrolling: touch;
-   position: relative;
+    display: flex;
+    gap: {{ section.settings.gap-d }}px;
+    justify-content: flex-start;
+    scroll-snap-type: x mandatory;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
 }
 .slider-nav {
-   position: absolute;
-   top: 50%;
-   transform: translateY(-50%);
-   background-color: rgba(0, 0, 0, 0.7);
-   color: white;
-   border: none;
-   width: 35px;
-   height: 35px;
-   cursor: pointer;
-   z-index: 10;
-   display: none; 
-   border-radius: 50%;
-   overflow: hidden;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    z-index: 10;
+    display: none; 
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 .slider-nav svg{
-   width: 100%;
-   height: 100%;
+    width: 100%;
+    height: 100%;
 }
 .left-arrow {
-   left: 10px;
+    left: 10px;
 }
 
 .right-arrow {
-   right: 10px;
+    right: 10px;
 }
 
 {%  else %}
 .row-cm-32-d9 {
-   display: flex;
-   gap: {{ section.settings.gap-d }}px;
-   justify-content: center;
-   overflow: hidden;
-   flex-wrap: wrap;
+    display: flex;
+    gap: {{ section.settings.gap-d }}px;
+    justify-content: center;
+    overflow: hidden;
+    flex-wrap: wrap;
 }
 .slider-nav{
-   display: none;
+    display: none;
 }
 {% endif %}
 
@@ -212,143 +212,144 @@
 
    }
 
+    
 
-   </style>
+    </style>
 
 
 
 
-   <div class="main-cm-32-d9 slider-container">
-       <h2 class="title-d9">{{ section.settings.title }}</h2>
-       <div class="inner-cm-32-d9">
+    <div class="main-cm-32-d9 slider-container">
+        <h2 class="title-d9">{{ section.settings.title }}</h2>
+        <div class="inner-cm-32-d9">
 
-          
-
-           <div class="row-cm-32-d9 slider-wrapper">
-               {% for block in section.blocks %}
-                   {% if block.type == 'menu' %}    
-                   <div class="col-cm-32-d9 slide">
-                       <a href="{{ block.settings.c-link }}">
-                           <div class="img-cm-32-d9">
-                               <img src="{{ block.settings.c-img |  image_url: width: 300, height: 300 }}" alt="">
-                           </div>
-                           <div class="title-cm-32-d9">
-                               <h4>{{ block.settings.text-1 }}</h4>
-                           </div>
-                       </a>
-                   </div>
-                   {% endif %}
-                   {% if block.type == 'product' %}
-                   {% assign product = block.settings.product %}
-                   <div class="col-cm-32-d9 slide">
-                       <a href="{{ product.url }}">
-                           <div class="img-cm-32-d9">
-                               <img src="{{ product.featured_image |  image_url: width: 300, height: 300 }}" alt="">
-                           </div>
-                           <div class="title-cm-32-d9">
-                               <h4>{{ product.title | escape | truncate: 20 }}</h4>
-                           </div>
-                       </a>
-                   </div>
-                   {% endif %}
-               {% endfor %}
-               
-           </div>
            
-         
-           <button class="slider-nav left-arrow">
-               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
- <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="currentColor"/>
+
+            <div class="row-cm-32-d9 slider-wrapper">
+                {% for block in section.blocks %}
+                    {% if block.type == 'menu' %}    
+                    <div class="col-cm-32-d9 slide">
+                        <a href="{{ block.settings.c-link }}">
+                            <div class="img-cm-32-d9">
+                                <img src="{{ block.settings.c-img |  image_url: width: 300, height: 300 }}" alt="">
+                            </div>
+                            <div class="title-cm-32-d9">
+                                <h4>{{ block.settings.text-1 }}</h4>
+                            </div>
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% if block.type == 'product' %}
+                    {% assign product = block.settings.product %}
+                    <div class="col-cm-32-d9 slide">
+                        <a href="{{ product.url }}">
+                            <div class="img-cm-32-d9">
+                                <img src="{{ product.featured_image |  image_url: width: 300, height: 300 }}" alt="">
+                            </div>
+                            <div class="title-cm-32-d9">
+                                <h4>{{ product.title | escape | truncate: 20 }}</h4>
+                            </div>
+                        </a>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                
+            </div>
+            
+          
+            <button class="slider-nav left-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="currentColor"/>
 </svg>
 
 
-           </button>
-           <button class="slider-nav right-arrow">
+            </button>
+            <button class="slider-nav right-arrow">
 
-           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
- <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="currentColor"/>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="currentColor"/>
 </svg>
 
-           </button>
-       </div>
-   </div>
+            </button>
+        </div>
+    </div>
 
 
 
-                   <script>
- document.addEventListener("DOMContentLoaded", function () {
-   const sliderWrapper = document.querySelector(".slider-wrapper");
-   const leftArrow = document.querySelector(".left-arrow");
-   const rightArrow = document.querySelector(".right-arrow");
+                    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const sliderWrapper = document.querySelector(".slider-wrapper");
+    const leftArrow = document.querySelector(".left-arrow");
+    const rightArrow = document.querySelector(".right-arrow");
 
-   let scrollPosition = 0;
-   const slideWidth = sliderWrapper.querySelector(".slide").offsetWidth + 30; // 30 is the gap
-
-
-   function updateArrows() {
-       const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
-
-       leftArrow.style.display = scrollPosition > 0 ? 'block' : 'none';
-       rightArrow.style.display = scrollPosition < maxScrollLeft ? 'block' : 'none';
-
-       if (sliderWrapper.scrollWidth <= sliderWrapper.clientWidth) {
-           leftArrow.style.display = 'none';
-           rightArrow.style.display = 'none';
-       }
-   }
-
-  
-   function scrollToNextSlide() {
-       const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
-       if (scrollPosition < maxScrollLeft) {
-           scrollPosition += slideWidth;
-           if (scrollPosition > maxScrollLeft) scrollPosition = maxScrollLeft;
-           sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
-       }
-       updateArrows(); 
-   }
+    let scrollPosition = 0;
+    const slideWidth = sliderWrapper.querySelector(".slide").offsetWidth + 30; // 30 is the gap
 
 
-   function scrollToPreviousSlide() {
-       if (scrollPosition > 0) {
-           scrollPosition -= slideWidth;
-           if (scrollPosition < 0) scrollPosition = 0;
-           sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
-       }
-       updateArrows(); 
-   }
+    function updateArrows() {
+        const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
 
-   leftArrow.addEventListener("click", scrollToPreviousSlide);
-   rightArrow.addEventListener("click", scrollToNextSlide);
+        leftArrow.style.display = scrollPosition > 0 ? 'block' : 'none';
+        rightArrow.style.display = scrollPosition < maxScrollLeft ? 'block' : 'none';
 
-   let startX;
+        if (sliderWrapper.scrollWidth <= sliderWrapper.clientWidth) {
+            leftArrow.style.display = 'none';
+            rightArrow.style.display = 'none';
+        }
+    }
 
-   sliderWrapper.addEventListener("touchstart", (e) => {
-       startX = e.touches[0].clientX;
-   });
-
-   sliderWrapper.addEventListener("touchmove", (e) => {
-       if (!startX) return;
-       const diffX = startX - e.touches[0].clientX;
-       if (diffX > 50) {
-           scrollToNextSlide();
-           startX = null;
-       } else if (diffX < -50) {
-           scrollToPreviousSlide();
-           startX = null;
-       }
-   });
+   
+    function scrollToNextSlide() {
+        const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
+        if (scrollPosition < maxScrollLeft) {
+            scrollPosition += slideWidth;
+            if (scrollPosition > maxScrollLeft) scrollPosition = maxScrollLeft;
+            sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
+        }
+        updateArrows(); 
+    }
 
 
-   window.addEventListener("resize", updateArrows);
+    function scrollToPreviousSlide() {
+        if (scrollPosition > 0) {
+            scrollPosition -= slideWidth;
+            if (scrollPosition < 0) scrollPosition = 0;
+            sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
+        }
+        updateArrows(); 
+    }
 
-   sliderWrapper.addEventListener("scroll", () => {
-       scrollPosition = sliderWrapper.scrollLeft;
-       updateArrows();
-   });
+    leftArrow.addEventListener("click", scrollToPreviousSlide);
+    rightArrow.addEventListener("click", scrollToNextSlide);
 
+    let startX;
 
-   updateArrows();
+    sliderWrapper.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    sliderWrapper.addEventListener("touchmove", (e) => {
+        if (!startX) return;
+        const diffX = startX - e.touches[0].clientX;
+        if (diffX > 50) {
+            scrollToNextSlide();
+            startX = null;
+        } else if (diffX < -50) {
+            scrollToPreviousSlide();
+            startX = null;
+        }
+    });
+
+ 
+    window.addEventListener("resize", updateArrows);
+
+    sliderWrapper.addEventListener("scroll", () => {
+        scrollPosition = sliderWrapper.scrollLeft;
+        updateArrows();
+    });
+
+ 
+    updateArrows();
 });
 
 
@@ -619,46 +620,46 @@
 
 
 
-       ],
-       "blocks": [
-           {
-               "name": "Menu",
-               "type": "menu",
-               "settings": [
-                   {
-                       "type": "image_picker",
-                       "id": "c-img",
-                       "label": "Image"
-                   },
-                   {
-                       "type": "text",
-                       "id": "text-1",
-                       "label": "Menu Title",
-                       "default": "Link"
-                   },
-                   {
-                       "type": "url",
-                       "id": "c-link",
-                       "label": "Menu Link"
-                   }
-               ]
-           },
-           {
-               "name": "Product",
-               "type": "product",
-               "settings": [
-                   {
-                       "type": "product",
-                       "id": "product",
-                       "label": "Product"
-                   }
-               ]
-           }
-       ],
-       "presets": [
-           {
-               "name": "Circle Menu"
-           }
-       ]
+        ],
+        "blocks": [
+            {
+                "name": "Menu",
+                "type": "menu",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "c-img",
+                        "label": "Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "text-1",
+                        "label": "Menu Title",
+                        "default": "Link"
+                    },
+                    {
+                        "type": "url",
+                        "id": "c-link",
+                        "label": "Menu Link"
+                    }
+                ]
+            },
+            {
+                "name": "Product",
+                "type": "product",
+                "settings": [
+                    {
+                        "type": "product",
+                        "id": "product",
+                        "label": "Product"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Circle Menu"
+            }
+        ]
 }
 {% endschema %}
