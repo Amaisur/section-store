@@ -400,7 +400,7 @@
         "h-weight": "bold",
         "p-top": 3,
         "p-bottom": 3,
-        "img-size": 26,
+        "img-size": 15,
         "t-size": 20,
         "t-color": "#000",
         "sl-gd-view": "grid"
