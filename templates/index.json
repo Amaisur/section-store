@@ -371,13 +371,27 @@
           "settings": {
             "product": "flash-masking-tape"
           }
+        },
+        "product_fRbqWM": {
+          "type": "product",
+          "settings": {
+            "product": "chairs"
+          }
+        },
+        "product_LMqYRK": {
+          "type": "product",
+          "settings": {
+            "product": "black-paper-tape"
+          }
         }
       },
       "block_order": [
         "menu_UgdJtY",
         "menu_RBrbnE",
         "menu_wkDmAR",
-        "product_cVLKeL"
+        "product_cVLKeL",
+        "product_fRbqWM",
+        "product_LMqYRK"
       ],
       "settings": {
       }
