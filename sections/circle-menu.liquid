@@ -40,7 +40,7 @@
                 <div class="row-cm-32-d9">
                     {% for block in section.blocks %}
 
-                    {% if block.type  ==  'menu' %}    
+                    {% if block.type == 'menu' %}    
                     <div class="col-cm-32-d9">
                     <a href="{{ block.settings.c-link }}">
                     <div class="img-cm-32-d9"> <img src="{{ block.settings.c-img |  image_url: width: 300, height: 300  }}" alt=""> </div>
@@ -60,6 +60,7 @@
                             </div>
                             </a>
                             </div>
+                            {% endif %}
                     {% endfor %}
                 </div>
             </div>
