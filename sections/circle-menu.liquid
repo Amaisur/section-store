@@ -51,9 +51,11 @@
     position: relative;
     z-index: 2;
 }
+{% if section.settings.menu-hover %}
 .row-cm-32-d9 a:hover .img-cm-32-d9:before{
     transform: rotate(360deg);
 }
+  {% endif %}
 .row-cm-32-d9 a {
     text-decoration: none;
     text-align: center;
@@ -468,6 +470,12 @@
             "default": 5,
             "step": 1,
             "unit": "px"
+        },
+        {
+            "type": "checkbox",
+            "id": "menu-hover",
+            "label": "Enable Hover Effect",
+            "default": true
         },
         
         {
