@@ -338,6 +338,42 @@
         "padding-horizontal": 2,
         "padding-vertical": 2
       }
+    },
+    "circle_menu_Dzrqrn": {
+      "type": "circle-menu",
+      "blocks": {
+        "menu_UgdJtY": {
+          "type": "menu",
+          "settings": {
+            "c-img": "shopify:\/\/shop_images\/Ricecarrot-Face-Mask.webp",
+            "text-1": "Link",
+            "c-link": ""
+          }
+        },
+        "menu_RBrbnE": {
+          "type": "menu",
+          "settings": {
+            "c-img": "shopify:\/\/shop_images\/MissDinoFaceMask_46c550e4-1b0f-481e-b8e6-c48fe06cb6f3.webp",
+            "text-1": "Link",
+            "c-link": ""
+          }
+        },
+        "menu_wkDmAR": {
+          "type": "menu",
+          "settings": {
+            "c-img": "shopify:\/\/shop_images\/RicemousseFaceMask.webp",
+            "text-1": "Link",
+            "c-link": ""
+          }
+        }
+      },
+      "block_order": [
+        "menu_UgdJtY",
+        "menu_RBrbnE",
+        "menu_wkDmAR"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
@@ -347,6 +383,7 @@
     "echo_section_ss_3_Tp6ghe",
     "details_slider_iWGfm4",
     "umair_V9hqMn",
-    "trust_badges_GrcVBx"
+    "trust_badges_GrcVBx",
+    "circle_menu_Dzrqrn"
   ]
 }
