@@ -61,7 +61,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
 }
 
 .title-cm-32-d9 h4 {
@@ -88,7 +88,7 @@
 }
 .slider-wrapper {
     display: flex;
-    gap: 30px;
+    gap: {{ section.settings.gap-d }}px;
     justify-content: flex-start;
     scroll-snap-type: x mandatory;
     overflow-x: scroll;
@@ -125,7 +125,7 @@
 {%  else %}
 .row-cm-32-d9 {
     display: flex;
-    gap: 30px;
+    gap: {{ section.settings.gap-d }}px;
     justify-content: center;
     overflow: hidden;
     flex-wrap: wrap;
@@ -375,6 +375,16 @@
         },
         {
             "type": "range",
+            "id": "gap-d",
+            "label": "Gap",
+            "max": 100,
+            "min": 0,
+            "default": 30,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "range",
             "id": "border-size",
             "label": "Border Size",
             "max": 20,
@@ -383,6 +393,7 @@
             "step": 1,
             "unit": "px"
         },
+        
         {
             "type": "color_background",
             "id": "border-color",
