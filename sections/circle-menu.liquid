@@ -178,22 +178,20 @@
     let scrollPosition = 0;
     const slideWidth = sliderWrapper.querySelector(".slide").offsetWidth + 30; // 30 is the gap
 
-    // Function to update arrow visibility
+
     function updateArrows() {
         const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
 
-        // Update arrow visibility based on scroll position
         leftArrow.style.display = scrollPosition > 0 ? 'block' : 'none';
         rightArrow.style.display = scrollPosition < maxScrollLeft ? 'block' : 'none';
 
-        // Hide arrows if there's no need for scrolling
         if (sliderWrapper.scrollWidth <= sliderWrapper.clientWidth) {
             leftArrow.style.display = 'none';
             rightArrow.style.display = 'none';
         }
     }
 
-    // Scroll to the next slide
+   
     function scrollToNextSlide() {
         const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
         if (scrollPosition < maxScrollLeft) {
@@ -201,24 +199,22 @@
             if (scrollPosition > maxScrollLeft) scrollPosition = maxScrollLeft;
             sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
         }
-        updateArrows(); // Update arrows immediately after scrolling
+        updateArrows(); 
     }
 
-    // Scroll to the previous slide
+
     function scrollToPreviousSlide() {
         if (scrollPosition > 0) {
             scrollPosition -= slideWidth;
             if (scrollPosition < 0) scrollPosition = 0;
             sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
         }
-        updateArrows(); // Update arrows immediately after scrolling
+        updateArrows(); 
     }
 
-    // Event listeners for arrows
     leftArrow.addEventListener("click", scrollToPreviousSlide);
     rightArrow.addEventListener("click", scrollToNextSlide);
 
-    // Touch event handling for swipe
     let startX;
 
     sliderWrapper.addEventListener("touchstart", (e) => {
@@ -237,19 +233,15 @@
         }
     });
 
-    // Drag event handling for desktop
-   
-
-    // Update arrows on window resize
+ 
     window.addEventListener("resize", updateArrows);
 
-    // Update scroll position on scroll
     sliderWrapper.addEventListener("scroll", () => {
         scrollPosition = sliderWrapper.scrollLeft;
         updateArrows();
     });
 
-    // Initial arrow update
+ 
     updateArrows();
 });
 
