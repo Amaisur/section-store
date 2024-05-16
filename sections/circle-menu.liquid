@@ -1,361 +1,338 @@
+<style>
+     #shopify-section-{{ section.id }}  * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+  }
 
-    <style>
-   #shopify-section-{{ section.id }}  * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+  #shopify-section-{{ section.id }} .main-cm-32-d9 {
+      width: 100%;
+      margin: 0 auto;
+      padding-top: {{ section.settings.p-top }}rem;
+      padding-bottom: {{ section.settings.p-bottom }}rem;
+  }
 
-#shopify-section-{{ section.id }} .main-cm-32-d9 {
-    width: 100%;
-    margin: 0 auto;
-    padding-top: {{ section.settings.p-top }}rem;
-    padding-bottom: {{ section.settings.p-bottom }}rem;
-}
-
-#shopify-section-{{ section.id }} .inner-cm-32-d9 {
-    max-width: 1440px;
-    margin: 0 auto;
-    width: 95%;
-    position: relative;
-}
+  #shopify-section-{{ section.id }} .inner-cm-32-d9 {
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 95%;
+      position: relative;
+  }
 
 
-#shopify-section-{{ section.id }} ::-webkit-scrollbar{
-    display: none;
-}
-#shopify-section-{{ section.id }} .img-cm-32-d9 {
-    width: {{ section.settings.img-size }}rem;
-    height: {{ section.settings.img-size }}rem;
-    border-radius: 50%;
-    overflow: hidden;
-    padding: {{ section.settings.border-size }}px;
-    position: relative;
-} 
-#shopify-section-{{ section.id }} .img-cm-32-d9:before{
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: {{ section.settings.border-color }};
-    transition: all .5s ease-in-out;
-}
-#shopify-section-{{ section.id }} .img-cm-32-d9 img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    border-radius: 50%;
-    position: relative;
-    z-index: 2;
-}
-{% if section.settings.menu-hover %}
-#shopify-section-{{ section.id }} .row-cm-32-d9 a:hover .img-cm-32-d9:before{
-    transform: rotate(360deg);
-}
+  #shopify-section-{{ section.id }} ::-webkit-scrollbar{
+      display: none;
+  }
+  #shopify-section-{{ section.id }} .img-cm-32-d9 {
+      width: {{ section.settings.img-size }}rem;
+      height: {{ section.settings.img-size }}rem;
+      border-radius: 50%;
+      overflow: hidden;
+      padding: {{ section.settings.border-size }}px;
+      position: relative;
+  }
+  #shopify-section-{{ section.id }} .img-cm-32-d9:before{
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: {{ section.settings.border-color }};
+      transition: all .5s ease-in-out;
+  }
+  #shopify-section-{{ section.id }} .img-cm-32-d9 img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 50%;
+      position: relative;
+      z-index: 2;
+  }
+  {% if section.settings.menu-hover %}
+  #shopify-section-{{ section.id }} .row-cm-32-d9 a:hover .img-cm-32-d9:before{
+      transform: rotate(360deg);
+  }
+    {% endif %}
+  #shopify-section-{{ section.id }} .row-cm-32-d9 a {
+      text-decoration: none;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .title-cm-32-d9 h4 {
+      text-align: center !important;
+      color: {{ section.settings.t-color }};
+      font-size: {{ section.settings.t-size }}px !important;
+      font-weight: 500;
+  }
+
+  #shopify-section-{{ section.id }} .main-cm-32-d9 .title-d9 {
+      font-size: {{ section.settings.h-font }}px !important;
+      color: {{ section.settings.h-color }};
+      font-weight: {% if section.settings.h-weight == 'light' %}light {% else %} bold {% endif %};
+      text-align: center;
+      margin-bottom: 50px;
+  }
+
+  #shopify-section-{{ section.id }} .slide {
+      min-width: calc({{ section.settings.img-size }}rem * 1.1);
+      flex-shrink: 0;
+  }
+  {% if section.settings.sl-gd-view == 'slider' %}
+
+
+  #shopify-section-{{ section.id }} .slider-wrapper {
+      display: flex;
+      gap: {{ section.settings.gap-d }}px;
+      justify-content: flex-start;
+      scroll-snap-type: x mandatory;
+      overflow-x: scroll;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+  }
+  #shopify-section-{{ section.id }} .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      z-index: 10;
+      display: none;
+      border-radius: 50%;
+      overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .slider-nav svg{
+      width: 100%;
+      height: 100%;
+  }
+  #shopify-section-{{ section.id }} .left-arrow {
+      left: 10px;
+  }
+
+  #shopify-section-{{ section.id }} .right-arrow {
+      right: 10px;
+  }
+
+  {%  else %}
+  #shopify-section-{{ section.id }} .row-cm-32-d9 {
+      display: flex;
+      gap: {{ section.settings.gap-d }}px;
+      justify-content: center;
+      overflow: hidden;
+      flex-wrap: wrap;
+  }
+  #shopify-section-{{ section.id }} .slider-nav{
+      display: none;
+  }
   {% endif %}
-#shopify-section-{{ section.id }} .row-cm-32-d9 a {
-    text-decoration: none;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 20px;
-}
 
-#shopify-section-{{ section.id }} .title-cm-32-d9 h4 {
-    text-align: center !important;
-    color: {{ section.settings.t-color }};
-    font-size: {{ section.settings.t-size }}px !important;
-    font-weight: 500;
-}
+     @media(max-width: 768px){
+          #shopify-section-{{ section.id }} .main-cm-32-d9 {
+              padding-top: {{ section.settings.p-top-m }}rem;
+              padding-bottom: {{ section.settings.p-bottom-m }}rem;
+          }
+         #shopify-section-{{ section.id }} .img-cm-32-d9 {
+              width: {{ section.settings.img-size-m }}rem;
+              height: {{ section.settings.img-size-m }}rem;
+              padding: {{ section.settings.border-size-m }}px;
+          }
+          #shopify-section-{{ section.id }} .main-cm-32-d9 .title-d9 {
+              font-size: {{ section.settings.h-font-m }}px !important;
+              font-weight: {% if section.settings.h-weight-m == 'light-m' %}light {% else %} bold {% endif %};
+          }
+          #shopify-section-{{ section.id }} .title-cm-32-d9 h4{
+              font-size: {{ section.settings.t-size-m }}px !important;
+          }
 
-#shopify-section-{{ section.id }} .main-cm-32-d9 .title-d9 {
-    font-size: {{ section.settings.h-font }}px !important;
-    color: {{ section.settings.h-color }};
-    font-weight: {% if section.settings.h-weight == 'light' %}light {% else %} bold {% endif %};
-    text-align: center;
-    margin-bottom: 50px; 
-}
+           #shopify-section-{{ section.id }} .slide {
+                  min-width: calc({{ section.settings.img-size-m }}rem * 1.1);
+                  flex-shrink: 0;
+              }
+          {% if section.settings.sl-gd-view-m == 'slider-m' %}
+              #shopify-section-{{ section.id }} .slider-wrapper {
+                  display: flex;
+                  gap: {{ section.settings.gap-m }}px;
+                  justify-content: flex-start;
+                  scroll-snap-type: x mandatory;
+                  overflow-x: scroll;
+                  -webkit-overflow-scrolling: touch;
+                  position: relative;
+                  flex-wrap: nowrap;
+              }
+              #shopify-section-{{ section.id }} .slider-nav {
+                  position: absolute;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  background-color: rgba(0, 0, 0, 0.7);
+                  color: white;
+                  border: none;
+                  width: 35px;
+                  height: 35px;
+                  cursor: pointer;
+                  z-index: 10;
+                  display: none;
+                  border-radius: 50%;
+                  overflow: hidden;
+              }
 
-#shopify-section-{{ section.id }} .slide {
-    min-width: calc({{ section.settings.img-size }}rem * 1.1); 
-    flex-shrink: 0;
-}
-{% if section.settings.sl-gd-view == 'slider' %}
+              #shopify-section-{{ section.id }} .slider-nav svg{
+                  width: 100%;
+                  height: 100%;
+              }
+              #shopify-section-{{ section.id }} .left-arrow {
+                  left: 10px;
+              }
 
+              #shopify-section-{{ section.id }} .right-arrow {
+                  right: 10px;
+              }
 
-#shopify-section-{{ section.id }} .slider-wrapper {
-    display: flex;
-    gap: {{ section.settings.gap-d }}px;
-    justify-content: flex-start;
-    scroll-snap-type: x mandatory;
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
-    position: relative;
-}
-#shopify-section-{{ section.id }} .slider-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    border: none;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-    z-index: 10;
-    display: none; 
-    border-radius: 50%;
-    overflow: hidden;
-}
+              {%  else %}
+              #shopify-section-{{ section.id }} .row-cm-32-d9 {
+                  display: flex;
+                  gap: {{ section.settings.gap-m }}px;
+                  justify-content: center;
+                  overflow: hidden;
+                  flex-wrap: wrap;
+              }
+             #shopify-section-{{ section.id }} .slider-nav{
+                  display: none;
+              }
+              {% endif %}
 
-#shopify-section-{{ section.id }} .slider-nav svg{
-    width: 100%;
-    height: 100%;
-}
-#shopify-section-{{ section.id }} .left-arrow {
-    left: 10px;
-}
+     }
+</style>
 
-#shopify-section-{{ section.id }} .right-arrow {
-    right: 10px;
-}
-
-{%  else %}
-#shopify-section-{{ section.id }} .row-cm-32-d9 {
-    display: flex;
-    gap: {{ section.settings.gap-d }}px;
-    justify-content: center;
-    overflow: hidden;
-    flex-wrap: wrap;
-}
-#shopify-section-{{ section.id }} .slider-nav{
-    display: none;
-}
-{% endif %}
-
-   @media(max-width: 768px){
-        #shopify-section-{{ section.id }} .main-cm-32-d9 {
-            padding-top: {{ section.settings.p-top-m }}rem;
-            padding-bottom: {{ section.settings.p-bottom-m }}rem;
-        }
-       #shopify-section-{{ section.id }} .img-cm-32-d9 {
-            width: {{ section.settings.img-size-m }}rem;
-            height: {{ section.settings.img-size-m }}rem;
-            padding: {{ section.settings.border-size-m }}px;
-        } 
-        #shopify-section-{{ section.id }} .main-cm-32-d9 .title-d9 {
-            font-size: {{ section.settings.h-font-m }}px !important;
-            font-weight: {% if section.settings.h-weight-m == 'light-m' %}light {% else %} bold {% endif %};
-        }
-        #shopify-section-{{ section.id }} .title-cm-32-d9 h4{
-            font-size: {{ section.settings.t-size-m }}px !important;
-        }
-
-         #shopify-section-{{ section.id }} .slide {
-                min-width: calc({{ section.settings.img-size-m }}rem * 1.1); 
-                flex-shrink: 0;
-            }
-        {% if section.settings.sl-gd-view-m == 'slider-m' %}
-            #shopify-section-{{ section.id }} .slider-wrapper {
-                display: flex;
-                gap: {{ section.settings.gap-m }}px;
-                justify-content: flex-start;
-                scroll-snap-type: x mandatory;
-                overflow-x: scroll;
-                -webkit-overflow-scrolling: touch;
-                position: relative;
-                flex-wrap: nowrap;
-            }
-            #shopify-section-{{ section.id }} .slider-nav {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                background-color: rgba(0, 0, 0, 0.7);
-                color: white;
-                border: none;
-                width: 35px;
-                height: 35px;
-                cursor: pointer;
-                z-index: 10;
-                display: none; 
-                border-radius: 50%;
-                overflow: hidden;
-            }
-
-            #shopify-section-{{ section.id }} .slider-nav svg{
-                width: 100%;
-                height: 100%;
-            }
-            #shopify-section-{{ section.id }} .left-arrow {
-                left: 10px;
-            }
-
-            #shopify-section-{{ section.id }} .right-arrow {
-                right: 10px;
-            }
-
-            {%  else %}
-            #shopify-section-{{ section.id }} .row-cm-32-d9 {
-                display: flex;
-                gap: {{ section.settings.gap-m }}px;
-                justify-content: center;
-                overflow: hidden;
-                flex-wrap: wrap;
-            }
-           #shopify-section-{{ section.id }} .slider-nav{
-                display: none;
-            }
-            {% endif %}
-
-   }
-
-    
-
-    </style>
-
-
-
-
-    <div class="main-cm-32-d9 slider-container">
-        <h2 class="title-d9">{{ section.settings.title }}</h2>
-        <div class="inner-cm-32-d9">
-
-           
-
-            <div class="row-cm-32-d9 slider-wrapper">
-                {% for block in section.blocks %}
-                    {% if block.type == 'menu' %}    
-                    <div class="col-cm-32-d9 slide">
-                        <a href="{{ block.settings.c-link }}">
-                            <div class="img-cm-32-d9">
-                                <img src="{{ block.settings.c-img |  image_url: width: 300, height: 300 }}" alt="">
-                            </div>
-                            <div class="title-cm-32-d9">
-                                <h4>{{ block.settings.text-1 }}</h4>
-                            </div>
-                        </a>
-                    </div>
-                    {% endif %}
-                    {% if block.type == 'product' %}
-                    {% assign product = block.settings.product %}
-                    <div class="col-cm-32-d9 slide">
-                        <a href="{{ product.url }}">
-                            <div class="img-cm-32-d9">
-                                <img src="{{ product.featured_image |  image_url: width: 300, height: 300 }}" alt="">
-                            </div>
-                            <div class="title-cm-32-d9">
-                                <h4>{{ product.title | escape | truncate: 20 }}</h4>
-                            </div>
-                        </a>
-                    </div>
-                    {% endif %}
-                {% endfor %}
-                
-            </div>
-            
-          
-            <button class="slider-nav left-arrow">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="currentColor"/>
-</svg>
-
-
-            </button>
-            <button class="slider-nav right-arrow">
-
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="currentColor"/>
-</svg>
-
-            </button>
-        </div>
+<div class="main-cm-32-d9 slider-container">
+  <h2 class="title-d9">{{ section.settings.title }}</h2>
+  <div class="inner-cm-32-d9">
+    <div class="row-cm-32-d9 slider-wrapper">
+      {% for block in section.blocks %}
+        {% if block.type == 'menu' %}
+          <div class="col-cm-32-d9 slide">
+            <a href="{{ block.settings.c-link }}">
+              <div class="img-cm-32-d9">
+                <img src="{{ block.settings.c-img |  image_url: width: 300, height: 300 }}" alt="">
+              </div>
+              <div class="title-cm-32-d9">
+                <h4>{{ block.settings['text-1'] }}</h4>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+        {% if block.type == 'product' %}
+          {% assign product = block.settings.product %}
+          <div class="col-cm-32-d9 slide">
+            <a href="{{ product.url }}">
+              <div class="img-cm-32-d9">
+                <img src="{{ product.featured_image |  image_url: width: 300, height: 300 }}" alt="">
+              </div>
+              <div class="title-cm-32-d9">
+                <h4>{{ product.title | escape | truncate: 20 }}</h4>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
     </div>
 
+    <button class="slider-nav left-arrow">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="currentColor"/>
+      </svg>
+    </button>
+    <button class="slider-nav right-arrow">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="currentColor"/>
+      </svg>
+    </button>
+  </div>
+</div>
 
+<script>
+    (function () {
+    document.addEventListener("DOMContentLoaded", function () {
+      const sliderWrapper = document.querySelector(".slider-wrapper");
+      const leftArrow = document.querySelector(".left-arrow");
+      const rightArrow = document.querySelector(".right-arrow");
 
-                    <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const sliderWrapper = document.querySelector(".slider-wrapper");
-    const leftArrow = document.querySelector(".left-arrow");
-    const rightArrow = document.querySelector(".right-arrow");
+      let scrollPosition = 0;
+      const slideWidth = sliderWrapper.querySelector(".slide").offsetWidth + 30; // 30 is the gap
 
-    let scrollPosition = 0;
-    const slideWidth = sliderWrapper.querySelector(".slide").offsetWidth + 30; // 30 is the gap
+      function updateArrows() {
+          const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
 
+          leftArrow.style.display = scrollPosition > 0 ? 'block' : 'none';
+          rightArrow.style.display = scrollPosition < maxScrollLeft ? 'block' : 'none';
 
-    function updateArrows() {
-        const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
+          if (sliderWrapper.scrollWidth <= sliderWrapper.clientWidth) {
+              leftArrow.style.display = 'none';
+              rightArrow.style.display = 'none';
+          }
+      }
 
-        leftArrow.style.display = scrollPosition > 0 ? 'block' : 'none';
-        rightArrow.style.display = scrollPosition < maxScrollLeft ? 'block' : 'none';
+      function scrollToNextSlide() {
+          const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
+          if (scrollPosition < maxScrollLeft) {
+              scrollPosition += slideWidth;
+              if (scrollPosition > maxScrollLeft) scrollPosition = maxScrollLeft;
+              sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
+          }
+          updateArrows();
+      }
 
-        if (sliderWrapper.scrollWidth <= sliderWrapper.clientWidth) {
-            leftArrow.style.display = 'none';
-            rightArrow.style.display = 'none';
-        }
-    }
+      function scrollToPreviousSlide() {
+          if (scrollPosition > 0) {
+              scrollPosition -= slideWidth;
+              if (scrollPosition < 0) scrollPosition = 0;
+              sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
+          }
+          updateArrows();
+      }
 
-   
-    function scrollToNextSlide() {
-        const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
-        if (scrollPosition < maxScrollLeft) {
-            scrollPosition += slideWidth;
-            if (scrollPosition > maxScrollLeft) scrollPosition = maxScrollLeft;
-            sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
-        }
-        updateArrows(); 
-    }
+      leftArrow.addEventListener("click", scrollToPreviousSlide);
+      rightArrow.addEventListener("click", scrollToNextSlide);
 
+      let startX;
 
-    function scrollToPreviousSlide() {
-        if (scrollPosition > 0) {
-            scrollPosition -= slideWidth;
-            if (scrollPosition < 0) scrollPosition = 0;
-            sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
-        }
-        updateArrows(); 
-    }
+      sliderWrapper.addEventListener("touchstart", (e) => {
+          startX = e.touches[0].clientX;
+      });
 
-    leftArrow.addEventListener("click", scrollToPreviousSlide);
-    rightArrow.addEventListener("click", scrollToNextSlide);
+      sliderWrapper.addEventListener("touchmove", (e) => {
+          if (!startX) return;
+          const diffX = startX - e.touches[0].clientX;
+          if (diffX > 50) {
+              scrollToNextSlide();
+              startX = null;
+          } else if (diffX < -50) {
+              scrollToPreviousSlide();
+              startX = null;
+          }
+      });
 
-    let startX;
+      window.addEventListener("resize", updateArrows);
 
-    sliderWrapper.addEventListener("touchstart", (e) => {
-        startX = e.touches[0].clientX;
+      sliderWrapper.addEventListener("scroll", () => {
+          scrollPosition = sliderWrapper.scrollLeft;
+          updateArrows();
+      });
+
+      updateArrows();
     });
-
-    sliderWrapper.addEventListener("touchmove", (e) => {
-        if (!startX) return;
-        const diffX = startX - e.touches[0].clientX;
-        if (diffX > 50) {
-            scrollToNextSlide();
-            startX = null;
-        } else if (diffX < -50) {
-            scrollToPreviousSlide();
-            startX = null;
-        }
-    });
-
- 
-    window.addEventListener("resize", updateArrows);
-
-    sliderWrapper.addEventListener("scroll", () => {
-        scrollPosition = sliderWrapper.scrollLeft;
-        updateArrows();
-    });
-
- 
-    updateArrows();
-});
-
-
-                    </script>
+  })();
+</script>
 
 {% schema %}
 {
@@ -412,7 +389,7 @@
             "default": 3,
             "step": 1,
             "unit": "px"
-        }, 
+        },
           {
             "type": "range",
             "id": "p-bottom",
@@ -479,7 +456,7 @@
             "label": "Enable Hover Effect",
             "default": true
         },
-        
+
         {
             "type": "color_background",
             "id": "border-color",
@@ -504,7 +481,7 @@
                     "label": "Grid",
                     "value": "grid"
                 }
-                
+
             ]
         },
 
@@ -549,7 +526,7 @@
             "default": 3,
             "step": 1,
             "unit": "px"
-        }, 
+        },
           {
             "type": "range",
             "id": "p-bottom-m",
@@ -615,7 +592,7 @@
                     "label": "Grid",
                     "value": "grid-m"
                 }
-                
+
             ]
         }
 
