@@ -172,6 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
             scrollPosition -= slideWidth;
             if (scrollPosition < 0) scrollPosition = 0;
             sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
+            console.log("New Scroll Position after left click:", scrollPosition);
             updateArrows();
         }
     });
@@ -183,6 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
             scrollPosition += slideWidth;
             if (scrollPosition > maxScrollLeft) scrollPosition = maxScrollLeft;
             sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
+            console.log("New Scroll Position after right click:", scrollPosition);
             updateArrows();
         }
     });
@@ -193,7 +195,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Update arrows on window resize
     window.addEventListener("resize", updateArrows);
 });
-
 
 
                     </script>
