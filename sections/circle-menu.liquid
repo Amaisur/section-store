@@ -20,13 +20,6 @@
     position: relative;
 }
 
-.row-cm-32-d9 {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    overflow: hidden;
-}
-
 
 ::-webkit-scrollbar{
     display: none;
@@ -87,7 +80,7 @@
 }
 
 
-
+{% if section.settings.sl-gd-view == 'sl-gd-view' %}
 /* Slider Navigation */
 .slide {
     min-width: 250px; 
@@ -128,6 +121,18 @@
 .right-arrow {
     right: 10px;
 }
+
+{%  else %}
+.row-cm-32-d9 {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    overflow: hidden;
+}
+
+{% endif %}
+
+
 
     </style>
 
@@ -187,7 +192,7 @@
         </div>
     </div>
 
-
+{% if section.settings.sl-gd-view == 'slider' %}
                     <script>
   document.addEventListener("DOMContentLoaded", function () {
     const sliderWrapper = document.querySelector(".slider-wrapper");
@@ -266,7 +271,7 @@
 
 
                     </script>
-
+{% endif %}
 
 {% schema %}
 {
@@ -368,9 +373,22 @@
         {
             "type": "header",
             "content": "Slider Configurations"
-        }
+        },
         {
-            "type": "select"
+            "type": "select",
+            "label": "Slider or Grid View",
+            "id": "sl-gd-view",
+            "default": "slider",
+            "options": [
+                {
+                    "label": "Slider",
+                    "value": "slider"
+                },
+                {
+                    "label": "Grid",
+                    "value": "grid"
+                }
+            ]
         }
 
 
