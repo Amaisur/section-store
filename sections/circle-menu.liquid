@@ -141,7 +141,7 @@
 
 
                     <script>
-                        document.addEventListener("DOMContentLoaded", function () {
+   document.addEventListener("DOMContentLoaded", function () {
     const sliderWrapper = document.querySelector(".slider-wrapper");
     const leftArrow = document.querySelector(".left-arrow");
     const rightArrow = document.querySelector(".right-arrow");
@@ -206,6 +206,37 @@
             scrollToPreviousSlide();
             startX = null;
         }
+    });
+
+    // Drag event handling for desktop
+    let isDragging = false;
+    let startDragX;
+
+    sliderWrapper.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        startDragX = e.clientX;
+        sliderWrapper.classList.add('dragging');
+    });
+
+    sliderWrapper.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        const diffX = startDragX - e.clientX;
+        sliderWrapper.scrollLeft = scrollPosition + diffX;
+    });
+
+    sliderWrapper.addEventListener("mouseup", () => {
+        isDragging = false;
+        sliderWrapper.classList.remove('dragging');
+        scrollPosition = sliderWrapper.scrollLeft;
+        updateArrows();
+    });
+
+    sliderWrapper.addEventListener("mouseleave", () => {
+        if (!isDragging) return;
+        isDragging = false;
+        sliderWrapper.classList.remove('dragging');
+        scrollPosition = sliderWrapper.scrollLeft;
+        updateArrows();
     });
 
     // Initial arrow update
