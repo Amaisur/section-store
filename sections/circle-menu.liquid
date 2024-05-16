@@ -192,6 +192,9 @@
         </div>
     </div>
 
+
+    {% if section.settings.sl-gd-view == 'slider' %}
+
                     <script>
   document.addEventListener("DOMContentLoaded", function () {
     const sliderWrapper = document.querySelector(".slider-wrapper");
@@ -270,7 +273,7 @@
 
 
                     </script>
-
+{% endif %}
 {% schema %}
 {
     "name": "Circle Menu",
