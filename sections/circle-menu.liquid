@@ -141,7 +141,7 @@
 
 
                     <script>
-document.addEventListener("DOMContentLoaded", function () {
+                        document.addEventListener("DOMContentLoaded", function () {
     const sliderWrapper = document.querySelector(".slider-wrapper");
     const leftArrow = document.querySelector(".left-arrow");
     const rightArrow = document.querySelector(".right-arrow");
@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateArrows() {
         const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
 
-        // Update arrow visibility
+        // Update arrow visibility based on scroll position
         leftArrow.style.display = scrollPosition > 0 ? 'block' : 'none';
         rightArrow.style.display = scrollPosition < maxScrollLeft ? 'block' : 'none';
 
@@ -162,36 +162,49 @@ document.addEventListener("DOMContentLoaded", function () {
             leftArrow.style.display = 'none';
             rightArrow.style.display = 'none';
         }
-
-        console.log("Scroll Position:", scrollPosition);
-        console.log("Max Scroll Left:", maxScrollLeft);
-        console.log("Slider Wrapper Client Width:", sliderWrapper.clientWidth);
-        console.log("Slider Wrapper Scroll Width:", sliderWrapper.scrollWidth);
-        console.log("Left Arrow Display:", leftArrow.style.display);
-        console.log("Right Arrow Display:", rightArrow.style.display);
     }
 
-    // Event listeners for arrows
-    leftArrow.addEventListener("click", () => {
-        console.log("Left Arrow Clicked");
-        if (scrollPosition > 0) {
-            scrollPosition -= slideWidth;
-            if (scrollPosition < 0) scrollPosition = 0;
-            sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
-            console.log("New Scroll Position after left click:", scrollPosition);
-            updateArrows();
-        }
-    });
-
-    rightArrow.addEventListener("click", () => {
-        console.log("Right Arrow Clicked");
+    // Scroll to the next slide
+    function scrollToNextSlide() {
         const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
         if (scrollPosition < maxScrollLeft) {
             scrollPosition += slideWidth;
             if (scrollPosition > maxScrollLeft) scrollPosition = maxScrollLeft;
             sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
-            console.log("New Scroll Position after right click:", scrollPosition);
             updateArrows();
+        }
+    }
+
+    // Scroll to the previous slide
+    function scrollToPreviousSlide() {
+        if (scrollPosition > 0) {
+            scrollPosition -= slideWidth;
+            if (scrollPosition < 0) scrollPosition = 0;
+            sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
+            updateArrows();
+        }
+    }
+
+    // Event listeners for arrows
+    leftArrow.addEventListener("click", scrollToPreviousSlide);
+    rightArrow.addEventListener("click", scrollToNextSlide);
+
+    // Touch event handling for swipe
+    let startX;
+
+    sliderWrapper.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    sliderWrapper.addEventListener("touchmove", (e) => {
+        if (!startX) return;
+        const diffX = startX - e.touches[0].clientX;
+        if (diffX > 50) {
+            scrollToNextSlide();
+            startX = null;
+        } else if (diffX < -50) {
+            scrollToPreviousSlide();
+            startX = null;
         }
     });
 
@@ -200,8 +213,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Update arrows on window resize
     window.addEventListener("resize", updateArrows);
-});
 
+    // Update scroll position on scroll
+    sliderWrapper.addEventListener("scroll", () => {
+        scrollPosition = sliderWrapper.scrollLeft;
+        updateArrows();
+    });
+});
 
                     </script>
 
