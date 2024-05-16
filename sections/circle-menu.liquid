@@ -46,6 +46,7 @@
         .inner-cm-32-d9 .title-d9{
             font-size: {{ section.settings.h-font }}px !important;
             color: {{ section.settings.h-color }};
+            font-weight: {% if section.settings.h-weight == 'light' %}light {% else %} bold {% endif %};
         }
     </style>
 
@@ -116,6 +117,22 @@
             "id": "h-color",
             "label": "Heading Color",
             "default": "#000"
+        },
+        {
+            "type": "select",
+            "id": "h-weight",
+            "label": "Heading Font Weight",
+            "default": "bold",
+            "options": [
+                {
+                    "value": "light",
+                    "label": "Light"
+                },
+                {
+                    "value": "bold",
+                    "label": "Bold"
+                }
+            ]
         },
         {
             "type": "range",
