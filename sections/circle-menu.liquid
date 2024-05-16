@@ -13,6 +13,8 @@
             max-width: 1440px;
             margin: 0 auto;
             width: 95%;
+            padding-top: {{ section.settings.p-top }}rem;
+            padding-bottom: {{ section.settings.p-bottom }}rem;
         }
         .row-cm-32-d9{
             display: flex;
@@ -38,8 +40,12 @@
         .title-cm-32-d9 h4{
             text-align: center;
             color: {{ section.settings.t-color }};
-            font-size: {{ section.settings.t-size }}px;
+            font-size: {{ section.settings.t-size }}px !important;
             font-weight: 500;
+        }
+        .inner-cm-32-d9 .title-d9{
+            font-size: {{ section.settings.h-font }}px !important;
+            color: {{ section.settings.h-color }};
         }
     </style>
 
@@ -48,7 +54,7 @@
         <div class="main-cm-32-d9">
             <div class="inner-cm-32-d9">
 
-                <h2 class="title-d9"></h2>
+                <h2 class="title-d9">{{ section.settings.title }}</h2>
 
                 <div class="row-cm-32-d9">
                     {% for block in section.blocks %}
