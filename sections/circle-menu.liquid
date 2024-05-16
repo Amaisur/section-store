@@ -17,6 +17,7 @@
         .row-cm-32-d9{
             display: flex;
             gap: 30px;
+            justify-content: center;
         }
         .img-cm-32-d9{
             width: 100px;
@@ -38,6 +39,8 @@
             <div class="inner-cm-32-d9">
                 <div class="row-cm-32-d9">
                     {% for block in section.blocks %}
+
+                    {% if block.type  ==  'menu' %}    
                     <div class="col-cm-32-d9">
                     <a href="{{ block.settings.c-link }}">
                     <div class="img-cm-32-d9"> <img src="{{ block.settings.c-img |  image_url: width: 300, height: 300  }}" alt=""> </div>
@@ -46,7 +49,17 @@
                     </div>
                     </a>
                     </div>
-
+                    {% endif %}
+                    {% if block.type == 'product' %}
+                        {%  assign product = block.settings.product %}
+                        <div class="col-cm-32-d9">
+                            <a href="{{ product.url }}">
+                            <div class="img-cm-32-d9"> <img src="{{ product.featured_image |  image_url: width: 300, height: 300  }}" alt=""> </div>
+                            <div class="title-cm-32-d9">
+                                <h4> {{ product.title }} </h4>
+                            </div>
+                            </a>
+                            </div>
                     {% endfor %}
                 </div>
             </div>
@@ -80,6 +93,17 @@
                         "type": "url",
                         "id": "c-link",
                         "label": "Menu Link"
+                    }
+                ]
+            },
+            {
+                "name": "Product",
+                "type": "product",
+                "settings": [
+                    {
+                        "type": "product",
+                        "id": "product",
+                        "label": "Product"
                     }
                 ]
             }
