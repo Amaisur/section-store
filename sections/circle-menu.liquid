@@ -1,0 +1,93 @@
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .main-cm-32-d9{
+            width: 100%;
+            margin: 0 auto;
+        }
+        .inner-cm-32-d9{
+            max-width: 1440px;
+            margin: 0 auto;
+            width: 95%;
+        }
+        .row-cm-32-d9{
+            display: flex;
+            gap: 30px;
+        }
+        .img-cm-32-d9{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .img-cm-32-d9 img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+    </style>
+
+
+
+        <div class="main-cm-32-d9">
+            <div class="inner-cm-32-d9">
+                <div class="row-cm-32-d9">
+                    {% for block in section.blocks %}
+                    <div class="col-cm-32-d9">
+                    <a href="{{ block.settings.c-link }}">
+                    <div class="img-cm-32-d9"> <img src="{{ block.settings.c-img |  image_url: width: 300, height: 300  }}" alt=""> </div>
+                    <div class="title-cm-32-d9">
+                        <h4> {{ block.settings.text-1 }} </h4>
+                    </div>
+                    </a>
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
+
+{% schema %}
+{
+    "name": "Circle Menu",
+    "settings": [
+        
+        ],
+        "blocks": [
+            {
+                "name": "Menu",
+                "type": "menu",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "c-img",
+                        "label": "Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "text-1",
+                        "label": "Menu Title",
+                        "default": "Link"
+                    },
+                    {
+                        "type": "url",
+                        "id": "c-link",
+                        "label": "Menu Link"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Circle Menu"
+            }
+        ]
+}
+{% endschema %}
