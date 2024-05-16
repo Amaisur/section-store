@@ -158,7 +158,7 @@
         {% if section.settings.sl-gd-view-m == 'slider-m' %}
 
             .slide {
-                min-width: 150px; 
+                min-width: calc({{ section.settings.img-size }}rem * 1.3);  
                 flex-shrink: 0;
             }
             .slider-wrapper {
