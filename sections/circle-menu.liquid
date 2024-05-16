@@ -134,7 +134,7 @@
 
 
                     <script>
-                        document.addEventListener("DOMContentLoaded", function () {
+                      document.addEventListener("DOMContentLoaded", function () {
     const sliderWrapper = document.querySelector(".slider-wrapper");
     const leftArrow = document.querySelector(".left-arrow");
     const rightArrow = document.querySelector(".right-arrow");
@@ -145,24 +145,42 @@
     // Function to update arrow visibility
     function updateArrows() {
         leftArrow.disabled = scrollPosition === 0;
-        rightArrow.disabled = scrollPosition >= sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
+        rightArrow.disabled = scrollPosition + sliderWrapper.clientWidth >= sliderWrapper.scrollWidth;
+        
+        // Hide arrows if there are not enough slides to scroll
+        const totalSlidesWidth = sliderWrapper.scrollWidth;
+        const containerWidth = sliderWrapper.clientWidth;
+        if (totalSlidesWidth <= containerWidth) {
+            leftArrow.style.display = 'none';
+            rightArrow.style.display = 'none';
+        } else {
+            leftArrow.style.display = 'block';
+            rightArrow.style.display = 'block';
+        }
     }
 
     // Event listeners for arrows
     leftArrow.addEventListener("click", () => {
-        scrollPosition -= slideWidth;
-        sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
-        updateArrows();
+        if (scrollPosition > 0) {
+            scrollPosition -= slideWidth;
+            sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
+            updateArrows();
+        }
     });
 
     rightArrow.addEventListener("click", () => {
-        scrollPosition += slideWidth;
-        sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
-        updateArrows();
+        if (scrollPosition + sliderWrapper.clientWidth < sliderWrapper.scrollWidth) {
+            scrollPosition += slideWidth;
+            sliderWrapper.scrollTo({ left: scrollPosition, behavior: "smooth" });
+            updateArrows();
+        }
     });
 
     // Initial arrow update
     updateArrows();
+
+    // Update arrows on window resize
+    window.addEventListener("resize", updateArrows);
 });
 
                     </script>
