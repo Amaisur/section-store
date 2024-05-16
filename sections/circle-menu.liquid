@@ -83,7 +83,7 @@
 {% if section.settings.sl-gd-view == 'slider' %}
 
 .slide {
-    min-width: calc({{ section.settings.img-size }}rem * 1.3); 
+    min-width: calc({{ section.settings.img-size }}rem * 1.1); 
     flex-shrink: 0;
 }
 .slider-wrapper {
@@ -157,10 +157,6 @@
         
         {% if section.settings.sl-gd-view-m == 'slider-m' %}
 
-            .slide {
-                min-width: calc({{ section.settings.img-size }}rem * 1.3);  
-                flex-shrink: 0;
-            }
             .slider-wrapper {
                 display: flex;
                 gap: {{ section.settings.gap-m }}px;
