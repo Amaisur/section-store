@@ -71,7 +71,7 @@
     font-weight: 500;
 }
 
-.inner-cm-32-d9 .title-d9 {
+.main-cm-32-d9 .title-d9 {
     font-size: {{ section.settings.h-font }}px !important;
     color: {{ section.settings.h-color }};
     font-weight: {% if section.settings.h-weight == 'light' %}light {% else %} bold {% endif %};
@@ -144,9 +144,10 @@
 
 
     <div class="main-cm-32-d9 slider-container">
+        <h2 class="title-d9">{{ section.settings.title }}</h2>
         <div class="inner-cm-32-d9">
 
-            <h2 class="title-d9">{{ section.settings.title }}</h2>
+           
 
             <div class="row-cm-32-d9 slider-wrapper">
                 {% for block in section.blocks %}
