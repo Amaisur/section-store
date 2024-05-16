@@ -55,7 +55,7 @@
 .row-cm-32-d9 a:hover .img-cm-32-d9:before{
    transform: rotate(360deg);
 }
- {% endif %}
+  {% endif %}
 .row-cm-32-d9 a {
    text-decoration: none;
    text-align: center;
@@ -85,8 +85,8 @@
 {% if section.settings.sl-gd-view == 'slider' %}
 
 .slide {
-   min-width: calc({{ section.settings.img-size }}rem * 1.1); 
-   flex-shrink: 0;
+    min-width: calc({{ section.settings.img-size }}rem * 1.1); 
+    flex-shrink: 0;
 }
 .slider-wrapper {
    display: flex;
@@ -138,81 +138,81 @@
 }
 {% endif %}
 
-  @media(max-width: 768px){
-       .main-cm-32-d9 {
-           padding-top: {{ section.settings.p-top-m }}rem;
-           padding-bottom: {{ section.settings.p-bottom-m }}rem;
-       }
-      .img-cm-32-d9 {
-           width: {{ section.settings.img-size-m }}rem;
-           height: {{ section.settings.img-size-m }}rem;
-           padding: {{ section.settings.border-size-m }}px;
-       } 
-       .main-cm-32-d9 .title-d9 {
-           font-size: {{ section.settings.h-font-m }}px !important;
-           font-weight: {% if section.settings.h-weight-m == 'light-m' %}light {% else %} bold {% endif %};
-       }
-       .title-cm-32-d9 h4{
-           font-size: {{ section.settings.t-size-m }}px !important;
-       }
+   @media(max-width: 768px){
+        .main-cm-32-d9 {
+            padding-top: {{ section.settings.p-top-m }}rem;
+            padding-bottom: {{ section.settings.p-bottom-m }}rem;
+        }
+       .img-cm-32-d9 {
+            width: {{ section.settings.img-size-m }}rem;
+            height: {{ section.settings.img-size-m }}rem;
+            padding: {{ section.settings.border-size-m }}px;
+        } 
+        .main-cm-32-d9 .title-d9 {
+            font-size: {{ section.settings.h-font-m }}px !important;
+            font-weight: {% if section.settings.h-weight-m == 'light-m' %}light {% else %} bold {% endif %};
+        }
+        .title-cm-32-d9 h4{
+            font-size: {{ section.settings.t-size-m }}px !important;
+        }
 
-       
-       {% if section.settings.sl-gd-view-m == 'slider-m' %}
+        
+        {% if section.settings.sl-gd-view-m == 'slider-m' %}
 
-           .slider-wrapper {
-               display: flex;
-               gap: {{ section.settings.gap-m }}px;
-               justify-content: flex-start;
-               scroll-snap-type: x mandatory;
-               overflow-x: scroll;
-               -webkit-overflow-scrolling: touch;
-               position: relative;
-               flex-wrap: nowrap;
-           }
-           .slider-nav {
-               position: absolute;
-               top: 50%;
-               transform: translateY(-50%);
-               background-color: rgba(0, 0, 0, 0.7);
-               color: white;
-               border: none;
-               width: 35px;
-               height: 35px;
-               cursor: pointer;
-               z-index: 10;
-               display: none; 
-               border-radius: 50%;
-               overflow: hidden;
-           }
+            .slider-wrapper {
+                display: flex;
+                gap: {{ section.settings.gap-m }}px;
+                justify-content: flex-start;
+                scroll-snap-type: x mandatory;
+                overflow-x: scroll;
+                -webkit-overflow-scrolling: touch;
+                position: relative;
+                flex-wrap: nowrap;
+            }
+            .slider-nav {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: rgba(0, 0, 0, 0.7);
+                color: white;
+                border: none;
+                width: 35px;
+                height: 35px;
+                cursor: pointer;
+                z-index: 10;
+                display: none; 
+                border-radius: 50%;
+                overflow: hidden;
+            }
 
-           .slider-nav svg{
-               width: 100%;
-               height: 100%;
-           }
-           .left-arrow {
-               left: 10px;
-           }
+            .slider-nav svg{
+                width: 100%;
+                height: 100%;
+            }
+            .left-arrow {
+                left: 10px;
+            }
 
-           .right-arrow {
-               right: 10px;
-           }
+            .right-arrow {
+                right: 10px;
+            }
 
-           {%  else %}
-           .row-cm-32-d9 {
-               display: flex;
-               gap: {{ section.settings.gap-m }}px;
-               justify-content: center;
-               overflow: hidden;
-               flex-wrap: wrap;
-           }
-           .slider-nav{
-               display: none;
-           }
-           {% endif %}
-
-  }
+            {%  else %}
+            .row-cm-32-d9 {
+                display: flex;
+                gap: {{ section.settings.gap-m }}px;
+                justify-content: center;
+                overflow: hidden;
+                flex-wrap: wrap;
+            }
+            .slider-nav{
+                display: none;
+            }
+            {% endif %}
 
    }
+
+    }
 
    </style>
 
@@ -353,269 +353,269 @@
 });
 
 
-                   </script>
+                    </script>
 
 {% schema %}
 {
-   "name": "Circle Menu",
-   "settings": [
-       {
-           "type": "header",
-           "content": "Dektop Configurations"
-       },
-       {
-           "type": "text",
-           "id": "title",
-           "label": "Heading",
-           "default": "Circle Menus"
-       },
-       {
-           "type": "range",
-           "id": "h-font",
-           "label": "Heading Size",
-           "max": 70,
-           "min": 10,
-           "default": 34,
-           "step": 1,
-           "unit": "px"
-       },
-       {
-           "type": "color",
-           "id": "h-color",
-           "label": "Heading Color",
-           "default": "#000"
-       },
-       {
-           "type": "select",
-           "id": "h-weight",
-           "label": "Heading Font Weight",
-           "default": "bold",
-           "options": [
-               {
-                   "value": "light",
-                   "label": "Light"
-               },
-               {
-                   "value": "bold",
-                   "label": "Bold"
-               }
-           ]
-       },
-       {
-           "type": "range",
-           "id": "p-top",
-           "label": "Padding Top",
-           "max": 30,
-           "min": 0,
-           "default": 3,
-           "step": 1,
-           "unit": "px"
-       }, 
-         {
-           "type": "range",
-           "id": "p-bottom",
-           "label": "Padding Bottom",
-           "max": 30,
-           "min": 0,
-           "default": 3,
-           "step": 1,
-           "unit": "rem"
-       },
-       {
-           "type": "header",
-           "content": "Menu Configurations"
-       },
-       {
-           "type": "range",
-           "id": "img-size",
-           "label": "Image Size",
-           "max": 60,
-           "min": 3,
-           "default": 15,
-           "step": 1,
-           "unit": "rem"
-       },
-       {
-           "type": "range",
-           "id": "t-size",
-           "label": "Title Size",
-           "max": 30,
-           "min": 10,
-           "default": 20,
-           "step": 1,
-           "unit": "px"
-       },
-       {
-           "type": "color",
-           "id": "t-color",
-           "label": "Title Color",
-           "default": "#000"
-       },
-       {
-           "type": "range",
-           "id": "gap-d",
-           "label": "Gap",
-           "max": 100,
-           "min": 0,
-           "default": 30,
-           "step": 1,
-           "unit": "px"
-       },
-       {
-           "type": "range",
-           "id": "border-size",
-           "label": "Border Size",
-           "max": 20,
-           "min": 0,
-           "default": 5,
-           "step": 1,
-           "unit": "px"
-       },
-       {
-           "type": "checkbox",
-           "id": "menu-hover",
-           "label": "Enable Hover Effect",
-           "default": true
-       },
-       
-       {
-           "type": "color_background",
-           "id": "border-color",
-           "label": "Border Color",
-           "default": "linear-gradient(red, yellow, orange)"
-       },
-       {
-           "type": "header",
-           "content": "Slider Configurations"
-       },
-       {
-           "type": "select",
-           "label": "Slider or Grid View",
-           "id": "sl-gd-view",
-           "default": "slider",
-           "options": [
-               {
-                   "label": "Slider",
-                   "value": "slider"
-               },
-               {
-                   "label": "Grid",
-                   "value": "grid"
-               }
-               
-           ]
-       },
+    "name": "Circle Menu",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Dektop Configurations"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Circle Menus"
+        },
+        {
+            "type": "range",
+            "id": "h-font",
+            "label": "Heading Size",
+            "max": 70,
+            "min": 10,
+            "default": 34,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "color",
+            "id": "h-color",
+            "label": "Heading Color",
+            "default": "#000"
+        },
+        {
+            "type": "select",
+            "id": "h-weight",
+            "label": "Heading Font Weight",
+            "default": "bold",
+            "options": [
+                {
+                    "value": "light",
+                    "label": "Light"
+                },
+                {
+                    "value": "bold",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "range",
+            "id": "p-top",
+            "label": "Padding Top",
+            "max": 30,
+            "min": 0,
+            "default": 3,
+            "step": 1,
+            "unit": "px"
+        }, 
+          {
+            "type": "range",
+            "id": "p-bottom",
+            "label": "Padding Bottom",
+            "max": 30,
+            "min": 0,
+            "default": 3,
+            "step": 1,
+            "unit": "rem"
+        },
+        {
+            "type": "header",
+            "content": "Menu Configurations"
+        },
+        {
+            "type": "range",
+            "id": "img-size",
+            "label": "Image Size",
+            "max": 60,
+            "min": 3,
+            "default": 15,
+            "step": 1,
+            "unit": "rem"
+        },
+        {
+            "type": "range",
+            "id": "t-size",
+            "label": "Title Size",
+            "max": 30,
+            "min": 10,
+            "default": 20,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "color",
+            "id": "t-color",
+            "label": "Title Color",
+            "default": "#000"
+        },
+        {
+            "type": "range",
+            "id": "gap-d",
+            "label": "Gap",
+            "max": 100,
+            "min": 0,
+            "default": 30,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "border-size",
+            "label": "Border Size",
+            "max": 20,
+            "min": 0,
+            "default": 5,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "checkbox",
+            "id": "menu-hover",
+            "label": "Enable Hover Effect",
+            "default": true
+        },
+        
+        {
+            "type": "color_background",
+            "id": "border-color",
+            "label": "Border Color",
+            "default": "linear-gradient(red, yellow, orange)"
+        },
+        {
+            "type": "header",
+            "content": "Slider Configurations"
+        },
+        {
+            "type": "select",
+            "label": "Slider or Grid View",
+            "id": "sl-gd-view",
+            "default": "slider",
+            "options": [
+                {
+                    "label": "Slider",
+                    "value": "slider"
+                },
+                {
+                    "label": "Grid",
+                    "value": "grid"
+                }
+                
+            ]
+        },
 
 
 
-       {
-           "type": "header",
-           "content": "Mobile Configurations"
-       },
-       {
-           "type": "range",
-           "id": "h-font-m",
-           "label": "Heading Size",
-           "max": 70,
-           "min": 10,
-           "default": 34,
-           "step": 1,
-           "unit": "px"
-       },
-       {
-           "type": "select",
-           "id": "h-weight-m",
-           "label": "Heading Font Weight",
-           "default": "light-m",
-           "options": [
-               {
-                   "value": "light-m",
-                   "label": "Light"
-               },
-               {
-                   "value": "bold-m",
-                   "label": "Bold"
-               }
-           ]
-       },
-       {
-           "type": "range",
-           "id": "p-top-m",
-           "label": "Padding Top",
-           "max": 30,
-           "min": 0,
-           "default": 3,
-           "step": 1,
-           "unit": "px"
-       }, 
-         {
-           "type": "range",
-           "id": "p-bottom-m",
-           "label": "Padding Bottom",
-           "max": 30,
-           "min": 0,
-           "default": 3,
-           "step": 1,
-           "unit": "rem"
-       },
+        {
+            "type": "header",
+            "content": "Mobile Configurations"
+        },
+        {
+            "type": "range",
+            "id": "h-font-m",
+            "label": "Heading Size",
+            "max": 70,
+            "min": 10,
+            "default": 34,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "select",
+            "id": "h-weight-m",
+            "label": "Heading Font Weight",
+            "default": "light-m",
+            "options": [
+                {
+                    "value": "light-m",
+                    "label": "Light"
+                },
+                {
+                    "value": "bold-m",
+                    "label": "Bold"
+                }
+            ]
+        },
+        {
+            "type": "range",
+            "id": "p-top-m",
+            "label": "Padding Top",
+            "max": 30,
+            "min": 0,
+            "default": 3,
+            "step": 1,
+            "unit": "px"
+        }, 
+          {
+            "type": "range",
+            "id": "p-bottom-m",
+            "label": "Padding Bottom",
+            "max": 30,
+            "min": 0,
+            "default": 3,
+            "step": 1,
+            "unit": "rem"
+        },
 
-       {
-           "type": "range",
-           "id": "img-size-m",
-           "label": "Image Size",
-           "max": 60,
-           "min": 3,
-           "default": 15,
-           "step": 1,
-           "unit": "rem"
-       },
-       {
-           "type": "range",
-           "id": "t-size-m",
-           "label": "Title Size",
-           "max": 30,
-           "min": 10,
-           "default": 20,
-           "step": 1,
-           "unit": "px"
-       },
-       {
-           "type": "range",
-           "id": "gap-m",
-           "label": "Gap",
-           "max": 100,
-           "min": 0,
-           "default": 30,
-           "step": 1,
-           "unit": "px"
-       },
-       {
-           "type": "range",
-           "id": "border-size-m",
-           "label": "Border Size",
-           "max": 20,
-           "min": 0,
-           "default": 5,
-           "step": 1,
-           "unit": "px"
-       },
-       {
-           "type": "select",
-           "label": "Slider or Grid View",
-           "id": "sl-gd-view-m",
-           "default": "slider-m",
-           "options": [
-               {
-                   "label": "Slider",
-                   "value": "slider-m"
-               },
-               {
-                   "label": "Grid",
-                   "value": "grid-m"
-               }
-               
-           ]
-       }
+        {
+            "type": "range",
+            "id": "img-size-m",
+            "label": "Image Size",
+            "max": 60,
+            "min": 3,
+            "default": 15,
+            "step": 1,
+            "unit": "rem"
+        },
+        {
+            "type": "range",
+            "id": "t-size-m",
+            "label": "Title Size",
+            "max": 30,
+            "min": 10,
+            "default": 20,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "gap-m",
+            "label": "Gap",
+            "max": 100,
+            "min": 0,
+            "default": 30,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "border-size-m",
+            "label": "Border Size",
+            "max": 20,
+            "min": 0,
+            "default": 5,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "select",
+            "label": "Slider or Grid View",
+            "id": "sl-gd-view-m",
+            "default": "slider-m",
+            "options": [
+                {
+                    "label": "Slider",
+                    "value": "slider-m"
+                },
+                {
+                    "label": "Grid",
+                    "value": "grid-m"
+                }
+                
+            ]
+        }
 
 
 
