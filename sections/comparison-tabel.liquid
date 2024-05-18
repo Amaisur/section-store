@@ -110,10 +110,10 @@
                     </div>
                     {% else %}
                     <div class="yes-no-col">
-                        {% if section.settings.yes-image %}
-                            <img src="{{ section.settings.yes-image |  image_url: width:300, height: 300  }}" alt="">
+                        {% if section.settings.no-image %}
+                            <img src="{{ section.settings.no-image |  image_url: width:300, height: 300  }}" alt="">
                             {%  else %}
-                            Yes
+                            No
                             {% endif %}
                     </div>
                     {% endif %}
