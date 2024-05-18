@@ -73,8 +73,7 @@
                     <div class="yes-no-col logo-col">
                         {% if section.settings.our-image != blank %}
                         <img src="{{ section.settings.our-image |  image_url: width:300, height: 300  }}" alt="Ours">
-                        {% endif %}
-                        {% if section.settings.our-image == blank %}
+                            {% else %}
                         <h4>{{ section.settings.our-text }}</h4>
                         {% endif %}
                     </div>
