@@ -117,9 +117,21 @@
                     {% for block in section.blocks %}
                     {% if block.type == 'block' %}
                     {% if block.settings.yes-no-button-others == 'yes' %}
-                    <div class="yes-no-col">Yes</div>
+                    <div class="yes-no-col">
+                        {% if section.settings.yes-image %}
+                        <img src="{{ section.settings.yes-image |  image_url: width:300, height: 300  }}" alt="">
+                        {%  else %}
+                        Yes
+                        {% endif %}
+                    </div>
                     {% else %}
-                    <div class="yes-no-col">No</div>
+                    <div class="yes-no-col">
+                        {% if section.settings.no-image %}
+                            <img src="{{ section.settings.no-image |  image_url: width:300, height: 300  }}" alt="">
+                            {%  else %}
+                            No
+                            {% endif %}
+                    </div>
                     {% endif %}
                     {% endif %}
                     {% endfor %}
@@ -157,6 +169,16 @@
 "id": "other-text",
 "label": "Others Text",
 "default": "Others"
+},
+{
+"type": "image_picker",
+"id": "yes-image",
+"label": "Yes Image"
+},
+{
+"type": "image_picker",
+"id": "no-image",
+"label": "No Image"
 }
 
 ],
