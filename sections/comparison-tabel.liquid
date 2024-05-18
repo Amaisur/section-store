@@ -71,7 +71,7 @@
             <div class="col-ct-34-d9 yes-no-ct_d9">
                 <div class="mini-col-ct_34_d9">
                     <div class="yes-no-col logo-col">
-                        {% if section.settings.our-image != blank %}
+                        {% if section.settings.our-image %}
                         <img src="{{ section.settings.our-image |  image_url: width:300, height: 300  }}" alt="">
                             {% else %}
                         <h4>{{ section.settings.our-text }}</h4>
