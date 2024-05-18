@@ -425,6 +425,7 @@
         "block_3bNyYq": {
           "type": "block",
           "settings": {
+            "content-img": "shopify:\/\/shop_images\/Ricecarrot-Face-Mask.webp",
             "content-text": "NATIVE SHOPIFY PAGE BUILDER",
             "yes-no-button-our": "yes",
             "yes-no-button-others": "no"
