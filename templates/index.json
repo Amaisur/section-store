@@ -434,6 +434,7 @@
         "block_h3KUQw": {
           "type": "block",
           "settings": {
+            "content-img": "shopify:\/\/shop_images\/LunarNewYearStickers2023.webp",
             "content-text": "NATIVE SHOPIFY PAGE BUILDER",
             "yes-no-button-our": "yes",
             "yes-no-button-others": "no"
@@ -442,6 +443,7 @@
         "block_iXYDHQ": {
           "type": "block",
           "settings": {
+            "content-img": "shopify:\/\/shop_images\/RicemousseFaceMask_e2a98b36-f372-4bec-a940-893ff75b707f.webp",
             "content-text": "NATIVE SHOPIFY PAGE BUILDER",
             "yes-no-button-our": "yes",
             "yes-no-button-others": "no"
@@ -450,6 +452,7 @@
         "block_wt4wcW": {
           "type": "block",
           "settings": {
+            "content-img": "shopify:\/\/shop_images\/Kraft-Paper-Tape.webp",
             "content-text": "NATIVE SHOPIFY PAGE BUILDER",
             "yes-no-button-our": "yes",
             "yes-no-button-others": "no"
