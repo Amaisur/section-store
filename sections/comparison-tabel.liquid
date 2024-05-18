@@ -27,11 +27,15 @@
     .content-ct_34_d9,
     .yes-no-col {
         height: calc(60px + 16px);
-        border: 1px solid;
+        border-bottom: 2px solid rgba(0, 0, 0, .3);
         overflow: hidden;
         display: flex;
         align-items: center;
         padding: 16px;
+    }
+    .content-ct_34_d9:nth-last-child(),
+    .yes-no-col:nth-last-child(){
+        border: none;
     }
     .yes-no-col {
         justify-content: center;
