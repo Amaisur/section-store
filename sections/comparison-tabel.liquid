@@ -1,193 +1,200 @@
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
 
-        <style>
-            *{
-                padding: 0;
-                margin: 0;
-                box-sizing: border-box;
-            }
-            .main-ct_34_d9{
-                width: 100%;
-                padding: 50px 0;
-                background: #E1E1E1;
-            }
-            .inner-ct_34_d9{
-                width: 95%;
-                max-width: 1440px;
-                margin: 0 auto;
-            }
-            .row-ct_34_d9{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 20px;
-            }
-            .content-ct_34_d9,.yes-no-col{
-                height: 60px;
-                border: 1px solid;
-            }
-            .yes-no-ct_d9{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .first-col-ct{
-                visibility: hidden;
-            }
-            .logo-col img{
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-            }
-        </style>
-        
-        
-        <div class="main-ct_34_d9">
-            <div class="inner-ct_34_d9">
-                <div class="row-ct_34_d9">
-                    <div class="col-ct_34_d9">
-                        <div class="content-ct_34_d9 first-col-ct">
-                            <div class="content-img-ct_34_d9">
-                                <img src="" alt="">
-                            </div>
-                            <h4>.</h4>
-                        </div>
-                        {% for block in section.blocks %}
-                            {% if block.type == 'block' %}
-                        <div class="content-ct_34_d9">
-                            <div class="content-img-ct_34_d9">
-                                <img src="" alt="">
-                            </div>
-                            <h4>{{ block.settings.content-text }}</h4>
-                        </div>
+    .main-ct_34_d9 {
+        width: 100%;
+        padding: 50px 0;
+        background: #E1E1E1;
+    }
+
+    .inner-ct_34_d9 {
+        width: 95%;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    .row-ct_34_d9 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .content-ct_34_d9,
+    .yes-no-col {
+        height: 60px;
+        border: 1px solid;
+    }
+
+    .yes-no-ct_d9 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .first-col-ct {
+        visibility: hidden;
+    }
+
+    .logo-col img {
+        width: 80px;
+        object-fit: contain;
+    }
+</style>
+
+
+<div class="main-ct_34_d9">
+    <div class="inner-ct_34_d9">
+        <div class="row-ct_34_d9">
+            <div class="col-ct_34_d9">
+                <div class="content-ct_34_d9 first-col-ct">
+                    <div class="content-img-ct_34_d9">
+                        <img src="" alt="">
+                    </div>
+                    <h4>.</h4>
+                </div>
+                {% for block in section.blocks %}
+                {% if block.type == 'block' %}
+                <div class="content-ct_34_d9">
+                    <div class="content-img-ct_34_d9">
+                        <img src="" alt="">
+                    </div>
+                    <h4>{{ block.settings.content-text }}</h4>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-ct-34-d9 yes-no-ct_d9">
+                <div class="mini-col-ct_34_d9">
+                    <div class="yes-no-col logo-col">
+                        {% if section.settings.our-image != blank %}
+                        <img src="{{ section.settings.our-image |  image_url: width:300, height: 300  }}" alt="Ours">
                         {% endif %}
-                        {% endfor %}
+                        {% if section.settings.our-image == blank %}
+                        <h4>{{ section.settings.our-text }}</h4>
+                        {% endif %}
                     </div>
-                    <div class="col-ct-34-d9 yes-no-ct_d9">
-                        <div class="mini-col-ct_34_d9">
-                            <div class="yes-no-col logo-col">
-                                {% if section.settings.our-image != blank %}
-                                <img src="{{ section.settings.our-image |  image_url: width:300, height: 300  }}" alt="Ours">
-                                {% endif %}
-                                {% if section.settings.our-image == blank %}
-                                <h4>{{ section.settings.our-text }}</h4>
-                                {% endif %}
-                            </div>
-                            {% for block in section.blocks %}
-                                {% if block.type == 'block' %}
-                            {% if block.settings.yes-no-button-our == 'yes' %}
-                            <div class="yes-no-col">Yes</div>
-                            {%  else %}
-                            <div class="yes-no-col">No</div>
-                            {% endif %}
-                            {% endif %}
-                            {% endfor %}
-                        </div>
-                        <div class="mini-col-ct_34_d9">
-                            <div class="yes-no-col logo-col">
-                                {% if section.settings.other-image != blank %}
-                                <img src="{{ section.settings.other-image |  image_url: width:300, height: 300  }}" alt="Others">
-                                {% endif %}
-                                {% if section.settings.other-image == blank %}
-                                <h4>{{ section.settings.other-text }}</h4>
-                                {% endif %}
-                            </div>
-                            {% for block in section.blocks %}
-                                {% if block.type == 'block' %}
-                                    {% if block.settings.yes-no-button-others == 'yes' %}
-                                        <div class="yes-no-col">Yes</div>
-                                        {%  else %}
-                                        <div class="yes-no-col">No</div>
-                                        {% endif %}
-                            {% endif %}
-                            {% endfor %}
-                        </div>
+                    {% for block in section.blocks %}
+                    {% if block.type == 'block' %}
+                    {% if block.settings.yes-no-button-our == 'yes' %}
+                    <div class="yes-no-col">Yes</div>
+                    {% else %}
+                    <div class="yes-no-col">No</div>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="mini-col-ct_34_d9">
+                    <div class="yes-no-col logo-col">
+                        {% if section.settings.other-image != blank %}
+                        <img src="{{ section.settings.other-image |  image_url: width:300, height: 300  }}"
+                            alt="Others">
+                        {% endif %}
+                        {% if section.settings.other-image == blank %}
+                        <h4>{{ section.settings.other-text }}</h4>
+                        {% endif %}
                     </div>
+                    {% for block in section.blocks %}
+                    {% if block.type == 'block' %}
+                    {% if block.settings.yes-no-button-others == 'yes' %}
+                    <div class="yes-no-col">Yes</div>
+                    {% else %}
+                    <div class="yes-no-col">No</div>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
 
 
 {% schema %}
 {
-    "name": "Comparison Tabel",
-    "settings": [
+"name": "Comparison Tabel",
+"settings": [
 
-        {
-            "type": "image_picker",
-            "id": "our-image",
-            "label": "Our Logo"
-        },
-        {
-            "type": "text",
-            "id": "our-text",
-            "label": "Our Text",
-            "default": "Ours"
-        },
-        {
-            "type": "image_picker",
-            "id": "other-image",
-            "label": "Others Logo"
-        },
-        {
-            "type": "text",
-            "id": "other-text",
-            "label": "Others Text",
-            "default": "Others"
-        }
-        
-        ],
-        "blocks": [
-            {
-                "name": "Block",
-                "type": "block",
-                "settings": [
-                    {
-                        "type": "text",
-                        "id": "content-text",
-                        "label": "Content",
-                        "default": "NATIVE SHOPIFY PAGE BUILDER"
-                    },
-                    {
-                        "type": "radio",
-                        "id": "yes-no-button-our",
-                        "label": "Choose Yes or No for Ours",
-                        "default": "yes",
-                        "options": [
-                            {
-                                "value": "yes",
-                                "label": "Yes"
-                            },
-                            {
-                                "value": "no",
-                                "label": "No"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "radio",
-                        "id": "yes-no-button-others",
-                        "label": "Choose Yes or No for Others",
-                        "default": "no",
-                        "options": [
-                            {
-                                "value": "yes",
-                                "label": "Yes"
-                            },
-                            {
-                                "value": "no",
-                                "label": "No"
-                            }
-                        ]
-                    }
+{
+"type": "image_picker",
+"id": "our-image",
+"label": "Our Logo"
+},
+{
+"type": "text",
+"id": "our-text",
+"label": "Our Text",
+"default": "Ours"
+},
+{
+"type": "image_picker",
+"id": "other-image",
+"label": "Others Logo"
+},
+{
+"type": "text",
+"id": "other-text",
+"label": "Others Text",
+"default": "Others"
+}
 
-                ]
-            }
-        ],
-        "presets": [
-            {
-                "name": "Comparison Tabel"
-            }
-        ]
+],
+"blocks": [
+{
+"name": "Block",
+"type": "block",
+"settings": [
+{
+"type": "text",
+"id": "content-text",
+"label": "Content",
+"default": "NATIVE SHOPIFY PAGE BUILDER"
+},
+{
+"type": "radio",
+"id": "yes-no-button-our",
+"label": "Choose Yes or No for Ours",
+"default": "yes",
+"options": [
+{
+"value": "yes",
+"label": "Yes"
+},
+{
+"value": "no",
+"label": "No"
+}
+]
+},
+{
+"type": "radio",
+"id": "yes-no-button-others",
+"label": "Choose Yes or No for Others",
+"default": "no",
+"options": [
+{
+"value": "yes",
+"label": "Yes"
+},
+{
+"value": "no",
+"label": "No"
+}
+]
+}
+
+]
+}
+],
+"presets": [
+{
+"name": "Comparison Tabel"
+}
+]
 }
 {% endschema %}
