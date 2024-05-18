@@ -425,25 +425,33 @@
         "block_3bNyYq": {
           "type": "block",
           "settings": {
-            "content-text": "NATIVE SHOPIFY PAGE BUILDER"
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
           }
         },
         "block_h3KUQw": {
           "type": "block",
           "settings": {
-            "content-text": "NATIVE SHOPIFY PAGE BUILDER"
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
           }
         },
         "block_iXYDHQ": {
           "type": "block",
           "settings": {
-            "content-text": "NATIVE SHOPIFY PAGE BUILDER"
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
           }
         },
         "block_wt4wcW": {
           "type": "block",
           "settings": {
-            "content-text": "NATIVE SHOPIFY PAGE BUILDER"
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
           }
         }
       },
@@ -454,6 +462,7 @@
         "block_wt4wcW"
       ],
       "settings": {
+        "our-image": "shopify:\/\/shop_images\/Self-loveStickers.webp",
         "our-text": "Ours",
         "other-text": "Others"
       }
