@@ -418,6 +418,11 @@
         "border-size-m": 5,
         "sl-gd-view-m": "slider-m"
       }
+    },
+    "comparison_tabel_mmWhpy": {
+      "type": "comparison-tabel",
+      "settings": {
+      }
     }
   },
   "order": [
@@ -428,6 +433,7 @@
     "details_slider_iWGfm4",
     "umair_V9hqMn",
     "trust_badges_GrcVBx",
-    "circle_menu_Dzrqrn"
+    "circle_menu_Dzrqrn",
+    "comparison_tabel_mmWhpy"
   ]
 }
