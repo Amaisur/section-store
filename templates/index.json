@@ -421,7 +421,41 @@
     },
     "comparison_tabel_mmWhpy": {
       "type": "comparison-tabel",
+      "blocks": {
+        "block_3bNyYq": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER"
+          }
+        },
+        "block_h3KUQw": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER"
+          }
+        },
+        "block_iXYDHQ": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER"
+          }
+        },
+        "block_wt4wcW": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER"
+          }
+        }
+      },
+      "block_order": [
+        "block_3bNyYq",
+        "block_h3KUQw",
+        "block_iXYDHQ",
+        "block_wt4wcW"
+      ],
       "settings": {
+        "our-text": "Ours",
+        "other-text": "Others"
       }
     }
   },
