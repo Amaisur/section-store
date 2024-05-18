@@ -127,7 +127,7 @@
                         {% if section.settings.yes-image %}
                             <img src="{{ section.settings.yes-image |  image_url: width:300, height: 300  }}" alt="">
                             {%  else %}
-                            Yes
+                            {{ section.settings.yes-text }}
                             {% endif %}
                     </div>
                     {% else %}
@@ -135,7 +135,7 @@
                         {% if section.settings.no-image %}
                             <img src="{{ section.settings.no-image |  image_url: width:300, height: 300  }}" alt="">
                             {%  else %}
-                            No
+                            {{ section.settings.no-text }}
                             {% endif %}
                     </div>
                     {% endif %}
@@ -159,7 +159,7 @@
                         {% if section.settings.yes-image %}
                             <img src="{{ section.settings.yes-image |  image_url: width:300, height: 300  }}" alt="">
                             {%  else %}
-                            Yes
+                            {{ section.settings.yes-text }}
                             {% endif %}
                     </div>
                     {% else %}
@@ -167,7 +167,7 @@
                         {% if section.settings.no-image %}
                             <img src="{{ section.settings.no-image |  image_url: width:300, height: 300  }}" alt="">
                             {%  else %}
-                            No
+                            {{ section.settings.no-text }}
                             {% endif %}
                     </div>
                     {% endif %}
@@ -209,9 +209,21 @@
 "default": "Others"
 },
 {
+"type": "text",
+"id": "yes-text",
+"label": "Yes Text",
+"default": "Yes"
+},
+{
 "type": "image_picker",
 "id": "yes-image",
 "label": "Yes Image"
+},
+{
+"type": "text",
+"id": "no-text",
+"label": "No Text",
+"default": "No"
 },
 {
 "type": "image_picker",
