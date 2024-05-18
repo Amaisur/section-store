@@ -119,7 +119,7 @@
                     {% if block.settings.yes-no-button-others == 'yes' %}
                     <div class="yes-no-col">
                         {% if section.settings.yes-image %}
-                            <img src="{{ section.settings.yes-image |  image_url: width:300, height: 300  }}" alt="">
+                            <img src="{{ section.settings.yes-image |  img_url: 'master'  }}" alt="">
                             {%  else %}
                             Yes
                             {% endif %}
