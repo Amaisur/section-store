@@ -30,7 +30,9 @@
                 align-items: center;
                 justify-content: center;
             }
-
+            .first-col-ct{
+                visibility: hidden;
+            }
         </style>
         
         
@@ -38,7 +40,7 @@
             <div class="inner-ct_34_d9">
                 <div class="row-ct_34_d9">
                     <div class="col-ct_34_d9">
-                        <div class="content-ct_34_d9">
+                        <div class="content-ct_34_d9 first-col-ct">
                             <div class="content-img-ct_34_d9">
                                 <img src="" alt="">
                             </div>
@@ -53,12 +55,18 @@
                     </div>
                     <div class="col-ct-34-d9 yes-no-ct_d9">
                         <div class="mini-col-ct_34_d9">
-                            <div class="yes-no-col logo-col">Our</div>
-                            <div class="yes-no-col">Yes</div>
+                            <div class="yes-no-col logo-col">
+                                <img src="{{ section.settings.our-image |  image_url: width:300, height: 300  }}" alt="Ours">
+                                <h4></h4>
+                            </div>
+                            <div class="yes-no-col">{{ section.settings.our-text }}</div>
                         </div>
                         <div class="mini-col-ct_34_d9">
-                            <div class="yes-no-col logo-col">Others</div>
-                            <div class="yes-no-col">No</div>
+                            <div class="yes-no-col logo-col">
+                                <img src="{{ section.settings.other-image |  image_url: width:300, height: 300  }}" alt="Others">
+                                <h4></h4>
+                            </div>
+                            <div class="yes-no-col"> {{ section.settings.other-text }} </div>
                         </div>
                     </div>
                 </div>
@@ -71,6 +79,29 @@
 {
     "name": "Comparison Tabel",
     "settings": [
+
+        {
+            "type": "image_picker",
+            "id": "our-image",
+            "label": "Our Logo"
+        },
+        {
+            "type": "text",
+            "id": "our-text",
+            "label": "Our Text",
+            "default": "Ours"
+        },
+        {
+            "type": "image_picker",
+            "id": "other-image",
+            "label": "Others Logo"
+        },
+        {
+            "type": "text",
+            "id": "other-text",
+            "label": "Others Text",
+            "default": "Others"
+        }
         
         ],
         "presets": [
