@@ -28,6 +28,10 @@
     .yes-no-col {
         height: 60px;
         border: 1px solid;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .yes-no-ct_d9 {
@@ -61,7 +65,7 @@
                 {% if block.type == 'block' %}
                 <div class="content-ct_34_d9">
                     <div class="content-img-ct_34_d9">
-                        <img src="" alt="">
+                        <img src="{{ block.settings.content-img |  image_url: width:300, height: 300  }}" alt="">
                     </div>
                     <h4>{{ block.settings.content-text }}</h4>
                 </div>
@@ -148,6 +152,11 @@
 "name": "Block",
 "type": "block",
 "settings": [
+{
+"type": "image_picker",
+"id": "content-img",
+"label": "Content Image"
+},
 {
 "type": "text",
 "id": "content-text",
