@@ -57,16 +57,16 @@
                         <div class="mini-col-ct_34_d9">
                             <div class="yes-no-col logo-col">
                                 <img src="{{ section.settings.our-image |  image_url: width:300, height: 300  }}" alt="Ours">
-                                <h4></h4>
+                                <h4>{{ section.settings.our-text }}</h4>
                             </div>
-                            <div class="yes-no-col">{{ section.settings.our-text }}</div>
+                            <div class="yes-no-col">Yes</div>
                         </div>
                         <div class="mini-col-ct_34_d9">
                             <div class="yes-no-col logo-col">
                                 <img src="{{ section.settings.other-image |  image_url: width:300, height: 300  }}" alt="Others">
-                                <h4></h4>
+                                <h4>{{ section.settings.other-text }}</h4>
                             </div>
-                            <div class="yes-no-col"> {{ section.settings.other-text }} </div>
+                            <div class="yes-no-col">No</div>
                         </div>
                     </div>
                 </div>
