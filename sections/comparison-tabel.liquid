@@ -56,15 +56,23 @@
                     <div class="col-ct-34-d9 yes-no-ct_d9">
                         <div class="mini-col-ct_34_d9">
                             <div class="yes-no-col logo-col">
+                                {% if section.settings.our-image != blank %}
                                 <img src="{{ section.settings.our-image |  image_url: width:300, height: 300  }}" alt="Ours">
+                                {% endif %}
+                                {% if section.settings.our-image == blank %}
                                 <h4>{{ section.settings.our-text }}</h4>
+                                {% endif %}
                             </div>
                             <div class="yes-no-col">Yes</div>
                         </div>
                         <div class="mini-col-ct_34_d9">
                             <div class="yes-no-col logo-col">
+                                {% if section.settings.other-image != blank %}
                                 <img src="{{ section.settings.other-image |  image_url: width:300, height: 300  }}" alt="Others">
+                                {% endif %}
+                                {% if section.settings.other-image == blank %}
                                 <h4>{{ section.settings.other-text }}</h4>
+                                {% endif %}
                             </div>
                             <div class="yes-no-col">No</div>
                         </div>
