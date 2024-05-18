@@ -405,8 +405,9 @@
         "t-color": "#000000",
         "gap-d": 30,
         "border-size": 5,
+        "menu-hover": true,
         "border-color": "linear-gradient(180deg, rgba(255, 0, 0, 1), rgba(255, 255, 0, 1) 50%, rgba(255, 165, 0, 1) 100%)",
-        "sl-gd-view": "slider",
+        "sl-gd-view": "grid",
         "h-font-m": 20,
         "h-weight-m": "light-m",
         "p-top-m": 3,
@@ -415,7 +416,7 @@
         "t-size-m": 18,
         "gap-m": 30,
         "border-size-m": 5,
-        "sl-gd-view-m": "grid-m"
+        "sl-gd-view-m": "slider-m"
       }
     }
   },
