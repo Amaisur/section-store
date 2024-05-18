@@ -468,7 +468,9 @@
       "settings": {
         "our-image": "shopify:\/\/shop_images\/Self-loveStickers.webp",
         "our-text": "Ours",
-        "other-text": "Others"
+        "other-text": "Others",
+        "yes-image": "shopify:\/\/shop_images\/8c9613ab55c80cd983b11c8e44fd9d5d.png",
+        "no-image": "shopify:\/\/shop_images\/831cd70c702b17a0b430f10b2790b6c6.png"
       }
     }
   },
