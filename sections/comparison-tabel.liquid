@@ -8,10 +8,12 @@
         --main-color-d9: {{ section.settings.main-color }};
         --text-color-d9: {{ section.settings.text-color }};
         --img-width-d-d9: {{ section.settings.img-size }}px;
+        --padding-top-bottom: {{ section.settings.padding-vertical }};
+        --padding-left-right: {{ section.settings.padding-horizontal }};
     }
     .main-ct_34_d9 {
         width: 100%;
-        padding: 50px 0;
+        padding: var(--padding-top-bottom) var(--padding-left-right);
         background: {{ section.settings.bg-color }};
     }
 
@@ -244,44 +246,41 @@
 {
 "name": "Comparison Tabel",
 "settings": [
+    {
+        "type": "header",
+        "content": "Desktop Configurations"
+    },
+
+
+    {
+"type": "range",
+"id": "padding-vertical",
+"label": "Padding Vertical",
+"min": 0,
+"max": 30,
+"step": 1,
+"default": 3,
+"unit": "rem"
+},
+{
+"type": "range",
+"id": "padding-horizontal",
+"label": "Padding Horizontal",
+"min": 0,
+"max": 30,
+"step": 1,
+"default": 0,
+"unit": "rem"
+},
+
 {
 "type": "text",
 "id": "heading",
 "label": "Heading",
 "default": "Why Choose Us"
 },
-{
-"type": "range",
-"id": "head-size",
-"label": "Heading Size",
-"min": 10,
-"max": 70,
-"default": 34,
-"unit": "px",
-"step": 1
-},
-{
-"type": "color",
-"id": "head-color",
-"label": "Heading Color",
-"default": "#222"
-},
-{
-"type": "select",
-"id": "head-weight",
-"label": "Heading Font Weight",
-"default": "bold",
-"options": [
-    {
-        "value": "light",
-        "label": "Light"
-    },
-    {
-        "value": "bold",
-        "label": "Bold"
-    }
-]
-},
+
+
 {
 "type": "range",
 "id": "img-size",
@@ -336,6 +335,20 @@
 "id": "no-image",
 "label": "No Image"
 },
+    {
+        "type": "header",
+        "content":"Font size Congigurations"
+    },
+{
+"type": "range",
+"id": "head-size",
+"label": "Heading Size",
+"min": 10,
+"max": 70,
+"default": 34,
+"unit": "px",
+"step": 1
+},
 {
 "type": "range",
 "id": "text-size",
@@ -347,6 +360,30 @@
 "unit": "px"
 },
 {
+"type": "select",
+"id": "head-weight",
+"label": "Heading Font Weight",
+"default": "bold",
+"options": [
+    {
+        "value": "light",
+        "label": "Light"
+    },
+    {
+        "value": "bold",
+        "label": "Bold"
+    }
+]
+},
+
+
+    {
+        "type": "header",
+        "content": "Color Configurations"
+    },
+
+
+{
 "type": "color",
 "id": "main-color",
 "label": "Main Color",
@@ -357,6 +394,12 @@
 "id": "bg-color",
 "label": "Background Color",
 "default": "#E1E1E1"
+},
+{
+"type": "color",
+"id": "head-color",
+"label": "Heading Color",
+"default": "#222"
 },
 {
 "type": "color",
