@@ -132,7 +132,14 @@
         }
         .main-ct_34_d9 {
         padding: var(--padding-top-bottom-m) var(--padding-left-right-m);
+        }
+        .main-ct_34_d9 .heading-ct_d9{
+            font-size: {{ section.settings.text-size-m }}px;
+        }
+        .content-ct_34_d9 h4, .other-yes-no, .other-yes-no h4, .our-col-d9{
+        font-size: {{ section.settings.text-size-m }}px;
     }
+        
     }
     @media(max-width: 530px){
         .content-img-ct_34_d9, .yes-no-col img, .logo-col img{
@@ -427,7 +434,7 @@
 "label": "Heading Size",
 "min": 10,
 "max": 70,
-"default": 34,
+"default": 22,
 "unit": "px",
 "step": 1
 },
@@ -438,7 +445,7 @@
 "min": 8,
 "max": 40,
 "step": 1,
-"default": 16,
+"default": 14,
 "unit": "px"
 },
 
