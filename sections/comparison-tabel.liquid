@@ -10,6 +10,9 @@
         --img-width-d-d9: {{ section.settings.img-size }}px;
         --padding-top-bottom: {{ section.settings.padding-vertical }}rem;
         --padding-left-right: {{ section.settings.padding-horizontal }}rem;
+        --img-width-m-d9: {{ section.settings.img-size-m }}px;
+        --padding-top-bottom-m: {{ section.settings.padding-vertical-m }}rem;
+        --padding-left-right-m: {{ section.settings.padding-horizontal-m }}rem;
     }
     .main-ct_34_d9 {
         width: 100%;
@@ -129,6 +132,9 @@
         }
     }
     @media(max-width: 530px){
+        .content-img-ct_34_d9, .yes-no-col img, .logo-col img{
+            width: var(--img-width-m-d9);
+        }
         .content-ct_34_d9,
     .yes-no-col{
         padding: 8px 0;
@@ -376,6 +382,65 @@
 ]
 },
 
+    {
+        "type": "header",
+        "content": "Mobile Configurations"
+    },
+
+    {
+"type": "range",
+"id": "padding-vertical-m",
+"label": "Padding Vertical",
+"min": 0,
+"max": 30,
+"step": 1,
+"default": 3,
+"unit": "rem"
+},
+{
+"type": "range",
+"id": "padding-horizontal-m",
+"label": "Padding Horizontal",
+"min": 0,
+"max": 30,
+"step": 1,
+"default": 0,
+"unit": "rem"
+},
+{
+"type": "range",
+"id": "img-size-m",
+"label": "Images Size",
+"min": 20,
+"max": 80,
+"step": 1,
+"default": 40,
+"unit": "px"
+},
+{
+        "type": "header",
+        "content":"Font size Congigurations Mobile"
+    },
+{
+"type": "range",
+"id": "head-size-m",
+"label": "Heading Size",
+"min": 10,
+"max": 70,
+"default": 34,
+"unit": "px",
+"step": 1
+},
+{
+"type": "range",
+"id": "text-size-m",
+"label": "Text Size",
+"min": 8,
+"max": 40,
+"step": 1,
+"default": 16,
+"unit": "px"
+},
 
     {
         "type": "header",
