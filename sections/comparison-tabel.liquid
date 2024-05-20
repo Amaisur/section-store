@@ -74,7 +74,7 @@
         object-fit: contain;
     }
     .our-col-d9{
-        border: 2px solid red;
+        border: 2px solid {{ section.settings.main-color }};
         border-radius: 20px;
         overflow: hidden;
     }
@@ -82,7 +82,7 @@
         border: none;
     }
     .our-col-d9 .logo-col{
-        background: red;
+        background: {{ section.settings.main-color }};
     }
     .mini-col-ct_34_d9{
         width: 120px;
@@ -274,6 +274,12 @@
 "type": "image_picker",
 "id": "no-image",
 "label": "No Image"
+},
+{
+"type": "color",
+"id": "main-color",
+"label": "Main Border Color",
+"default": "#E5E5E5"
 }
 
 ],
