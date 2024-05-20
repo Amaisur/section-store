@@ -499,7 +499,7 @@
           "type": "block",
           "settings": {
             "content-text": "NATIVE SHOPIFY PAGE BUILDER",
-            "yes-no-button-our": "yes",
+            "yes-no-button-our": "no",
             "yes-no-button-others": "no"
           }
         },
@@ -508,7 +508,7 @@
           "settings": {
             "content-text": "NATIVE SHOPIFY PAGE BUILDER",
             "yes-no-button-our": "yes",
-            "yes-no-button-others": "no"
+            "yes-no-button-others": "yes"
           }
         },
         "block_FtEgwV": {
