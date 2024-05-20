@@ -113,6 +113,7 @@
     }
     .content-ct_34_d9 h4, .other-yes-no{
         color: var(--text-color-d9);
+        font-size: {{ section.settings.text-size }}px;
     }
     @media(max-width: 768px){
         .col-ct_34_d9{
@@ -318,6 +319,16 @@
 "type": "image_picker",
 "id": "no-image",
 "label": "No Image"
+},
+{
+"type": "range",
+"id": "text-size",
+"label": "Text Size",
+"min": 8,
+"max": 40,
+"step": 1,
+"default": 16,
+"unit": "px"
 },
 {
 "type": "color",
