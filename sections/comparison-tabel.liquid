@@ -111,7 +111,7 @@
         width: 100%;
         overflow: hidden;
     }
-    .content-ct_34_d9 h4, .other-yes-no{
+    .content-ct_34_d9 h4, .other-yes-no, .other-yes-no h4{
         color: var(--text-color-d9);
         font-size: {{ section.settings.text-size }}px;
     }
@@ -195,7 +195,7 @@
                     {% endif %}
                     {% endfor %}
                 </div>
-                <div class="mini-col-ct_34_d9">
+                <div class="mini-col-ct_34_d9 other-yes-no">
                     <div class="yes-no-col logo-col">
                         {% if section.settings.other-image != blank %}
                         <img src="{{ section.settings.other-image |  image_url: width:300, height: 300  }}"
