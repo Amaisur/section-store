@@ -6,7 +6,8 @@
     }
     :root{
         --main-color-d9: {{ section.settings.main-color }};
-        --text-color-d9: {{ section.settings.text-color }} ;
+        --text-color-d9: {{ section.settings.text-color }};
+        --img-width-d9: {{ section.settings.img-size }}px;
     }
     .main-ct_34_d9 {
         width: 100%;
@@ -57,7 +58,7 @@
     }
 
     .logo-col img {
-        width: 50px;
+        width: var(--img-width-d9);
         object-fit: contain;
     }
     .content-img-ct_34_d9 img{
@@ -66,13 +67,13 @@
         object-fit: contain;
     }
     .content-img-ct_34_d9{
-        width: 50px;
+        width: var(--img-width-d9);
         margin-right: 16px;
         overflow: hidden;
         display: flex;
     }
     .yes-no-col img{
-        width: 50px;
+        width: var(--img-width-d9);
         object-fit: contain;
     }
     .our-col-d9{
@@ -280,6 +281,16 @@
         "label": "Bold"
     }
 ]
+},
+{
+"type": "range",
+"id": "img-size",
+"label": "Images Size",
+"min": 20,
+"max": 80,
+"step": 1,
+"default": 50,
+"unit": "px"
 },
 {
 "type": "image_picker",
