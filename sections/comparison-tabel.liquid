@@ -4,7 +4,9 @@
         margin: 0;
         box-sizing: border-box;
     }
-
+    :root{
+        --main-color: {{ section.settings.main-color }};
+    }
     .main-ct_34_d9 {
         width: 100%;
         padding: 50px 0;
@@ -74,7 +76,7 @@
         object-fit: contain;
     }
     .our-col-d9{
-        border: 2px solid {{ section.settings.main-color }};
+        border: 2px solid var(--main-color);
         border-radius: 20px;
         overflow: hidden;
     }
@@ -82,7 +84,7 @@
         border: none;
     }
     .our-col-d9 .logo-col{
-        background: {{ section.settings.main-color }};
+        background: var(--main-color);
     }
     .mini-col-ct_34_d9{
         width: 120px;
@@ -93,6 +95,9 @@
         color: {{ section.settings.head-color }};
         text-align: center;
         margin-bottom: 30px;
+    }
+    .our-yes-no{
+        color: var(--main-color);
     }
 </style>
 
@@ -132,7 +137,7 @@
                     {% for block in section.blocks %}
                     {% if block.type == 'block' %}
                     {% if block.settings.yes-no-button-our == 'yes' %}
-                    <div class="yes-no-col">
+                    <div class="yes-no-col our-yes-no">
                         {% if section.settings.yes-image %}
                             <img src="{{ section.settings.yes-image |  image_url: width:300, height: 300  }}" alt="">
                             {%  else %}
@@ -140,7 +145,7 @@
                             {% endif %}
                     </div>
                     {% else %}
-                    <div class="yes-no-col">
+                    <div class="yes-no-col our-yes-no">
                         {% if section.settings.no-image %}
                             <img src="{{ section.settings.no-image |  image_url: width:300, height: 300  }}" alt="">
                             {%  else %}
