@@ -552,10 +552,10 @@
         "head-size-m": 22,
         "text-size-m": 14,
         "main-color": "#3a8a98",
-        "container-color": "#fff",
-        "bg-color": "#E1E1E1",
-        "head-color": "#222",
-        "text-color": "#363636"
+        "container-color": "#a296a5",
+        "bg-color": "#090101",
+        "head-color": "#3a8a98",
+        "text-color": "#fff8f8"
       }
     }
   },
