@@ -1,10 +1,10 @@
 <style>
-    * {
+   #shopify-section-{{ section.id }} * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
     }
-    :root{
+    #shopify-section-{{ section.id }} :root{
         --main-color-d9: {{ section.settings.main-color }};
         --text-color-d9: {{ section.settings.text-color }};
         --img-width-d-d9: {{ section.settings.img-size }}px;
@@ -14,25 +14,25 @@
         --padding-top-bottom-m: {{ section.settings.padding-vertical-m }}rem;
         --padding-left-right-m: {{ section.settings.padding-horizontal-m }}rem;
     }
-    .main-ct_34_d9 {
+    #shopify-section-{{ section.id }} .main-ct_34_d9 {
         width: 100%;
         padding: var(--padding-top-bottom) var(--padding-left-right);
         background: {{ section.settings.bg-color }};
     }
 
-    .inner-ct_34_d9 {
+    #shopify-section-{{ section.id }} .inner-ct_34_d9 {
         width: 95%;
         max-width: 1440px;
         margin: 0 auto;
     }
 
-    .row-ct_34_d9 {
+    #shopify-section-{{ section.id }} .row-ct_34_d9 {
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .content-ct_34_d9,
+    #shopify-section-{{ section.id }} .content-ct_34_d9,
     .yes-no-col {
         height: calc(70px + 16px);
         border-bottom: 1px solid rgba(0, 0, 0, .3);
@@ -41,121 +41,121 @@
         align-items: center;
         padding: 16px;
     }
-    .content-ct_34_d9:first-child,
+    #shopify-section-{{ section.id }} .content-ct_34_d9:first-child,
 .content-ct_34_d9:last-child,
 .yes-no-col:first-child,
 .yes-no-col:last-child {
     border: none;
 }
 
-    .yes-no-col {
+#shopify-section-{{ section.id }} .yes-no-col {
         justify-content: center;
     }
-    .yes-no-ct_d9 {
+    #shopify-section-{{ section.id }} .yes-no-ct_d9 {
         display: flex;
         align-items: center;
         justify-content: center;
         min-width: 30%;
     }
 
-    .first-col-ct {
+    #shopify-section-{{ section.id }} .first-col-ct {
         visibility: hidden;
     }
 
-    .logo-col img {
+    #shopify-section-{{ section.id }} .logo-col img {
         width: var(--img-width-d-d9);
         object-fit: contain;
     }
-    .content-img-ct_34_d9 img{
+    #shopify-section-{{ section.id }} .content-img-ct_34_d9 img{
         width: 100%;
         height: 100%;
         object-fit: contain;
     }
-    .content-img-ct_34_d9{
+    #shopify-section-{{ section.id }} .content-img-ct_34_d9{
         width: var(--img-width-d-d9);
         margin-right: 16px;
         overflow: hidden;
         display: flex;
     }
-    .yes-no-col img{
+    #shopify-section-{{ section.id }} .yes-no-col img{
         width: var(--img-width-d-d9);
         object-fit: contain;
     }
-    .our-col-d9{
+    #shopify-section-{{ section.id }} .our-col-d9{
         border: 2px solid var(--main-color-d9);
         border-radius: 20px;
         overflow: hidden;
     }
-    .our-col-d9 .yes-no-col{
+    #shopify-section-{{ section.id }} .our-col-d9 .yes-no-col{
         border: none;
     }
-    .our-col-d9 .logo-col{
+    #shopify-section-{{ section.id }} .our-col-d9 .logo-col{
         background: var(--main-color-d9);
     }
-    .mini-col-ct_34_d9{
+    #shopify-section-{{ section.id }} .mini-col-ct_34_d9{
         width: 100%;
         min-width: 120px;
     }
-    .main-ct_34_d9 .heading-ct_d9{
+    #shopify-section-{{ section.id }} .main-ct_34_d9 .heading-ct_d9{
         font-weight: {% if section.settings.head-weight == 'light' %}light {%  else %} bold {% endif %};
         font-size: {{ section.settings.head-size }}px;
         color: {{ section.settings.head-color }};
         text-align: center;
         margin-bottom: 30px;
     }
-    .our-yes-no{
+    #shopify-section-{{ section.id }} .our-yes-no{
         color: var(--main-color-d9);
         background: {{ section.settings.container-color }};
     }
-    .col-ct_34_d9{
+    #shopify-section-{{ section.id }} .col-ct_34_d9{
         min-width: 40%;
         max-width: 70%;
         width: 50%;
     }
-    .content-ct_34_d9{
+    #shopify-section-{{ section.id }} .content-ct_34_d9{
         padding-right: 16px;
         width: 100%;
         overflow: hidden;
     }
-    .content-ct_34_d9 h4, .other-yes-no, .other-yes-no h4{
+    #shopify-section-{{ section.id }} .content-ct_34_d9 h4, .other-yes-no, .other-yes-no h4{
         color: var(--text-color-d9);
         font-size: {{ section.settings.text-size }}px;
         font-weight: 700;
     }
-    .our-col-d9{
+    #shopify-section-{{ section.id }} .our-col-d9{
         font-size: {{ section.settings.text-size }}px;
         font-weight: 700;
     }
     @media(max-width: 768px){
-        .col-ct_34_d9{
+        #shopify-section-{{ section.id }} .col-ct_34_d9{
             width: auto;
         }
-        .main-ct_34_d9 {
+        #shopify-section-{{ section.id }} .main-ct_34_d9 {
         padding: var(--padding-top-bottom-m) var(--padding-left-right-m);
         }
-        .main-ct_34_d9 .heading-ct_d9{
+        #shopify-section-{{ section.id }} .main-ct_34_d9 .heading-ct_d9{
             font-size: {{ section.settings.text-size-m }}px;
         }
-        .content-ct_34_d9 h4, .other-yes-no, .other-yes-no h4, .our-col-d9{
+        #shopify-section-{{ section.id }} .content-ct_34_d9 h4, .other-yes-no, .other-yes-no h4, .our-col-d9{
         font-size: {{ section.settings.text-size-m }}px;
     }
         
     }
     @media(max-width: 530px){
-        .content-img-ct_34_d9, .yes-no-col img, .logo-col img{
+        #shopify-section-{{ section.id }} .content-img-ct_34_d9, .yes-no-col img, .logo-col img{
             width: var(--img-width-m-d9);
         }
-        .content-ct_34_d9,
+        #shopify-section-{{ section.id }} .content-ct_34_d9,
     .yes-no-col{
         padding: 8px 0;
     }
-    .mini-col-ct_34_d9{
+    #shopify-section-{{ section.id }} .mini-col-ct_34_d9{
         min-width: auto;
     }
-    .content-img-ct_34_d9{
+    #shopify-section-{{ section.id }} .content-img-ct_34_d9{
         margin-right: 8px;
     }
-    .content-ct_34_d9{
+    #shopify-section-{{ section.id }} .content-ct_34_d9{
         padding-right: 8px;
     }
     }
