@@ -466,11 +466,96 @@
         "block_wt4wcW"
       ],
       "settings": {
+        "padding-vertical": 3,
+        "padding-horizontal": 0,
+        "heading": "Why Choose Us",
+        "img-size": 50,
         "our-image": "shopify:\/\/shop_images\/Self-loveStickers.webp",
         "our-text": "Ours",
         "other-text": "Others",
+        "yes-text": "Yes",
         "yes-image": "shopify:\/\/shop_images\/8c9613ab55c80cd983b11c8e44fd9d5d.png",
-        "no-image": "shopify:\/\/shop_images\/831cd70c702b17a0b430f10b2790b6c6.png"
+        "no-text": "No",
+        "no-image": "shopify:\/\/shop_images\/831cd70c702b17a0b430f10b2790b6c6.png",
+        "head-size": 34,
+        "text-size": 16,
+        "head-weight": "bold",
+        "padding-vertical-m": 3,
+        "padding-horizontal-m": 0,
+        "img-size-m": 40,
+        "head-size-m": 22,
+        "text-size-m": 14,
+        "main-color": "#983a3e",
+        "container-color": "#fff",
+        "bg-color": "#E1E1E1",
+        "head-color": "#222",
+        "text-color": "#363636"
+      }
+    },
+    "comparison_tabel_WGR3qb": {
+      "type": "comparison-tabel",
+      "blocks": {
+        "block_zecJWj": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
+          }
+        },
+        "block_YpyGpw": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
+          }
+        },
+        "block_FtEgwV": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
+          }
+        },
+        "block_KYCBjj": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
+          }
+        }
+      },
+      "block_order": [
+        "block_zecJWj",
+        "block_YpyGpw",
+        "block_FtEgwV",
+        "block_KYCBjj"
+      ],
+      "settings": {
+        "padding-vertical": 3,
+        "padding-horizontal": 0,
+        "heading": "Why Choose Us",
+        "img-size": 50,
+        "our-text": "Ours",
+        "other-text": "Others",
+        "yes-text": "Yes",
+        "no-text": "No",
+        "head-size": 34,
+        "text-size": 16,
+        "head-weight": "bold",
+        "padding-vertical-m": 3,
+        "padding-horizontal-m": 0,
+        "img-size-m": 40,
+        "head-size-m": 22,
+        "text-size-m": 14,
+        "main-color": "#3a8a98",
+        "container-color": "#fff",
+        "bg-color": "#E1E1E1",
+        "head-color": "#222",
+        "text-color": "#363636"
       }
     }
   },
@@ -483,6 +568,7 @@
     "umair_V9hqMn",
     "trust_badges_GrcVBx",
     "circle_menu_Dzrqrn",
-    "comparison_tabel_mmWhpy"
+    "comparison_tabel_mmWhpy",
+    "comparison_tabel_WGR3qb"
   ]
 }
