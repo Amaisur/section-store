@@ -138,6 +138,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap;
         gap: 30px;
         padding: 50px 0 30px;
     }
@@ -179,7 +180,10 @@
         }
         #shopify-section-{{ section.id }} .content-ct_34_d9 h4, .other-yes-no, .other-yes-no h4, .our-col-d9, .logo-col h4{
         font-size: {{ section.settings.text-size-m }}px;
-    }
+        }
+        #shopify-section-{{ section.id }} a.button-ct_d9{
+            width: 100%;
+        }
         
     }
     @media(max-width: 530px){
