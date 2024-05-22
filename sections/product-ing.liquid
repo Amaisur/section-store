@@ -122,6 +122,7 @@
             let startX = 0;
             let currentTranslate = 0;
             let prevTranslate = 0;
+            let isDragging = false;
             let animationID;
 
             function updateSlide(index) {
@@ -149,23 +150,27 @@
                 }
             }
 
-            function touchStart(index) {
+            function pointerStart(index) {
                 return function(event) {
-                    startX = event.touches[0].clientX;
+                    startX = event.clientX || event.touches[0].clientX;
                     currentIndex = index;
+                    isDragging = true;
                     animationID = requestAnimationFrame(animation);
                     slides.classList.add('grabbing');
                 }
             }
 
-            function touchMove(event) {
-                const currentPosition = event.touches[0].clientX;
-                const movedBy = currentPosition - startX;
-                currentTranslate = prevTranslate + (movedBy / container.clientWidth) * 100;
+            function pointerMove(event) {
+                if (isDragging) {
+                    const currentPosition = event.clientX || event.touches[0].clientX;
+                    const movedBy = currentPosition - startX;
+                    currentTranslate = prevTranslate + (movedBy / container.clientWidth) * 100;
+                }
             }
 
-            function touchEnd() {
+            function pointerEnd() {
                 cancelAnimationFrame(animationID);
+                isDragging = false;
                 slides.classList.remove('grabbing');
                 const movedBy = currentTranslate - prevTranslate;
                 if (movedBy < -15) {
@@ -179,7 +184,7 @@
 
             function animation() {
                 slides.style.transform = `translateX(${currentTranslate}%)`;
-                if (animationID) requestAnimationFrame(animation);
+                if (isDragging) requestAnimationFrame(animation);
             }
 
             pills.forEach((pill, index) => {
@@ -206,9 +211,14 @@
                 }
             });
 
-            slides.addEventListener('touchstart', touchStart(currentIndex));
-            slides.addEventListener('touchmove', touchMove);
-            slides.addEventListener('touchend', touchEnd);
+            slides.addEventListener('pointerdown', pointerStart(currentIndex));
+            slides.addEventListener('pointermove', pointerMove);
+            slides.addEventListener('pointerup', pointerEnd);
+            slides.addEventListener('pointerleave', pointerEnd);
+
+            slides.addEventListener('touchstart', pointerStart(currentIndex));
+            slides.addEventListener('touchmove', pointerMove);
+            slides.addEventListener('touchend', pointerEnd);
 
             updateSlide(currentIndex);
             updateArrows();
