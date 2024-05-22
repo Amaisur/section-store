@@ -1,10 +1,18 @@
 <style>
-body {
-    font-family: Arial, sans-serif;
+.pi-37-d9-main{
+    width: 100%;
+    background: #FCF8F5;
 }
-
+.pi-37-d9-inner{
+    max-width: 1140px;
+    width: 95%;
+    margin: 0 auto;
+}
 .pi-37-d9-container {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
 }
 
 .pi-37-d9-ingredients {
@@ -28,7 +36,7 @@ body {
 }
 
 .pi-37-d9-slider {
-    width: 50%;
+    width: 30%;
     overflow: hidden;
     position: relative;
 }
@@ -93,6 +101,8 @@ body {
 }
 
 </style>
+<div class="pi-37-d9-main">
+<div class="pi-37-d9-inner">
 <div class="pi-37-d9-container">
     <div class="pi-37-d9-ingredients">
         <h2>High quality ingredients</h2>
@@ -121,8 +131,8 @@ body {
         </div>
     </div>
 </div>
-
-
+</div>
+</div>
   <script>
 (function() {
     document.addEventListener('DOMContentLoaded', () => {
@@ -244,7 +254,7 @@ body {
 
 {% schema %}
 {
-  "name": "Slider Section",
+  "name": "Product Ingradiants",
   "settings": [],
   "blocks": [
     {
@@ -266,7 +276,7 @@ body {
   ],
   "presets": [
     {
-      "name": "Default",
+      "name": "Product Ingradiants",
       "category": "Custom"
     }
   ]
