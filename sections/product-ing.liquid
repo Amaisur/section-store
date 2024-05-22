@@ -107,64 +107,71 @@
 
 
   <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const pills = document.querySelectorAll('.pi-37-d9-pill');
-    const slides = document.querySelector('.pi-37-d9-slides');
-    const dots = document.querySelectorAll('.pi-37-d9-dot');
-    const leftArrow = document.querySelector('.pi-37-d9-arrow-left');
-    const rightArrow = document.querySelector('.pi-37-d9-arrow-right');
+(function() {
+    document.addEventListener('DOMContentLoaded', () => {
+        const containerSelector = '.pi-37-d9-container';
 
-    let currentIndex = 0;
+        document.querySelectorAll(containerSelector).forEach(container => {
+            const pills = container.querySelectorAll('.pi-37-d9-pill');
+            const slides = container.querySelector('.pi-37-d9-slides');
+            const dots = container.querySelectorAll('.pi-37-d9-dot');
+            const leftArrow = container.querySelector('.pi-37-d9-arrow-left');
+            const rightArrow = container.querySelector('.pi-37-d9-arrow-right');
 
-    function updateSlide(index) {
-        slides.style.transform = `translateX(-${index * 100}%)`;
-        dots.forEach(dot => dot.classList.remove('active'));
-        dots[index].classList.add('active');
-        currentIndex = index;
-        updateArrows();
-    }
+            let currentIndex = 0;
 
-    function updateArrows() {
-        if (currentIndex === 0) {
-            leftArrow.classList.add('not-available-d9');
-        } else {
-            leftArrow.classList.remove('not-available-d9');
-        }
-        if (currentIndex === pills.length - 1) {
-            rightArrow.classList.add('not-available-d9');
-        } else {
-            rightArrow.classList.remove('not-available-d9');
-        }
-    }
+            function updateSlide(index) {
+                slides.style.transform = `translateX(-${index * 100}%)`;
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+                pills.forEach(pill => pill.classList.remove('active-pill-d9'));
+                pills[index].classList.add('active-pill-d9');
+                currentIndex = index;
+                updateArrows();
+            }
 
-    pills.forEach((pill, index) => {
-        pill.addEventListener('click', () => {
-            updateSlide(index);
+            function updateArrows() {
+                if (currentIndex === 0) {
+                    leftArrow.classList.add('not-available-d9');
+                } else {
+                    leftArrow.classList.remove('not-available-d9');
+                }
+                if (currentIndex === pills.length - 1) {
+                    rightArrow.classList.add('not-available-d9');
+                } else {
+                    rightArrow.classList.remove('not-available-d9');
+                }
+            }
+
+            pills.forEach((pill, index) => {
+                pill.addEventListener('click', () => {
+                    updateSlide(index);
+                });
+            });
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    updateSlide(index);
+                });
+            });
+
+            leftArrow.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    updateSlide(currentIndex - 1);
+                }
+            });
+
+            rightArrow.addEventListener('click', () => {
+                if (currentIndex < pills.length - 1) {
+                    updateSlide(currentIndex + 1);
+                }
+            });
+
+            updateSlide(currentIndex);
+            updateArrows();
         });
     });
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            updateSlide(index);
-        });
-    });
-
-    leftArrow.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            updateSlide(currentIndex - 1);
-        }
-    });
-
-    rightArrow.addEventListener('click', () => {
-        if (currentIndex < pills.length - 1) {
-            updateSlide(currentIndex + 1);
-        }
-    });
-
-    updateSlide(currentIndex);
-    updateArrows();
-});
-
+})();
 
   </script>
 
