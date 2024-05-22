@@ -143,7 +143,7 @@
         padding: 50px 0 30px;
     }
     #shopify-section-{{ section.id }} a.button-ct_d9{
-        padding: 15px 40px;
+        padding: {{ section.settings.btn-padding-d }}px 40px;
         text-decoration: none;
         border: 2px solid var(--main-color-d9);
         border-radius: {{ section.settings.btn-border-d }}px;
@@ -183,6 +183,8 @@
         }
         #shopify-section-{{ section.id }} a.button-ct_d9{
             width: 100%;
+            padding: {{ section.settings.btn-padding-m }}px 0;
+            font-size: {{ section.settings.btn-size-m }}px;
         }
         
     }
@@ -377,6 +379,16 @@
     "label": "Button FontSize"
 },
 {
+    "type": "range",
+    "id": "btn-padding-d",
+    "max": 45,
+    "min": 0,
+    "step": 1,
+    "unit": "px",
+    "default": 15,
+    "label": "Button padding"
+},
+{
     "type": "checkbox",
     "id": "btn-font-weight",
     "label": "Button Bold",
@@ -510,10 +522,7 @@
     },
 
 
-    {
-        "type": "header",
-        "content":"Font size Congigurations"
-    },
+  
 {
 "type": "range",
 "id": "head-size",
@@ -585,6 +594,26 @@
 "step": 1,
 "default": 40,
 "unit": "px"
+},
+{
+    "type": "range",
+    "id": "btn-size-m",
+    "max": 45,
+    "min": 8,
+    "step": 1,
+    "unit": "px",
+    "default": 13,
+    "label": "Button FontSize"
+},
+{
+    "type": "range",
+    "id": "btn-padding-m",
+    "max": 45,
+    "min": 0,
+    "step": 1,
+    "unit": "px",
+    "default": 10,
+    "label": "Button padding"
 },
 {
         "type": "header",
