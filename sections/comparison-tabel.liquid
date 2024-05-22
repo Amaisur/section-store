@@ -145,8 +145,10 @@
         padding: 15px 40px;
         text-decoration: none;
         border: 2px solid var(--main-color-d9);
-        border-radius: 6px;
+        border-radius: {{ section.settings.btn-border-d }}px;
         text-align: center;
+        font-size: {{ section.settings.btn-size-d }}px;
+        font-weight: {% if section.settings.btn-font-weight %}bold{% endif %};
         transition: all .3s;
     }
     #shopify-section-{{ section.id }} .first-style-d9{
@@ -357,6 +359,32 @@
         "content": "Button Configurations"
 },
 {
+    "type": "range",
+    "id": "btn-size-d",
+    "max": 45,
+    "min": 8,
+    "step": 1,
+    "unit": "px",
+    "default": 20,
+    "label": "Button FontSize"
+},
+{
+    "type": "checkbox",
+    "id": "btn-font-weight",
+    "label": "Button Bold",
+    "default": true
+},
+{
+    "type": "range",
+    "id": "btn-border-d",
+    "max": 100,
+    "min": 0,
+    "step": 1,
+    "unit": "px",
+    "default": 6,
+    "label": "Button FontSize"
+},
+{
     "type": "select",
     "id": "btn-style-1",
     "label": "Button Style 1",
@@ -371,6 +399,19 @@
             "label": "Style 2"
         }
     ]  
+},
+
+
+{
+    "type": "text",
+    "id": "btn-label-1",
+    "label": "Button Label 1",
+    "default": "Our Story"
+},
+{
+    "type": "url",
+    "id": "btn-link-1",
+    "label": "Button url 1"
 },
 {
     "type": "select",
@@ -387,18 +428,6 @@
             "label": "Style 2"
         }
     ]  
-},
-
-{
-    "type": "text",
-    "id": "btn-label-1",
-    "label": "Button Label 1",
-    "default": "Our Story"
-},
-{
-    "type": "url",
-    "id": "btn-link-1",
-    "label": "Button url 1"
 },
 {
     "type": "text",
