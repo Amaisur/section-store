@@ -105,11 +105,13 @@
 <div class="pi-37-d9-inner">
 <div class="pi-37-d9-container">
     <div class="pi-37-d9-ingredients">
-        <h2>High quality ingredients</h2>
-        <p>We carefully selected plant-based ingredients to create the world's healthiest protein coffee that's low in sugar, high in protein, and tastes delicious.</p>
+        <h2> {{ section.settings.heading }} </h2>
+        {{ section.settings.subtext }}
         <div class="pi-37-d9-pills">
             {% for block in section.blocks %}
+                {% if block.settings.ingredient_name != blank %}
                 <button class="pi-37-d9-pill">{{ block.settings.ingredient_name }}</button>
+                {% endif %}
             {% endfor %}
         </div>
         <button class="pi-37-d9-preorder">PRE ORDER NOW</button>
@@ -117,7 +119,13 @@
     <div class="pi-37-d9-slider">
         <div class="pi-37-d9-slides">
             {% for block in section.blocks %}
-                <div class="pi-37-d9-slide">{{ block.settings.slide_content }}</div>
+                <div class="pi-37-d9-slide">
+                    <h2> {{ block.settings.ingredient_name }} </h2> 
+                    {{ block.settings.content-text }}   
+                    <div class="img-content-pi-37-d9">
+                        <img src="{{ block.settings.content-img |  img_url: 'medium' }}" alt="">
+                    </div>
+                </div>
             {% endfor %}
         </div>
         <div class="pi-37-d9-indicators">
@@ -255,21 +263,39 @@
 {% schema %}
 {
   "name": "Product Ingradiants",
-  "settings": [],
+  "settings": [
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "High quality ingredients"
+    },
+    {
+        "type": "richtext",
+        "id": "subtext",
+        "label": "Text",
+        "default": "<p>We carefully selected plant-based ingredients to create the world's healthiest protein coffee that's low in sugar, high in protein, and tastes delicious.</p>"
+    }
+  ],
   "blocks": [
     {
-      "type": "ingredient",
-      "name": "Ingredient",
+      "type": "slide",
+      "name": "Slide",
       "settings": [
         {
           "type": "text",
           "id": "ingredient_name",
-          "label": "Ingredient Name"
+          "label": "Heading"
         },
         {
-          "type": "textarea",
-          "id": "slide_content",
-          "label": "Slide Content"
+          "type": "richtext",
+          "id": "content-text",
+          "label": "Description"
+        },
+        {
+            "type": "image_picker",
+            "id": "content-img",
+            "label": "Upload Image"
         }
       ]
     }
