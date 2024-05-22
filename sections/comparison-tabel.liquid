@@ -305,8 +305,8 @@
         </div>
 
         <div class="button-ct_34_d9">
-            <a class="button-ct_d9 first-style-d9" href="{{ section.settings.btn-link-1 }}"> {{ section.settings.btn-label-1 }}</a>
-            <a class="button-ct_d9 second-style-d9" href="{{ section.settings.btn-link-2 }}"> {{ section.settings.btn-label-2 }} </a>
+            <a class="button-ct_d9 {% if section.settings.btn-style-1 == 'style-1' %}first-style-d9 {% else %}second-style-d9 {% endif %}" href="{{ section.settings.btn-link-1 }}"> {{ section.settings.btn-label-1 }}</a>
+                <a class="button-ct_d9 {% if section.settings.btn-style-2 == 'style-3' %}first-style-d9 {% else %}second-style-d9 {% endif %}" href="{{ section.settings.btn-link-2 }}"> {{ section.settings.btn-label-2 }} </a>
         </div>
 
 
@@ -353,26 +353,63 @@
 "default": "Why Choose Us"
 },
 {
+        "type": "header",
+        "content": "Button Configurations"
+},
+{
+    "type": "select",
+    "id": "btn-style-1",
+    "label": "Button Style 1",
+    "default": "style-1",
+    "options": [
+        {
+            "value": "style-1",
+            "label": "Style 1"
+        },
+        {
+            "value": "style-2",
+            "label": "Style 2"
+        }
+    ]  
+},
+{
+    "type": "select",
+    "id": "btn-style-2",
+    "label": "Button Style 2",
+    "default": "style-3",
+    "options": [
+        {
+            "value": "style-3",
+            "label": "Style 1"
+        },
+        {
+            "value": "style-3",
+            "label": "Style 2"
+        }
+    ]  
+},
+
+{
     "type": "text",
     "id": "btn-label-1",
-    "label": "Button Label",
+    "label": "Button Label 1",
     "default": "Our Story"
 },
 {
     "type": "url",
     "id": "btn-link-1",
-    "label": "Button url"
+    "label": "Button url 1"
 },
 {
     "type": "text",
     "id": "btn-label-2",
-    "label": "Button Label",
+    "label": "Button Label 2",
     "default": "Explore More Products"
 },
 {
     "type": "url",
     "id": "btn-link-2",
-    "label": "Button url"
+    "label": "Button url 2"
 },
 
 {
