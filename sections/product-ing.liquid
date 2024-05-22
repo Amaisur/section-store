@@ -1,0 +1,274 @@
+<style>
+body {
+    font-family: Arial, sans-serif;
+}
+
+.pi-37-d9-container {
+    display: flex;
+}
+
+.pi-37-d9-ingredients {
+    width: 50%;
+    padding: 20px;
+}
+
+.pi-37-d9-pills button {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.pi-37-d9-pills button.active-pill-d9 {
+    background: #717171;
+    color: white;
+}
+
+.pi-37-d9-slider {
+    width: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+.pi-37-d9-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.pi-37-d9-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    border-left: 1px solid #ccc;
+}
+
+.pi-37-d9-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pi-37-d9-dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.pi-37-d9-dot.active {
+    background-color: #717171;
+}
+
+.pi-37-d9-arrows {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.pi-37-d9-arrow {
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.pi-37-d9-arrow.not-available-d9 {
+    background: rgba(0, 0, 0, 0.2);
+    cursor: not-allowed;
+}
+
+.pi-37-d9-slides.grabbing {
+    cursor: grabbing;
+}
+
+</style>
+<div class="pi-37-d9-container">
+    <div class="pi-37-d9-ingredients">
+        <h2>High quality ingredients</h2>
+        <p>We carefully selected plant-based ingredients to create the world's healthiest protein coffee that's low in sugar, high in protein, and tastes delicious.</p>
+        <div class="pi-37-d9-pills">
+            {% for block in section.blocks %}
+                <button class="pi-37-d9-pill">{{ block.settings.ingredient_name }}</button>
+            {% endfor %}
+        </div>
+        <button class="pi-37-d9-preorder">PRE ORDER NOW</button>
+    </div>
+    <div class="pi-37-d9-slider">
+        <div class="pi-37-d9-slides">
+            {% for block in section.blocks %}
+                <div class="pi-37-d9-slide">{{ block.settings.slide_content }}</div>
+            {% endfor %}
+        </div>
+        <div class="pi-37-d9-indicators">
+            {% for block in section.blocks %}
+                <span class="pi-37-d9-dot"></span>
+            {% endfor %}
+        </div>
+        <div class="pi-37-d9-arrows">
+            <button class="pi-37-d9-arrow pi-37-d9-arrow-left">&lt;</button>
+            <button class="pi-37-d9-arrow pi-37-d9-arrow-right">&gt;</button>
+        </div>
+    </div>
+</div>
+
+
+  <script>
+(function() {
+    document.addEventListener('DOMContentLoaded', () => {
+        const containerSelector = '.pi-37-d9-container';
+
+        document.querySelectorAll(containerSelector).forEach(container => {
+            const pills = container.querySelectorAll('.pi-37-d9-pill');
+            const slides = container.querySelector('.pi-37-d9-slides');
+            const dots = container.querySelectorAll('.pi-37-d9-dot');
+            const leftArrow = container.querySelector('.pi-37-d9-arrow-left');
+            const rightArrow = container.querySelector('.pi-37-d9-arrow-right');
+
+            let currentIndex = 0;
+            let startX = 0;
+            let currentTranslate = 0;
+            let prevTranslate = 0;
+            let isDragging = false;
+            let animationID;
+
+            function updateSlide(index) {
+                currentTranslate = index * -100;
+                prevTranslate = currentTranslate;
+                slides.style.transform = `translateX(${currentTranslate}%)`;
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+                pills.forEach(pill => pill.classList.remove('active-pill-d9'));
+                pills[index].classList.add('active-pill-d9');
+                currentIndex = index;
+                updateArrows();
+            }
+
+            function updateArrows() {
+                if (currentIndex === 0) {
+                    leftArrow.classList.add('not-available-d9');
+                } else {
+                    leftArrow.classList.remove('not-available-d9');
+                }
+                if (currentIndex === pills.length - 1) {
+                    rightArrow.classList.add('not-available-d9');
+                } else {
+                    rightArrow.classList.remove('not-available-d9');
+                }
+            }
+
+            function startDrag(event) {
+                startX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+                isDragging = true;
+                animationID = requestAnimationFrame(animation);
+                slides.classList.add('grabbing');
+            }
+
+            function moveDrag(event) {
+                if (isDragging) {
+                    const currentPosition = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+                    const movedBy = currentPosition - startX;
+                    currentTranslate = prevTranslate + (movedBy / container.clientWidth) * 100;
+                }
+            }
+
+            function endDrag() {
+                cancelAnimationFrame(animationID);
+                isDragging = false;
+                slides.classList.remove('grabbing');
+                const movedBy = currentTranslate - prevTranslate;
+                if (movedBy < -15) {
+                    if (currentIndex < pills.length - 1) currentIndex += 1;
+                }
+                if (movedBy > 15) {
+                    if (currentIndex > 0) currentIndex -= 1;
+                }
+                updateSlide(currentIndex);
+            }
+
+            function animation() {
+                slides.style.transform = `translateX(${currentTranslate}%)`;
+                if (isDragging) requestAnimationFrame(animation);
+            }
+
+            pills.forEach((pill, index) => {
+                pill.addEventListener('click', () => {
+                    updateSlide(index);
+                });
+            });
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    updateSlide(index);
+                });
+            });
+
+            leftArrow.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    updateSlide(currentIndex - 1);
+                }
+            });
+
+            rightArrow.addEventListener('click', () => {
+                if (currentIndex < pills.length - 1) {
+                    updateSlide(currentIndex + 1);
+                }
+            });
+
+            slides.addEventListener('mousedown', startDrag);
+            slides.addEventListener('mousemove', moveDrag);
+            slides.addEventListener('mouseup', endDrag);
+            slides.addEventListener('mouseleave', endDrag);
+
+            slides.addEventListener('touchstart', startDrag);
+            slides.addEventListener('touchmove', moveDrag);
+            slides.addEventListener('touchend', endDrag);
+
+            updateSlide(currentIndex);
+            updateArrows();
+        });
+    });
+})();
+
+  </script>
+
+{% schema %}
+{
+  "name": "Slider Section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "text",
+          "id": "ingredient_name",
+          "label": "Ingredient Name"
+        },
+        {
+          "type": "textarea",
+          "id": "slide_content",
+          "label": "Slide Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
