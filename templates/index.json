@@ -585,34 +585,39 @@
     "product_ing_X7pJXp": {
       "type": "product-ing",
       "blocks": {
-        "ingredient_teTFhN": {
-          "type": "ingredient",
+        "slide_D83T4R": {
+          "type": "slide",
           "settings": {
-            "ingredient_name": "Pill One",
-            "slide_content": "Loraem"
+            "ingredient_name": "Pea Protein",
+            "content-text": "<p>comes from dried peas that are processed into\u2028    a powder form. They’re high in essential\u2028amino acids, and the perfect choice for vegans<br\/>  and vegeterians looking for an alternative to                       \u2028whey or say protien. <\/p>",
+            "content-img": "shopify:\/\/shop_images\/Ricecarrot-Face-Mask.webp"
           }
         },
-        "ingredient_KmbkjE": {
-          "type": "ingredient",
+        "slide_AMcTLP": {
+          "type": "slide",
           "settings": {
-            "ingredient_name": "Pill Two",
-            "slide_content": "Ipsum"
+            "ingredient_name": "Rice",
+            "content-text": "<p>comes from dried peas that are processed into\u2028    a powder form. They’re high in essential\u2028amino acids, and the perfect choice for vegans<br\/>  and vegeterians looking for an alternative to                       \u2028whey or say protien. <\/p>",
+            "content-img": "shopify:\/\/shop_images\/MissDinoFaceMask_46c550e4-1b0f-481e-b8e6-c48fe06cb6f3.webp"
           }
         },
-        "ingredient_nw6MWk": {
-          "type": "ingredient",
+        "slide_HKGznb": {
+          "type": "slide",
           "settings": {
-            "ingredient_name": "Pill three",
-            "slide_content": "Section3"
+            "ingredient_name": "Arabica Instant Cofee",
+            "content-text": "<p>comes from dried peas that are processed into\u2028    a powder form. They’re high in essential\u2028amino acids, and the perfect choice for vegans<br\/>  and vegeterians looking for an alternative to                       \u2028whey or say protien. <\/p>",
+            "content-img": "shopify:\/\/shop_images\/Flash-Masking-Tape.webp"
           }
         }
       },
       "block_order": [
-        "ingredient_teTFhN",
-        "ingredient_KmbkjE",
-        "ingredient_nw6MWk"
+        "slide_D83T4R",
+        "slide_AMcTLP",
+        "slide_HKGznb"
       ],
       "settings": {
+        "heading": "High quality ingredients",
+        "subtext": "<p>We carefully selected plant-based ingredients to create the world's healthiest protein coffee that's low in sugar, high in protein, and tastes delicious.<\/p>"
       }
     }
   },
