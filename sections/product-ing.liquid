@@ -119,9 +119,15 @@
             const rightArrow = container.querySelector('.pi-37-d9-arrow-right');
 
             let currentIndex = 0;
+            let startX = 0;
+            let currentTranslate = 0;
+            let prevTranslate = 0;
+            let animationID;
 
             function updateSlide(index) {
-                slides.style.transform = `translateX(-${index * 100}%)`;
+                currentTranslate = index * -100;
+                prevTranslate = currentTranslate;
+                slides.style.transform = `translateX(${currentTranslate}%)`;
                 dots.forEach(dot => dot.classList.remove('active'));
                 dots[index].classList.add('active');
                 pills.forEach(pill => pill.classList.remove('active-pill-d9'));
@@ -141,6 +147,39 @@
                 } else {
                     rightArrow.classList.remove('not-available-d9');
                 }
+            }
+
+            function touchStart(index) {
+                return function(event) {
+                    startX = event.touches[0].clientX;
+                    currentIndex = index;
+                    animationID = requestAnimationFrame(animation);
+                    slides.classList.add('grabbing');
+                }
+            }
+
+            function touchMove(event) {
+                const currentPosition = event.touches[0].clientX;
+                const movedBy = currentPosition - startX;
+                currentTranslate = prevTranslate + (movedBy / container.clientWidth) * 100;
+            }
+
+            function touchEnd() {
+                cancelAnimationFrame(animationID);
+                slides.classList.remove('grabbing');
+                const movedBy = currentTranslate - prevTranslate;
+                if (movedBy < -15) {
+                    if (currentIndex < pills.length - 1) currentIndex += 1;
+                }
+                if (movedBy > 15) {
+                    if (currentIndex > 0) currentIndex -= 1;
+                }
+                updateSlide(currentIndex);
+            }
+
+            function animation() {
+                slides.style.transform = `translateX(${currentTranslate}%)`;
+                if (animationID) requestAnimationFrame(animation);
             }
 
             pills.forEach((pill, index) => {
@@ -166,6 +205,10 @@
                     updateSlide(currentIndex + 1);
                 }
             });
+
+            slides.addEventListener('touchstart', touchStart(currentIndex));
+            slides.addEventListener('touchmove', touchMove);
+            slides.addEventListener('touchend', touchEnd);
 
             updateSlide(currentIndex);
             updateArrows();
