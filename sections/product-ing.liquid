@@ -107,7 +107,7 @@
 
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const pills = document.querySelectorAll('.pi-37-d9-pill');
     const slides = document.querySelector('.pi-37-d9-slides');
     const dots = document.querySelectorAll('.pi-37-d9-dot');
@@ -121,6 +121,20 @@
         dots.forEach(dot => dot.classList.remove('active'));
         dots[index].classList.add('active');
         currentIndex = index;
+        updateArrows();
+    }
+
+    function updateArrows() {
+        if (currentIndex === 0) {
+            leftArrow.classList.add('not-available-d9');
+        } else {
+            leftArrow.classList.remove('not-available-d9');
+        }
+        if (currentIndex === pills.length - 1) {
+            rightArrow.classList.add('not-available-d9');
+        } else {
+            rightArrow.classList.remove('not-available-d9');
+        }
     }
 
     pills.forEach((pill, index) => {
@@ -148,7 +162,9 @@
     });
 
     updateSlide(currentIndex);
+    updateArrows();
 });
+
 
   </script>
 
