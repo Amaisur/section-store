@@ -470,6 +470,7 @@
         "padding-horizontal": 0,
         "heading": "Why Choose Us",
         "btn-size-d": 16,
+        "btn-padding-d": 15,
         "btn-font-weight": true,
         "btn-border-d": 6,
         "btn-style-1": "style-2",
@@ -492,6 +493,8 @@
         "padding-vertical-m": 3,
         "padding-horizontal-m": 0,
         "img-size-m": 40,
+        "btn-size-m": 13,
+        "btn-padding-m": 10,
         "head-size-m": 22,
         "text-size-m": 14,
         "main-color": "#983a3e",
@@ -548,6 +551,7 @@
         "padding-horizontal": 0,
         "heading": "Why Choose Us",
         "btn-size-d": 20,
+        "btn-padding-d": 15,
         "btn-font-weight": true,
         "btn-border-d": 6,
         "btn-style-1": "style-1",
@@ -567,6 +571,8 @@
         "padding-vertical-m": 3,
         "padding-horizontal-m": 0,
         "img-size-m": 40,
+        "btn-size-m": 13,
+        "btn-padding-m": 10,
         "head-size-m": 22,
         "text-size-m": 14,
         "main-color": "#3a8a98",
@@ -574,6 +580,39 @@
         "bg-color": "#090101",
         "head-color": "#3a8a98",
         "text-color": "#fff8f8"
+      }
+    },
+    "product_ing_X7pJXp": {
+      "type": "product-ing",
+      "blocks": {
+        "ingredient_teTFhN": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Pill One",
+            "slide_content": "Loraem"
+          }
+        },
+        "ingredient_KmbkjE": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Pill Two",
+            "slide_content": "Ipsum"
+          }
+        },
+        "ingredient_nw6MWk": {
+          "type": "ingredient",
+          "settings": {
+            "ingredient_name": "Pill three",
+            "slide_content": "Section3"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_teTFhN",
+        "ingredient_KmbkjE",
+        "ingredient_nw6MWk"
+      ],
+      "settings": {
       }
     }
   },
@@ -587,6 +626,7 @@
     "trust_badges_GrcVBx",
     "circle_menu_Dzrqrn",
     "comparison_tabel_mmWhpy",
-    "comparison_tabel_WGR3qb"
+    "comparison_tabel_WGR3qb",
+    "product_ing_X7pJXp"
   ]
 }
