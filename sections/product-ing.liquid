@@ -167,25 +167,22 @@ body {
                 }
             }
 
-            function pointerStart(index) {
-                return function(event) {
-                    startX = event.clientX || event.touches[0].clientX;
-                    currentIndex = index;
-                    isDragging = true;
-                    animationID = requestAnimationFrame(animation);
-                    slides.classList.add('grabbing');
-                }
+            function startDrag(event) {
+                startX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+                isDragging = true;
+                animationID = requestAnimationFrame(animation);
+                slides.classList.add('grabbing');
             }
 
-            function pointerMove(event) {
+            function moveDrag(event) {
                 if (isDragging) {
-                    const currentPosition = event.clientX || event.touches[0].clientX;
+                    const currentPosition = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
                     const movedBy = currentPosition - startX;
                     currentTranslate = prevTranslate + (movedBy / container.clientWidth) * 100;
                 }
             }
 
-            function pointerEnd() {
+            function endDrag() {
                 cancelAnimationFrame(animationID);
                 isDragging = false;
                 slides.classList.remove('grabbing');
@@ -228,14 +225,14 @@ body {
                 }
             });
 
-            slides.addEventListener('pointerdown', pointerStart(currentIndex));
-            slides.addEventListener('pointermove', pointerMove);
-            slides.addEventListener('pointerup', pointerEnd);
-            slides.addEventListener('pointerleave', pointerEnd);
+            slides.addEventListener('mousedown', startDrag);
+            slides.addEventListener('mousemove', moveDrag);
+            slides.addEventListener('mouseup', endDrag);
+            slides.addEventListener('mouseleave', endDrag);
 
-            slides.addEventListener('touchstart', pointerStart(currentIndex));
-            slides.addEventListener('touchmove', pointerMove);
-            slides.addEventListener('touchend', pointerEnd);
+            slides.addEventListener('touchstart', startDrag);
+            slides.addEventListener('touchmove', moveDrag);
+            slides.addEventListener('touchend', endDrag);
 
             updateSlide(currentIndex);
             updateArrows();
