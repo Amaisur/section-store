@@ -1,4 +1,7 @@
 <style>
+body {
+    font-family: Arial, sans-serif;
+}
 
 .pi-37-d9-container {
     display: flex;
@@ -17,6 +20,11 @@
     border: 1px solid #ccc;
     border-radius: 20px;
     cursor: pointer;
+}
+
+.pi-37-d9-pills button.active-pill-d9 {
+    background: #717171;
+    color: white;
 }
 
 .pi-37-d9-slider {
@@ -73,6 +81,15 @@
     color: white;
     padding: 10px;
     cursor: pointer;
+}
+
+.pi-37-d9-arrow.not-available-d9 {
+    background: rgba(0, 0, 0, 0.2);
+    cursor: not-allowed;
+}
+
+.pi-37-d9-slides.grabbing {
+    cursor: grabbing;
 }
 
 </style>
