@@ -37,13 +37,15 @@
     background: #717171;
     color: white;
 }
-
-.pi-37-d9-slider {
+.pi-37-slider-container{
     width: 40%;
-    overflow: hidden;
     position: relative;
     border: 2px solid;
     border-radius: 30px;
+}
+.pi-37-d9-slider {
+    width: 100%;
+    overflow: hidden;
 }
 
 .pi-37-d9-slides {
@@ -143,6 +145,7 @@
         </div>
         <button class="pi-37-d9-preorder">PRE ORDER NOW</button>
     </div>
+    <div class="pi-37-slider-container">
     <div class="pi-37-d9-slider">
         <div class="pi-37-d9-slides">
             {% for block in section.blocks %}
@@ -180,6 +183,7 @@
               </svg>
             </button>
         </div>
+    </div>
     </div>
 </div>
 </div>
