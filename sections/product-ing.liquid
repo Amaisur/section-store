@@ -112,11 +112,12 @@
     display: {% if section.settings.arrows-d %} flex{% else %}none {% endif %};
     position: absolute;
     width: 100%; 
-    justify-content: center;
     gap: 40px;
     {% if section.settings.arrow-position == 'bottom' %}
     bottom: -26px;
+    justify-content: center;
     {% else %}
+    justify-content: space-between;
     bottom: 50%;
     transform: translatey(50%;)
     {% endif %}
