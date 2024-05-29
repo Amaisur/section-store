@@ -5,6 +5,8 @@
         box-sizing: border-box;
     }
     #shopify-section-{{ section.id }}{
+        --padding-vertical-d9: {{ section.settings.padding-top-d }}rem;
+        --padding-horizontal-d9: {{ section.settings.padding-left-d }}rem;
         --main-color-d9: {{ section.settings.main-color }};
         --text-color-d9: {{ section.settings.text-color }};
         --subtext-color-d9: {{ section.settings.subtext-color }};
@@ -23,7 +25,7 @@
     max-width: 1140px;
     width: 95%;
     margin: 0 auto;
-    padding: 50px 0;
+    padding: var(--padding-vertical-d9) var(--padding-horizontal-d9);
 }
 .pi-37-d9-container {
     display: flex;
@@ -218,6 +220,8 @@
     }
 @media (max-width: 900px){
     #shopify-section-{{ section.id }}{
+        --padding-vertical-d9: {{ section.settings.padding-top-m }}rem;
+        --padding-horizontal-d9: {{ section.settings.padding-left-m }}rem;
         --heading-font-d9: {{ section.settings.heading-size-m }};
         --text-font-d9: {{ section.settings.text-size-m }}px;
         --btn-font-d9: {{ section.settings.btn-size-m }}px;
@@ -505,7 +509,26 @@ function endDrag(event) {
         "type": "header",
         "content": "Desktop Configurations"
     },
-
+    {
+        "type": "range",
+        "id": "padding-top-d",
+        "default": 2,
+        "max": 30,
+        "min": 0,
+        "unit": "rem",
+        "step": 1,
+        "label": "Vertical Padding"
+    },
+    {
+        "type": "range",
+        "id": "padding-left-d",
+        "default": 0,
+        "max": 30,
+        "min": 0,
+        "unit": "rem",
+        "step": 1,
+        "label": "Horizontal Padding"
+    },
     {
         "type": "range",
         "id": "heading-size-d",
@@ -587,6 +610,26 @@ function endDrag(event) {
     {
         "type": "header",
         "content": "Mobile Configurations"
+    },
+    {
+        "type": "range",
+        "id": "padding-top-m",
+        "default": 1,
+        "max": 30,
+        "min": 0,
+        "unit": "rem",
+        "step": 1,
+        "label": "Vertical Padding"
+    },
+    {
+        "type": "range",
+        "id": "padding-left-m",
+        "default": 0,
+        "max": 30,
+        "min": 0,
+        "unit": "rem",
+        "step": 1,
+        "label": "Horizontal Padding"
     },
     {
         "type": "range",
