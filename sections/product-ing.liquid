@@ -303,34 +303,44 @@
             }
 
             function startDrag(event) {
-                startX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
-                isDragging = true;
-                animationID = requestAnimationFrame(animation);
-                slides.classList.add('grabbing');
-            }
+    event.preventDefault();  // Prevent default behavior to stop page scrolling
+    startX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+    isDragging = true;
+    animationID = requestAnimationFrame(animation);
+    slides.classList.add('grabbing');
+}
 
-            function moveDrag(event) {
-                if (isDragging) {
-                    const currentPosition = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
-                    const movedBy = currentPosition - startX;
-                    currentTranslate = prevTranslate + (movedBy / container.clientWidth) * 100;
-                }
-            }
+function moveDrag(event) {
+    if (isDragging) {
+        const currentPosition = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+        const movedBy = currentPosition - startX;
+        currentTranslate = prevTranslate + (movedBy / container.clientWidth) * 100;
 
-            function endDrag() {
+        // Prevent moving the slide beyond the initial and final positions
+        if (currentTranslate > 0) {
+            currentTranslate = 0;
+        } else if (currentTranslate < -(pills.length - 1) * 100) {
+            currentTranslate = -(pills.length - 1) * 100;
+        }
+
+        event.preventDefault();  // Again, prevent the default behavior to ensure smooth dragging
+    }
+}
+
+function endDrag(event) {
+    event.preventDefault();
     cancelAnimationFrame(animationID);
     isDragging = false;
     slides.classList.remove('grabbing');
     const movedBy = currentTranslate - prevTranslate;
-    
-    // Calculate the percentage equivalent of 5 pixels based on the container width
+
+    // Calculate the percentage equivalent of 2 pixels based on the container width
     const thresholdPercentage = (2 / container.clientWidth) * 100;
 
-    if (movedBy < -thresholdPercentage) {
-        if (currentIndex < pills.length - 1) currentIndex += 1;
-    }
-    if (movedBy > thresholdPercentage) {
-        if (currentIndex > 0) currentIndex -= 1;
+    if (movedBy < -thresholdPercentage && currentIndex < pills.length - 1) {
+        currentIndex += 1;
+    } else if (movedBy > thresholdPercentage && currentIndex > 0) {
+        currentIndex -= 1;
     }
     updateSlide(currentIndex);
 }
