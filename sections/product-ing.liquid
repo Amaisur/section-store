@@ -7,7 +7,11 @@
     #shopify-section-{{ section.id }}{
         --main-color-d9: {{ section.settings.main-color }};
         --text-color-d9: {{ section.settings.text-color }};
-        --second-color-d9: {{ section.settings.second-color }}
+        --subtext-color-d9: {{ section.settings.subtext-color }};
+        --second-color-d9: {{ section.settings.second-color }};
+}
+.pi-37-d9-main p{
+    color: var(--subtext-color-d9);
 }
 .pi-37-d9-main{
     width: 100%;
@@ -127,6 +131,7 @@
 }
 .pi-37-d9-slides.grabbing {
     cursor: grabbing;
+    pointer-events: none;
 }
 .img-content-pi-37-d9{
     width: 70%;
@@ -429,6 +434,12 @@
         "type": "color",
         "id": "text-color",
         "label": "text-color",
+        "default": "#1c161a"
+    }
+    {
+        "type": "color",
+        "id": "subtext-color",
+        "label": "subtext color",
         "default": "#222"
     }
   ],
