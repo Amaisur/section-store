@@ -226,11 +226,14 @@
                 </div>
             {% endfor %}
         </div>
+        {% if section.settings.dots-d %}
         <div class="pi-37-d9-indicators">
             {% for block in section.blocks %}
                 <span class="pi-37-d9-dot"></span>
             {% endfor %}
         </div>
+        {% endif %}
+        {% if section.settings.arrows-d %}
         <div class="pi-37-d9-arrows">
             <button class="pi-37-d9-arrow pi-37-d9-arrow-left">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="307.046px" height="307.046px" viewBox="0 0 307.046 307.046" style="enable-background:new 0 0 307.046 307.046;" xml:space="preserve">
@@ -251,6 +254,7 @@
               </svg>
             </button>
         </div>
+        {% endif %}
     </div>
     </div>
 </div>
@@ -489,7 +493,22 @@
             }
         ]
     },
-
+    {
+        "type": "header",
+        "content": "Slider Settings"
+    },
+    {
+        "type": "checkbox",
+        "id": "dots-d",
+        "label": "Show Dots indicator",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "arrows-d",
+        "label": "Show slider Arrows",
+        "default": true
+    },
     {
         "type": "header",
         "content": "Color Schemes"
