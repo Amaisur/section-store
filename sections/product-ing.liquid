@@ -288,8 +288,8 @@
             {% endfor %}
         </div>
         <div class="btn-div-d9 hide-on-m-d9">
-        <a class="pi-37-d9-main-btn style-btn-1-d9" href="{{ section.settings.btn-link-1 }}">{{ section.settings.btn-text-1 }}</a>
-        <a class="pi-37-d9-main-btn style-btn-2-d9" href="{{ section.settings.btn-link-2 }}">{{ section.settings.btn-text-2 }}</a>
+        <a class="pi-37-d9-main-btn {% if section.settings.btn-1-style == 'btn-2' %} style-btn-2-d9 {% else %}style-btn-1-d9 {% endif %}" href="{{ section.settings.btn-link-1 }}">{{ section.settings.btn-text-1 }}</a>
+        <a class="pi-37-d9-main-btn {% if section.settings.btn-2-style == 'btn-2' %} style-btn-2-d9 {% else %}style-btn-1-d9 {% endif %}" href="{{ section.settings.btn-link-2 }}">{{ section.settings.btn-text-2 }}</a>
         </div>
     </div>
     <div class="pi-37-slider-container">
