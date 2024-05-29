@@ -9,9 +9,8 @@
         --text-color-d9: {{ section.settings.text-color }};
         --subtext-color-d9: {{ section.settings.subtext-color }};
         --second-color-d9: {{ section.settings.second-color }};
-}
-.pi-37-d9-main p{
-    color: var(--subtext-color-d9);
+        --heading-font-d9: {{ section.settings.heading-size-d }}px;
+        --text-font-d9: {{ section.settings.text-size-d }}px;
 }
 .pi-37-d9-main{
     width: 100%;
@@ -159,6 +158,14 @@
 .pi-37-d9-slide h2, .pi-37-d9-slide p, .pi-37-d9-ingredients p, .pi-37-d9-ingredients h2{
     margin: 10px 0;
     line-height: 130%;
+}
+.pi-37-d9-slide h2, .pi-37-d9-ingredients h2{
+    color: var(--text-color-d9);
+    font-size: var(--heading-font-d9);
+}
+.pi-37-d9-slide p, .pi-37-d9-ingredients p{
+    color: var(--subtext-color-d9);
+    font-size: var(--text-font-d9);
 }
 .pi-37-d9-main-btn{
     text-decoration: none;
@@ -418,6 +425,28 @@
         "type": "header",
         "content": "Desktop Configurations"
     },
+
+    {
+        "type": "range",
+        "id": "heading-size-d",
+        "default": 35,
+        "max": 70,
+        "min": 8,
+        "unit": "px",
+        "step": 1,
+        "label": "Heading Font Size"
+    },
+    {
+        "type": "range",
+        "id": "text-size-d",
+        "default": 16,
+        "max": 30,
+        "min": 6,
+        "unit": "px",
+        "step": 1,
+        "label": "Text Font Size"
+    },
+
     {
         "type": "header",
         "content": "Color Schemes"
