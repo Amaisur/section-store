@@ -338,8 +338,8 @@
         {{ section.settings.subtext }}
         </div>
     <div class="btn-div-d9 hide-on-d-d9">
-        <a class="pi-37-d9-main-btn style-btn-1-d9" href="{{ section.settings.btn-link-1 }}">{{ section.settings.btn-text-1 }}</a>
-        <a class="pi-37-d9-main-btn style-btn-2-d9" href="{{ section.settings.btn-link-2 }}">{{ section.settings.btn-text-2 }}</a>
+        <a class="pi-37-d9-main-btn {% if section.settings.btn-1-style == 'btn-2' %} style-btn-2-d9 {% else %}style-btn-1-d9 {% endif %}" href="{{ section.settings.btn-link-1 }}">{{ section.settings.btn-text-1 }}</a>
+        <a class="pi-37-d9-main-btn {% if section.settings.btn-2-style == 'btn-2' %} style-btn-2-d9 {% else %}style-btn-1-d9 {% endif %}" href="{{ section.settings.btn-link-2 }}">{{ section.settings.btn-text-2 }}</a>
         </div>
 </div>
 </div>
@@ -510,6 +510,22 @@ function endDrag(event) {
         "label": "Button Url 1"
     },
     {
+        "type": "select",
+        "id": "btn-1-style",
+        "label": "Button Style 1",
+        "default": "btn-2",
+        "options": [
+            {
+                "value": "btn-1",
+                "label": "Outline"
+            },
+            {
+                "value": "btn-2",
+                "label": "Fill Background"
+            }
+        ]
+    },
+    {
         "type": "text",
         "id": "btn-text-2",
         "label": "Button Label 2",
@@ -519,6 +535,22 @@ function endDrag(event) {
         "type": "url",
         "id": "btn-link-2",
         "label": "Button Url 2"
+    },
+    {
+        "type": "select",
+        "id": "btn-2-style",
+        "label": "Button Style 2",
+        "default": "btn-1",
+        "options": [
+            {
+                "value": "btn-1",
+                "label": "Outline"
+            },
+            {
+                "value": "btn-2",
+                "label": "Fill Background"
+            }
+        ]
     },
     {
         "type": "header",
