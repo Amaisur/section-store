@@ -86,11 +86,11 @@
 }
 
 .pi-37-d9-indicators {
+    display:{% if section.settings.dots-d %}flex{% else %}none{% endif %};
     position: absolute;
     bottom: 35px;
     left: 50%;
     transform: translateX(-50%);
-    display:{% if section.settings.dots-d %}flex{% else %}none{% endif %};
 }
 
 .pi-37-d9-dot {
@@ -108,9 +108,9 @@
 }
 
 .pi-37-d9-arrows {
+    display: {% if section.settings.arrows-d %} flex{% else %}none {% endif %};
     position: absolute;
     width: 100%; 
-    display: {% if section.settings.arrows-d %} flex{% else %}none {% endif %};
     justify-content: center;
     gap: 40px;
     bottom: -26px;
@@ -229,6 +229,12 @@
         --heading-weight-d9: {% if section.settings.heading-weight-m == 'bold' %}bold{% else %}light{% endif %};
         --btn-weight-d9:  {% if section.settings.btn-weight-m == 'bold' %}bold{% else %}light{% endif %};    
 }
+    .pi-37-d9-arrows {
+    display: {% if section.settings.arrows-m %} flex{% else %}none {% endif %};
+    }
+    .pi-37-d9-indicators {
+    display:{% if section.settings.dots-m %}flex{% else %}none{% endif %};
+    }
     .pi-37-d9-ingredients p, .pi-37-d9-ingredients h2{
         text-align: center;
     }
@@ -594,7 +600,7 @@ function endDrag(event) {
     },
     {
         "type": "header",
-        "content": "Slider Settings"
+        "content": "Desktop Slider Settings"
     },
     {
         "type": "checkbox",
@@ -679,6 +685,18 @@ function endDrag(event) {
         "label": "Button Font Size"
     },
     {
+        "type": "checkbox",
+        "id": "dots-m",
+        "label": "Show Dots indicator",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "arrows-m",
+        "label": "Show slider Arrows",
+        "default": true
+    },
+    {
         "type": "select",
         "id": "btn-weight-m",
         "label": "Button Font Weight",
@@ -693,6 +711,10 @@ function endDrag(event) {
                 "value": "light"
             }
         ]
+    },
+    {
+        "type": "header",
+        "content": "Mobile Slider Settings"
     },
     {
         "type": "header",
