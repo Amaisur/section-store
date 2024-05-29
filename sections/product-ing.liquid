@@ -159,7 +159,7 @@
     margin: 30px auto;
     overflow: hidden;
     border-radius: 50%;
-    border: 5px solid var(--main-color-d9);
+    border: 5px solid {{ section.settings.img-color }};
 }
 .img-content-pi-37-d9 img{
     width: 100%;
@@ -778,6 +778,12 @@ function endDrag(event) {
     {
         "type": "header",
         "content": "Color Schemes"
+    },
+    {
+        "type": "color",
+        "id": "img-color",
+        "label": "Image Outline Color",
+        "default": "#a68f8f"
     },
     {
         "type": "color",
