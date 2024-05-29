@@ -617,7 +617,22 @@
       ],
       "settings": {
         "heading": "High quality ingredients",
-        "subtext": "<p>We carefully selected plant-based ingredients to create the world's healthiest protein coffee that's low in sugar, high in protein, and tastes delicious.<\/p>"
+        "subtext": "<p>We carefully selected plant-based ingredients to create the world's healthiest protein coffee that's low in sugar, high in protein, and tastes delicious.<\/p>",
+        "btn-text-1": "Pre Order Now",
+        "btn-link-1": "",
+        "btn-text-2": "Button",
+        "btn-link-2": "",
+        "heading-size-d": 35,
+        "heading-weight-d": "bold",
+        "text-size-d": 16,
+        "btn-size-d": 18,
+        "btn-weight-d": "bold",
+        "dots-d": false,
+        "arrows-d": true,
+        "main-color": "#1c161a",
+        "second-color": "#fff",
+        "text-color": "#1c161a",
+        "subtext-color": "#222"
       }
     }
   },
