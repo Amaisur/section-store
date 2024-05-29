@@ -15,7 +15,7 @@
 }
 .pi-37-d9-main{
     width: 100%;
-    background: #FCF8F5;
+    background: {{ section.settings.bg-color }};
 }
 .pi-37-d9-inner{
     max-width: 1140px;
@@ -534,6 +534,12 @@
         "id": "subtext-color",
         "label": "subtext color",
         "default": "#222"
+    },
+    {
+        "type": "color",
+        "id": "bg-color",
+        "label": "Background color",
+        "default": "#FCF8F5"
     }
   ],
   "blocks": [
