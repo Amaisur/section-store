@@ -4,6 +4,10 @@
         margin: 0;
         box-sizing: border-box;
     }
+    #shopify-section-{{ section.id }}{
+        --main-color-d9: {{ section.settings.main-color }};
+        --text-color-d9: {{ section.settings.text-color }};
+}
 .pi-37-d9-main{
     width: 100%;
     background: #FCF8F5;
@@ -31,7 +35,7 @@
     margin: 7px;
     padding: 10px 20px;
     background: #f0f0f0;
-    border: 1px solid #ccc;
+    border: 1px solid var(--main-color-d9);
     border-radius: 20px;
     cursor: pointer;
 }
@@ -45,7 +49,7 @@
 .pi-37-slider-container{
     width: 40%;
     position: relative;
-    border: 1px solid black;
+    border: 1px solid var(--main-color-d9);
     padding-bottom: 30px;
     border-radius: 30px;
 }
@@ -128,7 +132,7 @@
     margin: 30px auto;
     overflow: hidden;
     border-radius: 50%;
-    border: 5px solid;
+    border: 5px solid var(--main-color-d9);
 }
 .img-content-pi-37-d9 img{
     width: 100%;
@@ -138,8 +142,22 @@
 .pi-37-d9-arrow-left{
     transform: rotate(180deg);
 }
+.pi-37-d9-slide h2{
+    font-size: ;
+}
 .pi-37-d9-slide h2, .pi-37-d9-slide p{
     text-align: center;
+    margin: 10px 0;
+    line-height: 130%;
+}
+.pi-37-d9-main-btn{
+    text-decoration: none;
+    border: 1px solid var(--main-color-d9);
+    border-radius: 50px;
+    transition: all .4s;
+}
+.pi-37-d9-main-btn.style-btn-1-d9{
+
 }
 </style>
 <div class="pi-37-d9-main">
@@ -155,7 +173,8 @@
                 {% endif %}
             {% endfor %}
         </div>
-        <button class="pi-37-d9-preorder">PRE ORDER NOW</button>
+        <a class="pi-37-d9-main-btn" href="{{ section.settings.btn-link-1 }}">{{ section.settings.btn-text-1 }}</a>
+        <a class="pi-37-d9-main-btn" href="{{ section.settings.btn-link-2 }}">{{ section.settings.btn-text-2 }}</a>
     </div>
     <div class="pi-37-slider-container">
     <div class="pi-37-d9-slider">
@@ -329,6 +348,10 @@
   "name": "Product Ingradiants",
   "settings": [
     {
+        "type": "header",
+        "content": "Basic Configurations"
+    },
+    {
         "type": "text",
         "id": "heading",
         "label": "Heading",
@@ -339,6 +362,48 @@
         "id": "subtext",
         "label": "Text",
         "default": "<p>We carefully selected plant-based ingredients to create the world's healthiest protein coffee that's low in sugar, high in protein, and tastes delicious.</p>"
+    },
+    {
+        "type": "text",
+        "id": "btn-text-1",
+        "label": "Button Label 1",
+        "default": "Pre Order Now"
+    },
+    {
+        "type": "url",
+        "id": "btn-link-1",
+        "label": "Button Url 1"
+    },
+    {
+        "type": "text",
+        "id": "btn-text-2",
+        "label": "Button Label 2",
+        "default": "Button"
+    },
+    {
+        "type": "url",
+        "id": "btn-link-2",
+        "label": "Button Url 2"
+    },
+    {
+        "type": "header",
+        "content": "Desktop Configurations"
+    },
+    {
+        "type": "header",
+        "content": "Color Schemes"
+    },
+    {
+        "type": "color",
+        "id": "main-color",
+        "label": "Main Color",
+        "default": "#983a3e"
+    },
+    {
+        "type": "color",
+        "id": "text-color",
+        "label": "text-color",
+        "default": "#222"
     }
   ],
   "blocks": [
