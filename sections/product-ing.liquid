@@ -181,7 +181,6 @@
     display: block;
     min-width: 120px;
     text-align: center;
-    margin-top: 40px;
     font-size: var(--btn-font-d9);
     font-weight: {% if section.settings.heading-weight-d == 'bold' %}bold{% else %}light{% endif %};
 }
@@ -208,6 +207,9 @@
         display: flex;
     }
 @media (max-width: 900px){
+    .pi-37-d9-ingredients p, .pi-37-d9-ingredients h2{
+        text-align: center;
+    }
     .hide-on-d-d9{
     display: flex;
     }
@@ -216,6 +218,7 @@
     }
     .pi-37-d9-container{
         flex-direction: column;
+        gap: 10px;
     }
     .pi-37-d9-ingredients, .pi-37-slider-container{
         width: 100%;
