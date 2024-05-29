@@ -149,9 +149,6 @@
 .pi-37-d9-arrow-left{
     transform: rotate(180deg);
 }
-.pi-37-d9-slide h2{
-    font-size: ;
-}
 .pi-37-d9-slide h2, .pi-37-d9-slide p{
     text-align: center;
 }
@@ -162,6 +159,7 @@
 .pi-37-d9-slide h2, .pi-37-d9-ingredients h2{
     color: var(--text-color-d9);
     font-size: var(--heading-font-d9);
+    font-weight: {% if section.settings.heading-weight-d == 'bold' %}bold{% else %}light{% endif %};
 }
 .pi-37-d9-slide p, .pi-37-d9-ingredients p{
     color: var(--subtext-color-d9);
@@ -435,6 +433,22 @@
         "unit": "px",
         "step": 1,
         "label": "Heading Font Size"
+    },
+    {
+        "type": "select",
+        "id": "heading-weight-d",
+        "label": "Heading Font Weight",
+        "default": "bold",
+        "options": [
+            {
+                "label": "Bold",
+                "value": "bold"
+            },
+            {
+                "label": "Light",
+                "value": "light"
+            }
+        ]
     },
     {
         "type": "range",
