@@ -226,15 +226,14 @@
                 </div>
             {% endfor %}
         </div>
-        {% if section.settings.dots-d %}
-        <div class="pi-37-d9-indicators">
+    
+        <div class="pi-37-d9-indicators" style=" {% if section.settings.dots-d %}display: block;{% else %}display: none {% endif %}">
             {% for block in section.blocks %}
                 <span class="pi-37-d9-dot"></span>
             {% endfor %}
         </div>
-        {% endif %}
-        {% if section.settings.arrows-d %}
-        <div class="pi-37-d9-arrows">
+       
+        <div class="pi-37-d9-arrows" style=" {% if section.settings.arrows-d %}display: block;{% else %}display: none {% endif %}">
             <button class="pi-37-d9-arrow pi-37-d9-arrow-left">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="307.046px" height="307.046px" viewBox="0 0 307.046 307.046" style="enable-background:new 0 0 307.046 307.046;" xml:space="preserve">
               	<path d="M281.828,142.427L144.002,4.597c-6.129-6.129-16.07-6.129-22.199,0l-11.101,11.101c-6.133,6.133-6.133,16.076,0,22.201
@@ -254,7 +253,6 @@
               </svg>
             </button>
         </div>
-        {% endif %}
     </div>
     </div>
 </div>
