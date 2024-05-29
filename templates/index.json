@@ -633,12 +633,12 @@
         "heading-weight-m": "bold",
         "text-size-m": 16,
         "btn-size-m": 16,
-        "btn-weight-m": "bold",
+        "btn-weight-m": "light",
         "main-color": "#1c161a",
         "second-color": "#ffffff",
         "text-color": "#1c161a",
         "subtext-color": "#222222",
-        "bg-color": "#FCF8F5"
+        "bg-color": "#fcf8f5"
       }
     }
   },
