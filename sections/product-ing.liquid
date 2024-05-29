@@ -324,7 +324,7 @@
     const movedBy = currentTranslate - prevTranslate;
     
     // Calculate the percentage equivalent of 5 pixels based on the container width
-    const thresholdPercentage = (5 / container.clientWidth) * 100;
+    const thresholdPercentage = (2 / container.clientWidth) * 100;
 
     if (movedBy < -thresholdPercentage) {
         if (currentIndex < pills.length - 1) currentIndex += 1;
