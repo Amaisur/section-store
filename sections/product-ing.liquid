@@ -166,16 +166,21 @@
     color: var(--subtext-color-d9);
     font-size: var(--text-font-d9);
 }
+.btn-div-d9{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
 .pi-37-d9-main-btn{
     text-decoration: none;
     border: 1px solid var(--main-color-d9);
     border-radius: 50px;
     transition: all .4s;
     padding: 12px 25px;
-    display: inline-block;
+    display: block;
     min-width: 120px;
     text-align: center;
-    margin-right: 25px;
     margin-top: 40px;
     font-size: var(--btn-font-d9);
     font-weight: {% if section.settings.heading-weight-d == 'bold' %}bold{% else %}light{% endif %};
@@ -196,8 +201,13 @@
     color: var(--main-color-d9);
     background: var(--second-color-d9);
 }
-
+.hide-on-d-d9{
+    display: none;
+}
 @media (max-width: 900px){
+    .hide-on-m-d9{
+        display: none;
+    }
     .pi-37-d9-container{
         flex-direction: column;
     }
@@ -212,7 +222,9 @@
 <div class="pi-37-d9-container">
     <div class="pi-37-d9-ingredients">
         <h2> {{ section.settings.heading }} </h2>
+        <div class="text-div-d9 hide-on-m-d9">
         {{ section.settings.subtext }}
+        </div>
         <div class="pi-37-d9-pills">
             {% for block in section.blocks %}
                 {% if block.settings.ingredient_name != blank %}
@@ -220,8 +232,10 @@
                 {% endif %}
             {% endfor %}
         </div>
+        <div class="btn-div-d9 hide-on-m-d9">
         <a class="pi-37-d9-main-btn style-btn-1-d9" href="{{ section.settings.btn-link-1 }}">{{ section.settings.btn-text-1 }}</a>
         <a class="pi-37-d9-main-btn style-btn-2-d9" href="{{ section.settings.btn-link-2 }}">{{ section.settings.btn-text-2 }}</a>
+        </div>
     </div>
     <div class="pi-37-slider-container">
     <div class="pi-37-d9-slider">
@@ -265,6 +279,13 @@
         </div>
     </div>
     </div>
+    <div class="text-div-d9 hide-on-d-d9">
+        {{ section.settings.subtext }}
+        </div>
+    <div class="btn-div-d9 hide-on-d-d9">
+        <a class="pi-37-d9-main-btn style-btn-1-d9" href="{{ section.settings.btn-link-1 }}">{{ section.settings.btn-text-1 }}</a>
+        <a class="pi-37-d9-main-btn style-btn-2-d9" href="{{ section.settings.btn-link-2 }}">{{ section.settings.btn-text-2 }}</a>
+        </div>
 </div>
 </div>
 </div>
