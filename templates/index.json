@@ -638,7 +638,7 @@
         "text-size-m": 16,
         "btn-size-m": 16,
         "dots-m": true,
-        "arrows-m": false,
+        "arrows-m": true,
         "btn-weight-m": "light",
         "main-color": "#1c161a",
         "second-color": "#ffffff",
