@@ -215,6 +215,11 @@
         display: flex;
     }
 @media (max-width: 900px){
+    #shopify-section-{{ section.id }}{
+        --heading-font-d9: {{ section.settings.heading-size-m }}px;
+        --text-font-d9: {{ section.settings.text-size-m }}px;
+        --btn-font-d9: {{ section.settings.btn-size-m }}px;
+}
     .pi-37-d9-ingredients p, .pi-37-d9-ingredients h2{
         text-align: center;
     }
@@ -574,6 +579,72 @@ function endDrag(event) {
         "id": "arrows-d",
         "label": "Show slider Arrows",
         "default": true
+    },
+    {
+        "type": "header",
+        "content": "Mobile Configurations"
+    },
+    {
+        "type": "range",
+        "id": "heading-size-m",
+        "default": 35,
+        "max": 70,
+        "min": 8,
+        "unit": "px",
+        "step": 1,
+        "label": "Heading Font Size"
+    },
+    {
+        "type": "select",
+        "id": "heading-weight-m",
+        "label": "Heading Font Weight",
+        "default": "bold",
+        "options": [
+            {
+                "label": "Bold",
+                "value": "bold"
+            },
+            {
+                "label": "Light",
+                "value": "light"
+            }
+        ]
+    },
+    {
+        "type": "range",
+        "id": "text-size-m",
+        "default": 16,
+        "max": 30,
+        "min": 6,
+        "unit": "px",
+        "step": 1,
+        "label": "Text Font Size"
+    },
+    {
+        "type": "range",
+        "id": "btn-size-m",
+        "default": 18,
+        "max": 35,
+        "min": 8,
+        "unit": "px",
+        "step": 1,
+        "label": "Button Font Size"
+    },
+    {
+        "type": "select",
+        "id": "btn-weight-m",
+        "label": "Button Font Weight",
+        "default": "bold",
+        "options": [
+            {
+                "label": "Bold",
+                "value": "bold"
+            },
+            {
+                "label": "Light",
+                "value": "light"
+            }
+        ]
     },
     {
         "type": "header",
