@@ -68,6 +68,7 @@
     border: 1px solid var(--main-color-d9);
     border-radius: 30px;
     background: var(--second-color-d9);
+    margin-bottom: 20px;
 }
 .pi-37-d9-slider {
     width: 100%;
@@ -88,7 +89,7 @@
 .pi-37-d9-indicators {
     display:{% if section.settings.dots-d %}flex{% else %}none{% endif %};
     position: absolute;
-    bottom: 35px;
+    bottom: -35px;
     left: 50%;
     transform: translateX(-50%);
 }
