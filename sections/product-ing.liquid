@@ -12,6 +12,8 @@
         --heading-font-d9: {{ section.settings.heading-size-d }}px;
         --text-font-d9: {{ section.settings.text-size-d }}px;
         --btn-font-d9: {{ section.settings.btn-size-d }}px;
+        --heading-weight-d9: {% if section.settings.heading-weight-d == 'bold' %}bold{% else %}light{% endif %};
+        --btn-weight-d9:  {% if section.settings.heading-weight-d == 'bold' %}bold{% else %}light{% endif %};    
 }
 .pi-37-d9-main{
     width: 100%;
@@ -167,7 +169,7 @@
 .pi-37-d9-slide h2, .pi-37-d9-ingredients h2{
     color: var(--text-color-d9);
     font-size: var(--heading-font-d9);
-    font-weight: {% if section.settings.heading-weight-d == 'bold' %}bold{% else %}light{% endif %};
+    font-weight: var(--heading-weight-d9);
 }
 .pi-37-d9-slide p, .text-div-d9 p{
     color: var(--subtext-color-d9);
@@ -190,7 +192,7 @@
     min-width: 120px;
     text-align: center;
     font-size: var(--btn-font-d9);
-    font-weight: {% if section.settings.heading-weight-d == 'bold' %}bold{% else %}light{% endif %};
+    font-weight: var(--btn-weight-d9);
 }
 .pi-37-d9-main-btn.style-btn-1-d9{
     background: var(--main-color-d9);
@@ -216,9 +218,11 @@
     }
 @media (max-width: 900px){
     #shopify-section-{{ section.id }}{
-        --heading-font-d9: {{ section.settings.heading-size-m }}px;
+        --heading-font-d9: {{ section.settings.heading-size-m }};
         --text-font-d9: {{ section.settings.text-size-m }}px;
         --btn-font-d9: {{ section.settings.btn-size-m }}px;
+        --heading-weight-d9: {% if section.settings.heading-weight-m == 'bold' %}bold{% else %}light{% endif %};
+        --btn-weight-d9:  {% if section.settings.heading-weight-m == 'bold' %}bold{% else %}light{% endif %};    
 }
     .pi-37-d9-ingredients p, .pi-37-d9-ingredients h2{
         text-align: center;
