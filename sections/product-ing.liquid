@@ -251,18 +251,23 @@
             }
 
             function endDrag() {
-                cancelAnimationFrame(animationID);
-                isDragging = false;
-                slides.classList.remove('grabbing');
-                const movedBy = currentTranslate - prevTranslate;
-                if (movedBy < -15) {
-                    if (currentIndex < pills.length - 1) currentIndex += 1;
-                }
-                if (movedBy > 15) {
-                    if (currentIndex > 0) currentIndex -= 1;
-                }
-                updateSlide(currentIndex);
-            }
+    cancelAnimationFrame(animationID);
+    isDragging = false;
+    slides.classList.remove('grabbing');
+    const movedBy = currentTranslate - prevTranslate;
+    
+    // Calculate the percentage equivalent of 5 pixels based on the container width
+    const thresholdPercentage = (5 / container.clientWidth) * 100;
+
+    if (movedBy < -thresholdPercentage) {
+        if (currentIndex < pills.length - 1) currentIndex += 1;
+    }
+    if (movedBy > thresholdPercentage) {
+        if (currentIndex > 0) currentIndex -= 1;
+    }
+    updateSlide(currentIndex);
+}
+
 
             function animation() {
                 slides.style.transform = `translateX(${currentTranslate}%)`;
