@@ -608,12 +608,30 @@
             "content-text": "<p>comes from dried peas that are processed into\u2028    a powder form. They’re high in essential\u2028amino acids, and the perfect choice for vegans<br\/>  and vegeterians looking for an alternative to                       \u2028whey or say protien. <\/p>",
             "content-img": "shopify:\/\/shop_images\/Flash-Masking-Tape.webp"
           }
+        },
+        "slide_EaPdXQ": {
+          "type": "slide",
+          "settings": {
+            "ingredient_name": "Fair Instant Cofee",
+            "content-text": "<p>comes from dried peas that are processed into\u2028    a powder form. They’re high in essential\u2028amino acids, and the perfect choice for vegans<br\/>  and vegeterians looking for an alternative to                       \u2028whey or say protien. <\/p>",
+            "content-img": "shopify:\/\/shop_images\/RicedinoLittleLight1.webp"
+          }
+        },
+        "slide_DHnKhp": {
+          "type": "slide",
+          "settings": {
+            "ingredient_name": "Monk Fruit",
+            "content-text": "<p>comes from dried peas that are processed into\u2028    a powder form. They’re high in essential\u2028amino acids, and the perfect choice for vegans<br\/>  and vegeterians looking for an alternative to                       \u2028whey or say protien. <\/p>",
+            "content-img": "shopify:\/\/shop_images\/cap-with-wings-940481067.png"
+          }
         }
       },
       "block_order": [
         "slide_D83T4R",
         "slide_AMcTLP",
-        "slide_HKGznb"
+        "slide_HKGznb",
+        "slide_EaPdXQ",
+        "slide_DHnKhp"
       ],
       "settings": {
         "heading": "High quality ingredients",
@@ -643,6 +661,7 @@
         "dots-m": true,
         "arrows-m": true,
         "btn-weight-m": "light",
+        "img-color": "#a68f8f",
         "main-color": "#1c161a",
         "second-color": "#ffffff",
         "text-color": "#1c161a",
