@@ -11,6 +11,7 @@
         --second-color-d9: {{ section.settings.second-color }};
         --heading-font-d9: {{ section.settings.heading-size-d }}px;
         --text-font-d9: {{ section.settings.text-size-d }}px;
+        --btn-font-d9: {{ section.settings.btn-size-d }}px;
 }
 .pi-37-d9-main{
     width: 100%;
@@ -176,6 +177,8 @@
     text-align: center;
     margin-right: 25px;
     margin-top: 40px;
+    font-size: var(--btn-font-d9);
+    font-weight: {% if section.settings.heading-weight-d == 'bold' %}bold{% else %}light{% endif %};
 }
 .pi-37-d9-main-btn.style-btn-1-d9{
     background: var(--main-color-d9);
@@ -459,6 +462,32 @@
         "unit": "px",
         "step": 1,
         "label": "Text Font Size"
+    },
+    {
+        "type": "range",
+        "id": "btn-size-d",
+        "default": 20,
+        "max": 35,
+        "min": 8,
+        "unit": "px",
+        "step": 1,
+        "label": "Button Font Size"
+    },
+    {
+        "type": "select",
+        "id": "btn-weight-d",
+        "label": "Button Font Weight",
+        "default": "bold",
+        "options": [
+            {
+                "label": "Bold",
+                "value": "bold"
+            },
+            {
+                "label": "Light",
+                "value": "light"
+            }
+        ]
     },
 
     {
