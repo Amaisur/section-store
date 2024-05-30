@@ -713,7 +713,8 @@
         "head-size": 22,
         "head-color": "#311414",
         "head-weight": "bold",
-        "background": "linear-gradient(253deg, rgba(1, 0, 0, 1), rgba(255, 255, 255, 1) 1%)",
+        "veri-img": "shopify:\/\/shop_images\/8c9613ab55c80cd983b11c8e44fd9d5d.png",
+        "veri-text": "Verified Buyer",
         "direction": "rtol",
         "box-shadow": false,
         "smooth_speed": 10,
@@ -726,7 +727,12 @@
         "padding_bottom_mobile": 50,
         "padding_left_mobile": 50,
         "padding_right_mobile": 50,
-        "logos_gap_mobile": 40
+        "logos_gap_mobile": 40,
+        "background": "linear-gradient(253deg, rgba(1, 0, 0, 1), rgba(255, 255, 255, 1) 1%)",
+        "card-color": "#fff",
+        "color-1": "#BABABA",
+        "color-2": "#B1B1B1",
+        "shade-color": "rgba(115,114,114,0.15)"
       }
     }
   },
