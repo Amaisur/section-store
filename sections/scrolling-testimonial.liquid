@@ -276,6 +276,7 @@
                                     <img src="{{ block.settings.buy-img |  image_url: width: 1440  }}">
                                 </div>
                                 <div class="col-card-38-d9 detail-col-38-d9">
+                                    {% if block.settings.star-rate == '5-star' %}
                                     <div class="star-rating-d9">
                                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -308,6 +309,74 @@
                                                 fill="#F6CF02" />
                                         </svg>
                                     </div>
+                                    {% elsif block.settings.star-rate == '4-star' %}
+                                        <div class="star-rating-d9">
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path id="Vector"
+                                                d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                fill="#F6CF02" />
+                                        </svg>
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path id="Vector"
+                                                d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                fill="#F6CF02" />
+                                        </svg>
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path id="Vector"
+                                                d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                fill="#F6CF02" />
+                                        </svg>
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path id="Vector"
+                                                d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                fill="#F6CF02" />
+                                        </svg>
+                                      
+                                    </div>
+                                    {% elsif block.settings.star-rate == '3-star' %}
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path id="Vector"
+                                            d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                            fill="#F6CF02" />
+                                    </svg>
+                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path id="Vector"
+                                        d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                        fill="#F6CF02" />
+                                </svg>
+                                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                    fill="#F6CF02" />
+                            </svg>
+                                    {% elsif block.settings.star-rate == '2-star' %}
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path id="Vector"
+                                            d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                            fill="#F6CF02" />
+                                    </svg>
+                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path id="Vector"
+                                        d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                        fill="#F6CF02" />
+                                </svg>
+                                    {% else block.settings.star-rate == '1-star' %}  
+                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path id="Vector"
+                                        d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                        fill="#F6CF02" />
+                                </svg> 
+                                    {% endif %}
                                     <div class="name-38-d9">
                                         <h4> {{ block.settings.name }} </h4>
                                     </div>
@@ -537,6 +606,34 @@
             "type":"logo",
             "name": "Logo",
             "settings": [
+                {
+                    "type": "select",
+                    "id": "star-rate",
+                    "default": "5-star",
+                    "label": "Star Rating",
+                    "options": [
+                        {
+                            "label": "5 Star",
+                            "value": "5-star"
+                        },
+                        {
+                            "label": "4 Star",
+                            "value": "4-star"
+                        },
+                        {
+                            "label": "3 Star",
+                            "value": "3-star"
+                        },
+                        {
+                            "label": "2 Star",
+                            "value": "2-star"
+                        },
+                        {
+                            "label": "1 Star",
+                            "value": "1-star"
+                        }
+                    ]
+                },
                 {
                     "type": "image_picker",
                     "id": "buy-img",
