@@ -7,7 +7,7 @@
     #shopify-section-{{ section.id }}  .main-card-38-d9{
         max-width: 500px;
         width: min-content;
-        border: 1px solid #dfdfdf;
+        border: 1px solid {{ section.settings.border-color }};
         border-radius: 10px;
         box-shadow: {{ section.settings.shade-color }} 0px 2px 12px;
         background: {{ section.settings.card-color }};
@@ -601,6 +601,12 @@
         "id": "color-2",
         "label": "Review Color",
         "default": "#B1B1B1"
+      },
+      {
+        "type": "color",
+        "id": "border-color",
+        "label": "Border Color",
+        "default": "#EBEBEB"
       },
       {
         "type": "color",
