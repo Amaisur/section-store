@@ -76,8 +76,10 @@
   #shopify-section-{{ section.id }} .custom-slider-container-wrapper{
       max-width: fit-content;
       overflow: hidden;
-      padding-left: 0px;
-      padding-right: 0px;
+      padding-left: {{ section.settings.padding_left }}px;
+      padding-right:{{ section.settings.padding_right }}px;
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom:{{ section.settings.padding_bottom }}px;
       background: transparent !important;
       
 
@@ -573,58 +575,9 @@
     },
     {
       "type": "header",
-      "content": "Mobile configuration"
+      "content": "Color configuration"
     },
-    {
-      "type": "range",
-      "id": "padding_top_mobile",
-      "min": 0,
-      "max": 100,
-      "step": 2,
-      "unit": "px",
-      "label": "Top Padding Mobile",
-      "default": 50
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom_mobile",
-      "min": 0,
-      "max": 100,
-      "step": 2,
-      "unit": "px",
-      "label": "Bottom Padding Mobile",
-      "default": 50
-    },
-      {
-      "type": "range",
-      "id": "padding_left_mobile",
-      "min": 0,
-      "max": 100,
-      "step": 2,
-      "unit": "px",
-      "label": "Left Padding Mobile",
-      "default": 50
-    },
-      {
-      "type": "range",
-      "id": "padding_right_mobile",
-      "min": 0,
-      "max": 100,
-      "step": 2,
-      "unit": "px",
-      "label": "Right Padding Mobile",
-      "default": 50
-    },
-    {
-      "type": "range",
-      "id": "logos_gap_mobile",
-      "min": 0,
-      "max": 150,
-      "step": 5,
-      "unit": "px",
-      "label": "Logos gap mobile",
-      "default": 40
-    },
+    
     {
         "type": "color_background",
         "id": "background",
