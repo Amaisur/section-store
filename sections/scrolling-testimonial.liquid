@@ -9,8 +9,8 @@
         width: min-content;
         border: 1px solid #dfdfdf;
         border-radius: 10px;
-        box-shadow: rgba(115,114,114,0.15) 0px 2px 12px;
-        background: #fff;
+        box-shadow: {{ section.settings.shade-color }} 0px 2px 12px;
+        background: {{ section.settings.card-color }};
     }
     .row-card-38-d9{
         display: flex;
@@ -469,12 +469,7 @@
           }
         ]
       },
-      {
-        "type": "color_background",
-        "id": "background",
-        "label": "Background",
-        "default": "linear-gradient(#ffffff, #ffffff)"
-      },
+     
       {
         "type": "select",
         "id": "direction",
@@ -610,7 +605,25 @@
       "unit": "px",
       "label": "Logos gap mobile",
       "default": 40
-    }
+    },
+    {
+        "type": "color_background",
+        "id": "background",
+        "label": "Background",
+        "default": "linear-gradient(#ffffff, #ffffff)"
+      },
+      {
+        "type": "color",
+        "id": "card-color",
+        "label": "Testimonial Card Color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "shade-color",
+        "label": "Shadow Color",
+        "default": "rgba(115,114,114,0.15)"
+      }
     ],
     "blocks": [
         {
