@@ -651,7 +651,7 @@
         "btn-weight-d": "bold",
         "dots-d": false,
         "arrows-d": true,
-        "arrow-position": "bottom",
+        "arrow-position": "center",
         "padding-top-m": 1,
         "padding-left-m": 0,
         "heading-size-m": 24,
