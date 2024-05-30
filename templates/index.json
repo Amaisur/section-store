@@ -901,7 +901,7 @@
         "padding_right": 0,
         "logos_gap": 40,
         "background": "linear-gradient(180deg, rgba(23, 23, 23, 1), rgba(23, 23, 23, 1) 9.424%, rgba(23, 23, 23, 1) 100%)",
-        "card-color": "rgba(0,0,0,0)",
+        "card-color": "#292929",
         "color-1": "#bababa",
         "color-2": "#b1b1b1",
         "border-color": "#292929",
