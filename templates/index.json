@@ -713,7 +713,7 @@
         "head-size": 22,
         "head-color": "#311414",
         "head-weight": "bold",
-        "background": "radial-gradient(rgba(1, 0, 0, 1), rgba(255, 255, 255, 1))",
+        "background": "linear-gradient(253deg, rgba(1, 0, 0, 1), rgba(255, 255, 255, 1) 1%)",
         "direction": "rtol",
         "box-shadow": false,
         "smooth_speed": 10,
