@@ -717,7 +717,7 @@
         "veri-text": "Verified Buyer",
         "direction": "rtol",
         "box-shadow": false,
-        "smooth_speed": 10,
+        "smooth_speed": 30,
         "padding_top": 50,
         "padding_bottom": 50,
         "padding_left": 0,
