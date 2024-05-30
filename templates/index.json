@@ -669,6 +669,67 @@
         "bg-color": "#fcf8f5"
       }
     },
+    "scrolling_testimonial_gCnbUE": {
+      "type": "scrolling-testimonial",
+      "blocks": {
+        "logo_8EPQqz": {
+          "type": "logo",
+          "settings": {
+            "star-rate": "5-star",
+            "buy-img": "shopify:\/\/shop_images\/3f4075f6ebb9f898ab627f62199f2dfa.png",
+            "name": "John Doe",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "verified": true
+          }
+        },
+        "logo_PcqUNn": {
+          "type": "logo",
+          "settings": {
+            "star-rate": "5-star",
+            "buy-img": "shopify:\/\/shop_images\/3f4075f6ebb9f898ab627f62199f2dfa.png",
+            "name": "John Doe",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "verified": true
+          }
+        },
+        "logo_mBaQ7T": {
+          "type": "logo",
+          "settings": {
+            "star-rate": "5-star",
+            "buy-img": "shopify:\/\/shop_images\/3f4075f6ebb9f898ab627f62199f2dfa.png",
+            "name": "John Doe",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "logo_8EPQqz",
+        "logo_PcqUNn",
+        "logo_mBaQ7T"
+      ],
+      "settings": {
+        "heading": "",
+        "head-size": 22,
+        "head-color": "#222",
+        "head-weight": "bold",
+        "veri-text": "Verified Buyer",
+        "direction": "ltor",
+        "box-shadow": false,
+        "smooth_speed": 50,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_left": 0,
+        "padding_right": 0,
+        "logos_gap": 40,
+        "background": "linear-gradient(180deg, rgba(23, 23, 23, 1), rgba(23, 23, 23, 1) 100%)",
+        "card-color": "#292929",
+        "color-1": "#ffffff",
+        "color-2": "#B1B1B1",
+        "border-color": "#292929",
+        "shade-color": "rgba(255,255,255,0.15)"
+      }
+    },
     "scrolling_testimonial_xXVQcx": {
       "type": "scrolling-testimonial",
       "blocks": {
@@ -860,6 +921,7 @@
     "comparison_tabel_mmWhpy",
     "comparison_tabel_WGR3qb",
     "product_ing_X7pJXp",
+    "scrolling_testimonial_gCnbUE",
     "scrolling_testimonial_xXVQcx",
     "scrolling_testimonial_tbkhzC",
     "scrolling_testimonial_w4Mjg6"
