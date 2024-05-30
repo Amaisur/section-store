@@ -389,8 +389,9 @@
                                     </div>
                                     {% if block.settings.verified %}
                                     <div class="verification-d9">
-                                        {% comment %} <img src="Group 48097212.svg" alt=""> {% endcomment %}
-
+                                        {% if section.settings.veri-img != blank %}
+                                         <img src="{{ section.settings.veri-img |  image_url: width:300  }}" alt=""> 
+                                            {% else %}
                                         <svg width="17" height="18" viewBox="0 0 17 18" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g id="Group 48097212">
@@ -401,7 +402,8 @@
                                                     stroke-linejoin="round" />
                                             </g>
                                         </svg>
-                                        <p>Verified buyer</p>
+                                        {% endif %}
+                                        <p> {{ section.settings.veri-text }} </p>
                                     </div>
                                     {% endif %}
                                     <div class="content-38-d9">
@@ -470,6 +472,20 @@
         ]
       },
      
+
+        {
+            "type": "image_picker",
+            "id": "veri-img",
+            "label": "Verified Tick Image"
+        },
+        {
+            "type": "text",
+            "id": "veri-text",
+            "label": "Verified Text",
+            "default": "Verified Buyer"
+        },
+
+
       {
         "type": "select",
         "id": "direction",
