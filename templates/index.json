@@ -728,7 +728,7 @@
         "padding_left_mobile": 50,
         "padding_right_mobile": 50,
         "logos_gap_mobile": 40,
-        "background": "linear-gradient(253deg, rgba(1, 0, 0, 1), rgba(255, 255, 255, 1) 1%)",
+        "background": "linear-gradient(253deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 1%)",
         "card-color": "#fff",
         "color-1": "#BABABA",
         "color-2": "#B1B1B1",
