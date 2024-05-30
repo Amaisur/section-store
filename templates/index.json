@@ -727,6 +727,7 @@
         "card-color": "#ffffff",
         "color-1": "#bababa",
         "color-2": "#b1b1b1",
+        "border-color": "#EBEBEB",
         "shade-color": "#737272"
       }
     },
@@ -784,6 +785,7 @@
         "card-color": "#ffffff",
         "color-1": "#bababa",
         "color-2": "#b1b1b1",
+        "border-color": "#EBEBEB",
         "shade-color": "#737272"
       }
     },
@@ -841,7 +843,8 @@
         "card-color": "rgba(0,0,0,0)",
         "color-1": "#bababa",
         "color-2": "#b1b1b1",
-        "shade-color": "#737272"
+        "border-color": "#292929",
+        "shade-color": "rgba(0,0,0,0)"
       }
     }
   },
