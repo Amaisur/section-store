@@ -786,6 +786,63 @@
         "color-2": "#B1B1B1",
         "shade-color": "rgba(115,114,114,0.15)"
       }
+    },
+    "scrolling_testimonial_w4Mjg6": {
+      "type": "scrolling-testimonial",
+      "blocks": {
+        "logo_33WzBY": {
+          "type": "logo",
+          "settings": {
+            "star-rate": "5-star",
+            "name": "John Doe",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "verified": true
+          }
+        },
+        "logo_a9WqYA": {
+          "type": "logo",
+          "settings": {
+            "star-rate": "5-star",
+            "name": "John Doe",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "verified": true
+          }
+        },
+        "logo_jyCAXb": {
+          "type": "logo",
+          "settings": {
+            "star-rate": "5-star",
+            "name": "John Doe",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "logo_33WzBY",
+        "logo_a9WqYA",
+        "logo_jyCAXb"
+      ],
+      "settings": {
+        "heading": "",
+        "head-size": 22,
+        "head-color": "#222",
+        "head-weight": "bold",
+        "veri-text": "Verified Buyer",
+        "direction": "rtol",
+        "box-shadow": false,
+        "smooth_speed": 10,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_left": 0,
+        "padding_right": 0,
+        "logos_gap": 40,
+        "background": "linear-gradient(180deg, rgba(23, 23, 23, 1), rgba(23, 23, 23, 1) 9.424%, rgba(23, 23, 23, 1) 100%)",
+        "card-color": "rgba(0,0,0,0)",
+        "color-1": "#BABABA",
+        "color-2": "#B1B1B1",
+        "shade-color": "rgba(115,114,114,0.15)"
+      }
     }
   },
   "order": [
@@ -801,6 +858,7 @@
     "comparison_tabel_WGR3qb",
     "product_ing_X7pJXp",
     "scrolling_testimonial_xXVQcx",
-    "scrolling_testimonial_tbkhzC"
+    "scrolling_testimonial_tbkhzC",
+    "scrolling_testimonial_w4Mjg6"
   ]
 }
