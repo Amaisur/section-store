@@ -769,22 +769,22 @@
       "settings": {
         "heading": "",
         "head-size": 22,
-        "head-color": "#222",
+        "head-color": "#222222",
         "head-weight": "bold",
         "veri-text": "Verified Buyer",
         "direction": "ltor",
         "box-shadow": false,
         "smooth_speed": 10,
-        "padding_top": 50,
+        "padding_top": 0,
         "padding_bottom": 50,
         "padding_left": 50,
         "padding_right": 50,
         "logos_gap": 40,
         "background": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 100%)",
-        "card-color": "#fff",
-        "color-1": "#BABABA",
-        "color-2": "#B1B1B1",
-        "shade-color": "rgba(115,114,114,0.15)"
+        "card-color": "#ffffff",
+        "color-1": "#bababa",
+        "color-2": "#b1b1b1",
+        "shade-color": "#737272"
       }
     },
     "scrolling_testimonial_w4Mjg6": {
@@ -826,7 +826,7 @@
       "settings": {
         "heading": "",
         "head-size": 22,
-        "head-color": "#222",
+        "head-color": "#222222",
         "head-weight": "bold",
         "veri-text": "Verified Buyer",
         "direction": "rtol",
@@ -839,9 +839,9 @@
         "logos_gap": 40,
         "background": "linear-gradient(180deg, rgba(23, 23, 23, 1), rgba(23, 23, 23, 1) 9.424%, rgba(23, 23, 23, 1) 100%)",
         "card-color": "rgba(0,0,0,0)",
-        "color-1": "#BABABA",
-        "color-2": "#B1B1B1",
-        "shade-color": "rgba(115,114,114,0.15)"
+        "color-1": "#bababa",
+        "color-2": "#b1b1b1",
+        "shade-color": "#737272"
       }
     }
   },
