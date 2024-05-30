@@ -727,8 +727,8 @@
         "card-color": "#ffffff",
         "color-1": "#bababa",
         "color-2": "#b1b1b1",
-        "border-color": "#EBEBEB",
-        "shade-color": "#737272"
+        "border-color": "#ebebeb",
+        "shade-color": "rgba(115,114,114,0.15)"
       }
     },
     "scrolling_testimonial_tbkhzC": {
@@ -785,8 +785,8 @@
         "card-color": "#ffffff",
         "color-1": "#bababa",
         "color-2": "#b1b1b1",
-        "border-color": "#EBEBEB",
-        "shade-color": "#737272"
+        "border-color": "#ebebeb",
+        "shade-color": "rgba(115,114,114,0.15)"
       }
     },
     "scrolling_testimonial_w4Mjg6": {
@@ -844,7 +844,7 @@
         "color-1": "#bababa",
         "color-2": "#b1b1b1",
         "border-color": "#292929",
-        "shade-color": "rgba(0,0,0,0)"
+        "shade-color": "rgba(255,255,255,0.15)"
       }
     }
   },
