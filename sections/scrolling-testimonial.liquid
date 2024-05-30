@@ -273,9 +273,11 @@
                     <div class="main-card-38-d9">
                         <div class="inner-card-38-d9">
                             <div class="row-card-38-d9">
+                                {% if block.settings.buy-img != blank %}
                                 <div class="col-card-38-d9 img-col-38-d9">
                                     <img src="{{ block.settings.buy-img |  image_url: width: 1440  }}">
                                 </div>
+                                {% endif %}
                                 <div class="col-card-38-d9 detail-col-38-d9">
                                     {% if block.settings.star-rate == '5-star' %}
                                     <div class="star-rating-d9">
