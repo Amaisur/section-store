@@ -668,6 +668,63 @@
         "subtext-color": "#222222",
         "bg-color": "#fcf8f5"
       }
+    },
+    "scrolling_testimonial_xXVQcx": {
+      "type": "scrolling-testimonial",
+      "blocks": {
+        "logo_hG8cFh": {
+          "type": "logo",
+          "settings": {
+            "buy-img": "shopify:\/\/shop_images\/3f4075f6ebb9f898ab627f62199f2dfa.png",
+            "name": "John Doe",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "verified": true
+          }
+        },
+        "logo_9Wn4Pc": {
+          "type": "logo",
+          "settings": {
+            "buy-img": "shopify:\/\/shop_images\/3f4075f6ebb9f898ab627f62199f2dfa.png",
+            "name": "John Doe",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "verified": true
+          }
+        },
+        "logo_Gy9Fxd": {
+          "type": "logo",
+          "settings": {
+            "buy-img": "shopify:\/\/shop_images\/3f4075f6ebb9f898ab627f62199f2dfa.png",
+            "name": "John Doe",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "logo_hG8cFh",
+        "logo_9Wn4Pc",
+        "logo_Gy9Fxd"
+      ],
+      "settings": {
+        "heading": "",
+        "head-size": 22,
+        "head-color": "#222",
+        "head-weight": "bold",
+        "background": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 100%)",
+        "direction": "rtol",
+        "box-shadow": false,
+        "smooth_speed": 10,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_left": 50,
+        "padding_right": 50,
+        "logos_gap": 90,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50,
+        "padding_left_mobile": 50,
+        "padding_right_mobile": 50,
+        "logos_gap_mobile": 40
+      }
     }
   },
   "order": [
@@ -681,6 +738,7 @@
     "circle_menu_Dzrqrn",
     "comparison_tabel_mmWhpy",
     "comparison_tabel_WGR3qb",
-    "product_ing_X7pJXp"
+    "product_ing_X7pJXp",
+    "scrolling_testimonial_xXVQcx"
   ]
 }
