@@ -737,13 +737,47 @@
     },
     "scrolling_testimonial_tbkhzC": {
       "type": "scrolling-testimonial",
+      "blocks": {
+        "logo_gCTQqM": {
+          "type": "logo",
+          "settings": {
+            "star-rate": "5-star",
+            "name": "John Doe",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "verified": true
+          }
+        },
+        "logo_eiimEn": {
+          "type": "logo",
+          "settings": {
+            "star-rate": "5-star",
+            "name": "John Doe",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "verified": true
+          }
+        },
+        "logo_VehNcE": {
+          "type": "logo",
+          "settings": {
+            "star-rate": "5-star",
+            "name": "John Doe",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "logo_gCTQqM",
+        "logo_eiimEn",
+        "logo_VehNcE"
+      ],
       "settings": {
         "heading": "",
         "head-size": 22,
         "head-color": "#222",
         "head-weight": "bold",
         "veri-text": "Verified Buyer",
-        "direction": "rtol",
+        "direction": "ltor",
         "box-shadow": true,
         "smooth_speed": 10,
         "padding_top": 50,
