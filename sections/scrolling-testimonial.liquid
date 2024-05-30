@@ -99,6 +99,8 @@
       width: fit-content;
       align-items: center;
       animation: logoslide {{ section.settings.smooth_speed }}s infinite cubic-bezier(0, 0, 0, 0);
+      gap: {{ section.settings.logos_gap }}px;
+      padding-right: {{ section.settings.logos_gap }}px;
     }
 
 #shopify-section-{{ section.id }} .custom-slider-wrapper:hover .custom-slider-wrapper-inner {
