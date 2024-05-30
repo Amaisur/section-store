@@ -723,16 +723,16 @@
         "padding_left": 0,
         "padding_right": 0,
         "logos_gap": 40,
-        "padding_top_mobile": 50,
-        "padding_bottom_mobile": 50,
-        "padding_left_mobile": 50,
-        "padding_right_mobile": 50,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_left_mobile": 0,
+        "padding_right_mobile": 0,
         "logos_gap_mobile": 40,
         "background": "linear-gradient(253deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 1%)",
-        "card-color": "#fff",
-        "color-1": "#BABABA",
-        "color-2": "#B1B1B1",
-        "shade-color": "rgba(115,114,114,0.15)"
+        "card-color": "#ffffff",
+        "color-1": "#bababa",
+        "color-2": "#b1b1b1",
+        "shade-color": "#737272"
       }
     }
   },
