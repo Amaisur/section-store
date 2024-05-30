@@ -98,7 +98,7 @@
       min-width: fit-content;
       width: fit-content;
       align-items: center;
-      animation: logoslide {{ section.settings.smooth_speed }}s infinite cubic-bezier(0, 0, 0, 0);
+      animation: {% if section.settings.direction  == 'rtol' %}logoslide-l {% else %}logoslide-r {% endif %} {{ section.settings.smooth_speed }}s infinite cubic-bezier(0, 0, 0, 0);
       gap: {{ section.settings.logos_gap }}px;
       padding-right: {{ section.settings.logos_gap }}px;
     }
@@ -162,23 +162,24 @@
       #shopify-section-{{ section.id }} .logo-container:hover {
       background-color: transparent;
     }
-
-    @keyframes logoslide {
-      {% if section.settings.direction  == 'rtol' %}
+    
+    @keyframes logoslide-l {
+      
       0% {
         transform: translateX(0%);
       }
       100% {
         transform: translateX(-100%);
       }
-        {% else %}
-         0% {
+    }
+    @keyframes logoslide-r{
+
+      0% {
         transform: translateX(-100%);
       }
       100% {
         transform: translateX(0%);
       }
-        {% endif %}
     }
 
 
