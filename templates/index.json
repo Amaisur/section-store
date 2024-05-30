@@ -734,6 +734,34 @@
         "color-2": "#b1b1b1",
         "shade-color": "#737272"
       }
+    },
+    "scrolling_testimonial_tbkhzC": {
+      "type": "scrolling-testimonial",
+      "settings": {
+        "heading": "",
+        "head-size": 22,
+        "head-color": "#222",
+        "head-weight": "bold",
+        "veri-text": "Verified Buyer",
+        "direction": "rtol",
+        "box-shadow": true,
+        "smooth_speed": 10,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_left": 50,
+        "padding_right": 50,
+        "logos_gap": 40,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50,
+        "padding_left_mobile": 50,
+        "padding_right_mobile": 50,
+        "logos_gap_mobile": 40,
+        "background": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 100%)",
+        "card-color": "#fff",
+        "color-1": "#BABABA",
+        "color-2": "#B1B1B1",
+        "shade-color": "rgba(115,114,114,0.15)"
+      }
     }
   },
   "order": [
@@ -748,6 +776,7 @@
     "comparison_tabel_mmWhpy",
     "comparison_tabel_WGR3qb",
     "product_ing_X7pJXp",
-    "scrolling_testimonial_xXVQcx"
+    "scrolling_testimonial_xXVQcx",
+    "scrolling_testimonial_tbkhzC"
   ]
 }
