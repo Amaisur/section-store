@@ -50,6 +50,10 @@
         line-height: 15.6px;
         color: {{ section.settings.color-2 }};
     }
+    #shopify-section-{{ section.id }} .verification-d9 svg{
+        width: 16px;
+        height: 16px;
+    }
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top_mobile }}px;
       padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
@@ -397,7 +401,7 @@
                                         {% if section.settings.veri-img != blank %}
                                          <img src="{{ section.settings.veri-img |  image_url: width:300  }}" width="17" height="17"> 
                                             {% else %}
-                                        <svg width="17" height="18" viewBox="0 0 17 18" fill="none"
+                                        <svg width="16" height="16" viewBox="0 0 17 18" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g id="Group 48097212">
                                                 <circle id="Ellipse 51" cx="8.335" cy="9.04008" r="8.335"
