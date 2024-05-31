@@ -711,6 +711,7 @@
       "settings": {
         "heading": "",
         "head-size": 22,
+        "head-size-m": 22,
         "head-color": "#222222",
         "head-weight": "bold",
         "veri-text": "Verified Buyer",
@@ -722,6 +723,8 @@
         "padding_left": 0,
         "padding_right": 0,
         "logos_gap": 40,
+        "name-size": 14,
+        "text-size": 12,
         "background": "linear-gradient(180deg, rgba(23, 23, 23, 1), rgba(23, 23, 23, 1) 100%)",
         "card-color": "#292929",
         "color-1": "#ffffff",
@@ -769,6 +772,7 @@
       "settings": {
         "heading": "",
         "head-size": 22,
+        "head-size-m": 22,
         "head-color": "#222222",
         "head-weight": "bold",
         "veri-text": "Verified Buyer",
@@ -780,6 +784,8 @@
         "padding_left": 0,
         "padding_right": 0,
         "logos_gap": 40,
+        "name-size": 14,
+        "text-size": 12,
         "background": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 100%)",
         "card-color": "#ffffff",
         "color-1": "#bababa",
@@ -798,7 +804,7 @@
             "buy-img": "shopify:\/\/shop_images\/3f4075f6ebb9f898ab627f62199f2dfa.png",
             "name": "John Doe",
             "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
-            "verified": true
+            "verified": false
           }
         },
         "logo_9Wn4Pc": {
@@ -830,6 +836,7 @@
       "settings": {
         "heading": "",
         "head-size": 22,
+        "head-size-m": 22,
         "head-color": "#311414",
         "head-weight": "bold",
         "veri-img": "shopify:\/\/shop_images\/8c9613ab55c80cd983b11c8e44fd9d5d.png",
@@ -842,6 +849,8 @@
         "padding_left": 0,
         "padding_right": 0,
         "logos_gap": 40,
+        "name-size": 14,
+        "text-size": 12,
         "background": "linear-gradient(253deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 1%)",
         "card-color": "#ffffff",
         "color-1": "#bababa",
@@ -889,6 +898,7 @@
       "settings": {
         "heading": "",
         "head-size": 22,
+        "head-size-m": 22,
         "head-color": "#222222",
         "head-weight": "bold",
         "veri-text": "Verified Buyer",
@@ -900,6 +910,8 @@
         "padding_left": 0,
         "padding_right": 0,
         "logos_gap": 40,
+        "name-size": 14,
+        "text-size": 12,
         "background": "linear-gradient(180deg, rgba(23, 23, 23, 1), rgba(23, 23, 23, 1) 9.424%, rgba(23, 23, 23, 1) 100%)",
         "card-color": "#292929",
         "color-1": "#bababa",
