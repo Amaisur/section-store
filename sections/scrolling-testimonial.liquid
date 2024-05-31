@@ -40,12 +40,12 @@
         object-fit: cover;
     }
     #shopify-section-{{ section.id }} .name-38-d9 h4{
-        font-size: 14px;
+        font-size: {{ section.settings.name-size }}px;
         font-weight: 700;
         color: {{ section.settings.color-1 }};
     }
     #shopify-section-{{ section.id }} .detail-col-38-d9 p{
-        font-size: 12px;
+        font-size: {{ section.settings.text-size }}px;
         font-weight: 400;
         line-height: 15.6px;
         color: {{ section.settings.color-2 }};
@@ -238,6 +238,9 @@
 }
   
 @media screen and (max-width:480px) {
+  #shopify-section-{{ section.id }} .logo-scroll__heading {
+    font-size: {{ section.settings.head-size-m }}px;
+  }
   #shopify-section-{{section.id}} {
     /* display:none; */
   }
@@ -451,6 +454,16 @@
         "unit": "px"
       },
       {
+        "type": "range",
+        "id": "head-size-m",
+        "label": "Heading Font size for mobile",
+        "min": 10,
+        "max": 40,
+        "step": 1,
+        "default": 22,
+        "unit": "px"
+      },
+      {
         "type": "color",
         "id": "head-color",
         "label": "Heading Color",
@@ -573,6 +586,26 @@
       "label": "Logos gap",
       "default": 40
     },
+    {
+        "type": "range",
+        "id": "name-size",
+        "label": "Buyer Name Font size",
+        "min": 10,
+        "max": 40,
+        "step": 1,
+        "default": 14,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "text-size",
+        "label": "text Font size",
+        "min": 10,
+        "max": 40,
+        "step": 1,
+        "default": 12,
+        "unit": "px"
+      },
     {
       "type": "header",
       "content": "Color configuration"
