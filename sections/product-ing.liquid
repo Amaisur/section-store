@@ -464,7 +464,7 @@ function endDrag(event) {
     const movedBy = currentTranslate - prevTranslate;
 
     // Calculate the percentage equivalent of 2 pixels based on the container width
-    const thresholdPercentage = (2 / container.clientWidth) * 100;
+    const thresholdPercentage = (0 / container.clientWidth) * 100;
 
     if (movedBy < -thresholdPercentage && currentIndex < pills.length - 1) {
         currentIndex += 1;
