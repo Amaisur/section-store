@@ -711,7 +711,7 @@
       "settings": {
         "heading": "",
         "head-size": 22,
-        "head-color": "#222",
+        "head-color": "#222222",
         "head-weight": "bold",
         "veri-text": "Verified Buyer",
         "direction": "ltor",
@@ -725,9 +725,67 @@
         "background": "linear-gradient(180deg, rgba(23, 23, 23, 1), rgba(23, 23, 23, 1) 100%)",
         "card-color": "#292929",
         "color-1": "#ffffff",
-        "color-2": "#B1B1B1",
+        "color-2": "#b1b1b1",
         "border-color": "#292929",
         "shade-color": "rgba(255,255,255,0.15)"
+      }
+    },
+    "scrolling_testimonial_tbkhzC": {
+      "type": "scrolling-testimonial",
+      "blocks": {
+        "logo_gCTQqM": {
+          "type": "logo",
+          "settings": {
+            "star-rate": "5-star",
+            "name": "John Doe",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "verified": true
+          }
+        },
+        "logo_eiimEn": {
+          "type": "logo",
+          "settings": {
+            "star-rate": "5-star",
+            "name": "John Doe",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "verified": true
+          }
+        },
+        "logo_VehNcE": {
+          "type": "logo",
+          "settings": {
+            "star-rate": "5-star",
+            "name": "John Doe",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "logo_gCTQqM",
+        "logo_eiimEn",
+        "logo_VehNcE"
+      ],
+      "settings": {
+        "heading": "",
+        "head-size": 22,
+        "head-color": "#222222",
+        "head-weight": "bold",
+        "veri-text": "Verified Buyer",
+        "direction": "ltor",
+        "box-shadow": false,
+        "smooth_speed": 10,
+        "padding_top": 50,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "logos_gap": 40,
+        "background": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 100%)",
+        "card-color": "#ffffff",
+        "color-1": "#bababa",
+        "color-2": "#b1b1b1",
+        "border-color": "#ebebeb",
+        "shade-color": "rgba(115,114,114,0.15)"
       }
     },
     "scrolling_testimonial_xXVQcx": {
@@ -785,64 +843,6 @@
         "padding_right": 0,
         "logos_gap": 40,
         "background": "linear-gradient(253deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 1%)",
-        "card-color": "#ffffff",
-        "color-1": "#bababa",
-        "color-2": "#b1b1b1",
-        "border-color": "#ebebeb",
-        "shade-color": "rgba(115,114,114,0.15)"
-      }
-    },
-    "scrolling_testimonial_tbkhzC": {
-      "type": "scrolling-testimonial",
-      "blocks": {
-        "logo_gCTQqM": {
-          "type": "logo",
-          "settings": {
-            "star-rate": "5-star",
-            "name": "John Doe",
-            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
-            "verified": true
-          }
-        },
-        "logo_eiimEn": {
-          "type": "logo",
-          "settings": {
-            "star-rate": "5-star",
-            "name": "John Doe",
-            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
-            "verified": true
-          }
-        },
-        "logo_VehNcE": {
-          "type": "logo",
-          "settings": {
-            "star-rate": "5-star",
-            "name": "John Doe",
-            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
-            "verified": true
-          }
-        }
-      },
-      "block_order": [
-        "logo_gCTQqM",
-        "logo_eiimEn",
-        "logo_VehNcE"
-      ],
-      "settings": {
-        "heading": "",
-        "head-size": 22,
-        "head-color": "#222222",
-        "head-weight": "bold",
-        "veri-text": "Verified Buyer",
-        "direction": "ltor",
-        "box-shadow": false,
-        "smooth_speed": 10,
-        "padding_top": 0,
-        "padding_bottom": 50,
-        "padding_left": 50,
-        "padding_right": 50,
-        "logos_gap": 40,
-        "background": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 100%)",
         "card-color": "#ffffff",
         "color-1": "#bababa",
         "color-2": "#b1b1b1",
@@ -922,8 +922,8 @@
     "comparison_tabel_WGR3qb",
     "product_ing_X7pJXp",
     "scrolling_testimonial_gCnbUE",
-    "scrolling_testimonial_xXVQcx",
     "scrolling_testimonial_tbkhzC",
+    "scrolling_testimonial_xXVQcx",
     "scrolling_testimonial_w4Mjg6"
   ]
 }
