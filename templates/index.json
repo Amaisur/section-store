@@ -928,6 +928,7 @@
           "settings": {
             "af-image": "shopify:\/\/shop_images\/684dc7cf4706522d388ae95f11dc691a.png",
             "bf-image": "shopify:\/\/shop_images\/0e20a93a465e26603f5c004f1e98c5ef.png",
+            "star-rate": "two",
             "slide-head": "No Really. It’s That Good.",
             "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. <\/p>"
           }
@@ -937,6 +938,7 @@
           "settings": {
             "af-image": "shopify:\/\/shop_images\/Ricecarrot-Face-Mask.webp",
             "bf-image": "shopify:\/\/shop_images\/Riceturnip-2FaceMask.webp",
+            "star-rate": "five",
             "slide-head": "No Really. It’s That Good.",
             "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. <\/p>"
           }
@@ -946,6 +948,7 @@
           "settings": {
             "af-image": "shopify:\/\/shop_images\/RicemintyLittleLight1.webp",
             "bf-image": "shopify:\/\/shop_images\/RicepuddingLittleLight1.webp",
+            "star-rate": "five",
             "slide-head": "No Really. It’s That Good.",
             "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. <\/p>"
           }
@@ -957,6 +960,26 @@
         "slide_3MccdH"
       ],
       "settings": {
+        "af-text": "To This",
+        "bf-text": "From This",
+        "p-top": 3,
+        "p-bottom": 3,
+        "p-right": 15,
+        "p-left": 15,
+        "gap-d": 100,
+        "h-size": 45,
+        "t-size": 18,
+        "font-w-d": true,
+        "p-top-m": 3,
+        "p-bottom-m": 3,
+        "p-right-m": 1,
+        "p-left-m": 1,
+        "h-size-m": 45,
+        "t-size-m": 18,
+        "font-w-m": true,
+        "bg-color": "#f3f0ea",
+        "text-color": "#000000",
+        "sec-color": "#bd9a5b"
       }
     }
   },
