@@ -412,7 +412,14 @@
                         const currentPosition = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
                         const movedBy = currentPosition - startX;
                         currentTranslate = prevTranslate + (movedBy / container.clientWidth) * 100;
-                        event.preventDefault();
+                        // Prevent moving the slide beyond the initial and final positions
+                        if (currentTranslate > 0) {
+                            currentTranslate = 0;
+                        } else if (currentTranslate < -(pills.length - 1) * 100) {
+                            currentTranslate = -(pills.length - 1) * 100;
+                        }
+
+                        event.preventDefault(); 
                     }
                 }
 
