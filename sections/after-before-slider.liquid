@@ -400,6 +400,7 @@
                 }
 
                 function startDrag(event) {
+                    event.preventDefault();
                     startX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
                     isDragging = true;
                     animationID = requestAnimationFrame(animation);
@@ -411,10 +412,12 @@
                         const currentPosition = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
                         const movedBy = currentPosition - startX;
                         currentTranslate = prevTranslate + (movedBy / container.clientWidth) * 100;
+                        event.preventDefault();
                     }
                 }
 
                 function endDrag() {
+                    event.preventDefault();
                     cancelAnimationFrame(animationID);
                     isDragging = false;
                     slides.classList.remove('grabbing');
@@ -429,6 +432,7 @@
                         currentIndex -= 1;
                     }
                     updateSlide(currentIndex);
+                    
                 }
 
                 function animation() {
