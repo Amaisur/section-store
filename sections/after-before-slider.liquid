@@ -1,0 +1,470 @@
+
+
+
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .main-af-bf-39-d9 {
+        width: 100%;
+    }
+    .inner-af-bf-39-d9{
+        max-width: 120rem;
+        padding: 5rem 120px;
+        margin: 0 auto;
+    }
+    .row-af-bf-39-d9 {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 100px;
+        position: relative;
+    }
+
+    .col-af-bf-39-d9 {
+        width: calc(50% - 55px);
+    }
+
+    .img-col-39-d9 {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .img-col-39-d9 img {
+        width: 100%;
+        object-fit: cover;
+        box-shadow: 0 4px 9px #00000040;
+        border-radius: 20px;
+    }
+
+    .svg-39-d9 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        width: 100%;
+        height: 38%;
+    }
+
+    .svg-39-d9 svg {
+        width: 90px;
+    }
+
+    .svg-39-d9 span {
+        font-size: 25px;
+        line-height: 130%;
+        font-weight: 400;
+    }
+
+    .af-39-d9-img svg {
+        transform: rotate(135deg);
+    }
+
+    .af-39-d9-img svg path {
+        fill: #bd9a5b !important;
+    }
+
+    .bf-39-d9-img svg {
+        transform: rotate(-45deg);
+    }
+
+    .af-39-d9-img span {
+        transform: translateX(-22px);
+        color: #bd9a5b;
+    }
+
+    .bf-39-d9-img span {
+        transform: translateX(22px);
+    }
+
+    .slider-container {
+        position: relative;
+        overflow: hidden;
+        /* Ensure that overflowing content is hidden */
+    }
+
+    .slider-39-d9 {
+        display: flex;
+        transition: transform 0.5s ease;
+        width: 100%;
+        /* Adjust to accommodate the slides */
+    }
+
+    .slide-39-d9 {
+        min-width: 100%;
+        /* Ensure each slide takes full width */
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .arrows-39-d9 {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+        margin-top: 30px;
+    }
+
+    .arrows-39-d9 span {
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .arrows-39-d9 button {
+        background: none;
+        border: none;
+        width: 60px;
+        cursor: pointer;
+        padding: 10px;
+        color: #000000;
+        display: flex;
+    }
+
+    .arrows-39-d9 button svg,
+    .arrows-39-d9 button svg path {
+        width: 100%;
+        fill: #000000 !important;
+        stroke: #000000;
+        stroke-width: 3px;
+    }
+
+    .arrows-39-d9 button:disabled svg path {
+        opacity: 0.5;
+        cursor: default;
+    }
+
+    .img-col-39-d9 {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .img-col-39-d9.active-39-d9 {
+        display: flex;
+        opacity: 1;
+        position: static !important;
+    }
+
+    .afbf-img-d9 img {
+        transition: all .5s;
+        transform: rotate(0deg);
+        opacity: 0;
+    }
+
+    .img-col-39-d9.active-39-d9 .af-39-d9-img img {
+        transform: rotate(-5deg);
+        opacity: 1;
+    }
+
+    .img-col-39-d9.active-39-d9 .bf-39-d9-img img {
+        transform: rotate(5deg);
+        opacity: 1;
+    }
+    .slide-39-d9 * {
+        user-select: none;
+    }
+    .star-rating-39-d9 svg {
+        width: 30px;
+        height: 30px;
+        margin: 2px;
+    }
+
+    .content-col-39-d9 h2 {
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 54.6px;
+        text-align: left;
+    }
+    .content-col-39-d9 p{
+        font-size: 18px;
+        line-height: 150%;
+        font-weight: 400;
+    }
+    .afbf-img-d9{
+        aspect-ratio: 9.6/12;
+    }
+    .afbf-img-d9 img{
+            aspect-ratio: 9.6/12;
+        }
+    @media(max-width: 1050px){
+        .row-af-bf-39-d9{
+            flex-direction: column;
+            gap: 30px;
+        }
+        .col-af-bf-39-d9{
+            width: 100%;
+        }
+        .inner-af-bf-39-d9{
+            padding: 5rem 30px;
+        }
+     
+    }
+</style>
+<div class="main-af-bf-39-d9">
+    <div class="inner-af-bf-39-d9">
+        <div class="row-af-bf-39-d9">
+            {% for block in section.blocks %}
+            <div class="col-af-bf-39-d9 img-col-39-d9">
+                <div class="af-39-d9-img afbf-img-d9">
+                    <img src="{{ block.settings.af-image |  image_url: width:1440  }}">
+                    <div class="svg-39-d9">
+                        <span>After</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+                            <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
+                                transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                                <path
+                                    d="M 5.873 12.409 l 8.53 4.925 l 8.53 4.925 c 0.914 0.528 2.056 -0.132 2.056 -1.187 l 0 -6.207 c 13.935 1.705 24.766 13.603 24.766 27.991 l 0 12.12 c 0 18.8 14.876 34.192 33.475 35.023 c 0.859 0.038 1.583 -0.632 1.583 -1.491 v -3.871 c 0 -0.785 -0.608 -1.448 -1.391 -1.486 C 68.51 82.423 56.603 70.063 56.603 54.976 l 0 -12.12 c 0 -18.17 -13.894 -33.152 -31.615 -34.887 l 0 -6.595 c 0 -1.055 -1.142 -1.714 -2.056 -1.187 l -8.53 4.925 l -8.53 4.925 C 4.959 10.562 4.959 11.881 5.873 12.409 z"
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"
+                                    transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"></path>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="bf-39-d9-img afbf-img-d9">
+                    <div class="svg-39-d9">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+                            <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
+                                transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                                <path
+                                    d="M 5.873 12.409 l 8.53 4.925 l 8.53 4.925 c 0.914 0.528 2.056 -0.132 2.056 -1.187 l 0 -6.207 c 13.935 1.705 24.766 13.603 24.766 27.991 l 0 12.12 c 0 18.8 14.876 34.192 33.475 35.023 c 0.859 0.038 1.583 -0.632 1.583 -1.491 v -3.871 c 0 -0.785 -0.608 -1.448 -1.391 -1.486 C 68.51 82.423 56.603 70.063 56.603 54.976 l 0 -12.12 c 0 -18.17 -13.894 -33.152 -31.615 -34.887 l 0 -6.595 c 0 -1.055 -1.142 -1.714 -2.056 -1.187 l -8.53 4.925 l -8.53 4.925 C 4.959 10.562 4.959 11.881 5.873 12.409 z"
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"
+                                    transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"></path>
+                            </g>
+                        </svg>
+                        <span>Before</span>
+                    </div>
+                    <img src="{{ block.settings.bf-image |  image_url: width:1440  }}">
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="col-af-bf-39-d9 content-col-39-d9 slider-container">
+                <div class="slider-39-d9">
+                    {% for block in section.blocks %}
+                    <div class="slide-39-d9">
+                        <h2>{{ block.settings.slide-head }}</h2>
+                        <div class="star-rating-39-d9">
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
+                                    fill="#BD9A5B" />
+                            </svg>
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
+                                    fill="#BD9A5B" />
+                            </svg>
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
+                                    fill="#BD9A5B" />
+                            </svg>
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
+                                    fill="#BD9A5B" />
+                            </svg>
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
+                                    fill="#BD9A5B" />
+                            </svg>
+                        </div>
+                        <div class="description 39-d9">
+                        {{ block.settings.description }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="arrows-39-d9">
+
+                    <button class="prev-39-d9" style="transform: rotate(180deg);">
+                        <svg width="92" height="38" viewBox="0 0 92 38" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M72.472 0L71.063 1.409L87.303 17.649H0V19.643H87.3L71.06 35.883L72.469 37.293L91.115 18.646L72.472 0Z"
+                                fill="black"></path>
+                        </svg>
+                    </button>
+                    <span class="slide-index-39-d9">1 / 2</span>
+                    <button class="next-39-d9">
+                        <svg width="92" height="38" viewBox="0 0 92 38" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M72.472 0L71.063 1.409L87.303 17.649H0V19.643H87.3L71.06 35.883L72.469 37.293L91.115 18.646L72.472 0Z"
+                                fill="black"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        document.addEventListener('DOMContentLoaded', () => {
+            const containerSelector = '.main-af-bf-39-d9';
+
+            document.querySelectorAll(containerSelector).forEach(container => {
+                const imgCols = container.querySelectorAll('.img-col-39-d9');
+                const slides = container.querySelector('.content-col-39-d9 .slider-39-d9');
+                const leftArrow = container.querySelector('.prev-39-d9');
+                const rightArrow = container.querySelector('.next-39-d9');
+                const slideIndex = container.querySelector('.slide-index-39-d9');
+
+                let currentIndex = 0;
+                let startX = 0;
+                let currentTranslate = 0;
+                let prevTranslate = 0;
+                let isDragging = false;
+                let animationID;
+
+                function updateSlide(index) {
+                    currentTranslate = index * -100;
+                    prevTranslate = currentTranslate;
+                    slides.style.transform = `translateX(${currentTranslate}%)`;
+                    imgCols.forEach(col => col.classList.remove('active-39-d9'));
+                    imgCols[index].classList.add('active-39-d9');
+                    currentIndex = index;
+                    updateArrows();
+                    updateSlideIndex();
+                }
+
+                function updateArrows() {
+                    leftArrow.disabled = currentIndex === 0;
+                    rightArrow.disabled = currentIndex === imgCols.length - 1;
+                }
+
+                function updateSlideIndex() {
+                    slideIndex.textContent = `${currentIndex + 1} / ${imgCols.length}`;
+                }
+
+                function startDrag(event) {
+                    startX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+                    isDragging = true;
+                    animationID = requestAnimationFrame(animation);
+                    slides.classList.add('grabbing');
+                }
+
+                function moveDrag(event) {
+                    if (isDragging) {
+                        const currentPosition = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+                        const movedBy = currentPosition - startX;
+                        currentTranslate = prevTranslate + (movedBy / container.clientWidth) * 100;
+                    }
+                }
+
+                function endDrag() {
+                    cancelAnimationFrame(animationID);
+                    isDragging = false;
+                    slides.classList.remove('grabbing');
+                    const movedBy = currentTranslate - prevTranslate;
+
+                    // Convert the 5px threshold to percentage based on container width
+                    const threshold = (5 / container.clientWidth) * 100;
+
+                    if (movedBy < -threshold && currentIndex < imgCols.length - 1) {
+                        currentIndex += 1;
+                    } else if (movedBy > threshold && currentIndex > 0) {
+                        currentIndex -= 1;
+                    }
+                    updateSlide(currentIndex);
+                }
+
+                function animation() {
+                    slides.style.transform = `translateX(${currentTranslate}%)`;
+                    if (isDragging) requestAnimationFrame(animation);
+                }
+
+                leftArrow.addEventListener('click', () => {
+                    if (currentIndex > 0) {
+                        updateSlide(currentIndex - 1);
+                    }
+                });
+
+                rightArrow.addEventListener('click', () => {
+                    if (currentIndex < imgCols.length - 1) {
+                        updateSlide(currentIndex + 1);
+                    }
+                });
+
+                slides.addEventListener('mousedown', startDrag);
+                slides.addEventListener('mousemove', moveDrag);
+                slides.addEventListener('mouseup', endDrag);
+                slides.addEventListener('mouseleave', endDrag);
+
+                slides.addEventListener('touchstart', startDrag);
+                slides.addEventListener('touchmove', moveDrag);
+                slides.addEventListener('touchend', endDrag);
+
+                updateSlide(currentIndex);
+            });
+        });
+    })();
+
+</script>
+
+
+
+
+
+
+
+
+
+{% schema %}
+{
+    "name": "After Before Slider",
+    "settings": [
+        
+        ],
+        "blocks": [
+            {
+                "type": "slide",
+                "name": "Slide",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "af-image",
+                        "label": "After Image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "bf-image",
+                        "label": "Before Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "slide-head",
+                        "label": "Heading",
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "description",
+                        "label": "Description"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "After Before Slider"
+            }
+        ]
+}
+{% endschema %}
