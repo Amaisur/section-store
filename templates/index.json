@@ -919,6 +919,45 @@
         "border-color": "#292929",
         "shade-color": "rgba(255,255,255,0.15)"
       }
+    },
+    "after_before_slider_8cX6J4": {
+      "type": "after-before-slider",
+      "blocks": {
+        "slide_C9fEtD": {
+          "type": "slide",
+          "settings": {
+            "af-image": "shopify:\/\/shop_images\/684dc7cf4706522d388ae95f11dc691a.png",
+            "bf-image": "shopify:\/\/shop_images\/0e20a93a465e26603f5c004f1e98c5ef.png",
+            "slide-head": "No Really. It’s That Good.",
+            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. <\/p>"
+          }
+        },
+        "slide_AbLzMC": {
+          "type": "slide",
+          "settings": {
+            "af-image": "shopify:\/\/shop_images\/0e20a93a465e26603f5c004f1e98c5ef.png",
+            "bf-image": "shopify:\/\/shop_images\/684dc7cf4706522d388ae95f11dc691a.png",
+            "slide-head": "No Really. It’s That Good.",
+            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. <\/p>"
+          }
+        },
+        "slide_3MccdH": {
+          "type": "slide",
+          "settings": {
+            "af-image": "shopify:\/\/shop_images\/684dc7cf4706522d388ae95f11dc691a.png",
+            "bf-image": "shopify:\/\/shop_images\/0e20a93a465e26603f5c004f1e98c5ef.png",
+            "slide-head": "No Really. It’s That Good.",
+            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "slide_C9fEtD",
+        "slide_AbLzMC",
+        "slide_3MccdH"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
@@ -936,6 +975,7 @@
     "scrolling_testimonial_gCnbUE",
     "scrolling_testimonial_tbkhzC",
     "scrolling_testimonial_xXVQcx",
-    "scrolling_testimonial_w4Mjg6"
+    "scrolling_testimonial_w4Mjg6",
+    "after_before_slider_8cX6J4"
   ]
 }
