@@ -421,7 +421,7 @@
                     const movedBy = currentTranslate - prevTranslate;
 
                     // Convert the 5px threshold to percentage based on container width
-                    const threshold = (5 / container.clientWidth) * 100;
+                    const threshold = (0 / container.clientWidth) * 100;
 
                     if (movedBy < -threshold && currentIndex < imgCols.length - 1) {
                         currentIndex += 1;
