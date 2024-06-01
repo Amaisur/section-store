@@ -260,8 +260,8 @@
                     <img src="{{ block.settings.af-image |  image_url: width:1440  }}">
                     <div class="svg-39-d9">
                         <span>{{ section.settings.af-text }}</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
                             <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
                                 transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
                                 <path
@@ -274,8 +274,8 @@
                 </div>
                 <div class="bf-39-d9-img afbf-img-d9">
                     <div class="svg-39-d9">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
                             <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
                                 transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
                                 <path
@@ -297,6 +297,72 @@
                     <div class="slide-39-d9">
                         <h2>{{ block.settings.slide-head }}</h2>
                         <div class="star-rating-39-d9">
+                            {% if block.settings.star-rate == 'one' %}
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
+                                    fill="#BD9A5B" />
+                            </svg>
+
+                            {% elsif block.settings.star-rate == 'two' %}
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
+                                    fill="#BD9A5B" />
+                            </svg>
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
+                                    fill="#BD9A5B" />
+                            </svg>
+                            {% elsif block.settings.star-rate == 'three' %}
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
+                                    fill="#BD9A5B" />
+                            </svg>
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
+                                    fill="#BD9A5B" />
+                            </svg>
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
+                                    fill="#BD9A5B" />
+                            </svg>
+                            {% elsif block.settings.star-rate == 'four' %}
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
+                                    fill="#BD9A5B" />
+                            </svg>
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
+                                    fill="#BD9A5B" />
+                            </svg>
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
+                                    fill="#BD9A5B" />
+                            </svg>
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector"
+                                    d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
+                                    fill="#BD9A5B" />
+                            </svg>
+                            {% else %}
                             <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path id="Vector"
@@ -327,38 +393,38 @@
                                     d="M6.30318 30.75L8.76432 19.6551L0.581055 12.1958L11.3604 11.2143L15.582 0.75L19.8037 11.2122L30.5811 12.1937L22.3998 19.653L24.8609 30.7479L15.582 24.859L6.30318 30.75Z"
                                     fill="#BD9A5B" />
                             </svg>
+                            {% endif %}
+                            <div class="description 39-d9">
+                                {{ block.settings.description }}
+                            </div>
                         </div>
-                        <div class="description 39-d9">
-                        {{ block.settings.description }}
-                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                </div>
-                <div class="arrows-39-d9">
+                    <div class="arrows-39-d9">
 
-                    <button class="prev-39-d9" style="transform: rotate(180deg);">
-                        <svg width="92" height="38" viewBox="0 0 92 38" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M72.472 0L71.063 1.409L87.303 17.649H0V19.643H87.3L71.06 35.883L72.469 37.293L91.115 18.646L72.472 0Z"
-                                fill="black"></path>
-                        </svg>
-                    </button>
-                    <span class="slide-index-39-d9">1 / 2</span>
-                    <button class="next-39-d9">
-                        <svg width="92" height="38" viewBox="0 0 92 38" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M72.472 0L71.063 1.409L87.303 17.649H0V19.643H87.3L71.06 35.883L72.469 37.293L91.115 18.646L72.472 0Z"
-                                fill="black"></path>
-                        </svg>
-                    </button>
+                        <button class="prev-39-d9" style="transform: rotate(180deg);">
+                            <svg width="92" height="38" viewBox="0 0 92 38" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M72.472 0L71.063 1.409L87.303 17.649H0V19.643H87.3L71.06 35.883L72.469 37.293L91.115 18.646L72.472 0Z"
+                                    fill="black"></path>
+                            </svg>
+                        </button>
+                        <span class="slide-index-39-d9">1 / 2</span>
+                        <button class="next-39-d9">
+                            <svg width="92" height="38" viewBox="0 0 92 38" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M72.472 0L71.063 1.409L87.303 17.649H0V19.643H87.3L71.06 35.883L72.469 37.293L91.115 18.646L72.472 0Z"
+                                    fill="black"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
+
             </div>
-
         </div>
     </div>
-</div>
 
 <script>
     (function () {
@@ -684,6 +750,33 @@
                         "type": "image_picker",
                         "id": "bf-image",
                         "label": "Before Image"
+                    },
+                    {
+                        "type": "select",
+                        "id": "star-rate",
+                        "label": "Star Rating",
+                        "default": "five",
+                        "options": [
+                            {
+                                "value": "one",
+                                "label": "One"
+                            },
+                            {
+                                "value": "two",
+                                "label": "Two"
+                            },
+                            {
+                                "value": "three",
+                                "label": "Three"
+                            },{
+                                "value": "four",
+                                "label": "Four"
+                            },
+                            {
+                                "value": "five",
+                                "label": "Five"
+                            }
+                        ]
                     },
                     {
                         "type": "text",
