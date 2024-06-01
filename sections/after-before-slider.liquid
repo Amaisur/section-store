@@ -16,9 +16,13 @@
         --head-size-d9: {{ section.settings.h-size }}px;
         --text-size-d9: {{ section.settings.t-size }}px;
         --head-weight-d9: {% if section.settings.font-w-d %}bold {% else %}light{% endif %};
+        --bg-color-d9: {{ section.settings.bg-color }};
+        --text-color-d9: {{ section.settings.text-color }};
+        --second-color-d9: {{ section.settings.sec-color }};
     }
     .main-af-bf-39-d9 {
         width: 100%;
+        background: var(--bg-color-d9);
     }
     .inner-af-bf-39-d9{
         max-width: 1440px;
@@ -77,7 +81,7 @@
     }
 
     .af-39-d9-img svg path {
-        fill: #bd9a5b !important;
+        fill: var(--second-color-d9) !important;
     }
 
     .bf-39-d9-img svg {
@@ -86,7 +90,7 @@
 
     .af-39-d9-img span {
         transform: translateX(-22px);
-        color: #bd9a5b;
+        color: var(--second-color-d9);
     }
 
     .bf-39-d9-img span {
@@ -131,7 +135,7 @@
         width: 60px;
         cursor: pointer;
         padding: 10px;
-        color: #000000;
+        color: var(--text-color-d9);
         display: flex;
     }
 
@@ -188,11 +192,13 @@
         font-weight: var(--head-weight-d9);
         line-height: 130%;
         text-align: left;
+        color: var(--text-color-d9);
     }
     .content-col-39-d9 p{
         font-size: var(--text-size-d9);
         line-height: 150%;
         font-weight: 400;
+        color: var(--text-color-d9);
     }
     .afbf-img-d9{
         aspect-ratio: 9.6/12;
@@ -590,13 +596,35 @@
             "default": 18,
             "unit": "px",
             "label": "Text Font Size Mobile"
-        }
+        },
         {
             "type": "checkbox",
             "id": "font-w-m",
             "label": "Bold Heading Mobile",
             "default": true
         },
+        {
+            "type": "header",
+            "content": "Color Schemes"
+        },
+        {
+            "type": "color_background",
+            "id": "bg-color",
+            "label": "Background Color",
+            "default": "#f3f0ea"
+        },
+        {
+            "type": "color",
+            "id": "text-color",
+            "label": "Text Color",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "sec-color",
+            "label": "Text Color",
+            "default": "#bd9a5b"
+        }
 
         ],
         "blocks": [
