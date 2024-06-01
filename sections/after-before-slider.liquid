@@ -185,7 +185,7 @@
     .content-col-39-d9 h2 {
         font-size: var(--head-size-d9);
         font-weight: 700;
-        line-height: 54.6px;
+        line-height: 130%;
         text-align: left;
     }
     .content-col-39-d9 p{
@@ -221,7 +221,7 @@
                 <div class="af-39-d9-img afbf-img-d9">
                     <img src="{{ block.settings.af-image |  image_url: width:1440  }}">
                     <div class="svg-39-d9">
-                        <span>After</span>
+                        <span>{{ section.settings.af-text }}</span>
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                             version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
                             <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
@@ -246,7 +246,7 @@
                                     transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"></path>
                             </g>
                         </svg>
-                        <span>Before</span>
+                        <span>{{ section.settings.bf-text }}</span>
                     </div>
                     <img src="{{ block.settings.bf-image |  image_url: width:1440  }}">
                 </div>
@@ -438,7 +438,18 @@
 {
     "name": "After Before Slider",
     "settings": [
-        
+        {
+            "type": "text",
+            "id": "af-text",
+            "default": "To This",
+            "label": "After Image Label"
+        },
+        {
+            "type": "text",
+            "id": "bf-text",
+            "default": "From This",
+            "label": "Before Image Label"
+        },
 
         {
             "type": "header",
@@ -523,7 +534,7 @@
                     {
                         "type": "text",
                         "id": "slide-head",
-                        "label": "Heading"
+                        "label": "Slide Heading"
                     },
                     {
                         "type": "richtext",
