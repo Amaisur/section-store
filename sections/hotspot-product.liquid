@@ -44,7 +44,7 @@
     .inner-dot-d9{
         width: 100%;
         height: 100%;
-        display: block;
+        display: block !important;
         background: #fff;
         border-radius: 50%;
     }
@@ -103,7 +103,7 @@
                 <div class="product-card-hp-40-d9">
                     <div class="product-card-inner-d9">
                         <div class="img-featured-product-d9">
-                            <img src="{{ product.feature_image |  image_url: width:1440  }}">
+                            <img src="{{ product.featured_image |  image_url: width:1440  }}">
                         </div>
                         <div class="product-card-content-d9">
                             <h4> {{- product.title |  escape -}} </h4>
