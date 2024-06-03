@@ -1,0 +1,187 @@
+
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .main-hp-40-d9{
+        width: 100%;
+        height: 700px;
+        background: #ae7e7e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .dots-hp-40-d9{
+        display: flex;
+        gap: 30px;
+    }
+    .dot-item-hp-d9{
+        width: 50px;
+        height: 50px;
+        padding: 6px;
+        border-radius: 50%;
+        background: red;
+        box-shadow: 0 5px 15px #0009;
+        animation: updownMove 2s ease-in-out infinite;
+    }
+    @keyframes updownMove{
+        50%{
+            box-shadow: 0 25px 15px #0003;
+    transform: translatey(-10px)
+        }
+        100%{
+            box-shadow: 0 5px 15px #0009;
+    transform: translatey(0);
+        }
+    }
+    .dot-item-hp-d9.dot-active .inner-dot-d9{
+        background: black;
+    }
+    .inner-dot-d9{
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: #fff;
+        border-radius: 50%;
+    }
+    .product-card-hp-40-d9{
+        max-width: 25%;
+        background: #fff;
+        position: absolute;
+        top: 20px;
+        padding: 20px;
+        transition: all .5s;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+    }
+    .img-featured-product-d9{
+        width: 100%;
+        aspect-ratio: 1/1;
+    }
+    .product-card-hp-40-d9:nth-child(even){
+        left: -100%;
+    }
+    .product-card-hp-40-d9:nth-child(odd){
+        right: -100%;
+    }
+    .product-card-hp-40-d9:nth-child(even).active{
+        left: 20px;
+    }
+    .product-card-hp-40-d9:nth-child(odd).active{
+        right: 20px;
+    }
+    .product-card-inner-d9 img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+    }
+    .product-card-hp-40-d9.active{
+        display: block;
+    }
+</style>
+
+    <div class="main-hp-40-d9">
+        <div class="inner-hp-40-d9">
+            <div class="row-hp-40-d9">
+                <div class="dots-hp-40-d9">
+                    {% for block in section.blocks %}
+                    <dot-item class="dot-item-hp-d9">
+                        <div class="inner-dot-d9"></div>
+                    </dot-item>
+                    {% endfor %}
+                </div>
+                {%  for block in section.blocks  %} 
+                {% assign product = block.settings.product %}
+               
+                <div class="product-card-hp-40-d9">
+                    <div class="product-card-inner-d9">
+                        <div class="img-featured-product-d9">
+                            <img src="{{ product.feature_image |  image_url: width:1440  }}">
+                        </div>
+                        <div class="product-card-content-d9">
+                            <h4> {{- product.title |  escape -}} </h4>
+                            <span> {{- product.price |  money -}} </span>
+                        </div>
+                        <div class="product-card-btn-d9">
+                            <a href="{{ product.url }}">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+             
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const dots = document.querySelectorAll(".dot-item-hp-d9");
+    const productCards = document.querySelectorAll(".product-card-hp-40-d9");
+
+    function removeActiveClasses() {
+        dots.forEach(dot => dot.classList.remove("dot-active"));
+        productCards.forEach(card => card.classList.remove("active"));
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", function () {
+            const isActive = dot.classList.contains("dot-active");
+            removeActiveClasses();
+            if (!isActive) {
+                dot.classList.add("dot-active");
+                productCards[index].classList.add("active");
+            }
+        });
+    });
+
+    productCards.forEach((card, index) => {
+        card.addEventListener("click", function () {
+            const isActive = card.classList.contains("active");
+            if (!isActive) {
+                productCards.forEach(card => card.classList.remove("active"));
+                dots.forEach(dot => dot.classList.remove("dot-active"));
+                card.classList.add("active");
+                dots[index].classList.add("dot-active");
+            }
+        });
+    });
+});
+
+</script>
+
+
+
+{% schema %}
+{
+    "name": "Hotspot Products",
+    "settings": [
+        
+        ],
+        "blocks": [
+            {
+                "type": "product-dot",
+                "name": "Product Dot",
+                "settings": [
+                    {
+                        "type": "product",
+                        "id": "product",
+                        "label": "Product"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Hotspot Products"
+            }
+        ]
+}
+{% endschema %}
