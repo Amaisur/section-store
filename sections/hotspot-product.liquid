@@ -9,9 +9,9 @@
         width: 100%;
         height: 700px;
         {% if section.settings.bg-img != blank %}
-        background: {{ section.settings.bg-img |  image_url: width: 1920 }};
+        background: url({{ section.settings.bg-img |  image_url: width: 1920 }});
         {% else %}
-        background: url({{ section.settings.bg-color }});
+        background: {{ section.settings.bg-color }};
         {% endif %}
         display: flex;
         align-items: center;
