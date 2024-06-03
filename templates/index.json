@@ -933,6 +933,16 @@
             "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. <\/p>"
           }
         },
+        "slide_q4nGky": {
+          "type": "slide",
+          "settings": {
+            "af-image": "shopify:\/\/shop_images\/RicemintyLittleLight1.webp",
+            "bf-image": "shopify:\/\/shop_images\/RicepuddingLittleLight1.webp",
+            "star-rate": "five",
+            "slide-head": "No Really. It’s That Good.",
+            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. <\/p>"
+          }
+        },
         "slide_AbLzMC": {
           "type": "slide",
           "settings": {
@@ -946,8 +956,8 @@
         "slide_3MccdH": {
           "type": "slide",
           "settings": {
-            "af-image": "shopify:\/\/shop_images\/RicemintyLittleLight1.webp",
-            "bf-image": "shopify:\/\/shop_images\/RicepuddingLittleLight1.webp",
+            "af-image": "shopify:\/\/shop_images\/Flash-Masking-Tape.webp",
+            "bf-image": "shopify:\/\/shop_images\/HalloweenStickersC.webp",
             "star-rate": "five",
             "slide-head": "No Really. It’s That Good.",
             "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. <\/p>"
@@ -956,6 +966,7 @@
       },
       "block_order": [
         "slide_C9fEtD",
+        "slide_q4nGky",
         "slide_AbLzMC",
         "slide_3MccdH"
       ],
@@ -981,6 +992,36 @@
         "text-color": "#000000",
         "sec-color": "#bd9a5b"
       }
+    },
+    "hotspot_product_JEfBR9": {
+      "type": "hotspot-product",
+      "blocks": {
+        "product_dot_LRB7Bc": {
+          "type": "product-dot",
+          "settings": {
+            "product": "black-paper-tape"
+          }
+        },
+        "product_dot_wBPEBk": {
+          "type": "product-dot",
+          "settings": {
+            "product": "beauty-brushes"
+          }
+        },
+        "product_dot_r9zdQF": {
+          "type": "product-dot",
+          "settings": {
+            "product": "ice-cream"
+          }
+        }
+      },
+      "block_order": [
+        "product_dot_LRB7Bc",
+        "product_dot_wBPEBk",
+        "product_dot_r9zdQF"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
@@ -999,6 +1040,7 @@
     "scrolling_testimonial_tbkhzC",
     "scrolling_testimonial_xXVQcx",
     "scrolling_testimonial_w4Mjg6",
-    "after_before_slider_8cX6J4"
+    "after_before_slider_8cX6J4",
+    "hotspot_product_JEfBR9"
   ]
 }
