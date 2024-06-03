@@ -8,6 +8,8 @@
     .main-hp-40-d9{
         width: 100%;
         height: 700px;
+        background-position: center;
+        background-repeat: no-repeat;
         {% if section.settings.bg-img != blank %}
         background: url({{ section.settings.bg-img |  image_url: width: 1920 }});
         {% else %}
@@ -18,6 +20,7 @@
         justify-content: center;
         position: relative;
         overflow: hidden;
+        background-size: cover;
     }
     .dots-hp-40-d9{
         display: flex;
