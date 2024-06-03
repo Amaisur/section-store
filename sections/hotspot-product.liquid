@@ -95,6 +95,18 @@
         justify-content: center;
         gap: 10px;
     }
+    .dis-price-40-d9{
+        text-decoration: line-through;
+    }
+    .product-card-btn-d9 a{
+        display: block;
+        width: 100%;
+        background: black;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 5px;
+        border: 1px solid transparent;
+    }
 </style>
 
     <div class="main-hp-40-d9">
@@ -119,8 +131,8 @@
                             <h4> {{- product.title |  escape -}} </h4>
                         </div>
                         <div class="product-price-40-d9">
-                            <span> {{- product.price |  money -}} </span>
-                            <span> {{- product.compare_at_price | money -}} </span>
+                            <span real-price-40-d9> {{- product.price |  money -}} </span>
+                            <span dis-price-40-d9> {{- product.compare_at_price | money -}} </span>
                         </div>
                         <div class="product-card-btn-d9">
                             <a href="{{ product.url }}">Shop Now</a>
