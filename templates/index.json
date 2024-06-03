@@ -999,19 +999,25 @@
         "product_dot_LRB7Bc": {
           "type": "product-dot",
           "settings": {
-            "product": "black-paper-tape"
+            "product": "black-paper-tape",
+            "left-dot": 54,
+            "top-dot": 71
           }
         },
         "product_dot_wBPEBk": {
           "type": "product-dot",
           "settings": {
-            "product": "beauty-brushes"
+            "product": "beauty-brushes",
+            "left-dot": 23,
+            "top-dot": 25
           }
         },
         "product_dot_r9zdQF": {
           "type": "product-dot",
           "settings": {
-            "product": "ice-cream"
+            "product": "ice-cream",
+            "left-dot": 86,
+            "top-dot": 49
           }
         }
       },
