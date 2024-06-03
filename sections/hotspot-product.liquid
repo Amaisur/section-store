@@ -8,7 +8,11 @@
     .main-hp-40-d9{
         width: 100%;
         height: 700px;
-        background: #ae7e7e;
+        {% if section.settings.bg-img != blank %}
+        background: {{ section.settings.bg-img |  image_url: width: 1920 }};
+        {% else %}
+        background: {{ section.settings.bg-color }};
+        {% endif %}
         display: flex;
         align-items: center;
         justify-content: center;
@@ -190,7 +194,17 @@
 {
     "name": "Hotspot Products",
     "settings": [
-        
+        {
+            "type": "image_picker",
+            "id": "bg-img",
+            "label": "Background Image"
+        },
+        {
+            "type": "color_background",
+            "id": "bg-color",
+            "label": "Background Color",
+            "default": "#ae7e7e"
+        }
         ],
         "blocks": [
             {
