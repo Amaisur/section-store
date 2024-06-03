@@ -93,6 +93,7 @@
         flex-direction: column;
         align-items: stretch;
         justify-content: center;
+        gap: 10px;
     }
 </style>
 
@@ -116,7 +117,10 @@
                         </div>
                         <div class="product-card-content-d9">
                             <h4> {{- product.title |  escape -}} </h4>
+                        </div>
+                        <div class="product-price-40-d9">
                             <span> {{- product.price |  money -}} </span>
+                            <span> {{- product.compare_at_price | money -}} </span>
                         </div>
                         <div class="product-card-btn-d9">
                             <a href="{{ product.url }}">Shop Now</a>
