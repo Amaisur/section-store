@@ -62,6 +62,7 @@
         aspect-ratio: 12/12;
         overflow: hidden;
         max-width: 100%;
+        opacity: 0;
     }
     .product-card-hp-40-d9:nth-child(even){
         left: -100%;
@@ -69,11 +70,13 @@
     .product-card-hp-40-d9:nth-child(odd){
         right: -100%;
     }
-    .product-card-hp-40-d9:nth-child(even).active{
+    .product-card-hp-40-d9:nth-child(even).active-p-card{
         left: 20px;
+        opacity: 1;
     }
-    .product-card-hp-40-d9:nth-child(odd).active{
+    .product-card-hp-40-d9:nth-child(odd).active-p-card{
         right: 20px;
+        opacity: 1;
     }
     .product-card-inner-d9 img{
         width: 100%;
@@ -134,7 +137,7 @@
 
     function removeActiveClasses() {
         dots.forEach(dot => dot.classList.remove("dot-active"));
-        productCards.forEach(card => card.classList.remove("active"));
+        productCards.forEach(card => card.classList.remove("active-p-card"));
     }
 
     dots.forEach((dot, index) => {
@@ -143,16 +146,16 @@
             removeActiveClasses();
             if (!isActive) {
                 dot.classList.add("dot-active");
-                productCards[index].classList.add("active");
+                productCards[index].classList.add("active-p-card");
             }
         });
     });
 
     productCards.forEach((card, index) => {
         card.addEventListener("click", function () {
-            const isActive = card.classList.contains("active");
+            const isActive = card.classList.contains("active-p-card");
             if (!isActive) {
-                productCards.forEach(card => card.classList.remove("active"));
+                productCards.forEach(card => card.classList.remove("active-p-card"));
                 dots.forEach(dot => dot.classList.remove("dot-active"));
                 card.classList.add("active");
                 dots[index].classList.add("dot-active");
