@@ -180,22 +180,17 @@
 #shopify-section-{{ section.id }} .afbf-img-d9 img {
     aspect-ratio: 9.6/12;
 }
-@media (max-width: 1050px) {
-    #shopify-section-{{ section.id }} {
-        --top-pad-d9: {{ section.settings.p-top-m }}rem;
-        --bottom-pad-d9: {{ section.settings.p-bottom-m }}rem;
-        --left-pad-d9: {{ section.settings.p-left-m }}rem;
-        --right-pad-d9: {{ section.settings.p-right-m }}rem;
-        --head-size-d9: {{ section.settings.h-size-m }}px;
-        --text-size-d9: {{ section.settings.t-size-m }}px;
-        --head-weight-d9: {% if section.settings.font-w-m %}bold {% else %}light{% endif %};
+  @media (min-width: 1050px) and (max-width: 1350px){
+     #shopify-section-{{ section.id }} .svg-39-d9 {
+        height: 50%;
     }
+  }
+@media (max-width: 1050px) {
+ 
     #shopify-section-{{ section.id }} .svg-39-d9 {
         height: 70%;
     }
-    #shopify-section-{{ section.id }} .svg-39-d9 svg {
-        width: 50px;
-    }
+
     #shopify-section-{{ section.id }} .row-af-bf-39-d9 {
         flex-direction: column;
         gap: 30px;
@@ -214,7 +209,20 @@
         justify-content: center;
     }
 }
-
+@media (max-width: 768px){
+     #shopify-section-{{ section.id }} {
+        --top-pad-d9: {{ section.settings.p-top-m }}rem;
+        --bottom-pad-d9: {{ section.settings.p-bottom-m }}rem;
+        --left-pad-d9: {{ section.settings.p-left-m }}rem;
+        --right-pad-d9: {{ section.settings.p-right-m }}rem;
+        --head-size-d9: {{ section.settings.h-size-m }}px;
+        --text-size-d9: {{ section.settings.t-size-m }}px;
+        --head-weight-d9: {% if section.settings.font-w-m %}bold {% else %}light{% endif %};
+    }
+      #shopify-section-{{ section.id }} .svg-39-d9 svg {
+        width: 50px;
+    }
+}
 
 #shopify-section-{{ section.id }} .img-col-39-d9 img {
     -webkit-box-shadow: 0 4px 9px #00000040;
@@ -257,7 +265,9 @@
             {% for block in section.blocks %}
             <div class="col-af-bf-39-d9 img-col-39-d9">
                 <div class="af-39-d9-img afbf-img-d9">
+                   <div class="img-div-afbf-39-d9">
                     <img src="{{ block.settings.bf-image |  image_url: width:1440  }}">
+                   </div>
                     <div class="svg-39-d9">
                         <span>{{ section.settings.af-text }}</span>
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
@@ -286,7 +296,9 @@
                         </svg>
                         <span>{{ section.settings.bf-text }}</span>
                     </div>
+                  <div class="img-div-afbf-39-d9">
                     <img src="{{ block.settings.af-image |  image_url: width:1440  }}">
+                    </div>
                 </div>
             </div>
             {% endfor %}
