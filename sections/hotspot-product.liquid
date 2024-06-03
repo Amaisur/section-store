@@ -11,7 +11,7 @@
         {% if section.settings.bg-img != blank %}
         background: {{ section.settings.bg-img |  image_url: width: 1920 }};
         {% else %}
-        background: {{ section.settings.bg-color }};
+        background: url({{ section.settings.bg-color }});
         {% endif %}
         display: flex;
         align-items: center;
