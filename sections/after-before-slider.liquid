@@ -190,9 +190,7 @@
     #shopify-section-{{ section.id }} .svg-39-d9 {
         height: 70%;
     }
-    #shopify-section-{{ section.id }} .svg-39-d9 svg {
-        width: 50px;
-    }
+
     #shopify-section-{{ section.id }} .row-af-bf-39-d9 {
         flex-direction: column;
         gap: 30px;
@@ -220,6 +218,9 @@
         --head-size-d9: {{ section.settings.h-size-m }}px;
         --text-size-d9: {{ section.settings.t-size-m }}px;
         --head-weight-d9: {% if section.settings.font-w-m %}bold {% else %}light{% endif %};
+    }
+      #shopify-section-{{ section.id }} .svg-39-d9 svg {
+        width: 50px;
     }
 }
 
