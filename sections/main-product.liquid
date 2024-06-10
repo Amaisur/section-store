@@ -87,6 +87,11 @@
 
             {% when 'trust-badge' %}
               {% render 'trust-badges', block: block %}
+
+        {% when 'add-on' %}
+      {% render 'add-on-d9'
+       ad-title: block.settings.heading-add
+      %}
               
               {%- when 'text' -%}
                 <p
@@ -786,7 +791,18 @@
     {
       "type": "@app"
     },
-
+    {
+      "type": "add-on",
+      "name": "Addon products",
+      "settings": [
+        {
+          "type":"text",
+          "id": "heading-add",
+          "label": "Heading",
+          "default": "Style It With"
+        }
+      ]
+    },
     {
       "type": "trust-badge",
       "name": "Trust Badges",
