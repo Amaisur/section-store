@@ -53,6 +53,17 @@
         "trust_badge_HJXUTF": {
           "type": "trust-badge",
           "settings": {
+            "padding-horizontal": 2,
+            "padding-vertical": 2,
+            "c-padding-horizontal": 1,
+            "c-padding-vertical": 1,
+            "img-size": 35,
+            "br-color": "#dedede",
+            "icon-size": 24,
+            "head-size": 14,
+            "head-color": "#222",
+            "para-size": 12,
+            "sub-color": "#222",
             "emoji-svg_1": "🏆",
             "heading_1": "Ships Free + Saves",
             "text_1": "Subscribe and save",
@@ -72,6 +83,12 @@
             "heading_6": "Free returns",
             "text_6": "30 days"
           }
+        },
+        "add_on_DDTJMX": {
+          "type": "add-on",
+          "settings": {
+            "heading-add": "Style It With"
+          }
         }
       },
       "block_order": [
@@ -83,7 +100,8 @@
         "buy_buttons",
         "description",
         "share",
-        "trust_badge_HJXUTF"
+        "trust_badge_HJXUTF",
+        "add_on_DDTJMX"
       ],
       "settings": {
         "enable_sticky_info": true,
