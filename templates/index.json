@@ -1030,6 +1030,106 @@
         "bg-img": "shopify:\/\/shop_images\/c205643ed7e99ee4450cda03fad2ce99.png",
         "bg-color": "#ae7e7e"
       }
+    },
+    "hero_9_hYpfrg": {
+      "type": "hero-9",
+      "blocks": {
+        "left_box_image_ciQrMM": {
+          "type": "Left-Box-image",
+          "settings": {
+            "image_data": "shopify:\/\/shop_images\/Riceturnip-2FaceMask.webp",
+            "image_width": "100%",
+            "image_height": "auto",
+            "image_fit": "cover",
+            "border_radius": "20px"
+          }
+        },
+        "left_box_image_Xj643n": {
+          "type": "Left-Box-image",
+          "settings": {
+            "image_data": "shopify:\/\/shop_images\/Ricecarrot-Face-Mask.webp",
+            "image_width": "100%",
+            "image_height": "auto",
+            "image_fit": "cover",
+            "border_radius": "20px"
+          }
+        },
+        "left_box_image_nrqpiL": {
+          "type": "Left-Box-image",
+          "settings": {
+            "image_data": "shopify:\/\/shop_images\/MissDinoFaceMask_46c550e4-1b0f-481e-b8e6-c48fe06cb6f3.webp",
+            "image_width": "100%",
+            "image_height": "auto",
+            "image_fit": "cover",
+            "border_radius": "20px"
+          }
+        },
+        "right_box_image_eV7d9h": {
+          "type": "Right-Box-image",
+          "settings": {
+            "image_data": "shopify:\/\/shop_images\/RicepuddingLittleLight1.webp",
+            "image_width": "100%",
+            "image_height": "auto",
+            "image_fit": "cover",
+            "border_radius": "20px"
+          }
+        },
+        "right_box_image_dWyB7A": {
+          "type": "Right-Box-image",
+          "settings": {
+            "image_data": "shopify:\/\/shop_images\/RicedinoLittleLight1.webp",
+            "image_width": "100%",
+            "image_height": "auto",
+            "image_fit": "cover",
+            "border_radius": "20px"
+          }
+        },
+        "right_box_image_9XeNGc": {
+          "type": "Right-Box-image",
+          "settings": {
+            "image_data": "shopify:\/\/shop_images\/RicemoguLittleLight1.webp",
+            "image_width": "100%",
+            "image_height": "auto",
+            "image_fit": "cover",
+            "border_radius": "20px"
+          }
+        }
+      },
+      "block_order": [
+        "left_box_image_ciQrMM",
+        "left_box_image_Xj643n",
+        "left_box_image_nrqpiL",
+        "right_box_image_eV7d9h",
+        "right_box_image_dWyB7A",
+        "right_box_image_9XeNGc"
+      ],
+      "settings": {
+        "position": "row",
+        "heading_text": "Don’t just take our word of it",
+        "text_content": "Read what our clients have to say",
+        "heading_font_size": 48,
+        "heading_line_height": 1.2,
+        "text_font_size": 16,
+        "text_line_height": 1.2,
+        "button_url": "",
+        "button_text": "Shop Now",
+        "button_font_size": 16,
+        "button_padding": 10,
+        "button_margin_top": 20,
+        "button_border_radius": 5,
+        "button_border_thickness": 1,
+        "otherdata_width": "50%",
+        "sliderdata_width": "50%",
+        "padding_top": "50px",
+        "padding_bottom": "50px",
+        "padding_sides": "0px",
+        "background_color": "#e4d6d6",
+        "heading_color": "#FFFFFF",
+        "text_color": "#FFFFFF",
+        "button_border_color": "#000000",
+        "button_bg_color": "#ffffff",
+        "button_text_color": "#000000"
+      }
     }
   },
   "order": [
@@ -1049,6 +1149,7 @@
     "scrolling_testimonial_xXVQcx",
     "scrolling_testimonial_w4Mjg6",
     "after_before_slider_8cX6J4",
-    "hotspot_product_JEfBR9"
+    "hotspot_product_JEfBR9",
+    "hero_9_hYpfrg"
   ]
 }
