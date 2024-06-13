@@ -1,0 +1,533 @@
+<style>
+  .custom-reviews {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    height: 550px;
+    gap: 25px;
+  }
+  .custom-reviews .top-reviews, .custom-reviews .bottom-reviews {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 25px;
+  }
+  .hero-9-button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #000;
+    color: #fff;
+    padding: 16px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    max-width: 300px;
+    text-align: center;
+  }
+  .custom-reviews .top-reviews {
+    animation: ticker 20s linear infinite;
+    align-self: flex-start;
+    width: 100%;
+  }
+  .custom-reviews .bottom-reviews {
+    animation: reversticker 20s linear infinite;
+    align-self: flex-end;
+    width: 100%;
+  }
+  
+  @keyframes ticker {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-50%); }
+  }
+  @keyframes reversticker {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(50%); }
+  }
+  .custom-reviews .bottom-reviews .review {
+    direction: ltr;
+  }
+  .custom-reviews .review {
+    overflow: hidden;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .custom-image {
+    width: 100%;
+  }
+  .custom-main-otherdata {
+    width: {{ section.settings.otherdata_width }};
+  }
+  .custom-main-slider-data {
+    width: {{ section.settings.sliderdata_width }};
+  }
+  .custom-data-flx {
+    display: flex;
+    flex-direction: {{ section.settings.position }};
+    align-items: center;
+    gap: 35px; /* Add gap here */
+  }
+  .custom-main-data {
+    margin: {{ section.settings.padding_top }} {{ section.settings.padding_sides }} {{ section.settings.padding_bottom }};
+    background: {{ section.settings.background_color }};
+  }
+  .custom-box-data p {
+    margin: 0px;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 300;
+    color: white;
+  }
+  .custom-box-data h3 {
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    color: #ff4a3f;
+    margin: 0px;
+  }
+  .custom-box-data {
+    background: #202020;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .heading-style-h1-custom {
+    font-size: 64px;
+    line-height: 70px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    margin-top: 0px;
+  }
+  .custom-header-2 {
+    font-weight: 700;
+    color: {{ section.settings.heading_color }}; font-size: {{ section.settings.heading_font_size }}px; line-height: {{ section.settings.heading_line_height }};
+  }
+  .custom-para-large {
+    font-weight: 300;
+    padding-top: 15px;
+    color: {{ section.settings.text_color }}; font-size: {{ section.settings.text_font_size }}px; line-height: {{ section.settings.text_line_height }};
+  }
+  .hero-9-button {
+    font-size: {{ section.settings.button_font_size }}px; padding: {{ section.settings.button_padding }}px calc({{ section.settings.button_padding }}px * 2); margin-top: {{ section.settings.button_margin_top }}px; border-radius: {{ section.settings.button_border_radius }}px; border: {{ section.settings.button_border_thickness }}px solid {{ section.settings.button_border_color }}; background-color: {{ section.settings.button_bg_color }}; color: {{ section.settings.button_text_color }};
+  }
+  @media only screen and (max-width: 1200px) {
+    .custom-box-data p {
+      font-size: 16px;
+      line-height: 22px;
+    }
+    .custom-reviews .top-reviews {
+      animation: ticker 20s linear infinite;
+      align-self: flex-start;
+      width: 100%;
+    }
+    .custom-reviews .bottom-reviews {
+      animation: reversticker 20s linear infinite;
+      align-self: flex-end;
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    .custom-data-flx {
+      flex-direction: column;
+      gap: 15px; /* Adjust gap for smaller screens */
+    }
+    .custom-main-otherdata {
+      width: 100%;
+    }
+    .custom-main-slider-data {
+      width: 100%;
+    }
+    .bottom-reviews {
+      display: none !important;
+    }
+    .top-reviews {
+      width: 100% !important;
+    }
+    .custom-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .custom-box-data {
+      padding: 35px;
+    }
+    .custom-reviews {
+      height: 600px;
+    }
+    .heading-style-h1-custom {
+      text-align: left;
+    }
+    .custom-para-large {
+      padding-bottom: 35px;
+    }
+    .custom-main-otherdata {
+      order: 2; /* Change order to push it to the bottom */
+    }
+    .custom-main-slider-data {
+      order: 1; /* Change order to push it to the top */
+    }
+    .hero-9-button {
+      align-self: flex-start; /* Align button to the left */
+      margin-top: 20px; /* Adjust margin top as needed */
+      margin-bottom: 20px; /* Adjust margin bottom as needed */
+    }
+  }
+</style>
+
+
+<div class="custom-main-data">
+  <div class="page-width">
+    <div class="custom-data-flx">
+        <div class="custom-main-otherdata">
+          <h2 class="custom-header-2">
+            {{ section.settings.heading_text }}
+          </h2>
+          <p class="custom-para-large">
+            {{ section.settings.text_content }}
+          </p>
+          <a class="hero-9-button" href="{{ section.settings.button_url }}">
+            {{ section.settings.button_text }}
+          </a>
+        </div>
+        <div class="custom-main-slider-data">
+          <div class="custom-reviews">
+            <div class="top-reviews">
+              {% for block in section.blocks %}
+                  {% if block.type == 'Left-Box-image' %}
+              <div class="review" style="border-radius: {{ block.settings.border_radius }};">
+                 <img src="{{ block.settings.image_data | img_url: '600x' }}" class="custom-image" style="width: {{ block.settings.image_width }}; height: {{ block.settings.image_height }}; object-fit: {{ block.settings.image_fit }};">
+              </div>
+                {% endif %}
+           {% endfor %}
+                {% for block in section.blocks %}
+                  {% if block.type == 'Left-Box-image' %}
+              <div class="review" style="border-radius: {{ block.settings.border_radius }};">
+                 <img src="{{ block.settings.image_data | img_url: '600x' }}" class="custom-image" style="width: {{ block.settings.image_width }}; height: {{ block.settings.image_height }}; object-fit: {{ block.settings.image_fit }};">
+              </div>
+                {% endif %}
+           {% endfor %}
+              
+            </div>
+
+            
+            <div class="bottom-reviews">
+              {% for block in section.blocks %}
+                {% if block.type == 'Right-Box-image' %}
+                  <div class="review" style="border-radius: {{ block.settings.border_radius }};">
+                    <img src="{{ block.settings.image_data | img_url: '600x' }}" class="custom-image" style="width: {{ block.settings.image_width }}; height: {{ block.settings.image_height }}; object-fit: {{ block.settings.image_fit }};">
+                  </div>
+                 {% endif %}
+              {% endfor %}
+              {% for block in section.blocks %}
+                {% if block.type == 'Right-Box-image' %}
+                  <div class="review" style="border-radius: {{ block.settings.border_radius }};">
+                    <img src="{{ block.settings.image_data | img_url: '600x' }}" class="custom-image" style="width: {{ block.settings.image_width }}; height: {{ block.settings.image_height }}; object-fit: {{ block.settings.image_fit }};">
+                  </div>
+                 {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+    </div>
+ </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero 9",
+  "settings": [
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Change Image Position",
+      "options": [
+        {
+          "value": "row",
+          "label": "Left"
+        },
+        {
+          "value": "row-reverse",
+          "label": "Right"
+        }
+      ],
+      "default": "row"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text",
+      "default": "Don’t just take our word of it"
+    },
+    {
+      "type": "text",
+      "id": "text_content",
+      "label": "Text Content",
+      "default": "Read what our clients have to say"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading Font Size",
+      "default": 48,
+      "min": 24,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "heading_line_height",
+      "label": "Heading Line Height",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.2,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "text_font_size",
+      "label": "Text Font Size",
+      "default": 16,
+      "min": 12,
+      "max": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "text_line_height",
+      "label": "Text Line Height",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.2,
+      "unit": "%"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Button Font Size",
+      "min": 12,
+      "max": 48,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "button_padding",
+      "label": "Button Padding",
+      "min": 0,
+      "max": 50,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "button_margin_top",
+      "label": "Button Margin Top",
+      "min": 0,
+      "max": 50,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button Border Radius",
+      "min": 0,
+      "max": 50,
+      "default": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "button_border_thickness",
+      "label": "Button Border Thickness",
+      "min": 0,
+      "max": 10,
+      "default": 1,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "otherdata_width",
+      "label": "Other Data Width",
+      "default": "30%"
+    },
+    {
+      "type": "text",
+      "id": "sliderdata_width",
+      "label": "Slider Data Width",
+      "default": "70%"
+    },
+    {
+      "type": "text",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": "50px"
+    },
+    {
+      "type": "text",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": "50px"
+    },
+    {
+      "type": "text",
+      "id": "padding_sides",
+      "label": "Padding Sides",
+      "default": "0px"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Left Box Image",
+      "type": "Left-Box-image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_data",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_width",
+          "label": "Image Width",
+          "default": "100%"
+        },
+        {
+          "type": "text",
+          "id": "image_height",
+          "label": "Image Height",
+          "default": "auto"
+        },
+        {
+          "type": "select",
+          "id": "image_fit",
+          "label": "Image Fit",
+          "options": [
+            {
+              "value": "cover",
+              "label": "Cover"
+            },
+            {
+              "value": "contain",
+              "label": "Contain"
+            }
+          ],
+          "default": "cover"
+        },
+        {
+          "type": "text",
+          "id": "border_radius",
+          "label": "Border Radius",
+          "default": "20px"
+        }
+      ]
+    },
+    {
+      "name": "Right Box Image",
+      "type": "Right-Box-image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_data",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_width",
+          "label": "Image Width",
+          "default": "100%"
+        },
+        {
+          "type": "text",
+          "id": "image_height",
+          "label": "Image Height",
+          "default": "auto"
+        },
+        {
+          "type": "select",
+          "id": "image_fit",
+          "label": "Image Fit",
+          "options": [
+            {
+              "value": "cover",
+              "label": "Cover"
+            },
+            {
+              "value": "contain",
+              "label": "Contain"
+            }
+          ],
+          "default": "cover"
+        },
+        {
+          "type": "text",
+          "id": "border_radius",
+          "label": "Border Radius",
+          "default": "20px"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero 9",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
