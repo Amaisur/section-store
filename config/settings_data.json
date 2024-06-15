@@ -187,6 +187,15 @@
           "shadow": "#121212"
         }
       }
+    },
+    "blocks": {
+      "sparqAppEmbedBlock": {
+        "type": "shopify:\/\/apps\/product-filter-search-app\/blocks\/sparq-app-embed-dropdown\/8fd7d3d6-d46d-4322-92f0-3e36acf0ae32",
+        "disabled": false,
+        "settings": {
+          "dropdown_template": "{% render 'sparq-dropdown' %}"
+        }
+      }
     }
   },
   "presets": {

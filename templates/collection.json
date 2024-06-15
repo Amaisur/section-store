@@ -10,6 +10,7 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
@@ -32,11 +33,28 @@
       "type": "pagefly-collection-section",
       "settings": {
       }
+    },
+    "sparqAppBlock": {
+      "type": "apps",
+      "blocks": {
+        "sparqAppBlock": {
+          "type": "shopify:\/\/apps\/product-filter-search-app\/blocks\/sparq-app-block\/8fd7d3d6-d46d-4322-92f0-3e36acf0ae32",
+          "settings": {
+            "template": "{% render 'sparq-filter-and-search' %}"
+          }
+        }
+      },
+      "block_order": [
+        "sparqAppBlock"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
-    "pagefly-collection-section"
+    "pagefly-collection-section",
+    "sparqAppBlock"
   ]
 }
