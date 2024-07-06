@@ -5,9 +5,26 @@
         margin: 0;
         box-sizing: border-box;
     }
+    #shopify-{{ section.id }}{
+        --dot-color-d9: {{ section.settings.dot-color }};
+        --dot-border-d9: {{ section.settings.dot-color-b }};
+        --dot-active-d9: {{ section.settings.a-dot-color }};
+        --product-card-bg-d9: {{ section.settings.pd-bg }};
+        --button-bg-d9: {{ section.settings.btn-bg }};
+        --button-color-d9: {{ section.settings.btn-clr }};
+        --button-color-hover-d9: {{ section.settings.btn-clr-h }};
+        --button-color-background-hover-d9: {{ section.settings.btn-bg-h }};
+        --button-font-d9: {{ section.settings.button-s }}px;
+        --vertical-margin-d9: {{ section.settings.vertical-margin }}px;
+        --section-height-d9: {{ section.settings.height-sect }}px;
+        --text-color-one-d9: {{ section.settings.txt1-color }};
+        --text-color-two-d9: {{ section.settings.txt2-color }};
+        --title-font-d9: {{ section.settings.title-s }}px;
+        --price-font-d9: {{ section.settings.price-s }}px;
+    }
     .main-hp-40-d9{
         width: 100%;
-        height: 700px;
+        height: var(--section-height-d9);
         background-position: center;
         background-repeat: no-repeat !important;
         {% if section.settings.bg-img != blank %}
@@ -21,16 +38,7 @@
         position: relative;
         overflow: hidden;
         background-size: cover;
-    }
-    .overlay-hp-40-d9{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background: red;
-        opacity: 0;
-        display: block;
+        margin: var(--vertical-margin-d9) auto;
     }
     .main-hp-40-d9:after{
         content: "";
@@ -51,7 +59,7 @@
         height: 50px;
         padding: 6px;
         border-radius: 50%;
-        background: red;
+        background: var(--dot-border-d9);
         box-shadow: 0 5px 15px #0009;
         animation: updownMove 2s ease-in-out infinite;
         position: absolute;
@@ -68,20 +76,20 @@
     transform: translatey(0);
         }
     }
-    .dot-item-hp-d9.dot-active .inner-dot-d9{
-        background: black;
+    .dot-item-hp-d9.dot-active .inner-dot-d9, .dot-item-hp-d9:hover .inner-dot-d9{
+        background: var(--dot-active-d9);
     }
     .inner-dot-d9{
         width: 100%;
         height: 100%;
         display: block !important;
-        background: #fff;
+        background: var(--dot-color-d9);
         border-radius: 50%;
     }
     .product-card-hp-40-d9{
         max-width: 25%;
         width: 25%;
-        background: #fff;
+        background: var(--product-card-bg-d9);
         position: absolute;
         top: 20px;
         padding: 20px;
@@ -132,13 +140,20 @@
     .product-card-btn-d9 a{
         display: block;
         width: 100%;
-        background: black;
+        background: var(--button-bg-d9);
         text-decoration: none;
-        color: #fff;
+        color: var(--button-color-d9);
         border-radius: 5px;
         border: 1px solid transparent;
         text-align: center;
         padding: 9px 12px;
+        font-size: var(--button-font-d9);
+        transition: all .3s;
+    }
+    .product-card-btn-d9 a:hover{
+        background: var(--button-color-background-hover-d9);
+        color: var(--button-color-hover-d9);
+        border: var(--button-bg-d9);
     }
 </style>
 
@@ -227,11 +242,131 @@
             "id": "bg-img",
             "label": "Background Image"
         },
+
+
+        {
+            "type": "header",
+            "content": "Desktop Configurations"
+        },
+        {
+            "type": "range",
+            "id": "vertical-margin",
+            "label": "Top bottom space",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "default": 100
+        },
+        {
+            "type": "range",
+            "id": "height-sect",
+            "label": "Section-height",
+            "min": 300,
+            "max": 1500,
+            "step": 50,
+            "unit": "px",
+            "default": 700
+        },
+        {
+            "type": "range",
+            "id": "button-s",
+            "label": "Button font",
+            "min": 8,
+            "max": 40,
+            "step": 1,
+            "unit": "px",
+            "default": 20
+        },
+        {
+            "type": "range",
+            "id": "title-s",
+            "label": "Title font",
+            "min": 8,
+            "max": 40,
+            "step": 1,
+            "unit": "px",
+            "default": 20
+        },
+        {
+            "type": "range",
+            "id": "price-s",
+            "label": "Price font",
+            "min": 8,
+            "max": 40,
+            "step": 1,
+            "unit": "px",
+            "default": 20
+        },
+        {
+            "type": "header",
+            "content": "Colors"
+        },
         {
             "type": "color_background",
             "id": "bg-color",
             "label": "Background Color",
             "default": "#ae7e7e"
+        },
+        {
+            "type": "color",
+            "id": "dot-color",
+            "label": "Dot Color",
+            "default": "#fff"
+        },
+        {
+            "type": "color",
+            "id": "dot-color-b",
+            "label": "Dot border color",
+            "default": "#fff"
+        },
+        {
+            "type": "color",
+            "id": "a-dot-color",
+            "label": "Active and hover dot color",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "pd-bg",
+            "label": "PRoduct card background color",
+            "default": "#fff"
+        },
+        {
+            "type": "color",
+            "id": "btn-bg",
+            "label": "Button background color",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "btn-bg-h",
+            "label": "Button hover color",
+            "default": "#fff"
+        },
+        {
+            "type": "color",
+            "id": "btn-clr",
+            "label": "Button text color",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "btn-clr-h",
+            "label": "Button text color on hover",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "txt1-color",
+            "label": "Text 1 Color",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "txt2-color",
+            "label": "Text 2 Color",
+            "default": "#fff"
         }
         ],
         "blocks": [
