@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "image_banner": {
@@ -1028,7 +1037,22 @@
       ],
       "settings": {
         "bg-img": "shopify:\/\/shop_images\/c205643ed7e99ee4450cda03fad2ce99.png",
-        "bg-color": "#ae7e7e"
+        "vertical-margin": 100,
+        "height-sect": 700,
+        "button-s": 20,
+        "title-s": 20,
+        "price-s": 20,
+        "bg-color": "#ae7e7e",
+        "dot-color": "#ed8585",
+        "dot-color-b": "#fff",
+        "a-dot-color": "#ed6060",
+        "pd-bg": "#fff",
+        "btn-bg": "#000000",
+        "btn-bg-h": "#fff",
+        "btn-clr": "#ffffff",
+        "btn-clr-h": "#000000",
+        "txt1-color": "#000000",
+        "txt2-color": "#fff"
       }
     },
     "hero_9_hYpfrg": {
@@ -1124,8 +1148,8 @@
         "padding_bottom": "100px",
         "padding_sides": "0px",
         "background_color": "#e4d6d6",
-        "heading_color": "#FFFFFF",
-        "text_color": "#FFFFFF",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
         "button_border_color": "#000000",
         "button_bg_color": "#ffffff",
         "button_text_color": "#000000"
