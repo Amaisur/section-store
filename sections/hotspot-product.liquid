@@ -47,8 +47,8 @@
         position: absolute;
         top: 0;
         left: 0;
-        background: black;
-        opacity: 0.3;
+        background: {{ section.settings.opacity-clr }};
+        opacity: {{ section.settings.verlay-opacity }}%;
     }
     .dots-hp-40-d9{
         display: flex;
@@ -181,7 +181,9 @@
                         </div>
                         <div class="product-price-40-d9">
                             <span class="real-price-40-d9"> {{- product.price |  money -}} </span>
+                            {% if section.settings.compare-price %}
                             <span class="dis-price-40-d9"> {{- product.compare_at_price | money -}} </span>
+                            {% endif %}
                         </div>
                         <div class="product-card-btn-d9">
                             <a href="{{ product.url }}">Shop Now</a>
@@ -242,7 +244,26 @@
             "id": "bg-img",
             "label": "Background Image"
         },
-
+        {
+            "type": "header",
+            "content": "General settings"
+        },
+        {
+            "type": "range",
+            "id": "verlay-opacity",
+            "label": "Overlay opacity",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "default": 25,
+            "unit": "%"
+        },
+        {
+            "type": "checkbox",
+            "id": "compare-price",
+            "label": "Show Compare Price",
+            "default": true
+        },
 
         {
             "type": "header",
@@ -307,6 +328,12 @@
             "id": "bg-color",
             "label": "Background Color",
             "default": "#ae7e7e"
+        },
+        {
+            "type": "color",
+            "id": "opacity-clr",
+            "label": "Opacity color",
+            "default": "000000"
         },
         {
             "type": "color",
