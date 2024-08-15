@@ -8,8 +8,8 @@
 * ------------------------------------------------------------
 */
 {
-  "type": "header",
-  "name": "Group name",
+  "type": "aside",
+  "name": "body",
   "sections": {
   },
   "order": [
