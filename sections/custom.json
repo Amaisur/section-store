@@ -11,8 +11,38 @@
   "type": "aside",
   "name": "Body 2",
   "sections": {
+    "hero_9_bBCUAj": {
+      "type": "hero-9",
+      "settings": {
+        "position": "row",
+        "heading_text": "Don’t just take our word of it",
+        "text_content": "Read what our clients have to say",
+        "heading_font_size": 48,
+        "heading_line_height": 1.2,
+        "text_font_size": 16,
+        "text_line_height": 1.2,
+        "button_url": "",
+        "button_text": "Shop Now",
+        "button_font_size": 16,
+        "button_padding": 10,
+        "button_margin_top": 20,
+        "button_border_radius": 5,
+        "button_border_thickness": 1,
+        "otherdata_width": "30%",
+        "sliderdata_width": "70%",
+        "padding_top": "50px",
+        "padding_bottom": "50px",
+        "padding_sides": "0px",
+        "background_color": "#000000",
+        "heading_color": "#FFFFFF",
+        "text_color": "#FFFFFF",
+        "button_border_color": "#000000",
+        "button_bg_color": "#ffffff",
+        "button_text_color": "#000000"
+      }
+    }
   },
   "order": [
-
+    "hero_9_bBCUAj"
   ]
 }
