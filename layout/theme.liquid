@@ -292,10 +292,19 @@
     {%- endif -%}
 
     {% sections 'header-group' %}
-    <div class="df-d5">
-    {% sections 'csutom' %}
-       {% sections 'custom' %}
-    </div>  
+   <div class="df-d5">
+  <div class="tab-buttons">
+    <button class="tab-btn" onclick="openTab(event, 'tab1')">Tab 1</button>
+    <button class="tab-btn" onclick="openTab(event, 'tab2')">Tab 2</button>
+  </div>
+  <div id="tab1" class="tab-content">
+    {% sections 'custom' %}
+  </div>
+  <div id="tab2" class="tab-content" style="display:none;">
+    {% sections 'custom' %}
+  </div>
+</div>
+
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
