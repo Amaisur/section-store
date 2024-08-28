@@ -94,50 +94,11 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
-    },
-    "product_ing_WTtqM7": {
-      "type": "product-ing",
-      "settings": {
-        "heading": "High quality ingredients",
-        "subtext": "<p>We carefully selected plant-based ingredients to create the world's healthiest protein coffee that's low in sugar, high in protein, and tastes delicious.<\/p>",
-        "btn-text-1": "Pre Order Now",
-        "btn-link-1": "",
-        "btn-1-style": "btn-2",
-        "btn-text-2": "Button",
-        "btn-link-2": "",
-        "btn-2-style": "btn-1",
-        "padding-top-d": 2,
-        "padding-left-d": 0,
-        "heading-size-d": 35,
-        "heading-weight-d": "bold",
-        "text-size-d": 16,
-        "btn-size-d": 18,
-        "btn-weight-d": "bold",
-        "dots-d": true,
-        "arrows-d": true,
-        "arrow-position": "bottom",
-        "padding-top-m": 1,
-        "padding-left-m": 0,
-        "heading-size-m": 25,
-        "heading-weight-m": "bold",
-        "text-size-m": 14,
-        "btn-size-m": 14,
-        "dots-m": true,
-        "arrows-m": true,
-        "btn-weight-m": "bold",
-        "img-color": "#a68f8f",
-        "main-color": "#1c161a",
-        "second-color": "#fff",
-        "text-color": "#1c161a",
-        "subtext-color": "#222",
-        "bg-color": "#FCF8F5"
-      }
     }
   },
   "order": [
     "announcement_bar_scrolling_FdWECT",
     "announcement-bar",
-    "header",
-    "product_ing_WTtqM7"
+    "header"
   ]
 }

@@ -11,8 +11,18 @@
   "type": "aside",
   "name": "body",
   "sections": {
+    "details_slider_MhCd9r": {
+      "type": "details-slider",
+      "settings": {
+        "heading-size": 35,
+        "font-weight": "bold",
+        "heading-color": "#222",
+        "para-size": 18,
+        "para-color": "#222"
+      }
+    }
   },
   "order": [
-
+    "details_slider_MhCd9r"
   ]
 }
