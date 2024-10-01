@@ -34,15 +34,112 @@
         "padding_bottom": "50px",
         "padding_sides": "0px",
         "background_color": "#000000",
-        "heading_color": "#FFFFFF",
-        "text_color": "#FFFFFF",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
         "button_border_color": "#000000",
         "button_bg_color": "#ffffff",
         "button_text_color": "#000000"
       }
+    },
+    "comparison_tabel_zekcWF": {
+      "type": "comparison-tabel",
+      "blocks": {
+        "block_PH9MkA": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
+          }
+        },
+        "block_AtXDw4": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
+          }
+        },
+        "block_zT6pUd": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
+          }
+        },
+        "block_MA3PAV": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
+          }
+        },
+        "block_LwgEy3": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
+          }
+        },
+        "block_aBMEbi": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
+          }
+        }
+      },
+      "block_order": [
+        "block_PH9MkA",
+        "block_AtXDw4",
+        "block_zT6pUd",
+        "block_MA3PAV",
+        "block_LwgEy3",
+        "block_aBMEbi"
+      ],
+      "settings": {
+        "padding-vertical": 3,
+        "padding-horizontal": 0,
+        "heading": "Why Choose Us",
+        "btn-size-d": 20,
+        "btn-padding-d": 15,
+        "btn-font-weight": true,
+        "btn-border-d": 6,
+        "btn-style-1": "style-1",
+        "btn-label-1": "Our Story",
+        "btn-link-1": "",
+        "btn-style-2": "style-3",
+        "btn-label-2": "Explore More Products",
+        "btn-link-2": "",
+        "img-size": 50,
+        "our-text": "Ours",
+        "other-text": "Others",
+        "yes-text": "Yes",
+        "no-text": "No",
+        "head-size": 34,
+        "text-size": 16,
+        "head-weight": "bold",
+        "padding-vertical-m": 3,
+        "padding-horizontal-m": 0,
+        "img-size-m": 40,
+        "btn-size-m": 13,
+        "btn-padding-m": 10,
+        "head-size-m": 22,
+        "text-size-m": 14,
+        "main-color": "#983a3e",
+        "container-color": "#fff",
+        "bg-color": "#E1E1E1",
+        "head-color": "#222",
+        "text-color": "#363636"
+      }
     }
   },
   "order": [
-    "hero_9_bBCUAj"
+    "hero_9_bBCUAj",
+    "comparison_tabel_zekcWF"
   ]
 }
