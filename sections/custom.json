@@ -1,18 +1,19 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "aside",
   "name": "Body 2",
   "sections": {
     "hero_9_bBCUAj": {
       "type": "hero-9",
+      "disabled": true,
       "settings": {
         "position": "row",
         "heading_text": "Don’t just take our word of it",
@@ -101,6 +102,7 @@
         "block_LwgEy3",
         "block_aBMEbi"
       ],
+      "disabled": true,
       "settings": {
         "padding-vertical": 3,
         "padding-horizontal": 0,
@@ -131,9 +133,9 @@
         "head-size-m": 22,
         "text-size-m": 14,
         "main-color": "#983a3e",
-        "container-color": "#fff",
-        "bg-color": "#E1E1E1",
-        "head-color": "#222",
+        "container-color": "#ffffff",
+        "bg-color": "#e1e1e1",
+        "head-color": "#222222",
         "text-color": "#363636"
       }
     }
