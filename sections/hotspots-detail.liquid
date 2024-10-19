@@ -80,13 +80,13 @@
   <div class="section-{{ section.id }}">
     <h2 class="section-title-{{ section.id }}">{{ settings.section_title }}</h2>
     <div class="hotspots-image-{{ section.id }}">
-      <img src="{{ settings.hotspots_image | file_url }}" alt="Hotspot Image">
+      <img src="{{ settings.hotspots_image | image_url: width: '1440' }}" alt="Hotspot Image">
 
       {% for block in section.blocks %}
         <div class="hotspot-item-{{ section.id }}" style="left: {{ block.settings.position_x }}%; top: {{ block.settings.position_y }}%;">
           <div class="hotspot-icon">
             {% if block.settings.hotspot_image %}
-              <img src="{{ block.settings.hotspot_image | file_url }}" alt="Hotspot Icon">
+              <img src="{{ block.settings.hotspot_image | img_url: '100' }}" alt="Hotspot Icon">
             {% else %}
               <svg stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
             {% endif %}
