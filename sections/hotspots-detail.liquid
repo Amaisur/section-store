@@ -1,526 +1,333 @@
-
-<div id="shopify-section-{{ section.id }}" class="shopify-section"><style data-shopify="">@font-face {
-  font-family: "Josefin Sans";
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.c8300d95fd4ce72542a6efba9c682da40d144fba.woff2?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=1081bc13bac779d73b77022741d8b8608aa5451af6a05907fc023625940c00f1") format("woff2"),
-       url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=3f19a3e11bab2423756ce410220df09957f15affd53a78fa0ec435e5660aa636") format("woff");
-}
-
-  @font-face {
-  font-family: "Josefin Sans";
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.c8300d95fd4ce72542a6efba9c682da40d144fba.woff2?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=1081bc13bac779d73b77022741d8b8608aa5451af6a05907fc023625940c00f1") format("woff2"),
-       url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=3f19a3e11bab2423756ce410220df09957f15affd53a78fa0ec435e5660aa636") format("woff");
-}
-
-  @font-face {
-  font-family: "Josefin Sans";
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.c8300d95fd4ce72542a6efba9c682da40d144fba.woff2?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=1081bc13bac779d73b77022741d8b8608aa5451af6a05907fc023625940c00f1") format("woff2"),
-       url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=3f19a3e11bab2423756ce410220df09957f15affd53a78fa0ec435e5660aa636") format("woff");
-}
-
-  
-  .section-{{ section.id }} {
-    border-top: solid #000000 0px;
-    border-bottom: solid #000000 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-  
-  .section-{{ section.id }}-settings {
-    margin: 0 auto;
-    padding-top: 27px;
-    padding-bottom: 27px;
-    padding-left: 0rem;
-    padding-right: 0rem;
-  }
-
-  .hotspots-heading-{{ section.id }} * {
-    margin: 0;
-    font-size: 30px;
-    color: #000000;
-    line-height: 150%;
-    text-transform: unset;
-    text-align: center;
-  }
-
-  .hotspots-body-{{ section.id }} {
-    padding: 0px 0px;
-    border-radius: 0px;
-    border: 0px solid #000000;
-    background-color: #f3f3f3;
-  }
-
-  .hotspots-image-{{ section.id }} {
-    border-radius: 0px;
-    border: 0px solid #000000;
-    position: relative;
-  }
-
-  .hotspots-image-{{ section.id }} > img,
-  .hotspots-image-{{ section.id }} > svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0px;
-  }
-
-  .hotspots-item-{{ section.id }} {
-    position: absolute;
-    cursor: pointer;
-  }
-
-  .hotspots-item-inner-{{ section.id }} {
-    position: relative;
-    background-color: #000000;
-    border-radius: 28px;
-    border: 0px solid #ffffff;
-    padding: 8px 8px;
-    z-index: 1;
-  }
-
-  .hotspots-item-inner-{{ section.id }}::before,
-  .hotspots-item-inner-{{ section.id }}::after {
-    position: absolute;
-    z-index: -5;
-    top: 0px;
-    left: 0px;
-    background: #000000;
-    border-radius: inherit;
-    content: "";
-    width: 100%;
-    height: 100%;
-  }
-
-  .hotspots-item-inner-{{ section.id }}::before {
-    z-index: -10;
-    animation-delay: 2s;
-  }
-
-  .hotspots-item-top-{{ section.id }} {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-  }
-
-  .hotspots-item-top-{{ section.id }} svg path {
-    fill: #ffffff;
-    stroke: #ffffff;
-  }
-
-  .hotspots-item-title-{{ section.id }} {
-    margin: 0px;
-    font-size: 14px;
-    color: #ffffff;
-    line-height: 100%;
-    text-transform: unset;
-  }
-
-  .hotspots-item-image-{{ section.id }} {
-    width: 30px;
-    border-radius: 16px;
-  }
-
-  .hotspots-item-image-{{ section.id }} svg,
-  .hotspots-item-image-{{ section.id }} img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 16px;
-  }
-
-  .hotspots-item-image-{{ section.id }} svg {
-    background-color: #DDDDDD;
-  }
-
-  .hotspots-item-body-{{ section.id }} {
-    position: absolute;
-    z-index: 2;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 130%;
-    min-width: 190px;
-    max-width: 90vw;
-    padding: 9px 9px;
-    border-radius: 0px;
-    border: 0px solid #000000;
-    background-color: #ffffff;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.25s ease 0s;
-  }
-
-  .hotspots-item-{{ section.id }}:hover {
-    z-index: 1;
-  }
-
-  .hotspots-item-{{ section.id }}:hover .hotspots-item-body-{{ section.id }} {
-    opacity: 1;
-    pointer-events: all;
-    transition: all 0.25s ease 0s;
-  }
-
-  .hotspots-item-{{ section.id }}.active {
-    z-index: 1;
-  }
-
-  .hotspots-item-{{ section.id }}.active .hotspots-item-body-{{ section.id }} {
-    opacity: 1;
-    pointer-events: all;
-    transition: all 0.25s ease 0s;
-  }
-
-  .hotspots-item-content-{{ section.id }} {
-    margin-top: 6px;
-  }
-
-  .hotspots-item-content-{{ section.id }} * {
-    margin: 0px;
-    font-size: 14px;
-    color: #000000;
-    line-height: 140%;
-    text-transform: unset;
-  }
-
-  .hotspots-item-video-{{ section.id }} {
-    border-radius: 0px;
-  }
-
-  .hotspots-item-video-{{ section.id }} iframe,
-  .hotspots-item-video-{{ section.id }} video {
-    display: block;
-    width: 100%;
-    height: 100%;
-    box-shadow: none;
-    border: 0px;
-    object-fit: cover;
-    border-radius: 0px;
-  }
-
-  .hotspots-item-content-{{ section.id }}.non-margin {
-    margin: 0px;
-  }
-
-  .hotspots-item-arrow-{{ section.id }} {
-    display: block !important;
-    width: 10px;
-    height: 10px;
-    z-index: -1;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .hotspots-item-arrow-{{ section.id }}:before {
-    content: "";
-    position: absolute;
-    top: -12px;
-    left: 0px;
-    transform: rotate(45deg);
-    width: 10px;
-    height: 10px;
-    background-color: #ffffff;
-  }
-  
-  @media(min-width: 768px) {
+<div id="shopify-section-{{ section.id }}" class="shopify-section">
+  <style>
+    @font-face {
+      font-family: "{{ settings.font_family }}";
+      font-weight: {{ settings.font_weight }};
+      font-style: {{ settings.font_style }};
+      font-display: swap;
+      src: url("{{ settings.font_url }}") format("woff2");
+    }
 
     .section-{{ section.id }} {
-      margin-top: 0px;
-      margin-bottom: 0px;
-    }
-    
-    .section-{{ section.id }}-settings {
-      padding: 0 5rem;
-      padding-top: 36px;
-      padding-bottom: 36px;
-      padding-left: 0rem;
-      padding-right: 0rem;
+      background-color: {{ settings.background_color }};
+      padding-top: {{ settings.padding_top }}px;
+      padding-bottom: {{ settings.padding_bottom }}px;
+      margin-top: {{ settings.margin_top }}px;
+      margin-bottom: {{ settings.margin_bottom }}px;
     }
 
-    .hotspots-heading-{{ section.id }} * {
-      font-size: 40px;
-      text-align: left;
+    .section-title-{{ section.id }} {
+      font-family: "{{ settings.title_font_family }}";
+      font-size: {{ settings.title_font_size }}px;
+      color: {{ settings.title_color }};
+      text-align: {{ settings.title_text_align }};
+      margin-bottom: 20px;
     }
 
-    .hotspots-body-{{ section.id }} {
-      padding: 0px 0px;
-    }
-
-    .hotspots-item-inner-{{ section.id }} {
-      padding: 10px 10px;
-    }
-
-    .hotspots-item-title-{{ section.id }} {
-      font-size: 14px;
-    }
-
-    .hotspots-item-image-{{ section.id }} {
-      width: 30px;
-    }
-
-    .hotspots-item-body-{{ section.id }} {
-      min-width: 300px;
-      padding: 12px 12px;
-    }
-
-    .hotspots-item-content-{{ section.id }} {
-      margin-top: 8px;
-    }
-
-    .hotspots-item-content-{{ section.id }} * {
-      font-size: 14px;
-    }
-
-    .hotspots-item-content-{{ section.id }}.non-margin {
-      margin: 0px;
-    }
-
-    .hotspots-item-arrow-{{ section.id }}:before {
-      top: -17px;
-    }
-  }</style>
-
-
-
-
-
-
-
-
-
-
-
-
-  <style>
     .hotspots-image-{{ section.id }} {
-     aspect-ratio: 12/12; 
+      border-radius: {{ settings.image_border_radius }}px;
+      position: relative;
+      width: 100%;
+      aspect-ratio: {{ settings.image_aspect_ratio }};
     }
-  </style>
 
-
-
-  <style>
-    @media(min-width: 1024px) {
-      .hotspots-image-{{ section.id }} {
-       aspect-ratio: 12/8; 
-      }
+    .hotspots-image-{{ section.id }} > img {
+      width: 100%;
+      height: 100%;
+      object-fit: {{ settings.image_object_fit }};
+      border-radius: {{ settings.image_border_radius }}px;
     }
-  </style>
 
+    .hotspot-item-{{ section.id }} {
+      position: absolute;
+      cursor: pointer;
+      background-color: {{ settings.hotspot_background_color }};
+      color: {{ settings.hotspot_text_color }};
+      border-radius: {{ settings.hotspot_border_radius }}px;
+      padding: {{ settings.hotspot_padding }}px;
+    }
 
-
-  <style>
-    .hotspots-item-{{ section.id }}-hotspot-1 {
+    .hotspot-item-{{ section.id }} .hotspot-content {
+      display: none;
+      position: absolute;
+      top: 100%;
       left: 50%;
-      top: 20%;
-      transform: translate(-50%, -20%);
+      transform: translateX(-50%);
+      background-color: {{ settings.tooltip_background_color }};
+      padding: 10px;
+      border-radius: {{ settings.tooltip_border_radius }}px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
-    @media(min-width: 1024px) {
-      .hotspots-item-{{ section.id }}-hotspot-1 {
-        left: 50%;
-        top: 20%;
-        transform: translate(-50%, -20%);
-      }
-    }
-  </style>
 
-  <style>
-    .hotspots-item-{{ section.id }}-hotspot-2 {
-      left: 74%;
-      top: 60%;
-      transform: translate(-74%, -60%);
+    .hotspot-item-{{ section.id }}:hover .hotspot-content {
+      display: block;
     }
-    @media(min-width: 1024px) {
-      .hotspots-item-{{ section.id }}-hotspot-2 {
-        left: 72%;
-        top: 66%;
-        transform: translate(-72%, -66%);
-      }
-    }
-  </style>
 
-  <style>
-    .hotspots-item-17144b6f-005e-4295-9eca-f99f56e50b26 {
-      left: 50%;
-      top: 48%;
-      transform: translate(-50%, -48%);
-    }
-    @media(min-width: 1024px) {
-      .hotspots-item-17144b6f-005e-4295-9eca-f99f56e50b26 {
-        left: 11%;
-        top: 33%;
-        transform: translate(-11%, -33%);
-      }
-    }
-  </style>
-
-  <style>
-    .hotspots-item-1ce0c4d4-8183-45e3-83e8-3fcea5233ed5 {
-      left: 21%;
-      top: 60%;
-      transform: translate(-21%, -60%);
-    }
-    @media(min-width: 1024px) {
-      .hotspots-item-1ce0c4d4-8183-45e3-83e8-3fcea5233ed5 {
-        left: 35%;
-        top: 50%;
-        transform: translate(-35%, -50%);
-      }
-    }
-  </style>
-
-
-
-  <style>
+    /* Keyframes for hotspot animation */
     .hotspots-item-inner-{{ section.id }}::before,
     .hotspots-item-inner-{{ section.id }}::after {
-      animation: 4s ease 0s infinite normal none running animation-wave;
+      animation: {{ settings.animation_duration }}s ease 0s infinite normal none running animation-wave;
     }
-    
+
     @keyframes animation-wave {
       100% {
-          transform: scale(1.78);
-          opacity: 0;
+        transform: scale(1.78);
+        opacity: 0;
       }
     }
   </style>
 
+  <div class="section-{{ section.id }}">
+    <h2 class="section-title-{{ section.id }}">{{ settings.section_title }}</h2>
+    <div class="hotspots-image-{{ section.id }}">
+      <img src="{{ settings.hotspots_image | file_url }}" alt="Hotspot Image">
 
-<div class="section-{{ section.id }} hotspots-{{ section.id }}" style="background-color:#ffffff; background-image: ;">
-    <div class="section-{{ section.id }}-settings ">
-      
-      <div class="hotspots-body-{{ section.id }}">
-        <div class="hotspots-image-{{ section.id }}">
-          
-            <img src="//section.store/cdn/shop/files/PRODUCT_WHITE_1_3024x_d9a11701-52c0-4f86-8c20-1087051519a5.webp?v=1696846409" alt="">
-          
-          
-            <div class="hotspots-item-{{ section.id }} hotspots-item-{{ section.id }}-hotspot-1">
-              <div class="hotspots-item-inner-{{ section.id }}">
-                <div class="hotspots-item-top-{{ section.id }}">
-                  
-                    <svg stroke-width="0" viewBox="0 0 448 512" class="hotspot-icon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
-                  
-                </div>
-              </div>
-              <div class="hotspots-item-body-{{ section.id }}">
-                <div class="hotspots-item-arrow-{{ section.id }}"></div>
-                
-                
-                <div class="hotspots-item-content-{{ section.id }} non-margin">
-                  <p><strong>Bedframe</strong>: Sturdy, modern metal bedframe with sleek lines and headboard.</p>
-                </div>
-              </div>
-            </div>
-          
-            <div class="hotspots-item-{{ section.id }} hotspots-item-{{ section.id }}-hotspot-2">
-              <div class="hotspots-item-inner-{{ section.id }}">
-                <div class="hotspots-item-top-{{ section.id }}">
-                  
-                    <svg stroke-width="0" viewBox="0 0 448 512" class="hotspot-icon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
-                  
-                </div>
-              </div>
-              <div class="hotspots-item-body-{{ section.id }}">
-                <div class="hotspots-item-arrow-{{ section.id }}"></div>
-                
-                
-                <div class="hotspots-item-content-{{ section.id }} non-margin">
-                  <p><strong>Bedside Table: </strong>Compact, elegant wooden table with storage drawer and shelf.</p>
-                </div>
-              </div>
-            </div>
-          
-            <div class="hotspots-item-{{ section.id }} hotspots-item-17144b6f-005e-4295-9eca-f99f56e50b26">
-              <div class="hotspots-item-inner-{{ section.id }}">
-                <div class="hotspots-item-top-{{ section.id }}">
-                  
-                    <svg stroke-width="0" viewBox="0 0 448 512" class="hotspot-icon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
-                  
-                </div>
-              </div>
-              <div class="hotspots-item-body-{{ section.id }}">
-                <div class="hotspots-item-arrow-{{ section.id }}"></div>
-                
-                
-                <div class="hotspots-item-content-{{ section.id }} non-margin">
-                  <p><strong>Pillow Case</strong>: Soft, breathable cotton pillow case with decorative trim.</p>
-                </div>
-              </div>
-            </div>
-          
-            <div class="hotspots-item-{{ section.id }} hotspots-item-1ce0c4d4-8183-45e3-83e8-3fcea5233ed5">
-              <div class="hotspots-item-inner-{{ section.id }}">
-                <div class="hotspots-item-top-{{ section.id }}">
-                  
-                    <svg stroke-width="0" viewBox="0 0 448 512" class="hotspot-icon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
-                  
-                </div>
-              </div>
-              <div class="hotspots-item-body-{{ section.id }}">
-                <div class="hotspots-item-arrow-{{ section.id }}"></div>
-                
-                
-                <div class="hotspots-item-content-{{ section.id }} non-margin">
-                  <p><strong>Duvet Case</strong>: Luxurious, hypoallergenic duvet case with button closure, patterned design.</p>
-                </div>
-              </div>
-            </div>
-          
+      {% for block in section.blocks %}
+        <div class="hotspot-item-{{ section.id }}" style="left: {{ block.settings.position_x }}%; top: {{ block.settings.position_y }}%;">
+          <div class="hotspot-icon">
+            {% if block.settings.hotspot_image %}
+              <img src="{{ block.settings.hotspot_image | file_url }}" alt="Hotspot Icon">
+            {% else %}
+              <svg stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
+            {% endif %}
+          </div>
+          <div class="hotspot-content">
+            <strong>{{ block.settings.title }}</strong>
+            <p>{{ block.settings.description }}</p>
+          </div>
         </div>
-      </div>
+      {% endfor %}
     </div>
-</div>
+  </div>
 
-<script>
-  function initHotspots() {
-    let items = document.querySelectorAll('.hotspots-item-{{ section.id }}');
-    items.forEach(el => {
-      if(window.innerWidth < 1024 ) {
-        el.addEventListener('click', () = > {
-           items.forEach(element => {
-            element.classList.remove('active');
-          })
+  <script>
+    function initHotspots() {
+      let items = document.querySelectorAll('.hotspot-item-{{ section.id }}');
+      items.forEach(el => {
+        el.addEventListener('click', () => {
+          items.forEach(item => item.classList.remove('active'));
           el.classList.toggle('active');
-        }) 
-      }
-    })
-  }
+        });
+      });
+    }
 
-  document.addEventListener('DOMContentLoaded', initHotspots);
-  
-  if (Shopify.designMode) {
-     document.addEventListener('shopify:section:unload', initHotspots);
-     document.addEventListener('shopify:section:load', initHotspots);
-  }
-</script>
+    document.addEventListener('DOMContentLoaded', initHotspots);
 
+    if (Shopify.designMode) {
+      document.addEventListener('shopify:section:unload', initHotspots);
+      document.addEventListener('shopify:section:load', initHotspots);
+    }
+  </script>
 </div>
-
-
-
-
-
-
 
 {% schema %}
-  {
-    "name": "Hotspots Detail",
-    "settings": [],
-    "presets": [
-      {
-        "name": "Hotspots detail"
-      }
-    ]
-  }
+{
+  "name": "Hotspots Detail",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Our Featured Products"
+    },
+
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title Font Size",
+      "min": 10,
+      "max": 80,
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "title_text_align",
+      "label": "Title Text Align",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "image_picker",
+      "id": "hotspots_image",
+      "label": "Hotspot Image"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 0,
+      "max": 200,
+      "default": 30,
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 0,
+      "max": 200,
+      "default": 30,
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top (px)",
+      "min": 0,
+      "max": 200,
+      "default": 0,
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom (px)",
+      "min": 0,
+      "max": 200,
+      "default": 0,
+      "step": 2
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image Border Radius (px)",
+      "min": 0,
+      "max": 100,
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "image_object_fit",
+      "label": "Image Object Fit",
+      "options": [
+        { "value": "cover", "label": "Cover" },
+        { "value": "contain", "label": "Contain" },
+        { "value": "fill", "label": "Fill" }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "text",
+      "id": "image_aspect_ratio",
+      "label": "Image Aspect Ratio (e.g., 12/8)",
+      "default": "12/8"
+    },
+    {
+      "type": "color",
+      "id": "hotspot_background_color",
+      "label": "Hotspot Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "hotspot_text_color",
+      "label": "Hotspot Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "hotspot_border_radius",
+      "label": "Hotspot Border Radius (px)",
+      "min": 0,
+      "max": 100,
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "hotspot_padding",
+      "label": "Hotspot Padding (px)",
+      "min": 0,
+      "max": 50,
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "tooltip_background_color",
+      "label": "Tooltip Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "tooltip_border_radius",
+      "label": "Tooltip Border Radius (px)",
+      "min": 0,
+      "max": 50,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "animation_duration",
+      "label": "Animation Duration (seconds)",
+      "min": 1,
+      "max": 10,
+      "default": 4
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hotspot",
+      "name": "Hotspot",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Hotspot Title",
+          "default": "Hotspot Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Hotspot Description",
+          "default": "Hotspot description text here."
+        },
+        {
+          "type": "range",
+          "id": "position_x",
+          "label": "Position X (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "position_y",
+          "label": "Position Y (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        },
+        {
+          "type": "image_picker",
+          "id": "hotspot_image",
+          "label": "Hotspot Icon (Optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hotspots detail",
+      "category": "Hotspots"
+    }
+  ]
+}
 {% endschema %}
+
