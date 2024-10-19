@@ -91,6 +91,7 @@
         "title_color": "#000000",
         "title_text_align": "center",
         "hotspots_image": "shopify://shop_images/c205643ed7e99ee4450cda03fad2ce99.png",
+        "hotspots_image_mobile": "shopify://shop_images/684dc7cf4706522d388ae95f11dc691a.png",
         "padding_top": 30,
         "padding_bottom": 30,
         "margin_top": 0,
@@ -103,9 +104,13 @@
         "hotspot_text_color": "#000000",
         "hotspot_border_radius": 28,
         "hotspot_padding": 38,
+        "icon_color": "#000",
         "tooltip_background_color": "#ffffff",
         "tooltip_border_radius": 5,
-        "animation_duration": 4
+        "animation_duration": 4,
+        "title_text_align_m": "center",
+        "title_font_size_m": 40,
+        "hotspot_padding_m": 8
       }
     },
     "featured_collection": {
