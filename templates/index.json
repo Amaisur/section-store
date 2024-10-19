@@ -51,7 +51,61 @@
     },
     "hotspots_detail_qtngrJ": {
       "type": "hotspots-detail",
+      "blocks": {
+        "hotspot_Na7UjU": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Hotspot Title",
+            "description": "Hotspot description text here.",
+            "position_x": 16,
+            "position_y": 97
+          }
+        },
+        "hotspot_e9x8jT": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Hotspot Title",
+            "description": "Hotspot description text here.",
+            "position_x": 50,
+            "position_y": 50
+          }
+        },
+        "hotspot_zcLCDQ": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Hotspot Title",
+            "description": "Hotspot description text here.",
+            "position_x": 50,
+            "position_y": 50
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_Na7UjU",
+        "hotspot_e9x8jT",
+        "hotspot_zcLCDQ"
+      ],
       "settings": {
+        "section_title": "Our Featured Products",
+        "title_font_size": 40,
+        "title_color": "#000000",
+        "title_text_align": "center",
+        "hotspots_image": "shopify://shop_images/c205643ed7e99ee4450cda03fad2ce99.png",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "background_color": "#ffffff",
+        "image_border_radius": 0,
+        "image_object_fit": "cover",
+        "image_aspect_ratio": "12/8",
+        "hotspot_background_color": "#000000",
+        "hotspot_text_color": "#ffffff",
+        "hotspot_border_radius": 28,
+        "hotspot_padding": 8,
+        "tooltip_background_color": "#ffffff",
+        "tooltip_border_radius": 5,
+        "animation_duration": 4
       }
     },
     "featured_collection": {
