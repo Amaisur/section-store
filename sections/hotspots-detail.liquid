@@ -92,8 +92,8 @@
     }
 
     /* Keyframes for hotspot animation */
-    .hotspots-item-inner-{{ section.id }}::before,
-    .hotspots-item-inner-{{ section.id }}::after {
+    .hotspots-item-{{ section.id }}::before,
+    .hotspots-item-{{ section.id }}::after {
       animation: {{ section.settings.animation_duration }}s ease 0s infinite normal none running animation-wave;
     }
 
