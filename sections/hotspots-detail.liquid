@@ -80,7 +80,7 @@
   <div class="section-{{ section.id }}">
     <h2 class="section-title-{{ section.id }}">{{ settings.section_title }}</h2>
     <div class="hotspots-image-{{ section.id }}">
-      <img src="{{ settings.hotspots_image | image_url: width: '1440' }}" alt="Hotspot Image">
+      <img src="{{ settings.hotspots_image | img_url: 'master' }}" alt="Hotspot Image">
 
       {% for block in section.blocks %}
         <div class="hotspot-item-{{ section.id }}" style="left: {{ block.settings.position_x }}%; top: {{ block.settings.position_y }}%;">
