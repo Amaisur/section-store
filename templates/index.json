@@ -57,8 +57,8 @@
           "settings": {
             "title": "Hotspot Title",
             "description": "Hotspot description text here.",
-            "position_x": 16,
-            "position_y": 97
+            "position_x": 33,
+            "position_y": 64
           }
         },
         "hotspot_e9x8jT": {
@@ -66,8 +66,8 @@
           "settings": {
             "title": "Hotspot Title",
             "description": "Hotspot description text here.",
-            "position_x": 50,
-            "position_y": 50
+            "position_x": 70,
+            "position_y": 28
           }
         },
         "hotspot_zcLCDQ": {
