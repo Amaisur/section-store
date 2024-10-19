@@ -110,7 +110,7 @@
         "animation_duration": 4,
         "title_text_align_m": "center",
         "title_font_size_m": 40,
-        "hotspot_padding_m": 8
+        "hotspot_padding_m": 26
       }
     },
     "featured_collection": {
