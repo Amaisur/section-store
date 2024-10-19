@@ -72,6 +72,16 @@
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       transition: all 0.25s ease 0s;
     }
+    .hotspot-item-{{ section.id }} .hotspot-content:before{
+      content: "";
+      position: absolute;
+      top: -12px;
+      left: 0px;
+      transform: rotate(45deg);
+      width: 10px;
+      height: 10px;
+      background-color: #ffffff;
+    }
 
     .hotspot-item-{{ section.id }} .hotspot-content p{
       margin: 0;
