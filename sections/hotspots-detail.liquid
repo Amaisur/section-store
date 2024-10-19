@@ -92,7 +92,7 @@
     }
 
     /* Keyframes for hotspot animation */
-    .hotspot-item-{{ section.id }}::before{
+    .hotspot-animation-d5::before{
       position: absolute;
       z-index: 0;
       top: 0px;
@@ -120,6 +120,7 @@
 
       {% for block in section.blocks %}
         <div class="hotspot-item-{{ section.id }}" style="left: {{ block.settings.position_x }}%; top: {{ block.settings.position_y }}%;">
+          <div class="hotspot-animation-d5"></div>
           <div class="hotspot-icon">
             {% if block.settings.hotspot_image %}
               <img src="{{ block.settings.hotspot_image | img_url: '100' }}" alt="Hotspot Icon">
