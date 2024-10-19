@@ -1,50 +1,50 @@
 <div id="shopify-section-{{ section.id }}" class="shopify-section">
   <style>
     @font-face {
-      font-family: "{{ settings.font_family }}";
-      font-weight: {{ settings.font_weight }};
-      font-style: {{ settings.font_style }};
+      font-family: "{{ section.settings.font_family }}";
+      font-weight: {{ section.settings.font_weight }};
+      font-style: {{ section.settings.font_style }};
       font-display: swap;
-      src: url("{{ settings.font_url }}") format("woff2");
+      src: url("{{ section.settings.font_url }}") format("woff2");
     }
 
     .section-{{ section.id }} {
-      background-color: {{ settings.background_color }};
-      padding-top: {{ settings.padding_top }}px;
-      padding-bottom: {{ settings.padding_bottom }}px;
-      margin-top: {{ settings.margin_top }}px;
-      margin-bottom: {{ settings.margin_bottom }}px;
+      background-color: {{ section.settings.background_color }};
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
     }
 
     .section-title-{{ section.id }} {
-      font-family: "{{ settings.title_font_family }}";
-      font-size: {{ settings.title_font_size }}px;
-      color: {{ settings.title_color }};
-      text-align: {{ settings.title_text_align }};
+      font-family: "{{ section.settings.title_font_family }}";
+      font-size: {{ section.settings.title_font_size }}px;
+      color: {{ section.settings.title_color }};
+      text-align: {{ section.settings.title_text_align }};
       margin-bottom: 20px;
     }
 
     .hotspots-image-{{ section.id }} {
-      border-radius: {{ settings.image_border_radius }}px;
+      border-radius: {{ section.settings.image_border_radius }}px;
       position: relative;
       width: 100%;
-      aspect-ratio: {{ settings.image_aspect_ratio }};
+      aspect-ratio: {{ section.settings.image_aspect_ratio }};
     }
 
     .hotspots-image-{{ section.id }} > img {
       width: 100%;
       height: 100%;
-      object-fit: {{ settings.image_object_fit }};
-      border-radius: {{ settings.image_border_radius }}px;
+      object-fit: {{ section.settings.image_object_fit }};
+      border-radius: {{ section.settings.image_border_radius }}px;
     }
 
     .hotspot-item-{{ section.id }} {
       position: absolute;
       cursor: pointer;
-      background-color: {{ settings.hotspot_background_color }};
-      color: {{ settings.hotspot_text_color }};
-      border-radius: {{ settings.hotspot_border_radius }}px;
-      padding: {{ settings.hotspot_padding }}px;
+      background-color: {{ section.settings.hotspot_background_color }};
+      color: {{ section.settings.hotspot_text_color }};
+      border-radius: {{ section.settings.hotspot_border_radius }}px;
+      padding: {{ section.settings.hotspot_padding }}px;
     }
 
     .hotspot-item-{{ section.id }} .hotspot-content {
@@ -53,9 +53,9 @@
       top: 100%;
       left: 50%;
       transform: translateX(-50%);
-      background-color: {{ settings.tooltip_background_color }};
+      background-color: {{ section.settings.tooltip_background_color }};
       padding: 10px;
-      border-radius: {{ settings.tooltip_border_radius }}px;
+      border-radius: {{ section.settings.tooltip_border_radius }}px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
@@ -66,7 +66,7 @@
     /* Keyframes for hotspot animation */
     .hotspots-item-inner-{{ section.id }}::before,
     .hotspots-item-inner-{{ section.id }}::after {
-      animation: {{ settings.animation_duration }}s ease 0s infinite normal none running animation-wave;
+      animation: {{ section.settings.animation_duration }}s ease 0s infinite normal none running animation-wave;
     }
 
     @keyframes animation-wave {
@@ -78,9 +78,9 @@
   </style>
 
   <div class="section-{{ section.id }}">
-    <h2 class="section-title-{{ section.id }}">{{ settings.section_title }}</h2>
+    <h2 class="section-title-{{ section.id }}">{{ section.settings.section_title }}</h2>
     <div class="hotspots-image-{{ section.id }}">
-      <img src="{{ settings.hotspots_image | image_url: width: '1440px' }}" alt="Hotspot Image">
+      <img src="{{ section.settings.hotspots_image | image_url: width: '1440px' }}" alt="Hotspot Image">
 
       {% for block in section.blocks %}
         <div class="hotspot-item-{{ section.id }}" style="left: {{ block.settings.position_x }}%; top: {{ block.settings.position_y }}%;">
