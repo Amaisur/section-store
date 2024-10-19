@@ -41,7 +41,6 @@
     .hotspot-item-{{ section.id }} {
       position: absolute;
       cursor: pointer;
-      background-color: {{ section.settings.hotspot_background_color }};
       color: {{ section.settings.hotspot_text_color }};
       border-radius: {{ section.settings.hotspot_border_radius }}px;
       width: {{ section.settings.hotspot_padding }}px;
@@ -57,6 +56,7 @@
       justify-content: center;
       width: 100%;
       height: 100%;
+      background-color: {{ section.settings.hotspot_background_color }};
     }
   
     .hotspot-item-{{ section.id }} .hotspot-content {
@@ -92,7 +92,7 @@
     }
 
     /* Keyframes for hotspot animation */
-    .hotspot-animation-d5::before{
+    .hotspot-item-{{ section.id }}::before{
       position: absolute;
       z-index: 0;
       top: 0px;
