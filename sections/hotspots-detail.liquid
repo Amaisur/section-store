@@ -61,7 +61,9 @@
       z-index: 1;
       border-radius: 50%;
     }
-  
+    .hotspot-item-{{ section.id }} .hotspot-icon svg path{
+      fill: {{ section.settings.icon_color }};
+    }
     .hotspot-item-{{ section.id }} .hotspot-content {
       opacity: 0;
       position: absolute;
@@ -317,6 +319,12 @@
       "min": 0,
       "max": 50,
       "default": 8
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#000"
     },
     {
       "type": "color",
