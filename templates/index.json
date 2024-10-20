@@ -104,7 +104,7 @@
         "hotspot_text_color": "#000000",
         "hotspot_border_radius": 28,
         "hotspot_padding": 38,
-        "icon_color": "#000",
+        "icon_color": "#000000",
         "tooltip_background_color": "#ffffff",
         "tooltip_border_radius": 5,
         "animation_duration": 4,
@@ -190,7 +190,6 @@
         "collection_qWRBmR",
         "collection_RGLQWp"
       ],
-      "disabled": true,
       "settings": {
       }
     },
@@ -254,7 +253,6 @@
         "box_3a4VVy",
         "box_qPTFGd"
       ],
-      "disabled": true,
       "settings": {
         "main-head": "OUTSTANDING QUALITY BACKED BY A NUMBER OF REASONS.  OUR PRODUCT IS SETTING NEW BOUNDARIES FOR THE SO FAR EXISTING HAND SANITIZERS.",
         "font-size-head": 35,
@@ -315,7 +313,6 @@
         "block_gzGYh8",
         "block_AzXkGj"
       ],
-      "disabled": true,
       "settings": {
         "heading-size": 35,
         "font-weight": "bold",
@@ -346,7 +343,6 @@
         "name_FFtfBH",
         "name_JJcqHU"
       ],
-      "disabled": true,
       "settings": {
         "desk-view": "desk-grid-v",
         "mobl-view": "mobl-grid-v"
@@ -472,7 +468,6 @@
         "product_fRbqWM",
         "product_LMqYRK"
       ],
-      "disabled": true,
       "settings": {
         "title": "Circle Menus",
         "h-font": 34,
@@ -545,7 +540,6 @@
         "block_iXYDHQ",
         "block_wt4wcW"
       ],
-      "disabled": true,
       "settings": {
         "padding-vertical": 3,
         "padding-horizontal": 0,
@@ -715,7 +709,6 @@
         "slide_EaPdXQ",
         "slide_DHnKhp"
       ],
-      "disabled": true,
       "settings": {
         "heading": "High quality ingredients",
         "subtext": "<p>We carefully selected plant-based ingredients to create the world's healthiest protein coffee that's low in sugar, high in protein, and tastes delicious.</p>",
@@ -1057,7 +1050,6 @@
         "slide_AbLzMC",
         "slide_3MccdH"
       ],
-      "disabled": true,
       "settings": {
         "af-text": "To This",
         "bf-text": "From This",
