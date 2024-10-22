@@ -1,3 +1,26 @@
+    <style>
+        .main-fd-67-d5{
+            width: 100%;
+            padding: 5rem 1rem;
+            max-width: 1440px;
+        }
+        .inner-fd-67-d5{
+            width: 100%;
+        }
+        .row-fd-67-d5 {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(224px, 1fr)); 
+            grid-auto-rows: auto; 
+            gap: 10px;
+        }
+        .card-fd-67-d5{
+            width: 100%;
+            border: 1px solid;
+        }
+
+
+    </style>
+    
     {%  assign collection  = section.settings.collection %}
         <div class="main-fd-67-d5">
             <div class="inner-fd-67-d5">
@@ -5,17 +28,17 @@
                     {% for item in collection.products %}
                     <div class="card-fd-67-d5">
                     <div class="card-image-fd-d5">
-                        <img class="card-main-image-d5" src="{{ item.featured_image |  image_url: width: "500px" }}" width="auto" height="auto" alt="{{ item.title }}">
+                        <img class="card-main-image-d5" src="{{ item.featured_image | image_url: width: "500px" }}" width="auto" height="auto" alt="{{ item.title }}">
                         {% if item.images.size > 1 %}
-                        <img class="card-second-image-d5" src="{{ item.images[1] |  image_url: width: "500px" }}" width="auto" height="auto" alt="{{ item.title }}">
+                        <img class="card-second-image-d5" src="{{ item.images[1] | image_url: width: "500px" }}" width="auto" height="auto" alt="{{ item.title }}">
                         {% endif %}
                     </div>
                     <div class="card-content-fd-d5">
                         <p class="title-fd-d5">{{ item.title }}</p>
                         <p class="price-fd-d5">
-                            <span class="sale-price-d5">{{ item.price |  money }}</span>
+                            <span class="sale-price-d5">{{ item.price | money }}</span>
                             {% if item.compare_at_price != blank %}
-                            <span class="compare-price-d5">{{ item.compare_at_price |  money }}</span>
+                            <span class="compare-price-d5">{{ item.compare_at_price | money }}</span>
                             {% endif %}
                         </p>
                     </div>
