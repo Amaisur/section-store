@@ -546,6 +546,7 @@
         "block_iXYDHQ",
         "block_wt4wcW"
       ],
+      "disabled": true,
       "settings": {
         "padding-vertical": 3,
         "padding-horizontal": 0,
@@ -1057,6 +1058,7 @@
         "slide_AbLzMC",
         "slide_3MccdH"
       ],
+      "disabled": true,
       "settings": {
         "af-text": "To This",
         "bf-text": "From This",
