@@ -113,6 +113,12 @@
         "hotspot_padding_m": 26
       }
     },
+    "featured_collection_d5_V7Q3xQ": {
+      "type": "featured-collection-d5",
+      "settings": {
+        "collection": "frontpage"
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "disabled": true,
@@ -1241,6 +1247,7 @@
   "order": [
     "image_banner",
     "hotspots_detail_qtngrJ",
+    "featured_collection_d5_V7Q3xQ",
     "featured_collection",
     "collection_slider_iHc74y",
     "echo_section_ss_3_Tp6ghe",
