@@ -86,6 +86,7 @@
                 <div class="row-fd-67-d5">
                     {% for item in collection.products %}
                     <div class="card-fd-67-d5">
+                    <a href="{{ item.url }}">
                     <div class="card-image-fd-d5">
                         <img class="card-main-image-d5" src="{{ item.featured_image | image_url: width: "500px" }}" width="auto" height="auto" alt="{{ item.title }}">
                         {% if item.images.size > 1 %}
@@ -101,6 +102,7 @@
                             {% endif %}
                         </p>
                     </div>
+                    </a>
                     </div>
                 {% endfor %}
                 </div>
