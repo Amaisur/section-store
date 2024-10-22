@@ -1,0 +1,42 @@
+    {%  assign collection  = section.settings.collection %}
+        <div class="main-fd-67-d5">
+            <div class="inner-fd-67-d5">
+                <div class="row-fd-67-d5">
+                    {% for item in collection.products %}
+                    <div class="card-fd-67-d5">
+                    <div class="card-image-fd-d5"></div>
+                    <div class="card-content-fd-d5">
+                        <p class="title-fd-d5">{{ item.title }}</p>
+                        <p class="price-fd-d5">
+                            <span class="sale-price-d5">{{ item.price |  money }}</span>
+                            <span class="compare-price-d5">{{ item.compare_at_price |  money }}</span>
+                        </p>
+                    </div>
+                    </div>
+                {% endfor %}
+                </div>
+             </div>            
+        </div>
+
+
+
+
+
+
+{% schema %}
+{
+    "name": "Featured Collection",
+    "settings": [
+        {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+        }
+        ],
+    "presets": [
+        {
+            "name": "Featured Collection"
+        }
+    ]
+}
+{% endschema %}
