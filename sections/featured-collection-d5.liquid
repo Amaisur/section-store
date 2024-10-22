@@ -22,12 +22,24 @@
             aspect-ratio: 1/1;
             width: 100%;
             height: 100%;
+            position: relative;
         }
         .card-image-fd-d5 img{
             width: 100%;
             height: 100%;
             aspect-ratio: 1/1;
             object-fit: cover;
+            position: absolute;
+            transition: all .3s cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+        .card-second-image-d5{
+            opacity: 0;
+        }
+        .card-image-fd-d5:hover .card-second-image-d5{
+            opacity: 1;
+        }
+        .card-image-fd-d5:hover .card-main-image-d5{
+            opacity: 0;
         }
 
 
