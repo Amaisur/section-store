@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -23,7 +23,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
+            "button_link_1": "shopify://collections/all",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -35,6 +35,7 @@
         "heading",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
@@ -48,8 +49,73 @@
         "show_text_below": false
       }
     },
+    "hotspots_detail_qtngrJ": {
+      "type": "hotspots-detail",
+      "blocks": {
+        "hotspot_Na7UjU": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Hotspot Title",
+            "description": "Hotspot description text here.",
+            "position_x": 33,
+            "position_y": 64
+          }
+        },
+        "hotspot_e9x8jT": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Hotspot Title",
+            "description": "Hotspot description text here.",
+            "position_x": 70,
+            "position_y": 28
+          }
+        },
+        "hotspot_zcLCDQ": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Hotspot Title",
+            "description": "Hotspot description text here.",
+            "position_x": 50,
+            "position_y": 50
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_Na7UjU",
+        "hotspot_e9x8jT",
+        "hotspot_zcLCDQ"
+      ],
+      "settings": {
+        "section_title": "Our Featured Products",
+        "title_font_size": 40,
+        "title_color": "#000000",
+        "title_text_align": "center",
+        "hotspots_image": "shopify://shop_images/c205643ed7e99ee4450cda03fad2ce99.png",
+        "hotspots_image_mobile": "shopify://shop_images/684dc7cf4706522d388ae95f11dc691a.png",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "background_color": "#ffffff",
+        "image_border_radius": 0,
+        "image_object_fit": "cover",
+        "image_aspect_ratio": "12/5",
+        "hotspot_background_color": "#ffffff",
+        "hotspot_text_color": "#000000",
+        "hotspot_border_radius": 28,
+        "hotspot_padding": 38,
+        "icon_color": "#000000",
+        "tooltip_background_color": "#ffffff",
+        "tooltip_border_radius": 5,
+        "animation_duration": 4,
+        "title_text_align_m": "center",
+        "title_font_size_m": 40,
+        "hotspot_padding_m": 26
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "Featured products",
         "heading_size": "h2",
@@ -87,6 +153,7 @@
         },
         "collection_xjgpaL": {
           "type": "Collection",
+          "disabled": true,
           "settings": {
             "collection": "ice-cream-1"
           }
@@ -124,6 +191,7 @@
         "collection_qWRBmR",
         "collection_RGLQWp"
       ],
+      "disabled": true,
       "settings": {
       }
     },
@@ -133,7 +201,7 @@
         "box_aa3QyR": {
           "type": "Box",
           "settings": {
-            "block-img": "shopify:\/\/shop_images\/RicepuffyLittleLight1.webp",
+            "block-img": "shopify://shop_images/RicepuffyLittleLight1.webp",
             "block-text": "Kills 99% of all bacteria",
             "block-link": ""
           }
@@ -141,7 +209,7 @@
         "box_DLjAwc": {
           "type": "Box",
           "settings": {
-            "block-img": "shopify:\/\/shop_images\/RicelogiLittleLight1.webp",
+            "block-img": "shopify://shop_images/RicelogiLittleLight1.webp",
             "block-text": "Kills 99% of all bacteria",
             "block-link": ""
           }
@@ -149,7 +217,7 @@
         "box_bXKbFJ": {
           "type": "Box",
           "settings": {
-            "block-img": "shopify:\/\/shop_images\/RicemoguLittleLight1.webp",
+            "block-img": "shopify://shop_images/RicemoguLittleLight1.webp",
             "block-text": "Kills 99% of all bacteria",
             "block-link": ""
           }
@@ -157,7 +225,7 @@
         "box_rjMP8U": {
           "type": "Box",
           "settings": {
-            "block-img": "shopify:\/\/shop_images\/RicedinoLittleLight1.webp",
+            "block-img": "shopify://shop_images/RicedinoLittleLight1.webp",
             "block-text": "Kills 99% of all bacteria",
             "block-link": ""
           }
@@ -165,7 +233,7 @@
         "box_3a4VVy": {
           "type": "Box",
           "settings": {
-            "block-img": "shopify:\/\/shop_images\/RicemintyLittleLight1.webp",
+            "block-img": "shopify://shop_images/RicemintyLittleLight1.webp",
             "block-text": "Kills 99% of all bacteria",
             "block-link": ""
           }
@@ -173,7 +241,7 @@
         "box_qPTFGd": {
           "type": "Box",
           "settings": {
-            "block-img": "shopify:\/\/shop_images\/RicepuddingLittleLight1.webp",
+            "block-img": "shopify://shop_images/RicepuddingLittleLight1.webp",
             "block-text": "Kills 99% of all bacteria",
             "block-link": ""
           }
@@ -187,8 +255,9 @@
         "box_3a4VVy",
         "box_qPTFGd"
       ],
+      "disabled": true,
       "settings": {
-        "main-head": "OUTSTANDING QUALITY BACKED BY A NUMBER OF REASONS. \u2028OUR PRODUCT IS SETTING NEW BOUNDARIES FOR THE SO FAR EXISTING HAND SANITIZERS.",
+        "main-head": "OUTSTANDING QUALITY BACKED BY A NUMBER OF REASONS.  OUR PRODUCT IS SETTING NEW BOUNDARIES FOR THE SO FAR EXISTING HAND SANITIZERS.",
         "font-size-head": 35,
         "main-subtext": "Special offer to get a discount after testing one of our new products so better take the chance now before it’s to late.",
         "main-btn-t": "Get in touch",
@@ -202,41 +271,41 @@
         "block_xtCJGC": {
           "type": "block",
           "settings": {
-            "img-ss-4": "shopify:\/\/shop_images\/Self-loveStickers.webp",
+            "img-ss-4": "shopify://shop_images/Self-loveStickers.webp",
             "heading": "Plan",
-            "richtext": "<h3><\/h3><p>They say an idiot with a plan can beat a genius without a plan. But what if we can do both? Team up with Arctic Grey & get paired with your new team that specializes in all things Commerce, and create a <strong>plan of action<\/strong> for world domination.<\/p><p><\/p>"
+            "richtext": "<h3></h3><p>They say an idiot with a plan can beat a genius without a plan. But what if we can do both? Team up with Arctic Grey & get paired with your new team that specializes in all things Commerce, and create a <strong>plan of action</strong> for world domination.</p><p></p>"
           }
         },
         "block_CcjddU": {
           "type": "block",
           "settings": {
-            "img-ss-4": "shopify:\/\/shop_images\/HalloweenStickersC.webp",
+            "img-ss-4": "shopify://shop_images/HalloweenStickersC.webp",
             "heading": "Design",
-            "richtext": "<h3><\/h3><p>Steve Jobs said design is not just what it looks like and feels like. <strong>Design is how it works.<\/strong> Partner with Arctic Grey to build an intuitive user experience designed to improve conversion rates & average order values.<\/p>"
+            "richtext": "<h3></h3><p>Steve Jobs said design is not just what it looks like and feels like. <strong>Design is how it works.</strong> Partner with Arctic Grey to build an intuitive user experience designed to improve conversion rates & average order values.</p>"
           }
         },
         "block_Rhn4p8": {
           "type": "block",
           "settings": {
-            "img-ss-4": "shopify:\/\/shop_images\/featured-tab-collection-img.webp",
+            "img-ss-4": "shopify://shop_images/featured-tab-collection-img.webp",
             "heading": "Develop",
-            "richtext": "<h3><\/h3><p>Your online store is the heart of your business - <strong>don't let bad development slow you down<\/strong>. Let our Shopify experts take the reins on development so you can focus on your customer experience, not your back end. <a href=\"https:\/\/arcticgrey.com\/#\" title=\"#\">🍑<\/a><\/p>"
+            "richtext": "<h3></h3><p>Your online store is the heart of your business - <strong>don't let bad development slow you down</strong>. Let our Shopify experts take the reins on development so you can focus on your customer experience, not your back end. <a href=\"https://arcticgrey.com/#\" title=\"#\">🍑</a></p>"
           }
         },
         "block_gzGYh8": {
           "type": "block",
           "settings": {
-            "img-ss-4": "shopify:\/\/shop_images\/featured-tab-collection-img.webp",
+            "img-ss-4": "shopify://shop_images/featured-tab-collection-img.webp",
             "heading": "Deploy",
-            "richtext": "<h3><\/h3><p>We have created a deployment process to <strong>launch everything from complex feature upgrades to brand new site builds<\/strong> via Github for perfect version control. No more, “oops! that update broke something on the live site!”<\/p>"
+            "richtext": "<h3></h3><p>We have created a deployment process to <strong>launch everything from complex feature upgrades to brand new site builds</strong> via Github for perfect version control. No more, “oops! that update broke something on the live site!”</p>"
           }
         },
         "block_AzXkGj": {
           "type": "block",
           "settings": {
-            "img-ss-4": "shopify:\/\/shop_images\/RicesantaFaceMask.webp",
-            "heading": "A\/B Testing",
-            "richtext": "<h3><\/h3><p>Take the guess work out of everything! <strong>A\/B Testing is the cheat code to success<\/strong>. Let us help you make decisions backed by data, showing you what changes actually work and what doesn't.<\/p>"
+            "img-ss-4": "shopify://shop_images/RicesantaFaceMask.webp",
+            "heading": "A/B Testing",
+            "richtext": "<h3></h3><p>Take the guess work out of everything! <strong>A/B Testing is the cheat code to success</strong>. Let us help you make decisions backed by data, showing you what changes actually work and what doesn't.</p>"
           }
         }
       },
@@ -247,6 +316,7 @@
         "block_gzGYh8",
         "block_AzXkGj"
       ],
+      "disabled": true,
       "settings": {
         "heading-size": 35,
         "font-weight": "bold",
@@ -343,6 +413,7 @@
         "block_zVMWiV",
         "block_RKQAXt"
       ],
+      "disabled": true,
       "settings": {
         "padding-horizontal": 2,
         "padding-vertical": 2
@@ -354,7 +425,7 @@
         "menu_UgdJtY": {
           "type": "menu",
           "settings": {
-            "c-img": "shopify:\/\/shop_images\/Ricecarrot-Face-Mask.webp",
+            "c-img": "shopify://shop_images/Ricecarrot-Face-Mask.webp",
             "text-1": "Link",
             "c-link": ""
           }
@@ -362,7 +433,7 @@
         "menu_RBrbnE": {
           "type": "menu",
           "settings": {
-            "c-img": "shopify:\/\/shop_images\/MissDinoFaceMask_46c550e4-1b0f-481e-b8e6-c48fe06cb6f3.webp",
+            "c-img": "shopify://shop_images/MissDinoFaceMask_46c550e4-1b0f-481e-b8e6-c48fe06cb6f3.webp",
             "text-1": "Link",
             "c-link": ""
           }
@@ -370,7 +441,7 @@
         "menu_wkDmAR": {
           "type": "menu",
           "settings": {
-            "c-img": "shopify:\/\/shop_images\/RicemousseFaceMask.webp",
+            "c-img": "shopify://shop_images/RicemousseFaceMask.webp",
             "text-1": "Link",
             "c-link": ""
           }
@@ -402,6 +473,7 @@
         "product_fRbqWM",
         "product_LMqYRK"
       ],
+      "disabled": true,
       "settings": {
         "title": "Circle Menus",
         "h-font": 34,
@@ -434,7 +506,7 @@
         "block_3bNyYq": {
           "type": "block",
           "settings": {
-            "content-img": "shopify:\/\/shop_images\/Ricecarrot-Face-Mask.webp",
+            "content-img": "shopify://shop_images/Ricecarrot-Face-Mask.webp",
             "content-text": "NATIVE SHOPIFY PAGE BUILDER",
             "yes-no-button-our": "no",
             "yes-no-button-others": "yes"
@@ -443,7 +515,7 @@
         "block_h3KUQw": {
           "type": "block",
           "settings": {
-            "content-img": "shopify:\/\/shop_images\/LunarNewYearStickers2023.webp",
+            "content-img": "shopify://shop_images/LunarNewYearStickers2023.webp",
             "content-text": "NATIVE SHOPIFY PAGE BUILDER",
             "yes-no-button-our": "yes",
             "yes-no-button-others": "no"
@@ -452,7 +524,7 @@
         "block_iXYDHQ": {
           "type": "block",
           "settings": {
-            "content-img": "shopify:\/\/shop_images\/RicemousseFaceMask_e2a98b36-f372-4bec-a940-893ff75b707f.webp",
+            "content-img": "shopify://shop_images/RicemousseFaceMask_e2a98b36-f372-4bec-a940-893ff75b707f.webp",
             "content-text": "NATIVE SHOPIFY PAGE BUILDER",
             "yes-no-button-our": "yes",
             "yes-no-button-others": "no"
@@ -461,7 +533,7 @@
         "block_wt4wcW": {
           "type": "block",
           "settings": {
-            "content-img": "shopify:\/\/shop_images\/Kraft-Paper-Tape.webp",
+            "content-img": "shopify://shop_images/Kraft-Paper-Tape.webp",
             "content-text": "NATIVE SHOPIFY PAGE BUILDER",
             "yes-no-button-our": "yes",
             "yes-no-button-others": "no"
@@ -474,6 +546,7 @@
         "block_iXYDHQ",
         "block_wt4wcW"
       ],
+      "disabled": true,
       "settings": {
         "padding-vertical": 3,
         "padding-horizontal": 0,
@@ -489,13 +562,13 @@
         "btn-label-2": "Explore More Products",
         "btn-link-2": "",
         "img-size": 50,
-        "our-image": "shopify:\/\/shop_images\/Self-loveStickers.webp",
+        "our-image": "shopify://shop_images/Self-loveStickers.webp",
         "our-text": "Ours",
         "other-text": "Others",
         "yes-text": "Yes",
-        "yes-image": "shopify:\/\/shop_images\/8c9613ab55c80cd983b11c8e44fd9d5d.png",
+        "yes-image": "shopify://shop_images/8c9613ab55c80cd983b11c8e44fd9d5d.png",
         "no-text": "No",
-        "no-image": "shopify:\/\/shop_images\/831cd70c702b17a0b430f10b2790b6c6.png",
+        "no-image": "shopify://shop_images/831cd70c702b17a0b430f10b2790b6c6.png",
         "head-size": 34,
         "text-size": 16,
         "head-weight": "bold",
@@ -555,6 +628,7 @@
         "block_FtEgwV",
         "block_KYCBjj"
       ],
+      "disabled": true,
       "settings": {
         "padding-vertical": 3,
         "padding-horizontal": 0,
@@ -598,40 +672,40 @@
           "type": "slide",
           "settings": {
             "ingredient_name": "Pea Protein",
-            "content-text": "<p>comes from dried peas that are processed into\u2028    a powder form. They’re high in essential\u2028amino acids, and the perfect choice for vegans<br\/>  and vegeterians looking for an alternative to                       \u2028whey or say protien. <\/p>",
-            "content-img": "shopify:\/\/shop_images\/Ricecarrot-Face-Mask.webp"
+            "content-text": "<p>comes from dried peas that are processed into     a powder form. They’re high in essential amino acids, and the perfect choice for vegans<br/>  and vegeterians looking for an alternative to                        whey or say protien. </p>",
+            "content-img": "shopify://shop_images/Ricecarrot-Face-Mask.webp"
           }
         },
         "slide_AMcTLP": {
           "type": "slide",
           "settings": {
             "ingredient_name": "Rice",
-            "content-text": "<p>comes from dried peas that are processed into\u2028    a powder form. They’re high in essential\u2028amino acids, and the perfect choice for vegans<br\/>  and vegeterians looking for an alternative to                       \u2028whey or say protien. <\/p>",
-            "content-img": "shopify:\/\/shop_images\/MissDinoFaceMask_46c550e4-1b0f-481e-b8e6-c48fe06cb6f3.webp"
+            "content-text": "<p>comes from dried peas that are processed into     a powder form. They’re high in essential amino acids, and the perfect choice for vegans<br/>  and vegeterians looking for an alternative to                        whey or say protien. </p>",
+            "content-img": "shopify://shop_images/MissDinoFaceMask_46c550e4-1b0f-481e-b8e6-c48fe06cb6f3.webp"
           }
         },
         "slide_HKGznb": {
           "type": "slide",
           "settings": {
             "ingredient_name": "Arabica Instant Cofee",
-            "content-text": "<p>comes from dried peas that are processed into\u2028    a powder form. They’re high in essential\u2028amino acids, and the perfect choice for vegans<br\/>  and vegeterians looking for an alternative to                       \u2028whey or say protien. <\/p>",
-            "content-img": "shopify:\/\/shop_images\/Flash-Masking-Tape.webp"
+            "content-text": "<p>comes from dried peas that are processed into     a powder form. They’re high in essential amino acids, and the perfect choice for vegans<br/>  and vegeterians looking for an alternative to                        whey or say protien. </p>",
+            "content-img": "shopify://shop_images/Flash-Masking-Tape.webp"
           }
         },
         "slide_EaPdXQ": {
           "type": "slide",
           "settings": {
             "ingredient_name": "Fair Instant Cofee",
-            "content-text": "<p>comes from dried peas that are processed into\u2028    a powder form. They’re high in essential\u2028amino acids, and the perfect choice for vegans<br\/>  and vegeterians looking for an alternative to                       \u2028whey or say protien. <\/p>",
-            "content-img": "shopify:\/\/shop_images\/RicedinoLittleLight1.webp"
+            "content-text": "<p>comes from dried peas that are processed into     a powder form. They’re high in essential amino acids, and the perfect choice for vegans<br/>  and vegeterians looking for an alternative to                        whey or say protien. </p>",
+            "content-img": "shopify://shop_images/RicedinoLittleLight1.webp"
           }
         },
         "slide_DHnKhp": {
           "type": "slide",
           "settings": {
             "ingredient_name": "Monk Fruit",
-            "content-text": "<p>comes from dried peas that are processed into\u2028    a powder form. They’re high in essential\u2028amino acids, and the perfect choice for vegans<br\/>  and vegeterians looking for an alternative to                       \u2028whey or say protien. <\/p>",
-            "content-img": "shopify:\/\/shop_images\/cap-with-wings-940481067.png"
+            "content-text": "<p>comes from dried peas that are processed into     a powder form. They’re high in essential amino acids, and the perfect choice for vegans<br/>  and vegeterians looking for an alternative to                        whey or say protien. </p>",
+            "content-img": "shopify://shop_images/cap-with-wings-940481067.png"
           }
         }
       },
@@ -642,9 +716,10 @@
         "slide_EaPdXQ",
         "slide_DHnKhp"
       ],
+      "disabled": true,
       "settings": {
         "heading": "High quality ingredients",
-        "subtext": "<p>We carefully selected plant-based ingredients to create the world's healthiest protein coffee that's low in sugar, high in protein, and tastes delicious.<\/p>",
+        "subtext": "<p>We carefully selected plant-based ingredients to create the world's healthiest protein coffee that's low in sugar, high in protein, and tastes delicious.</p>",
         "btn-text-1": "Pre Order Now",
         "btn-link-1": "",
         "btn-1-style": "btn-2",
@@ -685,9 +760,9 @@
           "type": "logo",
           "settings": {
             "star-rate": "5-star",
-            "buy-img": "shopify:\/\/shop_images\/3f4075f6ebb9f898ab627f62199f2dfa.png",
+            "buy-img": "shopify://shop_images/3f4075f6ebb9f898ab627f62199f2dfa.png",
             "name": "John Doe",
-            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”</p>",
             "verified": false
           }
         },
@@ -695,9 +770,9 @@
           "type": "logo",
           "settings": {
             "star-rate": "5-star",
-            "buy-img": "shopify:\/\/shop_images\/3f4075f6ebb9f898ab627f62199f2dfa.png",
+            "buy-img": "shopify://shop_images/3f4075f6ebb9f898ab627f62199f2dfa.png",
             "name": "John Doe",
-            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”</p>",
             "verified": true
           }
         },
@@ -705,9 +780,9 @@
           "type": "logo",
           "settings": {
             "star-rate": "5-star",
-            "buy-img": "shopify:\/\/shop_images\/3f4075f6ebb9f898ab627f62199f2dfa.png",
+            "buy-img": "shopify://shop_images/3f4075f6ebb9f898ab627f62199f2dfa.png",
             "name": "John Doe",
-            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”</p>",
             "verified": false
           }
         }
@@ -717,6 +792,7 @@
         "logo_PcqUNn",
         "logo_mBaQ7T"
       ],
+      "disabled": true,
       "settings": {
         "heading": "",
         "head-size": 22,
@@ -750,7 +826,7 @@
           "settings": {
             "star-rate": "5-star",
             "name": "John Doe",
-            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”</p>",
             "verified": true
           }
         },
@@ -759,7 +835,7 @@
           "settings": {
             "star-rate": "5-star",
             "name": "John Doe",
-            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”</p>",
             "verified": true
           }
         },
@@ -768,7 +844,7 @@
           "settings": {
             "star-rate": "5-star",
             "name": "John Doe",
-            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”</p>",
             "verified": true
           }
         }
@@ -778,6 +854,7 @@
         "logo_eiimEn",
         "logo_VehNcE"
       ],
+      "disabled": true,
       "settings": {
         "heading": "",
         "head-size": 22,
@@ -810,9 +887,9 @@
           "type": "logo",
           "settings": {
             "star-rate": "2-star",
-            "buy-img": "shopify:\/\/shop_images\/3f4075f6ebb9f898ab627f62199f2dfa.png",
+            "buy-img": "shopify://shop_images/3f4075f6ebb9f898ab627f62199f2dfa.png",
             "name": "John Doe",
-            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”</p>",
             "verified": false
           }
         },
@@ -820,9 +897,9 @@
           "type": "logo",
           "settings": {
             "star-rate": "5-star",
-            "buy-img": "shopify:\/\/shop_images\/3f4075f6ebb9f898ab627f62199f2dfa.png",
+            "buy-img": "shopify://shop_images/3f4075f6ebb9f898ab627f62199f2dfa.png",
             "name": "John Doe",
-            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”</p>",
             "verified": true
           }
         },
@@ -830,9 +907,9 @@
           "type": "logo",
           "settings": {
             "star-rate": "5-star",
-            "buy-img": "shopify:\/\/shop_images\/3f4075f6ebb9f898ab627f62199f2dfa.png",
+            "buy-img": "shopify://shop_images/3f4075f6ebb9f898ab627f62199f2dfa.png",
             "name": "John Doe",
-            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”</p>",
             "verified": true
           }
         }
@@ -842,13 +919,14 @@
         "logo_9Wn4Pc",
         "logo_Gy9Fxd"
       ],
+      "disabled": true,
       "settings": {
         "heading": "",
         "head-size": 22,
         "head-size-m": 22,
         "head-color": "#311414",
         "head-weight": "bold",
-        "veri-img": "shopify:\/\/shop_images\/8c9613ab55c80cd983b11c8e44fd9d5d.png",
+        "veri-img": "shopify://shop_images/8c9613ab55c80cd983b11c8e44fd9d5d.png",
         "veri-text": "Verified Buyer",
         "direction": "ltor",
         "box-shadow": false,
@@ -876,7 +954,7 @@
           "settings": {
             "star-rate": "5-star",
             "name": "John Doe",
-            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”</p>",
             "verified": true
           }
         },
@@ -885,7 +963,7 @@
           "settings": {
             "star-rate": "5-star",
             "name": "John Doe",
-            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”</p>",
             "verified": true
           }
         },
@@ -894,7 +972,7 @@
           "settings": {
             "star-rate": "5-star",
             "name": "John Doe",
-            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”<\/p>",
+            "review": "<p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”</p>",
             "verified": true
           }
         }
@@ -904,6 +982,7 @@
         "logo_a9WqYA",
         "logo_jyCAXb"
       ],
+      "disabled": true,
       "settings": {
         "heading": "",
         "head-size": 22,
@@ -935,41 +1014,41 @@
         "slide_C9fEtD": {
           "type": "slide",
           "settings": {
-            "af-image": "shopify:\/\/shop_images\/684dc7cf4706522d388ae95f11dc691a.png",
-            "bf-image": "shopify:\/\/shop_images\/0e20a93a465e26603f5c004f1e98c5ef.png",
+            "af-image": "shopify://shop_images/684dc7cf4706522d388ae95f11dc691a.png",
+            "bf-image": "shopify://shop_images/0e20a93a465e26603f5c004f1e98c5ef.png",
             "star-rate": "two",
             "slide-head": "No Really. It’s That Good.",
-            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. <\/p>"
+            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. </p>"
           }
         },
         "slide_q4nGky": {
           "type": "slide",
           "settings": {
-            "af-image": "shopify:\/\/shop_images\/RicemintyLittleLight1.webp",
-            "bf-image": "shopify:\/\/shop_images\/RicepuddingLittleLight1.webp",
+            "af-image": "shopify://shop_images/RicemintyLittleLight1.webp",
+            "bf-image": "shopify://shop_images/RicepuddingLittleLight1.webp",
             "star-rate": "five",
             "slide-head": "No Really. It’s That Good.",
-            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. <\/p>"
+            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. </p>"
           }
         },
         "slide_AbLzMC": {
           "type": "slide",
           "settings": {
-            "af-image": "shopify:\/\/shop_images\/Ricecarrot-Face-Mask.webp",
-            "bf-image": "shopify:\/\/shop_images\/Riceturnip-2FaceMask.webp",
+            "af-image": "shopify://shop_images/Ricecarrot-Face-Mask.webp",
+            "bf-image": "shopify://shop_images/Riceturnip-2FaceMask.webp",
             "star-rate": "five",
             "slide-head": "No Really. It’s That Good.",
-            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. <\/p>"
+            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. </p>"
           }
         },
         "slide_3MccdH": {
           "type": "slide",
           "settings": {
-            "af-image": "shopify:\/\/shop_images\/Flash-Masking-Tape.webp",
-            "bf-image": "shopify:\/\/shop_images\/HalloweenStickersC.webp",
+            "af-image": "shopify://shop_images/Flash-Masking-Tape.webp",
+            "bf-image": "shopify://shop_images/HalloweenStickersC.webp",
             "star-rate": "five",
             "slide-head": "No Really. It’s That Good.",
-            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. <\/p>"
+            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. </p>"
           }
         }
       },
@@ -979,6 +1058,7 @@
         "slide_AbLzMC",
         "slide_3MccdH"
       ],
+      "disabled": true,
       "settings": {
         "af-text": "To This",
         "bf-text": "From This",
@@ -1035,8 +1115,9 @@
         "product_dot_wBPEBk",
         "product_dot_r9zdQF"
       ],
+      "disabled": true,
       "settings": {
-        "bg-img": "shopify:\/\/shop_images\/c205643ed7e99ee4450cda03fad2ce99.png",
+        "bg-img": "shopify://shop_images/c205643ed7e99ee4450cda03fad2ce99.png",
         "vertical-margin": 100,
         "height-sect": 700,
         "button-s": 20,
@@ -1044,15 +1125,15 @@
         "price-s": 20,
         "bg-color": "#ae7e7e",
         "dot-color": "#ed8585",
-        "dot-color-b": "#fff",
+        "dot-color-b": "#ffffff",
         "a-dot-color": "#ed6060",
-        "pd-bg": "#fff",
+        "pd-bg": "#ffffff",
         "btn-bg": "#000000",
-        "btn-bg-h": "#fff",
+        "btn-bg-h": "#ffffff",
         "btn-clr": "#ffffff",
         "btn-clr-h": "#000000",
         "txt1-color": "#000000",
-        "txt2-color": "#fff"
+        "txt2-color": "#ffffff"
       }
     },
     "hero_9_hYpfrg": {
@@ -1061,7 +1142,7 @@
         "left_box_image_ciQrMM": {
           "type": "Left-Box-image",
           "settings": {
-            "image_data": "shopify:\/\/shop_images\/Riceturnip-2FaceMask.webp",
+            "image_data": "shopify://shop_images/Riceturnip-2FaceMask.webp",
             "image_width": "100%",
             "image_height": "auto",
             "image_fit": "cover",
@@ -1071,7 +1152,7 @@
         "left_box_image_Xj643n": {
           "type": "Left-Box-image",
           "settings": {
-            "image_data": "shopify:\/\/shop_images\/Ricecarrot-Face-Mask.webp",
+            "image_data": "shopify://shop_images/Ricecarrot-Face-Mask.webp",
             "image_width": "100%",
             "image_height": "auto",
             "image_fit": "cover",
@@ -1081,7 +1162,7 @@
         "left_box_image_nrqpiL": {
           "type": "Left-Box-image",
           "settings": {
-            "image_data": "shopify:\/\/shop_images\/MissDinoFaceMask_46c550e4-1b0f-481e-b8e6-c48fe06cb6f3.webp",
+            "image_data": "shopify://shop_images/MissDinoFaceMask_46c550e4-1b0f-481e-b8e6-c48fe06cb6f3.webp",
             "image_width": "100%",
             "image_height": "auto",
             "image_fit": "cover",
@@ -1091,7 +1172,7 @@
         "right_box_image_eV7d9h": {
           "type": "Right-Box-image",
           "settings": {
-            "image_data": "shopify:\/\/shop_images\/RicepuddingLittleLight1.webp",
+            "image_data": "shopify://shop_images/RicepuddingLittleLight1.webp",
             "image_width": "100%",
             "image_height": "auto",
             "image_fit": "cover",
@@ -1101,7 +1182,7 @@
         "right_box_image_dWyB7A": {
           "type": "Right-Box-image",
           "settings": {
-            "image_data": "shopify:\/\/shop_images\/RicedinoLittleLight1.webp",
+            "image_data": "shopify://shop_images/RicedinoLittleLight1.webp",
             "image_width": "100%",
             "image_height": "auto",
             "image_fit": "cover",
@@ -1111,7 +1192,7 @@
         "right_box_image_9XeNGc": {
           "type": "Right-Box-image",
           "settings": {
-            "image_data": "shopify:\/\/shop_images\/RicemoguLittleLight1.webp",
+            "image_data": "shopify://shop_images/RicemoguLittleLight1.webp",
             "image_width": "100%",
             "image_height": "auto",
             "image_fit": "cover",
@@ -1127,6 +1208,7 @@
         "right_box_image_dWyB7A",
         "right_box_image_9XeNGc"
       ],
+      "disabled": true,
       "settings": {
         "position": "row",
         "heading_text": "Don’t just take our word of it",
@@ -1158,6 +1240,7 @@
   },
   "order": [
     "image_banner",
+    "hotspots_detail_qtngrJ",
     "featured_collection",
     "collection_slider_iHc74y",
     "echo_section_ss_3_Tp6ghe",
