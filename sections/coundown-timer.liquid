@@ -42,11 +42,11 @@
 <div
   class="countdown-banner-{{ section.id }}-wrapper"
   style="
-    --pt: 39px;
-    --pt-desktop: 52px;
-    --pb: 39px;
-    --pb-desktop: 52px;
-    background-color:#ffffff;
+    --pt: {{ section.settings.pt }}px;
+    --pt-desktop: {{ section.settings.pt-d }}px;
+    --pb: {{ section.settings.pb }}px;
+    --pb-desktop: {{ section.settings.pb-d }}px;
+    background-color:{{ section.settings.bg-color }};
   "
 >
   <div
@@ -55,49 +55,54 @@
       page-width
     "
     style="
-      --section-height: 600px;
-      --section-height-mobile: 500px;
+      --section-height: {{ section.settings.height-d }}px;
+      --section-height-mobile: {{ section.settings.height-m }}px;
     "
   >
     <div
       style="
-                height: 100%; width: 100%; position: relative; overflow: hidden;
+        height: 100%; width: 100%; position: relative; overflow: hidden;
         border-radius: 15px;
       "
     >
-      <img
-        class="
-                      countdown-banner-image
+    {% if section.settings.bg-img %}
+  <img
+    class="countdown-banner-image countdown-banner-image--desktop"
+    src="{{ section.settings.bg-img | img_url: '500x' }}"
+    srcset="
+      {{ section.settings.bg-img | img_url: '500x' }} 500w,
+      {{ section.settings.bg-img | img_url: '800x' }} 800w,
+      {{ section.settings.bg-img | img_url: '1200x' }} 1200w,
+      {{ section.settings.bg-img | img_url: '1600x' }} 1600w,
+      {{ section.settings.bg-img | img_url: '2000x' }} 2000w,
+      {{ section.settings.bg-img | img_url: 'master' }} 2400w
+    "
+    alt="{{ section.title }}"
+    loading="lazy"
+    width="auto"
+    height=""
+  >
+{% endif %}
 
-          countdown-banner-image--desktop
-        "
-        src="//section.store/cdn/shop/files/high-fashion-model-in-red_500x.jpg?v=1684748546"
-        srcset="
-          //section.store/cdn/shop/files/high-fashion-model-in-red_500x.jpg?v=1684748546 500w,
-          //section.store/cdn/shop/files/high-fashion-model-in-red_800x.jpg?v=1684748546 800w,
-          //section.store/cdn/shop/files/high-fashion-model-in-red_1200x.jpg?v=1684748546 1200w,
-          //section.store/cdn/shop/files/high-fashion-model-in-red_1600x.jpg?v=1684748546 1600w,
-          //section.store/cdn/shop/files/high-fashion-model-in-red_2000x.jpg?v=1684748546 2000w,
-          //section.store/cdn/shop/files/high-fashion-model-in-red.jpg?v=1684748546 2400w
-        "
-        alt=""
-        loading="lazy"
-      >
+{% if section.settings.bg-img-m %}
+  <img
+    class="countdown-banner-image countdown-banner-image--mobile"
+    src="{{ section.settings.bg-img-m | img_url: '500x' }}"
+    srcset="
+      {{ section.settings.bg-img-m | img_url: '500x' }} 500w,
+      {{ section.settings.bg-img-m | img_url: '800x' }} 800w,
+      {{ section.settings.bg-img-m | img_url: '1200x' }} 1200w,
+      {{ section.settings.bg-img-m | img_url: '1600x' }} 1600w,
+      {{ section.settings.bg-img-m | img_url: '2000x' }} 2000w,
+      {{ section.settings.bg-img-m | img_url: 'master' }} 2400w
+    "
+    alt="{{ section.title }}"
+    loading="lazy"
+    width="auto"
+    height=""
+  >
+{% endif %}
 
-      <img
-        class="countdown-banner-image countdown-banner-image--mobile"
-        src="//section.store/cdn/shop/files/fashion-model-in-red-suit_500x.jpg?v=1684747380"
-        srcset="
-          //section.store/cdn/shop/files/fashion-model-in-red-suit_500x.jpg?v=1684747380 500w,
-          //section.store/cdn/shop/files/fashion-model-in-red-suit_800x.jpg?v=1684747380 800w,
-          //section.store/cdn/shop/files/fashion-model-in-red-suit_1200x.jpg?v=1684747380 1200w,
-          //section.store/cdn/shop/files/fashion-model-in-red-suit_1600x.jpg?v=1684747380 1600w,
-          //section.store/cdn/shop/files/fashion-model-in-red-suit_2000x.jpg?v=1684747380 2000w,
-          //section.store/cdn/shop/files/fashion-model-in-red-suit.jpg?v=1684747380 2400w
-        "
-        alt=""
-        loading="lazy"
-      >
 
       <style>
         .countdown-banner-content-{{ section.id }} {
@@ -370,6 +375,69 @@
       "id": "bg-img",
       "label": "Background Image"
     },
+     {
+      "type": "image_picker",
+      "id": "bg-img-m",
+      "label": "Background Image Mobile"
+    },
+    {
+      "type": "number",
+      "id": "height-m",
+      "label": "Mobile Height",
+      "default": 500
+    },
+     {
+      "type": "number",
+      "id": "height-d",
+      "label": "Desktop Height",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "pt",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 28
+    },
+     {
+      "type": "range",
+      "id": "pb",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 28
+    },
+     {
+      "type": "range",
+      "id": "pt-d",
+      "label": "Padding top desktop",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 28
+    },
+     {
+      "type": "range",
+      "id": "pb-d",
+      "label": "Padding bottom desktop",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 28
+    },
+    {
+      "type": "color_background",
+      "id": "bg-color",
+      "label": "Background Color",
+      "default": "#fff"
+    }
 
   ],
   "blocks": [
