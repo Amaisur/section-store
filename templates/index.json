@@ -155,6 +155,15 @@
         "button_aFzxLT"
       ],
       "settings": {
+        "bg-img": "shopify://shop_images/high-fashion-model-in-red_2000x_7b2d5d49-acab-429a-a19c-9fe18b0b19db.jpg",
+        "bg-img-m": "shopify://shop_images/high-fashion-model-in-red_2000x_7b2d5d49-acab-429a-a19c-9fe18b0b19db.jpg",
+        "height-m": 500,
+        "height-d": 600,
+        "pt": 28,
+        "pb": 28,
+        "pt-d": 28,
+        "pb-d": 28,
+        "bg-color": "#fff"
       }
     },
     "featured_collection": {
