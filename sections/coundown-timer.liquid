@@ -133,36 +133,36 @@
         {% case block.type %}
           {% when 'heading' %}
         <style>
-          .countdown-banner-heading-{{ section.id }}-{{ section.id }}-1684746960fabb856f-0 {
+          .countdown-banner-heading-{{ section.id }}-{{ section.id }}-{{ block.id }} {
           }
-          .countdown-banner-heading-{{ section.id }}-{{ section.id }}-1684746960fabb856f-0 p {
+          .countdown-banner-heading-{{ section.id }}-{{ section.id }}-{{ block.id }} p {
             margin:0 10px;
           }
         </style>
         <div
-          class="countdown-banner-heading-{{ section.id }}-{{ section.id }}-1684746960fabb856f-0"
+          class="countdown-banner-heading-{{ section.id }}-{{ section.id }}-{{ block.id }}"
           style="
             font-size: 30px;
             color: #ffffff;
           "
         >
-          <p><strong>50% off all suits and accessories</strong></p>
+          <p><strong>{{ block.settings.heading }}</strong></p>
         </div>
       {% when 'button' %}
         <style>
-          .countdown-banner-button-{{ section.id }}-{{ section.id }}-1684746960fabb856f-1 {
+          .countdown-banner-button-{{ section.id }}-{{ section.id }}-{{ block.id }} {
             padding: 9px 25px;
             text-decoration: none;
           }
           @media screen and (min-width: 750px) {
-            .countdown-banner-button-{{ section.id }}-{{ section.id }}-1684746960fabb856f-1 {
+            .countdown-banner-button-{{ section.id }}-{{ section.id }}-{{ block.id }} {
               padding: 11px 25px;
             }
           }
         </style>
         <a
-          href=""
-          class="countdown-banner-button-{{ section.id }}-{{ section.id }}-1684746960fabb856f-1"
+          href="{{ block.settings.btn-link }}"
+          class="countdown-banner-button-{{ section.id }}-{{ section.id }}-{{ block.id }}"
           style="
             color: #000000;
             background-color: #ffffff;
@@ -172,7 +172,7 @@
             margin: 5px 10px;
           "
         >
-          View Discounted Items
+          {{ block.settings.btn-text }}
         </a>
 
           {% when 'timer' %}
