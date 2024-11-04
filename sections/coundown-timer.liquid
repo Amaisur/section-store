@@ -252,19 +252,19 @@
           "
         >
           <div class="time-block">
-            <span class="time-block__num js-timer-days">422</span>
+            <span class="time-block__num js-timer-days">{{ block.settings.days }}</span>
             <span class="time-block__unit">Days</span>
           </div>
 
           <span class="time-divier"></span>
           <div class="time-block">
-            <span class="time-block__num js-timer-hours">05</span>
+            <span class="time-block__num js-timer-hours">{{ block.settings.hours }}</span>
             <span class="time-block__unit">Hours</span>
           </div>
 
           <span class="time-divier"></span>
           <div class="time-block">
-            <span class="time-block__num js-timer-minutes">29</span>
+            <span class="time-block__num js-timer-minutes">{{ block.settings.mins }}</span>
             <span class="time-block__unit">Minutes</span>
           </div>
 
@@ -454,6 +454,25 @@
       "type": "timer",
       "name": "Timer",
       "settings": [
+        {
+          "type": "number",
+          "id": "days",
+          "label": "Add Days",
+          "default": 433
+        },
+          {
+          "type": "number",
+          "id": "hours",
+          "label": "Add Hours",
+          "default": 433
+        },
+          {
+          "type": "number",
+          "id": "mins",
+          "label": "Add Minuetes",
+          "default": 433
+        },
+        
         {
           "type": "color",
           "id": "f-color",
