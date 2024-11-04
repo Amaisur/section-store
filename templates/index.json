@@ -122,6 +122,38 @@
     },
     "coundown_timer_apcC7X": {
       "type": "coundown-timer",
+      "blocks": {
+        "heading_xnR7Vg": {
+          "type": "heading",
+          "settings": {
+            "heading": "50% off all suits and accessories"
+          }
+        },
+        "subtext_WhHbhe": {
+          "type": "subtext",
+          "settings": {
+            "subtext": "GET YOUR BASKET READY"
+          }
+        },
+        "timer_Any8Y6": {
+          "type": "timer",
+          "settings": {
+          }
+        },
+        "button_aFzxLT": {
+          "type": "button",
+          "settings": {
+            "btn-text": "View Discounted Items",
+            "btn-link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_xnR7Vg",
+        "subtext_WhHbhe",
+        "timer_Any8Y6",
+        "button_aFzxLT"
+      ],
       "settings": {
       }
     },
