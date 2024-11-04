@@ -62,7 +62,7 @@
     <div
       style="
         height: 100%; width: 100%; position: relative; overflow: hidden;
-        border-radius: 15px;
+        border-radius: {{ section.settings.main-radius }}px;
       "
     >
     {% if section.settings.bg-img %}
@@ -391,6 +391,16 @@
       "id": "height-d",
       "label": "Desktop Height",
       "default": 600
+    },
+    {
+      "type": "range",
+      "id": "main-radius",
+      "label": "Border Radius",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 16
     },
     {
       "type": "range",
