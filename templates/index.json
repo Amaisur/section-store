@@ -126,25 +126,37 @@
         "heading_xnR7Vg": {
           "type": "heading",
           "settings": {
-            "heading": "50% off all suits and accessories"
+            "heading": "50% off all suits and accessories",
+            "font-size": 30,
+            "f-color": "#fff"
           }
         },
         "subtext_WhHbhe": {
           "type": "subtext",
           "settings": {
-            "subtext": "GET YOUR BASKET READY"
+            "subtext": "GET YOUR BASKET READY",
+            "font-size": 16,
+            "f-color": "#fff"
           }
         },
         "timer_Any8Y6": {
           "type": "timer",
           "settings": {
+            "days": 433,
+            "hours": 3,
+            "mins": 30,
+            "f-color": "#fff"
           }
         },
         "button_aFzxLT": {
           "type": "button",
           "settings": {
             "btn-text": "View Discounted Items",
-            "btn-link": ""
+            "btn-link": "",
+            "btn-bg-color": "#fff",
+            "font-size": 18,
+            "f-color": "#000",
+            "btn-radius": 28
           }
         }
       },
@@ -159,6 +171,8 @@
         "bg-img-m": "shopify://shop_images/high-fashion-model-in-red_2000x_7b2d5d49-acab-429a-a19c-9fe18b0b19db.jpg",
         "height-m": 500,
         "height-d": 600,
+        "pw": true,
+        "main-radius": 16,
         "pt": 28,
         "pb": 28,
         "pt-d": 28,
@@ -172,25 +186,37 @@
         "heading_7GN4YW": {
           "type": "heading",
           "settings": {
-            "heading": "50% off all suits and accessories"
+            "heading": "50% off all suits and accessories",
+            "font-size": 30,
+            "f-color": "#fff"
           }
         },
         "subtext_8tfkbq": {
           "type": "subtext",
           "settings": {
-            "subtext": "GET YOUR BASKET READY"
+            "subtext": "GET YOUR BASKET READY",
+            "font-size": 16,
+            "f-color": "#fff"
           }
         },
         "button_Q33Ew6": {
           "type": "button",
           "settings": {
             "btn-text": "View Discounted Items",
-            "btn-link": ""
+            "btn-link": "",
+            "btn-bg-color": "#fff",
+            "font-size": 18,
+            "f-color": "#000",
+            "btn-radius": 28
           }
         },
         "timer_WDBx4X": {
           "type": "timer",
           "settings": {
+            "days": 433,
+            "hours": 3,
+            "mins": 30,
+            "f-color": "#fff"
           }
         }
       },
@@ -205,6 +231,8 @@
         "bg-img-m": "shopify://shop_images/karollyne-videira-hubert-NH0cfo8Qrfg-unsplash_2000x_d80ce1da-6746-4644-9243-4bcf98fd1a47.jpg",
         "height-m": 500,
         "height-d": 600,
+        "pw": false,
+        "main-radius": 0,
         "pt": 28,
         "pb": 28,
         "pt-d": 28,
