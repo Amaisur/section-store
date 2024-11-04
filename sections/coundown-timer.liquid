@@ -148,6 +148,23 @@
         >
           <p><strong>{{ block.settings.heading }}</strong></p>
         </div>
+      {% when 'subtext' %}
+           <style>
+          .countdown-banner-heading-{{ section.id }}-{{ section.id }}-{{ block.id }} {
+          }
+          .countdown-banner-heading-{{ section.id }}-{{ section.id }}-{{ block.id }} p {
+            margin:0 10px;
+          }
+        </style>
+        <div
+          class="countdown-banner-heading-{{ section.id }}-{{ section.id }}-{{ block.id }}"
+          style="
+            font-size: 18px;
+            color: #ffffff;
+          "
+        >
+          <p>{{ block.settings.subtext }}</p>
+        </div>
       {% when 'button' %}
         <style>
           .countdown-banner-button-{{ section.id }}-{{ section.id }}-{{ block.id }} {
