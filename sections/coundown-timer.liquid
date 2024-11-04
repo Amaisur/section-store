@@ -195,7 +195,7 @@
           {% when 'timer' %}
       
         <style>
-          .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 {
+          .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -203,36 +203,36 @@
             margin: 5px 10px;
           }
           @media (min-width: 750px) {
-            .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 {
+            .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} {
                gap: 20px;
             }
           }
-          .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 .time-block {
+          .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} .time-block {
             position: relative;
             border-radius: 12px;
             /*padding: 20px;*/
             padding: 0 1rem;
           }
-          .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 .time-block__num,
-          .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 .time-block__unit {
+          .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} .time-block__num,
+          .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} .time-block__unit {
             display: block;
             text-align: center;
           }
-          .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 .time-block__num {
+          .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} .time-block__num {
             font-size: 25px;
             line-height: 1;
           }
-          .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 .time-block__unit {
+          .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} .time-block__unit {
             text-transform: uppercase;
             margin-top: 6px;
             font-size: 10px;
           }
           @media (min-width: 750px) {
-            .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 .time-block__unit {
+            .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} .time-block__unit {
               font-size: 12px;
             }
           }
-          .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 .time-divier {
+          .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} .time-divier {
             position: relative;
             width: 1px;
             height: 40px;
@@ -241,7 +241,7 @@
         </style>
 
         <div
-          class="countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2"
+          class="countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }}"
           style="
             color: #ffffff;
             --color: #ffffff;
@@ -272,11 +272,11 @@
         </div>
 
         <style>
-          .countdown-timer-completed-text-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 {
+          .countdown-timer-completed-text-{{ section.id }}-{{ section.id }}-{{ block.id }} {
             display: none;
           }
         </style>
-        <div class="countdown-timer-completed-text-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2"></div>
+        <div class="countdown-timer-completed-text-{{ section.id }}-{{ section.id }}-{{ block.id }}"></div>
 
         <script
           type="text/javascript"
@@ -288,7 +288,7 @@
                       hour = minute * 60,
                       day = hour * 24,
                       wrapper = document.querySelector(
-                        '.countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2'
+                        '.countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }}'
                       );
                 
                     // Create UTC date string in a Safari-friendly format
@@ -309,7 +309,7 @@
                         wrapper.querySelector('.js-timer-seconds').innerText = '00';
                         
                         document.querySelector(
-                          '.countdown-timer-completed-text-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2'
+                          '.countdown-timer-completed-text-{{ section.id }}-{{ section.id }}-{{ block.id }}'
                         ).style.display = 'block';
                 
                         clearInterval(interval);
