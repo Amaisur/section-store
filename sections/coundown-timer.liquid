@@ -453,7 +453,14 @@
     {
       "type": "timer",
       "name": "Timer",
-      "settings": []
+      "settings": [
+        {
+          "type": "color",
+          "id": "f-color",
+          "label": "Text Color",
+          "default": "#fff"
+        }
+      ]
     },
     {
       "type": "button",
@@ -471,6 +478,12 @@
       "label": "Button Link"
     },
         {
+          "type": "color",
+          "id": "btn-bg-color",
+          "label": "Button Background",
+          "default": "#fff"
+        },
+        {
       "type": "range",
       "id": "font-size",
       "label": "Font Size",
@@ -484,8 +497,18 @@
       "type": "color",
       "id": "f-color",
       "label": "Text Color",
-      "default": "#fff"
-    }
+      "default": "#000"
+    },
+          {
+      "type": "range",
+      "id": "btn-radius",
+      "label": "Button Border Radius",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 28
+    },
       ]
     },
     {
