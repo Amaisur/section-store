@@ -147,8 +147,8 @@
         <div
           class="countdown-banner-heading-{{ section.id }}-{{ section.id }}-{{ block.id }}"
           style="
-            font-size: 30px;
-            color: #ffffff;
+            font-size: {{ block.settings.font-size }}px;
+            color: {{ block.settings.f-color }};
           "
         >
           <p><strong>{{ block.settings.heading }}</strong></p>
@@ -163,9 +163,9 @@
         </style>
         <div
           class="countdown-banner-heading-{{ section.id }}-{{ section.id }}-{{ block.id }}"
-          style="
-            font-size: 18px;
-            color: #ffffff;
+         style="
+            font-size: {{ block.settings.font-size }}px;
+            color: {{ block.settings.f-color }};
           "
         >
           <p>{{ block.settings.subtext }}</p>
@@ -186,10 +186,10 @@
           href="{{ block.settings.btn-link }}"
           class="countdown-banner-button-{{ section.id }}-{{ section.id }}-{{ block.id }}"
           style="
-            color: #000000;
-            background-color: #ffffff;
-            border-radius: 50px;
-            font-size: 18px;
+            color: {{ block.settings.f-color }};
+            background-color: {{ block.settings.btn-bg-color }};
+            border-radius: {{ block.settings.btn-radius }}px;
+            font-size: {{ block.settings.font-size }}px;
             border: 0px #ffffff solid;
             margin: 5px 10px;
           "
@@ -248,8 +248,7 @@
         <div
           class="countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }}"
           style="
-            color: #ffffff;
-            --color: #ffffff;
+            color: {{ block.settings.f-color }};
           "
         >
           <div class="time-block">
@@ -470,6 +469,22 @@
       "type": "url",
       "id": "btn-link",
       "label": "Button Link"
+    },
+        {
+      "type": "range",
+      "id": "font-size",
+      "label": "Font Size",
+      "min": 5,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "f-color",
+      "label": "Text Color",
+      "default": "#fff"
     }
       ]
     },
@@ -483,6 +498,23 @@
       "label": "Heading",
       "default": "50% off all suits and accessories"
     },
+      {
+      "type": "range",
+      "id": "font-size",
+      "label": "Font Size",
+      "min": 5,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "f-color",
+      "label": "Text Color",
+      "default": "#fff"
+    },
+        
       ]
     },
     {
@@ -494,6 +526,22 @@
       "id": "subtext",
       "label": "Sub Text",
       "default": "GET YOUR BASKET READY"
+    },
+    {
+      "type": "range",
+      "id": "font-size",
+      "label": "Font Size",
+      "min": 5,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "f-color",
+      "label": "Text Color",
+      "default": "#fff"
     },
       ]
     }
