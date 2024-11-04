@@ -1,6 +1,337 @@
+<style>
+  .countdown-banner-{{ section.id }}-wrapper {
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+  }
+  @media screen and (min-width: 750px) {
+    .countdown-banner-{{ section.id }}-wrapper {
+      padding-top: var(--pt-desktop);
+      padding-bottom: var(--pb-desktop);
+    }
+  }
+  .countdown-banner-{{ section.id }} {
+    position: relative;
+    height: var(--section-height-mobile);
+    overflow: hidden;
+  }
+  @media screen and (min-width: 750px) {
+    .countdown-banner-{{ section.id }} {
+      height: var(--section-height);
+    }
+  }
+  .countdown-banner-{{ section.id }} .countdown-banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .countdown-banner-{{ section.id }} .countdown-banner-image--desktop {
+    display: none;
+  }
+  @media screen and (min-width: 750px) {
+    .countdown-banner-{{ section.id }} .countdown-banner-image--desktop {
+      display: block;
+    }
+    .countdown-banner-{{ section.id }} .countdown-banner-image--mobile {
+      display: none;
+    }
+  }
+</style>
+<div class="countdown-banner-{{ section.id }}-wrapper" style="
+    --pt: 39px;
+    --pt-desktop: 52px;
+    --pb: 39px;
+    --pb-desktop: 52px;
+    background-color:#ffffff;
+  ">
+  <div class="
+      countdown-banner-{{ section.id }}
+       page-width 
+    " style="
+      --section-height: 600px;
+      --section-height-mobile: 500px;
+    ">
+    <div style="
+        height: 100%; width: 100%; position: relative; overflow: hidden;
+         border-radius: 15px; 
+      ">
+      
+      
+      
+        <img class="
+            countdown-banner-image
+            
+              countdown-banner-image--desktop
+            
+          " src="//section.store/cdn/shop/files/high-fashion-model-in-red_500x.jpg?v=1684748546" srcset="
+            //section.store/cdn/shop/files/high-fashion-model-in-red_500x.jpg?v=1684748546 500w,
+            //section.store/cdn/shop/files/high-fashion-model-in-red_800x.jpg?v=1684748546 800w,
+            //section.store/cdn/shop/files/high-fashion-model-in-red_1200x.jpg?v=1684748546 1200w,
+            //section.store/cdn/shop/files/high-fashion-model-in-red_1600x.jpg?v=1684748546 1600w,
+            //section.store/cdn/shop/files/high-fashion-model-in-red_2000x.jpg?v=1684748546 2000w,
+            //section.store/cdn/shop/files/high-fashion-model-in-red.jpg?v=1684748546 2400w
+          " alt="" loading="lazy">
+        
+          
+          <img class="countdown-banner-image countdown-banner-image--mobile" src="//section.store/cdn/shop/files/fashion-model-in-red-suit_500x.jpg?v=1684747380" srcset="
+              //section.store/cdn/shop/files/fashion-model-in-red-suit_500x.jpg?v=1684747380 500w,
+              //section.store/cdn/shop/files/fashion-model-in-red-suit_800x.jpg?v=1684747380 800w,
+              //section.store/cdn/shop/files/fashion-model-in-red-suit_1200x.jpg?v=1684747380 1200w,
+              //section.store/cdn/shop/files/fashion-model-in-red-suit_1600x.jpg?v=1684747380 1600w,
+              //section.store/cdn/shop/files/fashion-model-in-red-suit_2000x.jpg?v=1684747380 2000w,
+              //section.store/cdn/shop/files/fashion-model-in-red-suit.jpg?v=1684747380 2400w
+            " alt="" loading="lazy">
+        
+      
+
+      
+      <style>
+        .countdown-banner-content-{{ section.id }} {
+          position: relative;
+          z-index: 1;
+          overflow: hidden;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 2rem;
+          text-align: center;
+          line-height: 1.1;
+        }
+      </style>
+      <div class="countdown-banner-content-{{ section.id }}">
+        
+        <div style="
+            opacity: 0.3;
+            background-color: #000000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            display: block;
+          "></div>
+        
+          
+              
+                <style>
+                  .countdown-banner-heading-{{ section.id }}-{{ section.id }}-1684746960fabb856f-0 {
+                  }
+                  .countdown-banner-heading-{{ section.id }}-{{ section.id }}-1684746960fabb856f-0 p {
+                    margin:0 10px;
+                  }
+                </style>
+                <div class="countdown-banner-heading-{{ section.id }}-{{ section.id }}-1684746960fabb856f-0" style="
+                    font-size: 30px;
+                    color: #ffffff;
+                  ">
+                  <p><strong>50% off all suits and accessories</strong></p>
+                </div>
+              
+              
+            
+        
+          
+              <style>
+                .countdown-banner-button-{{ section.id }}-{{ section.id }}-1684746960fabb856f-1 {
+                  padding: 9px 25px;
+                  text-decoration: none;
+                }
+                @media screen and (min-width: 750px) {
+                  .countdown-banner-button-{{ section.id }}-{{ section.id }}-1684746960fabb856f-1 {
+                    padding: 11px 25px;
+                  }
+                }
+              </style>
+              <a href="" class="countdown-banner-button-{{ section.id }}-{{ section.id }}-1684746960fabb856f-1" style="
+                  color: #000000;
+                  background-color: #ffffff;
+                  border-radius: 50px;
+                  font-size: 18px;
+                  border: 0px #ffffff solid;
+                  margin: 5px 10px;
+                ">
+                View Discounted Items
+              </a>
+            
+        
+          
+              <style>
+                .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  gap: 5px;
+                  margin: 5px 10px;
+                }
+                @media (min-width: 750px) {
+                  .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 {
+                     gap: 20px;
+                  }
+                }
+                .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 .time-block {
+                  position: relative;
+                  border-radius: 12px;
+                  /*padding: 20px;*/
+                  padding: 0 1rem;
+                }
+                .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 .time-block__num,
+                .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 .time-block__unit {
+                  display: block;
+                  text-align: center;
+                }
+                .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 .time-block__num {
+                  font-size: 25px;
+                  line-height: 1;
+                }
+                .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 .time-block__unit {
+                  text-transform: uppercase;
+                  margin-top: 6px;
+                  font-size: 10px;
+                }
+                @media (min-width: 750px) {
+                  .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 .time-block__unit {
+                    font-size: 12px;
+                  }
+                }
+                .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 .time-divier {
+                  position: relative;
+                  width: 1px;
+                  height: 40px;
+                  background-color: var(--color);
+                }
+              </style>
+
+              <div class="countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2" style="
+                  color: #ffffff;
+                  --color: #ffffff;
+                ">
+                <div class="time-block">
+                  <span class="time-block__num js-timer-days">422</span>
+                  <span class="time-block__unit">Days</span>
+                </div>
+                
+                <span class="time-divier"></span>
+                <div class="time-block">
+                  <span class="time-block__num js-timer-hours">05</span>
+                  <span class="time-block__unit">Hours</span>
+                </div>
+                
+                <span class="time-divier"></span>
+                <div class="time-block">
+                  <span class="time-block__num js-timer-minutes">29</span>
+                  <span class="time-block__unit">Minutes</span>
+                </div>
+                
+                <span class="time-divier"></span>
+                <div class="time-block">
+                  <span class="time-block__num js-timer-seconds">19</span>
+                  <span class="time-block__unit">Seconds</span>
+                </div>
+              </div>
+
+              <style>
+                .countdown-timer-completed-text-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 {
+                  display: none;
+                }
+              </style>
+              <div class="countdown-timer-completed-text-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2">
+                
+              </div>
+
+              <script type="text/javascript">
+                (function () {
+                  function startTimer() {
+                    const second = 1000,
+                      minute = second * 60,
+                      hour = minute * 60,
+                      day = hour * 24,
+                      wrapper = document.querySelector(
+                        '.countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2'
+                      );
+                
+                    // Create UTC date string in a Safari-friendly format
+                    const dateString = `2026/01/01 00:00:00 UTC`;
+                    const countDown = Date.parse(dateString);
+                
+                    console.log('start timer, end date:', dateString);
+                
+                    const interval = setInterval(function () {
+                      let now = Date.now(); // Используем Date.now() вместо new Date().getTime()
+                      let distance = countDown - now;
+                
+                      // Handle case when distance is negative or invalid
+                      if (distance < 0 || isNaN(distance)) {
+                        wrapper.querySelector('.js-timer-days').innerText = '00';
+                        wrapper.querySelector('.js-timer-hours').innerText = '00';
+                        wrapper.querySelector('.js-timer-minutes').innerText = '00';
+                        wrapper.querySelector('.js-timer-seconds').innerText = '00';
+                        
+                        document.querySelector(
+                          '.countdown-timer-completed-text-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2'
+                        ).style.display = 'block';
+                
+                        clearInterval(interval);
+                        return;
+                      }
+                
+                      // Calculate time units
+                      const days = Math.floor(distance / day);
+                      const hours = Math.floor((distance % day) / hour);
+                      const minutes = Math.floor((distance % hour) / minute);
+                      const seconds = Math.floor((distance % minute) / second);
+                
+                      // Format numbers to always show two digits
+                      const formatNumber = (num) => (num < 10 ? '0' + num : num);
+                
+                      // Update DOM
+                      wrapper.querySelector('.js-timer-days').innerText = formatNumber(days);
+                      wrapper.querySelector('.js-timer-hours').innerText = formatNumber(hours);
+                      wrapper.querySelector('.js-timer-minutes').innerText = formatNumber(minutes);
+                      wrapper.querySelector('.js-timer-seconds').innerText = formatNumber(seconds);
+                
+                    }, second);
+                
+                    // Clean up interval on section unload
+                    document.addEventListener('shopify:section:unload', function (event) {
+                      if (event.detail.sectionId === '{{ section.id }}') clearInterval(interval);
+                    });
+                  }
+                
+                  // Start timer initially
+                  startTimer();
+                
+                  // Reinitialize timer when section is reloaded in theme editor
+                  if (window.Shopify && Shopify.designMode) {
+                    document.addEventListener('shopify:section:load', function (event) {
+                      if (event.detail.sectionId === '{{ section.id }}') {
+                        startTimer();
+                      }
+                    });
+                  }
+                })();
+              </script>
+            
+        
+      </div>
+    </div>
+  </div>
+</div>
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "Countdown Timer",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Countdown Timer"
+      }
+    ]
   }
 {% endschema %}
+  
