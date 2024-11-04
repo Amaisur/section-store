@@ -52,7 +52,9 @@
   <div
     class="
             countdown-banner-{{ section.id }}
+    {% if section.settings.pw %}
       page-width
+      {% endif %}
     "
     style="
       --section-height: {{ section.settings.height-d }}px;
@@ -390,6 +392,12 @@
       "id": "height-d",
       "label": "Desktop Height",
       "default": 600
+    },
+    {
+      "type": "checkbox",
+      "id": "pw",
+      "label": "Add Page width",
+      "default": true
     },
     {
       "type": "range",
