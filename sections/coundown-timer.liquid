@@ -129,7 +129,9 @@
             display: block;
           "
         ></div>
-
+        {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'heading' %}
         <style>
           .countdown-banner-heading-{{ section.id }}-{{ section.id }}-1684746960fabb856f-0 {
           }
@@ -146,7 +148,7 @@
         >
           <p><strong>50% off all suits and accessories</strong></p>
         </div>
-
+      {% when 'button' %}
         <style>
           .countdown-banner-button-{{ section.id }}-{{ section.id }}-1684746960fabb856f-1 {
             padding: 9px 25px;
@@ -173,6 +175,8 @@
           View Discounted Items
         </a>
 
+          {% when 'timer' %}
+      
         <style>
           .countdown-timer-{{ section.id }}-{{ section.id }}-1684746960fabb856f-2 {
             display: flex;
@@ -331,8 +335,12 @@
                   }
                 })();
         </script>
+          {% endcase %}
+        {% endfor %}
       </div>
+      
     </div>
+    
   </div>
 </div>
 
@@ -348,6 +356,11 @@
 
   ],
   "blocks": [
+    {
+      "type": "timer",
+      "name": "Timer",
+      "settings": []
+    },
     {
       "type": "button",
       "name": "Button",
