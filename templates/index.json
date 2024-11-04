@@ -115,8 +115,14 @@
     },
     "featured_collection_d5_V7Q3xQ": {
       "type": "featured-collection-d5",
+      "disabled": true,
       "settings": {
         "collection": "frontpage"
+      }
+    },
+    "coundown_timer_apcC7X": {
+      "type": "coundown-timer",
+      "settings": {
       }
     },
     "featured_collection": {
@@ -1248,6 +1254,7 @@
     "image_banner",
     "hotspots_detail_qtngrJ",
     "featured_collection_d5_V7Q3xQ",
+    "coundown_timer_apcC7X",
     "featured_collection",
     "collection_slider_iHc74y",
     "echo_section_ss_3_Tp6ghe",
