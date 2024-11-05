@@ -242,6 +242,46 @@
     },
     "feature_6_tLGJcN": {
       "type": "feature-6",
+      "blocks": {
+        "feature_4TmzX4": {
+          "type": "feature",
+          "settings": {
+            "img": "shopify://shop_images/cheese_small_99a34dc2-535d-4847-85ff-d9304bb97331.png",
+            "heading": "Feature text",
+            "info": "<p>Explain why your product or service is amazing. What are the benefits. Sell the whole in the wall not the drill.</p>"
+          }
+        },
+        "feature_DtkiUw": {
+          "type": "feature",
+          "settings": {
+            "img": "shopify://shop_images/lemon_small_dfc49785-8fca-4808-bbfa-28bdf82614da.png",
+            "heading": "Feature text",
+            "info": "<p>Explain why your product or service is amazing. What are the benefits. Sell the whole in the wall not the drill.</p>"
+          }
+        },
+        "feature_kaiDrL": {
+          "type": "feature",
+          "settings": {
+            "img": "shopify://shop_images/cherries_small_37667dea-9942-414c-a463-8af2c5d1c47c.png",
+            "heading": "Feature text",
+            "info": "<p>Explain why your product or service is amazing. What are the benefits. Sell the whole in the wall not the drill.</p>"
+          }
+        },
+        "feature_3drAiQ": {
+          "type": "feature",
+          "settings": {
+            "img": "shopify://shop_images/orange_small_8a823796-e66b-4544-9779-cc5331d09857.png",
+            "heading": "Feature text",
+            "info": "<p>Explain why your product or service is amazing. What are the benefits. Sell the whole in the wall not the drill.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_4TmzX4",
+        "feature_DtkiUw",
+        "feature_kaiDrL",
+        "feature_3drAiQ"
+      ],
       "settings": {
       }
     },
