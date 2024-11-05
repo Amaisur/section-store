@@ -115,7 +115,6 @@
     },
     "featured_collection_d5_V7Q3xQ": {
       "type": "featured-collection-d5",
-      "disabled": true,
       "settings": {
         "collection": "frontpage"
       }
@@ -128,7 +127,7 @@
           "settings": {
             "heading": "50% off all suits and accessories",
             "font-size": 30,
-            "f-color": "#fff"
+            "f-color": "#ffffff"
           }
         },
         "subtext_WhHbhe": {
@@ -136,7 +135,7 @@
           "settings": {
             "subtext": "GET YOUR BASKET READY",
             "font-size": 16,
-            "f-color": "#fff"
+            "f-color": "#ffffff"
           }
         },
         "timer_Any8Y6": {
@@ -145,7 +144,7 @@
             "days": 433,
             "hours": 3,
             "mins": 30,
-            "f-color": "#fff"
+            "f-color": "#ffffff"
           }
         },
         "button_aFzxLT": {
@@ -153,9 +152,9 @@
           "settings": {
             "btn-text": "View Discounted Items",
             "btn-link": "",
-            "btn-bg-color": "#fff",
+            "btn-bg-color": "#ffffff",
             "font-size": 18,
-            "f-color": "#000",
+            "f-color": "#000000",
             "btn-radius": 28
           }
         }
@@ -188,7 +187,7 @@
           "settings": {
             "heading": "50% off all suits and accessories",
             "font-size": 30,
-            "f-color": "#fff"
+            "f-color": "#ffffff"
           }
         },
         "subtext_8tfkbq": {
@@ -196,7 +195,7 @@
           "settings": {
             "subtext": "GET YOUR BASKET READY",
             "font-size": 16,
-            "f-color": "#fff"
+            "f-color": "#ffffff"
           }
         },
         "button_Q33Ew6": {
@@ -204,9 +203,9 @@
           "settings": {
             "btn-text": "View Discounted Items",
             "btn-link": "",
-            "btn-bg-color": "#fff",
+            "btn-bg-color": "#ffffff",
             "font-size": 18,
-            "f-color": "#000",
+            "f-color": "#000000",
             "btn-radius": 28
           }
         },
@@ -216,7 +215,7 @@
             "days": 433,
             "hours": 3,
             "mins": 30,
-            "f-color": "#fff"
+            "f-color": "#ffffff"
           }
         }
       },
