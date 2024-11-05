@@ -86,13 +86,15 @@
           text-align: center;
           margin-bottom: 5px;
       }
-  }</style><div style="background-color:#ffffff;">
+  }</style><div id="{{ section.settings.main-section-id }}" style="background-color:#ffffff;">
   <div class="section-{{ section.id }}-padding">
       <h1 style="text-align: {{ section.settings.text-align }}; padding: 20px"> Why should you buy? </h1>
       <div class="feature-logo-row">
         {% for block in section.blocks %}
           <div class="feature-logo-row-block">
+            {% if block.settings.img != blank %}
             <img class="feature-logo-row-icon" src="{{ block.settings.img | img_url: '300x' }}" alt="{{ block.settings.heading }}-image" width="auto" height="">
+            {% endif %}
             <div class="feature-logo-row-text">
               <p class="feature-logo-row-header">{{ block.settings.heading }}</p>
               <div class="feature-logo-row-subtext">{{ block.settings.info }}</div>
@@ -233,7 +235,13 @@
             "id": "card-bg",
             "label": "Card Background",
             "default": "#fff"
-          }
+          },
+      {
+        "type": "text",
+        "id": "main-section-id",
+        "label": "Main Section Id",
+        "default": "feature-6"
+      }
     ],
     "blocks": [
       {
