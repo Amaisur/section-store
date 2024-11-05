@@ -89,7 +89,7 @@
       }
   }</style><div style="background-color:#ffffff;">
   <div class="section-{{ section.id }}-padding">
-      <h1 style="text-align: center; padding: 20px"> Why should you buy? </h1>
+      <h1 style="text-align: {{ section.settings.text-align }}; padding: 20px"> Why should you buy? </h1>
       <div class="feature-logo-row">
         {% for block in section.blocks %}
           <div class="feature-logo-row-block">
@@ -108,7 +108,52 @@
 {% schema %}
   {
     "name": "Features",
-    "settings": [],
+    "settings": [
+      {
+        "type": "text",
+        "id": "m-heading",
+        "label": "Heading",
+        "default": "Why should you buy?"
+      },
+      {
+        "type": "range",
+        "id": "m-head",
+        "min": 5,
+        "max": 75,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading"
+      },
+      {
+        "type": "color",
+        "id": "mh-color",
+        "label": "Heading Color",
+        "default": "#000"
+      },
+      {
+        "type": "select",
+        "id": "text-align",
+        "label": "Heading Alignment",
+        "default": "center",
+        "options": [
+          {
+            "label": "Left",
+            "value": "left"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          }
+        ]
+      },
+      {
+        "type": "color_background",
+        "id": "bg-color",
+        "label": "Background Color",
+        "default": "none"
+      }
+    ],
     "blocks": [
       {
         "type": "feature",
