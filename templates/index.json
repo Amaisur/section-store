@@ -115,7 +115,6 @@
     },
     "featured_collection_d5_V7Q3xQ": {
       "type": "featured-collection-d5",
-      "disabled": true,
       "settings": {
         "collection": "frontpage"
       }
@@ -283,35 +282,21 @@
         "feature_3drAiQ"
       ],
       "settings": {
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "m-heading": "Why should you buy?",
+        "m-head": 35,
+        "mh-color": "#000",
+        "text-align": "center",
+        "bg-color": "none",
+        "pt": 35,
+        "pb": 35,
+        "pt-m": 35,
+        "pb-m": 35,
+        "c-head": 20,
+        "ch-color": "#000",
+        "cd-info": 15,
+        "c-info": "#000",
+        "card-bg": "#fff",
+        "main-section-id": "feature-6"
       }
     },
     "collection_slider_iHc74y": {
@@ -1413,11 +1398,10 @@
   "order": [
     "image_banner",
     "hotspots_detail_qtngrJ",
-    "featured_collection_d5_V7Q3xQ",
     "coundown_timer_apcC7X",
     "coundown_timer_gMm4Mg",
     "feature_6_tLGJcN",
-    "featured_collection",
+    "featured_collection_d5_V7Q3xQ",
     "collection_slider_iHc74y",
     "echo_section_ss_3_Tp6ghe",
     "details_slider_iWGfm4",
