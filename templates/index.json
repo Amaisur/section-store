@@ -115,6 +115,7 @@
     },
     "featured_collection_d5_V7Q3xQ": {
       "type": "featured-collection-d5",
+      "disabled": true,
       "settings": {
         "collection": "frontpage"
       }
