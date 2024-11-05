@@ -1,6 +1,6 @@
 <style data-shopify="">
-  .section-template--16653040648441__16638874298fa91301 {}
-  .section-template--16653040648441__16638874298fa91301-padding {
+  .section-{{ section.id }} {}
+  .section-{{ section.id }}-padding {
     max-width: 120rem;
     margin: 0 auto;
     padding: 0 1.5rem;
@@ -9,7 +9,7 @@
   }
 
   @media screen and (min-width: 750px) {
-    .section-template--16653040648441__16638874298fa91301-padding {
+    .section-{{ section.id }}-padding {
       padding: 0 5rem;
       padding-top: 36px;
       padding-bottom: 36px;
@@ -88,7 +88,7 @@
           margin-bottom: 5px;
       }
   }</style><div style="background-color:#ffffff;">
-  <div class="section-template--16653040648441__16638874298fa91301-padding">
+  <div class="section-{{ section.id }}-padding">
       <h1 style="text-align: center; padding: 20px"> Why should you buy? </h1>
       <div class="feature-logo-row">
         
@@ -128,9 +128,6 @@
   </div> 
 </div>
 
-
-<style data-shopify="">
-</style>
 
 {% schema %}
   {
