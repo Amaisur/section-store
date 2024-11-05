@@ -4,15 +4,15 @@
     max-width: 120rem;
     margin: 0 auto;
     padding: 0 1.5rem;
-    padding-top: 27px;
-    padding-bottom: 27px;
+    padding-top: {{ section.settings.pt-m }}px;
+    padding-bottom: {{ section.settings.pb-m }}px;
   }
 
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding: 0 5rem;
-      padding-top: 36px;
-      padding-bottom: 36px;
+      padding-top: {{ section.settings.pt }}px;
+      padding-bottom: {{ section.settings.pb }}px;
     }
   }
 
@@ -28,7 +28,7 @@
   }
   
   #shopify-section-{{ section.id }} .feature-logo-row-block {
-      background-color: white;
+      background-color: {{ section.settings.card-bg }};
       flex: 1;
       max-width: 500px;
       min-width: 450px;
@@ -53,18 +53,17 @@
   
   #shopify-section-{{ section.id }} .feature-logo-row-header {
       margin: 15px 0px 5px 0px;
-      font-size: 18px;
-      text-transform: uppercase;
+      font-size: {{ section.settings.c-head }}px;
       letter-spacing: 0.1em;
       font-style: normal;
       font-weight: 600;
-      line-height: 1.2;
-      color: #212121;
+      line-height: normal;
+      color: {{ section.settings.ch-color }};
   }
   
   #shopify-section-{{ section.id }} .feature-logo-row-subtext {
-      font-size: 15px;
-      color: black;
+      font-size: {{ section.settings.cd-info }}px;
+      color: {{ section.settings.ch-color }};
       line-height: 1.4;
       margin: 5px 0px;
   }
@@ -152,7 +151,89 @@
         "id": "bg-color",
         "label": "Background Color",
         "default": "none"
-      }
+      },
+       {
+        "type": "range",
+        "id": "pt",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top"
+      },
+      {
+        "type": "range",
+        "id": "pb",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom"
+      },
+      {
+        "type": "range",
+        "id": "pt-m",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top Mobile"
+      },
+      {
+        "type": "range",
+        "id": "pb-m",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom Mobile"
+      }, 
+      {
+        "type": "header",
+        "content": "Card Configurations"
+      },
+      {
+        "type": "range",
+        "id": "c-head",
+        "min": 5,
+        "max": 75,
+        "default": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "Card Heading Font Size"
+      },
+      {
+        "type": "color",
+        "id": "ch-color",
+        "label": "Card Heading Color",
+        "default": "#000"
+      },
+       {
+        "type": "range",
+        "id": "cd-info",
+        "min": 5,
+        "max": 75,
+        "default": 15,
+        "step": 1,
+        "unit": "px",
+        "label": "Card Description Font Size"
+      },
+      {
+        "type": "color",
+        "id": "c-info",
+        "label": "Card Description Color",
+        "default": "#000"
+      },
+          {
+            "type": "color",
+            "id": "card-bg",
+            "label": "Card Background",
+            "default": "#fff"
+          }
     ],
     "blocks": [
       {
