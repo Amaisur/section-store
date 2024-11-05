@@ -91,39 +91,15 @@
   <div class="section-{{ section.id }}-padding">
       <h1 style="text-align: center; padding: 20px"> Why should you buy? </h1>
       <div class="feature-logo-row">
-        
+        {% for block in section.blocks %}
           <div class="feature-logo-row-block">
-            <img class="feature-logo-row-icon" src="//section.store/cdn/shop/files/lemon_small.png?v=1663887491" alt="">
+            <img class="feature-logo-row-icon" src="{{ block.settings.img | img_url: '300x' }}" alt="{{ block.settings.heading }}-image" width="auto" height="">
             <div class="feature-logo-row-text">
-              <p class="feature-logo-row-header"> Feature text</p>
-              <div class="feature-logo-row-subtext"> <p>Explain why your product or service is amazing. What are the benefits. Sell the whole in the wall not the drill.</p></div>
+              <p class="feature-logo-row-header">{{ block.settings.heading }}</p>
+              <div class="feature-logo-row-subtext">{{ block.settings.info }}</div>
             </div>
           </div> 
-        
-          <div class="feature-logo-row-block">
-            <img class="feature-logo-row-icon" src="//section.store/cdn/shop/files/cheese_small.png?v=1663887507" alt="">
-            <div class="feature-logo-row-text">
-              <p class="feature-logo-row-header"> Feature text</p>
-              <div class="feature-logo-row-subtext"> <p>Explain why your product or service is amazing. What are the benefits. Sell the whole in the wall not the drill.</p></div>
-            </div>
-          </div> 
-        
-          <div class="feature-logo-row-block">
-            <img class="feature-logo-row-icon" src="//section.store/cdn/shop/files/cherries_small.png?v=1663887535" alt="">
-            <div class="feature-logo-row-text">
-              <p class="feature-logo-row-header"> Feature text</p>
-              <div class="feature-logo-row-subtext"> <p>Explain why your product or service is amazing. What are the benefits. Sell the whole in the wall not the drill.</p></div>
-            </div>
-          </div> 
-        
-          <div class="feature-logo-row-block">
-            <img class="feature-logo-row-icon" src="//section.store/cdn/shop/files/orange_small.png?v=1663887516" alt="">
-            <div class="feature-logo-row-text">
-              <p class="feature-logo-row-header"> Feature text</p>
-              <div class="feature-logo-row-subtext"> <p>Explain why your product or service is amazing. What are the benefits. Sell the whole in the wall not the drill.</p></div>
-            </div>
-          </div> 
-        
+        {% endfor %}
       </div>
   </div> 
 </div>
@@ -133,6 +109,31 @@
   {
     "name": "Features",
     "settings": [],
+    "blocks": [
+      {
+        "type": "feature",
+        "name": "Feature",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Feature text"
+          },
+           {
+            "type": "richtext",
+            "id": "info",
+            "label": "Description",
+            "default": "<p>Explain why your product or service is amazing. What are the benefits. Sell the whole in the wall not the drill.</p>"
+          }
+        ]
+      }
+    ],
     "presets": [
       {
         "name": "Features"
