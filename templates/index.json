@@ -239,6 +239,11 @@
         "bg-color": "#fff"
       }
     },
+    "feature_6_tLGJcN": {
+      "type": "feature-6",
+      "settings": {
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "disabled": true,
@@ -1370,6 +1375,7 @@
     "featured_collection_d5_V7Q3xQ",
     "coundown_timer_apcC7X",
     "coundown_timer_gMm4Mg",
+    "feature_6_tLGJcN",
     "featured_collection",
     "collection_slider_iHc74y",
     "echo_section_ss_3_Tp6ghe",
