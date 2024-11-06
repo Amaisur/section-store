@@ -322,7 +322,7 @@
           
           
           {% for block in section.blocks %}
-            <div class="hotspots-circle-{{ section.id }} hotspots-hotspot-{{ section.id }} hotspots-hotspot-hotspot_{{ block.id }} active" data-id="hotspot_{{ block.id }}">
+            <div class="hotspots-circle-{{ section.id }} hotspots-hotspot-{{ section.id }} hotspots-hotspot-hotspot_{{ block.id }} {% if forloop.first %}active{% endif %}" data-id="hotspot_{{ block.id }}">
               <span>{{ forloop.index }}</span>
             </div>
           {% endfor %}
@@ -334,7 +334,7 @@
             <div class="hotspots-items-{{ section.id }}">
               
               {% for block in section.blocks %}
-                <div class="hotspots-item-{{ section.id }} active" id="hotspot_{{ block.id }}">
+                <div class="hotspots-item-{{ section.id }} {% if forloop.first %}active{% endif %}" id="hotspot_{{ block.id }}">
                   
                     <div class="hotspots-heading-{{ section.id }}"><p><strong>{{ block.settings.heading }}</strong></p></div>
                   
