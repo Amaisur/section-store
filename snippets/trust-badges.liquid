@@ -78,7 +78,9 @@
     margin: 0 auto !important;
   }
 }
+  .d05-custmer-info-popup{
     
+  }  
     </style>
 
     <div class="main-trust-3-d9">
@@ -176,20 +178,16 @@
 </button></a>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Select the popup trigger element if it exists
+document.addEventListener('DOMContentLoaded', function() {
     const popupTrigger = document.querySelector('#customer-info-popup');
     
     if (popupTrigger) {
-        // Event listener to open the popup and prevent default link behavior
         popupTrigger.addEventListener('click', function(event) {
             event.preventDefault();
             
-            // Extract product handle from the URL query parameter
             const url = new URL(popupTrigger.href);
             const productHandle = url.searchParams.get('productHandle');
             
-            // Fetch product details using the handle
             if (productHandle) {
                 fetch(`/products/${productHandle}.json`)
                     .then(response => response.json())
@@ -204,68 +202,46 @@
         });
     }
     
-    // Function to show the popup
     function showPopup(title, imageSrc) {
-        // Create the popup overlay
         const popupOverlay = document.createElement('div');
-        popupOverlay.id = 'popup-overlay';
-        popupOverlay.style.position = 'fixed';
-        popupOverlay.style.top = '0';
-        popupOverlay.style.left = '0';
-        popupOverlay.style.width = '100%';
-        popupOverlay.style.height = '100%';
-        popupOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-        popupOverlay.style.display = 'flex';
-        popupOverlay.style.alignItems = 'center';
-        popupOverlay.style.justifyContent = 'center';
+        popupOverlay.className = 'd05-popup-overlay';
         
-        // Create the popup content
         const popupContent = document.createElement('div');
-        popupContent.style.backgroundColor = '#fff';
-        popupContent.style.padding = '20px';
-        popupContent.style.borderRadius = '8px';
-        popupContent.style.width = '300px';
-        popupContent.style.textAlign = 'center';
+        popupContent.className = 'd05-popup-content';
         
-        // Add product title and image
         popupContent.innerHTML = `
             <h2>${title}</h2>
-            <img src="${imageSrc}" alt="${title}" style="max-width: 100%; height: auto;"/>
+            <img src="${imageSrc}" alt="${title}"/>
             <form id="customer-info-form">
                 <label>
                     Name:
                     <input type="text" id="name" required>
-                </label><br>
+                </label>
                 <label>
                     Phone:
                     <input type="tel" id="phone" required>
-                </label><br>
+                </label>
                 <label>
                     Email:
                     <input type="email" id="email" required>
-                </label><br>
+                </label>
                 <button type="button" id="continue-button">Continue</button>
                 <button type="button" id="cancel-button">Cancel</button>
             </form>
         `;
         
-        // Append content to overlay
         popupOverlay.appendChild(popupContent);
         document.body.appendChild(popupOverlay);
         
-        // Handle button actions
         document.getElementById('continue-button').addEventListener('click', function() {
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
             console.log('Form Submitted:', { name, phone, email });
-            
-            // Close the popup
             document.body.removeChild(popupOverlay);
         });
         
         document.getElementById('cancel-button').addEventListener('click', function() {
-            // Close the popup
             document.body.removeChild(popupOverlay);
         });
     }
