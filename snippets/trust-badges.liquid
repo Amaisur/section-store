@@ -138,23 +138,15 @@
     box-sizing: border-box;
 }
 
-.d05-popup-content button {
-    margin: 10px 5px 0;
-    padding: 8px 16px;
-    font-size: 0.9em;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
 
 .d05-popup-content #continue-button {
-    background-color: #4CAF50;
-    color: white;
+    background: #4190D2;
+    color: #fff;
 }
 
 .d05-popup-content #cancel-button {
-    background-color: #f44336;
-    color: white;
+    border: 0.66px solid  #8A8A8A;
+    background: #FDFDFD;
 }
 .d05-popup-header{
   padding: 20px;
@@ -179,7 +171,27 @@
   gap: 24px;
   justify-content: space-between;
 }
-    
+.d05-popup-footer{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 20xp;
+  border-top: 1px solid #E3E3E3;
+} 
+.d05-popup-footer a{
+  display: block;
+  padding: 6px 12px;
+  overflow: hidden;
+  color: #303030;
+  text-overflow: ellipsis;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 166.667% */
+  text-decoration: none;
+}
 .d05-form-feilds .d05-label-name{
   width: 100%;
 }
@@ -337,11 +349,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 </label>
                 </div>
                 </div>
-                <button type="button" id="cancel-button">Cancel</button>
-                <button type="button" id="continue-button">Continue</button>
-                
-            
-            
+                <div class="d05-popup-footer">
+                <a href="" id="cancel-button">Cancel</a>
+                <a href="" type="button" id="continue-button">Continue</a>
+                </div>
             </form>
         `;
         
