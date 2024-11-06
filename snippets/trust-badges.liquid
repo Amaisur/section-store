@@ -305,11 +305,12 @@
 </button></a>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const popupTrigger = document.querySelector('#customer-info-popup');
-    
-    if (popupTrigger) {
-        popupTrigger.addEventListener('click', function(event) {
+   document.addEventListener('DOMContentLoaded', function () {
+    const popupTriggers = document.querySelectorAll('#customer-info-popup');
+
+    popupTriggers.forEach(popupTrigger => {
+        popupTrigger.addEventListener('click', event => {
+            alert('hello');
             event.preventDefault();
             
             const url = new URL(popupTrigger.href);
@@ -327,9 +328,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Product handle is missing');
             }
         });
-    }
+    });
     
-    function showPopup(title, imageSrc) {
+    const showPopup = (title, imageSrc) => {
         const popupOverlay = document.createElement('div');
         popupOverlay.className = 'd05-popup-overlay';
         
@@ -338,33 +339,32 @@ document.addEventListener('DOMContentLoaded', function() {
         
         popupContent.innerHTML = `
             <div class="d05-popup-header">
-            <p class="d05-popup-heading">Request A Quote</p>
+                <p class="d05-popup-heading">Request A Quote</p>
             </div>
-            
             <form id="customer-info-form">
-            <div class="d05-popup-body">
-           <div class="d05-product-info">
-            <img src="${imageSrc}" alt="${title}"/>
-             <h2>${title}</h2>
-            </div>
-            <div class="d05-form-feilds">
-                <label class="d05-label-name">
-                    Name
-                    <input type="text" id="name" required placeholder="Enter your name">
-                </label>
-                <label class="d05-label-phone">
-                    Phone Number
-                    <input type="tel" id="phone" required placeholder="(000) 000-0000">
-                </label>
-                <label class="d05-label-email">
-                    Email Address
-                    <input type="email" id="email" required placeholder="Example@xyz.com">
-                </label>
-                </div>
+                <div class="d05-popup-body">
+                    <div class="d05-product-info">
+                        <img src="${imageSrc}" alt="${title}"/>
+                        <h2>${title}</h2>
+                    </div>
+                    <div class="d05-form-feilds">
+                        <label class="d05-label-name">
+                            Name
+                            <input type="text" id="name" required placeholder="Enter your name">
+                        </label>
+                        <label class="d05-label-phone">
+                            Phone Number
+                            <input type="tel" id="phone" required placeholder="(000) 000-0000">
+                        </label>
+                        <label class="d05-label-email">
+                            Email Address
+                            <input type="email" id="email" required placeholder="Example@xyz.com">
+                        </label>
+                    </div>
                 </div>
                 <div class="d05-popup-footer">
-                <a href="" id="cancel-button">Cancel</a>
-                <a href="" type="button" id="continue-button">Continue</a>
+                    <a href="#" id="cancel-button">Cancel</a>
+                    <a href="#" id="continue-button">Continue</a>
                 </div>
             </form>
         `;
@@ -372,7 +372,8 @@ document.addEventListener('DOMContentLoaded', function() {
         popupOverlay.appendChild(popupContent);
         document.body.appendChild(popupOverlay);
         
-        document.getElementById('continue-button').addEventListener('click', function() {
+        document.getElementById('continue-button').addEventListener('click', event => {
+            event.preventDefault();
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
@@ -380,10 +381,13 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.removeChild(popupOverlay);
         });
         
-        document.getElementById('cancel-button').addEventListener('click', function() {
+        document.getElementById('cancel-button').addEventListener('click', event => {
+            event.preventDefault();
             document.body.removeChild(popupOverlay);
         });
-    }
+    };
+      
+
 });
 
 </script>
