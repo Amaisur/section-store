@@ -149,7 +149,18 @@
     background-color: #f44336;
     color: white;
 }
-
+.d05-popup-header{
+  padding: 20px;
+  background: rgba(65, 144, 210, 1);
+}
+.d05-popup-header p{
+  font-family: Montserrat;
+  font-size: var(--size-500);
+  font-weight: 700;
+  line-height: 24.38px;
+  text-align: center;
+  color: #fff;
+}
     </style>
 
     <div class="main-trust-3-d9">
@@ -279,8 +290,14 @@ document.addEventListener('DOMContentLoaded', function() {
         popupContent.className = 'd05-popup-content';
         
         popupContent.innerHTML = `
-            <h2>${title}</h2>
+            <div class="d05-popup-header">
+            <p class="d05-popup-heading">Request a quote</p>
+            </div>
+            <div class="d05-popup-body">
+           <div class="d05-product-info">
             <img src="${imageSrc}" alt="${title}"/>
+             <h2>${title}</h2>
+            </div>
             <form id="customer-info-form">
                 <label>
                     Name:
@@ -297,6 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <button type="button" id="continue-button">Continue</button>
                 <button type="button" id="cancel-button">Cancel</button>
             </form>
+            </div>
         `;
         
         popupOverlay.appendChild(popupContent);
