@@ -118,8 +118,12 @@
 .d05-popup-content label {
     display: block;
     width: 45%;
-    font-size: 1em;
-    color: #333;
+    color: #000;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
 }
 
 .d05-popup-content input[type="text"],
@@ -171,7 +175,7 @@
 .d05-form-feilds{
   display: flex;
   flex-wrap: wrap;
-  padding: 24px 0;
+  padding: 24px 0 0;
   justify-content: space-between;
 }
     
@@ -308,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         popupContent.innerHTML = `
             <div class="d05-popup-header">
-            <p class="d05-popup-heading">Request a quote</p>
+            <p class="d05-popup-heading">Request A Quote</p>
             </div>
             
             <form id="customer-info-form">
@@ -319,21 +323,22 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="d05-form-feilds">
                 <label class="d05-label-name">
-                    Name:
-                    <input type="text" id="name" required>
+                    Name
+                    <input type="text" id="name" required placeholder="Enter your name">
                 </label>
                 <label class="d05-label-phone">
-                    Phone:
-                    <input type="tel" id="phone" required>
+                    Phone Number
+                    <input type="tel" id="phone" required placeholder="(000) 000-0000">
                 </label>
                 <label class="d05-label-email">
-                    Email:
-                    <input type="email" id="email" required>
+                    Email Address
+                    <input type="email" id="email" required placeholder="Example@xyz.com">
                 </label>
                 </div>
                 </div>
-                <button type="button" id="continue-button">Continue</button>
                 <button type="button" id="cancel-button">Cancel</button>
+                <button type="button" id="continue-button">Continue</button>
+                
             
             
             </form>
