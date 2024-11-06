@@ -113,12 +113,6 @@
         "hotspot_padding_m": 26
       }
     },
-    "featured_collection_d5_V7Q3xQ": {
-      "type": "featured-collection-d5",
-      "settings": {
-        "collection": "frontpage"
-      }
-    },
     "coundown_timer_apcC7X": {
       "type": "coundown-timer",
       "blocks": {
@@ -284,7 +278,7 @@
       "settings": {
         "m-heading": "Why should you buy?",
         "m-head": 35,
-        "mh-color": "#000",
+        "mh-color": "#000000",
         "text-align": "center",
         "bg-color": "none",
         "pt": 35,
@@ -292,11 +286,63 @@
         "pt-m": 35,
         "pb-m": 35,
         "c-head": 20,
-        "ch-color": "#000",
+        "ch-color": "#000000",
         "cd-info": 15,
-        "c-info": "#000",
-        "card-bg": "#fff",
+        "c-info": "#000000",
+        "card-bg": "#ffffff",
         "main-section-id": "feature-6"
+      }
+    },
+    "featured_collection_d5_V7Q3xQ": {
+      "type": "featured-collection-d5",
+      "disabled": true,
+      "settings": {
+        "collection": "frontpage"
+      }
+    },
+    "hotspots_4_HGjatk": {
+      "type": "hotspots-4",
+      "blocks": {
+        "hotspot_4BhpzY": {
+          "type": "hotspot",
+          "settings": {
+            "heading": "Health Monitoring",
+            "info": "<p>Woven with conductive fibers that can subtly monitor room conditions and foot traffic, potentially integrating with smart home systems to provide insights into wellness and activity levels.</p>",
+            "left": 62,
+            "top": 73,
+            "left-d": 59,
+            "top-d": 67
+          }
+        },
+        "hotspot_XRGtYd": {
+          "type": "hotspot",
+          "settings": {
+            "heading": "Sustainable Materials",
+            "info": "<p>Made entirely from bio-based fibers that are not only biodegradable but also actively capture and neutralize airborne pollutants, improving indoor air quality.</p>",
+            "left": 65,
+            "top": 64,
+            "left-d": 18,
+            "top-d": 10
+          }
+        },
+        "hotspot_JyiNiP": {
+          "type": "hotspot",
+          "settings": {
+            "heading": "Temperature Regulation",
+            "info": "<p>Embedded with phase change materials that absorb excess heat when the environment is warm and release it when cooler, providing year-round comfort.</p>",
+            "left": 35,
+            "top": 35,
+            "left-d": 35,
+            "top-d": 35
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_4BhpzY",
+        "hotspot_XRGtYd",
+        "hotspot_JyiNiP"
+      ],
+      "settings": {
       }
     },
     "collection_slider_iHc74y": {
@@ -1402,6 +1448,7 @@
     "coundown_timer_gMm4Mg",
     "feature_6_tLGJcN",
     "featured_collection_d5_V7Q3xQ",
+    "hotspots_4_HGjatk",
     "collection_slider_iHc74y",
     "echo_section_ss_3_Tp6ghe",
     "details_slider_iWGfm4",
