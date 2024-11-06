@@ -348,7 +348,7 @@
             
             <div class="hotspots-circles-{{ section.id }}">
               {% for block in section.blocks %}
-                <div class="hotspots-circle-{{ section.id }} active" data-id="hotspot_{{ block.id }}">
+                <div class="hotspots-circle-{{ section.id }} {% if forloop.first %}active{% endif %}" data-id="hotspot_{{ block.id }}">
                   <span>{{ forloop.index }}</span>
                 </div>
               {% endfor %}
