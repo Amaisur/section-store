@@ -154,12 +154,16 @@
   background: rgba(65, 144, 210, 1);
 }
 .d05-popup-header p{
-  font-family: Montserrat;
-  font-size: var(--size-500);
-  font-weight: 700;
-  line-height: 24.38px;
+  color: #FFF;
   text-align: center;
-  color: #fff;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.d05-popup-body{
+  padding: 30px 20px;
 }
     </style>
 
@@ -293,12 +297,13 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="d05-popup-header">
             <p class="d05-popup-heading">Request a quote</p>
             </div>
+            
+            <form id="customer-info-form">
             <div class="d05-popup-body">
            <div class="d05-product-info">
             <img src="${imageSrc}" alt="${title}"/>
              <h2>${title}</h2>
             </div>
-            <form id="customer-info-form">
                 <label>
                     Name:
                     <input type="text" id="name" required>
@@ -311,10 +316,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     Email:
                     <input type="email" id="email" required>
                 </label>
+                </div>
                 <button type="button" id="continue-button">Continue</button>
                 <button type="button" id="cancel-button">Cancel</button>
+            
+            
             </form>
-            </div>
         `;
         
         popupOverlay.appendChild(popupContent);
