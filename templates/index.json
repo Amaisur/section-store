@@ -364,9 +364,9 @@
         "img": "shopify://shop_images/9_fa14b1c9-f68d-4623-865c-ef6461e4d1e1.png",
         "pt": 35,
         "pb": 35,
-        "pv": 35,
+        "pv": 5,
         "pt-m": 35,
-        "pb-m": 5,
+        "pb-m": 35,
         "pv-m": 1
       }
     },
