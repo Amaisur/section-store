@@ -371,6 +371,10 @@
         "pv-m": 1
       }
     },
+    "video_multicolumn_eYdPVb": {
+      "type": "video-multicolumn",
+      "settings": {}
+    },
     "collection_slider_iHc74y": {
       "type": "Collection-slider",
       "blocks": {
@@ -1474,6 +1478,7 @@
     "feature_6_tLGJcN",
     "featured_collection_d5_V7Q3xQ",
     "hotspots_4_HGjatk",
+    "video_multicolumn_eYdPVb",
     "collection_slider_iHc74y",
     "echo_section_ss_3_Tp6ghe",
     "details_slider_iWGfm4",
