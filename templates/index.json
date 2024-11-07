@@ -308,8 +308,8 @@
           "settings": {
             "heading": "Health Monitoring",
             "info": "<p>Woven with conductive fibers that can subtly monitor room conditions and foot traffic, potentially integrating with smart home systems to provide insights into wellness and activity levels.</p>",
-            "fhc": "#000",
-            "fic": "#000",
+            "fhc": "#000000",
+            "fic": "#000000",
             "fhs": 48,
             "fis": 24,
             "fhs-m": 28,
@@ -325,8 +325,8 @@
           "settings": {
             "heading": "Sustainable Materials",
             "info": "<p>Made entirely from bio-based fibers that are not only biodegradable but also actively capture and neutralize airborne pollutants, improving indoor air quality.</p>",
-            "fhc": "#000",
-            "fic": "#000",
+            "fhc": "#000000",
+            "fic": "#000000",
             "fhs": 48,
             "fis": 24,
             "fhs-m": 28,
@@ -342,8 +342,8 @@
           "settings": {
             "heading": "Temperature Regulation",
             "info": "<p>Embedded with phase change materials that absorb excess heat when the environment is warm and release it when cooler, providing year-round comfort.</p>",
-            "fhc": "#000",
-            "fic": "#000",
+            "fhc": "#000000",
+            "fic": "#000000",
             "fhs": 48,
             "fis": 24,
             "fhs-m": 28,
@@ -364,7 +364,7 @@
         "img": "shopify://shop_images/9_fa14b1c9-f68d-4623-865c-ef6461e4d1e1.png",
         "pt": 35,
         "pb": 35,
-        "pv": 5,
+        "pv": 10,
         "pt-m": 35,
         "pb-m": 35,
         "pv-m": 1
