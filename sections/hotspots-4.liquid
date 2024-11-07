@@ -111,7 +111,7 @@
 }
 
 .hotspots-content-{{ section.id }} {
-    order: 2;
+    order: {{ section.settings.img-direct }};
 }
 
 .hotspots-content-inner-{{ section.id }} {
@@ -401,6 +401,21 @@
         "type": "image_picker",
         "id": "img",
         "label": "Image"
+      },
+      {
+        "type": "select",
+        "id": "img-direct",
+        "label": "Image Position",
+        "options": [
+          {
+            "value": "2",
+            "label": "Image on Left"
+          },
+          {
+            "value": "0",
+            "label": "Image on right"
+          }
+        ]
       },
      {
         "type": "range",
