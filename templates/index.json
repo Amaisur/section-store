@@ -366,8 +366,8 @@
         "pb": 35,
         "pv": 35,
         "pt-m": 35,
-        "pb-m": 35,
-        "pv-m": 35
+        "pb-m": 5,
+        "pv-m": 5
       }
     },
     "collection_slider_iHc74y": {
