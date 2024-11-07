@@ -7,23 +7,6 @@
        url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=3f19a3e11bab2423756ce410220df09957f15affd53a78fa0ec435e5660aa636") format("woff");
 }
 
-  @font-face {
-  font-family: "Josefin Sans";
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.c8300d95fd4ce72542a6efba9c682da40d144fba.woff2?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=1081bc13bac779d73b77022741d8b8608aa5451af6a05907fc023625940c00f1") format("woff2"),
-       url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=3f19a3e11bab2423756ce410220df09957f15affd53a78fa0ec435e5660aa636") format("woff");
-}
-
-  @font-face {
-  font-family: "Josefin Sans";
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.c8300d95fd4ce72542a6efba9c682da40d144fba.woff2?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=1081bc13bac779d73b77022741d8b8608aa5451af6a05907fc023625940c00f1") format("woff2"),
-       url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=3f19a3e11bab2423756ce410220df09957f15affd53a78fa0ec435e5660aa636") format("woff");
-}
 
   
   .section-{{ section.id }} {
@@ -35,10 +18,10 @@
   
   .section-{{ section.id }}-settings {
     margin: 0 auto;
-    padding-top: 27px;
-    padding-bottom: 27px;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-top: {{ section.settings.pt-m }}27px;
+    padding-bottom: {{ section.settings.pb-m }}px;
+    padding-left: {{ section.settings.pv-m }}px;
+    padding-right: {{ section.settings.pv-m }}px;
   }
 
   .hotspots-body-{{ section.id }} {
@@ -195,11 +178,10 @@
     }
     
     .section-{{ section.id }}-settings {
-      padding: 0 5rem;
-      padding-top: 36px;
-      padding-bottom: 36px;
-      padding-left: 5rem;
-      padding-right: 5rem;
+      padding-top: {{ section.settings.pt }}px;
+      padding-bottom: {{ section.settings.pb }}px;
+      padding-left: {{ section.settings.pv }}px;
+      padding-right: {{ section.settings.pv }}px;
     }
 
     .hotspots-body-{{ section.id }} {
@@ -424,7 +406,67 @@
         "type": "image_picker",
         "id": "img",
         "label": "Image"
-      }
+      },
+     {
+        "type": "range",
+        "id": "pt",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top"
+     },     
+     {
+        "type": "range",
+        "id": "pb",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom"
+     },     
+    {
+        "type": "range",
+        "id": "pv",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Left and Right"
+     },     
+     {
+        "type": "range",
+        "id": "pt-m",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top Mobile"
+     },     
+     {
+        "type": "range",
+        "id": "pb-m",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom Mobile"
+     },    
+     {
+        "type": "range",
+        "id": "pv-m",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Mobile Left and Right"
+     }
     ],
     "blocks": [
       {
