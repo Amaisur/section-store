@@ -1,6 +1,650 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"><style data-shopify="">
+  @font-face {
+  font-family: "Josefin Sans";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.c8300d95fd4ce72542a6efba9c682da40d144fba.woff2?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=1081bc13bac779d73b77022741d8b8608aa5451af6a05907fc023625940c00f1") format("woff2"),
+       url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=3f19a3e11bab2423756ce410220df09957f15affd53a78fa0ec435e5660aa636") format("woff");
+}
+  
+  .section-{{ section.id }} {
+    border-top: solid #000000 0px;
+    border-bottom: solid #000000 0px;
+    margin-top: 27px;
+    margin-bottom: 48px;
+  }
+  
+  .section-{{ section.id }}-settings {
+    margin: 0 auto;
+    padding-top: 27px;
+    padding-bottom: 27px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .multicolumns-title-{{ section.id }} {
+    margin: 0;
+    margin-top: 0px;
+    margin-bottom: 18px;
+    font-size: 37.4px;
+    color: #121212;
+    line-height: 130%;
+    letter-spacing: 0.2px;
+    text-transform: unset;
+    text-align: center;
+  }
+  
+  .multicolumns-text-{{ section.id }} {
+    margin: 0;
+    font-size: 17.0px;
+    color: #121212;
+    line-height: 160%;
+    letter-spacing: 0px;
+    text-transform: unset;
+    text-align: center;
+  }
+  
+  .multicolumns-items-{{ section.id }} {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+  }
+  
+  .multicolumns-item-{{ section.id }} {
+    border-radius: 21px !important;
+    background-color: #f3f3f3 !important;
+    padding-top: 12px !important;
+    padding-bottom: 18px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  .multicolumns-items-{{ section.id }} .multicolumns-item-{{ section.id }} {
+    flex: 0 1 100% !important;
+  }
+  
+  .multicolumns-item-number-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #343643;
+  }
+  
+  .multicolumns-item-number-{{ section.id }} p {
+    font-size: 30.6px;
+    color: #ffffff;
+  }
+  
+  .multicolumns-item-image-{{ section.id }} {
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 12px;
+  }
+  
+  .multicolumns-item-image-{{ section.id }} img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .multicolumns-item-image-{{ section.id }} .placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+    border-radius: 12px;
+    background-color: #CABBB6;
+  }
+  
+  .multicolumns-item-video-{{ section.id }} {
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+
+  .multicolumns-item-video-{{ section.id }} video {
+    display: block;
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    border: 0;
+    border-radius: 16px;
+    background-color: #CABBB6;
+  }
+
+  .multicolumns-item-video-{{ section.id }} .placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+    border-radius: 12px;
+    background-color: #CABBB6;
+  }
+  
+  .multicolumns-item-title-{{ section.id }} {
+    margin: 0px;
+    margin-top: 15px;
+    font-size: 23.8px;
+    color: #121212;
+    line-height: 130%;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+  
+  .multicolumns-item-text-{{ section.id }} {
+    margin: 0px;
+    margin-top: 12px;
+    font-size: 13.6px;
+    color: #121212;
+    line-height: 150%;
+    letter-spacing: 0px;
+    text-align: center;
+  }
+  
+  .multicolumns-item-link-{{ section.id }} {
+    display: block;
+    margin: 0px;
+    margin-top: 12px;
+    font-size: 11.9px;
+    color: #ffffff;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-align: center;
+    transition: all 0.1s ease-in 0s;
+    text-decoration: none;
+  }
+  
+  .multicolumns-item-link-{{ section.id }}:hover {
+    transition: all 0.1s ease-in 0s;
+    color: #ffffff;
+  }
+
+  .multicolumns-slider-wrapper-{{ section.id }} {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    margin-top: 24px;
+    display: none;
+    position: relative;
+  }
+
+  .multicolumns-slider-{{ section.id }} {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  .multicolumns-btn-next-{{ section.id }},
+  .multicolumns-btn-prev-{{ section.id }} {
+    position: absolute !important;
+    top: 50% !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    border-radius: 50%;
+    border: 1px solid #333333 !important;
+    width: 40px !important;
+    height: 40px !important;
+    background: #333333 !important;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+
+  .multicolumns-btn-prev-{{ section.id }} {
+    left: 5px !important;
+  }
+  .multicolumns-btn-next-{{ section.id }} {
+    right: 5px !important;
+  }
+
+  .multicolumns-btn-next-{{ section.id }} svg {
+    transform: rotate(180deg);
+  }
+
+  .multicolumns-btn-next-{{ section.id }} svg,
+  .multicolumns-btn-prev-{{ section.id }} svg {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .multicolumns-btn-next-{{ section.id }} svg path,
+  .multicolumns-btn-prev-{{ section.id }} svg path {
+    fill: #ffffff;
+    transition: all 0.25s ease 0s;
+  }
+  
+  .multicolumns-btn-prev-{{ section.id }} svg {
+    margin-left: -2px;
+  }
+
+  .multicolumns-btn-next-{{ section.id }}:hover,
+  .multicolumns-btn-prev-{{ section.id }}:hover {
+    border: 1px solid #121212 !important;
+    background: #121212 !important;
+  }
+
+  .multicolumns-btn-next-{{ section.id }}:hover svg path,
+  .multicolumns-btn-prev-{{ section.id }}:hover svg path {
+    fill: #ffffff !important;
+    transition: all 0.25s ease 0s;
+  }
+
+  .multicolumns-btn-next-{{ section.id }}.swiper-button-disabled,
+  .multicolumns-btn-prev-{{ section.id }}.swiper-button-disabled {
+    opacity: 0;
+  }
+  
+  @media(min-width: 768px) {
+
+  .multicolumns-item-video-{{ section.id }} .placeholder {
+    border-radius: 16px;
+  }
+
+  .multicolumns-item-video-{{ section.id }} video {
+    height: 290px;
+  }
+
+  .multicolumns-item-image-{{ section.id }} .placeholder {
+    border-radius: 16px;
+  }
+
+  .multicolumns-item-image-{{ section.id }} img {
+    border-radius: 16px;
+  }
+    
+    .section-{{ section.id }} {
+      margin-top: 36px;
+      margin-bottom: 64px;
+    }
+    
+    .section-{{ section.id }}-settings {
+      padding-top: 36px;
+      padding-bottom: 36px;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+    
+    .multicolumns-title-{{ section.id }} {
+      font-size: 44px;
+      margin-top: px;
+      margin-bottom: 24px;
+    }
+    
+    .multicolumns-text-{{ section.id }} {
+      font-size: 20px;
+    }
+    
+    .multicolumns-items-{{ section.id }} {
+      margin-top: 32px;
+      gap: 20px;
+    }
+    
+    .multicolumns-item-{{ section.id }} {
+      border-radius: 28px !important;
+      padding-top: 16px !important;
+      padding-bottom: 24px !important;
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+
+    .multicolumns-items-{{ section.id }} .multicolumns-item-{{ section.id }} {
+      flex: 0 1 29% !important;
+    }
+    
+    .multicolumns-item-image-{{ section.id }} {
+      height: 290px;
+      max-width: 500px;
+    }
+    
+    .multicolumns-item-title-{{ section.id }} {
+      margin-top: 20px;
+      font-size: 28px;
+    }
+    
+    .multicolumns-item-text-{{ section.id }} {
+      margin-top: 12px;
+      font-size: 16px;
+    }
+    
+    .multicolumns-item-link-{{ section.id }} {
+      margin-top: 16px;
+      font-size: 14px;
+    }
+    
+    .multicolumns-item-number-{{ section.id }} p {
+      font-size: 36px;
+    }
+
+    .multicolumns-slider-wrapper-{{ section.id }} {
+      margin-left: 0;
+      margin-right: 0 
+      margin-top: 32px;
+    }
+
+    .multicolumns-slider-{{ section.id }} {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    .multicolumns-btn-next-{{ section.id }},
+    .multicolumns-btn-prev-{{ section.id }} {
+      width: 50px !important;
+      height: 50px !important;
+    }
+
+    .multicolumns-btn-next-{{ section.id }} svg,
+    .multicolumns-btn-prev-{{ section.id }} svg {
+      height: 38px !important;
+      width: 38px !important;
+    }
+  }
+  @media(max-width: 500px) {
+    .multicolumns-title-{{ section.id }},
+    .multicolumns-text-{{ section.id }} {
+      padding: 0px 20px;
+    }
+  }</style>
+  <style>
+    .section-{{ section.id }}-settings {
+      max-width: 190rem;
+    }
+  </style>
+
+
+
+
+
+
+
+  <style>
+    .multicolumns-item-number-{{ section.id }} {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .multicolumns-item-link-{{ section.id }} {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+
+
+
+
+
+
+
+
+
+
+
+  <style>
+    .multicolumns-item-link-{{ section.id }} {
+      background-color: #343643;
+      padding: 12px 18px;
+      border-radius: 3px;
+    }
+    
+    .multicolumns-item-link-{{ section.id }}:hover {
+      color: #ffffff;
+      background-color: #434654;
+    }
+    
+    @media(min-width:768px) {
+      .multicolumns-item-link-{{ section.id }} {
+        padding: 16px 24px;
+        border-radius: 4px;
+      }
+    }
+  </style>
+
+
+
+  <style>
+    .multicolumns-item-link-{{ section.id }} {
+      max-width: 140px;
+    }
+  </style>
+
+
+
+  <style>
+    
+      .multicolumns-slider-wrapper-{{ section.id }} {
+        display: block;
+      }
+      .multicolumns-items-{{ section.id }} {
+        display: none;
+      }
+    
+    @media(min-width: 768px) {
+      
+        .multicolumns-slider-wrapper-{{ section.id }} {
+          display: none;
+        }
+        .multicolumns-items-{{ section.id }} {
+          display: flex;
+        }
+      
+    }
+  </style>
+
+
+
+
+<div class="section-{{ section.id }} multicolumns-video-{{ section.id }}" style="background-color:#ffffff; background-image: ;">
+  <div class="section-{{ section.id }}-settings">
+    
+        
+          <h2 class="multicolumns-title-{{ section.id }}">Reimagine Your Everyday</h2>
+        
+        
+        
+          <p class="multicolumns-text-{{ section.id }}">Enhance your lifestyle with cutting-edge technology designed for you.</p>
+        
+        
+        <div class="multicolumns-items-{{ section.id }}">
+          
+            
+            <div class="multicolumns-item-{{ section.id }}">
+
+            
+                
+                <div id="multicolumns-item-video" class="multicolumns-item-video-{{ section.id }}">
+
+                  <video data-src="//section.store/cdn/shop/videos/c/vp/bf2997e497a24a30803982f6e20af6d0/bf2997e497a24a30803982f6e20af6d0.HD-1080p-2.5Mbps-30972668.mp4?v=0" playsinline="" autoplay="" preload="none" loop="" controls="" muted="" class="lazy entered loaded" controlslist="nodownload" data-ll-status="entered" src="//section.store/cdn/shop/videos/c/vp/bf2997e497a24a30803982f6e20af6d0/bf2997e497a24a30803982f6e20af6d0.HD-1080p-2.5Mbps-30972668.mp4?v=0" __idm_id__="376833"></video>
+                </div>
+              
+
+              
+                <h3 class="multicolumns-item-title-{{ section.id }}">Stay Connected, Stay Ahead</h3>
+              
+
+              
+                <p class="multicolumns-item-text-{{ section.id }}">Monitor your fitness, stay on track, and look stylish all day long.</p>
+              
+            
+              
+                <a href="#" class="multicolumns-item-link-{{ section.id }}">SHOP NOW</a>
+              
+            
+            </div>
+            
+          
+        </div>
+
+        <div class="multicolumns-slider-wrapper-{{ section.id }}">
+          <div class="multicolumns-slider-{{ section.id }} swiper swiper-initialized swiper-horizontal swiper-pointer-events" data-slider-view-mobile="1.3" data-column-gap-mobile="20" data-column-gap="20" data-column-row="3" data-column-row-tablet="2" data-column-row-mobile="1" data-autoplay="false" data-autoplay-speed="3" data-block-size="3">
+            <div class="multicolumns-wrapper-{{ section.id }} swiper-wrapper" id="swiper-wrapper-045d1dde3e5417102" aria-live="polite" style="transition-duration: 0ms;">
+              
+                
+                <div class="multicolumns-item-{{ section.id }} swiper-slide">
+    
+                
+                    
+                  
+                    <div id="multicolumns-item-video" class="multicolumns-item-video-{{ section.id }}">
+                      
+                      <video data-src="//section.store/cdn/shop/videos/c/vp/bf2997e497a24a30803982f6e20af6d0/bf2997e497a24a30803982f6e20af6d0.HD-1080p-2.5Mbps-30972668.mp4?v=0" playsinline="" autoplay="" preload="none" loop="" controls="" muted="" class="lazy" controlslist="nodownload"></video>
+                    </div>
+                  
+    
+                  
+                    <h3 class="multicolumns-item-title-{{ section.id }}">Stay Connected, Stay Ahead</h3>
+                  
+    
+                  
+                    <p class="multicolumns-item-text-{{ section.id }}">Monitor your fitness, stay on track, and look stylish all day long.</p>
+                  
+                
+                  
+                    <a href="#" class="multicolumns-item-link-{{ section.id }}">SHOP NOW</a>
+                  
+                
+                </div>
+                
+              
+            </div>
+        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+        <div class="multicolumns-btn-prev-{{ section.id }} swiper-btn-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-045d1dde3e5417102" aria-disabled="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g id="Left"><path d="M14,17a1,1,0,0,1-.707-.293l-4-4a1,1,0,0,1,0-1.414l4-4a1,1,0,1,1,1.414,1.414L11.414,12l3.293,3.293A1,1,0,0,1,14,17Z"></path></g></svg>
+        </div>
+        <div class="multicolumns-btn-next-{{ section.id }} swiper-btn-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-045d1dde3e5417102" aria-disabled="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g id="Left"><path d="M14,17a1,1,0,0,1-.707-.293l-4-4a1,1,0,0,1,0-1.414l4-4a1,1,0,1,1,1.414,1.414L11.414,12l3.293,3.293A1,1,0,0,1,14,17Z"></path></g></svg>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.min.js"></script>
+
+
+
+
+
+
+<script>
+  function loadSwiper(callback) {
+    if (window.Swiper) {
+      callback();
+    } else {
+      const script = document.createElement('script');
+      script.src = "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js";
+      script.onload = callback;
+      document.head.appendChild(script);
+    }
+  }
+  
+  function multicolumnVideoSliderInit(sectionId) {
+    const sliderElement = document.querySelector(`.multicolumns-slider-${sectionId}`);
+    if (!sliderElement) return;
+    
+    const settings = {
+      sliderViewMobile: parseFloat(sliderElement.dataset.sliderViewMobile),
+      columnGapMobile: parseInt(sliderElement.dataset.columnGapMobile),
+      columnGap: parseInt(sliderElement.dataset.columnGap),
+      columnRow: parseInt(sliderElement.dataset.columnRow),
+      columnRowTablet: parseInt(sliderElement.dataset.columnRowTablet),
+      columnRowMobile: parseInt(sliderElement.dataset.columnRowMobile),
+      autoplay: sliderElement.dataset.autoplay === 'true',
+      autoplaySpeed: parseInt(sliderElement.dataset.autoplaySpeed),
+      blockSize: parseInt(sliderElement.dataset.blockSize)
+    };
+
+    const sliderConfig = {
+      speed: 300,
+      watchOverflow: false,
+      navigation: {
+        nextEl: `.multicolumns-btn-next-${sectionId}`,
+        prevEl: `.multicolumns-btn-prev-${sectionId}`,
+      },
+      breakpoints: {
+        320: {
+          loop: settings.autoplay && settings.blockSize > settings.columnRowMobile,
+          slidesPerView: settings.sliderViewMobile,
+          spaceBetween: settings.columnGapMobile
+        },
+        768: {
+          loop: settings.autoplay && settings.blockSize > settings.columnRowTablet,
+          slidesPerView: Math.round(settings.columnRow * 0.5),
+          spaceBetween: settings.columnGapMobile
+        },
+        992: {
+          loop: settings.autoplay && settings.blockSize > settings.columnRow,
+          slidesPerView: settings.columnRow,
+          spaceBetween: settings.columnGap
+        }
+      }
+    };
+
+    if (settings.autoplay) {
+      sliderConfig.autoplay = {
+        delay: settings.autoplaySpeed * 1000
+      };
+    }
+
+    const slider = new Swiper(sliderElement, sliderConfig);
+    
+    const videos = document.querySelectorAll(`.section-${sectionId} video`);
+    videos.forEach(video => {
+      video.setAttribute('controlsList', 'nodownload');
+    });
+
+    if (typeof LazyLoad !== 'undefined') {
+      new LazyLoad();
+    }
+
+    return slider;
+  }
+
+  function initSliders() {
+    document.querySelectorAll('[id^="shopify-section-"]').forEach(section => {
+      const sectionId = section.id.replace('shopify-section-', '');
+      if (section.querySelector(`.multicolumns-slider-${sectionId}`)) {
+        loadSwiper(() => multicolumnVideoSliderInit(sectionId));
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSliders);
+  } else {
+    initSliders();
+  }
+
+  if (Shopify.designMode) {
+    document.addEventListener('shopify:section:load', (event) => {
+      const sectionId = event.detail.sectionId;
+      if (event.target.querySelector(`.multicolumns-slider-${sectionId}`)) {
+        loadSwiper(() => multicolumnVideoSliderInit(sectionId));
+      }
+    });
+  }
+</script>
+
+
+
+
+
+
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "Video Multicolumn",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Video Multicolumn"
+      }
+    ]
   }
 {% endschema %}
