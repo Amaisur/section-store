@@ -19,8 +19,8 @@
     margin: 0 auto;
     padding-top: {{ section.settings.pt-m }}px;
     padding-bottom: {{ section.settings.pb-m }}px;
-    padding-left: {{ section.settings.pv-m }}px;
-    padding-right: {{ section.settings.pv-m }}px;
+    padding-left: {{ section.settings.pv-m }}rem;
+    padding-right: {{ section.settings.pv-m }}rem;
 }
 
 .hotspots-body-{{ section.id }} {
@@ -170,8 +170,8 @@
     .section-{{ section.id }}-settings {
         padding-top: {{ section.settings.pt }}px;
         padding-bottom: {{ section.settings.pb }}px;
-        padding-left: {{ section.settings.pv }}px;
-        padding-right: {{ section.settings.pv }}px;
+        padding-left: {{ section.settings.pv }}rem;
+        padding-right: {{ section.settings.pv }}rem;
     }
 
     .hotspots-body-{{ section.id }} {
@@ -427,9 +427,9 @@
         "id": "pv",
         "min": 0,
         "max": 100,
-        "default": 35,
+        "default": 5,
         "step": 1,
-        "unit": "px",
+        "unit": "rem",
         "label": "Padding Left and Right"
      },     
      {
@@ -446,10 +446,10 @@
         "type": "range",
         "id": "pb-m",
         "min": 0,
-        "max": 100,
-        "default": 35,
+        "max": 35,
+        "default": 1,
         "step": 1,
-        "unit": "px",
+        "unit": "rem",
         "label": "Padding Bottom Mobile"
      },    
      {
