@@ -295,7 +295,7 @@
         
         <div class="hotspots-image-{{ section.id }}">
           
-            <img src="//section.store/cdn/shop/products/9_fa14b1c9-f68d-4623-865c-ef6461e4d1e1.png?v=1708704400" alt="SUNSET THROW - NAMING THIS LATER - NTL" lazy="loading">
+            <img src="{{ section.settings.img | img_url: 'master' }}" alt="SUNSET THROW - NAMING THIS LATER - NTL" lazy="loading">
           
           
           {% for block in section.blocks %}
