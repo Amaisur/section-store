@@ -292,7 +292,7 @@
     <div class="section-{{ section.id }}-settings">
       
       <div class="hotspots-body-{{ section.id }}">
-        
+        {% if section.settings.img != blank %}
         <div class="hotspots-image-{{ section.id }}">
           
             <img src="{{ section.settings.img | img_url: 'master' }}" alt="SUNSET THROW - NAMING THIS LATER - NTL" lazy="loading">
@@ -304,7 +304,7 @@
             </div>
           {% endfor %}
         </div>
-        
+        {% endif %}
         <div class="hotspots-content-{{ section.id }}">
           <div class="hotspots-content-inner-{{ section.id }}">
             
