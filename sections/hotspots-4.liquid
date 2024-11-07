@@ -8,51 +8,50 @@
 }
 
 
-  
-  .section-{{ section.id }} {
+.section-{{ section.id }} {
     border-top: solid #000000 0px;
     border-bottom: solid #000000 0px;
     margin-top: 0px;
     margin-bottom: 0px;
-  }
-  
-  .section-{{ section.id }}-settings {
+}
+
+.section-{{ section.id }}-settings {
     margin: 0 auto;
     padding-top: {{ section.settings.pt-m }}px;
     padding-bottom: {{ section.settings.pb-m }}px;
     padding-left: {{ section.settings.pv-m }}px;
     padding-right: {{ section.settings.pv-m }}px;
-  }
+}
 
-  .hotspots-body-{{ section.id }} {
+.hotspots-body-{{ section.id }} {
     margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 30px;
-    align-items: center; 
-  }
+    align-items: center;
+}
 
-  .hotspots-image-{{ section.id }} {
+.hotspots-image-{{ section.id }} {
     border-radius: 12px;
     border: 1px solid #000000;
     position: relative;
     order: 1;
-  }
+}
 
-  .hotspots-image-{{ section.id }} > img,
-  .hotspots-image-{{ section.id }} > svg {
+.hotspots-image-{{ section.id }} > img,
+.hotspots-image-{{ section.id }} > svg {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 12px;
-  }
+}
 
-  .hotspots-image-{{ section.id }} > svg {
+.hotspots-image-{{ section.id }} > svg {
     background-color: #DDDDDD;
-  }
+}
 
-  .hotspots-image-{{ section.id }}:after {
+.hotspots-image-{{ section.id }}:after {
     position: absolute;
     content: '';
     left: 0;
@@ -61,17 +60,17 @@
     bottom: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
     border-radius: 12px;
     z-index: 1;
-  }
+}
 
-  .hotspots-hotspot-{{ section.id }} {
-     position: absolute;
-     z-index: 2;
-   }
+.hotspots-hotspot-{{ section.id }} {
+    position: absolute;
+    z-index: 2;
+}
 
-  .hotspots-circle-{{ section.id }} {
+.hotspots-circle-{{ section.id }} {
     width: 32px;
     height: 32px;
     display: flex;
@@ -82,165 +81,145 @@
     background-color: #ffffff;
     cursor: pointer;
     transition: all 0.25s ease 0s;
-  }
+}
 
-  .hotspots-circle-{{ section.id }}:hover {
+.hotspots-circle-{{ section.id }}:hover {
     border: 1px solid #000000;
     background-color: #ffcf9f;
     transition: all 0.25s ease 0s;
-  }
+}
 
-  .hotspots-circle-{{ section.id }}.active {
+.hotspots-circle-{{ section.id }}.active {
     border: 1px solid #000000;
     background-color: #ffcf9f;
     transition: all 0.25s ease 0s;
-  }
+}
 
-  .hotspots-circle-{{ section.id }} span {
+.hotspots-circle-{{ section.id }} span {
     margin: 0;
-    font-size: 14px;
-    color: #000000;
     line-height: 100%;
     text-transform: unset;
     transition: all 0.25s ease 0s;
-  }
+}
 
-  .hotspots-circle-{{ section.id }}:hover span {
-    color: #000000;
+.hotspots-circle-{{ section.id }}:hover span {
     transition: all 0.25s ease 0s;
-  }
+}
 
-  .hotspots-circle-{{ section.id }}.active span {
-    color: #000000;
+.hotspots-circle-{{ section.id }}.active span {
     transition: all 0.25s ease 0s;
-  }
+}
 
-  .hotspots-content-{{ section.id }} {
+.hotspots-content-{{ section.id }} {
     order: 2;
-  }
+}
 
-  .hotspots-content-inner-{{ section.id }} {
+.hotspots-content-inner-{{ section.id }} {
     width: 100%;
     margin: 0px auto;
-  }
+}
 
-  .hotspots-desktop-{{ section.id }} {
+.hotspots-desktop-{{ section.id }} {
     display: none;
-  }
+}
 
-  .hotspots-heading-{{ section.id }} {
+.hotspots-heading-{{ section.id }} {
     text-align: center;
-  }
+}
 
-  .hotspots-heading-{{ section.id }} * {
+.hotspots-heading-{{ section.id }} * {
     margin: 0;
-    font-size: 28px;
-    color: #000000;
-    line-height: 130%;
     text-transform: unset;
-  }
-  
-  .hotspots-item-{{ section.id }} {
+}
+
+.hotspots-item-{{ section.id }} {
     display: none;
-  }
+}
 
-  .hotspots-item-{{ section.id }}.active {
+.hotspots-item-{{ section.id }}.active {
     display: block;
-  }
+}
 
-  .hotspots-text-{{ section.id }} {
+.hotspots-text-{{ section.id }} {
     margin-top: 12px;
     text-align: center;
-  }
+}
 
-  .hotspots-text-{{ section.id }} * {
+.hotspots-text-{{ section.id }} * {
     margin: 0;
-    font-size: 14px;
-    color: #000000;
     line-height: 150%;
     text-transform: unset;
-  }
+}
 
-  .hotspots-circles-{{ section.id }} {
+.hotspots-circles-{{ section.id }} {
     margin-top: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
-  }
-  
-  @media(min-width: 1024px) {
+}
+
+@media(min-width: 1024px) {
 
     .section-{{ section.id }} {
-      margin-top: 0px;
-      margin-bottom: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
-    
+
     .section-{{ section.id }}-settings {
-      padding-top: {{ section.settings.pt }}px;
-      padding-bottom: {{ section.settings.pb }}px;
-      padding-left: {{ section.settings.pv }}px;
-      padding-right: {{ section.settings.pv }}px;
+        padding-top: {{ section.settings.pt }}px;
+        padding-bottom: {{ section.settings.pb }}px;
+        padding-left: {{ section.settings.pv }}px;
+        padding-right: {{ section.settings.pv }}px;
     }
 
     .hotspots-body-{{ section.id }} {
-      margin-top: 0px;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
+        margin-top: 0px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
     }
 
     .hotspots-image-{{ section.id }} {
-      order: 1;
+        order: 1;
     }
 
     .hotspots-circle-{{ section.id }} {
-      width: 36px;
-      height: 36px;
-    }
-
-    .hotspots-circle-{{ section.id }} span {
-      font-size: 14px;
+        width: 36px;
+        height: 36px;
     }
 
     .hotspots-content-inner-{{ section.id }} {
-      max-width: 550px;
+        max-width: 550px;
     }
 
     .hotspots-content-{{ section.id }} {
-      order: 2;
+        order: 2;
     }
 
     .hotspots-desktop-{{ section.id }} {
-      display: block;
+        display: block;
     }
 
     .hotspots-mobile-{{ section.id }} {
-      display: none;
+        display: none;
     }
 
     .hotspots-heading-{{ section.id }} {
-      text-align: center;
+        text-align: center;
     }
-  
-    .hotspots-heading-{{ section.id }} * {
-      font-size: 48px;
-    }
-  
+
     .hotspots-text-{{ section.id }} {
-      margin-top: 14px;
-      text-align: center;
-    }
-  
-    .hotspots-text-{{ section.id }} * {
-      font-size: 24px;
+        margin-top: 14px;
+        text-align: center;
     }
 
     .hotspots-circles-{{ section.id }} {
-      margin-top: 40px;
-      justify-content: center;
+        margin-top: 40px;
+        justify-content: center;
     }
-  }</style>
+}
+
   <style>
     .section-{{ section.id }}-settings {
       max-width: 130rem;
@@ -282,12 +261,28 @@
       top: {{ block.settings.top }}%;
       transform: translate(-{{ block.settings.left }}%, -{{ block.settings.top }}%);
     }
+    .hotspots-item-{{ block.id }} .heading-d5{
+      font-size: {{ block.settings.fhs-m }}px;
+      line-height: 130%;
+      color: {{ block.settings.fhc }};
+    }
+    .hotspots-item-{{ block.id }} .info-d5{
+      font-size: {{ block.settings.fis-m }}px;
+      line-height: 130%;
+      color: {{ block.settings.fic }};
+    }
     @media(min-width: 1024px) {
       .hotspots-hotspot-hotspot_{{ block.id }} {
         left: {{ block.settings.left }}%;
         top: {{ block.settings.top-d }}%;
         transform: translate(-{{ block.settings.left }}%, -{{ block.settings.top-d }}%);
       }
+       .hotspots-item-{{ block.id }} .heading-d5{
+      font-size: {{ block.settings.fhs-m }}px;
+    }
+    .hotspots-item-{{ block.id }} .info-d5{
+      font-size: {{ block.settings.fis-m }}px;
+    }
     }
   </style>
 {% endfor %}
@@ -316,11 +311,11 @@
             <div class="hotspots-items-{{ section.id }}">
               
               {% for block in section.blocks %}
-                <div class="hotspots-item-{{ section.id }} {% if forloop.first %}active{% endif %}" id="hotspot_{{ block.id }}">
+                <div class="hotspots-item-{{ block.id }} hotspots-item-{{ section.id }} {% if forloop.first %}active{% endif %}" id="hotspot_{{ block.id }}">
                   
-                    <div class="hotspots-heading-{{ section.id }}"><p><strong>{{ block.settings.heading }}</strong></p></div>
+                    <div class="heading-d5 hotspots-heading-{{ section.id }}"><p><strong>{{ block.settings.heading }}</strong></p></div>
                   
-                  <div class="hotspots-text-{{ section.id }}">
+                  <div class="info-d5 hotspots-text-{{ section.id }}">
                     {{ block.settings.info }}
                   </div>
                 </div>
@@ -484,6 +479,58 @@
             "id": "info",
             "label": "Description"
           },
+          {
+            "type": "color",
+            "id": "fhc",
+            "label": "Heading Color",
+            "default": "#000"
+          },
+           {
+            "type": "color",
+            "id": "fic",
+            "label": "Description Color",
+            "default": "#000"
+          },
+           {
+            "type": "range",
+            "id": "fhs",
+            "min": 0,
+            "max": 100,
+            "default": 48,
+            "step": 1,
+            "unit": "px",
+            "label": "Font Size Heading"
+         },
+          {
+            "type": "range",
+            "id": "fis",
+            "min": 0,
+            "max": 100,
+            "default": 24,
+            "step": 1,
+            "unit": "px",
+            "label": "Font Size Decription"
+         },
+          {
+            "type": "range",
+            "id": "fhs-m",
+            "min": 0,
+            "max": 100,
+            "default": 28,
+            "step": 1,
+            "unit": "px",
+            "label": "Font Size Heading Mobile"
+         },
+           {
+            "type": "range",
+            "id": "fis-m",
+            "min": 0,
+            "max": 100,
+            "default": 14,
+            "step": 1,
+            "unit": "px",
+            "label": "Font Size Decription Mobile"
+         },
           {
             "type": "header",
             "content": "Circle Position"
