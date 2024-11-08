@@ -454,7 +454,7 @@
         
         <div class="multicolumns-items-{{ section.id }}">
           
-            
+             {% for block in section.blocks %}  
             <div class="multicolumns-item-{{ section.id }}">
 
             
@@ -478,7 +478,7 @@
               
             
             </div>
-            
+            {% endfor %}
           
         </div>
 
@@ -486,7 +486,7 @@
           <div class="multicolumns-slider-{{ section.id }} swiper swiper-initialized swiper-horizontal swiper-pointer-events" data-slider-view-mobile="1.3" data-column-gap-mobile="20" data-column-gap="20" data-column-row="3" data-column-row-tablet="2" data-column-row-mobile="1" data-autoplay="false" data-autoplay-speed="3" data-block-size="3">
             <div class="multicolumns-wrapper-{{ section.id }} swiper-wrapper" id="swiper-wrapper-045d1dde3e5417102" aria-live="polite" style="transition-duration: 0ms;">
               
-                
+              {% for block in section.blocks %}  
                 <div class="multicolumns-item-{{ section.id }} swiper-slide">
     
                 
@@ -511,7 +511,7 @@
                   
                 
                 </div>
-                
+                {% endfor %}
               
             </div>
         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
