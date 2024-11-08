@@ -460,7 +460,7 @@
             
                 
                 <div id="multicolumns-item-video" class="multicolumns-item-video-{{ section.id }}">
-                {{ block.settings.item_video | video_tag: poster: block.settings.item_image, autoplay: true, loop: block.settings.loop, muted: block.settings.muted, playsinline: block.settings.playsinline, controls: block.settings.controls }}
+                {{ block.settings.item_video | video_tag: poster: block.settings.item_image, autoplay: block.settings.autoplay, loop: block.settings.loop, muted: block.settings.muted, playsinline: block.settings.playsinline, controls: block.settings.controls }}
                 </div>
               
 
@@ -815,6 +815,12 @@
           "type": "video",
           "id": "item_video",
           "label": "Item Video"
+        },
+         {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "Autoplay",
+          "default": true
         },
         {
           "type": "checkbox",
