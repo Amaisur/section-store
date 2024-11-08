@@ -374,29 +374,6 @@
     "video_multicolumn_eYdPVb": {
       "type": "video-multicolumn",
       "blocks": {
-        "item_mFtN48": {
-          "type": "item",
-          "settings": {
-            "item_image": "shopify://shop_images/C1_971306a5-007d-43d4-93a7-e5074e0355ff.png",
-            "item_video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
-            "loop": true,
-            "muted": false,
-            "playsinline": true,
-            "controls": true,
-            "item_title": "Stay Connected, Stay Ahead",
-            "item_title_font_size_desktop": 28,
-            "item_title_font_size_mobile": 23,
-            "item_title_color": "#121212",
-            "item_text": "Monitor your fitness, stay on track, and look stylish all day long.",
-            "item_text_font_size_desktop": 16,
-            "item_text_font_size_mobile": 13,
-            "item_text_color": "#121212",
-            "item_link": "",
-            "item_link_bg_color": "#343643",
-            "item_link_padding_desktop": 16,
-            "item_link_padding_mobile": 12
-          }
-        },
         "item_6hh6ty": {
           "type": "item",
           "settings": {
@@ -420,14 +397,35 @@
             "item_link_padding_mobile": 12
           }
         },
-        "item_jwK3Uw": {
+        "item_nCKrAH": {
           "type": "item",
           "settings": {
-            "item_image": "shopify://shop_images/download_3_720x_a165583f-4517-42a9-94e4-ef05da2390c8.jpg",
             "item_video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
             "loop": false,
             "muted": false,
-            "playsinline": true,
+            "playsinline": false,
+            "controls": false,
+            "item_title": "Stay Connected, Stay Ahead",
+            "item_title_font_size_desktop": 28,
+            "item_title_font_size_mobile": 23,
+            "item_title_color": "#121212",
+            "item_text": "Monitor your fitness, stay on track, and look stylish all day long.",
+            "item_text_font_size_desktop": 16,
+            "item_text_font_size_mobile": 13,
+            "item_text_color": "#121212",
+            "item_link": "",
+            "item_link_bg_color": "#343643",
+            "item_link_padding_desktop": 16,
+            "item_link_padding_mobile": 12
+          }
+        },
+        "item_LARPby": {
+          "type": "item",
+          "settings": {
+            "item_video": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
+            "loop": false,
+            "muted": false,
+            "playsinline": false,
             "controls": false,
             "item_title": "Stay Connected, Stay Ahead",
             "item_title_font_size_desktop": 28,
@@ -445,9 +443,9 @@
         }
       },
       "block_order": [
-        "item_mFtN48",
         "item_6hh6ty",
-        "item_jwK3Uw"
+        "item_nCKrAH",
+        "item_LARPby"
       ],
       "settings": {
         "font_color": "#121212",
