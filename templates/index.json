@@ -374,14 +374,13 @@
     "video_multicolumn_eYdPVb": {
       "type": "video-multicolumn",
       "blocks": {
-        "item_6hh6ty": {
+        "item_mFtN48": {
           "type": "item",
           "settings": {
             "item_image": "shopify://shop_images/C1_971306a5-007d-43d4-93a7-e5074e0355ff.png",
-            "item_video": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
-            "autoplay": true,
+            "item_video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
             "loop": true,
-            "muted": true,
+            "muted": false,
             "playsinline": true,
             "controls": true,
             "item_title": "Stay Connected, Stay Ahead",
@@ -398,14 +397,13 @@
             "item_link_padding_mobile": 12
           }
         },
-        "item_mFtN48": {
+        "item_6hh6ty": {
           "type": "item",
           "settings": {
             "item_image": "shopify://shop_images/C1_971306a5-007d-43d4-93a7-e5074e0355ff.png",
-            "item_video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
-            "autoplay": false,
+            "item_video": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
             "loop": true,
-            "muted": false,
+            "muted": true,
             "playsinline": true,
             "controls": true,
             "item_title": "Stay Connected, Stay Ahead",
@@ -426,8 +424,7 @@
           "type": "item",
           "settings": {
             "item_image": "shopify://shop_images/download_3_720x_a165583f-4517-42a9-94e4-ef05da2390c8.jpg",
-            "item_video": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
-            "autoplay": true,
+            "item_video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
             "loop": false,
             "muted": false,
             "playsinline": true,
@@ -448,8 +445,8 @@
         }
       },
       "block_order": [
-        "item_6hh6ty",
         "item_mFtN48",
+        "item_6hh6ty",
         "item_jwK3Uw"
       ],
       "settings": {
