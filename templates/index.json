@@ -373,7 +373,84 @@
     },
     "video_multicolumn_eYdPVb": {
       "type": "video-multicolumn",
-      "settings": {}
+      "blocks": {
+        "item_6hh6ty": {
+          "type": "item",
+          "settings": {
+            "item_title": "Stay Connected, Stay Ahead",
+            "item_title_font_size_desktop": 28,
+            "item_title_font_size_mobile": 23,
+            "item_title_color": "#121212",
+            "item_text": "Monitor your fitness, stay on track, and look stylish all day long.",
+            "item_text_font_size_desktop": 16,
+            "item_text_font_size_mobile": 13,
+            "item_text_color": "#121212",
+            "item_link": "",
+            "item_link_bg_color": "#343643",
+            "item_link_padding_desktop": 16,
+            "item_link_padding_mobile": 12
+          }
+        },
+        "item_jwK3Uw": {
+          "type": "item",
+          "settings": {
+            "item_title": "Stay Connected, Stay Ahead",
+            "item_title_font_size_desktop": 28,
+            "item_title_font_size_mobile": 23,
+            "item_title_color": "#121212",
+            "item_text": "Monitor your fitness, stay on track, and look stylish all day long.",
+            "item_text_font_size_desktop": 16,
+            "item_text_font_size_mobile": 13,
+            "item_text_color": "#121212",
+            "item_link": "",
+            "item_link_bg_color": "#343643",
+            "item_link_padding_desktop": 16,
+            "item_link_padding_mobile": 12
+          }
+        },
+        "item_zUC7cL": {
+          "type": "item",
+          "settings": {
+            "item_title": "Stay Connected, Stay Ahead",
+            "item_title_font_size_desktop": 28,
+            "item_title_font_size_mobile": 23,
+            "item_title_color": "#121212",
+            "item_text": "Monitor your fitness, stay on track, and look stylish all day long.",
+            "item_text_font_size_desktop": 16,
+            "item_text_font_size_mobile": 13,
+            "item_text_color": "#121212",
+            "item_link": "",
+            "item_link_bg_color": "#343643",
+            "item_link_padding_desktop": 16,
+            "item_link_padding_mobile": 12
+          }
+        }
+      },
+      "block_order": [
+        "item_6hh6ty",
+        "item_jwK3Uw",
+        "item_zUC7cL"
+      ],
+      "settings": {
+        "font_color": "#121212",
+        "title_text": "Reimagine Your Everyday",
+        "title_font_size_desktop": 44,
+        "title_font_size_mobile": 37,
+        "title_color": "#121212",
+        "subtitle_text": "Enhance your lifestyle with cutting-edge technology designed for you.",
+        "subtitle_font_size_desktop": 20,
+        "subtitle_font_size_mobile": 17,
+        "subtitle_color": "#121212",
+        "items_gap_desktop": 20,
+        "items_gap_mobile": 20,
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_left_desktop": 5,
+        "padding_right_desktop": 5,
+        "padding_top_mobile": 27,
+        "padding_bottom_mobile": 27,
+        "section_bg_color": "#ffffff"
+      }
     },
     "collection_slider_iHc74y": {
       "type": "Collection-slider",
