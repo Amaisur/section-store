@@ -639,12 +639,282 @@
 
 {% schema %}
   {
-    "name": "Video Multicolumn",
-    "settings": [],
-    "presets": [
-      {
-        "name": "Video Multicolumn"
-      }
-    ]
-  }
+  "name": "Video Multicolumn",
+  "settings": [
+    {
+      "type": "color",
+      "id": "font_color",
+      "label": "Font Color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Title Settings"
+    },
+    {
+      "type": "text",
+      "id": "title_text",
+      "label": "Title Text",
+      "default": "Reimagine Your Everyday"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "label": "Title Font Size (Desktop)",
+      "default": 44,
+      "unit": "px",
+      "min": 10,
+      "max": 80
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title Font Size (Mobile)",
+      "default": 37,
+      "unit": "px",
+      "min": 10,
+      "max": 80
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Subtitle Settings"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_text",
+      "label": "Subtitle Text",
+      "default": "Enhance your lifestyle with cutting-edge technology designed for you."
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_desktop",
+      "label": "Subtitle Font Size (Desktop)",
+      "default": 20,
+      "unit": "px",
+      "min": 10,
+      "max": 80
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_mobile",
+      "label": "Subtitle Font Size (Mobile)",
+      "default": 17,
+      "unit": "px",
+      "min": 10,
+      "max": 80
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Items Layout"
+    },
+    {
+      "type": "range",
+      "id": "items_gap_desktop",
+      "label": "Items Gap (Desktop)",
+      "default": 20,
+      "unit": "px",
+      "min": 0,
+      "max": 50
+    },
+    {
+      "type": "range",
+      "id": "items_gap_mobile",
+      "label": "Items Gap (Mobile)",
+      "default": 20,
+      "unit": "px",
+      "min": 0,
+      "max": 50
+    },
+     {
+      "type": "header",
+      "content": "Section Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "default": 36,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "default": 36,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "label": "Padding Left (Desktop)",
+      "default": 5,
+      "unit": "rem",
+      "min": 0,
+      "max": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "label": "Padding Right (Desktop)",
+      "default": 5,
+      "unit": "rem",
+      "min": 0,
+      "max": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "default": 27,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "default": 27,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Multicolumn Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "item_image",
+          "label": "Item Image"
+        },
+        {
+          "type": "video",
+          "id": "item_video",
+          "label": "Item Video"
+        },
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Item Title",
+          "default": "Stay Connected, Stay Ahead"
+        },
+        {
+          "type": "range",
+          "id": "item_title_font_size_desktop",
+          "label": "Item Title Font Size (Desktop)",
+          "default": 28,
+          "unit": "px",
+          "min": 10,
+          "max": 80
+        },
+        {
+          "type": "range",
+          "id": "item_title_font_size_mobile",
+          "label": "Item Title Font Size (Mobile)",
+          "default": 23,
+          "unit": "px",
+          "min": 10,
+          "max": 80
+        },
+        {
+          "type": "color",
+          "id": "item_title_color",
+          "label": "Item Title Color",
+          "default": "#121212"
+        },
+        {
+          "type": "text",
+          "id": "item_text",
+          "label": "Item Description",
+          "default": "Monitor your fitness, stay on track, and look stylish all day long."
+        },
+        {
+          "type": "range",
+          "id": "item_text_font_size_desktop",
+          "label": "Item Text Font Size (Desktop)",
+          "default": 16,
+          "unit": "px",
+          "min": 10,
+          "max": 80
+        },
+        {
+          "type": "range",
+          "id": "item_text_font_size_mobile",
+          "label": "Item Text Font Size (Mobile)",
+          "default": 13,
+          "unit": "px",
+          "min": 10,
+          "max": 80
+        },
+        {
+          "type": "color",
+          "id": "item_text_color",
+          "label": "Item Text Color",
+          "default": "#121212"
+        },
+        {
+          "type": "url",
+          "id": "item_link",
+          "label": "Item Link URL"
+        },
+        {
+          "type": "color",
+          "id": "item_link_bg_color",
+          "label": "Item Link Background Color",
+          "default": "#343643"
+        },
+        {
+          "type": "range",
+          "id": "item_link_padding_desktop",
+          "label": "Item Link Padding (Desktop)",
+          "default": 16,
+          "unit": "px",
+          "min": 0,
+          "max": 50
+        },
+        {
+          "type": "range",
+          "id": "item_link_padding_mobile",
+          "label": "Item Link Padding (Mobile)",
+          "default": 12,
+          "unit": "px",
+          "min": 0,
+          "max": 50
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Multicolumn",
+      "category": "Featured Sections"
+    }
+  ]
+}
+
 {% endschema %}
