@@ -460,8 +460,7 @@
             
                 
                 <div id="multicolumns-item-video" class="multicolumns-item-video-{{ section.id }}">
-
-                  <video data-src="//section.store/cdn/shop/videos/c/vp/bf2997e497a24a30803982f6e20af6d0/bf2997e497a24a30803982f6e20af6d0.HD-1080p-2.5Mbps-30972668.mp4?v=0" playsinline="" autoplay="" preload="none" loop="" controls="" muted="" class="lazy entered loaded" controlslist="nodownload" data-ll-status="entered" src="//section.store/cdn/shop/videos/c/vp/bf2997e497a24a30803982f6e20af6d0/bf2997e497a24a30803982f6e20af6d0.HD-1080p-2.5Mbps-30972668.mp4?v=0" __idm_id__="376833"></video>
+                {{ block.settings.item_video | video_tag: poster: block.settings.item_image, autoplay: block.settings.autoplay, loop: block.settings.loop, muted: block.settings.muted, playsinline: block.settings.playsinline, controls: block.settings.controls }}
                 </div>
               
 
@@ -816,6 +815,31 @@
           "type": "video",
           "id": "item_video",
           "label": "Item Video"
+        },
+         {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "Autoplay"
+        },
+        {
+          "type": "checkbox",
+          "id": "loop",
+          "label": "Loop"
+        },
+        {
+          "type": "checkbox",
+          "id": "muted",
+          "label": "Muted"
+        },
+        {
+          "type": "checkbox",
+          "id": "playsinline",
+          "label": "Plays Inline"
+        },
+        {
+          "type": "checkbox",
+          "id": "controls",
+          "label": "Show Controls"
         },
         {
           "type": "text",
