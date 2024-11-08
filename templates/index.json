@@ -430,7 +430,7 @@
             "autoplay": false,
             "loop": false,
             "muted": false,
-            "playsinline": false,
+            "playsinline": true,
             "controls": false,
             "item_title": "Stay Connected, Stay Ahead",
             "item_title_font_size_desktop": 28,
