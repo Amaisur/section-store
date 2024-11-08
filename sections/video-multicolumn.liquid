@@ -54,16 +54,6 @@
     align-items: stretch;
     gap: 20px;
   }
-  
-  .multicolumns-item-{{ section.id }} {
-    border-radius: 21px !important;
-    background-color: #f3f3f3 !important;
-    padding-top: 12px !important;
-    padding-bottom: 18px !important;
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-    box-sizing: border-box !important;
-  }
 
   .multicolumns-items-{{ section.id }} .multicolumns-item-{{ section.id }} {
     flex: 0 1 100% !important;
@@ -290,13 +280,6 @@
       gap: 20px;
     }
     
-    .multicolumns-item-{{ section.id }} {
-      border-radius: 28px !important;
-      padding-top: 16px !important;
-      padding-bottom: 24px !important;
-      padding-left: 16px !important;
-      padding-right: 16px !important;
-    }
 
     .multicolumns-items-{{ section.id }} .multicolumns-item-{{ section.id }} {
       flex: 0 1 29% !important;
@@ -472,6 +455,13 @@
                     color: {{ block.settings.item_link_color }};
                     border-radius: {{ block.settings.btn-r }}px;
                   }
+                  .multicolumns-item-{{ section.id }} {
+                    border-radius: 28px !important;
+                    padding-top: 16px !important;
+                    padding-bottom: 24px !important;
+                    padding-left: 16px !important;
+                    padding-right: 16px !important;
+                  }
                   }
                 </style>
             <div class="multicolumns-item-{{ section.id }} d5-{{ block.id }}-item">
@@ -521,6 +511,15 @@
                     color: {{ block.settings.item_link_color }};
                     border-radius: {{ block.settings.btn-r }}px;
                   }
+                    .multicolumns-item-{{ section.id }} {
+                      border-radius: 21px !important;
+                      background-color: #f3f3f3 !important;
+                      padding-top: 12px !important;
+                      padding-bottom: 18px !important;
+                      padding-left: 12px !important;
+                      padding-right: 12px !important;
+                      box-sizing: border-box !important;
+                    }
                   }
                 </style>
                 <div class="multicolumns-item-{{ section.id }} swiper-slide d5-{{ block.id }}-item">
@@ -855,6 +854,12 @@
       "type": "item",
       "name": "Multicolumn Item",
       "settings": [
+        {
+          "type": "color_background",
+          "id": "card-bg",
+          "label": "Card Background Color",
+          "default": "#f3f3f3"
+        },
         {
           "type": "image_picker",
           "id": "item_image",
