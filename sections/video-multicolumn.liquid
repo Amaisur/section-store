@@ -17,18 +17,18 @@
   
   .section-{{ section.id }}-settings {
     margin: 0 auto;
-    padding-top: 27px;
-    padding-bottom: 27px;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    padding-left: {{ section.settings.padding_left_mobile }}rem;
+    padding-right: {{ section.settings.padding_right_mobile }}rem;
   }
 
   .multicolumns-title-{{ section.id }} {
     margin: 0;
     margin-top: 0px;
     margin-bottom: 18px;
-    font-size: 37.4px;
-    color: #121212;
+    font-size: {{ section.settings.title_font_size_mobile }}px;
+    color: {{ section.settings.title_color }};
     line-height: 130%;
     letter-spacing: 0.2px;
     text-transform: unset;
@@ -37,8 +37,8 @@
   
   .multicolumns-text-{{ section.id }} {
     margin: 0;
-    font-size: 17.0px;
-    color: #121212;
+    font-size: {{ section.settings.subtitle_font_size_mobile }}px;
+    color: {{ section.settings.subtitle_color }};
     line-height: 160%;
     letter-spacing: 0px;
     text-transform: unset;
@@ -268,20 +268,20 @@
     }
     
     .section-{{ section.id }}-settings {
-      padding-top: 36px;
-      padding-bottom: 36px;
-      padding-left: 5rem;
-      padding-right: 5rem;
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+      padding-left: {{ section.settings.padding_left_desktop }}rem;
+      padding-right: {{ section.settings.padding_right_desktop }}rem;
     }
     
     .multicolumns-title-{{ section.id }} {
-      font-size: 44px;
+      font-size: {{ section.settings.title_font_size_desktop }}px;
       margin-top: px;
       margin-bottom: 24px;
     }
     
     .multicolumns-text-{{ section.id }} {
-      font-size: 20px;
+      font-size: {{ section.settings.subtitle_font_size_desktop }}px;
     }
     
     .multicolumns-items-{{ section.id }} {
@@ -445,11 +445,11 @@
   <div class="section-{{ section.id }}-settings">
     
         
-          <h2 class="multicolumns-title-{{ section.id }}">Reimagine Your Everyday</h2>
+          <h2 class="multicolumns-title-{{ section.id }}">{{ section.settings.title_text }}</h2>
         
         
         
-          <p class="multicolumns-text-{{ section.id }}">Enhance your lifestyle with cutting-edge technology designed for you.</p>
+          <p class="multicolumns-text-{{ section.id }}">{{ section.settings.subtitle_text }}</p>
         
         
         <div class="multicolumns-items-{{ section.id }}">
@@ -641,12 +641,6 @@
   "name": "Video Multicolumn",
   "settings": [
     {
-      "type": "color",
-      "id": "font_color",
-      "label": "Font Color",
-      "default": "#121212"
-    },
-    {
       "type": "header",
       "content": "Title Settings"
     },
@@ -793,6 +787,24 @@
       "unit": "px",
       "min": 0,
       "max": 100
+    },
+     {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "label": "Padding Left (Mobile)",
+      "default": 5,
+      "unit": "rem",
+      "min": 0,
+      "max": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "label": "Padding Right (Mobile)",
+      "default": 5,
+      "unit": "rem",
+      "min": 0,
+      "max": 5
     },
     {
       "type": "color",
