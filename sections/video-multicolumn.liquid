@@ -16,6 +16,7 @@
   }
   
   .section-{{ section.id }}-settings {
+    background: {{ section.settings.section_bg_color }};
     margin: 0 auto;
     padding-top: {{ section.settings.padding_top_mobile }}px;
     padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
@@ -455,7 +456,24 @@
         <div class="multicolumns-items-{{ section.id }}">
           
              {% for block in section.blocks %}  
-            <div class="multicolumns-item-{{ section.id }}">
+                <style>
+                  @media (min-width: 767px){
+                  .d5-{{ block.id }}-item h3{
+                    font-size: {{ block.settings.item_title_font_size_desktop }}px;
+                    color: {{ block.settings.item_title_color }};
+                  }
+                  .d5-{{ block.id }}-item p{
+                    font-size: {{ block.settings.item_text_font_size_desktop }}px;
+                    color: {{ block.settings.item_text_color }};
+                  }
+                  .d5-{{ block.id }}-item a{
+                    padding: calc({{ block.settings.item_link_padding_mobile }}px / 2) {{ block.settings.item_link_padding_mobile }}px;
+                    background: {{ block.settings.item_link_bg_color }};
+                    color: {{ block.settings.item_link_color }};
+                  }
+                  }
+                </style>
+            <div class="multicolumns-item-{{ section.id }} d5-{{ block.id }}-item">
 
             
                 
@@ -465,15 +483,15 @@
               
 
               
-                <h3 class="multicolumns-item-title-{{ section.id }}">Stay Connected, Stay Ahead</h3>
+                <h3 class="multicolumns-item-title-{{ section.id }}">{{ block.settings.item_title }}</h3>
               
 
               
-                <p class="multicolumns-item-text-{{ section.id }}">Monitor your fitness, stay on track, and look stylish all day long.</p>
+                <p class="multicolumns-item-text-{{ section.id }}">{{ block.settings.item_text }}</p>
               
             
               
-                <a href="#" class="multicolumns-item-link-{{ section.id }}">SHOP NOW</a>
+                <a href="{{ block.settings.item_link }}" class="multicolumns-item-link-{{ section.id }}">{{ block.settings.item_link_txt }}</a>
               
             
             </div>
@@ -486,27 +504,44 @@
             <div class="multicolumns-wrapper-{{ section.id }} swiper-wrapper" id="swiper-wrapper-045d1dde3e5417102" aria-live="polite" style="transition-duration: 0ms;">
               
               {% for block in section.blocks %}  
-                <div class="multicolumns-item-{{ section.id }} swiper-slide">
+                <style>
+                  @media (max-width: 768px){
+                  .d5-{{ block.id }}-item h3{
+                    font-size: {{ block.settings.item_title_font_size_mobile }}px;
+                    color: {{ block.settings.item_title_color }};
+                  }
+                  .d5-{{ block.id }}-item p{
+                    font-size: {{ block.settings.item_text_font_size_mobile }}px;
+                    color: {{ block.settings.item_text_color }};
+                  }
+                  .d5-{{ block.id }}-item a{
+                    padding: calc({{ block.settings.item_link_padding_mobile }}px / 2) {{ block.settings.item_link_padding_mobile }}px;
+                    background: {{ block.settings.item_link_bg_color }};
+                    color: {{ block.settings.item_link_color }};
+                  }
+                  }
+                </style>
+                <div class="multicolumns-item-{{ section.id }} swiper-slide d5-{{ block.id }}-item">
     
                 
                     
                   
                     <div id="multicolumns-item-video" class="multicolumns-item-video-{{ section.id }}">
                       
-                      <video data-src="//section.store/cdn/shop/videos/c/vp/bf2997e497a24a30803982f6e20af6d0/bf2997e497a24a30803982f6e20af6d0.HD-1080p-2.5Mbps-30972668.mp4?v=0" playsinline="" autoplay="" preload="none" loop="" controls="" muted="" class="lazy" controlslist="nodownload"></video>
-                    </div>
+                      {{ block.settings.item_video | video_tag: poster: block.settings.item_image, autoplay: block.settings.autoplay, loop: block.settings.loop, muted: block.settings.muted, playsinline: block.settings.playsinline, controls: block.settings.controls }}
+               </div>
                   
     
                   
-                    <h3 class="multicolumns-item-title-{{ section.id }}">Stay Connected, Stay Ahead</h3>
+                    <h3 class="multicolumns-item-title-{{ section.id }}">{{ block.settings.item_title }}</h3>
                   
     
                   
-                    <p class="multicolumns-item-text-{{ section.id }}">Monitor your fitness, stay on track, and look stylish all day long.</p>
+                    <p class="multicolumns-item-text-{{ section.id }}">{{ block.settings.item_title }}</p>
                   
                 
                   
-                    <a href="#" class="multicolumns-item-link-{{ section.id }}">SHOP NOW</a>
+                    <a href="{{ block.settings.item_link }}" class="multicolumns-item-link-{{ section.id }}">{{ block.settings.item_link_txt }}</a>
                   
                 
                 </div>
@@ -915,9 +950,21 @@
           "default": "#121212"
         },
         {
+          "type": "text",
+          "id": "item_link_txt",
+          "label": "Button Label",
+          "default": "Shop Now"
+        },
+        {
           "type": "url",
           "id": "item_link",
           "label": "Item Link URL"
+        },
+         {
+          "type": "color",
+          "id": "item_link_color",
+          "label": "Button Text Color",
+          "default": "#fff"
         },
         {
           "type": "color",
