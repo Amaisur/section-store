@@ -467,9 +467,10 @@
                     color: {{ block.settings.item_text_color }};
                   }
                   .d5-{{ block.id }}-item a{
-                    padding: calc({{ block.settings.item_link_padding_desktop }}px / 2) {{ block.settings.item_link_padding_desktop }}px;
+                    padding: {{ block.settings.item_link_padding_desktop }}px;
                     background: {{ block.settings.item_link_bg_color }};
                     color: {{ block.settings.item_link_color }};
+                    border-radius: {{ block.settings.btn-r }}px;
                   }
                   }
                 </style>
@@ -515,9 +516,10 @@
                     color: {{ block.settings.item_text_color }};
                   }
                   .d5-{{ block.id }}-item a{
-                    padding: calc({{ block.settings.item_link_padding_mobile }}px / 2) {{ block.settings.item_link_padding_mobile }}px;
+                    padding: {{ block.settings.item_link_padding_mobile }}px;
                     background: {{ block.settings.item_link_bg_color }};
                     color: {{ block.settings.item_link_color }};
+                    border-radius: {{ block.settings.btn-r }}px;
                   }
                   }
                 </style>
@@ -989,6 +991,15 @@
           "unit": "px",
           "min": 0,
           "max": 50
+        },
+         {
+          "type": "range",
+          "id": "btn-r",
+          "label": "Button Border Radius",
+          "default": 12,
+          "unit": "px",
+          "min": 0,
+          "max": 100
         }
       ]
     }
