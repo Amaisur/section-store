@@ -401,7 +401,7 @@
           "type": "item",
           "settings": {
             "item_video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
-            "loop": false,
+            "loop": true,
             "muted": false,
             "playsinline": false,
             "controls": false,
@@ -423,7 +423,7 @@
           "type": "item",
           "settings": {
             "item_video": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
-            "loop": false,
+            "loop": true,
             "muted": false,
             "playsinline": false,
             "controls": false,
