@@ -142,7 +142,6 @@
     
       <div class="section-{{ section.id }}-settings announcement-inner-{{ section.id }}">
         <div class="announcement-items-{{ section.id }}">
-          
             {% for block in section.blocks %}
               <div class="announcement-item-{{ section.id }}">
                 
@@ -154,13 +153,12 @@
                     
                   </div>
                 
-                  <p>{{ text }}</p>
-                  <p class="announcement-text-{{ section.id }}">WORLD WIDE SHIPPING</p>
+                  <p class="announcement-text-{{ section.id }}">{{ block.settings.text }}</p>
                 
               </div>
             {% endfor %}
             
-            {% for block in section.blocks %}
+             {% for block in section.blocks %}
               <div class="announcement-item-{{ section.id }}">
                 
                   <div class="announcement-icon-{{ section.id }}">
@@ -171,8 +169,7 @@
                     
                   </div>
                 
-                  <p>{{ text }}</p>
-                  <p class="announcement-text-{{ section.id }}">WORLD WIDE SHIPPING</p>
+                  <p class="announcement-text-{{ section.id }}">{{ block.settings.text }}</p>
                 
               </div>
             {% endfor %}
@@ -188,8 +185,7 @@
                     
                   </div>
                 
-                  <p>{{ text }}</p>
-                  <p class="announcement-text-{{ section.id }}">WORLD WIDE SHIPPING</p>
+                  <p class="announcement-text-{{ section.id }}">{{ block.settings.text }}</p>
                 
               </div>
             {% endfor %}
@@ -201,7 +197,7 @@
           
             
              
-            {% for block in section.blocks %}
+              {% for block in section.blocks %}
               <div class="announcement-item-{{ section.id }}">
                 
                   <div class="announcement-icon-{{ section.id }}">
@@ -212,15 +208,14 @@
                     
                   </div>
                 
-                  <p>{{ text }}</p>
-                  <p class="announcement-text-{{ section.id }}">WORLD WIDE SHIPPING</p>
+                  <p class="announcement-text-{{ section.id }}">{{ block.settings.text }}</p>
                 
               </div>
             {% endfor %}
             
      
               
-            {% for block in section.blocks %}
+             {% for block in section.blocks %}
               <div class="announcement-item-{{ section.id }}">
                 
                   <div class="announcement-icon-{{ section.id }}">
@@ -231,8 +226,7 @@
                     
                   </div>
                 
-                  <p>{{ text }}</p>
-                  <p class="announcement-text-{{ section.id }}">WORLD WIDE SHIPPING</p>
+                  <p class="announcement-text-{{ section.id }}">{{ block.settings.text }}</p>
                 
               </div>
             {% endfor %}
