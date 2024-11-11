@@ -325,9 +325,10 @@
   
 
   
-
+{% for block in section.blocks %}
+  {% if block.type == 'button' %}
   <style>
-    .faq-button-button_Hi7hP3 {
+    .faq-button_{{ section.id }} {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -335,56 +336,56 @@
       width: 100%;
       max-width: 200px;
       margin: 0;
-      margin-top: 16px;
-      font-size: 14px;
-      color: #ffffff;
+      color: {{ block.settings.b-color }};
+      background: {{ block.settings.b-bg-color }};
+      border-radius: {{ block.settings.br }}px;
+      font-size: {{ block.settings.b-fs }}px;
+      padding: {{ block.settings.b-p }}px calc({{ block.settings.b-p }} * 1.5)px;
       line-height: 100%;
       text-align: center;
       text-transform: unset;
       text-decoration: none;
-      padding: 12px 22px;
-      border-radius: 4px;
       transition: all 0.25s ease 0s;
       position: relative;
       font-weight: 700;
       z-index: 2;
     }
   
-    .faq-button-button_Hi7hP3:hover {
-      color: #ffffff;
+    .faq-button_{{ section.id }}:hover {
+      opacity: .8;
       transition: all 0.25s ease 0s;
     }
   
-    .faq-button-button_Hi7hP3 svg {
+    .faq-button_{{ section.id }} svg {
       width: 14px;
       height: 14px;
     }
   
-    .faq-button-button_Hi7hP3 svg path {
+    .faq-button_{{ section.id }} svg path {
       fill: #ffffff;
       transition: all 0.25s ease 0s;
     }
   
-    .faq-button-button_Hi7hP3:hover svg path {
+    .faq-button_{{ section.id }}:hover svg path {
       fill: #ffffff;
       transition: all 0.25s ease 0s;
     }
 
-    @media(min-width: 1024px) {
-      .faq-button-button_Hi7hP3 {
-        margin-top: 40px;
+    @media(min-width: 768px) {
+      .faq-button_{{ section.id }} {
         max-width: 200px;
-        padding: 16px 24px;
-        font-size: 16px;
+        font-size: {{ block.settings.b-fs-d }}px;
       }
     }
-  </style>
+</style>
+    {% endif %}
+    {% endfor %}
 
   
 
   
     <style>
-     .faq-button-button_Hi7hP3 {
+     .faq-button_{{ section.id }} {
         margin-left: auto;
         margin-right: auto;
       } 
@@ -394,7 +395,7 @@
   
     <style>
       @media(min-width: 1024px) {
-       .faq-button-button_Hi7hP3 {
+       .faq-button_{{ section.id }} {
           margin-left: 0px !important;
           margin-right: 0px !important;
         } 
@@ -404,11 +405,11 @@
   
   
     <style>
-      .faq-button-button_Hi7hP3 {
+      .faq-button_{{ section.id }} {
         background-color: #000000;
       }
   
-      .faq-button-button_Hi7hP3:hover {
+      .faq-button_{{ section.id }}:hover {
         background-color: #000000;
       }
     </style>
@@ -439,10 +440,9 @@
               <div class="text-d5 text-{{ block.id }}">
                 {{ block.settings.text }}
               </div>
-            {% endcase %}
-          {% endfor %}
-              <a href="" class="faq-button-button_Hi7hP3">
-                Get it now
+              {% when 'button' %}
+                <a href="{{ block.settings.url }}" class="faq-button_{{ section.id }}">
+                {{ block.settings.text }}
                 
                   <svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M187.827 98.7858C188.123 98.4749 188.123 98.4749 188.123 98.1761C188.419 97.8652 188.419 97.5663 188.704 97.5663C189 96.9566 189 96.6458 189 96.0361C189 95.4263 189 94.8166 188.704 94.5058C188.704 94.195 188.408 93.8961 188.123 93.5852C188.123 93.2744 187.827 93.2744 187.827 92.9755L103.287 4.21945C102.41 3.29889 101.533 3 100.668 3C99.791 3 98.6295 3.31083 98.0488 4.21945C97.1719 5.14 96.8872 6.06058 96.8872 6.96919C96.8872 7.88974 97.1833 9.10918 98.0488 9.7189L175.587 92.0539H6.79206C4.75371 92.0539 3 93.895 3 96.0351C3 98.1751 4.75365 100.016 6.79206 100.016H175.575L97.7543 182.042C96.2967 183.572 96.2967 186.322 97.7543 187.852C99.2119 189.383 101.831 189.383 103.288 187.852L187.827 98.7858Z" fill="black"></path>
@@ -451,8 +451,8 @@
                   </svg>
                 
               </a>
-                
-          
+            {% endcase %}
+          {% endfor %}
         </div>
         <div class="faq-items-{{ section.id }}">
        {% for block in section.blocks %}
@@ -769,6 +769,74 @@
             "step": 1,
             "unit": "px",
             "default": 0
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "Button",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Button Label",
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Button Link"
+          },
+          {
+            "type": "color",
+            "id": "b-color",
+            "label": "Color",
+            "default": "#fff"
+          },
+          {
+            "type": "color",
+            "id": "b-bg-color",
+            "label": "Button Background Color",
+            "default": "#000000"
+          },
+          {
+            "type": "range",
+            "id": "b-fs-d",
+            "label": "Font Size (Desktop)",
+            "min": 6,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 48
+          },
+          {
+            "type": "range",
+            "id": "b-fs",
+            "label": "Font Size",
+            "min": 6,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 30
+          },
+          {
+            "type": "range",
+            "id": "b-p",
+            "label": "Button Padding",
+            "min": 0,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 0
+          },
+          {
+            "type": "range",
+            "id": "b-r",
+            "label": "Button Border Radius",
+            "min": 0,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 5
           }
         ]
       },
