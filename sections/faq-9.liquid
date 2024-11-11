@@ -20,7 +20,8 @@
     border-radius: 30px;
     border: 0px solid #000000;
     overflow: hidden;
-    margin: {{ section.settings.mt }}px auto {{ section.settings.mt }}px;
+    margin: {{ section.settings.mt }}px auto;
+    padding: 0 {{ section.settings.lr-s }}
   }
   
   .section-{{ section.id }}-settings {
@@ -144,7 +145,8 @@
    }
     .section-{{ section.id }} {
       max-width: {{ section.settings.m-w }}rem;
-      margin: {{ section.settings.mt-d }}px auto {{ section.settings.mb-d }}px;
+      margin: {{ section.settings.mt-d }}px auto;
+      padding: 0  {{ section.settings.lr-s-d }};
     }
     
     .section-{{ section.id }}-settings {
@@ -660,19 +662,19 @@
         "min": 0,
         "max": 100,
         "unit": "px",
-        "label": "Margin Top",
+        "label": "Vertical Space",
         "step": 1,
-        "default": 36
+        "default": 50
       },
       {
         "type": "range",
-        "id": "mb",
+        "id": "lr-s",
         "min": 0,
         "max": 100,
         "unit": "px",
-        "label": "Margin Bottom",
+        "label": "Horizontal Space",
         "step": 1,
-        "default": 36
+        "default": 40
       },
       {
         "type": "range",
@@ -680,18 +682,18 @@
         "min": 0,
         "max": 100,
         "unit": "px",
-        "label": "Margin Top (Desktop)",
+        "label": "Vertical Space (Desktop)",
         "step": 1,
-        "default": 36
+        "default": 40
       },{
         "type": "range",
         "id": "mb-d",
         "min": 0,
         "max": 100,
         "unit": "px",
-        "label": "Margin Bottom (Desktop)",
+        "label": "Horizontal Space (Desktop)",
         "step": 1,
-        "default": 36
+        "default": 20
       }
     ],
     "blocks": [
