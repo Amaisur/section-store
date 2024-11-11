@@ -20,6 +20,7 @@
     border-radius: 30px;
     border: 0px solid #000000;
     overflow: hidden;
+    margin: {{ section.settings.mt }}px auto {{ section.settings.mt }}px;
   }
   
   .section-{{ section.id }}-settings {
@@ -142,10 +143,8 @@
       padding-right: {{ section.settings.p-lr-d }}rem;
    }
     .section-{{ section.id }} {
-      margin-top: 16px;
-      margin-bottom: 16px;
-      margin-left: 5rem;
-      margin-right: 5rem;
+      max-width: {{ section.settings.m-w }}rem;
+      margin: {{ section.settings.mt-d }}px auto {{ section.settings.mb-d }}px;
     }
     
     .section-{{ section.id }}-settings {
