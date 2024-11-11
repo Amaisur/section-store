@@ -1,10 +1,24 @@
-
-{% render 'announcement-bar' %}
+{% assign prop = block.settings %}
+{% render 'announcement-bar', text: prop.text  %}
 
 {% schema %}
   {
     "name": "Announcement 2",
     "settings": [],
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Announcement",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Text",
+            "default": "WORLD WIDE SHIPPING"
+          }
+        ]
+      }
+    ],
     "presets": [
       {
         "name": "Announcement 2"
