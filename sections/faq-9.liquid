@@ -335,7 +335,7 @@
       gap: 10px;
       width: 100%;
       max-width: 200px;
-      margin: 0;
+      margin: 0 auto;
       color: {{ block.settings.b-color }};
       background: {{ block.settings.b-bg-color }};
       border-radius: {{ block.settings.b-r }}px;
@@ -375,6 +375,7 @@
       .faq-button_{{ section.id }} {
         max-width: 200px;
         font-size: {{ block.settings.b-fs-d }}px;
+        margin: 0;
       }
     }
 </style>
@@ -382,38 +383,8 @@
     {% endfor %}
 
   
-
-  
-    <style>
-     .faq-button_{{ section.id }} {
-        margin-left: auto;
-        margin-right: auto;
-      } 
-    </style>
   
   
-  
-    <style>
-      @media(min-width: 1024px) {
-       .faq-button_{{ section.id }} {
-          margin-left: 0px !important;
-          margin-right: 0px !important;
-        } 
-      }
-    </style>
-  
-  
-  
-    <style>
-      .faq-button_{{ section.id }} {
-        background-color: #000000;
-      }
-  
-      .faq-button_{{ section.id }}:hover {
-        background-color: #000000;
-      }
-    </style>
-
 <div class="section-{{ section.id }} faq-{{ section.id }}" style="background-color: {{ section.settings.bg-color }};{% if section.settings.bg-img != blank %} background-image: url({{ section.settings.bg-img | image_url: width: '1440px' }});{% endif %}">
     <div class="section-{{ section.id }}-settings">
       <div class="faq-body-{{ section.id }}">
