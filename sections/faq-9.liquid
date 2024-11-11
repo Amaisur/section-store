@@ -12,6 +12,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
   }
 
   #shopify-section-{{ section.id }}{
@@ -225,10 +226,11 @@
 
   <style>
     @media(min-width: 1024px) {
+      {% if section.settings.left %}
       .faq-body-{{ section.id }} {
         grid-template-columns: 1fr 1fr;
       }
-
+      {% endif %}
       .faq-items-{{ section.id }} {
         order: 2;
       }
@@ -491,6 +493,12 @@
         "id": "bg-color",
         "label": "Background Color",
         "default": "#f0f3f4"
+      },
+      {
+        "type": "checkbox",
+        "id": "left",
+        "label": "Show Text on in Column",
+        "default": true
       },
       {
         "type": "header",
