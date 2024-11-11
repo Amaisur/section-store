@@ -51,6 +51,31 @@
     },
     "announcement_bar_2_WB7e3k": {
       "type": "announcement-bar-2",
+      "blocks": {
+        "text_pVApVc": {
+          "type": "text",
+          "settings": {
+            "text": "WORLD WIDE SHIPPING"
+          }
+        },
+        "text_yWhkzT": {
+          "type": "text",
+          "settings": {
+            "text": "WORLD WIDE SHIPPING"
+          }
+        },
+        "text_QwMaWK": {
+          "type": "text",
+          "settings": {
+            "text": "WORLD WIDE SHIPPING"
+          }
+        }
+      },
+      "block_order": [
+        "text_pVApVc",
+        "text_yWhkzT",
+        "text_QwMaWK"
+      ],
       "settings": {}
     },
     "hotspots_detail_qtngrJ": {
@@ -573,7 +598,7 @@
         "q-fs-m": 16,
         "a-fs-d": 16,
         "a-fs-m": 12,
-        "q-bg": "#fff",
+        "q-bg": "#ffffff",
         "pt": 36,
         "pb": 36,
         "pt-d": 36,
