@@ -338,7 +338,7 @@
       margin: 0;
       color: {{ block.settings.b-color }};
       background: {{ block.settings.b-bg-color }};
-      border-radius: {{ block.settings.br }}px;
+      border-radius: {{ block.settings.b-r }}px;
       font-size: {{ block.settings.b-fs }}px;
       padding: {{ block.settings.b-p }}px calc({{ block.settings.b-p }} * 1.5)px;
       line-height: 100%;
@@ -362,12 +362,12 @@
     }
   
     .faq-button_{{ section.id }} svg path {
-      fill: #ffffff;
+      fill: {{ block.settings.b-color }};
       transition: all 0.25s ease 0s;
     }
   
     .faq-button_{{ section.id }}:hover svg path {
-      fill: #ffffff;
+      fill: {{ block.settings.b-color }};
       transition: all 0.25s ease 0s;
     }
 
@@ -807,7 +807,7 @@
             "max": 80,
             "step": 1,
             "unit": "px",
-            "default": 48
+            "default": 16
           },
           {
             "type": "range",
@@ -817,7 +817,7 @@
             "max": 80,
             "step": 1,
             "unit": "px",
-            "default": 30
+            "default": 14
           },
           {
             "type": "range",
