@@ -43,7 +43,7 @@
     padding: 20px 20px;
     border-radius: 10px;
     border: 0px solid #000000;
-    background-color: #ffffff;
+    background-color: {{ section.settings.q-bg }};
     position: relative;
   }
 
@@ -77,13 +77,13 @@
   }
 
   .faq-arrow-{{ section.id }} svg path {
-    fill: #757575;
+    fill: {{ section.settings.a-color }};
   }
 
   .faq-question-{{ section.id }} {
     margin: 0px;
-    font-size: 14px;
-    color: #005c53;
+    font-size: {{ section.settings.q-fs-m }}px;
+    color: {{ section.settings.q-color }};
     line-height: 130%;
     text-transform: unset;
     font-weight: 700;
@@ -96,8 +96,8 @@
 
   .faq-answer-{{ section.id }} * {
     margin: 0px;
-    font-size: 12px;
-    color: #757575;
+    font-size: {{ section.settings.a-fs-m }}px;
+    color: {{ section.settings.a-color }};
     line-height: 170%;
     text-transform: unset;
   }
@@ -174,11 +174,11 @@
     }
 
     .faq-question-{{ section.id }} {
-      font-size: 18px;
+      font-size: {{ section.settings.q-fs-d }}px;
     }
 
     .faq-answer-{{ section.id }} * {
-      font-size: 16px;
+      font-size: {{ section.settings.a-fs-d }}px;
     }
 
     .faq-arrow-{{ section.id }} {
@@ -246,82 +246,6 @@
       box-shadow: rgba(18, 18, 23, 0.08) 0px 6px 4px -1px;
     }
   </style>
-
-
-
-  
-    <style>
-      
-      .faq-heading-heading_APYixb {
-        text-align: center;
-        margin-top: 0px;
-      }
-
-      .faq-heading-heading_APYixb * {
-        margin: 0;
-        font-size: 30px;
-        color: #005c53;
-        line-height: 130%;
-        text-transform: unset;
-      }
-
-      @media(min-width: 1024px) {
-        
-        .faq-heading-heading_APYixb {
-          text-align: left;
-          margin-top: 0px;
-        }
-  
-        .faq-heading-heading_APYixb * {
-          font-size: 48px;
-        }
-      }
-    </style>
-
-    
-
-  
-  
-
-  
-    <style>      
-      .faq-text-text_qBChHB {
-        text-align: center;
-        margin-top: 20px;
-      }
-
-      .faq-text-text_qBChHB * {
-        margin: 0;
-        font-size: 16px;
-        color: #757575;
-        line-height: 130%;
-        text-transform: unset;
-      }
-
-      @media(min-width: 1024px) {
-        
-        .faq-text-text_qBChHB {
-          text-align: left;
-          margin-top: 20px;
-        }
-  
-        .faq-text-text_qBChHB * {
-          font-size: 18px;
-        }
-      }
-    </style>
-
-    
-      <style>
-        .faq-text-text_qBChHB {
-          font-family: "Josefin Sans", sans-serif;
-          font-weight: 400;
-          font-style: normal;
-        }
-      </style>
-    
-
-  
   
 
   
@@ -570,7 +494,69 @@
       },
       {
         "type": "header",
-        "content": "Dection Layout"
+        "content": "Question Block"
+      },
+       {
+        "type": "color",
+        "id": "q-color",
+        "label": "Question Color",
+        "default": "#005c53"
+      },
+      {
+        "type": "color",
+        "id": "a-color",
+        "label": "Answer Color",
+        "default": "#757575"
+      },
+      {
+        "type": "range",
+        "id": "q-fs-d",
+        "label": "Question Font Size (Desktop)",
+        "min": 12,
+        "max": 60,
+        "step": 1,
+        "unit": "px",
+        "default": 18
+      },
+      {
+        "type": "range",
+        "id": "q-fs-m",
+        "label": "Question Font Size",
+        "min": 12,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "a-fs-d",
+        "label": "Answer Font Size (Desktop)",
+        "min": 6,
+        "max": 60,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "a-fs-m",
+        "label": "Answer Font Size",
+        "min": 6,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "default": 12
+      },
+      {
+        "type": "color",
+        "id": "q-bg",
+        "label": "Question Item Background",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Section Layout"
       },
       {
         "type": "range",
@@ -822,7 +808,7 @@
             "label": "Question",
             "default": "What is your return and exchange policy?"
           },
-                    {
+         {
             "type": "richtext",
             "id": "ans",
             "label": "Answer",
