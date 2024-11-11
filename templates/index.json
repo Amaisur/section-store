@@ -506,7 +506,20 @@
             "t-fs-d": 18,
             "t-fs": 16,
             "t-mt": 19,
-            "t-mb": 0
+            "t-mb": 45
+          }
+        },
+        "button_6AUPfr": {
+          "type": "button",
+          "settings": {
+            "text": "Get Now",
+            "url": "",
+            "b-color": "#fff",
+            "b-bg-color": "#000000",
+            "b-fs-d": 16,
+            "b-fs": 14,
+            "b-p": 16,
+            "b-r": 5
           }
         },
         "question_dia9DF": {
@@ -541,6 +554,7 @@
       "block_order": [
         "text_RftGhL",
         "text_4XViE7",
+        "button_6AUPfr",
         "question_dia9DF",
         "question_HVbGHb",
         "question_GaxQJV",
