@@ -528,13 +528,11 @@
         "pb": 36,
         "pt-d": 36,
         "pb-d": 36,
-        "p-lr": 5,
-        "p-lr-d": 1,
+        "p-lr": 1,
+        "p-lr-d": 5,
         "m-w": 120,
         "mt": 36,
-        "mb": 36,
-        "mt-d": 36,
-        "mb-d": 36
+        "mt-d": 36
       }
     },
     "collection_slider_iHc74y": {
