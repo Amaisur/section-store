@@ -407,7 +407,7 @@
       }
     </style>
 
-<div class="section-{{ section.id }} faq-{{ section.id }}" style="background-color:#f0f3f4; background-image: ;">
+<div class="section-{{ section.id }} faq-{{ section.id }}" style="background-color: {{ section.settings.bg-color }};{% if section.settings.bg-img != blank %} background-image: url({{ section.settings.bg-img | image_url: width: '1440px' }});{% endif %}">
     <div class="section-{{ section.id }}-settings">
       <div class="faq-body-{{ section.id }}">
         <div class="faq-content-{{ section.id }}">
@@ -562,6 +562,25 @@
   {
     "name": "FAQs",
     "settings": [
+      {
+        "type": "header",
+        "content": "Section Background"
+      },
+      {
+        "type": "image_picker",
+        "id": "bg-img",
+        "label": "Background Image"
+      },
+      {
+        "type": "color_background",
+        "id": "bg-color",
+        "label": "Background Color",
+        "default": "#f0f3f4"
+      },
+      {
+        "type": "header",
+        "content": "Dection Layout"
+      },
       {
         "type": "range",
         "id": "pt",
