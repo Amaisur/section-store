@@ -418,14 +418,28 @@
       <div class="faq-body-{{ section.id }}">
         <div class="faq-content-{{ section.id }}">
           
-            
-              <div class="faq-heading-heading_APYixb">
-                <h2>Have Questions?<br>We Have Answers.</h2>
+          {% for block in section.blocks %}  
+            {% case block.type %}
+              {% when 'text' %}
+              <style>
+                .text-{{ block.id }}{
+                  margin: {{ block.settings.t-mt }}px 0 {{ block.settings.t-mb }}px;
+                }
+                .text-{{ block.id }} *{
+                  font-size: {{ block.settings.t-fs }}px;
+                  color: {{ block.settings.t-color }};
+                }
+                @media (min-width: 768px){
+                .text-{{ block.id }} *{
+                  font-size: {{ block.settings.t-fs-d }}px;
+                }
+                }
+              </style>
+              <div class="text-d5 text-{{ block.id }}">
+                {{ block.settings.text }}
               </div>
-        
-              <div class="faq-text-text_qBChHB">
-                <p>Get quick solutions to your common lawn care concerns, from mowing to pest control. </p>
-              </div>            
+            {% endcase %}
+          {% endfor %}
               <a href="" class="faq-button-button_Hi7hP3">
                 Get it now
                 
@@ -700,6 +714,63 @@
       }
     ],
     "blocks": [
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+          },
+          {
+            "type": "color",
+            "id": "t-color",
+            "label": "Color",
+            "default": "#005c53"
+          },
+          {
+            "type": "range",
+            "id": "t-fs-d",
+            "label": "Font Size (Desktop)",
+            "min": 6,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 48
+          },
+          {
+            "type": "range",
+            "id": "t-fs",
+            "label": "Font Size",
+            "min": 6,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 30
+          },
+          {
+            "type": "range",
+            "id": "t-mt",
+            "label": "Margin Top",
+            "min": 0,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 0
+          },
+          {
+            "type": "range",
+            "id": "t-mb",
+            "label": "Margin Bottom",
+            "min": 0,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 0
+          }
+        ]
+      },
       {
         "type": "question",
         "name": "Question",
