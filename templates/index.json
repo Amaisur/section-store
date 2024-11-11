@@ -395,7 +395,7 @@
             "item_text_color": "#121212",
             "item_link_txt": "Shop Now",
             "item_link": "",
-            "item_link_color": "#fff",
+            "item_link_color": "#ffffff",
             "item_link_bg_color": "#343643",
             "item_link_padding_desktop": 16,
             "item_link_padding_mobile": 12,
@@ -422,7 +422,7 @@
             "item_text_color": "#121212",
             "item_link_txt": "Shop Now",
             "item_link": "",
-            "item_link_color": "#fff",
+            "item_link_color": "#ffffff",
             "item_link_bg_color": "#343643",
             "item_link_padding_desktop": 16,
             "item_link_padding_mobile": 12,
@@ -449,7 +449,7 @@
             "item_text_color": "#121212",
             "item_link_txt": "Shop Now",
             "item_link": "",
-            "item_link_color": "#fff",
+            "item_link_color": "#ffffff",
             "item_link_bg_color": "#343643",
             "item_link_padding_desktop": 16,
             "item_link_padding_mobile": 12,
@@ -486,6 +486,42 @@
     },
     "faq_9_Dz7J73": {
       "type": "faq-9",
+      "blocks": {
+        "question_dia9DF": {
+          "type": "question",
+          "settings": {
+            "quest": "<p><strong>What is your return and exchange policy?</strong></p>",
+            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "question_HVbGHb": {
+          "type": "question",
+          "settings": {
+            "quest": "<p><strong>What is your return and exchange policy?</strong></p>",
+            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "question_GaxQJV": {
+          "type": "question",
+          "settings": {
+            "quest": "<p><strong>What is your return and exchange policy?</strong></p>",
+            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "question_AUwypH": {
+          "type": "question",
+          "settings": {
+            "quest": "<p><strong>What is your return and exchange policy?</strong></p>",
+            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_dia9DF",
+        "question_HVbGHb",
+        "question_GaxQJV",
+        "question_AUwypH"
+      ],
       "settings": {}
     },
     "collection_slider_iHc74y": {
