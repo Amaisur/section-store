@@ -514,13 +514,25 @@
             "quest": "What is your return and exchange policy?",
             "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
           }
+        },
+        "text_RftGhL": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Have Questions?<br/>We Have Answers.</h2>",
+            "t-color": "#005c53",
+            "t-fs-d": 48,
+            "t-fs": 30,
+            "t-mt": 0,
+            "t-mb": 0
+          }
         }
       },
       "block_order": [
         "question_dia9DF",
         "question_HVbGHb",
         "question_GaxQJV",
-        "question_AUwypH"
+        "question_AUwypH",
+        "text_RftGhL"
       ],
       "settings": {
         "bg-color": "#f0f3f4",
@@ -532,7 +544,9 @@
         "p-lr-d": 5,
         "m-w": 120,
         "mt": 36,
-        "mt-d": 36
+        "lr-s": 20,
+        "mt-d": 36,
+        "lr-s-d": 40
       }
     },
     "collection_slider_iHc74y": {
