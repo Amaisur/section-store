@@ -1,4 +1,6 @@
+{% for block in section.blocks %}
 {% assign prop = block.settings %}
+{% endfor %}
 {% render 'announcement-bar', text: prop.text  %}
 
 {% schema %}
