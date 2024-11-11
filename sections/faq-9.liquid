@@ -16,10 +16,7 @@
 
   
   .section-{{ section.id }} {
-    margin-top: 12px;
-    margin-bottom: 12px;
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
+    max-width: {{ section.settings.m-w }}rem;
     border-radius: 30px;
     border: 0px solid #000000;
     overflow: hidden;
@@ -27,10 +24,10 @@
   
   .section-{{ section.id }}-settings {
     margin: 0 auto;
-    padding-top: 45px;
-    padding-bottom: 45px;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-top: {{ section.settings.pt }}px;
+    padding-bottom: {{ section.settings.pb }}px;
+    padding-left: {{ section.settings.p-lr }}rem;
+    padding-right: {{ section.settings.p-lr }}rem;
   }
 
   .faq-body-{{ section.id }} {
@@ -137,7 +134,13 @@
   } 
   
   @media(min-width: 1024px) {
-
+   .section-{{ section.id }}-settings {
+      margin: 0 auto;
+      padding-top: {{ section.settings.pt-d }}px;
+      padding-bottom: {{ section.settings.pb-d }}px;
+      padding-left: {{ section.settings.p-lr-d }}rem;
+      padding-right: {{ section.settings.p-lr-d }}rem;
+   }
     .section-{{ section.id }} {
       margin-top: 16px;
       margin-bottom: 16px;
@@ -276,17 +279,7 @@
   
 
   
-    <style>
-      @font-face {
-  font-family: "Josefin Sans";
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.c8300d95fd4ce72542a6efba9c682da40d144fba.woff2?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=1081bc13bac779d73b77022741d8b8608aa5451af6a05907fc023625940c00f1") format("woff2"),
-       url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=3f19a3e11bab2423756ce410220df09957f15affd53a78fa0ec435e5660aa636") format("woff");
-}
-
-      
+    <style>      
       .faq-text-text_qBChHB {
         text-align: center;
         margin-top: 20px;
@@ -569,7 +562,77 @@
 {% schema %}
   {
     "name": "FAQs",
-    "settings": [],
+    "settings": [
+      {
+        "type": "range",
+        "id": "pt",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Paddint Top",
+        "step": 1,
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "pb",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Paddint Bottom",
+        "step": 1,
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "pt-d",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Paddint Top (Desktop)",
+        "step": 1,
+        "default": 36
+      },{
+        "type": "range",
+        "id": "pb-d",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Paddint Bottom (Desktop)",
+        "step": 1,
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "p-lr",
+        "min": 0,
+        "max": 35,
+        "unit": "rem",
+        "label": "Padding Left Right",
+        "step": 1,
+        "default": 5
+      },
+       {
+        "type": "range",
+        "id": "p-lr-d",
+        "min": 0,
+        "max": 35,
+        "unit": "rem",
+        "label": "Padding Left Right (Desktop)",
+        "step": 1,
+        "default": 1
+      },
+      {
+        "type": "range",
+        "id": "m-w",
+        "min": 50,
+        "max": 220,
+        "unit": "rem",
+        "label": "Max Width",
+        "step": 2,
+        "default": 190
+      },
+    ],
     "blocks": [
       {
         "type": "question",
