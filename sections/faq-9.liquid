@@ -9,14 +9,6 @@
        url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=3f19a3e11bab2423756ce410220df09957f15affd53a78fa0ec435e5660aa636") format("woff");
 }
 
-  @font-face {
-  font-family: "Josefin Sans";
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.c8300d95fd4ce72542a6efba9c682da40d144fba.woff2?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=1081bc13bac779d73b77022741d8b8608aa5451af6a05907fc023625940c00f1") format("woff2"),
-       url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=3f19a3e11bab2423756ce410220df09957f15affd53a78fa0ec435e5660aa636") format("woff");
-}
 
   
   .section-{{ section.id }} {
@@ -247,15 +239,6 @@
 
   
     <style>
-      @font-face {
-  font-family: "Josefin Sans";
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.c8300d95fd4ce72542a6efba9c682da40d144fba.woff2?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=1081bc13bac779d73b77022741d8b8608aa5451af6a05907fc023625940c00f1") format("woff2"),
-       url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=3f19a3e11bab2423756ce410220df09957f15affd53a78fa0ec435e5660aa636") format("woff");
-}
-
       
       .faq-heading-heading_APYixb {
         text-align: center;
@@ -427,29 +410,6 @@
         background-color: #000000;
       }
     </style>
-  
-    
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
 
 <div class="section-{{ section.id }} faq-{{ section.id }}" style="background-color:#f0f3f4; background-image: ;">
     <div class="section-{{ section.id }}-settings">
@@ -478,10 +438,11 @@
           
         </div>
         <div class="faq-items-{{ section.id }}">
-       
+       {% for block in section.blocks %}
+         {% if block.type == 'question' %}
               <div class="faq-item-{{ section.id }}">
                 <div class="faq-toggle-{{ section.id }}">
-                  <p class="faq-question-{{ section.id }}">What is your return and exchange policy?</p>
+                  <p class="faq-question-{{ section.id }}">{{ block.settings.quest }}</p>
                   <div class="faq-arrow-{{ section.id }}" style="--rotate: 0deg;">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 143.000000 83.000000" preserveAspectRatio="xMidYMid meet">
                       <g transform="translate(0.000000,83.000000) scale(0.100000,-0.100000)" fill="" stroke="none">
@@ -491,13 +452,14 @@
                   </div>
                 </div>
                 <div class="faq-answer-{{ section.id }}" style="display: none; height: 0px; padding-top: 0px; padding-bottom: 0px;">
-                    <p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                  </div>
+                  {{ block.settings.ans }}
+                   </div>
                 <div class="faq-height-cal-{{ section.id }}">
-                  <p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
+                  {{ block.settings.ans }}
+                   </div>
               </div>
-        
+          {% endif %}
+        {% endfor %}
           
         </div>
       </div>
@@ -604,6 +566,26 @@
   {
     "name": "FAQs",
     "settings": [],
+    "blocks": [
+      {
+        "type": "question",
+        "name": "Question",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "quest",
+            "label": "Question",
+            "default": "<p>What is your return and exchange policy?</p>"
+          },
+                    {
+            "type": "richtext",
+            "id": "ans",
+            "label": "Answer",
+            "default": "<p>Answer</p>"
+          }
+        ]
+      }
+    ],
     "presets": [
       {
         "name": "FAQs"
