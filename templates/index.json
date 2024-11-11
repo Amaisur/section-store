@@ -49,6 +49,10 @@
         "show_text_below": false
       }
     },
+    "announcement_bar_2_WB7e3k": {
+      "type": "announcement-bar-2",
+      "settings": {}
+    },
     "hotspots_detail_qtngrJ": {
       "type": "hotspots-detail",
       "blocks": {
@@ -514,7 +518,7 @@
           "settings": {
             "text": "Get Now",
             "url": "",
-            "b-color": "#fff",
+            "b-color": "#ffffff",
             "b-bg-color": "#000000",
             "b-fs-d": 16,
             "b-fs": 14,
@@ -562,6 +566,14 @@
       ],
       "settings": {
         "bg-color": "#f0f3f4",
+        "left": true,
+        "q-color": "#005c53",
+        "a-color": "#757575",
+        "q-fs-d": 18,
+        "q-fs-m": 16,
+        "a-fs-d": 16,
+        "a-fs-m": 12,
+        "q-bg": "#fff",
         "pt": 36,
         "pb": 36,
         "pt-d": 36,
@@ -1439,239 +1451,11 @@
         "border-color": "#292929",
         "shade-color": "rgba(255,255,255,0.15)"
       }
-    },
-    "after_before_slider_8cX6J4": {
-      "type": "after-before-slider",
-      "blocks": {
-        "slide_C9fEtD": {
-          "type": "slide",
-          "settings": {
-            "af-image": "shopify://shop_images/684dc7cf4706522d388ae95f11dc691a.png",
-            "bf-image": "shopify://shop_images/0e20a93a465e26603f5c004f1e98c5ef.png",
-            "star-rate": "two",
-            "slide-head": "No Really. It’s That Good.",
-            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. </p>"
-          }
-        },
-        "slide_q4nGky": {
-          "type": "slide",
-          "settings": {
-            "af-image": "shopify://shop_images/RicemintyLittleLight1.webp",
-            "bf-image": "shopify://shop_images/RicepuddingLittleLight1.webp",
-            "star-rate": "five",
-            "slide-head": "No Really. It’s That Good.",
-            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. </p>"
-          }
-        },
-        "slide_AbLzMC": {
-          "type": "slide",
-          "settings": {
-            "af-image": "shopify://shop_images/Ricecarrot-Face-Mask.webp",
-            "bf-image": "shopify://shop_images/Riceturnip-2FaceMask.webp",
-            "star-rate": "five",
-            "slide-head": "No Really. It’s That Good.",
-            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. </p>"
-          }
-        },
-        "slide_3MccdH": {
-          "type": "slide",
-          "settings": {
-            "af-image": "shopify://shop_images/Flash-Masking-Tape.webp",
-            "bf-image": "shopify://shop_images/HalloweenStickersC.webp",
-            "star-rate": "five",
-            "slide-head": "No Really. It’s That Good.",
-            "description": "<p>This throw rug brought an unmatched elegance and warmth, completely revitalizing the room’s atmosphere. It became the centerpiece that tied all other decor elements together. </p>"
-          }
-        }
-      },
-      "block_order": [
-        "slide_C9fEtD",
-        "slide_q4nGky",
-        "slide_AbLzMC",
-        "slide_3MccdH"
-      ],
-      "disabled": true,
-      "settings": {
-        "af-text": "To This",
-        "bf-text": "From This",
-        "p-top": 3,
-        "p-bottom": 3,
-        "p-right": 15,
-        "p-left": 15,
-        "gap-d": 100,
-        "h-size": 45,
-        "t-size": 18,
-        "font-w-d": true,
-        "p-top-m": 3,
-        "p-bottom-m": 3,
-        "p-right-m": 1,
-        "p-left-m": 1,
-        "h-size-m": 25,
-        "t-size-m": 18,
-        "font-w-m": true,
-        "bg-color": "#f3f0ea",
-        "text-color": "#000000",
-        "sec-color": "#bd9a5b"
-      }
-    },
-    "hotspot_product_JEfBR9": {
-      "type": "hotspot-product",
-      "blocks": {
-        "product_dot_LRB7Bc": {
-          "type": "product-dot",
-          "settings": {
-            "product": "black-paper-tape",
-            "left-dot": 54,
-            "top-dot": 71
-          }
-        },
-        "product_dot_wBPEBk": {
-          "type": "product-dot",
-          "settings": {
-            "product": "beauty-brushes",
-            "left-dot": 23,
-            "top-dot": 25
-          }
-        },
-        "product_dot_r9zdQF": {
-          "type": "product-dot",
-          "settings": {
-            "product": "ice-cream",
-            "left-dot": 86,
-            "top-dot": 49
-          }
-        }
-      },
-      "block_order": [
-        "product_dot_LRB7Bc",
-        "product_dot_wBPEBk",
-        "product_dot_r9zdQF"
-      ],
-      "disabled": true,
-      "settings": {
-        "bg-img": "shopify://shop_images/c205643ed7e99ee4450cda03fad2ce99.png",
-        "vertical-margin": 100,
-        "height-sect": 700,
-        "button-s": 20,
-        "title-s": 20,
-        "price-s": 20,
-        "bg-color": "#ae7e7e",
-        "dot-color": "#ed8585",
-        "dot-color-b": "#ffffff",
-        "a-dot-color": "#ed6060",
-        "pd-bg": "#ffffff",
-        "btn-bg": "#000000",
-        "btn-bg-h": "#ffffff",
-        "btn-clr": "#ffffff",
-        "btn-clr-h": "#000000",
-        "txt1-color": "#000000",
-        "txt2-color": "#ffffff"
-      }
-    },
-    "hero_9_hYpfrg": {
-      "type": "hero-9",
-      "blocks": {
-        "left_box_image_ciQrMM": {
-          "type": "Left-Box-image",
-          "settings": {
-            "image_data": "shopify://shop_images/Riceturnip-2FaceMask.webp",
-            "image_width": "100%",
-            "image_height": "auto",
-            "image_fit": "cover",
-            "border_radius": "20px"
-          }
-        },
-        "left_box_image_Xj643n": {
-          "type": "Left-Box-image",
-          "settings": {
-            "image_data": "shopify://shop_images/Ricecarrot-Face-Mask.webp",
-            "image_width": "100%",
-            "image_height": "auto",
-            "image_fit": "cover",
-            "border_radius": "20px"
-          }
-        },
-        "left_box_image_nrqpiL": {
-          "type": "Left-Box-image",
-          "settings": {
-            "image_data": "shopify://shop_images/MissDinoFaceMask_46c550e4-1b0f-481e-b8e6-c48fe06cb6f3.webp",
-            "image_width": "100%",
-            "image_height": "auto",
-            "image_fit": "cover",
-            "border_radius": "20px"
-          }
-        },
-        "right_box_image_eV7d9h": {
-          "type": "Right-Box-image",
-          "settings": {
-            "image_data": "shopify://shop_images/RicepuddingLittleLight1.webp",
-            "image_width": "100%",
-            "image_height": "auto",
-            "image_fit": "cover",
-            "border_radius": "20px"
-          }
-        },
-        "right_box_image_dWyB7A": {
-          "type": "Right-Box-image",
-          "settings": {
-            "image_data": "shopify://shop_images/RicedinoLittleLight1.webp",
-            "image_width": "100%",
-            "image_height": "auto",
-            "image_fit": "cover",
-            "border_radius": "20px"
-          }
-        },
-        "right_box_image_9XeNGc": {
-          "type": "Right-Box-image",
-          "settings": {
-            "image_data": "shopify://shop_images/RicemoguLittleLight1.webp",
-            "image_width": "100%",
-            "image_height": "auto",
-            "image_fit": "cover",
-            "border_radius": "20px"
-          }
-        }
-      },
-      "block_order": [
-        "left_box_image_ciQrMM",
-        "left_box_image_Xj643n",
-        "left_box_image_nrqpiL",
-        "right_box_image_eV7d9h",
-        "right_box_image_dWyB7A",
-        "right_box_image_9XeNGc"
-      ],
-      "disabled": true,
-      "settings": {
-        "position": "row",
-        "heading_text": "Don’t just take our word of it",
-        "text_content": "Read what our clients have to say",
-        "heading_font_size": 48,
-        "heading_line_height": 1.2,
-        "text_font_size": 16,
-        "text_line_height": 1.2,
-        "button_url": "",
-        "button_text": "Shop Now",
-        "button_font_size": 16,
-        "button_padding": 10,
-        "button_margin_top": 20,
-        "button_border_radius": 5,
-        "button_border_thickness": 1,
-        "otherdata_width": "50%",
-        "sliderdata_width": "50%",
-        "padding_top": "100px",
-        "padding_bottom": "100px",
-        "padding_sides": "0px",
-        "background_color": "#e4d6d6",
-        "heading_color": "#ffffff",
-        "text_color": "#ffffff",
-        "button_border_color": "#000000",
-        "button_bg_color": "#ffffff",
-        "button_text_color": "#000000"
-      }
     }
   },
   "order": [
     "image_banner",
+    "announcement_bar_2_WB7e3k",
     "hotspots_detail_qtngrJ",
     "coundown_timer_apcC7X",
     "coundown_timer_gMm4Mg",
@@ -1692,9 +1476,6 @@
     "scrolling_testimonial_gCnbUE",
     "scrolling_testimonial_tbkhzC",
     "scrolling_testimonial_xXVQcx",
-    "scrolling_testimonial_w4Mjg6",
-    "after_before_slider_8cX6J4",
-    "hotspot_product_JEfBR9",
-    "hero_9_hYpfrg"
+    "scrolling_testimonial_w4Mjg6"
   ]
 }
