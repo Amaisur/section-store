@@ -1,5 +1,5 @@
 
-<div id="shopify-section-template--21210036863305__ss_faq_9_z6dxnW" class="shopify-section">
+<div id="shopify-section-{{ section.id }}" class="shopify-section">
 <style data-shopify="">@font-face {
   font-family: "Josefin Sans";
   font-weight: 400;
@@ -19,7 +19,7 @@
 }
 
   
-  .section-template--21210036863305__ss_faq_9_z6dxnW {
+  .section-{{ section.id }} {
     margin-top: 12px;
     margin-bottom: 12px;
     margin-left: 1.5rem;
@@ -29,7 +29,7 @@
     overflow: hidden;
   }
   
-  .section-template--21210036863305__ss_faq_9_z6dxnW-settings {
+  .section-{{ section.id }}-settings {
     margin: 0 auto;
     padding-top: 45px;
     padding-bottom: 45px;
@@ -37,12 +37,12 @@
     padding-right: 1.5rem;
   }
 
-  .faq-body-template--21210036863305__ss_faq_9_z6dxnW {
+  .faq-body-{{ section.id }} {
     display: grid;
     gap: 20px;
   }
 
-  .faq-item-template--21210036863305__ss_faq_9_z6dxnW {
+  .faq-item-{{ section.id }} {
     padding: 20px 20px;
     border-radius: 10px;
     border: 0px solid #000000;
@@ -50,11 +50,11 @@
     position: relative;
   }
 
-  .faq-item-template--21210036863305__ss_faq_9_z6dxnW:not(:first-child) {
+  .faq-item-{{ section.id }}:not(:first-child) {
     margin-top: 8px;
   }
 
-  .faq-toggle-template--21210036863305__ss_faq_9_z6dxnW {
+  .faq-toggle-{{ section.id }} {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -62,7 +62,7 @@
     gap: 12px;
   }
 
-  .faq-arrow-template--21210036863305__ss_faq_9_z6dxnW {
+  .faq-arrow-{{ section.id }} {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,16 +74,16 @@
     border: 0px solid #6c584c;
   }
 
-  .faq-arrow-template--21210036863305__ss_faq_9_z6dxnW svg {
+  .faq-arrow-{{ section.id }} svg {
     width: 12px;
     height: 12px;
   }
 
-  .faq-arrow-template--21210036863305__ss_faq_9_z6dxnW svg path {
+  .faq-arrow-{{ section.id }} svg path {
     fill: #757575;
   }
 
-  .faq-question-template--21210036863305__ss_faq_9_z6dxnW {
+  .faq-question-{{ section.id }} {
     margin: 0px;
     font-size: 14px;
     color: #005c53;
@@ -92,12 +92,12 @@
     font-weight: 700;
   }
 
-  .faq-answer-template--21210036863305__ss_faq_9_z6dxnW {
+  .faq-answer-{{ section.id }} {
     transition: all 0.2s ease-in-out;
     overflow: hidden;
   }
 
-  .faq-answer-template--21210036863305__ss_faq_9_z6dxnW * {
+  .faq-answer-{{ section.id }} * {
     margin: 0px;
     font-size: 12px;
     color: #757575;
@@ -105,15 +105,15 @@
     text-transform: unset;
   }
 
-  .faq-answer-template--21210036863305__ss_faq_9_z6dxnW p {
+  .faq-answer-{{ section.id }} p {
     min-height: 10px;
   }
 
-  .faq-answer-template--21210036863305__ss_faq_9_z6dxnW p:not(:first-child ) {
+  .faq-answer-{{ section.id }} p:not(:first-child ) {
     margin-top: 10px;
   } 
 
-  .faq-height-cal-template--21210036863305__ss_faq_9_z6dxnW {
+  .faq-height-cal-{{ section.id }} {
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
@@ -124,7 +124,7 @@
     padding-top: 16px;
   }
 
-  .faq-height-cal-template--21210036863305__ss_faq_9_z6dxnW * {
+  .faq-height-cal-{{ section.id }} * {
     margin: 0px;
     font-size: 12px;
     color: #757575;
@@ -132,24 +132,24 @@
     text-transform: unset;
   }
 
-  .faq-height-cal-template--21210036863305__ss_faq_9_z6dxnW p {
+  .faq-height-cal-{{ section.id }} p {
     min-height: 10px;
   }
 
-  .faq-height-cal-template--21210036863305__ss_faq_9_z6dxnW p:not(:first-child ) {
+  .faq-height-cal-{{ section.id }} p:not(:first-child ) {
     margin-top: 10px;
   } 
   
   @media(min-width: 1024px) {
 
-    .section-template--21210036863305__ss_faq_9_z6dxnW {
+    .section-{{ section.id }} {
       margin-top: 16px;
       margin-bottom: 16px;
       margin-left: 5rem;
       margin-right: 5rem;
     }
     
-    .section-template--21210036863305__ss_faq_9_z6dxnW-settings {
+    .section-{{ section.id }}-settings {
       padding: 0 5rem;
       padding-top: 60px;
       padding-bottom: 60px;
@@ -157,46 +157,46 @@
       padding-right: 5rem;
     }
 
-    .faq-body-template--21210036863305__ss_faq_9_z6dxnW {
+    .faq-body-{{ section.id }} {
       gap: 30px;
     }
 
-    .faq-item-template--21210036863305__ss_faq_9_z6dxnW {
+    .faq-item-{{ section.id }} {
       padding: 20px 20px;
     }
     
-    .faq-item-template--21210036863305__ss_faq_9_z6dxnW:not(:first-child) {
+    .faq-item-{{ section.id }}:not(:first-child) {
       margin-top: 10px;
     }
 
-    .faq-question-template--21210036863305__ss_faq_9_z6dxnW {
+    .faq-question-{{ section.id }} {
       font-size: 18px;
     }
 
-    .faq-answer-template--21210036863305__ss_faq_9_z6dxnW * {
+    .faq-answer-{{ section.id }} * {
       font-size: 16px;
     }
 
-    .faq-arrow-template--21210036863305__ss_faq_9_z6dxnW {
+    .faq-arrow-{{ section.id }} {
       flex: 0 0 24px;
       height: 24px;
     }
   
-    .faq-arrow-template--21210036863305__ss_faq_9_z6dxnW svg {
+    .faq-arrow-{{ section.id }} svg {
       width: 12px;
       height: 12px;
     }
 
-    .faq-height-cal-template--21210036863305__ss_faq_9_z6dxnW {
+    .faq-height-cal-{{ section.id }} {
       width: calc(100% - 40px);
     }
 
-    .faq-height-cal-template--21210036863305__ss_faq_9_z6dxnW * {
+    .faq-height-cal-{{ section.id }} * {
       font-size: 16px;
     }
   }</style>
   <style>
-    .section-template--21210036863305__ss_faq_9_z6dxnW-settings {
+    .section-{{ section.id }}-settings {
       max-width: 130rem;
     }
   </style>
@@ -208,11 +208,11 @@
 
 
   <style>
-    .faq-items-template--21210036863305__ss_faq_9_z6dxnW {
+    .faq-items-{{ section.id }} {
       order: 2;
     }
 
-    .faq-content-template--21210036863305__ss_faq_9_z6dxnW {
+    .faq-content-{{ section.id }} {
       order: 1;
     }
   </style>
@@ -221,15 +221,15 @@
 
   <style>
     @media(min-width: 1024px) {
-      .faq-body-template--21210036863305__ss_faq_9_z6dxnW {
+      .faq-body-{{ section.id }} {
         grid-template-columns: 1fr 1fr;
       }
 
-      .faq-items-template--21210036863305__ss_faq_9_z6dxnW {
+      .faq-items-{{ section.id }} {
         order: 2;
       }
   
-      .faq-content-template--21210036863305__ss_faq_9_z6dxnW {
+      .faq-content-{{ section.id }} {
         order: 1;
       }
     }
@@ -238,7 +238,7 @@
 
 
   <style>
-    .faq-item-template--21210036863305__ss_faq_9_z6dxnW {
+    .faq-item-{{ section.id }} {
       box-shadow: rgba(18, 18, 23, 0.08) 0px 6px 4px -1px;
     }
   </style>
@@ -451,10 +451,10 @@
   
 
 
-<div class="section-template--21210036863305__ss_faq_9_z6dxnW faq-template--21210036863305__ss_faq_9_z6dxnW" style="background-color:#f0f3f4; background-image: ;">
-    <div class="section-template--21210036863305__ss_faq_9_z6dxnW-settings">
-      <div class="faq-body-template--21210036863305__ss_faq_9_z6dxnW">
-        <div class="faq-content-template--21210036863305__ss_faq_9_z6dxnW">
+<div class="section-{{ section.id }} faq-{{ section.id }}" style="background-color:#f0f3f4; background-image: ;">
+    <div class="section-{{ section.id }}-settings">
+      <div class="faq-body-{{ section.id }}">
+        <div class="faq-content-{{ section.id }}">
           
             
               <div class="faq-heading-heading_APYixb">
@@ -477,12 +477,12 @@
                 
           
         </div>
-        <div class="faq-items-template--21210036863305__ss_faq_9_z6dxnW">
+        <div class="faq-items-{{ section.id }}">
        
-              <div class="faq-item-template--21210036863305__ss_faq_9_z6dxnW">
-                <div class="faq-toggle-template--21210036863305__ss_faq_9_z6dxnW">
-                  <p class="faq-question-template--21210036863305__ss_faq_9_z6dxnW">What is your return and exchange policy?</p>
-                  <div class="faq-arrow-template--21210036863305__ss_faq_9_z6dxnW" style="--rotate: 0deg;">
+              <div class="faq-item-{{ section.id }}">
+                <div class="faq-toggle-{{ section.id }}">
+                  <p class="faq-question-{{ section.id }}">What is your return and exchange policy?</p>
+                  <div class="faq-arrow-{{ section.id }}" style="--rotate: 0deg;">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 143.000000 83.000000" preserveAspectRatio="xMidYMid meet">
                       <g transform="translate(0.000000,83.000000) scale(0.100000,-0.100000)" fill="" stroke="none">
                       <path d="M57 772 l-57 -57 360 -360 360 -360 357 357 358 358 -63 62 -62 63 -298 -298 -297 -297 -295 295 c-162 162 -297 295 -300 295 -3 0 -31 -26 -63 -58z"></path>
@@ -490,10 +490,10 @@
                     </svg>
                   </div>
                 </div>
-                <div class="faq-answer-template--21210036863305__ss_faq_9_z6dxnW" style="display: none; height: 0px; padding-top: 0px; padding-bottom: 0px;">
+                <div class="faq-answer-{{ section.id }}" style="display: none; height: 0px; padding-top: 0px; padding-bottom: 0px;">
                     <p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                   </div>
-                <div class="faq-height-cal-template--21210036863305__ss_faq_9_z6dxnW">
+                <div class="faq-height-cal-{{ section.id }}">
                   <p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
               </div>
@@ -511,19 +511,19 @@
     const answerPaddingBottom = 0;
 
     const faqs = document.querySelectorAll(
-      '.faq-item-template--21210036863305__ss_faq_9_z6dxnW'
+      '.faq-item-{{ section.id }}'
     );
     const buttons = document.querySelectorAll(
-      '.faq-toggle-template--21210036863305__ss_faq_9_z6dxnW'
+      '.faq-toggle-{{ section.id }}'
     );
     const answers = document.querySelectorAll(
-      '.faq-answer-template--21210036863305__ss_faq_9_z6dxnW'
+      '.faq-answer-{{ section.id }}'
     );
     const answersHeightCalElements = document.querySelectorAll(
-      '.faq-height-cal-template--21210036863305__ss_faq_9_z6dxnW'
+      '.faq-height-cal-{{ section.id }}'
     );
     const icons = document.querySelectorAll(
-      '.faq-arrow-template--21210036863305__ss_faq_9_z6dxnW'
+      '.faq-arrow-{{ section.id }}'
     );
 
     let activeIndex = -1;
