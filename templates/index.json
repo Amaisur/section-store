@@ -377,6 +377,7 @@
         "item_6hh6ty": {
           "type": "item",
           "settings": {
+            "card-bg": "#f3f3f3",
             "item_image": "shopify://shop_images/C1_971306a5-007d-43d4-93a7-e5074e0355ff.png",
             "item_video": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
             "autoplay": true,
@@ -392,15 +393,19 @@
             "item_text_font_size_desktop": 16,
             "item_text_font_size_mobile": 13,
             "item_text_color": "#121212",
+            "item_link_txt": "Shop Now",
             "item_link": "",
+            "item_link_color": "#fff",
             "item_link_bg_color": "#343643",
             "item_link_padding_desktop": 16,
-            "item_link_padding_mobile": 12
+            "item_link_padding_mobile": 12,
+            "btn-r": 12
           }
         },
         "item_nCKrAH": {
           "type": "item",
           "settings": {
+            "card-bg": "#f3f3f3",
             "item_video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
             "autoplay": true,
             "loop": true,
@@ -415,15 +420,19 @@
             "item_text_font_size_desktop": 16,
             "item_text_font_size_mobile": 13,
             "item_text_color": "#121212",
+            "item_link_txt": "Shop Now",
             "item_link": "",
+            "item_link_color": "#fff",
             "item_link_bg_color": "#343643",
             "item_link_padding_desktop": 16,
-            "item_link_padding_mobile": 12
+            "item_link_padding_mobile": 12,
+            "btn-r": 12
           }
         },
         "item_LARPby": {
           "type": "item",
           "settings": {
+            "card-bg": "#f3f3f3",
             "item_video": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
             "autoplay": true,
             "loop": true,
@@ -438,10 +447,13 @@
             "item_text_font_size_desktop": 16,
             "item_text_font_size_mobile": 13,
             "item_text_color": "#121212",
+            "item_link_txt": "Shop Now",
             "item_link": "",
+            "item_link_color": "#fff",
             "item_link_bg_color": "#343643",
             "item_link_padding_desktop": 16,
-            "item_link_padding_mobile": 12
+            "item_link_padding_mobile": 12,
+            "btn-r": 12
           }
         }
       },
@@ -451,7 +463,6 @@
         "item_LARPby"
       ],
       "settings": {
-        "font_color": "#121212",
         "title_text": "Reimagine Your Everyday",
         "title_font_size_desktop": 44,
         "title_font_size_mobile": 37,
@@ -468,8 +479,14 @@
         "padding_right_desktop": 5,
         "padding_top_mobile": 27,
         "padding_bottom_mobile": 27,
+        "padding_left_mobile": 5,
+        "padding_right_mobile": 5,
         "section_bg_color": "#ffffff"
       }
+    },
+    "faq_9_Dz7J73": {
+      "type": "faq-9",
+      "settings": {}
     },
     "collection_slider_iHc74y": {
       "type": "Collection-slider",
@@ -1575,6 +1592,7 @@
     "featured_collection_d5_V7Q3xQ",
     "hotspots_4_HGjatk",
     "video_multicolumn_eYdPVb",
+    "faq_9_Dz7J73",
     "collection_slider_iHc74y",
     "echo_section_ss_3_Tp6ghe",
     "details_slider_iWGfm4",
