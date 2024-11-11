@@ -1,5 +1,5 @@
 
-<div id="shopify-section-{{ section.id }}" class="shopify-section">
+
 <style data-shopify="">@font-face {
   font-family: "Josefin Sans";
   font-weight: 400;
@@ -14,14 +14,15 @@
   box-sizing: border-box;
 }
 
-  
+  #shopify-section-{{ section.id }}{
+    margin: {{ section.settings.mt }}px auto;
+    padding: 0 {{ section.settings.lr-s }}px;
+  }
   .section-{{ section.id }} {
     max-width: {{ section.settings.m-w }}rem;
     border-radius: 30px;
     border: 0px solid #000000;
     overflow: hidden;
-    margin: {{ section.settings.mt }}px auto;
-    padding: 0 {{ section.settings.lr-s }}px;
   }
   
   .section-{{ section.id }}-settings {
@@ -136,6 +137,10 @@
   } 
   
   @media(min-width: 1024px) {
+   #shopify-section-{{ section.id }}{
+      margin: {{ section.settings.mt-d }}px auto;
+      padding: 0 {{ section.settings.lr-s-d }}px;
+   }
    .section-{{ section.id }}-settings {
       margin: 0 auto;
       padding-top: {{ section.settings.pt-d }}px;
@@ -145,8 +150,6 @@
    }
     .section-{{ section.id }} {
       max-width: {{ section.settings.m-w }}rem;
-      margin: {{ section.settings.mt-d }}px auto;
-      padding: 0  {{ section.settings.lr-s-d }}px;
     }
     
     .section-{{ section.id }}-settings {
@@ -556,7 +559,6 @@
   }
 </script>
 
-</div>
 
 
 
