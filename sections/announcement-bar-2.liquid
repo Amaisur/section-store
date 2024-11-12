@@ -1,7 +1,11 @@
 {% for block in section.blocks %}
-{% assign prop = block.settings %}
+{% assign block.settings = block.settings %}
 {% endfor %}
-{% render 'announcement-bar'
+{% render 'announcement-bar',
+  text: block.settings.text,
+  min_text: block.settings.min-text,
+  img: block.settings.img,
+  svg: block.settings.svg
 %}
 
 {% schema %}
