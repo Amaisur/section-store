@@ -156,9 +156,10 @@
                         {% endif %}
                     
                   </div>
-                
-                  <p class="announcement-text-{{ section.id }}">{{ block.settings.text }}</p>
-                
+                <div class="text-content">
+                  <p class="announcement-text-{{ section.id }}">{{ text }}</p>
+                  <p class="announcement-text-{{ section.id }}">{{ min_text }}</p>
+                </div>
               </div>
             {% endfor %}
             
