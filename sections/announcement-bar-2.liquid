@@ -1,7 +1,12 @@
 {% for block in section.blocks %}
 {% assign prop = block.settings %}
 {% endfor %}
-{% render 'announcement-bar', text: prop.text  %}
+{% render 'announcement-bar',
+  text: prop.text,
+  min_text: prop.min-text,
+  img: prop.img,
+  svg: prop.svg
+%}
 
 {% schema %}
   {
@@ -17,6 +22,21 @@
             "id": "text",
             "label": "Text",
             "default": "WORLD WIDE SHIPPING"
+          },
+          {
+            "type": "text",
+            "id": "min-text",
+            "label": "Small Text"
+          },
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+          },
+          {
+            "type": "liquid",
+            "id": "svg",
+            "label": "Paste SVG Code"
           }
         ]
       }
