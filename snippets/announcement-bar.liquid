@@ -44,10 +44,17 @@
     gap: 10px;
   }
 
-  .announcement-text-{{ section.id }} {
+  .announcement-text-{{ section.id }} .main-txt-d5 {
     margin: 0;
-    font-size: 12px;
-    color: #ffffff;
+    font-size: {{ section.settings.fs-t }}px;
+    color: {{ section.settings.c-t }};
+    line-height: 100%;
+    text-transform: unset;
+  }
+   .announcement-text-{{ section.id }} .small-txt-d5 {
+    margin: 0;
+    font-size: {{ section.settings.fs-t-s }}px;
+    color: {{ section.settings.c-t-s }};
     line-height: 100%;
     text-transform: unset;
   }
@@ -106,9 +113,7 @@
       width: 20px;
     }
 
-    .announcement-text-{{ section.id }} {
-      font-size: 12px;
-    }
+  
   }</style>
 
 
@@ -156,9 +161,9 @@
                         {% endif %}
                     
                   </div>
-                <div class="text-content">
-                  <p class="announcement-text-{{ section.id }}">{{ block.settings.text }}</p>
-                  <p class="announcement-text-{{ section.id }}">{{ block.settings.min-text }}</p>
+                <div class="text-content-d5">
+                  <p class="announcement-text-{{ section.id }} main-txt-d5">{{ block.settings.text }}</p>
+                  <p class="announcement-text-{{ section.id }} small-txt-d5">{{ block.settings.min-text }}</p>
                 </div>
               </div>
             {% endfor %}
