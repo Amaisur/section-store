@@ -127,7 +127,7 @@
         "text_wcYqrm"
       ],
       "settings": {
-        "anim": "d5-lr-anim",
+        "anim": "d5-rl-anim",
         "g-main-d": 78,
         "g-main": 60,
         "g-t-d": 50,
@@ -152,11 +152,41 @@
         "gap-t": 10,
         "font_choice": "montserrat"
       }
+    },
+    "announcement_bar_2_PCHkBA": {
+      "type": "announcement-bar-2",
+      "settings": {
+        "anim": "d5-lr-anim",
+        "g-main-d": 50,
+        "g-main": 30,
+        "g-t-d": 50,
+        "g-t": 30,
+        "pt": 36,
+        "pb": 36,
+        "pt-d": 36,
+        "padding-bottom-desktop": 36,
+        "an-bg": "linear-gradient(90deg, #8A5FFD 0%, #44A4FD 100%)",
+        "mt-d": 50,
+        "mb-d": 50,
+        "mt": 50,
+        "mb": 50,
+        "icons-s": 60,
+        "icons-s-m": 38,
+        "fs-t-d": 25,
+        "fs-t": 16,
+        "c-t": "#fff",
+        "fs-t-s-d": 18,
+        "fs-t-s": 12,
+        "c-t-s": "#fff",
+        "gap-t": 10,
+        "font_choice": "montserrat"
+      }
     }
   },
   "order": [
     "main",
     "announcement_bar_2_KtrkAa",
-    "announcement_bar_2_YHwXAa"
+    "announcement_bar_2_YHwXAa",
+    "announcement_bar_2_PCHkBA"
   ]
 }
