@@ -93,11 +93,6 @@
     align-items: center;
     justify-content: center;
   }
-  {% for block in section.block %}
-   .d5-block-{{ block.id }} .text-content-d5{
-     flex-direction: {{ block.settings.position }};
-   }
-  {% endfor %}
   @media(min-width: 1024px) {
 
     .section-{{ section.id }} {
@@ -170,7 +165,7 @@
                         {% endif %}
                     
                   </div>
-                <div class="text-content-d5">
+                <div class="text-content-d5" style="flex-direction: {{ block.settings.position }};">
                   <p class="announcement-text-{{ section.id }} main-txt-d5">{{ block.settings.text }}</p>
                   <p class="announcement-text-{{ section.id }} small-txt-d5">{{ block.settings.min-text }}</p>
                 </div>
@@ -195,7 +190,7 @@
                         {% endif %}
                     
                   </div>
-                <div class="text-content-d5">
+             <div class="text-content-d5" style="flex-direction: {{ block.settings.position }};">
                   <p class="announcement-text-{{ section.id }} main-txt-d5">{{ block.settings.text }}</p>
                   <p class="announcement-text-{{ section.id }} small-txt-d5">{{ block.settings.min-text }}</p>
                 </div>
