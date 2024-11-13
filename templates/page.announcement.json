@@ -11,13 +11,83 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "announcement_bar_2_KtrkAa": {
+      "type": "announcement-bar-2",
+      "blocks": {
+        "text_JTNf9C": {
+          "type": "text",
+          "settings": {
+            "text": "INGREDIENTS",
+            "min-text": "ALL-NATURAL",
+            "svg": "",
+            "position": "column-reverse"
+          }
+        },
+        "text_gd8XFq": {
+          "type": "text",
+          "settings": {
+            "text": "PALEO & KETO",
+            "min-text": "FRIENDLY",
+            "svg": "",
+            "position": "column"
+          }
+        },
+        "text_dTahKN": {
+          "type": "text",
+          "settings": {
+            "text": "CARBS",
+            "min-text": "LOW",
+            "svg": "",
+            "position": "column-reverse"
+          }
+        },
+        "text_yJPTTj": {
+          "type": "text",
+          "settings": {
+            "text": "SUGAR",
+            "min-text": "NO",
+            "svg": "",
+            "position": "column-reverse"
+          }
+        },
+        "text_KeXerd": {
+          "type": "text",
+          "settings": {
+            "text": "UP",
+            "min-text": "DOWN",
+            "svg": "",
+            "position": "column"
+          }
+        }
+      },
+      "block_order": [
+        "text_JTNf9C",
+        "text_gd8XFq",
+        "text_dTahKN",
+        "text_yJPTTj",
+        "text_KeXerd"
+      ],
+      "settings": {
+        "pt": 10,
+        "pb": 10,
+        "pt-d": 12,
+        "pb-d": 12,
+        "an-bg": "rgba(255, 209, 167, 1)",
+        "fs-t": 28,
+        "c-t": "#612323",
+        "fs-t-s": 18,
+        "c-t-s": "#a73814"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "announcement_bar_2_KtrkAa"
   ]
 }
