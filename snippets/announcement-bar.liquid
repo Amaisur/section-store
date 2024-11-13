@@ -183,7 +183,7 @@
             {% for block in section.blocks %}
 
               <div class="announcement-item-{{ section.id }} d5-block-{{ block.id }}">
-                
+                {% if block.settings.img != blank or block.settings.svg != blank %}
                   <div class="announcement-icon-{{ section.id }}">
                         {% if block.settings.img != blank %}
                         <img class="d5-image-{{ section.id }}" src="{{ block.settings.img | image_url: width: "200px" }}" width="" height="">
@@ -192,6 +192,7 @@
                         {% endif %}
                     
                   </div>
+                {% endif %}
                 <div class="text-content-d5" style="flex-direction: {{ block.settings.position }};">
                   <p class="announcement-text-{{ section.id }} main-txt-d5">{{ block.settings.text }}</p>
                   <p class="announcement-text-{{ section.id }} small-txt-d5">{{ block.settings.min-text }}</p>
