@@ -45,7 +45,7 @@
     flex-wrap: nowrap;
     justify-content: flex-start;
     animation: {{ section.settings.anim }} infinite linear;
-    animation-duration: 40s;
+    animation-duration: {{ section.settings.anim-time }}s;
   }
 
   .announcement-item-{{ section.id }} {
@@ -166,13 +166,13 @@
   </style>
 
 
-
+{% if section.settings.pause %}
   <style>
     .announcement-inner-{{ section.id }}:hover .announcement-items-{{ section.id }} {
        animation-play-state: paused 
     }
   </style>
-
+{% endif %}
 
 <template id="announcement-template-{{ section.id }}">
   
