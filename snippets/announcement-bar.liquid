@@ -25,8 +25,8 @@
   .section-{{ section.id }} {
     border-top: solid #000000 0px;
     border-bottom: solid #000000 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: {{ section.settings.mt }}px;
+    margin-bottom: {{ section.settings.mb }}px;
     overflow: hidden;
   }
   
@@ -110,8 +110,8 @@
   @media(min-width: 1024px) {
 
     .section-{{ section.id }} {
-      margin-top: 0px;
-      margin-bottom: 0px;
+      margin-top: {{ section.settings.mt-d }}px;
+      margin-bottom: {{ section.settings.mb-d }}px;
     }
     .main-txt-d5.announcement-text-{{ section.id }} {
       font-size: {{ section.settings.fs-t-d }}px;
