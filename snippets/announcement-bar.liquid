@@ -76,9 +76,9 @@
     text-decoration:none!important;
   }
 
-  .announcement-icon-{{ section.id }} {
-    height: 20px;
-    width: 20px;
+   .announcement-icon-{{ section.id }} {
+    height: {{ section.settings.icons-s-m }}px;
+    width: {{ section.settings.icons-s-m }}px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,8 +131,8 @@
     }
 
     .announcement-icon-{{ section.id }} {
-      height: 20px;
-      width: 20px;
+      height: {{ section.settings.icons-s }}px;
+      width: {{ section.settings.icons-s }}px;
     }
 
   
