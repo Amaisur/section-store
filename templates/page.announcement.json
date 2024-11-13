@@ -211,12 +211,68 @@
         "gap-t": 10,
         "font_choice": "montserrat"
       }
+    },
+    "announcement_bar_2_pyKFKd": {
+      "type": "announcement-bar-2",
+      "blocks": {
+        "text_j4jGeN": {
+          "type": "text",
+          "settings": {
+            "text": "SALE IS ON!",
+            "min-text": "",
+            "svg": "",
+            "position": "column"
+          }
+        },
+        "text_BcryNU": {
+          "type": "text",
+          "settings": {
+            "text": "SALE IS ON!",
+            "min-text": "",
+            "svg": "",
+            "position": "column"
+          }
+        }
+      },
+      "block_order": [
+        "text_j4jGeN",
+        "text_BcryNU"
+      ],
+      "settings": {
+        "anim": "d5-rl-anim",
+        "g-main-d": 60,
+        "g-main": 50,
+        "g-t-d": 40,
+        "g-t": 30,
+        "pt": 20,
+        "pb": 20,
+        "pt-d": 20,
+        "padding-bottom-desktop": 20,
+        "an-bg": "#F5F5F5",
+        "mt-d": 50,
+        "mb-d": 50,
+        "mt": 50,
+        "mb": 50,
+        "icons-s": 60,
+        "icons-s-m": 38,
+        "fs-t-d": 60,
+        "fs-t": 48,
+        "f-w-m": "400",
+        "c-t": "#dd1d1d",
+        "fs-t-s-d": 18,
+        "fs-t-s": 12,
+        "c-t-s": "#fff",
+        "f-w-s": "400",
+        "gap-t": 10,
+        "font_choice": "montserrat"
+      }
     }
   },
   "order": [
     "main",
     "announcement_bar_2_KtrkAa",
     "announcement_bar_2_YHwXAa",
-    "announcement_bar_2_PCHkBA"
+    "announcement_bar_2_PCHkBA",
+    "announcement_bar_2_pyKFKd"
   ]
 }
