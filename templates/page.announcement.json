@@ -220,6 +220,7 @@
           "settings": {
             "text": "SALE IS ON!",
             "min-text": "",
+            "img": "shopify://shop_images/Vector.png",
             "svg": "",
             "position": "column"
           }
@@ -229,6 +230,7 @@
           "settings": {
             "text": "SALE IS ON!",
             "min-text": "",
+            "img": "shopify://shop_images/Vector.png",
             "svg": "",
             "position": "column"
           }
