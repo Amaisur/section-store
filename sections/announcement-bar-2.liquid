@@ -6,11 +6,59 @@
     "name": "Announcement 2",
     "settings": [
       {
+        "type": "header",
+        "content": "Section Layout"
+      },
+       {
+        "type": "range",
+        "id": "pt",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Padding Top",
+        "step": 1,
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "pb",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "step": 1,
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "pt-d",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Padding Top (Desktop)",
+        "step": 1,
+        "default": 36
+      },{
+        "type": "range",
+        "id": "pb-d",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Padding Bottom (Desktop)",
+        "step": 1,
+        "default": 36
+      },
+       {
         "type": "color_background",
         "id": "an-bg",
         "label": "Background Color",
         "default": "#000"
       },
+      {
+        "type": "header",
+        "content": "Text Styling"
+      },
+     
       {
         "type": "range",
         "id": "fs-t",
