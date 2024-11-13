@@ -74,9 +74,9 @@
         "text_KeXerd"
       ],
       "settings": {
-        "pt": 10,
-        "pb": 10,
-        "pt-d": 12,
+        "pt": 25,
+        "pb": 25,
+        "pt-d": 25,
         "pb-d": 12,
         "an-bg": "rgba(255, 209, 167, 1)",
         "fs-t": 28,
