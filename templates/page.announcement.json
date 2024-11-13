@@ -92,10 +92,12 @@
         "icons-s-m": 38,
         "fs-t-d": 25,
         "fs-t": 28,
+        "f-w-m": "700",
         "c-t": "#612323",
         "fs-t-s-d": 18,
         "fs-t-s": 18,
         "c-t-s": "#a73814",
+        "f-w-s": "700",
         "gap-t": 10,
         "font_choice": "montserrat"
       }
@@ -145,10 +147,12 @@
         "icons-s-m": 38,
         "fs-t-d": 66,
         "fs-t": 38,
+        "f-w-m": "400",
         "c-t": "#ffffff",
         "fs-t-s-d": 18,
         "fs-t-s": 12,
         "c-t-s": "#ffffff",
+        "f-w-s": "400",
         "gap-t": 10,
         "font_choice": "montserrat"
       }
@@ -198,10 +202,12 @@
         "icons-s-m": 38,
         "fs-t-d": 70,
         "fs-t": 58,
-        "c-t": "#fff",
+        "f-w-m": "400",
+        "c-t": "#ffffff",
         "fs-t-s-d": 18,
         "fs-t-s": 12,
-        "c-t-s": "#fff",
+        "c-t-s": "#ffffff",
+        "f-w-s": "400",
         "gap-t": 10,
         "font_choice": "montserrat"
       }
