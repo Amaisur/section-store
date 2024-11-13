@@ -155,6 +155,30 @@
     },
     "announcement_bar_2_PCHkBA": {
       "type": "announcement-bar-2",
+      "blocks": {
+        "text_7njMKE": {
+          "type": "text",
+          "settings": {
+            "text": "Free shipping & easy returns",
+            "min-text": "",
+            "svg": "",
+            "position": "column"
+          }
+        },
+        "text_yMtiiw": {
+          "type": "text",
+          "settings": {
+            "text": "Free shipping & easy returns",
+            "min-text": "",
+            "svg": "",
+            "position": "column"
+          }
+        }
+      },
+      "block_order": [
+        "text_7njMKE",
+        "text_yMtiiw"
+      ],
       "settings": {
         "anim": "d5-lr-anim",
         "g-main-d": 50,
@@ -165,14 +189,14 @@
         "pb": 36,
         "pt-d": 36,
         "padding-bottom-desktop": 36,
-        "an-bg": "linear-gradient(90deg, #8A5FFD 0%, #44A4FD 100%)",
+        "an-bg": "linear-gradient(90deg, rgba(138, 95, 253, 1), rgba(68, 164, 253, 1) 100%)",
         "mt-d": 50,
         "mb-d": 50,
         "mt": 50,
         "mb": 50,
         "icons-s": 60,
         "icons-s-m": 38,
-        "fs-t-d": 25,
+        "fs-t-d": 70,
         "fs-t": 16,
         "c-t": "#fff",
         "fs-t-s-d": 18,
