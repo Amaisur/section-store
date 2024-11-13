@@ -117,7 +117,7 @@
       font-size: {{ section.settings.fs-t-d }}px;
     }
     .small-txt-d5.announcement-text-{{ section.id }}  {
-    font-size: {{ section.settings.fs-t-s-d }}px;
+     font-size: {{ section.settings.fs-t-s-d }}px;
    }
     .section-{{ section.id }}-settings {
       padding-top: {{ section.settings.pt-d }}px;
@@ -144,11 +144,11 @@
   <style>
     @keyframes carouselAnnouncementBar {
       0% {
-          transform: translateX(0%);
+          transform: translateX(-100%);
       }
       
       100% {
-          transform: translateX(-100%);
+          transform: translateX(0%);
       }
     }
   </style>
