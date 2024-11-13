@@ -78,7 +78,7 @@
         "pt": 25,
         "pb": 25,
         "pt-d": 25,
-        "padding-bottom-desktop": 36,
+        "padding-bottom-desktop": 0,
         "an-bg": "rgba(255, 209, 167, 1)",
         "icons-s": 60,
         "icons-s-m": 38,
