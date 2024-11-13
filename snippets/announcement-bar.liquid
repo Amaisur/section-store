@@ -150,6 +150,7 @@
 <div class="section-{{ section.id }} announcement-{{ section.id }}" style="background-color:{{ section.settings.an-bg }}; background-image: ;">
     
       <div class="section-{{ section.id }}-settings announcement-inner-{{ section.id }}">
+        {% for i in (i...3) %}
         <div class="announcement-items-{{ section.id }}">
             {% for block in section.blocks %}
 
@@ -173,28 +174,7 @@
               
           
         </div>
-        <div class="announcement-items-{{ section.id }} announcement-items-mobile-{{ section.id }}">
-           {% for block in section.blocks %}
-   
-              <div class="announcement-item-{{ section.id }} d5-block-{{ block.id }}">
-                
-                  <div class="announcement-icon-{{ section.id }}">
-                        {% if block.settings.img != blank %}
-                        <img class="d5-image-{{ section.id }}" src="{{ block.settings.img | image_url: width: "200px" }}" width="" height="">
-                          {% elsif block.settings.svg != blank %}
-                          {{ block.settings.svg }}
-                        {% endif %}
-                    
-                  </div>
-                 <div class="text-content-d5" style="flex-direction: {{ block.settings.position }};">
-                  <p class="announcement-text-{{ section.id }} main-txt-d5">{{ block.settings.text }}</p>
-                  <p class="announcement-text-{{ section.id }} small-txt-d5">{{ block.settings.min-text }}</p>
-                </div>
-              </div>
-              {% endfor %}
-  
-          
-        </div>
+          {% endfor %}
       </div>
     
   </div><div id="announcement-local-target-{{ section.id }}"></div>
