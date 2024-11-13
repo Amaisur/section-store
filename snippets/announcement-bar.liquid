@@ -44,7 +44,7 @@
     align-items: center;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    animation: carouselAnnouncementBar infinite linear;
+    animation: {{ section.settings.d5-lr-anim }} infinite linear;
     animation-duration: 40s;
   }
 
@@ -142,13 +142,22 @@
 
 
   <style>
-    @keyframes carouselAnnouncementBar {
+    @keyframes d5-lr-anim {
       0% {
           transform: translateX(-100%);
       }
       
       100% {
           transform: translateX(0%);
+      }
+    }
+     @keyframes d5-rl-anim {
+      0% {
+          transform: translateX(-0%);
+      }
+      
+      100% {
+          transform: translateX(-100%);
       }
     }
   </style>
