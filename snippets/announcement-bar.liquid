@@ -189,7 +189,7 @@
                         <img class="d5-image-{{ section.id }}" src="{{ block.settings.img | image_url: width: "200px" }}" width="" height="">
                           {% elsif block.settings.svg != blank %}
                           {{ block.settings.svg }}
-{% endif %}
+                        {% endif %}
                     
                   </div>
                 <div class="text-content-d5" style="flex-direction: {{ block.settings.position }};">
