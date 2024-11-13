@@ -50,11 +50,11 @@
 
   .announcement-item-{{ section.id }} {
     flex-shrink: 0;
-    margin-left: 30px;
+    margin-left: {{ section.settings.g-main }}px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: {{ section.settings.g-t }}px;
   }
 
   .main-txt-d5.announcement-text-{{ section.id }}  {
@@ -127,7 +127,8 @@
     }
 
     .announcement-item-{{ section.id }} { 
-      margin-left: 50px;
+      margin-left: {{ section.settings.g-main-d }}px;
+      gap: {{ section.settings.g-t-d }}px;
     }
 
     .announcement-icon-{{ section.id }} {
