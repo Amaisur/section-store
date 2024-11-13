@@ -74,20 +74,69 @@
         "text_KeXerd"
       ],
       "settings": {
+        "anim": "d5-lr-anim",
         "pt": 25,
         "pb": 25,
         "pt-d": 25,
         "pb-d": 12,
         "an-bg": "rgba(255, 209, 167, 1)",
+        "fs-t-d": 25,
         "fs-t": 28,
         "c-t": "#612323",
+        "fs-t-s-d": 18,
         "fs-t-s": 18,
-        "c-t-s": "#a73814"
+        "c-t-s": "#a73814",
+        "gap-t": 10,
+        "font_choice": "montserrat"
+      }
+    },
+    "announcement_bar_2_YHwXAa": {
+      "type": "announcement-bar-2",
+      "blocks": {
+        "text_fUXDbh": {
+          "type": "text",
+          "settings": {
+            "text": "Buy once",
+            "min-text": "",
+            "svg": "<svg width=\"60\" height=\"61\" viewBox=\"0 0 60 61\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n<rect y=\"0.5\" width=\"60\" height=\"60\" fill=\"url(#pattern0_5782_6857)\"/>\n<defs>\n<pattern id=\"pattern0_5782_6857\" patternContentUnits=\"objectBoundingBox\" width=\"1\" height=\"1\">\n<use xlink:href=\"#image0_5782_6857\" transform=\"scale(0.0111111)\"/>\n</pattern>\n<image id=\"image0_5782_6857\" width=\"90\" height=\"90\" xlink:href=\"data:image/png;base64,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\"/>\n</defs>\n</svg>",
+            "position": "column"
+          }
+        },
+        "text_wcYqrm": {
+          "type": "text",
+          "settings": {
+            "text": "own forever",
+            "min-text": "",
+            "svg": "<svg width=\"60\" height=\"61\" viewBox=\"0 0 60 61\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path id=\"Vector\" d=\"M30 0.5C13.41 0.5 0 13.91 0 30.5C0 47.09 13.41 60.5 30 60.5C46.59 60.5 60 47.09 60 30.5C60 13.91 46.59 0.5 30 0.5ZM30 54.5C16.74 54.5 6 43.76 6 30.5C6 17.24 16.74 6.5 30 6.5C43.26 6.5 54 17.24 54 30.5C54 43.76 43.26 54.5 30 54.5Z\" fill=\"white\"/>\n</svg>",
+            "position": "column"
+          }
+        }
+      },
+      "block_order": [
+        "text_fUXDbh",
+        "text_wcYqrm"
+      ],
+      "settings": {
+        "anim": "d5-lr-anim",
+        "pt": 15,
+        "pb": 15,
+        "pt-d": 15,
+        "pb-d": 0,
+        "an-bg": "#000",
+        "fs-t-d": 66,
+        "fs-t": 38,
+        "c-t": "#fff",
+        "fs-t-s-d": 18,
+        "fs-t-s": 12,
+        "c-t-s": "#fff",
+        "gap-t": 10,
+        "font_choice": "montserrat"
       }
     }
   },
   "order": [
     "main",
-    "announcement_bar_2_KtrkAa"
+    "announcement_bar_2_KtrkAa",
+    "announcement_bar_2_YHwXAa"
   ]
 }
