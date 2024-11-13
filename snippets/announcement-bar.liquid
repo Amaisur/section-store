@@ -19,8 +19,8 @@
   
   .section-{{ section.id }}-settings {
     margin: 0 auto;
-    padding-top: 9px;
-    padding-bottom: 9px;
+    padding-top: {{ section.settings.pt }}px;
+    padding-bottom: {{ section.settings.pt }}px;
     padding-left: 0rem;
     padding-right: 0rem;
   }
@@ -97,9 +97,8 @@
     }
     
     .section-{{ section.id }}-settings {
-      padding: 0 5rem;
-      padding-top: 12px;
-      padding-bottom: 12px;
+      padding-top: {{ section.settings.pt-d }}px;
+      padding-bottom:{{ section.settings.pb-d }}px;
       padding-left: 0rem;
       padding-right: 0rem;
     }
