@@ -422,10 +422,10 @@
         "fs-t-d": 16,
         "fs-t": 16,
         "f-w-m": "400",
-        "c-t": "#fff",
+        "c-t": "#ffffff",
         "fs-t-s-d": 18,
         "fs-t-s": 12,
-        "c-t-s": "#fff",
+        "c-t-s": "#ffffff",
         "f-w-s": "400",
         "gap-t": 10,
         "font_choice": "montserrat"
@@ -493,7 +493,7 @@
         "c-t": "#121212",
         "fs-t-s-d": 18,
         "fs-t-s": 12,
-        "c-t-s": "#fff",
+        "c-t-s": "#ffffff",
         "f-w-s": "400",
         "gap-t": 10,
         "font_choice": "montserrat"
@@ -563,10 +563,10 @@
         "c-t": "#121212",
         "fs-t-s-d": 18,
         "fs-t-s": 12,
-        "c-t-s": "#fff",
+        "c-t-s": "#ffffff",
         "f-w-s": "400",
         "gap-t": 10,
-        "font_choice": "montserrat"
+        "font_choice": "beefcake"
       }
     }
   },
