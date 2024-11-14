@@ -403,7 +403,7 @@
       "settings": {
         "anim": "d5-lr-anim",
         "anim-time": 50,
-        "pause": false,
+        "pause": true,
         "g-main-d": 100,
         "g-main": 70,
         "g-t-d": 10,
