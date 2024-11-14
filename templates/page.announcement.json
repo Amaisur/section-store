@@ -75,6 +75,8 @@
       ],
       "settings": {
         "anim": "d5-lr-anim",
+        "anim-time": 50,
+        "pause": true,
         "g-main-d": 102,
         "g-main": 102,
         "g-t-d": 50,
@@ -130,6 +132,8 @@
       ],
       "settings": {
         "anim": "d5-rl-anim",
+        "anim-time": 50,
+        "pause": true,
         "g-main-d": 78,
         "g-main": 60,
         "g-t-d": 50,
@@ -185,6 +189,8 @@
       ],
       "settings": {
         "anim": "d5-lr-anim",
+        "anim-time": 50,
+        "pause": true,
         "g-main-d": 50,
         "g-main": 30,
         "g-t-d": 50,
@@ -242,6 +248,8 @@
       ],
       "settings": {
         "anim": "d5-rl-anim",
+        "anim-time": 50,
+        "pause": true,
         "g-main-d": 60,
         "g-main": 50,
         "g-t-d": 40,
@@ -263,6 +271,73 @@
         "c-t": "#dd1d1d",
         "fs-t-s-d": 18,
         "fs-t-s": 12,
+        "c-t-s": "#ffffff",
+        "f-w-s": "400",
+        "gap-t": 10,
+        "font_choice": "montserrat"
+      }
+    },
+    "announcement_bar_2_Mp98Fy": {
+      "type": "announcement-bar-2",
+      "blocks": {
+        "text_a34i8M": {
+          "type": "text",
+          "settings": {
+            "text": "Autumn sale",
+            "min-text": "",
+            "svg": "",
+            "position": "column"
+          }
+        },
+        "text_pe4qc7": {
+          "type": "text",
+          "settings": {
+            "text": "Autumn sale",
+            "min-text": "",
+            "svg": "",
+            "position": "column"
+          }
+        },
+        "text_AJY6Pa": {
+          "type": "text",
+          "settings": {
+            "text": "Autumn sale",
+            "min-text": "",
+            "svg": "",
+            "position": "column"
+          }
+        }
+      },
+      "block_order": [
+        "text_a34i8M",
+        "text_pe4qc7",
+        "text_AJY6Pa"
+      ],
+      "settings": {
+        "anim": "d5-lr-anim",
+        "anim-time": 50,
+        "pause": true,
+        "g-main-d": 50,
+        "g-main": 30,
+        "g-t-d": 50,
+        "g-t": 30,
+        "pt": 10,
+        "pb": 10,
+        "pt-d": 10,
+        "padding-bottom-desktop": 10,
+        "an-bg": "#fff",
+        "mt-d": 50,
+        "mb-d": 50,
+        "mt": 50,
+        "mb": 50,
+        "icons-s": 60,
+        "icons-s-m": 38,
+        "fs-t-d": 22,
+        "fs-t": 22,
+        "f-w-m": "400",
+        "c-t": "#000000",
+        "fs-t-s-d": 18,
+        "fs-t-s": 12,
         "c-t-s": "#fff",
         "f-w-s": "400",
         "gap-t": 10,
@@ -275,6 +350,7 @@
     "announcement_bar_2_KtrkAa",
     "announcement_bar_2_YHwXAa",
     "announcement_bar_2_PCHkBA",
-    "announcement_bar_2_pyKFKd"
+    "announcement_bar_2_pyKFKd",
+    "announcement_bar_2_Mp98Fy"
   ]
 }
