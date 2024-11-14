@@ -289,6 +289,24 @@
             "position": "column"
           }
         },
+        "text_yzR9zK": {
+          "type": "text",
+          "settings": {
+            "text": "Autumn sale",
+            "min-text": "",
+            "svg": "",
+            "position": "column"
+          }
+        },
+        "text_X9a8YF": {
+          "type": "text",
+          "settings": {
+            "text": "Autumn sale",
+            "min-text": "",
+            "svg": "",
+            "position": "column"
+          }
+        },
         "text_pe4qc7": {
           "type": "text",
           "settings": {
@@ -310,14 +328,16 @@
       },
       "block_order": [
         "text_a34i8M",
+        "text_yzR9zK",
+        "text_X9a8YF",
         "text_pe4qc7",
         "text_AJY6Pa"
       ],
       "settings": {
         "anim": "d5-lr-anim",
-        "anim-time": 50,
+        "anim-time": 30,
         "pause": true,
-        "g-main-d": 50,
+        "g-main-d": 70,
         "g-main": 30,
         "g-t-d": 50,
         "g-t": 30,
