@@ -401,8 +401,8 @@
         "text_6NW8eJ"
       ],
       "settings": {
-        "anim": "d5-lr-anim",
-        "anim-time": 50,
+        "anim": "d5-rl-anim",
+        "anim-time": 20,
         "pause": true,
         "g-main-d": 100,
         "g-main": 70,
