@@ -1,5 +1,187 @@
 
 
+<style data-shopify="">
+  {% if section.settings.font_choice == 'Montserrat' %}
+    @font-face {
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("//fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_Qphzg.woff2") format("woff2"),
+         url("//fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_Qphzg.woff") format("woff");
+  }
+  {% elsif section.settings.font_choice == 'Josefin Sans' %}
+  @font-face {
+  font-family: "Josefin Sans";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.c8300d95fd4ce72542a6efba9c682da40d144fba.woff2?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=1081bc13bac779d73b77022741d8b8608aa5451af6a05907fc023625940c00f1") format("woff2"),
+       url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=3f19a3e11bab2423756ce410220df09957f15affd53a78fa0ec435e5660aa636") format("woff");
+}
+    {% else %}
+@font-face {
+    font-family: 'Beefcake';
+    src: url('https://cdn.shopify.com/s/files/1/0562/7763/1105/files/beefcakes_n4.6f0af0c0bb47f358f9738babbdbd068098855dab.woff2?v=1731615307') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+    {% endif %}
+  .{{ d5-announcement }} *{
+    font-family: '{{ section.settings.font_choice }}', sans-serif;
+  }
+  
+ .{{ d5-announcement }} .section-{{ section.id }} {
+    border-top: solid #000000 0px;
+    border-bottom: solid #000000 0px;
+    margin-top: {{ section.settings.mt }}px;
+    margin-bottom: {{ section.settings.mb }}px;
+    overflow: hidden;
+  }
+  
+ .{{ d5-announcement }} .section-{{ section.id }}-settings {
+    margin: 0 auto;
+    padding-top: {{ section.settings.pt }}px;
+    padding-bottom: {{ section.settings.pb }}px;
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
+
+ .{{ d5-announcement }} .announcement-items-{{ section.id }} {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    animation: {{ section.settings.anim }} infinite linear;
+    animation-duration: {{ section.settings.anim-time }}s;
+  }
+
+ .{{ d5-announcement }} .announcement-item-{{ section.id }} {
+    flex-shrink: 0;
+    margin-left: {{ section.settings.g-main }}px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: {{ section.settings.g-t }}px;
+  }
+
+ .{{ d5-announcement }} .main-txt-d5.announcement-text-{{ section.id }}  {
+    margin: 0;
+    font-size: {{ section.settings.fs-t }}px;
+    color: {{ section.settings.c-t }};
+    line-height: 100%;
+    font-weight: {{ section.settings.f-w-m }};
+    text-transform: unset;
+  }
+ .{{ d5-announcement }} .small-txt-d5.announcement-text-{{ section.id }}  {
+    margin: 0;
+    font-size: {{ section.settings.fs-t-s }}px;
+    color: {{ section.settings.c-t-s }};
+    line-height: 100%;
+    text-transform: unset;
+    font-weight: {{ section.settings.f-w-s }};
+  }
+
+ .{{ d5-announcement }} .section-{{ section.id }} a {
+    text-decoration:none!important;
+  }
+
+  .{{ d5-announcement }} .announcement-icon-{{ section.id }} {
+    height: {{ section.settings.icons-s-m }}px;
+    width: {{ section.settings.icons-s-m }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+ .{{ d5-announcement }} .announcement-icon-{{ section.id }} img,
+ .{{ d5-announcement }} .announcement-icon-{{ section.id }} svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+ .{{ d5-announcement }} .announcement-icon-{{ section.id }} svg path {
+    /* fill: #ffffff; */
+  }
+
+ .{{ d5-announcement }} .announcement-inner-{{ section.id }} {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+ .{{ d5-announcement }} .text-content-d5{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: {{ section.settings.gap-t }}px;
+  }
+  @media(min-width: 1024px) {
+
+   .{{ d5-announcement }} .section-{{ section.id }} {
+      margin-top: {{ section.settings.mt-d }}px;
+      margin-bottom: {{ section.settings.mb-d }}px;
+    }
+   .{{ d5-announcement }} .main-txt-d5.announcement-text-{{ section.id }} {
+      font-size: {{ section.settings.fs-t-d }}px;
+    }
+   .{{ d5-announcement }} .small-txt-d5.announcement-text-{{ section.id }}  {
+     font-size: {{ section.settings.fs-t-s-d }}px;
+   }
+   .{{ d5-announcement }} .section-{{ section.id }}-settings {
+      padding-top: {{ section.settings.pt-d }}px;
+      padding-bottom: {{ section.settings.padding-bottom-desktop }}px;
+      padding-left: 0rem;
+      padding-right: 0rem;
+    }
+
+   .{{ d5-announcement }} .announcement-item-{{ section.id }} { 
+      margin-left: {{ section.settings.g-main-d }}px;
+      gap: {{ section.settings.g-t-d }}px;
+    }
+
+   .{{ d5-announcement }} .announcement-icon-{{ section.id }} {
+      height: {{ section.settings.icons-s }}px;
+      width: {{ section.settings.icons-s }}px;
+    }
+
+  
+  }</style>
+
+
+
+
+  <style>
+    @keyframes d5-lr-anim {
+      0% {
+          transform: translateX(-100%);
+      }
+      
+      100% {
+          transform: translateX(0%);
+      }
+    }
+     @keyframes d5-rl-anim {
+      0% {
+          transform: translateX(-0%);
+      }
+      
+      100% {
+          transform: translateX(-100%);
+      }
+    }
+  </style>
+
+
+{% if section.settings.pause %}
+  <style>
+   .{{ d5-announcement }} .announcement-inner-{{ section.id }}:hover .announcement-items-{{ section.id }} {
+       animation-play-state: paused 
+    }
+  </style>
+{% endif %}
 
 <template id="announcement-template-{{ section.id }}">
   
