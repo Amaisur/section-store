@@ -568,6 +568,40 @@
         "gap-t": 10,
         "font_choice": "beefcake"
       }
+    },
+    "announcement_bar_2_hfTL3F": {
+      "type": "announcement-bar-2",
+      "settings": {
+        "bar-type": "double",
+        "anim": "d5-lr-anim",
+        "anim-time": 50,
+        "pause": true,
+        "g-main-d": 50,
+        "g-main": 30,
+        "g-t-d": 50,
+        "g-t": 30,
+        "pt": 36,
+        "pb": 36,
+        "pt-d": 36,
+        "padding-bottom-desktop": 36,
+        "an-bg": "#000",
+        "mt-d": 50,
+        "mb-d": 50,
+        "mt": 50,
+        "mb": 50,
+        "icons-s": 60,
+        "icons-s-m": 38,
+        "fs-t-d": 25,
+        "fs-t": 16,
+        "f-w-m": "400",
+        "c-t": "#fff",
+        "fs-t-s-d": 18,
+        "fs-t-s": 12,
+        "c-t-s": "#fff",
+        "f-w-s": "400",
+        "gap-t": 10,
+        "font_choice": "Montserrat"
+      }
     }
   },
   "order": [
@@ -579,6 +613,7 @@
     "announcement_bar_2_Mp98Fy",
     "announcement_bar_2_CqkHVb",
     "announcement_bar_2_Jawe3V",
-    "announcement_bar_2_crcwwg"
+    "announcement_bar_2_crcwwg",
+    "announcement_bar_2_hfTL3F"
   ]
 }
