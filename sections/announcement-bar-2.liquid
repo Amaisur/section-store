@@ -1,10 +1,34 @@
-
-{% render 'announcement-bar'%}
-
+<div class="announcment-bar-main-d5">
+{% if section.settings.bar-type == 'single' %}
+<div class="announcemnt-bar-1-d5">
+{% render 'announcement-bar', d5-announcement: 'd5-announcement--snippet_1' %}
+</div> 
+  {% else %}
+<div class="announcemnt-bar-2-d5">
+{% render 'announcement-bar', d5-announcement: 'd5-announcement--snippet_2' %}
+</div>
+  {% endif %}
+</div>
 {% schema %}
   {
     "name": "Announcement 2",
     "settings": [
+      {
+        "type": "select",
+        "id": "bar-type",
+        "label": "Bar Type",
+        "default": "single",
+        "options": [
+          {
+            "label": "Single Bar",
+            "value": "single"
+          },
+          {
+            "label": "Double Crossed Bar",
+            "value": "double"
+          }
+        ]
+      },
       {
         "type": "header",
         "content": "Section Layout"
