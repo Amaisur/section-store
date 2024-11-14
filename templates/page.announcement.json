@@ -498,6 +498,76 @@
         "gap-t": 10,
         "font_choice": "montserrat"
       }
+    },
+    "announcement_bar_2_crcwwg": {
+      "type": "announcement-bar-2",
+      "blocks": {
+        "text_tdpfKP": {
+          "type": "text",
+          "settings": {
+            "text": "FREE MAGIC GIFT",
+            "min-text": "",
+            "img": "shopify://shop_images/image_1055.png",
+            "svg": "",
+            "position": "column"
+          }
+        },
+        "text_b8k3Et": {
+          "type": "text",
+          "settings": {
+            "text": "LIGHTNING FAST DELIVERY",
+            "min-text": "",
+            "img": "shopify://shop_images/image_1056.png",
+            "svg": "",
+            "position": "column"
+          }
+        },
+        "text_HhPrXM": {
+          "type": "text",
+          "settings": {
+            "text": "HOT DEAL TODAY",
+            "min-text": "",
+            "img": "shopify://shop_images/image_1057.png",
+            "svg": "",
+            "position": "column"
+          }
+        }
+      },
+      "block_order": [
+        "text_tdpfKP",
+        "text_b8k3Et",
+        "text_HhPrXM"
+      ],
+      "settings": {
+        "anim": "d5-lr-anim",
+        "anim-time": 50,
+        "pause": true,
+        "g-main-d": 100,
+        "g-main": 70,
+        "g-t-d": 20,
+        "g-t": 20,
+        "pt": 30,
+        "pb": 30,
+        "pt-d": 30,
+        "padding-bottom-desktop": 30,
+        "an-bg": "#F0FFBF",
+        "mt-d": 50,
+        "mb-d": 50,
+        "mt": 50,
+        "mb": 50,
+        "icons-s": 42,
+        "icons-s-m": 36,
+        "fs-t-d": 34,
+        "fs-t": 32,
+        "f-w-m": "400",
+        "c-t": "#121212",
+        "fs-t-s-d": 18,
+        "fs-t-s": 12,
+        "c-t-s": "#fff",
+        "f-w-s": "400",
+        "gap-t": 10,
+        "font_choice": "montserrat"
+      }
     }
   },
   "order": [
@@ -508,6 +578,7 @@
     "announcement_bar_2_pyKFKd",
     "announcement_bar_2_Mp98Fy",
     "announcement_bar_2_CqkHVb",
-    "announcement_bar_2_Jawe3V"
+    "announcement_bar_2_Jawe3V",
+    "announcement_bar_2_crcwwg"
   ]
 }
