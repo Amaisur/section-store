@@ -3,14 +3,14 @@
 <div class="announcment-bar-main-d5">
 {% if section.settings.bar-type == 'single' %}
 <div class="announcemnt-bar-1-d5">
-{% render 'announcement-bar', d5-announcement: 'd5-announcement--snippet_1', bg_color: section.settings.an-bg %}
+{% render 'announcement-bar', d5-announcement: 'd5-announcement--snippet_1', bg_color: section.settings.an-bg, anim: section.settings.anim %}
 </div> 
   {% else %}
 <div class="announcemnt-bar-1-d5">
-{% render 'announcement-bar', d5-announcement: 'd5-announcement--snippet_1', bg_color: section.settings.an-bg %}
+{% render 'announcement-bar', d5-announcement: 'd5-announcement--snippet_1', bg_color: section.settings.an-bg, anim: section.settings.anim %}
 </div> 
 <div class="announcemnt-bar-2-d5">
-{% render 'announcement-bar', d5-announcement: 'd5-announcement--snippet_2', bg_color: section.settings.an-bg-2 %}
+{% render 'announcement-bar', d5-announcement: 'd5-announcement--snippet_2', bg_color: section.settings.an-bg-2, anim: section.settings.anim_2 %}
 </div>
   {% endif %}
 </div>
@@ -48,10 +48,6 @@
          "info": "Only applicable if 'Double Crossed' bar is selected"
       },
       {
-        "type": "header",
-        "content": "Section Layout"
-      },
-      {
         "type": "select",
         "id": "anim",
         "label": "Animation Direction",
@@ -66,6 +62,26 @@
             "value": "d5-rl-anim"
           }
         ]
+      },
+      {
+        "type": "select",
+        "id": "anim_2",
+        "label": "Animation Direction",
+        "default": "d5-lr-anim",
+        "options": [
+          {
+            "label": "Left to Right",
+            "value": "d5-lr-anim"
+          },
+          {
+            "label": "Right to Left",
+            "value": "d5-rl-anim"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Section Layout"
       },
       {
         "type": "range",
