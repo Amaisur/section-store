@@ -74,6 +74,9 @@
         "text_KeXerd"
       ],
       "settings": {
+        "bar-type": "single",
+        "an-bg": "rgba(255, 209, 167, 1)",
+        "an-bg-2": "#000",
         "anim": "d5-lr-anim",
         "anim-time": 50,
         "pause": true,
@@ -85,7 +88,6 @@
         "pb": 25,
         "pt-d": 25,
         "padding-bottom-desktop": 25,
-        "an-bg": "rgba(255, 209, 167, 1)",
         "mt-d": 50,
         "mb-d": 50,
         "mt": 50,
@@ -131,6 +133,9 @@
         "text_wcYqrm"
       ],
       "settings": {
+        "bar-type": "single",
+        "an-bg": "#000",
+        "an-bg-2": "#000",
         "anim": "d5-rl-anim",
         "anim-time": 50,
         "pause": true,
@@ -142,7 +147,6 @@
         "pb": 15,
         "pt-d": 15,
         "padding-bottom-desktop": 15,
-        "an-bg": "#000",
         "mt-d": 50,
         "mb-d": 50,
         "mt": 50,
@@ -188,6 +192,9 @@
         "text_yMtiiw"
       ],
       "settings": {
+        "bar-type": "single",
+        "an-bg": "linear-gradient(90deg, rgba(138, 95, 253, 1), rgba(68, 164, 253, 1) 100%)",
+        "an-bg-2": "#000",
         "anim": "d5-lr-anim",
         "anim-time": 50,
         "pause": true,
@@ -199,7 +206,6 @@
         "pb": 10,
         "pt-d": 10,
         "padding-bottom-desktop": 10,
-        "an-bg": "linear-gradient(90deg, rgba(138, 95, 253, 1), rgba(68, 164, 253, 1) 100%)",
         "mt-d": 50,
         "mb-d": 50,
         "mt": 50,
@@ -247,6 +253,9 @@
         "text_BcryNU"
       ],
       "settings": {
+        "bar-type": "single",
+        "an-bg": "#F5F5F5",
+        "an-bg-2": "#000",
         "anim": "d5-rl-anim",
         "anim-time": 50,
         "pause": true,
@@ -258,7 +267,6 @@
         "pb": 20,
         "pt-d": 20,
         "padding-bottom-desktop": 20,
-        "an-bg": "#F5F5F5",
         "mt-d": 50,
         "mb-d": 50,
         "mt": 50,
@@ -334,6 +342,9 @@
         "text_AJY6Pa"
       ],
       "settings": {
+        "bar-type": "single",
+        "an-bg": "#fff",
+        "an-bg-2": "#000",
         "anim": "d5-lr-anim",
         "anim-time": 30,
         "pause": true,
@@ -345,7 +356,6 @@
         "pb": 10,
         "pt-d": 10,
         "padding-bottom-desktop": 10,
-        "an-bg": "#fff",
         "mt-d": 50,
         "mb-d": 50,
         "mt": 50,
@@ -401,6 +411,9 @@
         "text_6NW8eJ"
       ],
       "settings": {
+        "bar-type": "single",
+        "an-bg": "rgba(65, 68, 28, 1)",
+        "an-bg-2": "#000",
         "anim": "d5-rl-anim",
         "anim-time": 20,
         "pause": true,
@@ -412,7 +425,6 @@
         "pb": 25,
         "pt-d": 25,
         "padding-bottom-desktop": 25,
-        "an-bg": "rgba(65, 68, 28, 1)",
         "mt-d": 50,
         "mb-d": 50,
         "mt": 50,
@@ -469,6 +481,9 @@
         "text_CfGLet"
       ],
       "settings": {
+        "bar-type": "single",
+        "an-bg": "",
+        "an-bg-2": "#000",
         "anim": "d5-lr-anim",
         "anim-time": 10,
         "pause": true,
@@ -480,7 +495,6 @@
         "pb": 25,
         "pt-d": 25,
         "padding-bottom-desktop": 25,
-        "an-bg": "",
         "mt-d": 50,
         "mb-d": 50,
         "mt": 50,
@@ -539,6 +553,9 @@
         "text_HhPrXM"
       ],
       "settings": {
+        "bar-type": "single",
+        "an-bg": "#F0FFBF",
+        "an-bg-2": "#000",
         "anim": "d5-lr-anim",
         "anim-time": 50,
         "pause": true,
@@ -550,7 +567,6 @@
         "pb": 30,
         "pt-d": 30,
         "padding-bottom-desktop": 30,
-        "an-bg": "#F0FFBF",
         "mt-d": 50,
         "mb-d": 50,
         "mt": 50,
@@ -573,6 +589,8 @@
       "type": "announcement-bar-2",
       "settings": {
         "bar-type": "double",
+        "an-bg": "#9E9B94",
+        "an-bg-2": "#BE9573",
         "anim": "d5-lr-anim",
         "anim-time": 50,
         "pause": true,
@@ -584,7 +602,6 @@
         "pb": 36,
         "pt-d": 36,
         "padding-bottom-desktop": 36,
-        "an-bg": "#000",
         "mt-d": 50,
         "mb-d": 50,
         "mt": 50,
@@ -594,10 +611,10 @@
         "fs-t-d": 25,
         "fs-t": 16,
         "f-w-m": "400",
-        "c-t": "#fff",
+        "c-t": "#ffffff",
         "fs-t-s-d": 18,
         "fs-t-s": 12,
-        "c-t-s": "#fff",
+        "c-t-s": "#ffffff",
         "f-w-s": "400",
         "gap-t": 10,
         "font_choice": "Montserrat"
