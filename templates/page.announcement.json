@@ -635,13 +635,35 @@
             "svg": "",
             "position": "column"
           }
+        },
+        "text_FFdL4j": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "min-text": "",
+            "img": "shopify://shop_images/c60d98bc32a24decaa22974f48343eea.png",
+            "svg": "",
+            "position": "column"
+          }
+        },
+        "text_FMQAPr": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "min-text": "",
+            "img": "shopify://shop_images/fd026301c1089adcc6914ad726f61099.png",
+            "svg": "",
+            "position": "column"
+          }
         }
       },
       "block_order": [
         "text_yqFNVW",
         "text_VJPdj9",
         "text_eFjqDF",
-        "text_MaN3nx"
+        "text_MaN3nx",
+        "text_FFdL4j",
+        "text_FMQAPr"
       ],
       "settings": {
         "bar-type": "double",
