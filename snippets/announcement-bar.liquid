@@ -225,7 +225,7 @@
     let cssTarget = '';
     let productForm = cssTarget
       ? document.querySelector(cssTarget)
-      : document.querySelector(' #announcement-local-target-{{ section.id }}');
+      : document.querySelector('.{{ d5-announcement }} #announcement-local-target-{{ section.id }}');
 
     if (!productForm) return;
 
