@@ -1,17 +1,17 @@
 
 <style>
-  .cross-bar-1-d5{
+ #shopify-section-{{ section.id }} .cross-bar-1-d5{
     transform: rotate(6deg) translateY(50px);
   }
-  .cross-bar-2-d5{
+ #shopify-section-{{ section.id }} .cross-bar-2-d5{
     transform: rotate(-6deg) translateY(-50px);
   }
-  .announcment-bar-main-d5{ 
+ #shopify-section-{{ section.id }} .announcment-bar-main-d5{ 
     margin-top: {{ section.settings.mt }}px;
     margin-bottom: {{ section.settings.mb }}px;
   }
   @media (min-width: 1024px){
-     margin-top: {{ section.settings.mt-d }}px;
+   #shopify-section-{{ section.id }}  margin-top: {{ section.settings.mt-d }}px;
      margin-bottom: {{ section.settings.mb-d }}px;
   }
 </style>
