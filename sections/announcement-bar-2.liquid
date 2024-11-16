@@ -1,15 +1,22 @@
 
-
+<style>
+  .cross-bar-1-d5{
+    transform: rotate(6deg) trannslateY(50px);
+  }
+  .cross-bar-2-d5{
+    transform: rotate(-6deg) trannslateY(-50px);
+  }
+</style>
 <div class="announcment-bar-main-d5">
 {% if section.settings.bar-type == 'single' %}
 <div class="announcemnt-bar-1-d5">
 {% render 'announcement-bar', d5-announcement: 'd5-announcement--snippet_1', bg_color: section.settings.an-bg, anim: section.settings.anim %}
 </div> 
   {% else %}
-<div class="announcemnt-bar-1-d5">
+<div class="announcemnt-bar-1-d5 cross-bar-1-d5">
 {% render 'announcement-bar', d5-announcement: 'd5-announcement--snippet_1', bg_color: section.settings.an-bg, anim: section.settings.anim %}
 </div> 
-<div class="announcemnt-bar-2-d5">
+<div class="announcemnt-bar-2-d5 cross-bar-2-d5">
 {% render 'announcement-bar', d5-announcement: 'd5-announcement--snippet_2', bg_color: section.settings.an-bg-2, anim: section.settings.anim_2 %}
 </div>
   {% endif %}
