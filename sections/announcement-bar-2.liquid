@@ -1,12 +1,18 @@
 
 <style>
+  #shopify-section-{{ section.id }}{
+    overflow-x: hidden;
  #shopify-section-{{ section.id }} .cross-bar-1-d5{
     transform: rotate(6deg) translateY(50px);
+    width: 110%;
   }
  #shopify-section-{{ section.id }} .cross-bar-2-d5{
     transform: rotate(-6deg) translateY(-50px);
+   width: 110%;
   }
  #shopify-section-{{ section.id }} .announcment-bar-main-d5{ 
+   display: flex;
+   align-items: center;
     margin-top: {{ section.settings.mt }}px;
     margin-bottom: {{ section.settings.mb }}px;
   }
