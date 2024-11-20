@@ -1,0 +1,498 @@
+
+<style>
+  #shopify-section-{{ section.id }}{
+    overflow-x: hidden;
+  }
+ #shopify-section-{{ section.id }} .cross-bar-1-d5{
+    transform: rotate(6deg) translateY(50px);
+    width: 110%;
+  }
+ #shopify-section-{{ section.id }} .cross-bar-2-d5{
+    transform: rotate(-6deg) translateY(-50px);
+    width: 110%;
+  }
+ #shopify-section-{{ section.id }} .announcment-bar-main-d5{ 
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+    margin-top: {{ section.settings.mt }}px;
+    margin-bottom: {{ section.settings.mb }}px;
+  }
+  @media (min-width: 1024px){
+   #shopify-section-{{ section.id }}  margin-top: {{ section.settings.mt-d }}px;
+     margin-bottom: {{ section.settings.mb-d }}px;
+  }
+</style>
+<div class="announcment-bar-main-d5">
+{% if section.settings.bar-type == 'single' %}
+<div class="announcemnt-bar-1-d5">
+{% render 'announcement-bar', d5-announcement: 'd5-announcement--snippet_1', bg_color: section.settings.an-bg, anim: section.settings.anim %}
+</div> 
+  {% else %}
+<div class="announcemnt-bar-1-d5 cross-bar-1-d5">
+{% render 'announcement-bar', d5-announcement: 'd5-announcement--snippet_1', bg_color: section.settings.an-bg, anim: section.settings.anim %}
+</div> 
+<div class="announcemnt-bar-2-d5 cross-bar-2-d5">
+{% render 'announcement-bar', d5-announcement: 'd5-announcement--snippet_2', bg_color: section.settings.an-bg-2, anim: section.settings.anim_2 %}
+</div>
+  {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "Announcement 2",
+    "settings": [
+      {
+        "type": "select",
+        "id": "bar-type",
+        "label": "Bar Type",
+        "default": "single",
+        "options": [
+          {
+            "label": "Single Bar",
+            "value": "single"
+          },
+          {
+            "label": "Double Crossed Bar",
+            "value": "double"
+          }
+        ]
+      },
+      {
+        "type": "color_background",
+        "id": "an-bg",
+        "label": "Background Color",
+        "default": "#000"
+      },
+       {
+        "type": "color_background",
+        "id": "an-bg-2",
+        "label": "Background Color Seocnd",
+        "default": "#000",
+         "info": "Only applicable if 'Double Crossed' bar is selected"
+      },
+      {
+        "type": "select",
+        "id": "anim",
+        "label": "Animation Direction",
+        "default": "d5-lr-anim",
+        "options": [
+          {
+            "label": "Left to Right",
+            "value": "d5-lr-anim"
+          },
+          {
+            "label": "Right to Left",
+            "value": "d5-rl-anim"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "anim_2",
+        "label": "Animation Direction",
+        "default": "d5-lr-anim",
+        "info": "Only applicable if 'Double Crossed' bar is selected",
+        "options": [
+          {
+            "label": "Left to Right",
+            "value": "d5-lr-anim"
+          },
+          {
+            "label": "Right to Left",
+            "value": "d5-rl-anim"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Section Layout"
+      },
+      {
+        "type": "range",
+        "id": "anim-time",
+        "min": 0,
+        "max": 200,
+        "unit": "s",
+        "label": "Time Duration",
+        "step": 2,
+        "default": 50
+      },
+      {
+        "type": "checkbox",
+        "id": "pause",
+        "label": "Pause on Hover",
+        "default": true
+      },
+       {
+        "type": "range",
+        "id": "g-main-d",
+        "min": 0,
+        "max": 200,
+        "unit": "px",
+        "label": "Gap b/w announcements (Desktop)",
+        "step": 2,
+        "default": 50
+      },
+       {
+        "type": "range",
+        "id": "g-main",
+        "min": 0,
+        "max": 200,
+        "unit": "px",
+        "label": "Gap b/w announcements",
+        "step": 2,
+        "default": 30
+      },
+       {
+        "type": "range",
+        "id": "g-t-d",
+        "min": 0,
+        "max": 200,
+        "unit": "px",
+        "label": "Gap b/w text and icon (Desktop)",
+        "step": 2,
+        "default": 50
+      },
+       {
+        "type": "range",
+        "id": "g-t",
+        "min": 0,
+        "max": 200,
+        "unit": "px",
+        "label": "Gap b/w text and icon",
+        "step": 2,
+        "default": 30
+      },
+       {
+        "type": "range",
+        "id": "pt",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Padding Top",
+        "step": 1,
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "pb",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "step": 1,
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "pt-d",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Padding Top (Desktop)",
+        "step": 1,
+        "default": 36
+      },{
+        "type": "range",
+        "id": "padding-bottom-desktop",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Padding Bottom (Desktop)",
+        "step": 1,
+        "default": 36
+      },
+   
+         {
+        "type": "range",
+        "id": "mt-d",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Margin Top (Desktop)",
+        "step": 1,
+        "default": 50
+      },
+      {
+        "type": "range",
+        "id": "mb-d",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Margin Bottom (Desktop)",
+        "step": 1,
+        "default": 50
+      },
+         {
+        "type": "range",
+        "id": "mt",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Margin Top",
+        "step": 1,
+        "default": 50
+      },
+      {
+        "type": "range",
+        "id": "mb",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Margin Bottom",
+        "step": 1,
+        "default": 50
+      },
+      {
+        "type": "header",
+        "content": "Icon and Text Styling"
+      },
+     {
+        "type": "range",
+        "id": "icons-s",
+        "label": "Icon Size (Desktop)",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "default": 60
+      },
+       {
+        "type": "range",
+        "id": "icons-s-m",
+        "label": "Icon Size (Mobile)",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "default": 38
+      },
+        {
+        "type": "range",
+        "id": "fs-t-d",
+        "label": "Main Text Font Size (Desktop)",
+        "min": 4,
+        "max": 75,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      },
+      {
+        "type": "range",
+        "id": "fs-t",
+        "label": "Main Text Font Size",
+        "min": 4,
+        "max": 75,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      },
+    {
+  "type": "select",
+  "id": "f-w-m",
+  "label": "Main Text Font Weight",
+  "default": "400",
+  "options": [
+    {
+      "value": "100",
+      "label": "Thin (100)"
+    },
+    {
+      "value": "200",
+      "label": "Extra Light (200)"
+    },
+    {
+      "value": "300",
+      "label": "Light (300)"
+    },
+    {
+      "value": "400",
+      "label": "Normal (400)"
+    },
+    {
+      "value": "500",
+      "label": "Medium (500)"
+    },
+    {
+      "value": "600",
+      "label": "Semi Bold (600)"
+    },
+    {
+      "value": "700",
+      "label": "Bold (700)"
+    },
+    {
+      "value": "800",
+      "label": "Extra Bold (800)"
+    },
+    {
+      "value": "900",
+      "label": "Full Bold (900)"
+    }
+  ]
+},
+
+      {
+        "type": "color",
+        "id": "c-t",
+        "label": "Main Text Color",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "fs-t-s-d",
+        "label": "Small Text Font Size (Desktop)",
+        "min": 4,
+        "max": 75,
+        "step": 1,
+        "unit": "px",
+        "default": 18
+      },
+       {
+        "type": "range",
+        "id": "fs-t-s",
+        "label": "Small Text Font Size",
+        "min": 4,
+        "max": 75,
+        "step": 1,
+        "unit": "px",
+        "default": 12
+      },
+      {
+        "type": "color",
+        "id": "c-t-s",
+        "label": "Small Text Color",
+        "default": "#fff"
+      },
+          {
+  "type": "select",
+  "id": "f-w-s",
+  "label": "Small Text Font Weight",
+  "default": "400",
+  "options": [
+    {
+      "value": "100",
+      "label": "Thin (100)"
+    },
+    {
+      "value": "200",
+      "label": "Extra Light (200)"
+    },
+    {
+      "value": "300",
+      "label": "Light (300)"
+    },
+    {
+      "value": "400",
+      "label": "Normal (400)"
+    },
+    {
+      "value": "500",
+      "label": "Medium (500)"
+    },
+    {
+      "value": "600",
+      "label": "Semi Bold (600)"
+    },
+    {
+      "value": "700",
+      "label": "Bold (700)"
+    },
+    {
+      "value": "800",
+      "label": "Extra Bold (800)"
+    },
+    {
+      "value": "900",
+      "label": "Full Bold (900)"
+    }
+  ]
+},
+      {
+        "type": "range",
+        "id": "gap-t",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "default": 10,
+        "label": "Gap between texts"
+      },
+      {
+        "type": "header",
+        "content": "Font Family"
+      },
+       {
+      "type": "select",
+      "id": "font_choice",
+      "label": "Choose Font",
+      "default": "Montserrat",
+      "options": [
+        {
+          "value": "Josefin Sans",
+          "label": "Josefin Sans"
+        },
+        {
+          "value": "Montserrat",
+          "label": "Montserrat"
+        },
+        {
+          "value": "Beefcake",
+          "label": "Beefcake"
+        }
+      ]
+    }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Announcement",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Text",
+            "default": "WORLD WIDE SHIPPING"
+          },
+          {
+            "type": "text",
+            "id": "min-text",
+            "label": "Small Text"
+          },
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+          },
+          {
+            "type": "liquid",
+            "id": "svg",
+            "label": "Paste SVG Code"
+          },
+          {
+            "type": "select",
+            "id": "position",
+            "label": "Main Text Position",
+            "default": "column",
+            "info": "Only applicable if 'small text' is present",
+            "options": [
+              {
+                "value": "column",
+                "label": "Top"
+              },
+              {
+                "value": "column-reverse",
+                "label": "Bottom"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Announcement 2"
+      }
+    ]
+  }
+{% endschema %}
