@@ -137,7 +137,10 @@
   .faq-height-cal-{{ section.id }} p:not(:first-child ) {
     margin-top: 10px;
   } 
-  
+   .button-alignment-d5{
+      display: flex;
+      align-items: center;
+   }
   @media(min-width: 1024px) {
    #shopify-section-{{ section.id }}{
       margin: {{ section.settings.mt-d }}px auto;
@@ -254,7 +257,7 @@
 {% for block in section.blocks %}
   {% if block.type == 'button' %}
   <style>
-    .faq-button_{{ section.id }} {
+   button-{{ block.id }} .faq-button_{{ section.id }} {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -277,32 +280,41 @@
       z-index: 2;
     }
   
-    .faq-button_{{ section.id }}:hover {
+   button-{{ block.id }} .faq-button_{{ section.id }}:hover {
       opacity: .8;
       transition: all 0.25s ease 0s;
     }
   
-    .faq-button_{{ section.id }} svg {
+   button-{{ block.id }} .faq-button_{{ section.id }} svg {
       width: 14px;
       height: 14px;
     }
   
-    .faq-button_{{ section.id }} svg path {
+    .button-{{ block.id }} .faq-button_{{ section.id }} svg path {
       fill: {{ block.settings.b-color }};
       transition: all 0.25s ease 0s;
     }
   
-    .faq-button_{{ section.id }}:hover svg path {
+    .button-{{ block.id }} .faq-button_{{ section.id }}:hover svg path {
       fill: {{ block.settings.b-color }};
       transition: all 0.25s ease 0s;
     }
-
+    .button-alignment-d5.button-{{ block.id }}{
+      display: flex;
+      align-items: center;
+      justify-content: {{ block.settings.position }};
+    }
     @media(min-width: 768px) {
-      .faq-button_{{ section.id }} {
+     .button-{{ block.id }} .faq-button_{{ section.id }} {
         max-width: 200px;
         font-size: {{ block.settings.b-fs-d }}px;
         margin: 0;
       }
+       .button-alignment-d5.button-{{ block.id }}{
+      display: flex;
+      align-items: center;
+      justify-content: {{ block.settings.position-d }};
+    }
     }
 </style>
     {% endif %}
@@ -340,6 +352,7 @@
                 {{ block.settings.text }}
               </div>
               {% when 'button' %}
+              <div class="button-alignment-d5 button-{{ block.id }}">
                 <a href="{{ block.settings.url }}" class="faq-button_{{ section.id }}">
                 {{ block.settings.text }}
                 
@@ -350,6 +363,7 @@
                   </svg>
                 
               </a>
+              </div>
             {% endcase %}
           {% endfor %}
         </div>
@@ -531,7 +545,7 @@
       {
         "type": "range",
         "id": "q-fs-m",
-        "label": "Question Font Size",
+        "label": "Question Font Size (Mobile)",
         "min": 12,
         "max": 50,
         "step": 1,
@@ -551,7 +565,7 @@
       {
         "type": "range",
         "id": "a-fs-m",
-        "label": "Answer Font Size",
+        "label": "Answer Font Size (Mobile)",
         "min": 6,
         "max": 50,
         "step": 1,
@@ -568,26 +582,7 @@
         "type": "header",
         "content": "Section Layout"
       },
-      {
-        "type": "range",
-        "id": "pt",
-        "min": 0,
-        "max": 100,
-        "unit": "px",
-        "label": "Padding Top",
-        "step": 1,
-        "default": 36
-      },
-      {
-        "type": "range",
-        "id": "pb",
-        "min": 0,
-        "max": 100,
-        "unit": "px",
-        "label": "Padding Bottom",
-        "step": 1,
-        "default": 36
-      },
+     
       {
         "type": "range",
         "id": "pt-d",
@@ -607,15 +602,25 @@
         "step": 1,
         "default": 36
       },
+       {
+        "type": "range",
+        "id": "pt",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Padding Top (Mobile)",
+        "step": 1,
+        "default": 36
+      },
       {
         "type": "range",
-        "id": "p-lr",
+        "id": "pb",
         "min": 0,
-        "max": 35,
-        "unit": "rem",
-        "label": "Padding Left Right",
+        "max": 100,
+        "unit": "px",
+        "label": "Padding Bottom (Mobile)",
         "step": 1,
-        "default": 5
+        "default": 36
       },
        {
         "type": "range",
@@ -626,6 +631,16 @@
         "label": "Padding Left Right (Desktop)",
         "step": 1,
         "default": 1
+      },
+       {
+        "type": "range",
+        "id": "p-lr",
+        "min": 0,
+        "max": 35,
+        "unit": "rem",
+        "label": "Padding Left Right (Mobile)",
+        "step": 1,
+        "default": 5
       },
       {
         "type": "range",
@@ -641,26 +656,7 @@
         "type": "header",
         "content": "Section Spacing"
       },
-            {
-        "type": "range",
-        "id": "mt",
-        "min": 0,
-        "max": 100,
-        "unit": "px",
-        "label": "Vertical Space",
-        "step": 1,
-        "default": 50
-      },
-      {
-        "type": "range",
-        "id": "lr-s",
-        "min": 0,
-        "max": 100,
-        "unit": "px",
-        "label": "Horizontal Space",
-        "step": 1,
-        "default": 20
-      },
+           
       {
         "type": "range",
         "id": "mt-d",
@@ -679,6 +675,26 @@
         "label": "Horizontal Space (Desktop)",
         "step": 1,
         "default": 40
+      },
+         {
+        "type": "range",
+        "id": "mt",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Vertical Space (Mobile)",
+        "step": 1,
+        "default": 50
+      },
+      {
+        "type": "range",
+        "id": "lr-s",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Horizontal Space (Mobile)",
+        "step": 1,
+        "default": 20
       }
     ],
     "blocks": [
@@ -817,7 +833,7 @@
           {
             "type": "range",
             "id": "b-fs",
-            "label": "Font Size",
+            "label": "Font Size (Mobile)",
             "min": 6,
             "max": 80,
             "step": 1,
@@ -843,7 +859,47 @@
             "step": 1,
             "unit": "px",
             "default": 5
-          }
+          },
+           {
+            "type": "select",
+            "id": "position-d",
+            "label": "Button Position (Desktop)",
+            "options": [
+              {
+                "value": "start",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "end",
+                "label": "Right"
+              }
+            ]
+          },
+          
+          {
+            "type": "select",
+            "id": "position",
+            "label": "Button Position (Mobile)",
+            "options": [
+              {
+                "value": "start",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "end",
+                "label": "Right"
+              }
+            ]
+          },
+          
         ]
       },
       {
