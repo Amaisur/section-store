@@ -257,7 +257,7 @@
 {% for block in section.blocks %}
   {% if block.type == 'button' %}
   <style>
-   button-{{ block.id }} .faq-button_{{ section.id }} {
+   .button-{{ block.id }} .faq-button_{{ section.id }} {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -280,12 +280,12 @@
       z-index: 2;
     }
   
-   button-{{ block.id }} .faq-button_{{ section.id }}:hover {
+   .button-{{ block.id }} .faq-button_{{ section.id }}:hover {
       opacity: .8;
       transition: all 0.25s ease 0s;
     }
   
-   button-{{ block.id }} .faq-button_{{ section.id }} svg {
+   .button-{{ block.id }} .faq-button_{{ section.id }} svg {
       width: 14px;
       height: 14px;
     }
