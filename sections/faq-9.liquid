@@ -327,10 +327,12 @@
                   font-size: {{ block.settings.t-fs }}px;
                   color: {{ block.settings.t-color }};
                   line-height: normal;
+                  text-align: {{ block.settings.align }};
                 }
                 @media (min-width: 768px){
                 .text-{{ block.id }} *{
                   font-size: {{ block.settings.t-fs-d }}px;
+                   text-align: {{ block.settings.align-d }};
                 }
                 }
               </style>
@@ -708,12 +710,50 @@
           {
             "type": "range",
             "id": "t-fs",
-            "label": "Font Size",
+            "label": "Font Size (Mobile)",
             "min": 6,
             "max": 80,
             "step": 1,
             "unit": "px",
             "default": 30
+          },
+          {
+            "type": "select",
+            "id": "align-d",
+            "label": "Text Align (Desktop)",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+            {
+            "type": "select",
+            "id": "align",
+            "label": "Text Align (Mobile)",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
           },
           {
             "type": "range",
