@@ -58,7 +58,8 @@
             "text": "WORLD WIDE SHIPPING",
             "min-text": "small text",
             "img": "shopify://shop_images/cherries_small_37667dea-9942-414c-a463-8af2c5d1c47c.png",
-            "svg": ""
+            "svg": "",
+            "position": "column"
           }
         },
         "text_yWhkzT": {
@@ -66,7 +67,8 @@
           "settings": {
             "text": "WORLD WIDE SHIPPING",
             "min-text": "hello",
-            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"50px\" height=\"50px\" viewBox=\"0 0 50 50\" fill=\"currentColor\"><path d=\"M 25 3 C 18.363281 3 13 8.363281 13 15 L 13 20 L 9 20 C 7.355469 20 6 21.355469 6 23 L 6 47 C 6 48.644531 7.355469 50 9 50 L 41 50 C 42.644531 50 44 48.644531 44 47 L 44 23 C 44 21.355469 42.644531 20 41 20 L 37 20 L 37 15 C 37 8.363281 31.636719 3 25 3 Z M 25 5 C 30.566406 5 35 9.433594 35 15 L 35 20 L 15 20 L 15 15 C 15 9.433594 19.433594 5 25 5 Z M 9 22 L 41 22 C 41.554688 22 42 22.445313 42 23 L 42 47 C 42 47.554688 41.554688 48 41 48 L 9 48 C 8.445313 48 8 47.554688 8 47 L 8 23 C 8 22.445313 8.445313 22 9 22 Z M 25 30 C 23.300781 30 22 31.300781 22 33 C 22 33.898438 22.398438 34.6875 23 35.1875 L 23 38 C 23 39.101563 23.898438 40 25 40 C 26.101563 40 27 39.101563 27 38 L 27 35.1875 C 27.601563 34.6875 28 33.898438 28 33 C 28 31.300781 26.699219 30 25 30 Z\"></path></svg>"
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"50px\" height=\"50px\" viewBox=\"0 0 50 50\" fill=\"currentColor\"><path d=\"M 25 3 C 18.363281 3 13 8.363281 13 15 L 13 20 L 9 20 C 7.355469 20 6 21.355469 6 23 L 6 47 C 6 48.644531 7.355469 50 9 50 L 41 50 C 42.644531 50 44 48.644531 44 47 L 44 23 C 44 21.355469 42.644531 20 41 20 L 37 20 L 37 15 C 37 8.363281 31.636719 3 25 3 Z M 25 5 C 30.566406 5 35 9.433594 35 15 L 35 20 L 15 20 L 15 15 C 15 9.433594 19.433594 5 25 5 Z M 9 22 L 41 22 C 41.554688 22 42 22.445313 42 23 L 42 47 C 42 47.554688 41.554688 48 41 48 L 9 48 C 8.445313 48 8 47.554688 8 47 L 8 23 C 8 22.445313 8.445313 22 9 22 Z M 25 30 C 23.300781 30 22 31.300781 22 33 C 22 33.898438 22.398438 34.6875 23 35.1875 L 23 38 C 23 39.101563 23.898438 40 25 40 C 26.101563 40 27 39.101563 27 38 L 27 35.1875 C 27.601563 34.6875 28 33.898438 28 33 C 28 31.300781 26.699219 30 25 30 Z\"></path></svg>",
+            "position": "column"
           }
         },
         "text_QwMaWK": {
@@ -74,7 +76,8 @@
           "settings": {
             "text": "WORLD WIDE SHIPPING",
             "min-text": "",
-            "svg": ""
+            "svg": "",
+            "position": "column"
           }
         }
       },
@@ -83,7 +86,39 @@
         "text_yWhkzT",
         "text_QwMaWK"
       ],
-      "settings": {}
+      "settings": {
+        "bar-type": "single",
+        "an-bg": "#000",
+        "an-bg-2": "#000",
+        "anim": "d5-lr-anim",
+        "anim_2": "d5-lr-anim",
+        "anim-time": 50,
+        "pause": true,
+        "g-main-d": 50,
+        "g-main": 30,
+        "g-t-d": 50,
+        "g-t": 30,
+        "pt": 36,
+        "pb": 36,
+        "pt-d": 36,
+        "padding-bottom-desktop": 36,
+        "mt-d": 50,
+        "mb-d": 50,
+        "mt": 50,
+        "mb": 50,
+        "icons-s": 60,
+        "icons-s-m": 38,
+        "fs-t-d": 25,
+        "fs-t": 16,
+        "f-w-m": "400",
+        "c-t": "#fff",
+        "fs-t-s-d": 18,
+        "fs-t-s": 12,
+        "c-t-s": "#fff",
+        "f-w-s": "400",
+        "gap-t": 10,
+        "font_choice": "Montserrat"
+      }
     },
     "hotspots_detail_qtngrJ": {
       "type": "hotspots-detail",
@@ -530,6 +565,8 @@
             "t-color": "#005c53",
             "t-fs-d": 48,
             "t-fs": 30,
+            "align-d": "left",
+            "align": "left",
             "t-mt": 0,
             "t-mb": 0
           }
@@ -541,6 +578,8 @@
             "t-color": "#757575",
             "t-fs-d": 18,
             "t-fs": 16,
+            "align-d": "left",
+            "align": "left",
             "t-mt": 19,
             "t-mb": 45
           }
@@ -555,7 +594,9 @@
             "b-fs-d": 16,
             "b-fs": 14,
             "b-p": 16,
-            "b-r": 5
+            "b-r": 5,
+            "position-d": "start",
+            "position": "start"
           }
         },
         "question_dia9DF": {
@@ -606,17 +647,122 @@
         "a-fs-d": 16,
         "a-fs-m": 12,
         "q-bg": "#ffffff",
-        "pt": 36,
-        "pb": 36,
         "pt-d": 36,
         "pb-d": 36,
-        "p-lr": 1,
+        "pt": 36,
+        "pb": 36,
         "p-lr-d": 5,
+        "p-lr": 1,
         "m-w": 120,
-        "mt": 36,
-        "lr-s": 20,
         "mt-d": 36,
-        "lr-s-d": 40
+        "lr-s-d": 40,
+        "mt": 36,
+        "lr-s": 20
+      }
+    },
+    "faq_9_jBttda": {
+      "type": "faq-9",
+      "blocks": {
+        "text_7tTPUD": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Have Questions?<br/>We Have Answers.</h2>",
+            "t-color": "#005c53",
+            "t-fs-d": 48,
+            "t-fs": 30,
+            "align-d": "center",
+            "align": "center",
+            "t-mt": 0,
+            "t-mb": 0
+          }
+        },
+        "text_wdNFc3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Get quick solutions to your common lawn care concerns, from mowing to pest control.</p>",
+            "t-color": "#757575",
+            "t-fs-d": 18,
+            "t-fs": 16,
+            "align-d": "center",
+            "align": "center",
+            "t-mt": 19,
+            "t-mb": 45
+          }
+        },
+        "button_f9MTMa": {
+          "type": "button",
+          "settings": {
+            "text": "Get Now",
+            "url": "",
+            "b-color": "#ffffff",
+            "b-bg-color": "#000000",
+            "b-fs-d": 16,
+            "b-fs": 14,
+            "b-p": 16,
+            "b-r": 5,
+            "position-d": "center",
+            "position": "center"
+          }
+        },
+        "question_9AVnqz": {
+          "type": "question",
+          "settings": {
+            "quest": "What is your return and exchange policy?",
+            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "question_m9PR4y": {
+          "type": "question",
+          "settings": {
+            "quest": "What is your return and exchange policy?",
+            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "question_qzgFjc": {
+          "type": "question",
+          "settings": {
+            "quest": "What is your return and exchange policy?",
+            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "question_6FGezt": {
+          "type": "question",
+          "settings": {
+            "quest": "What is your return and exchange policy?",
+            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_7tTPUD",
+        "text_wdNFc3",
+        "button_f9MTMa",
+        "question_9AVnqz",
+        "question_m9PR4y",
+        "question_qzgFjc",
+        "question_6FGezt"
+      ],
+      "settings": {
+        "bg-color": "#f0f3f4",
+        "left": false,
+        "q-color": "#005c53",
+        "a-color": "#757575",
+        "q-fs-d": 18,
+        "q-fs-m": 16,
+        "a-fs-d": 16,
+        "a-fs-m": 12,
+        "q-bg": "#ffffff",
+        "pt-d": 36,
+        "pb-d": 36,
+        "pt": 36,
+        "pb": 36,
+        "p-lr-d": 5,
+        "p-lr": 1,
+        "m-w": 120,
+        "mt-d": 36,
+        "lr-s-d": 40,
+        "mt": 36,
+        "lr-s": 20
       }
     },
     "collection_slider_iHc74y": {
@@ -1496,6 +1642,7 @@
     "hotspots_4_HGjatk",
     "video_multicolumn_eYdPVb",
     "faq_9_Dz7J73",
+    "faq_9_jBttda",
     "collection_slider_iHc74y",
     "echo_section_ss_3_Tp6ghe",
     "details_slider_iWGfm4",
