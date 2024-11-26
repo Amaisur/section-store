@@ -443,7 +443,273 @@
 {% schema %}
   {
     "name": "Tab FAQs",
-    "settings": [],
+    "settings": [
+       {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 36,
+      "step": 2,
+      "unit": "px",
+      "min": 0,
+      "max": 200
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 36,
+      "unit": "px",
+      "min": 0,
+      "step": 2,
+      "max": 200
+    },
+    {
+      "type": "range",
+      "id": "padding_sides",
+      "label": "Padding Sides",
+      "default": 5,
+      "unit": "rem",
+      "step": 1,
+      "min": 0,
+      "max": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_sides_mobile",
+      "label": "Padding Sides (Mobile)",
+      "default": 1,
+      "unit": "rem",
+      "step": 1,
+      "min": 0,
+      "max": 20
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full Width",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "section_content_width",
+      "label": "Section Content Width",
+      "default": 150,
+      "unit": "rem",
+      "step": 5,
+      "min": 50,
+      "max": 300
+    },
+    {
+      "type": "range",
+      "id": "border_thickness",
+      "label": "Border Thickness",
+      "default": 0,
+      "unit": "px",
+      "min": 0,
+      "max": 20
+    },
+    {
+      "type": "color",
+      "id": "arrow_bg_color",
+      "label": "Arrow Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "arrow_bg_hover_color",
+      "label": "Arrow Background Hover Color",
+      "default": "#6C584C"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "section_background_gradient",
+      "label": "Section Background Gradient"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "default": 0,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "default": 0,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "color",
+      "id": "body_background_color",
+      "label": "Body Background Color",
+      "default": "#F2F0ED"
+    },
+    {
+      "type": "color",
+      "id": "body_border_color",
+      "label": "Body Border Color",
+      "default": "#6C584C"
+    },
+    {
+      "type": "color",
+      "id": "category_heading_color",
+      "label": "Category Heading Color",
+      "default": "#6C584C"
+    },
+    {
+      "type": "range",
+      "id": "body_border_radius",
+      "label": "Body Border Radius",
+      "default": 20,
+      "unit": "px",
+      "min": 0,
+      "max": 50
+    },
+    {
+      "type": "range",
+      "id": "body_border_thickness",
+      "label": "Body Border Thickness",
+      "default": 0,
+      "unit": "px",
+      "min": 0,
+      "max": 10
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "default": 36,
+      "unit": "px",
+      "min": 10,
+      "max": 50
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading Size (Mobile)",
+      "default": 20,
+      "unit": "px",
+      "min": 10,
+      "max": 50
+    },
+    {
+      "type": "range",
+      "id": "heading_line_height",
+      "label": "Heading Line Height",
+      "default": 130,
+      "unit": "%",
+      "min": 100,
+      "max": 200
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_top",
+      "label": "Heading Margin Top",
+      "default": 64,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_bottom",
+      "label": "Heading Margin Bottom",
+      "default": 24,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal_mobile",
+      "label": "Button Padding Horizontal (Mobile)",
+      "default": 16,
+      "unit": "px",
+      "min": 0,
+      "max": 50
+    },
+    {
+      "type": "range",
+      "id": "button_roundness",
+      "label": "Button Roundness",
+      "default": 100,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "button_border_thickness",
+      "label": "Button Border Thickness",
+      "default": 0,
+      "unit": "px",
+      "min": 0,
+      "max": 10
+    },
+    {
+      "type": "range",
+      "id": "body_margin_top",
+      "label": "Body Margin Top",
+      "default": 32,
+      "unit": "px",
+      "min": 0,
+      "max": 50
+    },
+    {
+      "type": "range",
+      "id": "body_padding_vertical",
+      "label": "Body Padding Vertical",
+      "default": 64,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "navigation_gap",
+      "label": "Navigation Gap",
+      "default": 12,
+      "unit": "px",
+      "min": 0,
+      "max": 50
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "label": "Button Size",
+      "default": 16,
+      "unit": "px",
+      "min": 10,
+      "max": 50
+    },
+    {
+      "type": "range",
+      "id": "arrow_size",
+      "label": "Arrow Size",
+      "default": 28,
+      "unit": "px",
+      "min": 10,
+      "max": 50
+    }
+    ],
     "presets": [
       {
         "name": "Tab FAQs"
