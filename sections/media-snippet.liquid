@@ -1,11 +1,17 @@
 
-{% render 'ss-media-snippet' %}
+{% render 'ss-media-snippet' , img: section.settings.img %}
 
 
 {% schema %}
   {
     "name": "Section name",
-    "settings": [],
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Image"
+      }
+    ],
     "presets": [
       {
         "name": "Media Snippets"
