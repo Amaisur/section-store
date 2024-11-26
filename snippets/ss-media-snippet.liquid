@@ -8,21 +8,21 @@
 <div class="general-media-d5">
 {%- if media.media_type == 'image' -%}
   <img
-    srcset="{%- if media.preview_image.width >= 550 -%}{{ media.preview_image | image_url: width: 550 }} 550w,{%- endif -%}
-            {%- if media.preview_image.width >= 1100 -%}{{ media.preview_image | image_url: width: 1100 }} 1100w,{%- endif -%}
-            {%- if media.preview_image.width >= 1445 -%}{{ media.preview_image | image_url: width: 1445 }} 1445w,{%- endif -%}
-            {%- if media.preview_image.width >= 1680 -%}{{ media.preview_image | image_url: width: 1680 }} 1680w,{%- endif -%}
-            {%- if media.preview_image.width >= 2048 -%}{{ media.preview_image | image_url: width: 2048 }} 2048w,{%- endif -%}
-            {%- if media.preview_image.width >= 2200 -%}{{ media.preview_image | image_url: width: 2200 }} 2200w,{%- endif -%}
-            {%- if media.preview_image.width >= 2890 -%}{{ media.preview_image | image_url: width: 2890 }} 2890w,{%- endif -%}
-            {%- if media.preview_image.width >= 4096 -%}{{ media.preview_image | image_url: width: 4096 }} 4096w,{%- endif -%}
-            {{ media.preview_image | image_url }} {{ media.preview_image.width }}w"
+    srcset="{%- if img.width >= 550 -%}{{ img | image_url: width: 550 }} 550w,{%- endif -%}
+            {%- if img.width >= 1100 -%}{{ img | image_url: width: 1100 }} 1100w,{%- endif -%}
+            {%- if img.width >= 1445 -%}{{ img | image_url: width: 1445 }} 1445w,{%- endif -%}
+            {%- if img.width >= 1680 -%}{{ img | image_url: width: 1680 }} 1680w,{%- endif -%}
+            {%- if img.width >= 2048 -%}{{ img | image_url: width: 2048 }} 2048w,{%- endif -%}
+            {%- if img.width >= 2200 -%}{{ img | image_url: width: 2200 }} 2200w,{%- endif -%}
+            {%- if img.width >= 2890 -%}{{ img | image_url: width: 2890 }} 2890w,{%- endif -%}
+            {%- if img.width >= 4096 -%}{{ img | image_url: width: 4096 }} 4096w,{%- endif -%}
+            {{ img | image_url }} {{ img.width }}w"
     sizes="(min-width: 750px) calc(100vw - 22rem), 1100px"
-    src="{{ media.preview_image | image_url: width: 1445 }}"
+    src="{{ img | image_url: width: 1445 }}"
     alt="{{ media.alt | escape }}"
     loading="lazy"
     width="1100"
-    height="{{ 1100 | divided_by: media.preview_image.aspect_ratio | ceil }}"
+    height="{{ 1100 | divided_by: img.aspect_ratio | ceil }}"
   >
 {%- else -%}
     <template>
