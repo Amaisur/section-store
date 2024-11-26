@@ -661,115 +661,48 @@
         "lr-s": 20
       }
     },
-    "faq_9_jBttda": {
-      "type": "faq-9",
-      "blocks": {
-        "text_7tTPUD": {
-          "type": "text",
-          "settings": {
-            "text": "<h2>Have Questions?<br/>We Have Answers.</h2>",
-            "t-color": "#005c53",
-            "t-fs-d": 48,
-            "t-fs": 30,
-            "align-d": "center",
-            "align": "center",
-            "t-mt": 0,
-            "t-mb": 0
-          }
-        },
-        "text_wdNFc3": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Get quick solutions to your common lawn care concerns, from mowing to pest control.</p>",
-            "t-color": "#757575",
-            "t-fs-d": 18,
-            "t-fs": 16,
-            "align-d": "center",
-            "align": "center",
-            "t-mt": 19,
-            "t-mb": 45
-          }
-        },
-        "button_f9MTMa": {
-          "type": "button",
-          "settings": {
-            "text": "Get Now",
-            "url": "",
-            "b-color": "#ffffff",
-            "b-bg-color": "#447c35",
-            "b-fs-d": 16,
-            "b-fs": 14,
-            "b-p": 16,
-            "b-r": 5,
-            "position-d": "center",
-            "position": "center"
-          }
-        },
-        "question_9AVnqz": {
-          "type": "question",
-          "settings": {
-            "quest": "What is your return and exchange policy?",
-            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
-          }
-        },
-        "question_m9PR4y": {
-          "type": "question",
-          "settings": {
-            "quest": "What is your return and exchange policy?",
-            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
-          }
-        },
-        "question_qzgFjc": {
-          "type": "question",
-          "settings": {
-            "quest": "What is your return and exchange policy?",
-            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
-          }
-        },
-        "question_6FGezt": {
-          "type": "question",
-          "settings": {
-            "quest": "What is your return and exchange policy?",
-            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "text_7tTPUD",
-        "text_wdNFc3",
-        "button_f9MTMa",
-        "question_9AVnqz",
-        "question_m9PR4y",
-        "question_qzgFjc",
-        "question_6FGezt"
-      ],
-      "disabled": true,
-      "settings": {
-        "bg-color": "rgba(255,255,154, .6)",
-        "left": false,
-        "q-color": "#005c30",
-        "a-color": "#757575",
-        "q-fs-d": 18,
-        "q-fs-m": 16,
-        "a-fs-d": 16,
-        "a-fs-m": 12,
-        "q-bg": "#c8d2d4",
-        "pt-d": 36,
-        "pb-d": 36,
-        "pt": 36,
-        "pb": 36,
-        "p-lr-d": 5,
-        "p-lr": 1,
-        "m-w": 120,
-        "mt-d": 36,
-        "lr-s-d": 40,
-        "mt": 36,
-        "lr-s": 20
-      }
-    },
     "ss_faq_8_KxjiYa": {
       "type": "ss-faq-8",
-      "settings": {}
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_sides": 5,
+        "padding_sides_mobile": 1,
+        "full_width": false,
+        "section_content_width": 150,
+        "border_thickness": 0,
+        "arrow_bg_color": "transparent",
+        "arrow_bg_hover_color": "#6C584C",
+        "section_background": "#FFFFFF",
+        "section_background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "body_background_color": "#F2F0ED",
+        "body_border_color": "#6C584C",
+        "category_heading_color": "#6C584C",
+        "body_border_radius": 20,
+        "body_border_thickness": 0,
+        "heading_size": 36,
+        "heading_size_mobile": 20,
+        "heading_line_height": 130,
+        "heading_margin_top": 64,
+        "heading_margin_bottom": 24,
+        "button_padding_horizontal_mobile": 16,
+        "button_roundness": 100,
+        "button_border_thickness": 0,
+        "body_margin_top": 32,
+        "body_padding_vertical": 64,
+        "navigation_gap": 12,
+        "button_size": 16,
+        "arrow_size": 28
+      }
+    },
+    "media_snippet_GnmmYj": {
+      "type": "media-snippet",
+      "settings": {
+        "img": "shopify://shop_images/lemon_small_dfc49785-8fca-4808-bbfa-28bdf82614da.png"
+      }
     },
     "collection_slider_iHc74y": {
       "type": "Collection-slider",
@@ -1648,8 +1581,8 @@
     "hotspots_4_HGjatk",
     "video_multicolumn_eYdPVb",
     "faq_9_Dz7J73",
-    "faq_9_jBttda",
     "ss_faq_8_KxjiYa",
+    "media_snippet_GnmmYj",
     "collection_slider_iHc74y",
     "echo_section_ss_3_Tp6ghe",
     "details_slider_iWGfm4",
