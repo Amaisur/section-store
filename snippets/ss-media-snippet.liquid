@@ -6,7 +6,6 @@
   }
 </style>
 <div class="general-media-d5">
-{%- if media.media_type == 'image' -%}
   <img
     srcset="{%- if img.width >= 550 -%}{{ img | image_url: width: 550 }} 550w,{%- endif -%}
             {%- if img.width >= 1100 -%}{{ img | image_url: width: 1100 }} 1100w,{%- endif -%}
@@ -24,22 +23,5 @@
     width="1100"
     height="{{ 1100 | divided_by: img.aspect_ratio | ceil }}"
   >
-{%- else -%}
-    <template>
-      {%- case media.media_type -%}
-      {%- when 'external_video' -%}
-        {%- assign video_class = 'js-' | append: media.host -%}
-        {%- if media.host == 'youtube' -%}
-          {{ media | external_video_url: autoplay: true, loop: loop, playlist: media.external_id | external_video_tag: class: video_class, loading: "lazy" }}
-        {%- else -%}
-          {{ media | external_video_url: autoplay: true, loop: loop | external_video_tag: class: video_class, loading: "lazy" }}
-        {%- endif -%}
-      {%- when 'video' -%}
-        {{ media | media_tag: image_size: "2048x", autoplay: true, loop: loop, controls: true, preload: "none" }}
-      {%- when 'model' -%}
-        {{ media | media_tag: image_size: "2048x", toggleable: true }}
-      {%- endcase -%}
-    </template>
 
-  {% endif %}
   </div>
