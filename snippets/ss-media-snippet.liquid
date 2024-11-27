@@ -22,10 +22,11 @@
 
  <video
   id="video-{{ video.id }}"
-  controls
-  autoplay
-  muted
-  loop
+ {% if video.controls %}controls{% endif %}
+  {% if video.autoplay %}autoplay{% endif %}
+  {% if video.muted %}muted{% endif %}
+  {% if video.loop %}loop{% endif %}
+  poster="{{ section.video.poster_image | file_url }}"
   poster="{{ video.preview_image.src }}"
   style="object-fit: {{ media.fit | default: 'contain' }};"
 >
