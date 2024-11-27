@@ -18,6 +18,12 @@
   align-items: center;
   justify-content: center;
 }
+.general-media-d5 .active-video-d5{
+  opacity: 0;
+}
+.general-media-d5:hover .active-video-d5{
+  opacity: 1;
+}
 .play-pause-ss-d5 .pause-svg-d5{
   display: none;
 }
