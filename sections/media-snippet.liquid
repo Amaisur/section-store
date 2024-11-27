@@ -1,5 +1,17 @@
 
-{% render 'ss-media-snippet' , img: section.settings.img %}
+  <div class="main-parent-d5">
+    <div class="left-side-large-image">
+      {% render 'ss-media-snippet' , img: section.settings.img %}
+    </div>
+    <div class="right-side-small-image">
+      {% for block in section.blocks %}
+        {% render 'ss-media-snippet' , img: block.settings.img %}
+      {% endfor %}
+    </div>
+  </div>
+
+
+
 
 
 {% schema %}
@@ -10,6 +22,19 @@
         "type": "image_picker",
         "id": "img",
         "label": "Image"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+          }
+        ]
       }
     ],
     "presets": [
