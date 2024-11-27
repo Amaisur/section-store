@@ -10,117 +10,125 @@
   }
 </style>
 <style>
-  .general-media-d5, .general-media-d5 img{
-    aspect-ratio: 1/1;
-  }
-.main-parent-d5{
-  max-width: calc(1200px + 100px);
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  padding: 0 50px;
-  margin: 100px auto;
-}
-.main-parent-d5 .col-d5{
-  width: 50%;
-} 
-.right-side-small-image{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-}
-@media (max-width: 768px){
+    .general-media-d5, .general-media-d5 img{
+      aspect-ratio: 1/1;
+    }
   .main-parent-d5{
-    padding: 0 25px;
-    margin: 50px 0;
-    flex-direction: column;
-    gap: 30px;
+    max-width: calc(1200px + 100px);
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 0 50px;
+    margin: 100px auto;
   }
   .main-parent-d5 .col-d5{
-  width: 100%;
- } 
-  .right-side-small-image{
-    gap: 12px;
+    width: 50%;
   }
-}
+  .right-side-small-image{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+  @media (max-width: 768px){
+    .main-parent-d5{
+      padding: 0 25px;
+      margin: 50px 0;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .main-parent-d5 .col-d5{
+    width: 100%;
+   }
+    .right-side-small-image{
+      gap: 12px;
+    }
+  }
 </style>
-  <div class="main-parent-d5">
-    <div class="left-side-large-image col-d5">
-      {% render 'ss-media-snippet' , img: section.settings.img %}
-    </div>
-    <div class="right-side-small-image col-d5">
-      {% for block in section.blocks %}
-        {% render 'ss-media-snippet' , img: block.settings.img, video: block.settings.video %}
-      {% endfor %}
-    </div>
+<div class="main-parent-d5">
+  <div class="left-side-large-image col-d5">
+    {% render 'ss-media-snippet', img: section.settings.img %}
   </div>
-
-
-
-
+  <div class="right-side-small-image col-d5">
+    {% for block in section.blocks %}
+      {% render 'ss-media-snippet',
+        img: block.settings.img,
+        video: block.settings.video,
+        poster_image: block.settings.poster,
+        loop: block.settings.loop,
+        autoplay: block.settings.autoplay,
+        muted: block.settings.muted
+      %}
+    {% endfor %}
+  </div>
+</div>
 
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "img",
-        "label": "Image"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "image",
-        "name": "Image",
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "img",
-            "label": "Image"
-          }
-        ]
-      },
-      {
-        "type": "video",
-        "name": "video",
-        "settings": [
-          {
-            "type": "video",
-            "id": "video",
-            "label": "Video"
-          },
-            {
-      "type": "checkbox",
-      "id": "controls",
-      "label": "Enable Controls",
-      "default": true
-    },
+{
+  "name": "Section name",
+  "settings": [
     {
-      "type": "checkbox",
-      "id": "autoplay",
-      "label": "Enable Autoplay",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "muted",
-      "label": "Mute Video",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "loop",
-      "label": "Loop Video",
-      "default": true
+      "type": "image_picker",
+      "id": "img",
+      "label": "Image"
     }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Media Snippets"
-      }
-    ]
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "video",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Poster Image"
+        },
+          {
+    "type": "checkbox",
+    "id": "controls",
+    "label": "Enable Controls",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "autoplay",
+    "label": "Enable Autoplay",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "muted",
+    "label": "Mute Video",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "loop",
+    "label": "Loop Video",
+    "default": true
   }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Media Snippets"
+    }
+  ]
+}
 {% endschema %}
