@@ -1,5 +1,4 @@
 
-document.addEventListener("DOMContentLoaded", function() {
     const mediaDivs = document.querySelectorAll('.general-media-d5');
 
     mediaDivs.forEach(div => {
@@ -49,4 +48,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
         new VideoController(video, button);
     });
-});
