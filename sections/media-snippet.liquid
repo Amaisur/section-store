@@ -50,7 +50,7 @@
     </div>
     <div class="right-side-small-image col-d5">
       {% for block in section.blocks %}
-        {% render 'ss-media-snippet' , img: block.settings.img %}
+        {% render 'ss-media-snippet' , img: block.settings.img, video: block.settings.video %}
       {% endfor %}
     </div>
   </div>
