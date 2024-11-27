@@ -1,7 +1,5 @@
  .general-media-d5{
-    border: 1px solid #000;
-    border-radius: 10px;
-    overflow: hidden;
+   overflow: hidden;
   }
   .general-media-d5 img, .general-media-d5 video {
     width: 100%;
