@@ -1,3 +1,4 @@
+
 class VideoPlayer {
     constructor(video, button) {
         this.video = video;
@@ -8,20 +9,21 @@ class VideoPlayer {
     }
 
     initControls() {
-        // Hide pause SVG initially
-        this.pauseSVG.style.display = 'none';
+        // Initially set button state based on video state
+        this.video.paused ? this.updateButtonForPause() : this.updateButtonForPlay();
 
-        // Event listener for button click
         this.button.addEventListener('click', () => {
+            console.log("Button clicked. Toggling play/pause.");
             this.togglePlayPause();
         });
 
-        // Event listeners to update icons based on video state changes
         this.video.addEventListener('play', () => {
+            console.log("Video is playing.");
             this.updateButtonForPlay();
         });
 
         this.video.addEventListener('pause', () => {
+            console.log("Video is paused.");
             this.updateButtonForPause();
         });
     }
@@ -51,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mediaDivs.forEach(div => {
         const video = div.querySelector('video');
         const button = div.querySelector('.play-pause-ss-d5');
+        console.log("Initializing video player for:", video, button);
         new VideoPlayer(video, button);
     });
 });
