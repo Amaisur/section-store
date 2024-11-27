@@ -19,21 +19,8 @@
     height="{{ 1100 | divided_by: img.aspect_ratio | ceil }}"
   >
 {% elsif video != blank %}
- <video
-  id="video-{{ video.id }}"
-  controls
-  autoplay="{{ video.autoplay }}"
-  muted="{{ video.muted }}"
-  loop="{{ video.loop }}"
-  preload="{{ video.preload }}"
-  playsinline
-  width="{{ video.width }}"
-  height="{{ video.height }}"
-  poster="{{ video.preview_image.src }}"
->
-  <source src="{{ video_source.url }}" type="{{ video.type }}">
-  <p>{{ video.alt }}</p>
-</video>
+
+    {{ video | video_tag , autoplay }}
 
 {% endif %}
   </div>
