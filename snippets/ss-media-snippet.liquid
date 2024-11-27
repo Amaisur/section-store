@@ -38,7 +38,7 @@
       {% if poster_image != blank %}
         poster="{{ poster_image | image_url: width: '1440px' }}"
       {% else %}
-        poster="{{ video.preview_image.src }}"
+        poster="{{ preview_image.src }}"
       {% endif %}
       style="object-fit: {{ media.fit | default: 'contain' }};"
     >
