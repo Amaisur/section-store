@@ -20,7 +20,17 @@
   >
 {% elsif video != blank %}
 
-    {{ video | video_tag , autoplay }}
+ <video
+  controls
+  autoplay
+  muted
+  loop
+  poster="{{ video.preview_image.src }}"
+>
+  <source src="{{ video.video_url }}" type="video/mp4">
+  <p>{{ video.alt }}</p>
+</video>
+
 
 {% endif %}
   </div>
