@@ -1,38 +1,50 @@
-
 <div class="general-media-d5">
   {% if img != blank %}
-  <img style="object-fit: {{ media.fit | default: 'contain' }};"
-    srcset="{%- if img.width >= 550 -%}{{ img | image_url: width: 550 }} 550w,{%- endif -%}
-            {%- if img.width >= 1100 -%}{{ img | image_url: width: 1100 }} 1100w,{%- endif -%}
-            {%- if img.width >= 1445 -%}{{ img | image_url: width: 1445 }} 1445w,{%- endif -%}
-            {%- if img.width >= 1680 -%}{{ img | image_url: width: 1680 }} 1680w,{%- endif -%}
-            {%- if img.width >= 2048 -%}{{ img | image_url: width: 2048 }} 2048w,{%- endif -%}
-            {%- if img.width >= 2200 -%}{{ img | image_url: width: 2200 }} 2200w,{%- endif -%}
-            {%- if img.width >= 2890 -%}{{ img | image_url: width: 2890 }} 2890w,{%- endif -%}
-            {%- if img.width >= 4096 -%}{{ img | image_url: width: 4096 }} 4096w,{%- endif -%}
-            {{ img | image_url }} {{ img.width }}w"
-    sizes="(min-width: 750px) calc(100vw - 22rem), 1100px"
-    src="{{ img | image_url: width: 1445 }}"
-    alt="{{ media.alt | escape }}"
-    loading="lazy"
-    width="1100"
-    height="{{ 1100 | divided_by: img.aspect_ratio | ceil }}"
-  >
-{% elsif video != blank %}
-
- <video
-  id="video-{{ video.id }}"
- {% if video.controls %}controls{% endif %}
-  {% if video.autoplay %}autoplay{% endif %}
-  {% if video.muted %}muted{% endif %}
-  {% if video.loop %}loop{% endif %}
-  poster="{{ section.video.poster_image | file_url }}"
-  poster="{{ video.preview_image.src }}"
-  style="object-fit: {{ media.fit | default: 'contain' }};"
->
-  {% for source in video.sources %}
-    <source src="{{ source.url }}" type="{{ source.mime_type }}">
-  {% endfor %}
-</video>
-{% endif %}
-  </div>
+    <img
+      style="object-fit: {{ media.fit | default: 'contain' }};"
+      srcset="
+        {%- if img.width >= 550 -%}{{ img | image_url: width: 550 }} 550w,{%- endif -%}
+        {%- if img.width >= 1100 -%}{{ img | image_url: width: 1100 }} 1100w,{%- endif -%}
+        {%- if img.width >= 1445 -%}{{ img | image_url: width: 1445 }} 1445w,{%- endif -%}
+        {%- if img.width >= 1680 -%}{{ img | image_url: width: 1680 }} 1680w,{%- endif -%}
+        {%- if img.width >= 2048 -%}{{ img | image_url: width: 2048 }} 2048w,{%- endif -%}
+        {%- if img.width >= 2200 -%}{{ img | image_url: width: 2200 }} 2200w,{%- endif -%}
+        {%- if img.width >= 2890 -%}{{ img | image_url: width: 2890 }} 2890w,{%- endif -%}
+        {%- if img.width >= 4096 -%}{{ img | image_url: width: 4096 }} 4096w,{%- endif -%}
+        {{ img | image_url }} {{ img.width }}w
+      "
+      sizes="(min-width: 750px) calc(100vw - 22rem), 1100px"
+      src="{{ img | image_url: width: 1445 }}"
+      alt="{{ media.alt | escape }}"
+      loading="lazy"
+      width="1100"
+      height="{{ 1100 | divided_by: img.aspect_ratio | ceil }}"
+    >
+  {% elsif video != blank %}
+    <video
+      id="video-{{ video.id }}"
+      {% if controls %}
+        controls
+      {% endif %}
+      {% if autoplay %}
+        autoplay
+      {% endif %}
+      {% if muted %}
+        muted
+      {% endif %}
+      {% if loop %}
+        loop
+      {% endif %}
+      {% if poster_image != blank %}
+        poster="{{ poster_image | image_url: width: '1440px' }}"
+      {% else %}
+        poster="{{ video.preview_image.src }}"
+      {% endif %}
+      style="object-fit: {{ media.fit | default: 'contain' }};"
+    >
+      {% for source in video.sources %}
+        <source src="{{ source.url }}" type="{{ source.mime_type }}">
+      {% endfor %}
+    </video>
+  {% endif %}
+</div>
