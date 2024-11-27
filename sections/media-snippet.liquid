@@ -19,6 +19,8 @@
   display: flex;
   justify-content: center;
   gap: 50px;
+  padding: 0 50px;
+  margin: 100px 0;
 }
 .main-parent-d5 .col-d5{
   width: 50%;
@@ -27,6 +29,16 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
+}
+@media (max-width: 768px){
+  .main-parent-d5{
+    padding: 0 25px;
+    margin: 50px 0;
+    flex-direction: column;
+  }
+  .main-parent-d5 .col-d5{
+  width: 100%;
+ } 
 }
 </style>
   <div class="main-parent-d5">
