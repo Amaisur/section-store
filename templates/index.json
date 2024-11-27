@@ -759,6 +759,7 @@
           "type": "video",
           "settings": {
             "video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
+            "poster": "shopify://shop_images/image_1057.png",
             "controls": true,
             "autoplay": false,
             "muted": false,
