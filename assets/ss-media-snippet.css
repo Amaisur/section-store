@@ -17,6 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .general-media-d5 .active-video-d5{
   opacity: 0;
