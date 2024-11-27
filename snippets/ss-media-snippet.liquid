@@ -1,6 +1,6 @@
 
 <div class="general-media-d5">
-  <img
+  <img style="object-fit: {{ media.fit | default: 'contain' }};"
     srcset="{%- if img.width >= 550 -%}{{ img | image_url: width: 550 }} 550w,{%- endif -%}
             {%- if img.width >= 1100 -%}{{ img | image_url: width: 1100 }} 1100w,{%- endif -%}
             {%- if img.width >= 1445 -%}{{ img | image_url: width: 1445 }} 1445w,{%- endif -%}
