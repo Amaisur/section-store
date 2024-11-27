@@ -1,5 +1,6 @@
 
 <div class="general-media-d5">
+  {% if img != blank %}
   <img style="object-fit: {{ media.fit | default: 'contain' }};"
     srcset="{%- if img.width >= 550 -%}{{ img | image_url: width: 550 }} 550w,{%- endif -%}
             {%- if img.width >= 1100 -%}{{ img | image_url: width: 1100 }} 1100w,{%- endif -%}
@@ -17,5 +18,7 @@
     width="1100"
     height="{{ 1100 | divided_by: img.aspect_ratio | ceil }}"
   >
-
+{% elsif video != blank %}
+  {{ video | video_tag }}
+{% endif %}
   </div>
