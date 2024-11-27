@@ -2,7 +2,7 @@
   .general-media-d5 img{
     width: 100%;
     height: 100%;
-    object-fit: {{ media.fit | 'contain' }};
+    object-fit: {{ media.fit | default: 'contain' }};
   }
 </style>
 <div class="general-media-d5">
