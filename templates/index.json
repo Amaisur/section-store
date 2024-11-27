@@ -758,7 +758,11 @@
         "video_mjCwqN": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4"
+            "video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
+            "controls": true,
+            "autoplay": false,
+            "muted": false,
+            "loop": false
           }
         }
       },
