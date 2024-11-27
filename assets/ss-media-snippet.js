@@ -1,59 +1,35 @@
 
-class VideoPlayer {
-    constructor(video, button) {
-        this.video = video;
-        this.button = button;
-        this.playSVG = button.querySelector('.play-svg-d5');
-        this.pauseSVG = button.querySelector('.pause-svg-d5');
-        this.initControls();
-    }
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.play-pause-ss-d5');
 
-    initControls() {
-        // Initially set button state based on video state
-        this.video.paused ? this.updateButtonForPause() : this.updateButtonForPlay();
+    buttons.forEach(button => {
+        const video = button.previousElementSibling; // Assuming the button directly follows the video in the DOM
+        const playSVG = button.querySelector('.play-svg-d5');
+        const pauseSVG = button.querySelector('.pause-svg-d5');
 
-        this.button.addEventListener('click', () => {
-            console.log("Button clicked. Toggling play/pause.");
-            this.togglePlayPause();
+        // Initially hide the pause button
+        pauseSVG.style.display = 'none';
+
+        button.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                playSVG.style.display = 'none';
+                pauseSVG.style.display = 'block';
+            } else {
+                video.pause();
+                playSVG.style.display = 'block';
+                pauseSVG.style.display = 'none';
+            }
         });
 
-        this.video.addEventListener('play', () => {
-            console.log("Video is playing.");
-            this.updateButtonForPlay();
+        // Ensure icons are correct when video is played/paused through other means
+        video.addEventListener('play', () => {
+            playSVG.style.display = 'none';
+            pauseSVG.style.display = 'block';
         });
-
-        this.video.addEventListener('pause', () => {
-            console.log("Video is paused.");
-            this.updateButtonForPause();
+        video.addEventListener('pause', () => {
+            playSVG.style.display = 'block';
+            pauseSVG.style.display = 'none';
         });
-    }
-
-    togglePlayPause() {
-        if (this.video.paused) {
-            this.video.play();
-        } else {
-            this.video.pause();
-        }
-    }
-
-    updateButtonForPlay() {
-        this.playSVG.style.display = 'none';
-        this.pauseSVG.style.display = 'block';
-    }
-
-    updateButtonForPause() {
-        this.playSVG.style.display = 'block';
-        this.pauseSVG.style.display = 'none';
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const mediaDivs = document.querySelectorAll('.general-media-d5');
-
-    mediaDivs.forEach(div => {
-        const video = div.querySelector('video');
-        const button = div.querySelector('.play-pause-ss-d5');
-        console.log("Initializing video player for:", video, button);
-        new VideoPlayer(video, button);
     });
 });
