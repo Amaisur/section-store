@@ -1,9 +1,20 @@
-<style></style>
+<style>
+.main-parent-d5{
+  max-width: 1200px;
+  margin: o auto;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+.main-parent-d5 .col-d5{
+  width: 50%;
+} 
+</style>
   <div class="main-parent-d5">
-    <div class="left-side-large-image">
+    <div class="left-side-large-image col-d5">
       {% render 'ss-media-snippet' , img: section.settings.img %}
     </div>
-    <div class="right-side-small-image">
+    <div class="right-side-small-image col-d5">
       {% for block in section.blocks %}
         {% render 'ss-media-snippet' , img: block.settings.img %}
       {% endfor %}
