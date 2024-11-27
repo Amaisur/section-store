@@ -671,16 +671,16 @@
         "full_width": false,
         "section_content_width": 150,
         "border_thickness": 0,
-        "arrow_bg_color": "transparent",
-        "arrow_bg_hover_color": "#6C584C",
-        "section_background": "#FFFFFF",
+        "arrow_bg_color": "rgba(0,0,0,0)",
+        "arrow_bg_hover_color": "#6c584c",
+        "section_background": "#ffffff",
         "section_background_gradient": "",
         "border_color": "#000000",
         "margin_top": 0,
         "margin_bottom": 0,
-        "body_background_color": "#F2F0ED",
-        "body_border_color": "#6C584C",
-        "category_heading_color": "#6C584C",
+        "body_background_color": "#f2f0ed",
+        "body_border_color": "#6c584c",
+        "category_heading_color": "#6c584c",
         "body_border_radius": 20,
         "body_border_thickness": 0,
         "heading_size": 36,
@@ -700,8 +700,54 @@
     },
     "media_snippet_GnmmYj": {
       "type": "media-snippet",
+      "blocks": {
+        "image_bz8pdK": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/lemon_small_dfc49785-8fca-4808-bbfa-28bdf82614da.png"
+          }
+        },
+        "image_RBiXeQ": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/Vector.png"
+          }
+        },
+        "image_QXz7VF": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/cheese_small_99a34dc2-535d-4847-85ff-d9304bb97331.png"
+          }
+        },
+        "image_KgwWkY": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/image_1057.png"
+          }
+        },
+        "image_DzwPWc": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/orange_small_8a823796-e66b-4544-9779-cc5331d09857.png"
+          }
+        },
+        "image_WNAMG6": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/cherries_small_37667dea-9942-414c-a463-8af2c5d1c47c.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_bz8pdK",
+        "image_RBiXeQ",
+        "image_QXz7VF",
+        "image_KgwWkY",
+        "image_DzwPWc",
+        "image_WNAMG6"
+      ],
       "settings": {
-        "img": "shopify://shop_images/lemon_small_dfc49785-8fca-4808-bbfa-28bdf82614da.png"
+        "img": "shopify://shop_images/9_fa14b1c9-f68d-4623-865c-ef6461e4d1e1.png"
       }
     },
     "collection_slider_iHc74y": {
