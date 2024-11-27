@@ -31,7 +31,7 @@
   height="{{ video.height }}"
   poster="{{ video.preview_image.src }}"
 >
-  <source src="{{ video_source }}" type="{{ video.type }}">
+  <source src="{{ video_source.url }}" type="{{ video.type }}">
   <p>{{ video.alt }}</p>
 </video>
 
