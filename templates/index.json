@@ -701,16 +701,21 @@
     "media_snippet_GnmmYj": {
       "type": "media-snippet",
       "blocks": {
-        "image_bz8pdK": {
-          "type": "image",
-          "settings": {
-            "img": "shopify://shop_images/111.png"
-          }
-        },
         "image_RBiXeQ": {
           "type": "image",
           "settings": {
             "img": "shopify://shop_images/7.jpg"
+          }
+        },
+        "video_kck3HM": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
+            "play_pause": false,
+            "controls": true,
+            "autoplay": true,
+            "muted": true,
+            "loop": true
           }
         },
         "image_QXz7VF": {
@@ -729,12 +734,6 @@
           "type": "image",
           "settings": {
             "img": "shopify://shop_images/5_1800x1800_1800x1800_a8a6478b-9d2b-4fa1-a74c-3dd1348662ee.jpg"
-          }
-        },
-        "image_WNAMG6": {
-          "type": "image",
-          "settings": {
-            "img": "shopify://shop_images/RicemintyLittleLight1.webp"
           }
         },
         "image_n4k6rB": {
@@ -760,7 +759,8 @@
           "settings": {
             "video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
             "poster": "shopify://shop_images/image_1057.png",
-            "controls": true,
+            "play_pause": true,
+            "controls": false,
             "autoplay": false,
             "muted": false,
             "loop": false
@@ -768,12 +768,11 @@
         }
       },
       "block_order": [
-        "image_bz8pdK",
         "image_RBiXeQ",
+        "video_kck3HM",
         "image_QXz7VF",
         "image_KgwWkY",
         "image_DzwPWc",
-        "image_WNAMG6",
         "image_n4k6rB",
         "image_wyPcdd",
         "image_GV6iKB",
