@@ -27,15 +27,11 @@
   muted
   loop
   poster="{{ video.preview_image.src }}"
-  width="100%"
+  style="object-fit: {{ media.fit | default: 'contain' }};"
 >
   {% for source in video.sources %}
     <source src="{{ source.url }}" type="{{ source.mime_type }}">
   {% endfor %}
-  <p>Sorry, your browser does not support embedded videos.</p>
 </video>
-
-
-
 {% endif %}
   </div>
