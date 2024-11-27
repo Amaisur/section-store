@@ -27,7 +27,9 @@
   loop
   poster="{{ video.preview_image.src }}"
 >
-  <source src="{{ video.video_url }}" type="video/mp4">
+   {% for source in video.sources %}
+  <source src="{{ source }}" type="video/mp4">
+   {% endfor %}
   <p>{{ video.alt }}</p>
 </video>
 
