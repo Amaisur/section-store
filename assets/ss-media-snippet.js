@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 video.play();
                 playSVG.style.display = 'none';
                 pauseSVG.style.display = 'block';
+                button.classList.add('active-video-d5')
             } else {
                 video.pause();
                 playSVG.style.display = 'block';
