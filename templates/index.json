@@ -754,6 +754,12 @@
           "settings": {
             "img": "shopify://shop_images/A_b78cf4dd-46de-4be7-843f-c21298f680bc.png"
           }
+        },
+        "video_mjCwqN": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4"
+          }
         }
       },
       "block_order": [
@@ -765,7 +771,8 @@
         "image_WNAMG6",
         "image_n4k6rB",
         "image_wyPcdd",
-        "image_GV6iKB"
+        "image_GV6iKB",
+        "video_mjCwqN"
       ],
       "settings": {
         "img": "shopify://shop_images/9_fa14b1c9-f68d-4623-865c-ef6461e4d1e1.png"
