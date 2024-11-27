@@ -704,37 +704,55 @@
         "image_bz8pdK": {
           "type": "image",
           "settings": {
-            "img": "shopify://shop_images/lemon_small_dfc49785-8fca-4808-bbfa-28bdf82614da.png"
+            "img": "shopify://shop_images/111.png"
           }
         },
         "image_RBiXeQ": {
           "type": "image",
           "settings": {
-            "img": "shopify://shop_images/Vector.png"
+            "img": "shopify://shop_images/7.jpg"
           }
         },
         "image_QXz7VF": {
           "type": "image",
           "settings": {
-            "img": "shopify://shop_images/cheese_small_99a34dc2-535d-4847-85ff-d9304bb97331.png"
+            "img": "shopify://shop_images/Sf1cc08fc398d4e6da38beeabbd920f59l.jpg"
           }
         },
         "image_KgwWkY": {
           "type": "image",
           "settings": {
-            "img": "shopify://shop_images/image_1057.png"
+            "img": "shopify://shop_images/UOTZMen-s-Motorcycle-Leather-Jacket-Large-Size-Pocket-Black-Zipper-Lapel-Slim-Fit-Male-Spring-and_480x480_16a67d51-8082-45ff-9f33-f1de4aa6eb91.jpg"
           }
         },
         "image_DzwPWc": {
           "type": "image",
           "settings": {
-            "img": "shopify://shop_images/orange_small_8a823796-e66b-4544-9779-cc5331d09857.png"
+            "img": "shopify://shop_images/5_1800x1800_1800x1800_a8a6478b-9d2b-4fa1-a74c-3dd1348662ee.jpg"
           }
         },
         "image_WNAMG6": {
           "type": "image",
           "settings": {
-            "img": "shopify://shop_images/cherries_small_37667dea-9942-414c-a463-8af2c5d1c47c.png"
+            "img": "shopify://shop_images/RicemintyLittleLight1.webp"
+          }
+        },
+        "image_n4k6rB": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/download_4_720x_1.jpg"
+          }
+        },
+        "image_wyPcdd": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/BlaElliotJackaDunjackavarmNordistamodevintervinterjackaparkanordisknordisktmode.png"
+          }
+        },
+        "image_GV6iKB": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/A_b78cf4dd-46de-4be7-843f-c21298f680bc.png"
           }
         }
       },
@@ -744,7 +762,10 @@
         "image_QXz7VF",
         "image_KgwWkY",
         "image_DzwPWc",
-        "image_WNAMG6"
+        "image_WNAMG6",
+        "image_n4k6rB",
+        "image_wyPcdd",
+        "image_GV6iKB"
       ],
       "settings": {
         "img": "shopify://shop_images/9_fa14b1c9-f68d-4623-865c-ef6461e4d1e1.png"
