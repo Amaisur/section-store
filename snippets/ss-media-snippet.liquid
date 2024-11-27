@@ -1,8 +1,8 @@
 <style>
   .general-media-d5 img{
     width: 100%;
-    height: auto;
-    object-fit: {{ media.fit }};
+    height: 100%;
+    object-fit: {{ media.fit | 'contain' }};
   }
 </style>
 <div class="general-media-d5">
