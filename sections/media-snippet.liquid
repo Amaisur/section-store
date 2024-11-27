@@ -52,7 +52,8 @@
         controls: block.settings.controls;
         loop: block.settings.loop,
         autoplay: block.settings.autoplay,
-        muted: block.settings.muted
+        muted: block.settings.muted,
+        play_pause: block.settings.play_pause
       %}
     {% endfor %}
   </div>
@@ -93,6 +94,12 @@
           "type": "image_picker",
           "id": "poster",
           "label": "Poster Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "play_pause",
+          "label": "Show Play Pause button",
+          "default": false
         },
           {
     "type": "checkbox",
