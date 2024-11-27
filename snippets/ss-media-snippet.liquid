@@ -21,18 +21,20 @@
 {% elsif video != blank %}
 
  <video
+  id="video-{{ video.id }}"
   controls
   autoplay
   muted
   loop
   poster="{{ video.preview_image.src }}"
+  width="100%"
 >
-   {{ video | json }}
-   {% for source in video.sources %}
-  <source src="{{ video.source }}" type="video/mp4">
-   {% endfor %}
-  <p>{{ video.alt }}</p>
+  {% for source in video.sources %}
+    <source src="{{ source.url }}" type="{{ source.mime_type }}">
+  {% endfor %}
+  <p>Sorry, your browser does not support embedded videos.</p>
 </video>
+
 
 
 {% endif %}
