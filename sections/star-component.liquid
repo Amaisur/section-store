@@ -2,7 +2,45 @@
 
 
 <div class="text-container">
-<div id="rating-container"></div> <script> function renderStars(rating) { const container = document.getElementById('rating-container'); container.innerHTML = ''; const fullStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-100.png?v=1732826080">'; const halfStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-50.png?v=1732826080">'; const emptyStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-0.png?v=1732826080">'; const fullStarsCount = Math.floor(rating); const halfStarsCount = rating % 1 >= 0.5 ? 1 : 0; const emptyStarsCount = 5 - fullStarsCount - halfStarsCount; for (let i = 0; i < fullStarsCount; i++) { container.innerHTML += fullStar; } if (halfStarsCount) { container.innerHTML += halfStar; } for (let i = 0; i < emptyStarsCount; i++) { container.innerHTML += emptyStar; } }; </script>
+<div id="rating-container"></div>
+<script>
+function renderStars(rating) {
+    // Ensure rating is between 0 and 5
+    if (rating < 0 || rating > 5 || isNaN(rating)) {
+        console.error('Invalid rating value. Please provide a number between 0 and 5.');
+        return;
+    }
+
+    const container = document.getElementById('rating-container');
+    let starsHTML = ''; // Create an empty string to accumulate stars
+
+    // Star images
+    const fullStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-100.png?v=1732826080" alt="Full Star">';
+    const halfStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-50.png?v=1732826080" alt="Half Star">';
+    const emptyStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-0.png?v=1732826080" alt="Empty Star">';
+
+    // Calculate number of full, half, and empty stars
+    const fullStarsCount = Math.floor(rating);
+    const halfStarsCount = rating % 1 >= 0.5 ? 1 : 0;
+    const emptyStarsCount = 5 - fullStarsCount - halfStarsCount;
+
+    // Add full stars
+    starsHTML += fullStar.repeat(fullStarsCount);
+    
+    // Add half star if necessary
+    if (halfStarsCount) {
+        starsHTML += halfStar;
+    }
+
+    // Add empty stars
+    starsHTML += emptyStar.repeat(emptyStarsCount);
+
+    // Set the container's innerHTML with the accumulated stars
+    container.innerHTML = starsHTML;
+}
+
+// Example usage: renderStars(4.7);
+</script>
 
 </div>
 {% schema %}
