@@ -1,6 +1,29 @@
+
+.text-container {
+  background-image: url('your-image.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 100px;
+  text-align: center;
+}
+
+.outlined-text {
+  font-size: 80px; /* Adjust as needed */
+  font-weight: bold;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background: red;
+  text-stroke: 4px solid #fff; /* Adjust stroke width and color */
+  /* Optional for cross-browser support */
+  -webkit-text-stroke: 4px solid #fff;
+}
+
+<div class="text-container">
 {% for i in (1..5) %}
   {% render 'ss-stars-v1' %}
 {% endfor %}
+</div>
 {% schema %}
   {
     "name": "Star component",
