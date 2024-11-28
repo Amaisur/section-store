@@ -661,42 +661,9 @@
         "lr-s": 20
       }
     },
-    "ss_faq_8_KxjiYa": {
-      "type": "ss-faq-8",
-      "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_sides": 5,
-        "padding_sides_mobile": 1,
-        "full_width": false,
-        "section_content_width": 150,
-        "border_thickness": 0,
-        "arrow_bg_color": "rgba(0,0,0,0)",
-        "arrow_bg_hover_color": "#6c584c",
-        "section_background": "#ffffff",
-        "section_background_gradient": "",
-        "border_color": "#000000",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "body_background_color": "#f2f0ed",
-        "body_border_color": "#6c584c",
-        "category_heading_color": "#6c584c",
-        "body_border_radius": 20,
-        "body_border_thickness": 0,
-        "heading_size": 36,
-        "heading_size_mobile": 20,
-        "heading_line_height": 130,
-        "heading_margin_top": 64,
-        "heading_margin_bottom": 24,
-        "button_padding_horizontal_mobile": 16,
-        "button_roundness": 100,
-        "button_border_thickness": 0,
-        "body_margin_top": 32,
-        "body_padding_vertical": 64,
-        "navigation_gap": 12,
-        "button_size": 16,
-        "arrow_size": 28
-      }
+    "star_component_yfpycd": {
+      "type": "star-component",
+      "settings": {}
     },
     "media_snippet_GnmmYj": {
       "type": "media-snippet",
@@ -1659,7 +1626,7 @@
     "hotspots_4_HGjatk",
     "video_multicolumn_eYdPVb",
     "faq_9_Dz7J73",
-    "ss_faq_8_KxjiYa",
+    "star_component_yfpycd",
     "media_snippet_GnmmYj",
     "collection_slider_iHc74y",
     "echo_section_ss_3_Tp6ghe",
