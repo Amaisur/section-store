@@ -1,23 +1,24 @@
 <style>
-.text-container {
-  background-image: url('your-image.jpg');
-  background-size: cover;
-  background-position: center;
-  padding: 100px;
-  text-align: center;
-}
+.star-container {
+            width: 300px;
+            height: 300px;
+            background: red; /* Your background image */
+            background-size: cover;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            position: relative;
+        }
 
-.outlined-text {
-  font-size: 80px; /* Adjust as needed */
-  font-weight: bold;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  background: red;
-  text-stroke: 4px solid #fff; /* Adjust stroke width and color */
-  /* Optional for cross-browser support */
-  -webkit-text-stroke: 4px solid #fff;
-}
+        /* Optional: Border and padding around the clipped star */
+        .star-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 5px solid #000; /* Star border */
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
 </style>
 <div class="text-container">
 {% for i in (1..5) %}
