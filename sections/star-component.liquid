@@ -2,8 +2,7 @@
 
 
 <div class="text-container">
-
-  {% render 'ss-stars-v1', rating: 4.5 %}
+<div id="rating-container"></div> <script> function renderStars(rating) { const container = document.getElementById('rating-container'); container.innerHTML = ''; // Clear previous stars const fullStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-100.png?v=1732826080">'; const halfStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-50.png?v=1732826080">'; const emptyStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-0.png?v=1732826080">'; const fullStarsCount = Math.floor(rating); const halfStarsCount = rating % 1 >= 0.5 ? 1 : 0; const emptyStarsCount = 5 - fullStarsCount - halfStarsCount; for (let i = 0; i < fullStarsCount; i++) { container.innerHTML += fullStar; } if (halfStarsCount) { container.innerHTML += halfStar; } for (let i = 0; i < emptyStarsCount; i++) { container.innerHTML += emptyStar; } } // Example usage: renderStars(4.7); </script>
 
 </div>
 {% schema %}
