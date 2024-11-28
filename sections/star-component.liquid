@@ -2,17 +2,14 @@
 
 
 <div class="text-container">
-<div id="rating-container"></div>
-<script>
-function renderStars(rating) {
-    // Ensure rating is between 0 and 5
-    if (rating < 0 || rating > 5 || isNaN(rating)) {
-        console.error('Invalid rating value. Please provide a number between 0 and 5.');
-        return;
-    }
+<div class="rating-container" ss-data-rating="4.75"></div>
+<div class="rating-container" ss-data-rating="3.4"></div>
+<div class="rating-container" ss-data-rating="2.5"></div>
 
-    const container = document.getElementById('rating-container');
-    let starsHTML = ''; // Create an empty string to accumulate stars
+<script>
+function renderStars() {
+    // Select all elements with the class 'rating-container'
+    const containers = document.querySelectorAll('.rating-container');
 
     // Star images (updated to include 25% and 75% for more precision)
     const fullStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-100.png?v=1732826080" alt="Full Star">';
@@ -21,44 +18,59 @@ function renderStars(rating) {
     const quarterStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-25.png?v=1732826080" alt="Quarter Star">';
     const emptyStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-0.png?v=1732826080" alt="Empty Star">';
 
-    // Calculate number of full stars
-    const fullStarsCount = Math.floor(rating);
+    // Iterate over each container and render the stars based on the rating attribute
+    containers.forEach(container => {
+        const rating = parseFloat(container.getAttribute('ss-data-rating'));
 
-    // Calculate the decimal part of the rating
-    const decimalPart = rating % 1;
+        // Ensure rating is between 0 and 5
+        if (rating < 0 || rating > 5 || isNaN(rating)) {
+            console.error('Invalid rating value. Please provide a number between 0 and 5.');
+            return;
+        }
 
-    // Determine the type of partial star to show (25%, 50%, 75%)
-    let partialStar;
-    if (decimalPart >= 0.75) {
-        partialStar = threeQuarterStar;
-    } else if (decimalPart >= 0.50) {
-        partialStar = halfStar;
-    } else if (decimalPart >= 0.25) {
-        partialStar = quarterStar;
-    } else {
-        partialStar = ''; // No partial star
-    }
+        let starsHTML = ''; // Create an empty string to accumulate stars
 
-    // Calculate the number of empty stars
-    const emptyStarsCount = 5 - fullStarsCount - (partialStar ? 1 : 0);
+        // Calculate number of full stars
+        const fullStarsCount = Math.floor(rating);
 
-    // Add full stars
-    starsHTML += fullStar.repeat(fullStarsCount);
+        // Calculate the decimal part of the rating
+        const decimalPart = rating % 1;
 
-    // Add partial star if necessary
-    if (partialStar) {
-        starsHTML += partialStar;
-    }
+        // Determine the type of partial star to show (25%, 50%, 75%)
+        let partialStar;
+        if (decimalPart >= 0.75) {
+            partialStar = threeQuarterStar;
+        } else if (decimalPart >= 0.50) {
+            partialStar = halfStar;
+        } else if (decimalPart >= 0.25) {
+            partialStar = quarterStar;
+        } else {
+            partialStar = ''; // No partial star
+        }
 
-    // Add empty stars
-    starsHTML += emptyStar.repeat(emptyStarsCount);
+        // Calculate the number of empty stars
+        const emptyStarsCount = 5 - fullStarsCount - (partialStar ? 1 : 0);
 
-    // Set the container's innerHTML with the accumulated stars
-    container.innerHTML = starsHTML;
+        // Add full stars
+        starsHTML += fullStar.repeat(fullStarsCount);
+
+        // Add partial star if necessary
+        if (partialStar) {
+            starsHTML += partialStar;
+        }
+
+        // Add empty stars
+        starsHTML += emptyStar.repeat(emptyStarsCount);
+
+        // Set the container's innerHTML with the accumulated stars
+        container.innerHTML = starsHTML;
+    });
 }
 
-renderStars(4.25);
+// Run the function to render stars based on the `ss-data-rating` attribute
+renderStars();
 </script>
+
 
 </div>
 {% schema %}
