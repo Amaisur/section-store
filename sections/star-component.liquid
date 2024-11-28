@@ -10,19 +10,27 @@
 
 }
 </style>
-<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<svg id="starSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
   <defs>
-    <mask id="half-star-mask">
-      <!-- Full star with a half rectangle cut out -->
-      <polygon points="50,10 61,35 98,35 68,57 79,91 50,70 21,91 32,57 2,35 39,35" fill="white" />
-      <rect x="50" y="0" width="50" height="100" fill="black" />
+    <mask id="dynamicFillMask" x="0" y="0" width="100" height="100">
+      <rect id="fillRect" x="0" y="0" width="100%" height="100" fill="white"/>
     </mask>
   </defs>
-  <polygon points="50,10 61,35 98,35 68,57 79,91 50,70 21,91 32,57 2,35 39,35" fill="yellow" mask="url(#half-star-mask)" />
-  
-  <!-- Background image applied to the star -->
-  <rect width="100" height="100" fill="url(#half-star-mask)" mask="url(#half-star-mask)" />
+
+  <polygon points="50,15 61,35 88,35 67,57 74,85 50,70 26,85 33,57 12,35 39,35"
+           fill="gold" stroke="black" stroke-width="2" mask="url(#dynamicFillMask)"/>
 </svg>
+
+<script>
+  function setStarFill(percentage) {
+    const fillRect = document.getElementById('fillRect');
+    fillRect.setAttribute('width', `${percentage}%`);
+  }
+
+  // Example: Set fill to 50%
+  setStarFill(25); // Change the percentage here to control fill
+</script>
+
 
 <div class="text-container">
 {% for i in (1..5) %}
