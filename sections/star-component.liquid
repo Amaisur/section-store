@@ -9,6 +9,18 @@
   clip-path: url(#star-shape-s); /* Use the clip-path to apply the star shape */
 
 }
+#starSvg{
+  position: relative;
+}
+#starSvg:before{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left:0;
+  content: '';
+  background: pink;
+}  
 </style>
 <svg id="starSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
   <defs>
