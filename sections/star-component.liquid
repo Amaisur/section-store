@@ -23,7 +23,13 @@
 }  
 </style>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-  <path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8L8 14.8l-6-4.8h7.6L12 2z" fill="none" stroke="black" stroke-width="2"/>
+  <defs>
+    <linearGradient id="halfGoldGray" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="50%" style="stop-color: gold; stop-opacity: 1" />
+      <stop offset="50%" style="stop-color: gray; stop-opacity: 1" />
+    </linearGradient>
+  </defs>
+  <path fill="url(#halfGoldGray)" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
 </svg>
 
 
