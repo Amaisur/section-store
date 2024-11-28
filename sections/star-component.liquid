@@ -12,12 +12,14 @@
 #starSvg{
   position: relative;
 }
-.text-container:after{
-  content: '';
+#starSvg polygon:after{
+  position: absolute;
   width: 50px;
   height: 50px;
   top: 0;
   left:0;
+  content: '';
+  display: block;
   background: pink;
 }  
 </style>
