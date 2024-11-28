@@ -14,22 +14,40 @@ function renderStars(rating) {
     const container = document.getElementById('rating-container');
     let starsHTML = ''; // Create an empty string to accumulate stars
 
-    // Star images
+    // Star images (updated to include 25% and 75% for more precision)
     const fullStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-100.png?v=1732826080" alt="Full Star">';
+    const threeQuarterStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-75.png?v=1732826080" alt="Three Quarter Star">';
     const halfStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-50.png?v=1732826080" alt="Half Star">';
+    const quarterStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-25.png?v=1732826080" alt="Quarter Star">';
     const emptyStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-0.png?v=1732826080" alt="Empty Star">';
 
-    // Calculate number of full, half, and empty stars
+    // Calculate number of full stars
     const fullStarsCount = Math.floor(rating);
-    const halfStarsCount = rating % 1 >= 0.5 ? 1 : 0;
-    const emptyStarsCount = 5 - fullStarsCount - halfStarsCount;
+
+    // Calculate the decimal part of the rating
+    const decimalPart = rating % 1;
+
+    // Determine the type of partial star to show (25%, 50%, 75%)
+    let partialStar;
+    if (decimalPart >= 0.75) {
+        partialStar = threeQuarterStar;
+    } else if (decimalPart >= 0.50) {
+        partialStar = halfStar;
+    } else if (decimalPart >= 0.25) {
+        partialStar = quarterStar;
+    } else {
+        partialStar = ''; // No partial star
+    }
+
+    // Calculate the number of empty stars
+    const emptyStarsCount = 5 - fullStarsCount - (partialStar ? 1 : 0);
 
     // Add full stars
     starsHTML += fullStar.repeat(fullStarsCount);
-    
-    // Add half star if necessary
-    if (halfStarsCount) {
-        starsHTML += halfStar;
+
+    // Add partial star if necessary
+    if (partialStar) {
+        starsHTML += partialStar;
     }
 
     // Add empty stars
@@ -39,7 +57,7 @@ function renderStars(rating) {
     container.innerHTML = starsHTML;
 }
 
-   renderStars(1.7);
+// Example usage: renderStars(4.25); // This will show 4 full stars and 1 quarter star.
 </script>
 
 </div>
