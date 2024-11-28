@@ -1,42 +1,10 @@
-<style>
-.star-sn {
-  width: 100px; /* Set your desired width */
-  height: 100px; /* Set your desired height */
-  background: red;
-  background-size: cover; /* Ensures the background image covers the star */
-  background-position: center; /* Center the image inside the star */
-  display: inline-block;
-  clip-path: url(#star-shape-s); /* Use the clip-path to apply the star shape */
 
-}
-#starSvg{
-  position: relative;
-}
-#starSvg:after{
-  content: '';
-  width: 50px;
-  height: 50px;
-  top: 0;
-  left:0;
-  display: block;
-  background: pink;
-}  
-</style>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-  <defs>
-    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="30%" style="stop-color:#ff0000;stop-opacity:1" />
-      <stop offset="70%" style="stop-color:#0000ff;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <path fill="url(#grad1)" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-</svg>
 
 
 <div class="text-container">
-{% for i in (1..5) %}
+
   {% render 'ss-stars-v1' %}
-{% endfor %}
+
 </div>
 {% schema %}
   {
