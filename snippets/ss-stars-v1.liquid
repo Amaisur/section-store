@@ -1,3 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-  <path d="M12 2L9.27 8.27L2 9.27l5.73 4.73L5.73 22L12 17.27L18.27 22l-2-8L22 9.27l-7.27-1L12 2z" fill="currentColor"/>
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define clip path -->
+  <clipPath id="starClip">
+    <path d="M50,15 L61,35 H39 Z" fill="white" />
+  </clipPath>
+
+  <!-- Create background -->
+  <rect width="100" height="100" fill="lightblue" clip-path="url(#starClip)" />
+
+  <!-- Create star -->
+  <path d="M50,15 L61,35 H39 Z" fill="yellow" />
 </svg>
