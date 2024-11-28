@@ -7,13 +7,14 @@
   background-position: center; /* Center the image inside the star */
   display: inline-block;
   clip-path: url(#star-shape); /* Use the clip-path to apply the star shape */
+
+}
+</style>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="display:none;">
   <clipPath id="star-shape" clipPathUnits="objectBoundingBox">
     <polygon points="0.5,0 0.62,0.35 1,0.35 0.68,0.57 0.8,1 0.5,0.75 0.2,1 0.32,0.57 0,0.35 0.38,0.35" />
   </clipPath>
 </svg>
-}
-</style>
 <div class="text-container">
 {% for i in (1..5) %}
   {% render 'ss-stars-v1' %}
