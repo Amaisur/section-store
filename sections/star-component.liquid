@@ -6,72 +6,81 @@
 <div class="rating-container" ss-data-rating="3.4"></div>
 <div class="rating-container" ss-data-rating="2.5"></div>
 
+<div class="text-container">
+    <div class="rating-container" ss-data-rating="5"></div>
+    <div class="rating-container" ss-data-rating="3.4"></div>
+    <div class="rating-container" ss-data-rating="2.5"></div>
+</div>
+
 <script>
-function renderStars() {
-    // Select all elements with the class 'rating-container'
-    const containers = document.querySelectorAll('.rating-container');
+class StarRating {
+    constructor(containerSelector) {
+        this.containers = document.querySelectorAll(containerSelector);
+        this.fullStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-100.png?v=1732826080" alt="Full Star">';
+        this.threeQuarterStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-75.png?v=1732826080" alt="Three Quarter Star">';
+        this.halfStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-50.png?v=1732826080" alt="Half Star">';
+        this.quarterStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-25.png?v=1732826080" alt="Quarter Star">';
+        this.emptyStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-0.png?v=1732826080" alt="Empty Star">';
+    }
 
-    // Star images (updated to include 25% and 75% for more precision)
-    const fullStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-100.png?v=1732826080" alt="Full Star">';
-    const threeQuarterStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-75.png?v=1732826080" alt="Three Quarter Star">';
-    const halfStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-50.png?v=1732826080" alt="Half Star">';
-    const quarterStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-25.png?v=1732826080" alt="Quarter Star">';
-    const emptyStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-0.png?v=1732826080" alt="Empty Star">';
+    renderStars() {
+        // Iterate over each container and render the stars based on the rating attribute
+        this.containers.forEach(container => {
+            const rating = parseFloat(container.getAttribute('ss-data-rating'));
 
-    // Iterate over each container and render the stars based on the rating attribute
-    containers.forEach(container => {
-        const rating = parseFloat(container.getAttribute('ss-data-rating'));
+            // Ensure rating is between 0 and 5
+            if (rating < 0 || rating > 5 || isNaN(rating)) {
+                console.error('Invalid rating value. Please provide a number between 0 and 5.');
+                return;
+            }
 
-        // Ensure rating is between 0 and 5
-        if (rating < 0 || rating > 5 || isNaN(rating)) {
-            console.error('Invalid rating value. Please provide a number between 0 and 5.');
-            return;
-        }
+            let starsHTML = ''; // Create an empty string to accumulate stars
 
-        let starsHTML = ''; // Create an empty string to accumulate stars
+            // Calculate number of full stars
+            const fullStarsCount = Math.floor(rating);
 
-        // Calculate number of full stars
-        const fullStarsCount = Math.floor(rating);
+            // Calculate the decimal part of the rating
+            const decimalPart = rating % 1;
 
-        // Calculate the decimal part of the rating
-        const decimalPart = rating % 1;
+            // Determine the type of partial star to show (25%, 50%, 75%)
+            let partialStar;
+            if (decimalPart >= 0.75) {
+                partialStar = this.threeQuarterStar;
+            } else if (decimalPart >= 0.50) {
+                partialStar = this.halfStar;
+            } else if (decimalPart >= 0.25) {
+                partialStar = this.quarterStar;
+            } else {
+                partialStar = ''; // No partial star
+            }
 
-        // Determine the type of partial star to show (25%, 50%, 75%)
-        let partialStar;
-        if (decimalPart >= 0.75) {
-            partialStar = threeQuarterStar;
-        } else if (decimalPart >= 0.50) {
-            partialStar = halfStar;
-        } else if (decimalPart >= 0.25) {
-            partialStar = quarterStar;
-        } else {
-            partialStar = ''; // No partial star
-        }
+            // Calculate the number of empty stars
+            const emptyStarsCount = 5 - fullStarsCount - (partialStar ? 1 : 0);
 
-        // Calculate the number of empty stars
-        const emptyStarsCount = 5 - fullStarsCount - (partialStar ? 1 : 0);
+            // Add full stars
+            starsHTML += this.fullStar.repeat(fullStarsCount);
 
-        // Add full stars
-        starsHTML += fullStar.repeat(fullStarsCount);
+            // Add partial star if necessary
+            if (partialStar) {
+                starsHTML += partialStar;
+            }
 
-        // Add partial star if necessary
-        if (partialStar) {
-            starsHTML += partialStar;
-        }
+            // Add empty stars
+            starsHTML += this.emptyStar.repeat(emptyStarsCount);
 
-        // Add empty stars
-        starsHTML += emptyStar.repeat(emptyStarsCount);
-
-        // Set the container's innerHTML with the accumulated stars
-        container.innerHTML = starsHTML;
-    });
+            // Set the container's innerHTML with the accumulated stars
+            container.innerHTML = starsHTML;
+        });
+    }
 }
 
-// Run the function to render stars based on the `ss-data-rating` attribute
-renderStars();
+// Instantiate the StarRating class and render the stars for all containers
+const starRating = new StarRating('.rating-container');
+starRating.renderStars();
 </script>
 
 
+  
 </div>
 {% schema %}
   {
