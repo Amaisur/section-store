@@ -1,9 +1,9 @@
 {{ 'ss-rating-star-v2.css' | asset_url | stylesheet_tag }}
 
-{% render 'ss-rating-star-v2', no_rating: '', text: '', rating: 2.5, star_size: 25, full_star: '', empty_star: '' %}
+{% render 'ss-rating-star-v2', no_rating: '', text: '', rating: 2.5, star_size: 25, full_star: '', empty_star: '', gap: 8 %}
 
-{% render 'ss-rating-star-v2', no_rating: '', text: '', rating: 3.2, star_size: 25, full_star: '', empty_star: '' %}
-{% render 'ss-rating-star-v2', no_rating: '', text: '', rating: 0, star_size: 25, full_star: '', empty_star: '' %}
+{% render 'ss-rating-star-v2', no_rating: '', text: '', rating: 3.2, star_size: 25, full_star: '', empty_star: '', gap: 8 %}
+{% render 'ss-rating-star-v2', no_rating: '', text: '', rating: 0, star_size: 25, full_star: '', empty_star: '', gap: 8 %}
 
 <script src="{{ 'ss-rating-star-v2.js' | asset_url }}" defer="defer"></script>
 
