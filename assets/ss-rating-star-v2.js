@@ -1,5 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-    class StarRating {
+  class StarRating {
         constructor(containerSelector) {
             this.containers = document.querySelectorAll(containerSelector);
             this.fullStar = `<i class="star full" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283)"></i>`;
@@ -72,4 +71,3 @@ document.addEventListener("DOMContentLoaded", () => {
     // Instantiate the StarRating class and render the stars for all containers
     const starRating = new StarRating('.rating-container');
     starRating.renderStars();
-});
