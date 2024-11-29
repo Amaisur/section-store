@@ -31,3 +31,8 @@
   padding: 0;
   box-sizing: border-box;
 }
+.ss-rating-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
