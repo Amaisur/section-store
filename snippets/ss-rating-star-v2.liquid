@@ -1,3 +1,7 @@
+
+{% comment %}
+  Documentation for rendering this snippet: https://muscled.notion.site/SS-Rating-Star-snippet-rendering-documentaion-14d277b1656a802cb2ffe4049c6d026e?pvs=4
+{% endcomment %}
 <style>
   .ss-rating-container i:before{
     background-image:{% if full_star != blank %}url({{ full_star }}) {% else %}url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283){% endif %};
@@ -11,7 +15,7 @@
   ></div>
   <div class="ss-total-rating">
     {% if rating > 0 %}
-      <p class="ss-av-rating">{{ rating }}</p>&nbsp;&nbsp;&nbsp;
+      <p class="ss-av-rating">{{ rating }}</p>&nbsp;
       {{ text | default: '<p>Out of 433 <strong>Reviews</strong></p>' }}
     {% else %}
       {{ no_rating | default: '<p>No Rating Available</p>' }}
