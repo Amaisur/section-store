@@ -39,7 +39,6 @@
         constructor(containerSelector) {
             this.containers = document.querySelectorAll(containerSelector);
             this.fullStar = `<i class="star" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283)"></i>`;
-            this.halfStar = `<i class="star partial" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"></i>`
             this.emptyStar = `<i class="star" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"></i>`;
         }
 
@@ -64,10 +63,15 @@
 
                 // Determine the width of the partial star (percentage based on decimalPart)
                 let partialStar = '';
+                let emptyPartialStar = ''; // To represent the empty portion of the partial star
                 if (decimalPart > 0) {
                     const partialWidth = Math.round(decimalPart * 100);
+
                     // Add a partial star with a style to set the width of the 'before' pseudo-element
                     partialStar = `<i class="star partial" style="--partial-width: ${partialWidth}%;"></i>`;
+
+                    // Add an empty star for the remaining width of the partial star
+                    emptyPartialStar = `<i class="star partial empty" style="--partial-width: ${100 - partialWidth}%;"></i>`;
                 }
 
                 // Calculate the number of empty stars
@@ -79,6 +83,8 @@
                 // Add partial star if necessary
                 if (partialStar) {
                     starsHTML += partialStar;
+                    // Add empty partial star to fill up the remaining part of the star
+                    starsHTML += emptyPartialStar;
                 }
 
                 // Add empty stars
@@ -94,6 +100,7 @@
     const starRating = new StarRating('.rating-container');
     starRating.renderStars();
 </script>
+
 
 
   <div class="rating-stars" data-stars="4.5">
