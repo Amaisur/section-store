@@ -23,7 +23,7 @@ class StarRating {
       const emptyStarsCount = 5 - fullStarsCount - (partialStarWidth > 0 ? 1 : 0); 
 
       for (let i = 0; i < fullStarsCount; i++) {
-        starsHTML += this.fullStar.outerHTML; // Clone the full star
+        starsHTML += this.fullStar.outerHTML; 
       }
 
       if (partialStarWidth > 0) {
