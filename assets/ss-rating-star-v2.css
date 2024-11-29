@@ -1,10 +1,10 @@
 .ss-rating-container i,
 .ss-rating-container i:before {
-  width: 64px;
-  height: 64px;
+  width: var(--star-size);
+  height: var(--star-size);
   background-repeat: no-repeat !important;
   background-position: 0 0;
-  background-size: 64px 64px;
+  background-size: var(--star-size) !important;
   display: inline-block;
 }
 .ss-rating-container i {
