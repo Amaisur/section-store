@@ -736,11 +736,11 @@
         "reviews_EnPmfe": {
           "type": "reviews",
           "settings": {
-            "no_rating": "",
-            "text": "Out of 433 Review",
+            "text": "<p>Out of<strong> 433 Review</strong></p>",
             "rating": 4.7,
             "star_size": 25,
-            "gap": 8
+            "gap": 8,
+            "no_rating": ""
           }
         }
       },
