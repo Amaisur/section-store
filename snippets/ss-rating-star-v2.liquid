@@ -4,15 +4,15 @@
   }
   {% if star_size != blank %}
   .ss-rating-container i{
-    width: var(--star-size)px;
-    height: var(--star-size)px;
+    width: var(--star-size);
+    height: var(--star-size);
   }
   .ss-rating-container i:before{
-    background-size: var(--star-size)px !important;
+    background-size: var(--star-size) !important;
   }
    {% endif %}
 </style>
-  <div class="ss-rating-container" ss-data-rating="{{ rating | default: '5' }}" {% if star_size != blank %}style="--star-size: {{ star_size }};" {% endif %}></div>
+  <div class="ss-rating-container" ss-data-rating="{{ rating | default: '5' }}" {% if star_size != blank %}style="--star-size: {{ star_size }}px;" {% endif %}></div>
 
 
 <div class="ss-star-images-hidden" hidden>
