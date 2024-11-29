@@ -11,7 +11,7 @@
   ></div>
   <div class="ss-total-rating">
     {% if rating > 0 %}
-      <p class="ss-av-rating">{{ rating }}</p>
+      <p class="ss-av-rating">{{ rating }} </p>
       {{ text | default: '<p>Out of 433 <strong>Reviews</strong></p>' }}
     {% else %}
       {{ no_rating | default: '<p>No Rating Available</p>' }}
