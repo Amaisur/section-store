@@ -38,12 +38,12 @@
     class StarRating {
         constructor(containerSelector) {
             this.containers = document.querySelectorAll(containerSelector);
-            this.fullStar = `<i class="star" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283)"></i>`;
-            this.halfStar = `<i class="star partial" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"></i>`
-            this.emptyStar = `<i class="star" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"></i>`;
+            this.fullStar = `<i class="star full" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283)"></i>`;
+            this.halfStar = `<i class="star partial" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"></i>`;
+            this.emptyStar = `<i class="star empty" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"></i>`;
         }
 
-       renderStars() {
+        renderStars() {
             // Iterate over each container and render the stars based on the rating attribute
             this.containers.forEach(container => {
                 const rating = parseFloat(container.getAttribute('ss-data-rating'));
@@ -64,8 +64,11 @@
 
                 // Determine if a half star is needed (any decimal part >= 0.1)
                 let partialStar = '';
+                let partialStarWidth = 0;
                 if (decimalPart >= 0.1) {
                     partialStar = this.halfStar;
+                    // The width of the partial star should be proportional to the fractional part
+                    partialStarWidth = Math.round(decimalPart * 100);
                 }
 
                 // Calculate the number of empty stars
@@ -74,9 +77,9 @@
                 // Add full stars
                 starsHTML += this.fullStar.repeat(fullStarsCount);
 
-                // Add partial star if necessary (half star)
+                // Add partial star with width based on decimal part
                 if (partialStar) {
-                    starsHTML += partialStar;
+                    starsHTML += `<i class="star partial" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585); width: ${partialStarWidth}%"></i>`;
                 }
 
                 // Add empty stars
@@ -92,6 +95,7 @@
     const starRating = new StarRating('.rating-container');
     starRating.renderStars();
 </script>
+
 
 
   <div class="rating-stars" data-stars="4.5">
