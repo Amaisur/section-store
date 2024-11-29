@@ -1,6 +1,6 @@
 <style>
 
-#shopify-section-{{ section.id }} i, .star:before {
+#shopify-section-{{ section.id }} i,.rating-container .star:before {
     width: 64px;
     height: 64px;
     background-repeat: no-repeat !important;
@@ -9,7 +9,7 @@
     background-image: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283);
     display: inline-block;
   }
- .star:before {
+.rating-container .star:before {
     content: none;
     display: none;
     position: absolute;
@@ -17,7 +17,7 @@
     left: 0;
     width: 67%;
 }
- .star.partial:before {
+.rating-container .star.partial:before {
     content: "";
     display: block;
 }
