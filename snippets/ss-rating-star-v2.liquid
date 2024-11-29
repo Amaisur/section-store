@@ -3,6 +3,7 @@
     background-image:{% if full_star != blank %}url({{ full_star }}) {% else %}url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283){% endif %};
   }
 </style>
+<div class="ss-rating-main">
 <div
   class="ss-rating-container"
   ss-data-rating="{{ rating | default: '5' }}"
@@ -10,6 +11,10 @@
     style="--star-size: {{ star_size }}px;"
   {% endif %}
 ></div>
+  <div class="ss-total-rating">
+    {{ rating }} {{ text | default: 'out of' }} {{ total_rating }}
+  </div>
+  </div>
 
 <div class="ss-star-images-hidden" hidden>
   <i
