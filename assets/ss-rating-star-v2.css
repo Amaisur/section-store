@@ -39,5 +39,5 @@
 .ss-rating-container {
   display: flex;
   align-items: center;
-  gap: --var(ss-star-gap);
+  gap: var(--ss-star-gap);
 }
