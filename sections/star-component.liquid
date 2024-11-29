@@ -5,7 +5,7 @@
     height: 64px;
     background-repeat: no-repeat !important;
     background-position: 0 0;
-    background-size: 18px 18px;
+    background-size: 64px 64px;
     background-image: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283);
     display: inline-block;
   }
@@ -13,14 +13,14 @@
     position: relative;
   }
 .rating-container i:before {
-    content: "";
-    display: block;
+    content: none;
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
     width: 67%;
 }
-.rating-container i:before {
+.rating-container i.partial:before {
     content: "";
     display: block;
 }
