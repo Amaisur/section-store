@@ -36,3 +36,8 @@
   align-items: center;
   gap: 10px;
 }
+.ss-rating-container {
+  display: flex;
+  align-items: center;
+  gap: --var(ss-star-gap);
+}
