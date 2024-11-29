@@ -732,6 +732,16 @@
             "muted": false,
             "loop": false
           }
+        },
+        "reviews_EnPmfe": {
+          "type": "reviews",
+          "settings": {
+            "no_rating": "",
+            "text": "Out of 433 Review",
+            "rating": 4.7,
+            "star_size": 25,
+            "gap": 8
+          }
         }
       },
       "block_order": [
@@ -743,7 +753,8 @@
         "image_n4k6rB",
         "image_wyPcdd",
         "image_GV6iKB",
-        "video_mjCwqN"
+        "video_mjCwqN",
+        "reviews_EnPmfe"
       ],
       "settings": {
         "img": "shopify://shop_images/9_fa14b1c9-f68d-4623-865c-ef6461e4d1e1.png"
