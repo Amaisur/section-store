@@ -12,7 +12,11 @@
   {% endif %}
 ></div>
   <div class="ss-total-rating">
+    {% if rating > 0 and total_rating> 0 %}
     {{ rating }} {{ text | default: 'out of' }} {{ total_rating }}
+    {% else %}
+      {{ no_rating | default: 'No Rating Available' }}
+    {% endif %}
   </div>
   </div>
 
