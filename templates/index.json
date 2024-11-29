@@ -739,7 +739,7 @@
             "text": "<p>Out of<strong> 433 Review</strong></p>",
             "rating": 4.7,
             "star_size": 25,
-            "gap": 8,
+            "gap": 4,
             "no_rating": ""
           }
         }
