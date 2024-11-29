@@ -32,7 +32,7 @@ class StarRating {
         starsHTML += partialStarElement.outerHTML;
       }
       for (let i = 0; i < emptyStarsCount; i++) {
-        starsHTML += this.emptyStar.outerHTML; // Clone the empty star
+        starsHTML += this.emptyStar.outerHTML; 
       }
       container.innerHTML = starsHTML;
     });
