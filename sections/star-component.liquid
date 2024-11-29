@@ -18,7 +18,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 67%;
+    width: var(--partial-width, 0%);
 }
 .rating-container i.partial:before {
     content: "";
@@ -43,7 +43,7 @@
             this.emptyStar = `<i class="star" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"></i>`;
         }
 
-       renderStars() {
+        renderStars() {
             // Iterate over each container and render the stars based on the rating attribute
             this.containers.forEach(container => {
                 const rating = parseFloat(container.getAttribute('ss-data-rating'));
@@ -65,9 +65,9 @@
                 // Determine the width of the partial star (percentage based on decimalPart)
                 let partialStar = '';
                 if (decimalPart > 0) {
-                    // Calculate the width of the partial star (based on decimal part, e.g., 0.3 = 30%)
                     const partialWidth = Math.round(decimalPart * 100);
-                    partialStar = `<i class="star partial" style="width: ${partialWidth}%; background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283) no-repeat;"></i>`;
+                    // Add a partial star with a style to set the width of the 'before' pseudo-element
+                    partialStar = `<i class="star partial" style="--partial-width: ${partialWidth}%;"></i>`;
                 }
 
                 // Calculate the number of empty stars
@@ -89,6 +89,7 @@
             });
         }
     }
+
     // Instantiate the StarRating class and render the stars for all containers
     const starRating = new StarRating('.rating-container');
     starRating.renderStars();
