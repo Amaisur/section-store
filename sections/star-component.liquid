@@ -1,5 +1,5 @@
 {{ 'ss-rating-star-v2.css' | asset_url | stylesheet_tag }}
-{% render 'ss-rating-star-v2' %}
+{% render 'ss-rating-star-v2', rating: 2.5 %}
 <script src="{{ 'ss-rating-star-v2.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
