@@ -1,22 +1,25 @@
-.rating-stars i,
-.rating-stars i:before {
-  width: 18px;
-  height: 18px;
-  background-repeat: no-repeat;
+.ss-rating-container i,
+.ss-rating-container i:before {
+  width: 64px;
+  height: 64px;
+  background-repeat: no-repeat !important;
   background-position: 0 0;
-  background-size: 18px 18px;
-  background-image: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283);
-  display: block;
+  background-size: 64px 64px;
+  display: inline-block;
 }
-.rating-stars i:before {
+.ss-rating-container i {
+  position: relative;
+}
+.ss-rating-container i:before {
   content: none;
   display: none;
   position: absolute;
   top: 0;
   left: 0;
-  width: 67%;
+  width: var(--partial-width, 0);
+  background-image: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283);
 }
-.rating-stars[data-stars*="4.5"] i:nth-child(4) + i:before {
+.ss-rating-container i.ss-partial:before {
   content: "";
   display: block;
 }
