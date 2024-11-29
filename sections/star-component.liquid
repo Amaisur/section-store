@@ -1,6 +1,6 @@
 <style>
 
-#shopify-section-{{ section.id }} i,.rating-container i:before {
+#shopify-section-{{ section.id }} i,.ss-rating-container i:before {
     width: 64px;
     height: 64px;
     background-repeat: no-repeat !important;
@@ -12,7 +12,7 @@
   #shopify-section-{{ section.id }} i{
     position: relative;
   }
-.rating-container i:before {
+.ss-rating-container i:before {
     content: none;
     display: none;
     position: absolute;
@@ -20,7 +20,7 @@
     left: 0;
     width: var(--partial-width, 0);
 }
-.rating-container i.partial:before {
+.ss-rating-container i.ss-partial:before {
     content: "";
     display: block;
 }
