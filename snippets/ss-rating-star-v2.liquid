@@ -4,21 +4,20 @@
   }
 </style>
 <div class="ss-rating-main">
-<div
-  class="ss-rating-container"
-  ss-data-rating="{{ rating | default: '5' }}"
-  
-    style="{% if star_size != blank %}--star-size: {{ star_size }}px;{% endif %} --ss-star-gap: {{ gap }};"
-  
-></div>
+  <div
+    class="ss-rating-container"
+    ss-data-rating="{{ rating | default: '5' }}"
+    style="{% if star_size != blank %}--star-size: {{ star_size }}px;{% endif %} --ss-star-gap: {{ gap }}px;"
+  ></div>
   <div class="ss-total-rating">
-    {% if rating > 0  %}
-    {{ rating }} {{ text | default: '<p>out of 433 <strong>Reviews</strong></p>' }}
+    {% if rating > 0 %}
+      {{ rating }}
+      {{ text | default: '<p>out of 433 <strong>Reviews</strong></p>' }}
     {% else %}
       {{ no_rating | default: '<p>No Rating Available</p>' }}
     {% endif %}
   </div>
-  </div>
+</div>
 
 <div class="ss-star-images-hidden" hidden>
   <i
