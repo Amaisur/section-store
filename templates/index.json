@@ -663,6 +663,7 @@
     },
     "star_component_yfpycd": {
       "type": "star-component",
+      "disabled": true,
       "settings": {}
     },
     "media_snippet_GnmmYj": {
