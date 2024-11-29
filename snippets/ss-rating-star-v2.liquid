@@ -3,9 +3,9 @@
     background-image:{% if full_star != blank %}url({{ full_star }}) {% else %}url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283){% endif %};
   }
   .ss-{{ class }} i, .ss-{{ class }} i:before{
-    width: {{ star_size }};
-    height: {{ star_size }};
-    background-size: {{ star_size }} !important;
+    width: {{ star_size }}px;
+    height: {{ star_size }}px;
+    background-size: {{ star_size }}px !important;
   }
 </style>
   <div class="ss-rating-container {% if class != blank %}ss-{{ class }}{% endif %}" ss-data-rating="{{ rating | default: '5' }}"></div>
