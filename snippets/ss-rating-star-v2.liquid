@@ -7,9 +7,9 @@
 <div
   class="ss-rating-container"
   ss-data-rating="{{ rating | default: '5' }}"
-  {% if star_size != blank %}
-    style="--star-size: {{ star_size }}px;"
-  {% endif %}
+  
+    style="{% if star_size != blank %}--star-size: {{ star_size }}px;{% endif %} --ss-star-gap: {{ gap }};"
+  
 ></div>
   <div class="ss-total-rating">
     {% if rating > 0  %}
