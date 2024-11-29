@@ -34,14 +34,12 @@
   <div class="rating-container" ss-data-rating="3.4"></div>
   <div class="rating-container" ss-data-rating="0"></div>
 
-  <script>
+<script>
     class StarRating {
         constructor(containerSelector) {
             this.containers = document.querySelectorAll(containerSelector);
             this.fullStar = `<i class="star" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283)"></i>`;
-            this.threeQuarterStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-75.png?v=1732826080" alt="Three Quarter Star">';
-            this.halfStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-50.png?v=1732826080" alt="Half Star">';
-            this.quarterStar = `<i class="star partial" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"></i>`;
+            this.halfStar = `<i class="star partial" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"></i>`
             this.emptyStar = `<i class="star" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"></i>`;
         }
 
@@ -64,16 +62,10 @@
                 // Calculate the decimal part of the rating
                 const decimalPart = rating % 1;
 
-                // Determine the type of partial star to show (25%, 50%, 75%)
-                let partialStar;
-                if (decimalPart >= 0.75) {
-                    partialStar = this.threeQuarterStar;
-                } else if (decimalPart >= 0.50) {
+                // Determine the type of partial star to show (50% for half star)
+                let partialStar = '';
+                if (decimalPart >= 0.50) {
                     partialStar = this.halfStar;
-                } else if (decimalPart >= 0.25) {
-                    partialStar = this.quarterStar;
-                } else {
-                    partialStar = ''; // No partial star
                 }
 
                 // Calculate the number of empty stars
@@ -82,7 +74,7 @@
                 // Add full stars
                 starsHTML += this.fullStar.repeat(fullStarsCount);
 
-                // Add partial star if necessary
+                // Add partial star if necessary (half star only)
                 if (partialStar) {
                     starsHTML += partialStar;
                 }
@@ -99,7 +91,8 @@
     // Instantiate the StarRating class and render the stars for all containers
     const starRating = new StarRating('.rating-container');
     starRating.renderStars();
-  </script>
+</script>
+
 
   <div class="rating-stars" data-stars="4.5">
     <i class="star"></i>
