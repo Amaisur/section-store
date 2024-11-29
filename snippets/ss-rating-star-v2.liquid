@@ -1,10 +1,15 @@
 <style>
-  .ss-rating-container i:before{    
+  .ss-rating-container i:before{
     background-image:{% if full_star != blank %}url({{ full_star }}) {% else %}url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283){% endif %};
   }
 </style>
-  <div class="ss-rating-container" ss-data-rating="{{ rating | default: '5' }}" {% if star_size != blank %}style="--star-size: {{ star_size }}px;" {% endif %}></div>
-
+<div
+  class="ss-rating-container"
+  ss-data-rating="{{ rating | default: '5' }}"
+  {% if star_size != blank %}
+    style="--star-size: {{ star_size }}px;"
+  {% endif %}
+></div>
 
 <div class="ss-star-images-hidden" hidden>
   <i
@@ -13,10 +18,10 @@
   ></i>
   <i
     class="ss-star ss-partial"
-    style="background:{% if empty_star != blank %}url({{ empty_star }}) {% else %} url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585){% endif %}"
+    style="background:{% if empty_star != blank %}url({{ empty_star }}) {% else %}url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585){% endif %}"
   ></i>
   <i
     class="ss-star ss-empty"
-    style="background: {% if empty_star != blank %}url({{ empty_star }}) {% else %} url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585){% endif %}"
+    style="background: {% if empty_star != blank %}url({{ empty_star }}) {% else %}url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585){% endif %}"
   ></i>
 </div>
