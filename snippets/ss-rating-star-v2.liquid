@@ -74,7 +74,8 @@
         }
     }
 
-    // Instantiate the StarRating class and render the stars for all containers
+   document.addEventListener("DOMContentLoaded", function (){
     const starRating = new StarRating('.rating-container');
     starRating.renderStars();
+   });
 </script>
