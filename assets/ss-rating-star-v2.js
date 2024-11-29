@@ -3,9 +3,9 @@ class StarRating {
     this.containers = document.querySelectorAll(containerSelector);
     
     // Retrieve the full, partial, and empty star elements from the hidden section
-    this.fullStar = document.querySelector(".star.full").style.style.backgroundImage;
-    this.partialStar = document.querySelector(".star.partial").style.backgroundImage;
-    this.emptyStar = document.querySelector(".star.empty").style.backgroundImage;
+    this.fullStar = document.querySelector(".star.full");
+    this.partialStar = document.querySelector(".star.partial");
+    this.emptyStar = document.querySelector(".star.empty");
   }
 
   renderStars() {
