@@ -7,14 +7,14 @@
 <div class="ss-star-images-hidden" hidden>
   <i
     class="ss-star ss-full"
-    style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283)"
+    style="background:{% if full_star != blank %}url({{ full_star }}) {% else %}url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283){% endif %}"
   ></i>
   <i
     class="ss-star ss-partial"
-    style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"
+    style="background:{% if empty_star != blank %}url({{ empty_star }}) {% else %} url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585){% endif %}"
   ></i>
   <i
     class="ss-star ss-empty"
-    style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"
+    style="background: {% if empty_star != blank %}url({{ empty_star }}) {% else %} url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585){% endif %}"
   ></i>
 </div>
