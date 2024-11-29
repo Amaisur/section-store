@@ -1,0 +1,40 @@
+<style>
+  #shopify-section-{{ section.id }} i,.rating-container i:before {
+      width: 64px;
+      height: 64px;
+      background-repeat: no-repeat !important;
+      background-position: 0 0;
+      background-size: 64px 64px;
+      background-image: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283);
+      display: inline-block;
+    }
+    #shopify-section-{{ section.id }} i{
+      position: relative;
+    }
+  .rating-container i:before {
+      content: none;
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--partial-width, 0);
+  }
+  .rating-container i.partial:before {
+      content: "";
+      display: block;
+  }
+</style>
+
+<div class="text-container">
+  <div class="rating-container" data-rating="5"></div>
+  <div class="rating-container" data-rating="3.4"></div>
+  <div class="rating-container" data-rating="1.2"></div>
+</div>
+
+<div class="star-svgs-container">
+  <!-- Full, Partial, and Empty Stars Defined Here -->
+  <img class="star full" src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283" alt="Full star">
+  <img class="star partial" src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585" alt="Partial star">
+  <img class="star empty" src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585" alt="Empty star">
+</div>
+
