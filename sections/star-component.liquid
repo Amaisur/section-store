@@ -43,7 +43,7 @@
             this.emptyStar = `<i class="star" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"></i>`;
         }
 
-        renderStars() {
+       renderStars() {
             // Iterate over each container and render the stars based on the rating attribute
             this.containers.forEach(container => {
                 const rating = parseFloat(container.getAttribute('ss-data-rating'));
@@ -62,9 +62,9 @@
                 // Calculate the decimal part of the rating
                 const decimalPart = rating % 1;
 
-                // Determine the type of partial star to show (50% for half star)
+                // Determine if a half star is needed (any decimal part >= 0.1)
                 let partialStar = '';
-                if (decimalPart >= 0.50) {
+                if (decimalPart >= 0.1) {
                     partialStar = this.halfStar;
                 }
 
@@ -74,7 +74,7 @@
                 // Add full stars
                 starsHTML += this.fullStar.repeat(fullStarsCount);
 
-                // Add partial star if necessary (half star only)
+                // Add partial star if necessary (half star)
                 if (partialStar) {
                     starsHTML += partialStar;
                 }
