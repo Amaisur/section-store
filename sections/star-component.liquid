@@ -1,6 +1,6 @@
 <style>
 
-#shopify-section-{{ section.id }} i,#shopify-section-{{ section.id }} i:before {
+#shopify-section-{{ section.id }} i, #shopify-section-{{ section.id }} .star:before {
     width: 64px;
     height: 64px;
     background-repeat: no-repeat !important;
@@ -9,7 +9,7 @@
     background-image: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283);
     display: inline-block;
   }
-#shopify-section-{{ section.id }} i:before {
+#shopify-section-{{ section.id }} .star:before {
     content: none;
     display: none;
     position: absolute;
@@ -17,7 +17,7 @@
     left: 0;
     width: 67%;
 }
-  #shopify-section-{{ section.id }} i.partial:before {
+  #shopify-section-{{ section.id }} .star.partial:before {
     content: "";
     display: block;
 }
@@ -38,7 +38,7 @@
             this.fullStar = `<i class="star" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283)"></i>`;
             this.threeQuarterStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-75.png?v=1732826080" alt="Three Quarter Star">';
             this.halfStar = '<img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-50.png?v=1732826080" alt="Half Star">';
-            this.quarterStar = `<i class="star" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"></i>`;
+            this.quarterStar = `<i class="star partial" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"></i>`;
             this.emptyStar = `<i class="star" style="background: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585)"></i>`;
         }
 
