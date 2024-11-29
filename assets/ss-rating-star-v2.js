@@ -28,7 +28,7 @@ class StarRating {
 
       if (partialStarWidth > 0) {
         const partialStarElement = this.partialStar.cloneNode(true);
-        partialStarElement.style.width = `${partialStarWidth}%`;
+        partialStarElement.style.setProperty('--partial-width', `${partialStarWidth}%`);
         starsHTML += partialStarElement.outerHTML;
       }
       for (let i = 0; i < emptyStarsCount; i++) {
