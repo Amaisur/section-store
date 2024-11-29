@@ -2,9 +2,11 @@
   .ss-rating-container i:before{    
     background-image:{% if full_star != blank %}url({{ full_star }}) {% else %}url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283){% endif %};
   }
-  .ss-{{ class }} i, .ss-{{ class }} i:before{
+  .ss-{{ class }} i{
     width: {{ star_size }}px;
     height: {{ star_size }}px;
+  }
+  .ss-{{ class }} i:before{
     background-size: {{ star_size }}px !important;
   }
 </style>
