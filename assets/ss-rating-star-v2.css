@@ -17,7 +17,6 @@
   top: 0;
   left: 0;
   width: var(--partial-width, 0);
-  background-image: url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283);
 }
 .ss-rating-container i.ss-partial:before {
   content: "";
