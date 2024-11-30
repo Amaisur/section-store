@@ -5,3 +5,6 @@
   flex-direction: column;
   gap: 10px;
 }
+.ss-it-row * {
+  text-align: center;
+}
