@@ -10,9 +10,12 @@
   flex-direction: column;
   gap: 15px;
 }
-.ss-it-row * {
+.ss-it-content * {
   text-align: center;
   line-height: normal;
+}
+.ss-it-description * {
+  margin: 6px 0;
 }
 .ss-it-row .ss-it-images img,
 .ss-it-row .ss-it-images svg {
