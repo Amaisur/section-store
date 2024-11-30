@@ -1,3 +1,8 @@
+.ss-it-main * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 .ss-it-row {
   display: flex;
   align-items: center;
