@@ -1,6 +1,49 @@
+<div class="icon-with-text-d5">
+  <div class="it-d5-inner">
+    <div class="d5-row-it">
+      
+    </div>
+  </div>
+</div>
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "SS Icon with Text",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "icon-text",
+        "name": "Icon Text",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+          },
+          {
+            "type": "liquid",
+            "id": "svg",
+            "label": "SVG",
+            "info": "Paste SVG code here"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "SS Icon with Text"
+      }
+    ]
   }
 {% endschema %}
