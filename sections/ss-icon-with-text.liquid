@@ -11,6 +11,9 @@
     justify-content: center;
     gap: 50px;
   }
+  .d5-it-col{
+    min-width: 33%;
+  }
   @media(max-width: 768px){
     .d5-row-it{
       flex-wrap: wrap;
@@ -21,6 +24,7 @@
   <div class="it-d5-inner">
     <div class="d5-row-it">
       {% for block in section.blocks %}
+        <div class="d5-it-col">
         {% render 'ss-text-icon-v-1-0',
           img: block.settings.img,
           svg: block.settings.svg,
@@ -31,6 +35,7 @@
           button_url: block.settings.button_url,
           icon_size: block.settings.icon-size
         %}
+        </div>
       {% endfor %}
     </div>
   </div>
