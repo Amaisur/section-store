@@ -17,7 +17,7 @@
     gap: 50px;
   }
   .d5-it-col{
-    min-width: calc(33% - (50px  * {{ index }}));
+    min-width: calc(33% - --gap-it);
   }
   @media(max-width: 768px){
     .d5-row-it{
@@ -33,7 +33,7 @@
     <div class="d5-row-it">
       {% for block in section.blocks %}
         {% assign index = forloop.index %}
-        <div class="d5-it-col">
+        <div class="d5-it-col" style="--gap-it: 50px * {{ index | minus: 1 }}">
         {% render 'ss-text-icon-v-1-0',
           img: block.settings.img,
           svg: block.settings.svg,
