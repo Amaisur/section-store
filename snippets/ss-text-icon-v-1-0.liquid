@@ -8,10 +8,10 @@
 >
   <div class="ss-it-row">
     {% if img != blank or svg != blank %}
-      <div class="ss-it-imags">
+      <div class="ss-it-images">
         {% if img != blank %}
           <img
-            class="icon"
+            class="ss-it-icon"
             srcset="
               {%- if img.width >= 50 -%}{{ img | image_url: width: 50 }} 50w,{%- endif -%}
               {%- if img.width >= 100 -%}{{ img | image_url: width: 100 }} 100w,{%- endif -%}
