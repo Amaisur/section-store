@@ -12,6 +12,7 @@
 }
 .ss-it-row * {
   text-align: center;
+  line-height: normal;
 }
 .ss-it-row .ss-it-images img,
 .ss-it-row .ss-it-images svg {
