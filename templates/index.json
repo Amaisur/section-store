@@ -740,6 +740,8 @@
             "text": "<p>Out of<strong> 433 Review</strong></p>",
             "rating": 4.7,
             "star_size": 25,
+            "full_star": "shopify://shop_images/fill-100.png",
+            "empty_star": "shopify://shop_images/fill-0.png",
             "gap": 4,
             "no_rating": ""
           }
