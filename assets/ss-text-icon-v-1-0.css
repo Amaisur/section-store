@@ -8,3 +8,14 @@
 .ss-it-row * {
   text-align: center;
 }
+.ss-it-row .ss-it-images img,
+.ss-it-row .ss-it-images svg {
+  width: 100%;
+  height: 100%;
+  object-fit: var(--object-fit);
+}
+.ss-it-row .ss-it-images {
+  width: var(--icon-size);
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
