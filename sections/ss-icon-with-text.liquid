@@ -3,14 +3,14 @@
     <div class="d5-row-it">
       {% for block in section.blocks %}
         {% render 'ss-text-icon-v-1-0',
-          img:,
-          svg:,
-          heading:,
-          seo_heading:,
-          text:,
-          button_label:,
-          button_url:,
-          icon_size: 
+          img: block.settings.img,
+          svg: block.settings.svg,
+          heading: block.settings.heading,
+          seo_heading: block.settings.seo-heading,
+          text: block.settings.text,
+          button_label: block.settings.button_label,
+          button_url: block.settings.button_url,
+          icon_size: block.settings.icon-size
         %}
       {% endfor %}
     </div>
