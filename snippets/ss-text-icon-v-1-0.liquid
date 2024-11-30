@@ -20,7 +20,7 @@
               {{ img | image_url }} {{ img.width }}w
             "
             sizes="(min-width: 750px) calc(100vw - 22rem), 150px"
-            src="{{ img | image_url: width: 150 }}"
+            src="{{ img | image_url: width: 1000 }}"
             alt="{{ media.alt | escape }}"
             loading="lazy"
             width="150"
@@ -31,6 +31,18 @@
         {% endif %}
       </div>
     {% endif %}
-    <div class="ss-it-content"></div>
+    <div class="ss-it-content">
+      {% if heading != blank %}
+        <{{ seo_heading | default: 'h2' }} class="ss-it-heading">{{ heading }}</{{ seo_heading | default: 'h2' }}>
+      {% endif %}
+      {% if text != blank %}
+        <div class="ss-it-description">
+          {{ text }}
+        </div>
+      {% endif %}
+      {% if button_label != blank %}
+        <a class="ss-it-button" href="{{ button_url }}">{{ button_label }}</a>
+      {% endif %}
+    </div>
   </div>
 </div>
