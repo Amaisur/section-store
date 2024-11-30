@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 50px;
+  gap: 15px;
 }
 .ss-it-row * {
   text-align: center;
