@@ -24,3 +24,17 @@
   aspect-ratio: 1/1;
   overflow: hidden;
 }
+.ss-it-button {
+  display: block;
+  width: fit-content;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  box-shadow: 0 0 0 2px #000;
+  transition: all 0.3s ease-in-out;
+}
+.ss-it-button:hover {
+  background: #000;
+  color: #fff;
+}
