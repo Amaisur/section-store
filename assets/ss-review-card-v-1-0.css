@@ -1,0 +1,59 @@
+.r-slide-d5 {
+  min-width: 23%;
+  box-sizing: border-box;
+  padding: 20px 15px 0;
+  box-shadow: 1px 1px 11px 2px #00000029;
+  border-radius: 7px;
+  cursor: grabbing;
+  background-color: #fff;
+  margin-right: 15px;
+  margin-left: 5px;
+}
+.r-slide-d5 * {
+  user-select: none;
+  pointer-events: none;
+  font-family: "helvetica", sans-serif;
+  color: #000;
+}
+.card-header-d5,
+.verified-col-d5 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.card-header-d5 {
+  justify-content: space-between;
+}
+.verified-col-d5 svg {
+  width: 13.3px;
+  height: 13.3px;
+}
+.r-slide-d5 .card-body-d5 {
+  padding: 20px 0 20px;
+}
+.r-slide-d5 p {
+  margin: 0;
+  padding: 0;
+}
+.r-slide-d5 .heading-d5 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0.6px;
+  margin-bottom: 5px;
+}
+.card-header-col-d5.verified-col-d5 {
+  font-size: 12px;
+}
+.r-slide-d5 .content-d5 {
+  font-size: 13px;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: 0.6px;
+}
+.r-slide-d5 span.light-text-d5 {
+  color: #808080;
+  letter-spacing: 0.025em;
+  font-size: 12px;
+  font-weight: 400;
+}
