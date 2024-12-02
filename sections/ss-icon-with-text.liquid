@@ -1,40 +1,40 @@
 {{ 'ss-text-icon-v-1-0.css' | asset_url | stylesheet_tag  }}
-  {% for block in section.blocks %}
-        {% assign index = forloop.index %}
-    {% endfor %}
 <style>
-  .icon-with-text-d5{
+  .icon-with-text-d5 {
     max-width: calc(1200px + 100px);
     margin: 100px auto;
     width: 100%;
   }
-  .it-d5-inner{
-      padding: 0 50px;
-    }
-  .d5-row-it{
+  .it-d5-inner {
+    padding: 0 50px;
+  }
+  .d5-row-it {
     display: flex;
     overflow: scroll;
     gap: 50px;
+    cursor: grab;
   }
-  .d5-row-it::-webkit-scrollbar{
-    display: none;
-  }
-  .d5-it-col{
-    min-width: calc(33% - var(--gap-it));
+  .d5-row-it:active {
     cursor: grabbing;
   }
-  @media(max-width: 768px){
-    .d5-row-it{
+  .d5-row-it::-webkit-scrollbar {
+    display: none;
+  }
+  .d5-it-col {
+    min-width: calc(33% - var(--gap-it));
+  }
+  @media (max-width: 768px) {
+    .d5-row-it {
       flex-wrap: wrap;
     }
-    .it-d5-inner{
+    .it-d5-inner {
       padding: 0 20px;
     }
   }
 </style>
 <div class="icon-with-text-d5">
   <div class="it-d5-inner">
-    <div class="d5-row-it">
+    <div class="d5-row-it" id="draggable-container">
       {% for block in section.blocks %}
         <div class="d5-it-col" style="--gap-it: 50px * 3">
         {% render 'ss-text-icon-v-1-0',
@@ -52,6 +52,39 @@
     </div>
   </div>
 </div>
+<script>
+  const container = document.getElementById('draggable-container');
+
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
+
+  container.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    container.classList.add('active');
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+  });
+
+  container.addEventListener('mouseleave', () => {
+    isDragging = false;
+    container.classList.remove('active');
+  });
+
+  container.addEventListener('mouseup', () => {
+    isDragging = false;
+    container.classList.remove('active');
+  });
+
+  container.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 3; // Adjust scroll speed
+    container.scrollLeft = scrollLeft - walk;
+  });
+</script>
+
 
 {% schema %}
   {
