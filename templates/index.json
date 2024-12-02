@@ -946,6 +946,50 @@
         "para-color": "#222222"
       }
     },
+    "ss_review_section_c8aKDf": {
+      "type": "ss-review-section",
+      "blocks": {
+        "review_Vzey9m": {
+          "type": "review",
+          "settings": {
+            "heading": "Pants are Great",
+            "content": "<p>I love the pants. Delivery was really quick</p>",
+            "name": "Jhon K",
+            "date": "25 DEC 2019",
+            "rating": 4.5
+          }
+        },
+        "review_6G6gQQ": {
+          "type": "review",
+          "settings": {
+            "heading": "Pants are Great",
+            "content": "<p>I love the pants. Delivery was really quick</p>",
+            "name": "Jhon K",
+            "date": "25 DEC 2019",
+            "rating": 4.5
+          }
+        },
+        "review_yzhKbJ": {
+          "type": "review",
+          "settings": {
+            "heading": "Pants are Great",
+            "content": "<p>I love the pants. Delivery was really quick</p>",
+            "name": "Jhon K",
+            "date": "25 DEC 2019",
+            "rating": 4.5
+          }
+        }
+      },
+      "block_order": [
+        "review_Vzey9m",
+        "review_6G6gQQ",
+        "review_yzhKbJ"
+      ],
+      "settings": {
+        "star_size": 13,
+        "gap": 2
+      }
+    },
     "umair_V9hqMn": {
       "type": "umair",
       "blocks": {
@@ -1464,6 +1508,7 @@
     "collection_slider_iHc74y",
     "echo_section_ss_3_Tp6ghe",
     "details_slider_iWGfm4",
+    "ss_review_section_c8aKDf",
     "umair_V9hqMn",
     "trust_badges_GrcVBx",
     "circle_menu_Dzrqrn",
