@@ -2,7 +2,15 @@
   <div class="main-custom-wrapper-rcv-1-0">
     <div class="card-header-rcv-1-0">
       <div class="card-header-col-rcv-1-0">
-        {% render 'D7-trust-pilot-star-5' %}
+         {% render 'ss-rating-star-v2',
+          no_rating: no_rating,
+          text: text,
+          rating: rating,
+          star_size: star_size,
+          full_star: full_star,
+          empty_star: empty_star,
+          gap: gap
+        %}
       </div>
       <div class="card-header-col-rcv-1-0 verified-col-rcv-1-0">
         <svg
