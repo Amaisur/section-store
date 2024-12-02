@@ -26,6 +26,19 @@
   .d5-it-col * {
     user-select: none;
   }
+  .d5-it-dots{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    ga: 3px;
+  }
+  .d5-it-dots .it-dot-d5{
+    width: 6px;
+    height: 6px;
+    display: block;
+    border-radius: 50%;
+    border: 1px solid #000;
+  }
   @media (max-width: 768px) {
     .d5-row-it{
       gap: 20px;
@@ -55,6 +68,11 @@
         %}
         </div>
       {% endfor %}
+      <div class="d5-it-dots">
+         {% for block in section.blocks %}
+           <div class="it-dot-d5"></div>  
+         {% endfor %}
+      </div>
     </div>
   </div>
 </div>
