@@ -13,8 +13,11 @@
     }
   .d5-row-it{
     display: flex;
-    justify-content: center;
+    overflow: scroll;
     gap: 50px;
+  }
+  .d5-row-it::-webkit-scrollbar{
+    display: none;
   }
   .d5-it-col{
     min-width: calc(33% - var(--gap-it));
