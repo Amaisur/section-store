@@ -1,4 +1,4 @@
-.r-slide-d5 {
+.r-slide-rcv-1-0 {
   min-width: 23%;
   box-sizing: border-box;
   padding: 20px 15px 0;
@@ -9,49 +9,49 @@
   margin-right: 15px;
   margin-left: 5px;
 }
-.r-slide-d5 * {
+.r-slide-rcv-1-0 * {
   user-select: none;
   pointer-events: none;
   font-family: "helvetica", sans-serif;
   color: #000;
 }
-.card-header-d5,
-.verified-col-d5 {
+.card-header-rcv-1-0,
+.verified-col-rcv-1-0 {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-.card-header-d5 {
+.card-header-rcv-1-0 {
   justify-content: space-between;
 }
-.verified-col-d5 svg {
+.verified-col-rcv-1-0 svg {
   width: 13.3px;
   height: 13.3px;
 }
-.r-slide-d5 .card-body-d5 {
+.r-slide-rcv-1-0 .card-body-rcv-1-0 {
   padding: 20px 0 20px;
 }
-.r-slide-d5 p {
+.r-slide-rcv-1-0 p {
   margin: 0;
   padding: 0;
 }
-.r-slide-d5 .heading-d5 {
+.r-slide-rcv-1-0 .heading-rcv-1-0 {
   font-size: 14px;
   font-weight: 700;
   color: #000;
   letter-spacing: 0.6px;
   margin-bottom: 5px;
 }
-.card-header-col-d5.verified-col-d5 {
+.card-header-col-rcv-1-0.verified-col-rcv-1-0 {
   font-size: 12px;
 }
-.r-slide-d5 .content-d5 {
+.r-slide-rcv-1-0 .content-rcv-1-0 {
   font-size: 13px;
   font-weight: 400;
   color: #000;
   letter-spacing: 0.6px;
 }
-.r-slide-d5 span.light-text-d5 {
+.r-slide-rcv-1-0 span.light-text-rcv-1-0 {
   color: #808080;
   letter-spacing: 0.025em;
   font-size: 12px;
