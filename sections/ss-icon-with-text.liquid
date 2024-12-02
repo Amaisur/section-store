@@ -10,40 +10,39 @@
   }
   .d5-row-it {
     display: flex;
-    overflow: scroll;
+    overflow: hidden;
     gap: 50px;
-    cursor: grab;
+    scroll-behavior: smooth;
   }
-  .d5-row-it.active {
-    cursor: grabbing;
+  .d5-it-col {
+    min-width: calc(33% - var(--gap-it));
+    flex-shrink: 0;
   }
   .d5-row-it::-webkit-scrollbar {
     display: none;
   }
-  .d5-it-col {
-    min-width: calc(33% - var(--gap-it));
-  }
-  .d5-it-col * {
-    user-select: none;
-  }
-  .d5-it-dots{
-    display: none;
+  .d5-it-dots {
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
+    margin-top: 20px;
   }
-  .d5-it-dots .it-dot-d5{
+  .d5-it-dots .it-dot-d5 {
     width: 10px;
     height: 10px;
     display: block;
     border-radius: 50%;
     border: 1px solid #000;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .d5-it-dots .it-dot-d5.active {
+    background-color: #000;
   }
   @media (max-width: 768px) {
-    .d5-it-dots{
-      display: flex;
-    }
-    .d5-row-it{
+    .d5-row-it {
       gap: 20px;
     }
     .d5-it-col {
@@ -72,49 +71,84 @@
         </div>
       {% endfor %}
     </div>
-      <div class="d5-it-dots">
-         {% for block in section.blocks %}
-           <div class="it-dot-d5"></div>  
-         {% endfor %}
-      </div>
+    <div class="d5-it-dots" id="dots-container-d5">
+      {% for block in section.blocks %}
+        <div class="it-dot-d5"></div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 <script>
 const container = document.getElementById('draggable-container-d5');
+const dotsContainer = document.getElementById('dots-container-d5');
+const dots = Array.from(dotsContainer.children);
+const slides = Array.from(container.children);
 
+let currentIndex = 0;
+
+// Function to update active dot
+function updateActiveDot() {
+  dots.forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentIndex);
+  });
+}
+
+// Function to scroll to the slide
+function scrollToSlide(index) {
+  const slideWidth = slides[0].offsetWidth + parseInt(getComputedStyle(container).gap);
+  container.scrollTo({
+    left: index * slideWidth,
+    behavior: 'smooth'
+  });
+  currentIndex = index;
+  updateActiveDot();
+}
+
+// Add click functionality to dots
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    scrollToSlide(index);
+  });
+});
+
+// Add drag-to-slide functionality
 let isDragging = false;
 let startX;
-let scrollLeft;
+let currentScrollLeft;
 
-// Prevent dragging child elements (like images) from interfering
 container.addEventListener('mousedown', (e) => {
-  if (e.target.tagName === 'IMG') {
-    e.preventDefault(); // Disable default image dragging
-  }
   isDragging = true;
-  container.classList.add('active');
-  startX = e.pageX - container.offsetLeft;
-  scrollLeft = container.scrollLeft;
-});
-
-container.addEventListener('mouseleave', () => {
-  isDragging = false;
-  container.classList.remove('active');
-});
-
-container.addEventListener('mouseup', () => {
-  isDragging = false;
-  container.classList.remove('active');
+  startX = e.pageX;
+  currentScrollLeft = container.scrollLeft;
 });
 
 container.addEventListener('mousemove', (e) => {
   if (!isDragging) return;
   e.preventDefault();
-  const x = e.pageX - container.offsetLeft;
-  const walk = (x - startX) * 3; // Adjust scroll speed
-  container.scrollLeft = scrollLeft - walk;
+  const x = e.pageX - startX;
+  container.scrollLeft = currentScrollLeft - x;
 });
 
+container.addEventListener('mouseup', () => {
+  if (isDragging) {
+    const slideWidth = slides[0].offsetWidth + parseInt(getComputedStyle(container).gap);
+    const scrolledIndex = Math.round(container.scrollLeft / slideWidth);
+    scrollToSlide(scrolledIndex);
+  }
+  isDragging = false;
+});
+
+container.addEventListener('mouseleave', () => {
+  if (isDragging) {
+    const slideWidth = slides[0].offsetWidth + parseInt(getComputedStyle(container).gap);
+    const scrolledIndex = Math.round(container.scrollLeft / slideWidth);
+    scrollToSlide(scrolledIndex);
+  }
+  isDragging = false;
+});
+
+// Initialize the first dot as active
+updateActiveDot();
 </script>
 
 
