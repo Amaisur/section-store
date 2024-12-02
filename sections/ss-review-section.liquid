@@ -12,12 +12,21 @@
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap;
+  }
+  .main-r-d5 .ss-total-rating{
+    display: none;
+  }
+  .col-r-d5{
+    min-width: 300px;
+    width: 30%;
   }
 </style>
 <div class="main-r-d5">
   <div class="inner-r-d5">
     <div class="row-r-d5">
       {% for card in section.blocks %}
+        <div class="col-r-d5">
         {% render 'ss-review-card-v-1-0',
           heading: card.settings.heading,
           content: card.settings.content,
@@ -32,6 +41,7 @@
           empty_star: section.settings.empty_star,
           gap: section.settings.gap
         %}
+        </div>
       {% endfor %}
     </div>
   </div>
