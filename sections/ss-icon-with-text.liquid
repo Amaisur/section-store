@@ -40,6 +40,9 @@
     border: 1px solid #000;
   }
   @media (max-width: 768px) {
+    .d5-it-dots{
+      display: flex;
+    }
     .d5-row-it{
       gap: 20px;
     }
@@ -68,12 +71,12 @@
         %}
         </div>
       {% endfor %}
+    </div>
       <div class="d5-it-dots">
          {% for block in section.blocks %}
            <div class="it-dot-d5"></div>  
          {% endfor %}
       </div>
-    </div>
   </div>
 </div>
 <script>
