@@ -56,36 +56,41 @@
   </div>
 </div>
 <script>
-  const container = document.getElementById('draggable-container');
+const container = document.getElementById('draggable-container');
 
-  let isDragging = false;
-  let startX;
-  let scrollLeft;
+let isDragging = false;
+let startX;
+let scrollLeft;
 
-  container.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    container.classList.add('active');
-    startX = e.pageX - container.offsetLeft;
-    scrollLeft = container.scrollLeft;
-  });
+// Prevent dragging child elements (like images) from interfering
+container.addEventListener('mousedown', (e) => {
+  if (e.target.tagName === 'IMG') {
+    e.preventDefault(); // Disable default image dragging
+  }
+  isDragging = true;
+  container.classList.add('active');
+  startX = e.pageX - container.offsetLeft;
+  scrollLeft = container.scrollLeft;
+});
 
-  container.addEventListener('mouseleave', () => {
-    isDragging = false;
-    container.classList.remove('active');
-  });
+container.addEventListener('mouseleave', () => {
+  isDragging = false;
+  container.classList.remove('active');
+});
 
-  container.addEventListener('mouseup', () => {
-    isDragging = false;
-    container.classList.remove('active');
-  });
+container.addEventListener('mouseup', () => {
+  isDragging = false;
+  container.classList.remove('active');
+});
 
-  container.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - container.offsetLeft;
-    const walk = (x - startX) * 3; // Adjust scroll speed
-    container.scrollLeft = scrollLeft - walk;
-  });
+container.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - container.offsetLeft;
+  const walk = (x - startX) * 3; // Adjust scroll speed
+  container.scrollLeft = scrollLeft - walk;
+});
+
 </script>
 
 
