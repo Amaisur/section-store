@@ -1411,12 +1411,38 @@
             "button_label": "shop",
             "button_url": ""
           }
+        },
+        "icon_text_4KBKRj": {
+          "type": "icon-text",
+          "settings": {
+            "img": "shopify://shop_images/download_3_720x_a165583f-4517-42a9-94e4-ef05da2390c8.jpg",
+            "svg": "",
+            "heading": "Heading",
+            "seo_heading": "h1",
+            "text": "<p>Discover Timeless Sophistication in Every Stitch of Our White Shirts.</p>",
+            "button_label": "Shop",
+            "button_url": ""
+          }
+        },
+        "icon_text_Mtmw3B": {
+          "type": "icon-text",
+          "settings": {
+            "img": "shopify://shop_images/C1_971306a5-007d-43d4-93a7-e5074e0355ff.png",
+            "svg": "",
+            "heading": "Heading",
+            "seo_heading": "h1",
+            "text": "<p>Step up your Fashion Game with our Stylish Collection of Black Coats.</p>",
+            "button_label": "Shop",
+            "button_url": ""
+          }
         }
       },
       "block_order": [
         "icon_text_W4i8L4",
         "icon_text_za3RKR",
-        "icon_text_czFYVq"
+        "icon_text_czFYVq",
+        "icon_text_4KBKRj",
+        "icon_text_Mtmw3B"
       ],
       "settings": {}
     }
