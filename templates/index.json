@@ -740,8 +740,8 @@
             "text": "<p>Out of<strong> 433 Review</strong></p>",
             "rating": 4.7,
             "star_size": 25,
-            "full_star": "shopify://shop_images/fill-100.png",
-            "empty_star": "shopify://shop_images/fill-0.png",
+            "full_star": "shopify://shop_images/full-star.svg",
+            "empty_star": "shopify://shop_images/empty-star.svg",
             "gap": 4,
             "no_rating": ""
           }
@@ -759,7 +759,6 @@
         "video_mjCwqN",
         "reviews_EnPmfe"
       ],
-      "disabled": true,
       "settings": {
         "img": "shopify://shop_images/9_fa14b1c9-f68d-4623-865c-ef6461e4d1e1.png"
       }
