@@ -4,7 +4,7 @@
 {% endcomment %}
 <style>
   .ss-rating-container i:before{
-    background:{% if full_star != blank %}url({{ full_star | image_url:width: '200px' }}) {% else %}url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283){% endif %};
+    background: var(--background);
   }
 </style>
 <div class="ss-rating-main">
@@ -26,7 +26,7 @@
 <div class="ss-star-images-hidden" hidden>
   <i
     class="ss-star ss-full"
-    style="background:{% if full_star != blank %}url({{ full_star | image_url:width: '200px' }}) {% else %}url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283){% endif %}"
+    style="--background:{% if full_star != blank %}url({{ full_star | image_url:width: '200px' }}) {% else %}url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283){% endif %}; background: var(--background)"
   ></i>
   <i
     class="ss-star ss-partial"
