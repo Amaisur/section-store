@@ -1,4 +1,4 @@
-if (typeof StarRating === 'undefined') {
+if (typeof window.StarRating === 'undefined') {
   class StarRating {
     constructor(containerSelector) {
       this.containers = document.querySelectorAll(containerSelector);
