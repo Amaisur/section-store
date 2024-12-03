@@ -5,26 +5,27 @@ class StarRating {
 
   renderStars() {
     this.containers.forEach((container) => {
-      const rating = parseFloat(container.getAttribute("ss-data-rating"));
+      // Fetch star SVG elements within the current container
+      const fullStar = container.querySelector(".ss-star.ss-full");
+      const partialStar = container.querySelector(".ss-star.ss-partial");
+      const emptyStar = container.querySelector(".ss-star.ss-empty");
 
+      const rating = parseFloat(container.getAttribute("ss-data-rating"));
+      
       if (rating < 0 || rating > 5 || isNaN(rating)) {
         console.error("Invalid rating value. Please provide a number between 0 and 5.");
         return;
       }
 
-      let starsHTML = "";
+      let starsHTML = ""; 
 
-      const fullStar = container.querySelector(".ss-star.ss-full");
-      const partialStar = container.querySelector(".ss-star.ss-partial");
-      const emptyStar = container.querySelector(".ss-star.ss-empty");
-
-      const fullStarsCount = Math.floor(rating);
-      const decimalPart = rating % 1;
+      const fullStarsCount = Math.floor(rating); 
+      const decimalPart = rating % 1;           
       const partialStarWidth = decimalPart >= 0.1 ? Math.round(decimalPart * 100) : 0;
-      const emptyStarsCount = 5 - fullStarsCount - (partialStarWidth > 0 ? 1 : 0);
+      const emptyStarsCount = 5 - fullStarsCount - (partialStarWidth > 0 ? 1 : 0); 
 
       for (let i = 0; i < fullStarsCount; i++) {
-        starsHTML += fullStar.outerHTML;
+        starsHTML += fullStar.outerHTML; 
       }
 
       if (partialStarWidth > 0) {
@@ -34,7 +35,7 @@ class StarRating {
       }
 
       for (let i = 0; i < emptyStarsCount; i++) {
-        starsHTML += emptyStar.outerHTML;
+        starsHTML += emptyStar.outerHTML; 
       }
 
       container.innerHTML = starsHTML;
