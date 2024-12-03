@@ -11,7 +11,7 @@
   <div
     class="ss-rating-container"
     ss-data-rating="{{ rating | default: '5' }}"
-    style="{% if star_size != blank %}--star-size: {{ star_size }}px;{% endif %} --ss-star-gap: {{ gap }}px;"
+    style="{% if star_size != blank %}--star-size: {{ star_size }}px;{% endif %} --ss-star-gap: {{ gap }}px;--background:{% if full_star != blank %}url({{ full_star | image_url:width: '200px' }}) {% else %}url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283){% endif %};"
   ></div>
   <div class="ss-total-rating">
     {% if rating > 0 %}
@@ -26,7 +26,7 @@
 <div class="ss-star-images-hidden" hidden>
   <i
     class="ss-star ss-full"
-    style="--background:{% if full_star != blank %}url({{ full_star | image_url:width: '200px' }}) {% else %}url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283){% endif %}; background: var(--background)"
+    style="background: var(--background)"
   ></i>
   <i
     class="ss-star ss-partial"
