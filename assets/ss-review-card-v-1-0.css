@@ -58,7 +58,8 @@
 .ss-rbody-reviewer-info {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
+  margin: 15px 0 0;
 }
 .ss-reviewer-image {
   width: 50px;
