@@ -955,7 +955,9 @@
             "content": "<p>I love the pants. Delivery was really quick</p>",
             "name": "Jhon K",
             "date": "25 DEC 2019",
-            "rating": 4.5
+            "rating": 4.5,
+            "verified": true,
+            "review_image": "shopify://shop_images/H5695eae0686d4ba78c3951bbaeaf4a096_1080x_1800x1800_1_b8518da0-cff1-4e62-a8ee-497a0ecc8fa9.png"
           }
         },
         "review_6G6gQQ": {
@@ -965,7 +967,9 @@
             "content": "<p>I love the pants. Delivery was really quick</p>",
             "name": "Jhon K",
             "date": "25 DEC 2019",
-            "rating": 4.5
+            "rating": 4.5,
+            "verified": true,
+            "review_image": "shopify://shop_images/211_393aaa529b-5-full.png"
           }
         },
         "review_yzhKbJ": {
@@ -975,7 +979,9 @@
             "content": "<p>I love the pants. Delivery was really quick</p>",
             "name": "Jhon K",
             "date": "25 DEC 2019",
-            "rating": 4.5
+            "rating": 4.5,
+            "verified": true,
+            "review_image": "shopify://shop_images/GI000443U33435_2157_6_9363a933-3d94-48da-bc39-170c3c3390e1.jpg"
           }
         }
       },
