@@ -59,15 +59,17 @@
   {% if product != blank %}
     <div class="ss-rc-product">
       <a href="{{ product.url }}">
-      <div class="ss-rc-product-image">
-        {% render 'ss-media-snippet', img: product.featured_image, object_fit: 'cover' %}
-      </div>
-      <div class="ss-rc-product-info">
-        <p class="ss-rc-product-title heading-rcv-1-0">{{ product.title }}</p>
-        <span class="light-text-rcv-1-0">{{ product.price | money }}</span>
-        <span class="light-text-rcv-1-0 compare_price">{{ product.compare_at_price | money }}</span>
-      </div>
-        </a>
+        <div class="ss-rc-product-image">
+          {% render 'ss-media-snippet', img: product.featured_image, object_fit: 'cover' %}
+        </div>
+        <div class="ss-rc-product-info">
+          <p class="ss-rc-product-title heading-rcv-1-0">{{ product.title }}</p>
+          <div class="ss-price">
+            <span class="light-text-rcv-1-0">{{ product.price | money }}</span>
+            <span class="light-text-rcv-1-0 compare_price">{{ product.compare_at_price | money }}</span>
+          </div>
+        </div>
+      </a>
     </div>
-    {% endif %}
+  {% endif %}
 </div>
