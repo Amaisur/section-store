@@ -8,7 +8,6 @@
 }
 .r-slide-rcv-1-0 * {
   user-select: none;
-  pointer-events: none;
   font-family: "helvetica", sans-serif;
   color: #000;
 }
