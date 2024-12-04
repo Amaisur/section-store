@@ -30,7 +30,7 @@
     <div class="row-r-d5">
       {% for block in section.blocks %}
         {% assign product_c = block.settings.product_r %}
-        <div class="col-r-d5">
+        <div class="col-r-d5" pdp="{{ product_c.title }}">
         {% render 'ss-review-card-v-1-0',
           heading: block.settings.heading,
           content: block.settings.content,
