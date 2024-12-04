@@ -47,7 +47,7 @@
   color: #000;
   letter-spacing: 0.6px;
 }
-.r-slide-rcv-1-0 span.light-text-rcv-1-0 {
+light-text-rcv-1-0 {
   color: #808080;
   letter-spacing: 0.025em;
   font-size: 12px;
@@ -92,4 +92,8 @@
 }
 .ss-rc-product {
   margin-top: 15px;
+}
+.compare_price {
+  color: red;
+  text-decoration: line-through;
 }
