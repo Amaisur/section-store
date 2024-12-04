@@ -55,6 +55,7 @@
 }
 .r-slide-rcv-1-0 span.light-text-rcv-1-0.compare_price {
   color: red;
+  display: block;
 }
 .ss-rbody-reviewer-info {
   display: flex;
