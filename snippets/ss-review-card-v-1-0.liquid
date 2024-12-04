@@ -45,13 +45,15 @@
     <div class="card-body-rcv-1-0">
       <p class="heading-rcv-1-0">{{ heading }}</p>
       <p class="content-rcv-1-0">{{ content }}</p>
-      {% if reviewer_image != blank %}
-        <span class="ss-reviewer-image">
-          {{ reviewer_image | image_url: width: '250px' | image_tag }}
-        </span>
-      {% endif %}
-      <span class="light-text-rcv-1-0">{{ name }}</span>
-      <span class="light-text-rcv-1-0">{{ date }}</span>
+      <div class="ss-rbody-reviewer-info">
+        {% if reviewer_image != blank %}
+          <span class="ss-reviewer-image">
+            {{ reviewer_image | image_url: width: '250px' | image_tag }}
+          </span>
+        {% endif %}
+        <span class="light-text-rcv-1-0">{{ name }}</span>
+        <span class="light-text-rcv-1-0">{{ date }}</span>
+      </div>
     </div>
   </div>
 </div>
