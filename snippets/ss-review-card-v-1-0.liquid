@@ -56,4 +56,15 @@
       </div>
     </div>
   </div>
+    <div class="ss-rc-product">
+      <a href="{{ product.url }}">
+      <div class="ss-rc-product-image">
+        {% render 'ss-media-snippet', img: product.featured_image %}
+      </div>
+      <div class="ss-rc-product-info">
+        <p class="ss-rc-product-title">{{ product.title }}</p>
+        <span>{{ product.price | money }}</span>
+      </div>
+        </a>
+    </div>
 </div>
