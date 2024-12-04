@@ -1,7 +1,7 @@
 .r-slide-rcv-1-0 {
   min-width: 23%;
   box-sizing: border-box;
-  padding: 20px 15px 0;
+  padding: 20px 15px;
   box-shadow: 1px 1px 11px 2px #00000029;
   border-radius: 7px;
   cursor: grabbing;
@@ -78,9 +78,15 @@
 }
 .ss-rc-product a {
   display: flex;
-  justify-content: space-between;
   text-decoration: none;
+  width: 100%;
 }
 .ss-rc-product-image {
   width: 100px;
+  height: 100px;
+}
+.ss-rc-product-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
