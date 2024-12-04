@@ -28,26 +28,27 @@
 <div class="main-r-d5">
   <div class="inner-r-d5">
     <div class="row-r-d5">
-      {% for card in section.blocks %}
+      {% for block in section.blocks %}
         <div class="col-r-d5">
         {% render 'ss-review-card-v-1-0',
-          heading: card.settings.heading,
-          content: card.settings.content,
-          name: card.settings.name,
-          date: card.settings.date,
+          heading: block.settings.heading,
+          content: block.settings.content,
+          name: block.settings.name,
+          date: block.settings.date,
           verified_text: section.settings.verified_text,
           verified_image: section.settings.verified_image,
           verified_svg: section.settings.verified_svg,
-          verified: card.settings.verified,
+          verified: block.settings.verified,
           no_rating: section.settings.no_rating,
-          text: card.settings.text,
-          rating: card.settings.rating,
+          text: block.settings.text,
+          rating: block.settings.rating,
           star_size: section.settings.star_size,
           full_star: section.settings.full_star,
           empty_star: section.settings.empty_star,
           gap: section.settings.gap,
-          review_image: card.settings.review_image,
-          reviewer_image: card.settings.reviewer_image
+          review_image: block.settings.review_image,
+          reviewer_image: block.settings.reviewer_image,
+          product: block.settings.product
         %}
         </div>
       {% endfor %}
@@ -143,6 +144,11 @@
           "type": "image_picker",
           "id": "review_image",
           "label": "Review_image"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
         }
       ]
     }
