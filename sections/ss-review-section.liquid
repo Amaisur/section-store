@@ -38,7 +38,7 @@
           verified_text: section.settings.verified_text,
           verified_image: section.settings.verified_image,
           verified_svg: section.settings.verified_svg,
-          verified: card.settings.verified
+          verified: card.settings.verified,
           no_rating: section.settings.no_rating,
           text: card.settings.text,
           rating: card.settings.rating,
@@ -46,7 +46,8 @@
           full_star: section.settings.full_star,
           empty_star: section.settings.empty_star,
           gap: section.settings.gap,
-          review_image: card.settings.review_image
+          review_image: card.settings.review_image,
+          reviewer_image: card.settings.reviewer_image
         %}
         </div>
       {% endfor %}
@@ -111,6 +112,11 @@
           "id": "name",
           "label": "Name",
           "default": "Jhon K"
+        },
+        {
+          "type": "image_picker",
+          "id": "reviewer_image",
+          "label": "Reviewer Image"
         },
         {
           "type": "text",
