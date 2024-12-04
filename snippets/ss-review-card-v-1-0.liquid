@@ -45,6 +45,9 @@
     <div class="card-body-rcv-1-0">
       <p class="heading-rcv-1-0">{{ heading }}</p>
       <p class="content-rcv-1-0">{{ content }}</p>
+      {% if reviewer_image != blank %}
+          {{ reviewer_image | image_url: width: '250px' | image_tag }}
+      {% endif %}
       <span class="light-text-rcv-1-0">{{ name }}</span>
       <span class="light-text-rcv-1-0">{{ date }}</span>
     </div>
