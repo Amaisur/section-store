@@ -47,11 +47,14 @@
   color: #000;
   letter-spacing: 0.6px;
 }
-light-text-rcv-1-0 {
+.r-slide-rcv-1-0 span.light-text-rcv-1-0 {
   color: #808080;
   letter-spacing: 0.025em;
   font-size: 12px;
   font-weight: 400;
+}
+.r-slide-rcv-1-0 span.light-text-rcv-1-0.compare_price {
+  color: red;
 }
 .ss-rbody-reviewer-info {
   display: flex;
@@ -92,8 +95,4 @@ light-text-rcv-1-0 {
 }
 .ss-rc-product {
   margin-top: 15px;
-}
-.compare_price {
-  color: red;
-  text-decoration: line-through;
 }
