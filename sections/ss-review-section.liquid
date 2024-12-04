@@ -29,8 +29,8 @@
   <div class="inner-r-d5">
     <div class="row-r-d5">
       {% for block in section.blocks %}
-        {% assign product_c = block.settings.product_r %}
-        <div class="col-r-d5" pdp="{{ product_c.title }}">
+        {% assign product = block.settings.product %}
+        <div class="col-r-d5" pdp="{{ product.title }}">
         {% render 'ss-review-card-v-1-0',
           heading: block.settings.heading,
           content: block.settings.content,
@@ -148,7 +148,7 @@
         },
         {
           "type": "product",
-          "id": "product_r",
+          "id": "product",
           "label": "Select Product"
         }
       ]
