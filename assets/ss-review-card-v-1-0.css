@@ -4,7 +4,6 @@
   padding: 20px 15px;
   box-shadow: 1px 1px 11px 2px #00000029;
   border-radius: 7px;
-  cursor: grabbing;
   background-color: #fff;
 }
 .r-slide-rcv-1-0 * {
@@ -91,4 +90,7 @@
   align-items: center;
   justify-content: space-between;
   flex-grow: 1;
+}
+.ss-rc-product {
+  margin-top: 15px;
 }
