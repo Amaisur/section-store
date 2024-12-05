@@ -1,25 +1,40 @@
-<label for="{{ label_for }}">{{ label }}</label>
-
+{% if label != blank %}
+  <label for="{{ label_for }}">{{ label }}</label>
+{% endif %}
 {% unless type == 'textarea' %}
-  <input 
-    type="{{ type | default: 'text' }}" 
-    id="{{ label_for }}" 
-    name="{{ name }}" 
-    value="{{ value }}" 
-    placeholder="{{ place_holder }}" 
-    {% if required %} required {% endif %} 
-    {% if readonly %} readonly {% endif %} 
-    {% if disabled %} disabled {% endif %} 
-    class="ss-input ss-{{ type }}" 
-    aria-label="{{ aria_label | default: label }}">
+  <input
+    type="{{ type | default: 'text' }}"
+    id="{{ label_for }}"
+    name="{{ name }}"
+    value="{{ value }}"
+    placeholder="{{ place_holder }}"
+    {% if required %}
+      required
+    {% endif %}
+    {% if readonly %}
+      readonly
+    {% endif %}
+    {% if disabled %}
+      disabled
+    {% endif %}
+    class="ss-input ss-{{ type }}"
+    aria-label="{{ aria_label | default: label }}"
+  >
 {% else %}
-  <textarea 
-    id="{{ label_for }}" 
-    name="{{ name }}" 
-    placeholder="{{ place_holder }}" 
-    {% if required %} required {% endif %} 
-    {% if readonly %} readonly {% endif %} 
-    {% if disabled %} disabled {% endif %} 
-    class="ss-input ss-textatria" 
-    aria-label="{{ aria_label | default: label }}"></textarea>
+  <textarea
+    id="{{ label_for }}"
+    name="{{ name }}"
+    placeholder="{{ place_holder }}"
+    {% if required %}
+      required
+    {% endif %}
+    {% if readonly %}
+      readonly
+    {% endif %}
+    {% if disabled %}
+      disabled
+    {% endif %}
+    class="ss-input ss-textatria"
+    aria-label="{{ aria_label | default: label }}"
+  ></textarea>
 {% endunless %}
