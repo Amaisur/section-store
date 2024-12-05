@@ -1,6 +1,127 @@
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "SS Form",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Type Text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Input Label"
+          },
+          {
+            "type": "text",
+            "id": "label_for",
+            "label": "Label For"
+          },
+          {
+            "type": "text",
+            "id": "value",
+            "label": "Value"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name"
+          },
+          {
+            "type": "checkbox",
+            "id": "required",
+            "label": "Required",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "disabled",
+            "label": "Disable"
+          },
+          {
+            "type": "checkbox",
+            "id": "readonly",
+            "label": "Read Only"
+          }
+        ],
+        
+      },
+      {
+        "type": "textaria",
+        "name": "Type Text Aria",
+        "settings": [
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Input Label"
+          },
+          {
+            "type": "text",
+            "id": "label_for",
+            "label": "Label For"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name"
+          },
+          {
+            "type": "checkbox",
+            "id": "required",
+            "label": "Required",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "disabled",
+            "label": "Disable"
+          },
+          {
+            "type": "checkbox",
+            "id": "readonly",
+            "label": "Read Only"
+          }
+        ],
+        
+      },
+       {
+        "type": "checkbox",
+        "name": "Type Checkbox",
+        "settings": [
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Input Label"
+          },
+          {
+            "type": "text",
+            "id": "label_for",
+            "label": "Label For"
+          },
+          {
+            "type": "text",
+            "id": "value",
+            "label": "Value"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name"
+          },
+          {
+            "type": "checkbox",
+            "id": "required",
+            "label": "Required",
+            "default": true
+          }
+        ],
+        
+      }
+    ],
+    "presets": [
+      {
+        "name": "SS Form"
+      }
+    ]
   }
 {% endschema %}
