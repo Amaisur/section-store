@@ -13,6 +13,7 @@
        endif
       %}
         {% render 'ss-input-v-1-0',
+          width: block.settings.width,
           label: block.settings.label,
           place_holder: block.settings.placeholder,
           type: type,
@@ -24,6 +25,7 @@
         %}
       {% when 'textarea' %}
         {% render 'ss-input-v-1-0',
+          width: block.settings.width,
           type: block.type,
           place_holder: block.settings.placeholder,
           label: block.settings.label,
@@ -131,6 +133,21 @@
               "value": "row-reverse"
             }
           ]
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Input Width",
+          "options": [
+            {
+              "label": "Half Width",
+              "value": "50"
+            },
+             {
+              "label": "Full Width",
+              "value": "100"
+            }
+          ]
         }
       ],
 
@@ -180,6 +197,21 @@
             {
               "label": "Right of the Input",
               "value": "row-reverse"
+            }
+          ]
+        },
+         {
+          "type": "select",
+          "id": "width",
+          "label": "Input Width",
+          "options": [
+            {
+              "label": "Half Width",
+              "value": "50"
+            },
+             {
+              "label": "Full Width",
+              "value": "100"
             }
           ]
         }
