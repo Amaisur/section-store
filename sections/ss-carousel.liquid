@@ -4,7 +4,74 @@ doc file:
 {% endcomment %}
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<style>
+  /* Basic styling for the swiper container */
+  .swiper-container {
+    width: 100%;
+    max-width: 1200px; /* Optional: Set a max width for the container */
+    margin: 0 auto; /* Center the carousel horizontally */
+    padding: 20px 0; /* Add some space around the carousel */
+    overflow: hidden;
+  }
 
+  /* Styling for each slide */
+  .swiper-slide {
+    display: flex;
+    flex-direction: column; /* Stack image and title vertically */
+    align-items: center; /* Center align content */
+    padding: 10px;
+    background-color: #fff; /* Optional: Add a background color for each slide */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for a card effect */
+    border-radius: 8px; /* Optional: Rounded corners */
+    transition: transform 0.3s ease; /* Optional: Smooth scale effect on hover */
+  }
+
+  /* On hover, slightly scale the product card */
+  .swiper-slide:hover {
+    transform: scale(1.05);
+  }
+
+  /* Styling for product images */
+  .swiper-slide img {
+    width: 100%; /* Make images take the full width of the slide */
+    max-height: 300px; /* Limit the height of the images */
+    object-fit: cover; /* Ensure the images cover the space without distorting */
+    border-radius: 8px; /* Optional: Rounded corners for images */
+  }
+
+  /* Styling for product titles */
+  .swiper-slide p {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    color: #333; /* Dark text for contrast */
+    margin-bottom: 0;
+  }
+
+  /* Pagination bullets styles */
+  .swiper-pagination-bullet {
+    background-color: #0070f3; /* Blue color for pagination bullets */
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #ff6600; /* Change active bullet color to orange */
+  }
+
+  /* Styling for navigation buttons */
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #0070f3; /* Blue color for navigation buttons */
+    font-size: 24px;
+  }
+
+  /* Optional: Add some space between slides on larger screens */
+  @media (min-width: 768px) {
+    .swiper-container {
+      padding: 40px 0;
+    }
+  }
+</style>
 
 <div class="swiper-container">
   <div class="swiper-wrapper">
