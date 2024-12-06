@@ -1,3 +1,5 @@
+{{ 'ss-input-v-1-0.css' | asset_url | stylesheet_tag }}
+
 <form>
   {% for block in section.blocks %}
     {% case block.type %}
