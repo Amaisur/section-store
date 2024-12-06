@@ -1,10 +1,11 @@
 <form>
   {% for block in section.blocks %}
     {% case block.type %}
+      {% when 'heading' %}
+      <h2>{{ block.settings.heading }}</h2>
       {% when 'text' %}
         {% render 'ss-input-v-1-0',
           label: block.settings.label,
-          label_for: block.settings.label_for,
           type: block.type,
           value: block.settings.value,
           name: block.settings.name,
@@ -15,7 +16,12 @@
        {% when 'textaria' %}
         {% render 'ss-input-v-1-0',
           label: block.settings.label,
-          label_for: block.settings.label_for,
+          name: block.settings.name,
+          required: block.settings.required
+        %}
+      {% when 'checkbox' %}
+       {% render 'ss-input-v-1-0',
+          label: block.settings.label,
           name: block.settings.name,
           required: block.settings.required
         %}
@@ -29,6 +35,17 @@
   "settings": [],
   "blocks": [
     {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        }
+      ]
+    },
+    {
       "type": "text",
       "name": "Type Text",
       "settings": [
@@ -36,11 +53,6 @@
           "type": "text",
           "id": "label",
           "label": "Input Label"
-        },
-        {
-          "type": "text",
-          "id": "label_for",
-          "label": "Label For"
         },
         {
           "type": "text",
@@ -82,11 +94,6 @@
         },
         {
           "type": "text",
-          "id": "label_for",
-          "label": "Label For"
-        },
-        {
-          "type": "text",
           "id": "name",
           "label": "Name"
         },
@@ -107,11 +114,6 @@
           "type": "text",
           "id": "label",
           "label": "Input Label"
-        },
-        {
-          "type": "text",
-          "id": "label_for",
-          "label": "Label For"
         },
         {
           "type": "text",
