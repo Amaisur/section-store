@@ -7,6 +7,7 @@
       {% when 'text' %}
         {% render 'ss-input-v-1-0',
           label: block.settings.label,
+          place_holder: block.settings.placeholder,
           type: block.type,
           value: block.settings.value,
           name: block.settings.name,
@@ -17,12 +18,20 @@
       {% when 'textarea' %}
         {% render 'ss-input-v-1-0',
           type: block.type,
+          place_holder: block.settings.placeholder,
           label: block.settings.label,
           name: block.settings.name,
           required: block.settings.required
         %}
       {% when 'checkbox' %}
         {% render 'ss-input-v-1-0',
+          type: block.type,
+          label: block.settings.label,
+          name: block.settings.name,
+          required: block.settings.required
+        %}
+      {% when 'radio' %}
+       {% render 'ss-input-v-1-0',
           type: block.type,
           label: block.settings.label,
           name: block.settings.name,
