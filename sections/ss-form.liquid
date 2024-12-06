@@ -2,8 +2,8 @@
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'heading' %}
-      block{{ block.type }}
-      <h2>{{ block.settings.heading }}</h2>
+        block{{ block.type }}
+        <h2>{{ block.settings.heading }}</h2>
       {% when 'text' %}
         {% render 'ss-input-v-1-0',
           label: block.settings.label,
@@ -14,7 +14,7 @@
           readonly: block.settings.readonly,
           disabled: block.settings.disabled
         %}
-       {% when 'textarea' %}
+      {% when 'textarea' %}
         {% render 'ss-input-v-1-0',
           type: block.type,
           label: block.settings.label,
@@ -22,7 +22,7 @@
           required: block.settings.required
         %}
       {% when 'checkbox' %}
-       {% render 'ss-input-v-1-0',
+        {% render 'ss-input-v-1-0',
           type: block.type,
           label: block.settings.label,
           name: block.settings.name,
@@ -59,6 +59,11 @@
         },
         {
           "type": "text",
+          "id": "placeholder",
+          "label": "Place Holder"
+        },
+        {
+          "type": "text",
           "id": "value",
           "label": "Value"
         },
@@ -82,18 +87,46 @@
           "type": "checkbox",
           "id": "readonly",
           "label": "Read Only"
+        },
+         {
+          "type": "select",
+          "id": "position",
+          "label": "Label Position",
+          "options": [
+            {
+              "label": "Above the Input",
+              "value": "column"
+            },
+            {
+              "label": "Below the Input",
+              "value": "column-reverse"
+            },
+            {
+              "label": "Left of the Input",
+              "value": "row"
+            },
+            {
+              "label": "Right of the Input",
+              "value": "row-reverse"
+            }
+          ]
         }
       ],
 
     },
     {
       "type": "textarea",
-      "name": "Type Text Aria",
+      "name": "Textaria",
       "settings": [
         {
           "type": "text",
           "id": "label",
           "label": "Input Label"
+        },
+         {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Place Holder"
         },
         {
           "type": "text",
@@ -105,6 +138,29 @@
           "id": "required",
           "label": "Required",
           "default": true
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Label Position",
+          "options": [
+            {
+              "label": "Above the Input",
+              "value": "column"
+            },
+            {
+              "label": "Below the Input",
+              "value": "column-reverse"
+            },
+            {
+              "label": "Left of the Input",
+              "value": "row"
+            },
+            {
+              "label": "Right of the Input",
+              "value": "row-reverse"
+            }
+          ]
         }
       ],
 
@@ -117,6 +173,11 @@
           "type": "text",
           "id": "label",
           "label": "Input Label"
+        },
+         {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Place Holder"
         },
         {
           "type": "text",
@@ -133,10 +194,32 @@
           "id": "required",
           "label": "Required",
           "default": true
-        }
-      ],
-
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Label Position",
+          "options": [
+            {
+              "label": "Above the Input",
+              "value": "column"
+            },
+            {
+              "label": "Below the Input",
+              "value": "column-reverse"
+            },
+            {
+              "label": "Left of the Input",
+              "value": "row"
+            },
+            {
+              "label": "Right of the Input",
+              "value": "row-reverse"
+            }
+        ]
     }
+  ]
+ }
   ],
   "presets": [
     {
