@@ -5,10 +5,17 @@
         block{{ block.type }}
         <h2>{{ block.settings.heading }}</h2>
       {% when 'text' %}
+      {% liquid
+        if block.settings.input-type != blank
+          assign type = block.settings.input-type
+        else
+        assign type = block.type
+       endif
+      %}
         {% render 'ss-input-v-1-0',
           label: block.settings.label,
           place_holder: block.settings.placeholder,
-          type: block.type,
+          type: type,
           value: block.settings.value,
           name: block.settings.name,
           required: block.settings.required,
@@ -61,6 +68,11 @@
       "type": "text",
       "name": "Type Text",
       "settings": [
+         {
+          "type": "text",
+          "id": "input-type",
+          "label": "Input Type"
+        },
         {
           "type": "text",
           "id": "label",
