@@ -1,10 +1,8 @@
-{% if label != blank %}
-  <label for="{{ label_for }}">{{ label }}</label>
-{% endif %}
+  <label>
+    {% if label != blank %}<span class="ss-input-label">{{ label }}</span>{% endif %}
 {% unless type == 'textarea' %}
   <input
     type="{{ type | default: 'text' }}"
-    id="{{ label_for }}"
     name="{{ name }}"
     value="{{ value }}"
     placeholder="{{ place_holder }}"
@@ -22,7 +20,6 @@
   >
 {% else %}
   <textarea
-    id="{{ label_for }}"
     name="{{ name }}"
     placeholder="{{ place_holder }}"
     {% if required %}
@@ -38,3 +35,4 @@
     aria-label="{{ aria_label | default: label }}"
   ></textarea>
 {% endunless %}
+</label>
