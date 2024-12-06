@@ -1533,7 +1533,7 @@
         "checkbox_6JbNwx": {
           "type": "checkbox",
           "settings": {
-            "label": "",
+            "label": "checkbox",
             "value": "",
             "name": "",
             "required": true
