@@ -1514,6 +1514,7 @@
         "text_UYeJtj": {
           "type": "text",
           "settings": {
+            "input-type": "",
             "label": "",
             "placeholder": "Email",
             "value": "",
@@ -1527,6 +1528,7 @@
         "text_wjzjA9": {
           "type": "text",
           "settings": {
+            "input-type": "email",
             "label": "",
             "placeholder": "Email",
             "value": "",
@@ -1540,6 +1542,7 @@
         "text_HfiDXM": {
           "type": "text",
           "settings": {
+            "input-type": "number",
             "label": "",
             "placeholder": "Phone",
             "value": "",
