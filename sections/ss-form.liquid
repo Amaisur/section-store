@@ -32,7 +32,8 @@
           place_holder: block.settings.placeholder,
           label: block.settings.label,
           name: block.settings.name,
-          required: block.settings.required
+          required: block.settings.required,
+          rows: block.settings.rows
         %}
       {% when 'checkbox' %}
         {% render 'ss-input-v-1-0',
@@ -178,6 +179,15 @@
           "id": "required",
           "label": "Required",
           "default": true
+        },
+        {
+          "type": "range",
+          "id": "rows",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "label": "Rows",
+          "default": 10
         },
         {
           "type": "select",
