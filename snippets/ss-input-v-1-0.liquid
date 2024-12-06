@@ -1,4 +1,4 @@
-  <label class="ss-input-v1" style="--direction: {{ label_position }}; --width: {{ width }}%">
+  <label class="ss-input-v1 ss-label-{{ type }}" style="--direction: {{ label_position }}; --width: {{ width }}%">
     {% if label != blank %}<span class="ss-input-label">{{ label }}</span>{% endif %}
 {% unless type == 'textarea' %}
   <input
