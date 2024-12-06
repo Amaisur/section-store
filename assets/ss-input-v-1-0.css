@@ -33,5 +33,5 @@
 .ss-input-v1 input[type="submit"]:hover {
   color: #000;
   background: transparent;
-  box-shadow: inset 0 0 2px #000;
+  box-shadow: inset 0 0 0 2px #000;
 }
