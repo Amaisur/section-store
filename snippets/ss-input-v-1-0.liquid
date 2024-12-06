@@ -2,7 +2,7 @@
     {% if label != blank %}<span class="ss-input-label">{{ label }}</span>{% endif %}
 {% unless type == 'textarea' %}
   <input
-    type="{{ block.type }}"
+    type="{{ type }}"
     name="{{ name }}"
     value="{{ value }}"
     placeholder="{{ place_holder }}"
