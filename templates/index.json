@@ -1511,40 +1511,62 @@
             "heading": "Heading"
           }
         },
+        "text_UYeJtj": {
+          "type": "text",
+          "settings": {
+            "label": "",
+            "placeholder": "Email",
+            "value": "",
+            "name": "email",
+            "required": true,
+            "disabled": false,
+            "readonly": false,
+            "position": "column"
+          }
+        },
+        "text_wjzjA9": {
+          "type": "text",
+          "settings": {
+            "label": "",
+            "placeholder": "Email",
+            "value": "",
+            "name": "email",
+            "required": true,
+            "disabled": false,
+            "readonly": false,
+            "position": "column"
+          }
+        },
         "text_HfiDXM": {
           "type": "text",
           "settings": {
-            "label": "Name",
+            "label": "",
+            "placeholder": "Phone",
             "value": "",
-            "name": "Name",
+            "name": "phone",
             "required": true,
             "disabled": false,
-            "readonly": false
+            "readonly": false,
+            "position": "column"
           }
         },
         "textarea_63RHR6": {
           "type": "textarea",
           "settings": {
             "label": "",
-            "name": "",
-            "required": true
-          }
-        },
-        "checkbox_6JbNwx": {
-          "type": "checkbox",
-          "settings": {
-            "label": "checkbox",
-            "value": "",
-            "name": "",
-            "required": true
+            "placeholder": "Message",
+            "name": "message",
+            "required": true,
+            "position": "column"
           }
         }
       },
       "block_order": [
         "heading_q8mxzY",
+        "text_UYeJtj",
+        "text_wjzjA9",
         "text_HfiDXM",
-        "textarea_63RHR6",
-        "checkbox_6JbNwx"
+        "textarea_63RHR6"
       ],
       "settings": {}
     }
