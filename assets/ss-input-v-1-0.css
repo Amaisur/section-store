@@ -19,10 +19,11 @@
   resize: none;
 }
 .ss-input-v1 input[type="submit"] {
-  padding: 20px;
+  padding: 15px 25px;
   background: #000;
-  color: 0;
+  color: #fff;
   border: none;
   outline: none;
   transition: all 0.3s;
+  cursor: pointer;
 }
