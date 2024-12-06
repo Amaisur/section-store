@@ -1507,6 +1507,7 @@
       "blocks": {
         "heading_q8mxzY": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "heading": "Heading"
           }
@@ -1522,7 +1523,8 @@
             "required": true,
             "disabled": false,
             "readonly": false,
-            "position": "column"
+            "position": "column",
+            "width": "50"
           }
         },
         "text_wjzjA9": {
@@ -1536,7 +1538,8 @@
             "required": true,
             "disabled": false,
             "readonly": false,
-            "position": "column"
+            "position": "column",
+            "width": "50"
           }
         },
         "text_HfiDXM": {
@@ -1550,7 +1553,8 @@
             "required": true,
             "disabled": false,
             "readonly": false,
-            "position": "column"
+            "position": "column",
+            "width": "100"
           }
         },
         "textarea_63RHR6": {
@@ -1560,7 +1564,9 @@
             "placeholder": "Message",
             "name": "message",
             "required": true,
-            "position": "column"
+            "rows": 10,
+            "position": "column",
+            "width": "100"
           }
         }
       },
