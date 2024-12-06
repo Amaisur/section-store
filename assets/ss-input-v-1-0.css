@@ -1,0 +1,9 @@
+.ss-input-v1 {
+  display: flex;
+  flex-direction: var(--direction);
+  width: var(--width);
+}
+.ss-input-v1 input[text, number, email],
+.ss-input-v1 textarea {
+  padding: 15px;
+}
