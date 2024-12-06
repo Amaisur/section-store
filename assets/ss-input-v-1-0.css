@@ -18,3 +18,11 @@
   width: 100%;
   resize: none;
 }
+.ss-input-v1 input[type="submit"] {
+  padding: 20px;
+  background: #000;
+  color: 0;
+  border: none;
+  outline: none;
+  transition: all 0.3s;
+}
