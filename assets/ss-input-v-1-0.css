@@ -27,6 +27,9 @@
   transition: all 0.3s;
   cursor: pointer;
 }
+.ss-label-submit {
+  width: fit-content;
+}
 .ss-input-v1 input[type="submit"]:hover {
   color: #000;
   background: transparent;
