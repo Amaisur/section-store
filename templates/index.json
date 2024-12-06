@@ -1522,11 +1522,11 @@
             "readonly": false
           }
         },
-        "textaria_MqfMnK": {
-          "type": "textaria",
+        "textarea_63RHR6": {
+          "type": "textarea",
           "settings": {
-            "label": "Message",
-            "name": "message",
+            "label": "",
+            "name": "",
             "required": true
           }
         },
@@ -1543,7 +1543,7 @@
       "block_order": [
         "heading_q8mxzY",
         "text_HfiDXM",
-        "textaria_MqfMnK",
+        "textarea_63RHR6",
         "checkbox_6JbNwx"
       ],
       "settings": {}
