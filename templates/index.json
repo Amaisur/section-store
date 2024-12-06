@@ -1595,6 +1595,12 @@
         "text_FNx4zX"
       ],
       "settings": {}
+    },
+    "ss_carousel_Xwz3TW": {
+      "type": "ss-carousel",
+      "settings": {
+        "collection": "face-masks"
+      }
     }
   },
   "order": [
@@ -1621,6 +1627,7 @@
     "comparison_tabel_WGR3qb",
     "product_ing_X7pJXp",
     "ss_icon_with_text_xHCURJ",
-    "ss_form_9EVQxA"
+    "ss_form_9EVQxA",
+    "ss_carousel_Xwz3TW"
   ]
 }
