@@ -1508,26 +1508,15 @@
         "heading_q8mxzY": {
           "type": "heading",
           "settings": {
-            "heading": ""
+            "heading": "Heading"
           }
         },
         "text_HfiDXM": {
           "type": "text",
           "settings": {
-            "label": "",
+            "label": "Name",
             "value": "",
-            "name": "",
-            "required": true,
-            "disabled": false,
-            "readonly": false
-          }
-        },
-        "text_cqfeMa": {
-          "type": "text",
-          "settings": {
-            "label": "",
-            "value": "",
-            "name": "",
+            "name": "Name",
             "required": true,
             "disabled": false,
             "readonly": false
@@ -1536,8 +1525,8 @@
         "textaria_MqfMnK": {
           "type": "textaria",
           "settings": {
-            "label": "",
-            "name": "",
+            "label": "Message",
+            "name": "message",
             "required": true
           }
         },
@@ -1554,7 +1543,6 @@
       "block_order": [
         "heading_q8mxzY",
         "text_HfiDXM",
-        "text_cqfeMa",
         "textaria_MqfMnK",
         "checkbox_6JbNwx"
       ],
