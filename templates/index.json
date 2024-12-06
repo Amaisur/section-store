@@ -1569,6 +1569,21 @@
             "position": "column",
             "width": "100"
           }
+        },
+        "text_FNx4zX": {
+          "type": "text",
+          "settings": {
+            "input-type": "submit",
+            "label": "",
+            "placeholder": "",
+            "value": "Submit",
+            "name": "",
+            "required": true,
+            "disabled": false,
+            "readonly": false,
+            "position": "column",
+            "width": "50"
+          }
         }
       },
       "block_order": [
@@ -1576,7 +1591,8 @@
         "text_UYeJtj",
         "text_wjzjA9",
         "text_HfiDXM",
-        "textarea_63RHR6"
+        "textarea_63RHR6",
+        "text_FNx4zX"
       ],
       "settings": {}
     }
