@@ -8,4 +8,5 @@
 .ss-input-v1 input[type="email"],
 .ss-input-v1 textarea {
   padding: 15px;
+  width: 100%;
 }
