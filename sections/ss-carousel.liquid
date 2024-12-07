@@ -10,9 +10,9 @@ doc file:
   }
   .swiper-container {
     width: 100%;
-    max-width: 1200px;
+    max-width: calc(1200px - 20px);
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 20px 10px;
     overflow: hidden;
     position: relative;
   }
@@ -67,7 +67,7 @@ doc file:
 }
 .swiper-buttons-d5{
   display: flex;
-  width: 100%;
+  width: (100% - 20px);
   align-items: center;
   justify-content: space-between;
   flex-direction: row-reverse;
@@ -82,7 +82,7 @@ doc file:
 }
   @media (min-width: 768px) {
     .swiper-container {
-      padding: 40px 0;
+      /* padding: 40px 0; */
     }
   }
 </style>
