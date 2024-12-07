@@ -90,8 +90,7 @@ doc file:
 
 <div class="swiper-container">
   <div class="swiper-wrapper">
-    {% assign collection  = section.settings.collection %}
-    {% for product in collection.products %}
+    {% for block in section.blocks %}
       <div class="swiper-slide">
      {% render 'ss-media-snippet', img: block.settings.img %}
       </div>
