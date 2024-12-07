@@ -1598,6 +1598,38 @@
     },
     "ss_carousel_Xwz3TW": {
       "type": "ss-carousel",
+      "blocks": {
+        "image_thcGKL": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/1_1.png"
+          }
+        },
+        "image_MBFarW": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/1-1_6b8c7009-a970-4361-a910-601dd5d160ac.jpg"
+          }
+        },
+        "image_dJLQ6U": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/C3_9e9b6c00-a1f9-4148-975c-a75d27745494.png"
+          }
+        },
+        "image_PjthtH": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/download_3_720x_a165583f-4517-42a9-94e4-ef05da2390c8.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_thcGKL",
+        "image_MBFarW",
+        "image_dJLQ6U",
+        "image_PjthtH"
+      ],
       "settings": {
         "collection": "face-masks"
       }
