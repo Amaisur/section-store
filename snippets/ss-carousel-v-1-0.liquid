@@ -1,6 +1,18 @@
- <div class="swiper-slide">
-        <a href="{{ product.url }}">
-          <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
-        </a>
-        <p>{{ product.title }}</p>
-  </div>
+ {% if product != blank %}
+    <div class="ss-rc-product">
+      <a href="{{ product.url }}">
+        <div class="ss-rc-product-image">
+          {% render 'ss-media-snippet', img: product.featured_image, object_fit: 'cover' %}
+        </div>
+        <div class="ss-rc-product-info">
+          <p class="ss-rc-product-title heading-rcv-1-0">{{ product.title }}</p>
+          <div class="ss-price">
+            <span class="light-text-rcv-1-0">{{ product.price | money }}</span>
+            {% if product.compare_at_price > product.price %}
+            <span class="light-text-rcv-1-0 compare_price">{{ product.compare_at_price | money }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </a>
+    </div>
+  {% endif %}
