@@ -92,7 +92,9 @@ doc file:
   <div class="swiper-wrapper">
     {% assign collection  = section.settings.collection %}
     {% for product in collection.products %}
-     {% render 'ss-carousel-v-1-0', product: product %}
+      <div class="swiper-slide">
+     {% render 'ss-media-snippet', img: block.settings.img %}
+      </div>
     {% endfor %}
   </div>
 
@@ -128,6 +130,19 @@ doc file:
         "type": "collection",
         "id": "collection",
         "label": "Collection"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+          }
+        ]
       }
     ],
     "presets": [
