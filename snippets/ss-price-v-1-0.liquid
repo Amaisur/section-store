@@ -1,0 +1,19 @@
+{%- liquid
+  assign product_price = product.price | money
+  assign compare_price = product.compare_at_price | money
+  assign variant = product.selected_or_first_available_variant
+  assign variant_price = variant.price | money
+  assign variant_compare_price = variant.compare_at_price | money
+-%}
+
+<div class="price-display">
+  <div class="product-pricing">
+    <span class="compare-price">{{ compare_price }}</span>
+    <span class="selling-price">{{ product_price }}</span>
+  </div>
+  
+  <div class="variant-pricing">
+    <span class="compare-price">{{ variant_compare_price }}</span>
+    <span class="selling-price">{{ variant_price }}</span>
+  </div>
+</div>
