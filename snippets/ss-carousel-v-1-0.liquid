@@ -7,10 +7,7 @@
         <div class="ss-rc-product-info">
           <p class="ss-rc-product-title heading-rcv-1-0">{{ product.title }}</p>
           <div class="ss-price">
-            <span class="light-text-rcv-1-0">{{ product.price | money }}</span>
-            {% if product.compare_at_price > product.price %}
-            <span class="light-text-rcv-1-0 compare_price">{{ product.compare_at_price | money }}</span>
-            {% endif %}
+           {% render 'ss-price-v-1-0', product: product %}
           </div>
         </div>
       </a>
