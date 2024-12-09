@@ -1,12 +1,12 @@
  {% if product != blank %}
-    <div class="ss-rc-product">
+    <div class="ss-pc-product">
       <a href="{{ product.url }}">
-        <div class="ss-rc-product-image">
+        <div class="ss-pc-product-image">
           {% render 'ss-media-snippet', img: product.featured_image, object_fit: 'cover' %}
         </div>
-        <div class="ss-rc-product-info">
-          <p class="ss-rc-product-title heading-rcv-1-0">{{ product.title }}</p>
-          <div class="ss-price">
+        <div class="ss-pc-product-info">
+          <p class="ss-pc-product-title heading-pc-1-0">{{ product.title }}</p>
+          <div class="ss-pc-price">
            {% render 'ss-price-v-1-0', product: product %}
           </div>
         </div>
