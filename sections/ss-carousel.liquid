@@ -93,7 +93,7 @@ doc file:
     {% assign collection = section.settings.collection %}
     {% for product in collection.products %}
       <div class="swiper-slide">
-     {% render 'ss-carousel-v-1-0', %}
+     {% render 'ss-carousel-v-1-0', product: product %}
       </div>
     {% endfor %}
   </div>
