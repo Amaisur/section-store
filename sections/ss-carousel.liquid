@@ -88,35 +88,35 @@ doc file:
 </style>
 
 
-<div class="swiper-container">
+<div class="ss-swiper-container">
   <div class="swiper-wrapper">
     {% assign collection = section.settings.collection %}
     {% for product in collection.products %}
-      <div class="swiper-slide">
+      <div class="ss-swiper-slide">
      {% render 'ss-product-card-v-1-0', product: product %}
       </div>
     {% endfor %}
   </div>
 
-  <div class="swiper-pagination"></div>
-  <div class="swiper-buttons-d5">
-  <div class="swiper-button-next btn-s"></div>
-  <div class="swiper-button-prev btn-s"></div>
+  <div class="ss-swiper-pagination"></div>
+  <div class="ss-swiper-buttons-d5">
+  <div class="ss-swiper-button-next btn-s"></div>
+  <div class="ss-swiper-button-prev btn-s"></div>
   </div>
 </div>
 
 <script>
-  var swiper = new Swiper('.swiper-container', {
+  var swiper = new Swiper('.ss-swiper-container', {
     loop: true,
     slidesPerView: 3,
     spaceBetween: 20,
     pagination: {
-      el: '.swiper-pagination',
+      el: '.ss-swiper-pagination',
       clickable: true
     },
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
+      nextEl: '.ss-swiper-button-next',
+      prevEl: '.ss-swiper-button-prev'
     }
   });
 </script>
