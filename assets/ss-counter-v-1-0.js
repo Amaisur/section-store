@@ -5,7 +5,7 @@ class CountdownTimer {
     this.minute = this.second * 60;
     this.hour = this.minute * 60;
     this.day = this.hour * 24;
-    this.timers = [];
+    this.timers = new Map(); // Use a Map to manage timers associated with elements
   }
 
   formatNumber(num) {
@@ -29,16 +29,24 @@ class CountdownTimer {
 
     if (distance < 0) {
       element.querySelector("#ss-countdown").classList.add("ss-sale-on-d5");
-      if (this.timers[element]) {
-        clearInterval(this.timers[element]);
-        this.timers[element] = null;
-      }
+      // Clear interval if distance is negative
+      clearInterval(this.timers.get(element));
+      this.timers.delete(element);
+
+      // Set the countdown to all zeros
+      element.querySelector("#ss-days").innerText = "00";
+      element.querySelector("#ss-hours").innerText = "00";
+      element.querySelector("#ss-minutes").innerText = "00";
+      element.querySelector("#ss-seconds").innerText = "00";
     }
   }
 
   start() {
     this.elements.forEach(element => {
-      this.timers[element] = setInterval(() => this.updateCountdown(element), 1000);
+      if (!this.timers.has(element)) {
+        const intervalId = setInterval(() => this.updateCountdown(element), 1000);
+        this.timers.set(element, intervalId);
+      }
     });
   }
 }
