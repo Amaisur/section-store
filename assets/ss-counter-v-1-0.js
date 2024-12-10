@@ -24,7 +24,7 @@ class CountdownTimer {
         element.querySelector("#ss-minutes").innerText = "00";
         element.querySelector("#ss-seconds").innerText = "00";
         
-        element.classList.add("ss-sale-on-d5");
+        element.querySelector("#ss-countdown").classList.add("ss-sale-on-d5");
 
         // Clear the interval if the countdown has finished
         clearInterval(this.timers.get(element));
@@ -54,5 +54,5 @@ class CountdownTimer {
 }
 
 // Usage
-const countdown = new CountdownTimer('.ss-parent-timer');
+const countdown = new CountdownTimer('.ss-timer-ul');
 countdown.start();
