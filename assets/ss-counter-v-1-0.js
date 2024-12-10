@@ -23,7 +23,7 @@ class CountdownTimer {
         element.querySelector("#ss-hours").innerText = "00";
         element.querySelector("#ss-minutes").innerText = "00";
         element.querySelector("#ss-seconds").innerText = "00";
-        
+        console.log("hello:1")
         element.parentElement.querySelector("#ss-countdown").classList.add("ss-sale-on-d5");
           console.log("hello:")
         // Clear the interval if the countdown has finished
