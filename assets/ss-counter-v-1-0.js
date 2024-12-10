@@ -25,7 +25,7 @@ class CountdownTimer {
         element.querySelector("#ss-seconds").innerText = "00";
         
         element.parentElement.querySelector("#ss-countdown").classList.add("ss-sale-on-d5");
-          console.log(element.parentElement)
+          console.log("hello":element.parentElement)
         // Clear the interval if the countdown has finished
         clearInterval(this.timers.get(element));
         this.timers.delete(element);
