@@ -22,10 +22,10 @@ class CountdownTimer {
     const minutes = this.formatNumber(Math.floor((distance % this.hour) / this.minute));
     const seconds = this.formatNumber(Math.floor((distance % this.minute) / this.second));
 
-    element.querySelector("#days").innerText = days;
-    element.querySelector("#hours").innerText = hours;
-    element.querySelector("#minutes").innerText = minutes;
-    element.querySelector("#seconds").innerText = seconds;
+    element.querySelector("#ss-days").innerText = days;
+    element.querySelector("#ss-hours").innerText = hours;
+    element.querySelector("#ss-minutes").innerText = minutes;
+    element.querySelector("#ss-seconds").innerText = seconds;
 
     if (distance < 0) {
       element.querySelector("#ss-countdown").classList.add("ss-sale-on-d5");
