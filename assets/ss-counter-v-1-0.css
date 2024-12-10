@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   color: #000;
+  text-underline-offset: 5px;
 }
 .ss-timer-div-counter {
   width: 100%;
@@ -21,5 +22,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 10px;
 }
