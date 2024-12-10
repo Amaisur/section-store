@@ -1,4 +1,4 @@
-<script src="{{ ss-counter-v-1-0.js | asset_url }}" defer="defer"></script>
+{{ ss-counter-v-1-0.js | asset_url | script_tag }}
 <div class="ss-timer">
   {% render 'ss-counter-v-1-0' %}
 </div>
