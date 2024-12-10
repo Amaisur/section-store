@@ -364,12 +364,9 @@
         "main-section-id": "feature-6"
       }
     },
-    "featured_collection_d5_V7Q3xQ": {
-      "type": "featured-collection-d5",
-      "disabled": true,
-      "settings": {
-        "collection": "frontpage"
-      }
+    "ss_timer_fYJqV9": {
+      "type": "ss-timer",
+      "settings": {}
     },
     "hotspots_4_HGjatk": {
       "type": "hotspots-4",
@@ -1642,7 +1639,7 @@
     "coundown_timer_apcC7X",
     "coundown_timer_gMm4Mg",
     "feature_6_tLGJcN",
-    "featured_collection_d5_V7Q3xQ",
+    "ss_timer_fYJqV9",
     "hotspots_4_HGjatk",
     "video_multicolumn_eYdPVb",
     "faq_9_Dz7J73",
