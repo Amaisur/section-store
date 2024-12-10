@@ -12,34 +12,36 @@ class CountdownTimer {
     return num < 10 ? "0" + num : num.toString();
   }
 
-  updateCountdown(element) {
+ updateCountdown(element) {
     const countDownDate = new Date(element.getAttribute('ss-date-time')).getTime();
     const now = new Date().getTime();
     const distance = countDownDate - now;
 
-    const days = this.formatNumber(Math.floor(distance / this.day));
-    const hours = this.formatNumber(Math.floor((distance % this.day) / this.hour));
-    const minutes = this.formatNumber(Math.floor((distance % this.hour) / this.minute));
-    const seconds = this.formatNumber(Math.floor((distance % this.minute) / this.second));
+    if (distance <= 0) {
+        // Stop the countdown and apply class
+        element.querySelector("#ss-days").innerText = "00";
+        element.querySelector("#ss-hours").innerText = "00";
+        element.querySelector("#ss-minutes").innerText = "00";
+        element.querySelector("#ss-seconds").innerText = "00";
+        
+        element.querySelector("#ss-countdown").classList.add("ss-sale-on-d5");
 
-    element.querySelector("#ss-days").innerText = days;
-    element.querySelector("#ss-hours").innerText = hours;
-    element.querySelector("#ss-minutes").innerText = minutes;
-    element.querySelector("#ss-seconds").innerText = seconds;
+        // Clear the interval if the countdown has finished
+        clearInterval(this.timers.get(element));
+        this.timers.delete(element);
+    } else {
+        const days = this.formatNumber(Math.floor(distance / this.day));
+        const hours = this.formatNumber(Math.floor((distance % this.day) / this.hour));
+        const minutes = this.formatNumber(Math.floor((distance % this.hour) / this.minute));
+        const seconds = this.formatNumber(Math.floor((distance % this.minute) / this.second));
 
-    if (distance < 0) {
-      element.querySelector("#ss-countdown").classList.add("ss-sale-on-d5");
-      // Clear interval if distance is negative
-      clearInterval(this.timers.get(element));
-      this.timers.delete(element);
-
-      // Set the countdown to all zeros
-      element.querySelector("#ss-days").innerText = "00";
-      element.querySelector("#ss-hours").innerText = "00";
-      element.querySelector("#ss-minutes").innerText = "00";
-      element.querySelector("#ss-seconds").innerText = "00";
+        element.querySelector("#ss-days").innerText = days;
+        element.querySelector("#ss-hours").innerText = hours;
+        element.querySelector("#ss-minutes").innerText = minutes;
+        element.querySelector("#ss-seconds").innerText = seconds;
     }
-  }
+}
+
 
   start() {
     this.elements.forEach(element => {
