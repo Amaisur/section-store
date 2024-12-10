@@ -1,0 +1,13 @@
+.ss-timer-div-counter {
+  width: 100%;
+  margin: 0 auto;
+}
+.ss-timer-ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.ss-timer-ul li {
+  list-style: none;
+}
