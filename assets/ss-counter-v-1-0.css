@@ -19,8 +19,12 @@
   list-style: none;
 }
 .ss-sale-live {
-  display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  margin: 10px 0;
+  display: none;
+}
+.ss-sale-on-d5 .ss-sale-live {
+  display: flex;
 }
