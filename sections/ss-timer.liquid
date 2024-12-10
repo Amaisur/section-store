@@ -1,6 +1,17 @@
+<script src="{{ ss-counter-v-1-0.js | asset_url }}" defer="defer"></script>
+<div class="ss-timer">
+  {% render 'ss-counter-v-1-0' %}
+</div>
+
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "SS Timer",
+    "settings": [],
+    "presets": [
+      {
+        "name": "SS Timer"
+      }
+    ]
   }
 {% endschema %}
