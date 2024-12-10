@@ -6,11 +6,11 @@
       ss-date-time="{{ timer-date | default: '12/28/2024' }} {{ timer-time | default: '21:24:59' }}"
     >
       <li><span id="ss-days"></span>:Days</li>
-      <span class="time-colon">:</span>
+      <span class="time-colon">|</span>
       <li><span id="ss-hours"></span>:Hours</li>
-      <span class="time-colon">:</span>
+      <span class="time-colon">|</span>
       <li><span id="ss-minutes"></span>:Minutes</li>
-      <span class="time-colon">:</span>
+      <span class="time-colon">|</span>
       <li><span id="ss-seconds"></span>:Seconds</li>
     </ul>
     <div class="ss-sale-live"><p>{{ after_counter_txt | default: 'Sale is live' }}</p><a href="{{ button_url }}">{{ button_label | default: '<strong>Shop Now</strong>' }}</a></div>
