@@ -13,6 +13,6 @@
       <span class="time-colon">:</span>
       <li><span id="ss-seconds"></span>Secs</li>
     </ul>
-    <div class="ss-sale-live"><p>{{ after_counter_txt | 'Sale is live' }}</p><a href="{{ button_url }}">{{ button_label | default: 'Shop Now' }}</a></div>
+    <div class="ss-sale-live"><p>{{ after_counter_txt | default: 'Sale is live' }}</p><a href="{{ button_url }}">{{ button_label | default: 'Shop Now' }}</a></div>
   </div>
 </div>
