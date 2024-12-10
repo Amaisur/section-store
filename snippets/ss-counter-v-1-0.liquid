@@ -1,15 +1,15 @@
 <div
-  class="timer-div-counter-d6"
+  class="ss-timer-div-counter"
   style="
     display: flex;
     justify-content: center;
     align-items: center;
   "
 >
-  <div id="countdown">
+  <div id="ss-countdown">
     <ul
-      class="timer-ul-d6"
-      date-time-d6="{{ timer-date | default: '12/28/2024' }} {{ timer-time | default: '21:24:59' }}"
+      class="ss-timer-ul"
+      ss-date-time="{{ timer-date | default: '12/28/2024' }} {{ timer-time | default: '21:24:59' }}"
     >
       <li><span id="days"></span>Days</li>
       <span class="time-colon">:</span>
@@ -19,6 +19,6 @@
       <span class="time-colon">:</span>
       <li><span id="seconds"></span>Secs</li>
     </ul>
-    <div class="sale-live-d6">{{ live-sale | default: 'Sale is on' }}</div>
+    <div class="ss-sale-live">{{ live-sale | default: 'Sale is on' }}</div>
   </div>
 </div>
