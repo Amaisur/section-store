@@ -11,3 +11,9 @@
 .ss-timer-ul li {
   list-style: none;
 }
+.ss-sale-live {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ga: 5px;
+}
