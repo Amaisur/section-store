@@ -54,5 +54,5 @@ class CountdownTimer {
 }
 
 // Usage
-const countdown = new CountdownTimer('#ss-countdown');
+const countdown = new CountdownTimer('.ss-parent-timer');
 countdown.start();
