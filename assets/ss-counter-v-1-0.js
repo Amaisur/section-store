@@ -1,34 +1,39 @@
-  (function () {
-    const second = 1000,
-          minute = second * 60,
-          hour = minute * 60,
-          day = hour * 24;
+class CountdownTimer {
+  constructor(selector) {
+    this.selector = selector;
+    this.second = 1000;
+    this.minute = this.second * 60;
+    this.hour = this.minute * 60;
+    this.day = this.hour * 24;
+    this.saleEndDate = document.querySelector(this.selector).getAttribute('ss-date-time');
+    this.countDown = new Date(this.saleEndDate).getTime();
+    this.timerInterval = null;
+  }
 
-    // Set your sale target date and time here (e.g., "December 31, 2024, 23:59:59")
-    const saleEndDate = document.querySelector('.ss-timer-ul').getAttribute('ss-date-time');  // You can modify this to any date and time
+  formatNumber(num) {
+    return num < 10 ? "0" + num : num.toString();
+  }
 
-    const countDown = new Date(saleEndDate).getTime();
+  updateCountdown() {
+    const now = new Date().getTime();
+    const distance = this.countDown - now;
 
-    // Function to format numbers as two digits
-    const formatNumber = (num) => (num < 10 ? "0" : "") + num;
+    document.getElementById("days").innerText = this.formatNumber(Math.floor(distance / this.day));
+    document.getElementById("hours").innerText = this.formatNumber(Math.floor((distance % this.day) / this.hour));
+    document.getElementById("minutes").innerText = this.formatNumber(Math.floor((distance % this.hour) / this.minute));
+    document.getElementById("seconds").innerText = this.formatNumber(Math.floor((distance % this.minute) / this.second));
 
-    const x = setInterval(function() {
-      const now = new Date().getTime(),
-            distance = countDown - now;
+    if (distance < 0) {
+      document.getElementById("ss-countdown").classList.add("ss-sale-on-d5");
+      clearInterval(this.timerInterval);
+    }
+  }
 
-      // Calculate days, hours, minutes, and seconds left
-      document.getElementById("days").innerText = formatNumber(Math.floor(distance / day));
-      document.getElementById("hours").innerText = formatNumber(Math.floor((distance % day) / hour));
-      document.getElementById("minutes").innerText = formatNumber(Math.floor((distance % hour) / minute));
-      document.getElementById("seconds").innerText = formatNumber(Math.floor((distance % minute) / second));
+  start() {
+    this.timerInterval = setInterval(() => this.updateCountdown(), 1000);
+  }
+}
 
-      // When the countdown finishes
-      if (distance < 0) {
-        // Add class to the div with the countdown
-        document.getElementById("ss-countdown").classList.add("ss-sale-on-d5");
-
-        // Optionally, you can stop the countdown display after it ends
-        clearInterval(x);
-      }
-    }, 1000);
-  }());
+// Usage
+const countdown = new CountdownTimer('.ss-timer-ul');
+countdown.start();
