@@ -33,7 +33,7 @@
   mainProduct.forEach(product => {
     
 const btn = product.querySelector('.extra-info-d');
-   const pdHandle = item.querySelector('.product-d5').getAttribute('data-handle')
+   const pdHandle = product.querySelector('.product-d5').getAttribute('data-handle')
     btn.addEventListener('click', () => {
       fetch('/pdHandle')
       .then(res => res.json())
