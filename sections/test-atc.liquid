@@ -4,11 +4,39 @@
   <div class="atc-product">
     <h3>{{ product.title }}</h3>
     <form class="atc-form" action="/cart/add">
-      <input type="hidden" value="{{ product.variants.first.id }}" name="id">
+      <input class="atc-input" type="hidden" value="{{ product.variants.first.id }}" name="id">
       <button class="atc-button" type="submit">Add to Cart</button>
     </form>
   </div>
 {% endfor %}
+
+  <script>
+    let mainProduct = document.querySelectorAll('.atc-product');
+
+    mainProduct.forEach(product => {
+      atcForm = product.querySelector('.atc-form')
+      atcForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        variantId = product.querySelector('.atc-input').value
+        fetch('/cart/add.js', {
+          method: 'POST',
+          header: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify({
+            id: variantId,
+            quantity: 1
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log('added')
+          })
+        })
+      })
+    })
+    
+  </script>
+
 {% schema %}
   {
     "name": "Test ATC",
