@@ -3,6 +3,10 @@
 {% for product in collection.products %}
   <div class="atc-product">
     <h3>{{ product.title }}</h3>
+    <form class="atc-form" action="/cart/add">
+      <input type="hidden" value="{{ product.variants.first.id }}" name="id">
+      <button class="atc-button" type="submit">Add to Cart</button>
+    </form>
   </div>
 {% endfor %}
 {% schema %}
