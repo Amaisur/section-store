@@ -9,7 +9,7 @@
 
 
 <script>
-  var mainProduct = document.querySelectorAll('.test-atc-product');
+  let mainProduct = document.querySelectorAll('.test-atc-product');
 
   mainProduct.forEach(product => {
     product.querySelector('.atc-button').addEventListener('click', () => {
@@ -32,7 +32,7 @@
       // updateCart()
     }) 
     .catch(err => {
-      console.err('found:' err)
+      console.err('found:', err)
     })
     })
   })
