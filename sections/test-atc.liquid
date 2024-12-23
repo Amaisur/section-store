@@ -13,7 +13,24 @@
 
   mainProduct.forEach(product => {
     product.querySelector('.atc-button').addEventListener('click', () => {
-      alert('added')
+    const vId = product.querySelector('h2').getAttribute(data-id);
+    const qty = 1;
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: vId,
+          quantity: qty
+        })
+      })
+    .then(res => response.json())
+    .then(data => {
+      alert(added);
+      // updateCart()
+    }) 
     })
   })
 
