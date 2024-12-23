@@ -2,7 +2,7 @@
 {% assign collection = section.settings.collection %}
 {% for product in collection.products %}
   <div class="test-atc-product">
-    <h2 class="product-d5" data-id="{{ product.first_available_variant.id }}">{{ product.title }}</h2>
+    <h2 class="product-d5" data-handle="{{ product.handle }}" data-id="{{ product.first_available_variant.id }}">{{ product.title }}</h2>
     <form action="/cart/add" class="atc-form">
      {% if product.variants.size > 1 %}
     <label for="ProductSelect">Choose a variant:</label>
@@ -23,6 +23,7 @@
     </form>
     <p class="atc-loading" style="display: none;">Loading...</p>
   </div>
+  <button class="extra-info-d">extra info</button>
 {% endfor %}
 
 
@@ -83,6 +84,24 @@
       console.error('Error fetching cart data:', error);
     });
   }
+
+
+
+  mainProduct.forEach(item, => {
+   const btn = item.querySelector('.extra-info-d');
+   const pdHandle = item.querySelector('.product-d5').getAttribute('data-handle')
+    btn.addEventListener('click', () => {
+      fetch('/pdHandle')
+      .then(res => res.json())
+      .then(product => {
+        productVendor = product.vendor;
+        console.log(productVendor)
+      })
+      .catch(error => {
+        console.error('error', error)
+      })
+    })
+  })
 </script>
 
 
