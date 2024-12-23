@@ -1,5 +1,10 @@
 <h2>Products</h2>
-
+{% assign collection = section.settings.collection %}
+{% for product in collection.products %}
+  <div class="atc-product">
+    <h3>{{ product.title }}</h3>
+  </div>
+{% endfor %}
 {% schema %}
   {
     "name": "Test ATC",
