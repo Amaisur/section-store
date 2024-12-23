@@ -3,10 +3,10 @@
 {% for product in collection.products %}
   <div class="test-atc-product">
     <h2 class="product-d5" data-id="{{ product.first_available_variant.id }}">{{ product.title }}</h2>
-    <form action="/cart/add">
+    <form action="/cart/add" class="atc-form">
      {% if product.variants.size > 1 %}
     <label for="ProductSelect">Choose a variant:</label>
-    <select name="id" id="ProductSelect">
+    <select class="variant-id-d" name="id" id="ProductSelect">
       {% for variant in product.variants %}
         <option value="{{ variant.id }}" {% if variant.available %} {% else %}disabled{% endif %}>
           {{ variant.title }} - {{ variant.price | money_with_currency }}
@@ -14,7 +14,7 @@
       {% endfor %}
     </select>
   {% else %}
-    <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+    <input class="variant-id-d" type="hidden" name="id" value="{{ product.variants.first.id }}">
   {% endif %}
  <label for="Quantity">Quantity:</label>
   <input type="number" id="Quantity" name="quantity" value="1" min="1" pattern="[0-9]*">
@@ -29,10 +29,10 @@
   let mainProduct = document.querySelectorAll('.test-atc-product');
 
   mainProduct.forEach(product => {
-    product.querySelector('.atc-button').addEventListener('click', () => {
+    product.querySelector('.atc-form').addEventListener('submit', () => {
       const loaderatc = product.querySelector('.atc-loading');
-      const vId = product.querySelector('h2').getAttribute('data-id');
-      const qty = 1;
+      const vId = product.querySelector('.variant-id-d').value;
+      const qty = document.querySelector('#Quantity').value;
 
       function showLoading() {
         loaderatc.style.display = 'block';
