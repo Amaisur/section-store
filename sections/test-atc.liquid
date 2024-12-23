@@ -39,12 +39,7 @@
   if (btnex && pdHandle) {
     btnex.addEventListener('click', () => {
       fetch(`/products/${pdHandle}.js`)
-        .then(res => {
-          if (!res.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return res.json();
-        })
+        .then(res => res.json())
         .then(product => {
           let productVendor = product.title;
           console.log(productVendor);
