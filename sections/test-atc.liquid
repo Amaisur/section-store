@@ -41,7 +41,7 @@
     .then(res => res.json())
     .then(html => {
       document.querySelector('#cart-icon-bubble').innerHTML = html;
-    });
+    })
     .catch(error => {
       console.error('error', error)
     })
