@@ -46,7 +46,7 @@
           return res.json();
         })
         .then(product => {
-          let productVendor = product.vendor;
+          let productVendor = product.title;
           console.log(productVendor);
         })
         .catch(error => {
