@@ -2,7 +2,7 @@
 {% assign collection = section.settings.collection %}
 {% for product in collection.products %}
   <div class="test-atc-product">
-    <h2 class="product-d5" data-id="{{ product.id }}">{{ product.title }}</h2>
+    <h2 class="product-d5" data-id="{{ product.first_available_variant.id }}">{{ product.title }}</h2>
     <button class="atc-button">Add to Cart</button>
   </div>
 {% endfor %}
