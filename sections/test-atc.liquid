@@ -14,51 +14,58 @@
 
   mainProduct.forEach(product => {
     product.querySelector('.atc-button').addEventListener('click', () => {
-    const loaderatc = product.querySelector('.atc-loading');
-     function showLoading(){
-   loaderatc.style.display = 'block';
-  }
-  function hideLoading(){
-    loaderatc.style.display = 'none';
-  }
-    const vId = product.querySelector('h2').getAttribute('data-id');
-    const qty = 1;
-    showLoading();
-    
+      const loaderatc = product.querySelector('.atc-loading');
+      const vId = product.querySelector('h2').getAttribute('data-id');
+      const qty = 1;
+
+      function showLoading() {
+        loaderatc.style.display = 'block';
+      }
+
+      function hideLoading() {
+        loaderatc.style.display = 'none';
+      }
+
+      showLoading();
+
       fetch('/cart/add.js', {
         method: 'POST',
         headers: {
-          'content-type': 'application/json'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           id: vId,
           quantity: qty
         })
       })
-    .then(res => res.json())
-    .then(data => {
-      updateCount();
-    }) 
-    .catch(error => {
-      console.error('found:', error)
-    })
-    .finally(() => {
-      hideLoading();
-    })
-    })
+      .then(res => res.json())
+      .then(data => {
+        updateCount();
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      })
+      .finally(() => {
+        hideLoading();
+      });
+    });
+  });
 
-  })
-function updateCount(){
-  fetch('/cart.js')
-  .then(res => res.json())
-  .then(cart => {
-    const cartBubble = document.querySelector('.cart-count-bubble span[aria-hidden="true"]')
-    if (cartBubble){
-      cartBubble.textContent = cart.item_count 
-    }
-  })
-}
+  function updateCount() {
+    fetch('/cart.js')
+    .then(res => res.json())
+    .then(cart => {
+      const cartBubble = document.querySelector('.cart-count-bubble span[aria-hidden="true"]');
+      if (cartBubble) {
+        cartBubble.textContent = cart.item_count;
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching cart data:', error);
+    });
+  }
 </script>
+
 
 
 
