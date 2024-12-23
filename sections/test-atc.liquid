@@ -37,7 +37,7 @@
     })
 
   function updateCount(){
-    fetch('/cart.js')
+    fetch('/#cart-icon-bubble')
     .then(res => res.text())
     .then(html => {
       document.querySelector('#cart-icon-bubble').innerHTML = html;
