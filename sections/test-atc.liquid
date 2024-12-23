@@ -34,7 +34,7 @@
   mainProduct.forEach(product => {
     
  const btnex = product.querySelector('.extra-info-d');
-  const pdHandle = product.querySelector('.product-d5')?.getAttribute('data-handle');
+  const pdHandle = product.querySelector('.product-d5').getAttribute('data-handle');
   console.log(pdHandle);
   if (btnex && pdHandle) {
     btnex.addEventListener('click', () => {
