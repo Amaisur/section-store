@@ -4,7 +4,7 @@
   <div class="test-atc-product">
     <h2 class="product-d5" data-id="{{ product.first_available_variant.id }}">{{ product.title }}</h2>
     <button class="atc-button">Add to Cart</button>
-    <p class="atc-loading" hidden>Loading...</p>
+    <p class="atc-loading" style="display: none;">Loading...</p>
   </div>
 {% endfor %}
 
@@ -14,6 +14,7 @@
 
   mainProduct.forEach(product => {
     product.querySelector('.atc-button').addEventListener('click', () => {
+    const loaderatc = product.querySelector('.atc-loading');
     const vId = product.querySelector('h2').getAttribute('data-id');
     const qty = 1;
     showLoading();
@@ -52,12 +53,10 @@ function updateCount(){
   })
 }
 function showLoading(){
-  const loaderatc = product.querySelector('.atc-loading');
-  loaderatc.removeAttribute('hidden');
+  loaderatc.style.display = none;
 }
 function hideLoading(){
-  const loaderatc = product.querySelector('.atc-loading');
-  loaderatc.addAttribute('hidden');
+  loaderatc.style.display = block;
 }
 </script>
 
