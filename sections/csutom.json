@@ -29,8 +29,7 @@
         },
         "price_XkCyte": {
           "type": "price",
-          "settings": {
-          }
+          "settings": {}
         },
         "variant_picker_N7Gw4j": {
           "type": "variant_picker",
@@ -41,8 +40,7 @@
         },
         "quantity_selector_BXnpzN": {
           "type": "quantity_selector",
-          "settings": {
-          }
+          "settings": {}
         },
         "buy_buttons_V63PCj": {
           "type": "buy_buttons",
@@ -100,10 +98,17 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "test_atc_xXc7Dg": {
+      "type": "test-atc",
+      "settings": {
+        "collection": "frontpage"
+      }
     }
   },
   "order": [
     "featured_product_LCj3Yn",
-    "featured_blog_Twj9T4"
+    "featured_blog_Twj9T4",
+    "test_atc_xXc7Dg"
   ]
 }
