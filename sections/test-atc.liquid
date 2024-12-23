@@ -29,7 +29,8 @@
   let mainProduct = document.querySelectorAll('.test-atc-product');
 
   mainProduct.forEach(product => {
-    product.querySelector('.atc-form').addEventListener('submit', () => {
+    product.querySelector('.atc-form').addEventListener('submit', (e) => {
+      e.preventDefault();
       const loaderatc = product.querySelector('.atc-loading');
       const vId = product.querySelector('.variant-id-d').value;
       const qty = document.querySelector('#Quantity').value;
