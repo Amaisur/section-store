@@ -40,9 +40,9 @@ function updateCount(){
   fetch('/cart.js')
   .then(res => res.json())
   .then(cart => {
-    const cart = document.querySelector('.cart-count-bubble span[aria-hidden="true"]')
-    if (cart){
-      cart.textContent = cart.item_count 
+    const cartBubble = document.querySelector('.cart-count-bubble span[aria-hidden="true"]')
+    if (cartBubble){
+      cartBubble.textContent = cart.item_count 
     }
   })
 }
