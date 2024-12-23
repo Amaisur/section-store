@@ -1,4 +1,4 @@
-h
+
 {% assign collection = section.settings.collection %}
 {% for product in collection.products %}
   <div class="test-atc-product">
@@ -8,7 +8,17 @@ h
 {% endfor %}
 
 
-<script></script>
+<script>
+  let mainProduct = document.querySelectorAll('.test-atc-product');
+
+  mainPorduct.forEach(product => {
+    product.querySelector('.atc-button').addEventListener('click', () => {
+      alert('added')
+    })
+  })
+
+  
+</script>
 
 
 
