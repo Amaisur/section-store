@@ -15,14 +15,6 @@
   mainProduct.forEach(product => {
     product.querySelector('.atc-button').addEventListener('click', () => {
     const loaderatc = product.querySelector('.atc-loading');
-
-  function showLoading(){
-  loaderatc.style.display = 'block';
-}
-function hideLoading(){
-  loaderatc.style.display = 'none';
-}
-
       
     const vId = product.querySelector('h2').getAttribute('data-id');
     const qty = 1;
@@ -50,6 +42,14 @@ function hideLoading(){
       hideLoading();
     })
     })
+
+  function showLoading(){
+   loaderatc.style.display = 'block';
+  }
+  function hideLoading(){
+    loaderatc.style.display = 'none';
+  }
+
   })
 function updateCount(){
   fetch('/cart.js')
