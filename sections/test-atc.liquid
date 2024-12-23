@@ -38,7 +38,7 @@
   console.log(pdHandle);
   if (btnex && pdHandle) {
     btnex.addEventListener('click', () => {
-      fetch(`/products/${productHandle}.js`)
+      fetch(`/products/${pdHandle}.js`)
         .then(res => {
           if (!res.ok) {
             throw new Error('Network response was not ok');
