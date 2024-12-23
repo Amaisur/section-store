@@ -31,6 +31,22 @@
   let mainProduct = document.querySelectorAll('.test-atc-product');
 
   mainProduct.forEach(product => {
+    
+const btn = product.querySelector('.extra-info-d');
+   const pdHandle = item.querySelector('.product-d5').getAttribute('data-handle')
+    btn.addEventListener('click', () => {
+      fetch('/pdHandle')
+      .then(res => res.json())
+      .then(product => {
+        productVendor = product.vendor;
+        console.log(productVendor)
+      })
+      .catch(error => {
+        console.error('error', error)
+      })
+    })
+
+    
     product.querySelector('.atc-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const loaderatc = product.querySelector('.atc-loading');
@@ -87,21 +103,9 @@
 
 
 
-  mainProduct.forEach(item => {
-   const btn = item.querySelector('.extra-info-d');
-   const pdHandle = item.querySelector('.product-d5').getAttribute('data-handle')
-    btn.addEventListener('click', () => {
-      fetch('/pdHandle')
-      .then(res => res.json())
-      .then(product => {
-        productVendor = product.vendor;
-        console.log(productVendor)
-      })
-      .catch(error => {
-        console.error('error', error)
-      })
-    })
-  })
+  // mainProduct.forEach(item => {
+   
+  // })
 </script>
 
 
