@@ -20,7 +20,7 @@
         variantId = product.querySelector('.atc-input').value
         fetch('/cart/add.js', {
           method: 'POST',
-          header: {
+          headers: {
             'content-type': 'application/json'
           },
           body: JSON.stringify({
