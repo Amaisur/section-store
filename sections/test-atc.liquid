@@ -33,20 +33,29 @@
 
   mainProduct.forEach(product => {
     
-const btnex = product.querySelector('.extra-info-d');
-const pdHandle = product.querySelector('.product-d5').getAttribute('data-handle');
+ const btnex = product.querySelector('.extra-info-d');
+  const pdHandle = product.querySelector('.product-d5')?.getAttribute('data-handle');
 
-btnex.addEventListener('click', () => {
-  fetch(`/${pdHandle}`)
-    .then(res => res.json())
-    .then(product => {
-      let productVendor = product.vendor;
-      console.log(productVendor);
-    })
-    .catch(error => {
-      console.error('error', error);
+  if (btnex && pdHandle) {
+    btnex.addEventListener('click', () => {
+      fetch(`/${pdHandle}`)
+        .then(res => {
+          if (!res.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return res.json();
+        })
+        .then(product => {
+          let productVendor = product.vendor;
+          console.log(productVendor);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     });
-});
+  } else {
+    console.error('Required elements are missing or data-handle is undefined');
+  }
 
 
     
