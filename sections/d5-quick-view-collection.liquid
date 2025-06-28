@@ -1,0 +1,645 @@
+{% assign collection = section.settings.collection %}
+<style>
+    /* popus configurations */
+.no-scroll_popup-body-d5{
+  height: 100vh;
+  overflow: hidden;
+}
+.no-scroll_popup-body-d5 #MainContent.content-for-layout{
+  z-index: 5;
+}
+.quick-add-d5 {
+  display: none;
+}
+.popup-q-open {
+  display: block !important;
+  position: relative;
+  z-index: 99999;
+}
+.quick-add-overlay-d5 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
+.quick-popup-d5 {
+  position: fixed;
+  width: 90%;
+  max-width: 900px;
+  height: 80vh;
+  max-height: 600px;
+  overflow: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+}
+
+/* main pupup divisions */
+
+.row-popup-d5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.col-popup-d5 {
+  width: 100%;
+}
+/* image gallery */
+.q-slider-container-d5 {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.q-slider-d5 {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.q-slide-d5 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+.q-slide-d5 img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.q-slider-button-d5 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 50%;
+}
+.q-slider-button-d5 svg{
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.7);
+}
+.q-slider-button-d5:hover svg{
+  background: var(--product-color);
+}
+.q-prev-d5 {
+  left: 10px;
+}
+.q-prev-d5 svg{
+  transform: rotate(180deg);
+}
+.q-next-d5 {
+  right: 10px;
+}
+.q-dots-d5 {
+  max-width: 70%;
+  margin: 0 auto;
+}
+.q-dot-d5 {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 3px solid rgba(0,0,0,.4);
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  background: #fff;
+}
+.q-dot-d5.active {
+  background: #000000;
+}
+/* Tab buttons */
+.tab-buttons-d5 {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tab-buttons-d5 button {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  background: none;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  color: #363636;
+  cursor: pointer;
+  transition: all 0.3s ease, color 0.3s ease;
+}
+.tab-buttons-d5 button.active {
+  color: var(--product-color);
+  border-bottom: 3px solid var(--product-color);
+}
+
+.plan-tab-d5 {
+  display: none; /* Hide by default, controlled by JS */
+}
+
+/* Individual variant and plan buttons */
+.variant-btn-d5,
+.plan-btn-d5 {
+  display: inline-block;
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Active state for variant and plan buttons */
+.variant-btn-d5.variant-active,
+.plan-btn-d5.plan-active {
+  background-color: var(--product-color);
+  color: #fff;
+  border-color: #e67e22;
+}
+
+/* Hover effect */
+.variant-btn-d5:hover,
+.plan-btn-d5:hover {
+  background-color: #eee;
+}
+.atc-spinner-d5 {
+  width: 20px;
+  height: 20px;
+  animation: spind 0.5s linear infinite;
+  background: yellow;
+}
+@keyframes spind {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.main-popup-d5 {
+  padding: 20px;
+}
+.close-icon-d5 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.quantity-input-d5 {
+  width: 20px;
+  background: none;
+  border: none;
+  outline: none;
+  text-align: center;
+  color: #fff;
+}
+.quantity-select-d5 {
+  padding: 5px 10px;
+  background: var(--product-color);
+  border-radius: 20px;
+  max-width: 110px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.quantity-button-d5{
+  cursor: pointer;
+  padding: 2px 0;
+  flex: 1;
+}
+.sub-heading-d5{
+  text-align: left;
+  padding-bottom: 5px;
+}
+.variant-flex-d5{
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+.atc-buuton-d5-cart{
+  width: 100%;
+  margin-top: 20px;
+}
+.variants-tab-d5{
+  margin: 20px 0 10px;
+}
+.product-info-d5 h3, .product-info-d5 p{
+  text-align: left;
+}
+.product-info-d5 p{
+  margin: 10px 0;
+}
+.main-popup-d5 .d5-star-rating{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 5px;
+  border: none;
+  padding: 10px 0;
+  margin: 0;
+  width: fit-content;
+  background: none !important;
+}
+.main-popup-d5 .c-product__rating__info{
+  margin-top: -6px;
+}
+.d5-button{
+  color: #000000;
+  transition: all .3s;
+  border: 1px solid var(--product-color);
+}
+.d5-button:hover{
+  background: var(--product-color);
+  color: #fff;
+}
+.quick-add-popup-btn-d5{
+  margin-top: 20px;
+}
+.product-info-d5 .d5-star-rating svg path{
+  fill: var(--product-color);
+}
+
+ .cq-main-d5 {
+        width: 100%;
+    }
+
+    .cq-inner-d5 {
+        max-width: 1440px;
+        padding: 0 40px;
+        margin: 80px auto;
+    }
+
+    .cq-row-d5 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    .cq-card-d5 {
+        border: 1px solid;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .cq-image-d5 {
+        width: 100%;
+        aspect-ratio: 1;
+    }
+
+    .cq-image-d5 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .cq-info-d5 {
+        padding: 10px 15px;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .cq-info-d5 h4 {
+        font-size: 16px;
+        line-height: normal;
+        margin-bottom: 10px;
+    }
+
+    .cq-quick-d5 {
+        width: fit-content;
+        align-self: end;
+        background: #000;
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        height: 35px;
+        width: 100px;
+        cursor: pointer;
+    }
+
+
+
+
+
+</style>
+
+<div class="cq-main-d5">
+    <div class="cq-inner-d5">
+        <div class="cq-row-d5">
+            {% for product in collection.products limit: 20 %}
+            <div class="cq-card-d5" products-d5>
+                <div class="cq-image-d5">
+                    <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}"
+                        loading="lazy">
+                </div>
+                <div class="cq-info-d5">
+                    <h4>{{ product.title }}</h4>
+                    <div class="cq-price-d5">{{ product.price | money }}</div>
+                    <button class="quick-add-popup-btn-d5 d5-button" data-url="{{ product.handle }}">
+                        + View
+                    </button>
+                     <div class="quick-add-d5">
+                        <div class="quick-add-overlay-d5"></div>
+                        <div class="quick-popup-d5">
+                    {% render 'd5-quick-view' , home_product: product %}
+                        </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+  var popupopenD5 = document.querySelector('.quick-add-d5');
+  // Handle showing and hiding the quick add-to-cart popup
+  const addToCartBtns = document.querySelectorAll('.quick-add-popup-btn-d5');
+  
+  addToCartBtns.forEach(function(addToCartBtn) {
+    const quickAddContainer = addToCartBtn.nextElementSibling;
+    const overlay = quickAddContainer.querySelector('.quick-add-overlay-d5');
+    const closeIcon = quickAddContainer.querySelector('.close-icon-d5');
+    
+    addToCartBtn.addEventListener('click', function() {
+      quickAddContainer.classList.add('popup-q-open');
+      document.body.classList.add('no-scroll_popup-body-d5');
+      setupQuantitySelectors();
+      setupAddToCart();
+      setupTabFunctionality();  // Initialize tab functionality when popup is opened
+    });
+
+    overlay.addEventListener('click', function() {
+      quickAddContainer.classList.remove('popup-q-open');
+      document.body.classList.remove('no-scroll_popup-body-d5')
+    });
+
+    closeIcon.addEventListener('click', function() {
+      quickAddContainer.classList.remove('popup-q-open');
+      document.body.classList.remove('no-scroll_popup-body-d5')
+    });
+  });
+
+  // Initialize quantity selectors
+  function setupQuantitySelectors() {
+    const activePopup = document.querySelector('.popup-q-open');
+
+    if (activePopup) {
+      const quantityInput = activePopup.querySelector('.quantity-input-d5');
+      const minusButton = activePopup.querySelector('.quantity-minus-d5');
+      const plusButton = activePopup.querySelector('.quantity-plus-d5');
+
+      minusButton.removeEventListener('click', handleMinusClick);
+      plusButton.removeEventListener('click', handlePlusClick);
+
+      minusButton.addEventListener('click', handleMinusClick);
+      plusButton.addEventListener('click', handlePlusClick);
+
+      function handleMinusClick(event) {
+        event.preventDefault();
+        let currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+          quantityInput.value = currentValue - 1;
+        }
+      }
+
+      function handlePlusClick(event) {
+        event.preventDefault();
+        let currentValue = parseInt(quantityInput.value);
+        quantityInput.value = currentValue + 1;
+      }
+    }
+  }
+
+  // Setup the Add to Cart functionality
+  function setupAddToCart() {
+    const activePopup = document.querySelector('.popup-q-open');
+
+    if (activePopup) {
+      const atcButton = activePopup.querySelector('#AddToCart');
+      let selectedVariantId = null;
+      let selectedPlanId = null;
+
+      // Automatically select the first variant by default
+      const firstVariantBtn = activePopup.querySelector('.variant-btn-d5');
+      if (firstVariantBtn) {
+        firstVariantBtn.classList.add('variant-active');
+        selectedVariantId = firstVariantBtn.getAttribute('data-variant-id');
+      }
+
+      activePopup.querySelectorAll('.variant-btn-d5').forEach(function(button) {
+        button.addEventListener('click', function() {
+          activePopup.querySelectorAll('.variant-btn-d5').forEach(function(btn) {
+            btn.classList.remove('variant-active');
+          });
+          this.classList.add('variant-active');
+          selectedVariantId = this.getAttribute('data-variant-id');
+        });
+      });
+
+      activePopup.querySelectorAll('.plan-btn-d5').forEach(function(button) {
+        button.addEventListener('click', function() {
+          activePopup.querySelectorAll('.plan-btn-d5').forEach(function(btn) {
+            btn.classList.remove('plan-active');
+          });
+          this.classList.add('plan-active');
+          selectedPlanId = this.getAttribute('data-plan-id');
+        });
+      });
+
+      atcButton.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        if (selectedVariantId) {
+          const quantityInput = activePopup.querySelector('.quantity-input-d5');
+          const quantity = parseInt(quantityInput.value, 10);
+          const data = {
+            id: selectedVariantId,
+            quantity: quantity
+          };
+
+          if (selectedPlanId) {
+            data.selling_plan = selectedPlanId;
+          }
+
+          atcButton.disabled = true;
+          activePopup.querySelector('.atc-content-d5').style.display = 'none';
+          activePopup.querySelector('.atc-spinner-d5').style.display = 'inline-block';
+
+          fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+          })
+          .then(response => response.json())
+          .then(data => {
+            fetch('/cart?view=drawer')
+              .then(response => response.text())
+              .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const updatedCartItems = doc.querySelector('.c-side-cart__items').innerHTML;
+                document.querySelector('.c-side-cart__items').innerHTML = updatedCartItems;
+
+                atcButton.disabled = false;
+                activePopup.querySelector('.atc-content-d5').style.display = 'inline-block';
+                activePopup.querySelector('.atc-spinner-d5').style.display = 'none';
+
+                document.body.classList.add('js-side-cart-open');
+                document.body.classList.remove('no-scroll_popup-body-d5');
+                popupopenD5.classList.remove('popup-q-open');
+              })
+              .catch(error => {
+                console.error('Error updating cart drawer:', error);
+                atcButton.disabled = false;
+                activePopup.querySelector('.atc-content-d5').style.display = 'inline-block';
+                activePopup.querySelector('.atc-spinner-d5').style.display = 'none';
+              });
+          })
+          .catch(error => {
+            console.error('Error adding to cart:', error);
+            atcButton.disabled = false;
+            activePopup.querySelector('.atc-content-d5').style.display = 'inline-block';
+            activePopup.querySelector('.atc-spinner-d5').style.display = 'none';
+          });
+        } else {
+          alert('Please select a variant or plan.');
+        }
+      });
+    }
+  }
+
+function initializeSlider() {
+  document.querySelectorAll('.q-slider-container-d5').forEach(function(container) {
+    const slider = container.querySelector('.q-slider-d5');
+    const slides = container.querySelectorAll('.q-slide-d5');
+    const prevBtn = container.querySelector('.q-prev-d5');
+    const nextBtn = container.querySelector('.q-next-d5');
+    const dotsContainer = container.querySelector('.q-dots-d5');
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    function updateButtons() {
+      if (totalSlides <= 1) {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+      } else {
+        if (currentIndex === 0) {
+          prevBtn.style.display = 'none';
+          nextBtn.style.display = 'block';
+        } else if (currentIndex === totalSlides - 1) {
+          prevBtn.style.display = 'block';
+          nextBtn.style.display = 'none';
+        } else {
+          prevBtn.style.display = 'block';
+          nextBtn.style.display = 'block';
+        }
+      }
+    }
+
+    function updateDots() {
+      dotsContainer.innerHTML = '';
+      if (totalSlides > 1) {
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement('span');
+          dot.classList.add('q-dot-d5');
+          if (i === currentIndex) {
+            dot.classList.add('active');
+          }
+          dot.addEventListener('click', () => {
+            goToSlide(i);
+          });
+          dotsContainer.appendChild(dot);
+        }
+      }
+    }
+
+    function goToSlide(index) {
+      currentIndex = index;
+      const offset = -currentIndex * 100;
+      slider.style.transform = `translateX(${offset}%)`;
+      updateButtons();
+      updateDots();
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        goToSlide(currentIndex - 1);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < totalSlides - 1) {
+        goToSlide(currentIndex + 1);
+      }
+    });
+
+    updateButtons();
+    updateDots();
+  });
+}
+
+initializeSlider();
+
+
+  // Initialize tab functionality
+  function setupTabFunctionality() {
+    const activePopup = document.querySelector('.popup-q-open');
+    if (activePopup) {
+      const variantTabBtn = activePopup.querySelector('.variant-tab-btn');
+      const planTabBtn = activePopup.querySelector('.plan-tab-btn');
+      const variantsTab = activePopup.querySelector('.variants-tab-d5');
+      const planTab = activePopup.querySelector('.plan-tab-d5');
+      
+      let selectedPlanId = null;
+
+      variantTabBtn.classList.add('active');
+      planTab.style.display = 'none';
+
+      variantTabBtn.addEventListener('click', function() {
+        variantsTab.style.display = 'block';
+        planTab.style.display = 'none';
+        variantTabBtn.classList.add('active');
+        planTabBtn.classList.remove('active');
+        selectedPlanId = null;
+      });
+
+      planTabBtn.addEventListener('click', function() {
+        planTab.style.display = 'block';
+        variantsTab.style.display = 'none';
+        planTabBtn.classList.add('active');
+        variantTabBtn.classList.remove('active');
+      });
+    }
+  }
+});
+
+</script>
+{% schema %}
+{
+    "name": "D5 Quick Collection",
+    "settings": [
+        {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+        }
+        ],
+        "presets": [
+            {
+                "name": "D5 Quick Collection"
+            }
+        ]
+}
+{% endschema %}

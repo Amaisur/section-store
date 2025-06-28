@@ -1,0 +1,111 @@
+<div class="main-popup-d5">
+  <div class="close-icon-d5">
+    <svg
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      stroke="currentColor"
+      stroke-width="1"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="css-i6dzq1"
+    >
+      <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </div>
+  <div class="inner-popup-d5">
+    <div class="row-popup-d5">
+      <div class="col-popup-d5 q-gallery-d5">
+        <div class="q-slider-container-d5">
+          <div class="q-slider-d5">
+            {% for image in home_product.media %}
+              <div class="q-slide-d5"><img src="{{ image | image_url: width: 1440 }}" alt="{{ image.alt }}"></div>
+            {% endfor %}
+          </div>
+          <div class="q-slider-button-d5 q-prev-d5" style="display: none;">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="8 4 16 12 8 20"></polyline>
+            </svg>
+          </div>
+          <div class="q-slider-button-d5 q-next-d5" style="display: none;">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="8 4 16 12 8 20"></polyline>
+            </svg>
+          </div>
+          <div class="q-dots-d5"></div>
+        </div>
+      </div>
+      <div class="col-popup-d5 q-info-d5">
+        <div class="product-info-d5">
+          <h3>{{ home_product.title }}</h3>
+          {% render 'rating-star-d5', product: home_product %}
+          <p>{{ home_product.price | money }}</p>
+        </div>
+        <div class="tab-buttons-d5">
+          <button class="variant-tab-btn active">One time purchase</button>
+          <button class="plan-tab-btn">Subscription</button>
+        </div>
+        <div class="plan-tab-d5" style="display: none;">
+          {% if home_product.selling_plan_groups.size > 0 %}
+            <p class="sub-heading-d5">Size</p>
+            <div class="variant-flex-d5">
+              {% for selling_plan_group in home_product.selling_plan_groups %}
+                {% for selling_plan in selling_plan_group.selling_plans %}
+                  <button type="button" class="plan-btn-d5" data-plan-id="{{ selling_plan.id }}">
+                    {{ selling_plan.name }}
+                  </button>
+                {% endfor %}
+              {% endfor %}
+            </div>
+          {% else %}
+            <p>No subscription plans available.</p>
+          {% endif %}
+        </div>
+
+        <div class="variants-tab-d5">
+          <p class="sub-heading-d5">Size</p>
+          <div class="variant-flex-d5">
+            {% for variant in home_product.variants %}
+              <button type="button" class="variant-btn-d5" data-variant-id="{{ variant.id }}">
+                {{ variant.title }}
+              </button>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="main-quantity-box-d5">
+          <p class="sub-heading-d5">Quantity</p>
+          <div class="quantity-select-d5">
+            <span class="quantity-minus-d5 quantity-button-d5">-</span>
+            <input type="text" class="quantity-input-d5" value="1" min="1" max="" step="1">
+            <span class="quantity-plus-d5 quantity-button-d5">+</span>
+          </div>
+        </div>
+        <button type="submit" name="add" id="AddToCart" class="atc-buuton-d5-cart d5-button">
+          <span class="atc-content-d5">{{ 'sections.main_product.add_to_cart' | t }}</span>
+          <span class="atc-spinner-d5"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
