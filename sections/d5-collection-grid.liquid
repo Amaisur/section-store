@@ -87,7 +87,6 @@
 
 <script>
    (function() {
-    alert('hhe')
     const products = document.querySelectorAll('[products-d5]');
     const quickModel = document.querySelector('[quick-model]');
 
@@ -95,7 +94,8 @@
         const button = product.querySelector('[quickview-trigger-d5]');
         const handle = button.getAttribute('data-url');
         
-        button.addEventListener('click', async () => {
+        button.addEventListener('click', async (handle) => {
+            alert('hhe')
             await getData(handle);
             quickModel.classList.add('model__open');
         });
