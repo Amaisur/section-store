@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (matchedVariant) {
         // Update price
         priceDisplay.textContent = Shopify.formatMoney(matchedVariant.price);
-        
+
         // Update image if variant has one
         if (matchedVariant.featured_image) {
           const imageSrc = matchedVariant.featured_image.src.split('?')[0];
@@ -486,6 +486,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
           });
         }
+
+        // Return the matched variant ID
         return matchedVariant.id;
       }
       return product.variants[0].id;
@@ -495,66 +497,55 @@ document.addEventListener('DOMContentLoaded', function() {
       input.addEventListener('change', function() {
         const optionName = this.dataset.optionName;
         const optionValue = this.value;
-        
+
         selectedOptions[optionName] = optionValue;
-        updateVariant();
+        const variantId = updateVariant();
+        setupAddToCart(product, container, variantId);
       });
     });
 
     // Initialize with first variant
-    updateVariant();
+    const initialVariantId = updateVariant();
+    setupAddToCart(product, container, initialVariantId);
   }
 
-  function setupAddToCart(product, container) {
-    const atcButton = container.querySelector('#AddToCart');
-    
-    atcButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      // Get selected options
-      const selectedOptions = {};
-      container.querySelectorAll('.option-input-d5:checked').forEach(input => {
-        selectedOptions[input.dataset.optionName] = input.value;
-      });
-      
-      // Create array of selected values in proper order
-      const selectedValues = product.options.map(option => selectedOptions[option.name]);
-      
-      // Find matching variant
-      const matchedVariant = product.variants.find(variant => {
-        return variant.options.every((option, index) => option === selectedValues[index]);
-      }) || product.variants[0];
-      
-      const quantityInput = container.querySelector('.quantity-input-d5');
-      const quantity = parseInt(quantityInput.value, 10);
-      const data = { id: matchedVariant.id, quantity: quantity };
+function setupAddToCart(product, container, variantId) {
+  const atcButton = container.querySelector('#AddToCart');
 
-      atcButton.disabled = true;
-      container.querySelector('.atc-content-d5').style.display = 'none';
-      container.querySelector('.atc-spinner-d5').style.display = 'inline-block';
+  atcButton.addEventListener('click', function(e) {
+    e.preventDefault();
 
-      fetch('/cart/add.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      })
-      .then(response => response.json())
-      .then(() => {
-        resetATCButton(container);
-        document.body.classList.remove('no-scroll_popup-body-d5');
-        container.classList.remove('popup-q-open');
-        
-        // Show success message
-        if (window.showQuickAddMessage) {
-          window.showQuickAddMessage('Item added to cart');
-        }
-      })
-      .catch(() => {
-        resetATCButton(container);
-        alert('Error adding item to cart');
-      });
+    const quantityInput = container.querySelector('.quantity-input-d5');
+    const quantity = parseInt(quantityInput.value, 10);
+    const data = { id: variantId, quantity: quantity };
+
+    atcButton.disabled = true;
+    container.querySelector('.atc-content-d5').style.display = 'none';
+    container.querySelector('.atc-spinner-d5').style.display = 'inline-block';
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(() => {
+      resetATCButton(container);
+      document.body.classList.remove('no-scroll_popup-body-d5');
+      container.classList.remove('popup-q-open');
+
+      // Show success message
+      if (window.showQuickAddMessage) {
+        window.showQuickAddMessage('Item added to cart');
+      }
+    })
+    .catch(() => {
+      resetATCButton(container);
+      alert('Error adding item to cart');
     });
-  }
+  });
+}
+
 
   function resetATCButton(container) {
     const atcButton = container.querySelector('#AddToCart');
