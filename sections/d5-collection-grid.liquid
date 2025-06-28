@@ -103,7 +103,7 @@
         async function getData(handle){
         try{
             const req = await fetch(handle)
-            cons res = await req.json()
+            const res = await req.json()
             console.log('response',res)
           }catch(err){
             console.error(err); 
