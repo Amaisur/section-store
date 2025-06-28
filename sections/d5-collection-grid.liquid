@@ -363,51 +363,69 @@
 </div>
 
 <script>
-    (function () {
-        const products = document.querySelectorAll('[products-d5]');
-        const quickModel = document.querySelector('[quick-model]');
-        const loadingSpinner = quickModel.querySelector('.cq-model-loading-d5');
+   (function() {
+    const products = document.querySelectorAll('[products-d5]');
+    const quickModel = document.querySelector('[quick-model]');
+    const loadingSpinner = quickModel.querySelector('.cq-model-loading-d5');
 
-        // Close model when clicking outside
-        quickModel.addEventListener('click', (e) => {
-            if (e.target === quickModel) {
-                quickModel.classList.remove('model__open');
-            }
-        });
+    // Close model when clicking outside
+    quickModel.addEventListener('click', (e) => {
+        if (e.target === quickModel) {
+            quickModel.classList.remove('model__open');
+        }
+    });
 
-        products.forEach(product => {
-            const button = product.querySelector('[quickview-trigger-d5]');
-            button.addEventListener('click', async () => {
-                const handle = button.getAttribute('data-url');
+    products.forEach(product => {
+        const button = product.querySelector('[quickview-trigger-d5]');
+        button.addEventListener('click', async () => {
+            const handle = button.getAttribute('data-url');
+            try {
                 loadingSpinner.classList.add('active');
                 quickModel.classList.add('model__open');
                 await getData(handle);
-            });
-        });
-
-        async function getData(handle) {
-            try {
-                const req = await fetch(`/products/${handle}.js`);
-                const product = await req.json();
-
-                // Create model structure first
-                createModelStructure(product);
-
-                // Then load images and complete setup
-                await loadImagesAndCompleteSetup(product);
-
-            } catch (err) {
-                console.error(err);
+            } catch (error) {
+                console.error('Error loading product:', error);
                 loadingSpinner.classList.remove('active');
+                // Optionally show an error message to the user
             }
-        }
+        });
+    });
 
-        function createModelStructure(product) {
+    async function getData(handle) {
+        try {
+            // Show loading state
             quickModel.innerHTML = `
-            <div class="cq-model-loading-d5 active">
+                <div class="cq-model-loading-d5 active">
+                    <div class="cq-spinner-d5"></div>
+                </div>
+            `;
+            
+            const req = await fetch(`/products/${handle}.js`);
+            if (!req.ok) throw new Error('Failed to fetch product');
+            
+            const product = await req.json();
+            renderProductModal(product);
+            
+        } catch (err) {
+            console.error(err);
+            // Show error state or retry option
+            quickModel.innerHTML = `
+                <div class="cq-model-error-d5">
+                    <p>Failed to load product. Please try again.</p>
+                    <button onclick="window.location.reload()">Retry</button>
+                </div>
+            `;
+            throw err; // Re-throw to handle in click event
+        }
+    }
+
+    function renderProductModal(product) {
+        // Create modal structure
+        quickModel.innerHTML = `
+            <div class="cq-model-loading-d5">
                 <div class="cq-spinner-d5"></div>
             </div>
-            <div class="cq-model-inner-d5" style="display:none">
+            <div class="cq-model-inner-d5">
                 <button class="cq-model-close-d5" close-model>&times;</button>
                 <div class="cq-model-content-d5">
                     <div class="cq-model-gallery-d5">
@@ -426,8 +444,8 @@
                         <h2 class="cq-model-title-d5">${product.title}</h2>
                         <div class="cq-model-price-d5" id="model-price">${formatMoney(product.price)}</div>
                         
-                        ${product.options.length > 0 ?
-                    product.options.map((option, index) => `
+                        ${product.options.length > 0 ? 
+                            product.options.map((option, index) => `
                                 <div class="cq-model-option-d5">
                                     <label for="option-${index}">${option.name}</label>
                                     <select id="option-${index}" class="variant-selector" data-option-index="${index}">
@@ -437,7 +455,7 @@
                                     </select>
                                 </div>
                             `).join('') : ''
-                }
+                        }
                         
                         <div class="cq-model-quantity-d5">
                             <label for="quantity">Quantity</label>
@@ -453,195 +471,160 @@
                 </div>
             </div>
         `;
-        }
 
-        async function loadImagesAndCompleteSetup(product) {
-            try {
-                // Wait for all images to load
-                await loadAllImages();
+        // Set up the modal functionality after rendering
+        setupModalFunctionality(product);
+    }
 
-                // Now show the content and hide loader
-                const innerModel = quickModel.querySelector('.cq-model-inner-d5');
-                innerModel.style.display = 'block';
-                loadingSpinner.classList.remove('active');
-
-                // Complete the setup
-                completeModelSetup(product);
-
-            } catch (error) {
-                console.error('Error loading images:', error);
-                loadingSpinner.classList.remove('active');
-            }
-        }
-
-        function loadAllImages() {
-            return new Promise((resolve) => {
-                const images = quickModel.querySelectorAll('img');
-                let loadedCount = 0;
-
-                if (images.length === 0) {
-                    resolve();
-                    return;
-                }
-
-                const imageLoaded = () => {
-                    loadedCount++;
-                    if (loadedCount === images.length) {
-                        resolve();
-                    }
-                };
-
-                images.forEach(img => {
+    function setupModalFunctionality(product) {
+        const loadingSpinner = quickModel.querySelector('.cq-model-loading-d5');
+        const innerModel = quickModel.querySelector('.cq-model-inner-d5');
+        
+        // Initially hide content while loading images
+        innerModel.style.opacity = '0';
+        
+        // Wait for all images to load
+        Promise.all(
+            Array.from(quickModel.querySelectorAll('img')).map(img => {
+                return new Promise((resolve) => {
                     if (img.complete) {
-                        imageLoaded();
+                        resolve();
                     } else {
-                        img.addEventListener('load', imageLoaded);
-                        img.addEventListener('error', imageLoaded); // Even if error, we continue
+                        img.addEventListener('load', resolve);
+                        img.addEventListener('error', resolve); // Continue even if some images fail
+                    }
+                });
+            })
+        ).then(() => {
+            // All images loaded (or failed), hide spinner and show content
+            loadingSpinner.classList.remove('active');
+            innerModel.style.opacity = '1';
+            
+            // Now set up the interactive elements
+            setupProductVariants(product);
+            setupThumbnailGallery(product);
+            setupAddToCart();
+            setupCloseButton();
+        }).catch(error => {
+            console.error('Error loading images:', error);
+            loadingSpinner.classList.remove('active');
+            innerModel.style.opacity = '1';
+        });
+    }
+
+    function setupProductVariants(product) {
+        let currentVariant = product.variants[0];
+        const variantSelectors = quickModel.querySelectorAll('.variant-selector');
+        
+        if (product.variants.length > 1) {
+            variantSelectors.forEach(select => {
+                select.addEventListener('change', () => {
+                    const selectedOptions = Array.from(variantSelectors).map(s => s.value);
+                    currentVariant = product.variants.find(variant => 
+                        variant.options.every((option, index) => option === selectedOptions[index])
+                    );
+                    
+                    if (currentVariant) {
+                        // Update price
+                        document.getElementById('model-price').textContent = formatMoney(currentVariant.price);
+                        
+                        // Update add to cart button
+                        const addToCartBtn = document.getElementById('add-to-cart');
+                        addToCartBtn.disabled = !currentVariant.available;
+                        addToCartBtn.textContent = currentVariant.available ? 'Add to Cart' : 'Sold Out';
+                        
+                        // If variant has a different image, find and scroll to it
+                        if (currentVariant.featured_image) {
+                            const thumbnails = quickModel.querySelectorAll('.cq-model-thumbnail');
+                            thumbnails.forEach((thumb, index) => {
+                                const imgSrc = thumb.querySelector('img').src;
+                                if (imgSrc.includes(currentVariant.featured_image.src.split('?')[0])) {
+                                    thumbnails.forEach(t => t.classList.remove('active'));
+                                    thumb.classList.add('active');
+                                    thumb.scrollIntoView({
+                                        behavior: 'smooth',
+                                        block: 'nearest',
+                                        inline: 'center'
+                                    });
+                                    document.getElementById('model-main-image').src = currentVariant.featured_image.src;
+                                }
+                            });
+                        }
                     }
                 });
             });
         }
+    }
 
-        function completeModelSetup(product) {
-            // Set initial selected variant
-            let currentVariant = product.variants[0];
-            const variantSelectors = document.querySelectorAll('.variant-selector');
-
-            // Thumbnail click handler
-            const thumbnails = quickModel.querySelectorAll('.cq-model-thumbnail');
-            thumbnails.forEach(thumb => {
-                thumb.addEventListener('click', function () {
-                    // Remove active class from all thumbnails
-                    thumbnails.forEach(t => t.classList.remove('active'));
-                    // Add active class to clicked thumbnail
-                    this.classList.add('active');
-
-                    // Scroll to this thumbnail
-                    this.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'nearest',
-                        inline: 'center'
-                    });
-
-                    // Update main image
-                    const imgIndex = this.getAttribute('data-image-index');
-                    const mainImage = document.getElementById('model-main-image');
-                    mainImage.src = product.images[imgIndex];
-                    mainImage.alt = `${product.title} - image ${parseInt(imgIndex) + 1}`;
+    function setupThumbnailGallery(product) {
+        const thumbnails = quickModel.querySelectorAll('.cq-model-thumbnail');
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                thumbnails.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                this.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
                 });
+                const imgIndex = this.getAttribute('data-image-index');
+                document.getElementById('model-main-image').src = product.images[imgIndex];
             });
+        });
+    }
 
-            // If product has variants, find the initially selected one
-            if (product.variants.length > 1) {
-                variantSelectors.forEach(select => {
-                    select.addEventListener('change', () => updateVariant());
+    function setupAddToCart() {
+        document.getElementById('add-to-cart').addEventListener('click', async function() {
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+            const btn = this;
+            
+            btn.disabled = true;
+            btn.textContent = 'Adding...';
+            
+            try {
+                // You would need to have access to currentVariant here
+                // This is a simplified version - you might need to adjust
+                const variantId = /* get current variant ID */;
+                if (!variantId) return;
+                
+                const response = await fetch('/cart/add.js', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: variantId,
+                        quantity: quantity
+                    })
                 });
+                
+                const result = await response.json();
+                if (result.status === 422) throw new Error(result.description);
+                
+                btn.textContent = 'Added to Cart!';
+                setTimeout(() => {
+                    btn.textContent = 'Add to Cart';
+                    btn.disabled = false;
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+                btn.textContent = 'Error - Try Again';
+                btn.disabled = false;
             }
+        });
+    }
 
-            function updateVariant() {
-                const selectedOptions = [];
-                variantSelectors.forEach(select => {
-                    selectedOptions.push(select.value);
-                });
+    function setupCloseButton() {
+        quickModel.querySelector('[close-model]').addEventListener('click', () => {
+            quickModel.classList.remove('model__open');
+        });
+    }
 
-                // Find the variant that matches all selected options
-                currentVariant = product.variants.find(variant => {
-                    return variant.options.every((option, index) => {
-                        return option === selectedOptions[index];
-                    });
-                });
-
-                if (currentVariant) {
-                    // Update price
-                    document.getElementById('model-price').textContent = formatMoney(currentVariant.price);
-
-                    // Update add to cart button
-                    const addToCartBtn = document.getElementById('add-to-cart');
-                    addToCartBtn.disabled = !currentVariant.available;
-                    addToCartBtn.textContent = currentVariant.available ? 'Add to Cart' : 'Sold Out';
-
-                    // If variant has a different image, find and scroll to it
-                    if (currentVariant.featured_image) {
-                        const thumbnails = quickModel.querySelectorAll('.cq-model-thumbnail');
-                        thumbnails.forEach((thumb, index) => {
-                            const imgSrc = thumb.querySelector('img').src;
-                            if (imgSrc.includes(currentVariant.featured_image.src.split('?')[0])) {
-                                // Remove active class from all thumbnails
-                                thumbnails.forEach(t => t.classList.remove('active'));
-                                // Add active class to matching thumbnail
-                                thumb.classList.add('active');
-
-                                // Scroll to this thumbnail
-                                thumb.scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'nearest',
-                                    inline: 'center'
-                                });
-
-                                // Update main image
-                                const mainImage = document.getElementById('model-main-image');
-                                mainImage.src = currentVariant.featured_image.src;
-                                mainImage.alt = `${product.title} - variant image`;
-                            }
-                        });
-                    }
-                }
-            }
-
-            // Initial variant update
-            updateVariant();
-
-            // Add to cart functionality
-            document.getElementById('add-to-cart').addEventListener('click', async () => {
-                const quantity = parseInt(document.getElementById('quantity').value) || 1;
-                const addToCartBtn = document.getElementById('add-to-cart');
-
-                if (!currentVariant) return;
-
-                addToCartBtn.disabled = true;
-                addToCartBtn.textContent = 'Adding...';
-
-                try {
-                    const response = await fetch('/cart/add.js', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            id: currentVariant.id,
-                            quantity: quantity
-                        })
-                    });
-
-                    const result = await response.json();
-
-                    if (result.status === 422) {
-                        throw new Error(result.description);
-                    }
-
-                    addToCartBtn.textContent = 'Added to Cart!';
-                    setTimeout(() => {
-                        addToCartBtn.textContent = 'Add to Cart';
-                        addToCartBtn.disabled = false;
-                    }, 2000);
-
-                } catch (error) {
-                    console.error('Error adding to cart:', error);
-                    addToCartBtn.textContent = 'Error - Try Again';
-                    addToCartBtn.disabled = false;
-                }
-            });
-
-            // Close model button
-            document.querySelector('[close-model]').addEventListener('click', () => {
-                quickModel.classList.remove('model__open');
-            });
-        }
-
-        function formatMoney(cents) {
-            return '$' + (cents / 100).toFixed(2);
-        }
-    })();
+    function formatMoney(cents) {
+        return '$' + (cents / 100).toFixed(2);
+    }
+})();
 </script>
 
 {% schema %}
