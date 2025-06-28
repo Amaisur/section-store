@@ -38,18 +38,24 @@
                     <p>{{ home_product.price | money }}</p>
                 </div>
                 
-                {% for option in home_product.options_with_values %}
-                <div class="product-option-d5">
-                    <p class="sub-heading-d5">{{ option.name }}</p>
-                    <div class="option-flex-d5">
-                        {% for value in option.values %}
-                        <button type="button" class="option-btn-d5" data-option-name="{{ option.name }}" data-option-value="{{ value }}">
-                            {{ value }}
-                        </button>
-                        {% endfor %}
-                    </div>
-                </div>
-                {% endfor %}
+               {% for option in home_product.options_with_values %}
+<div class="product-option-d5">
+    <p class="sub-heading-d5">{{ option.name }}</p>
+    <div class="option-flex-d5">
+        {% for value in option.values %}
+        <label class="option-label-d5">
+            <input type="radio" 
+                   class="option-input-d5" 
+                   name="{{ option.name | handleize }}" 
+                   value="{{ value }}"
+                   data-option-name="{{ option.name }}"
+                   {% if forloop.first %}checked{% endif %}>
+            <span class="option-value-d5">{{ value }}</span>
+        </label>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
                 
                 <div class="main-quantity-box-d5">
                     <p class="sub-heading-d5">Quantity</p>

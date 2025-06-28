@@ -329,7 +329,37 @@ body{
     }
 
 
+.option-label-d5 {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
 
+.option-input-d5 {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.option-value-d5 {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.option-input-d5:checked + .option-value-d5 {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+.option-input-d5:focus + .option-value-d5 {
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+}
 
 
 </style>
@@ -419,7 +449,7 @@ body{
   }
 
   function setupOptionSelection(product, container) {
-    const optionButtons = container.querySelectorAll('.option-btn-d5');
+    const optionInputs = container.querySelectorAll('.option-input-d5');
     const priceDisplay = container.querySelector('.product-info-d5 p');
     const sliderImages = container.querySelectorAll('.q-slide-d5 img');
     
@@ -428,9 +458,10 @@ body{
       selectedOptions[option.name] = option.values[0];
     });
 
+    // Select first option by default
     product.options.forEach(option => {
-      const firstOptionBtn = container.querySelector(`.option-btn-d5[data-option-name="${option.name}"][data-option-value="${option.values[0]}"]`);
-      if (firstOptionBtn) firstOptionBtn.classList.add('option-active');
+      const firstOptionInput = container.querySelector(`.option-input-d5[data-option-name="${option.name}"][value="${option.values[0]}"]`);
+      if (firstOptionInput) firstOptionInput.checked = true;
     });
 
     function updateVariant() {
@@ -444,7 +475,7 @@ body{
         priceDisplay.textContent = Shopify.formatMoney(matchedVariant.price);
         if (matchedVariant.featured_image) {
           sliderImages.forEach((img, index) => {
-            if (img.src.includes(matchedVariant.featured_image.src.split('?')[0])) {
+            if (matchedVariant.featured_image && img.src.includes(matchedVariant.featured_image.src.split('?')[0])) {
               goToSlide(container, index);
             }
           });
@@ -454,15 +485,11 @@ body{
       return product.variants[0].id;
     }
 
-    optionButtons.forEach(button => {
-      button.addEventListener('click', function() {
+    optionInputs.forEach(input => {
+      input.addEventListener('change', function() {
         const optionName = this.dataset.optionName;
-        const optionValue = this.dataset.optionValue;
+        const optionValue = this.value;
         
-        const optionGroup = container.querySelectorAll(`.option-btn-d5[data-option-name="${optionName}"]`);
-        optionGroup.forEach(btn => btn.classList.remove('option-active'));
-        
-        this.classList.add('option-active');
         selectedOptions[optionName] = optionValue;
         updateVariant();
       });
@@ -478,8 +505,8 @@ body{
       e.preventDefault();
       
       const selectedOptions = {};
-      container.querySelectorAll('.option-btn-d5.option-active').forEach(button => {
-        selectedOptions[button.dataset.optionName] = button.dataset.optionValue;
+      container.querySelectorAll('.option-input-d5:checked').forEach(input => {
+        selectedOptions[input.dataset.optionName] = input.value;
       });
       
       const matchedVariant = product.variants.find(variant => {
@@ -503,19 +530,12 @@ body{
       })
       .then(response => response.json())
       .then(() => {
-        fetch('/cart?view=drawer')
-          .then(response => response.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const updatedCartItems = doc.querySelector('.c-side-cart__items').innerHTML;
-            document.querySelector('.c-side-cart__items').innerHTML = updatedCartItems;
-            resetATCButton(container);
-            document.body.classList.add('js-side-cart-open');
-            document.body.classList.remove('no-scroll_popup-body-d5');
-            popupopenD5.classList.remove('popup-q-open');
-          })
-          .catch(() => resetATCButton(container));
+        resetATCButton(container);
+        document.body.classList.remove('no-scroll_popup-body-d5');
+        container.classList.remove('popup-q-open');
+        
+        // Optional: Show a success message instead of refreshing cart
+        // You can add a notification here if you want
       })
       .catch(() => resetATCButton(container));
     });
