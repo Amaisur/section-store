@@ -56,11 +56,11 @@
     }
 </style>
 
-<div class="cq-main-d5" products-d5>
+<div class="cq-main-d5">
     <div class="cq-inner-d5">
         <div class="cq-row-d5">
             {% for product in collection.products limit: 20 %}
-                <div class="cq-card-d5">
+                <div class="cq-card-d5" products-d5>
                     <div class="cq-image-d5">
                         <img src="{{ product.featured_image |  image_url: width: 600 }}" alt="{{ product.title }}" loading="lazy">
                     </div>
