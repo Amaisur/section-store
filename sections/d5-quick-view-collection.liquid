@@ -349,17 +349,17 @@ body{
                     <button class="quick-add-popup-btn-d5 d5-button" data-url="{{ product.handle }}">
                         + View
                     </button>
-                     <div class="quick-add-d5">
+                    <div class="quick-add-d5">
                         <div class="quick-add-overlay-d5"></div>
                         <div class="quick-popup-d5">
-                    {% render 'd5-quick-view' , home_product: product %}
+                            {% render 'd5-quick-view' , home_product: product %}
                         </div>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
-</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
