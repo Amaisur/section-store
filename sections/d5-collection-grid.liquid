@@ -46,6 +46,7 @@
         border-radius: 25px;
         height: 35px;
         width: 100px;
+        cursor: pointer;
     }
 </style>
 
@@ -55,7 +56,7 @@
             {% for product in collection.products limit: 20 %}
                 <div class="cq-card-d5">
                     <div class="cq-image-d5">
-                        <img src="{{ product.featured_image |  image_url: width: 600 }}" alt="{{ product.title }}">
+                        <img src="{{ product.featured_image |  image_url: width: 600 }}" alt="{{ product.title }}" loading="lazy">
                     </div>
                     <div class="cq-info-d5">
                         <h4>{{ product.title }}</h4>
