@@ -95,7 +95,6 @@
         const handle = button.getAttribute('data-url');
         console.log(handle)
         button.addEventListener('click', async (handle) => {
-            alert('hhe')
             await getData(handle);
             quickModel.classList.add('model__open');
         });
@@ -103,9 +102,9 @@
 
     async function getData(handle) {
         try {
-            const req = await fetch(`/products/${handle}.json`);
-            const res = await req.json();
-            console.log('response', res);
+            const req = await fetch(`/products/${handle}.json`)
+            const res = await req.json()
+            console.log('response', res)
         } catch (err) {
             console.error(err); 
         }
