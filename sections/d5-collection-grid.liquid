@@ -584,7 +584,7 @@
             try {
                 // You would need to have access to currentVariant here
                 // This is a simplified version - you might need to adjust
-                const variantId = '';
+                const variantId = currentVariant;
                 if (!variantId) return;
                 
                 const response = await fetch('/cart/add.js', {
