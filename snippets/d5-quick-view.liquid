@@ -34,7 +34,7 @@
             <div class="col-popup-d5 q-info-d5">
                 <div class="product-info-d5">
                     <h3>{{ home_product.title }}</h3>
-                    {% render 'rating-star-d5', product: home_product %}
+                    {% comment %} {% render 'rating-star-d5', product: home_product %} {% endcomment %}
                     <p>{{ home_product.price | money }}</p>
                 </div>
                 
@@ -66,4 +66,7 @@
             </div>
         </div>
     </div>
+    <script type="application/json" data-product-json>
+                {{ home_product | json }}
+                </script>
 </div>
