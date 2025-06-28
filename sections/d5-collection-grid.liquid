@@ -1,0 +1,86 @@
+{% assign collection = section.settings.collection %}
+<style>
+    .cq-main-d5{
+        width: 100%;
+    }
+    .cq-inner-d5{
+        max-width: 1440px;
+        padding: 0 40px;
+        margin: 80px auto;
+    }
+    .cq-row-d5{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    .cq-card-d5{
+        border: 1px solid;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .cq-image-d5{
+        width: 100%;
+        aspect-ratio: 1;
+    }
+    .cq-image-d5 img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .cq-info-d5{
+        padding: 10px 15px;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+    .cq-info-d5 h4{
+        font-size: 16px;
+        line-height: normal;
+    }
+    .cq-quick-d5{
+        width: fit-content;
+        justify-self: end;
+        background: #000;
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+    }
+</style>
+
+<div class="cq-main-d5">
+    <div class="cq-inner-d5">
+        <div class="cq-row-d5">
+            {% for product in collection.products limit: 20 %}
+                <div class="cq-card-d5">
+                    <div class="cq-image-d5">
+                        <img src="{{ product.featured_image |  image_url: width: 600 }}" alt="{{ product.title }}">
+                    </div>
+                    <div class="cq-info-d5">
+                        <h4>{{ product.title }}</h4>
+                        <button class="cq-quick-d5">
+                            + View
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "D5 Collection Grid",
+    "settings": [
+        {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+        }
+        ],
+    "presets": [
+        {
+            "name": "D5 Collection Grid"
+        }
+    ]
+}
+{% endschema %}
