@@ -54,6 +54,31 @@
         width: 100px;
         cursor: pointer;
     }
+    .cq-model-d5{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        z-index: 1000;
+    }
+    .cq-model-inner-d5{
+        background: #fff;
+        padding: 20px;
+        width: 80%;
+        max-width: 600px;
+        margin: 50px auto;
+        position: relative;
+    }
+    .close-btn{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 30px;
+        cursor: pointer;
+    }
 </style>
 
 <div class="cq-main-d5">
@@ -75,35 +100,44 @@
         </div>
     </div>
 
-
-
     <div class="cq-model-d5" quick-model>
-
+        <div class="close-btn">×</div>
+        <div class="cq-model-inner-d5">
+            <div class="cq-model-img-d5">
+                <img src="" alt="" class="product-image">
+            </div>
+            <h2 class="product-title"></h2>
+            <p class="product-price"></p>
+        </div>
     </div>
-
-
-
 </div>
 
 <script>
    (function() {
     const products = document.querySelectorAll('[products-d5]');
     const quickModel = document.querySelector('[quick-model]');
+    const closeBtn = quickModel.querySelector('.close-btn');
+    const productImage = quickModel.querySelector('.product-image');
+    const productTitle = quickModel.querySelector('.product-title');
+    const productPrice = quickModel.querySelector('.product-price');
 
     products.forEach(product => {
         const button = product.querySelector('[quickview-trigger-d5]');
         button.addEventListener('click', async () => {
             const handle = button.getAttribute('data-url');
             await getData(handle);
-            quickModel.classList.add('model__open');
+            quickModel.style.display = 'block';
         });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        quickModel.style.display = 'none';
     });
 
     async function getData(handle) {
         try {
-            const req = await fetch(`/products/${handle}.json`)
-            const res = await req.json()
-            console.log('response', res)
+            const req = await fetch(`/products/${handle}.json`);
+            const res = await req.json();
             const product = res.product;
             creatModel(product); 
         } catch (err) {
@@ -112,20 +146,14 @@
     }
 
     function creatModel(product){
-        const model = document.createElement('div');
-        model.classList.add('cq-model-inner-d5');
-        model.innerHTML = `
-            <div class="cq-model-img-d5">
-                <img src="${product.image.src}" alt="${product.title}">
-            </div>
-        `
-        quickModel.appendChild(model); 
+        productImage.src = product.featured_image.src;
+        productImage.alt = product.title;
+        productTitle.textContent = product.title;
+        productPrice.textContent = `$${product.variants[0].price}`;
     }
 
 })();
-
 </script>
-
 
 {% schema %}
 {
@@ -136,7 +164,7 @@
             "id": "collection",
             "label": "Collection"
         }
-        ],
+    ],
     "presets": [
         {
             "name": "D5 Collection Grid"
