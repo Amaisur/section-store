@@ -102,12 +102,13 @@
 
         async function getData(handle){
         try{
-            const req = await fetch(handle)
+            const req = await fetch(`/${handle}`)
             const res = await req.json()
-            console.log('response',res)
+            console.log('response', res)
           }catch(err){
             console.error(err); 
           } 
+        
         }
 
 
