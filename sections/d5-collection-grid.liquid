@@ -54,30 +54,172 @@
         width: 100px;
         cursor: pointer;
     }
-    .cq-model-d5{
+
+    /* Model Styles */
+    .cq-model-d5 {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.7);
+        background: rgba(0,0,0,0.8);
+        z-index: 9999;
         display: none;
-        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
-    .cq-model-inner-d5{
+    .cq-model-d5.model__open {
+        display: flex;
+        opacity: 1;
+    }
+    .cq-model-inner-d5 {
         background: #fff;
-        padding: 20px;
-        width: 80%;
-        max-width: 600px;
-        margin: 50px auto;
+        width: 90%;
+        max-width: 900px;
+        max-height: 90vh;
+        overflow-y: auto;
+        border-radius: 10px;
+        padding: 30px;
         position: relative;
     }
-    .close-btn{
+    .cq-model-close-d5 {
         position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 30px;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 24px;
         cursor: pointer;
+    }
+    .cq-model-content-d5 {
+        display: flex;
+        gap: 30px;
+    }
+    .cq-model-img-d5 {
+        flex: 1;
+    }
+    .cq-model-img-d5 img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+    .cq-model-info-d5 {
+        flex: 1;
+    }
+    .cq-model-title-d5 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    .cq-model-price-d5 {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .cq-model-variant-d5 {
+        margin-bottom: 20px;
+    }
+    .cq-model-option-d5 {
+        margin-bottom: 15px;
+    }
+    .cq-model-option-d5 label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+    .cq-model-option-d5 select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    .cq-model-quantity-d5 {
+        margin-bottom: 25px;
+    }
+    .cq-model-quantity-d5 label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+    .cq-model-quantity-d5 input {
+        width: 100px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    .cq-model-addtocart-d5 {
+        background: #000;
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        height: 45px;
+        width: 100%;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: background 0.3s ease;
+    }
+    .cq-model-addtocart-d5:hover {
+        background: #333;
+    }
+    .cq-model-addtocart-d5:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+    }
+    .cq-model-description-d5 {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+    }
+
+    /* Loading States */
+    .cq-skeleton-loading {
+        background: #f0f0f0;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+    }
+    .cq-skeleton-loading::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+        animation: loading 1.5s infinite;
+    }
+    @keyframes loading {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+    .cq-model-loading-d5 {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255,255,255,0.8);
+        z-index: 10;
+        align-items: center;
+        justify-content: center;
+    }
+    .cq-model-loading-d5.active {
+        display: flex;
+    }
+    .cq-spinner-d5 {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #000;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
     }
 </style>
 
@@ -87,10 +229,11 @@
             {% for product in collection.products limit: 20 %}
                 <div class="cq-card-d5" products-d5>
                     <div class="cq-image-d5">
-                        <img src="{{ product.featured_image |  image_url: width: 600 }}" alt="{{ product.title }}" loading="lazy">
+                        <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" loading="lazy">
                     </div>
                     <div class="cq-info-d5">
                         <h4>{{ product.title }}</h4>
+                        <div class="cq-price-d5">{{ product.price | money }}</div>
                         <button class="cq-quick-d5" data-url="{{ product.handle }}" quickview-trigger-d5>
                             + View
                         </button>
@@ -101,57 +244,186 @@
     </div>
 
     <div class="cq-model-d5" quick-model>
-        <div class="close-btn">×</div>
-        <div class="cq-model-inner-d5">
-            <div class="cq-model-img-d5">
-                <img src="" alt="" class="product-image">
-            </div>
-            <h2 class="product-title"></h2>
-            <p class="product-price"></p>
+        <div class="cq-model-loading-d5">
+            <div class="cq-spinner-d5"></div>
         </div>
     </div>
 </div>
 
 <script>
-   (function() {
+(function() {
     const products = document.querySelectorAll('[products-d5]');
     const quickModel = document.querySelector('[quick-model]');
-    const closeBtn = quickModel.querySelector('.close-btn');
-    const productImage = quickModel.querySelector('.product-image');
-    const productTitle = quickModel.querySelector('.product-title');
-    const productPrice = quickModel.querySelector('.product-price');
+    const loadingSpinner = quickModel.querySelector('.cq-model-loading-d5');
+
+    // Close model when clicking outside
+    quickModel.addEventListener('click', (e) => {
+        if (e.target === quickModel) {
+            quickModel.classList.remove('model__open');
+        }
+    });
 
     products.forEach(product => {
         const button = product.querySelector('[quickview-trigger-d5]');
         button.addEventListener('click', async () => {
             const handle = button.getAttribute('data-url');
+            loadingSpinner.classList.add('active');
+            quickModel.classList.add('model__open');
             await getData(handle);
-            quickModel.style.display = 'block';
+            loadingSpinner.classList.remove('active');
         });
-    });
-
-    closeBtn.addEventListener('click', () => {
-        quickModel.style.display = 'none';
     });
 
     async function getData(handle) {
         try {
-            const req = await fetch(`/products/${handle}.json`);
-            const res = await req.json();
-            const product = res.product;
-            creatModel(product); 
+            const req = await fetch(`/products/${handle}.js`);
+            const product = await req.json();
+            createModel(product); 
         } catch (err) {
-            console.error(err);  
+            console.error(err);
+            loadingSpinner.classList.remove('active');
         }
     }
 
-    function creatModel(product){
-        productImage.src = product.image.src;
-        productImage.alt = product.title;
-        productTitle.textContent = product.title;
-        productPrice.textContent = `$${product.variants[0].price}`;
+    function createModel(product) {
+        quickModel.innerHTML = `
+            <div class="cq-model-loading-d5">
+                <div class="cq-spinner-d5"></div>
+            </div>
+            <div class="cq-model-inner-d5">
+                <button class="cq-model-close-d5" close-model>&times;</button>
+                <div class="cq-model-content-d5">
+                    <div class="cq-model-img-d5">
+                        <img src="${product.featured_image}" alt="${product.title}" id="model-main-image">
+                    </div>
+                    <div class="cq-model-info-d5">
+                        <h2 class="cq-model-title-d5">${product.title}</h2>
+                        <div class="cq-model-price-d5" id="model-price">${formatMoney(product.price)}</div>
+                        
+                        ${product.options.length > 0 ? 
+                            product.options.map((option, index) => `
+                                <div class="cq-model-option-d5">
+                                    <label for="option-${index}">${option.name}</label>
+                                    <select id="option-${index}" class="variant-selector" data-option-index="${index}">
+                                        ${option.values.map(value => `
+                                            <option value="${value}">${value}</option>
+                                        `).join('')}
+                                    </select>
+                                </div>
+                            `).join('') : ''
+                        }
+                        
+                        <div class="cq-model-quantity-d5">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" name="quantity" value="1" min="1">
+                        </div>
+                        
+                        <button class="cq-model-addtocart-d5" id="add-to-cart" data-product-id="${product.id}">Add to Cart</button>
+                        
+                        <div class="cq-model-description-d5">
+                            ${product.description}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Set initial selected variant
+        let currentVariant = product.variants[0];
+        const variantSelectors = document.querySelectorAll('.variant-selector');
+        
+        // If product has variants, find the initially selected one
+        if (product.variants.length > 1) {
+            variantSelectors.forEach(select => {
+                select.addEventListener('change', () => updateVariant());
+            });
+        }
+
+        function updateVariant() {
+            const selectedOptions = [];
+            variantSelectors.forEach(select => {
+                selectedOptions.push(select.value);
+            });
+
+            // Find the variant that matches all selected options
+            currentVariant = product.variants.find(variant => {
+                return variant.options.every((option, index) => {
+                    return option === selectedOptions[index];
+                });
+            });
+
+            if (currentVariant) {
+                // Update price
+                document.getElementById('model-price').textContent = formatMoney(currentVariant.price);
+                
+                // Update image if variant has a different one
+                if (currentVariant.featured_image) {
+                    document.getElementById('model-main-image').src = currentVariant.featured_image.src;
+                }
+                
+                // Update add to cart button
+                const addToCartBtn = document.getElementById('add-to-cart');
+                addToCartBtn.disabled = !currentVariant.available;
+                addToCartBtn.textContent = currentVariant.available ? 'Add to Cart' : 'Sold Out';
+            }
+        }
+
+        // Initial variant update
+        updateVariant();
+
+        // Add to cart functionality
+        document.getElementById('add-to-cart').addEventListener('click', async () => {
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+            const addToCartBtn = document.getElementById('add-to-cart');
+            
+            if (!currentVariant) return;
+            
+            addToCartBtn.disabled = true;
+            addToCartBtn.textContent = 'Adding...';
+            
+            try {
+                const response = await fetch('/cart/add.js', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: currentVariant.id,
+                        quantity: quantity
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 422) {
+                    throw new Error(result.description);
+                }
+                
+                addToCartBtn.textContent = 'Added to Cart!';
+                setTimeout(() => {
+                    addToCartBtn.textContent = 'Add to Cart';
+                    addToCartBtn.disabled = false;
+                }, 2000);
+                
+                // You might want to update the cart counter here
+                // updateCartCount();
+                
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+                addToCartBtn.textContent = 'Error - Try Again';
+                addToCartBtn.disabled = false;
+            }
+        });
+
+        // Close model button
+        document.querySelector('[close-model]').addEventListener('click', () => {
+            quickModel.classList.remove('model__open');
+        });
     }
 
+    function formatMoney(cents) {
+        return '$' + (cents / 100).toFixed(2);
+    }
 })();
 </script>
 
