@@ -104,8 +104,8 @@
             const req = await fetch(`/products/${handle}.json`)
             const res = await req.json()
             console.log('response', res)
-            console.log(res.product.title)
-            creatModel(res);
+            const product = res.product;
+            creatModel(product);
         } catch (err) {
             console.error(err);  
         }
