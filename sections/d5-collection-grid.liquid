@@ -41,6 +41,7 @@
     .cq-info-d5 h4{
         font-size: 16px;
         line-height: normal;
+        margin-bottom: 10px;
     }
     .cq-quick-d5{
         width: fit-content;
@@ -55,7 +56,7 @@
     }
 </style>
 
-<div class="cq-main-d5">
+<div class="cq-main-d5" products-d5>
     <div class="cq-inner-d5">
         <div class="cq-row-d5">
             {% for product in collection.products limit: 20 %}
@@ -65,7 +66,7 @@
                     </div>
                     <div class="cq-info-d5">
                         <h4>{{ product.title }}</h4>
-                        <button class="cq-quick-d5">
+                        <button class="cq-quick-d5" data-url="{{ product.handle }}" quickview-trigger-d5>
                             + View
                         </button>
                     </div>
@@ -73,7 +74,46 @@
             {% endfor %}
         </div>
     </div>
+
+
+
+    <div class="cq-model-d5" quick-model>
+
+    </div>
+
+
+
 </div>
+
+<script>
+    (function(){
+        const products = document.querySelectorAll('[products-d5]');
+        const quickModel = document.querySelector('[quick-model]')
+
+        products.forEach(product => {
+            const button = product.querySelector('[quickview-trigger-d5]');
+            const handle = button.getAttribute('data-url');
+            getData(handle);
+
+            button.addEventListener('click', () => {
+                quickModel.classList.add('model__open');
+            })
+        })
+
+        async function getData(handle){
+        try{
+            const req = await fetch(handle)
+            cons res = await req.json()
+            console.log('response',res)
+          }catch(err){
+            console.error(err); 
+          } 
+        }
+
+
+    })()
+</script>
+
 
 {% schema %}
 {
