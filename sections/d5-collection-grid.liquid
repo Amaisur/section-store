@@ -94,6 +94,7 @@
         const button = product.querySelector('[quickview-trigger-d5]');
         button.addEventListener('click', async () => {
             const handle = button.getAttribute('data-url');
+            console.log(handle)
             console.log(`/products/${handle}.json`)
             await getData(handle);
             quickModel.classList.add('model__open');
