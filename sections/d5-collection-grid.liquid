@@ -95,7 +95,7 @@
             const handle = button.getAttribute('data-url');
             await getData(handle);
 
-            button.addEventListener('click', () => {
+            button.addEventListener('click', async () => {
                 quickModel.classList.add('model__open');
             })
         })
