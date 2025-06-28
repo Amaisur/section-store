@@ -72,7 +72,7 @@
             </div>
         </div>
     </div>
-    <script type="application/json" data-product-json>
-                {{ home_product | json }}
-                </script>
+    <div type="application/json" data-product-json hidden>
+                {{ home_product | json |  escape }}
+                </div>
 </div>
