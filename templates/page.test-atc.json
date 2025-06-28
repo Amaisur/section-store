@@ -30,11 +30,19 @@
       "settings": {
         "collection": "all"
       }
+    },
+    "d5_quick_view_collection_8Ae6dx": {
+      "type": "d5-quick-view-collection",
+      "name": "D5 Quick Collection",
+      "settings": {
+        "collection": "all"
+      }
     }
   },
   "order": [
     "main",
     "test_atc_LqL8hG",
-    "d5_collection_grid_FQfQwb"
+    "d5_collection_grid_FQfQwb",
+    "d5_quick_view_collection_8Ae6dx"
   ]
 }
