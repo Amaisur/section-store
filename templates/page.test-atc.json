@@ -19,13 +19,22 @@
     },
     "test_atc_LqL8hG": {
       "type": "test-atc",
+      "disabled": true,
       "settings": {
         "collection": "frontpage"
+      }
+    },
+    "d5_collection_grid_FQfQwb": {
+      "type": "d5-collection-grid",
+      "name": "D5 Collection Grid",
+      "settings": {
+        "collection": "all"
       }
     }
   },
   "order": [
     "main",
-    "test_atc_LqL8hG"
+    "test_atc_LqL8hG",
+    "d5_collection_grid_FQfQwb"
   ]
 }
