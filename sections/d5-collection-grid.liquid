@@ -104,10 +104,23 @@
             const req = await fetch(`/products/${handle}.json`)
             const res = await req.json()
             console.log('response', res)
+            creatModel(res)
         } catch (err) {
             console.error(err); 
         }
     }
+
+    function creatModel(product){
+        const model = document.createElement('div');
+        model.classList.add('cq-model-inner-d5');
+        model.innerHTML = `
+            <div class="cq-model-img-d5">
+                <img src="${product.featured_image}" alt="${product.title}">
+            </div>
+        `
+        quickModel.appendChild(model);
+    }
+
 })();
 
 </script>
