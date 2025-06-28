@@ -86,33 +86,31 @@
 </div>
 
 <script>
-    (function(){
-        const products = document.querySelectorAll('[products-d5]');
-        const quickModel = document.querySelector('[quick-model]')
+   (function() {
+    const products = document.querySelectorAll('[products-d5]');
+    const quickModel = document.querySelector('[quick-model]');
 
-        products.forEach(product => {
-            const button = product.querySelector('[quickview-trigger-d5]');
-            
-            button.addEventListener('click', async () => {
-                const handle = button.getAttribute('data-url');
-                quickModel.classList.add('model__open');
-                await getData(handle);
-            })
-        })
-
-        async function getData(handle){
-        try{
-            const req = await fetch(`/products/${handle}.json`)
-            const res = await req.json()
-            console.log('response', res)
-          }catch(err){
-            console.error(err); 
-          } 
+    products.forEach(product => {
+        const button = product.querySelector('[quickview-trigger-d5]');
+        const handle = button.getAttribute('data-url');
         
+        button.addEventListener('click', async () => {
+            await getData(handle);
+            quickModel.classList.add('model__open');
+        });
+    });
+
+    async function getData(handle) {
+        try {
+            const req = await fetch(`/products/${handle}.json`);
+            const res = await req.json();
+            console.log('response', res);
+        } catch (err) {
+            console.error(err); 
         }
+    }
+})();
 
-
-    })()
 </script>
 
 
