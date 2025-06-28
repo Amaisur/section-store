@@ -362,9 +362,10 @@ body{
         </div>
     </div>
 </div>
-<script>
+<<script>
     document.addEventListener('DOMContentLoaded', function() {
   var popupopenD5 = document.querySelector('.quick-add-d5');
+  // Handle showing and hiding the quick add-to-cart popup
   const addToCartBtns = document.querySelectorAll('.quick-add-popup-btn-d5');
   
   addToCartBtns.forEach(function(addToCartBtn) {
@@ -377,8 +378,7 @@ body{
       document.body.classList.add('no-scroll_popup-body-d5');
       setupQuantitySelectors();
       setupAddToCart();
-      initializeSlider();
-      setupOptionSelection();
+      setupTabFunctionality();  // Initialize tab functionality when popup is opened
     });
 
     overlay.addEventListener('click', function() {
@@ -392,6 +392,7 @@ body{
     });
   });
 
+  // Initialize quantity selectors
   function setupQuantitySelectors() {
     const activePopup = document.querySelector('.popup-q-open');
 
@@ -422,294 +423,214 @@ body{
     }
   }
 
-  function setupOptionSelection() {
-    const activePopup = document.querySelector('.popup-q-open');
-    if (!activePopup) return;
-
-    const product = JSON.parse(activePopup.querySelector('[data-product-json]').textContent);
-    const optionButtons = activePopup.querySelectorAll('.option-btn-d5');
-    const priceDisplay = activePopup.querySelector('.product-info-d5 p');
-    const sliderImages = activePopup.querySelectorAll('.q-slide-d5 img');
-    
-    let selectedOptions = {};
-    
-    // Initialize selected options with first available values
-    product.options.forEach(option => {
-      selectedOptions[option.name] = option.values[0];
-    });
-    
-    // Highlight first option buttons by default
-    product.options.forEach((option, index) => {
-      const firstOptionBtn = activePopup.querySelector(`.option-btn-d5[data-option-name="${option.name}"][data-option-value="${option.values[0]}"]`);
-      if (firstOptionBtn) firstOptionBtn.classList.add('option-active');
-    });
-    
-    // Update variant based on selected options
-    function updateVariant() {
-      const matchedVariant = product.variants.find(variant => {
-        return variant.options.every((option, index) => {
-          return option === selectedOptions[product.options[index].name];
-        });
-      });
-      
-      if (matchedVariant) {
-        // Update price
-        priceDisplay.textContent = formatMoney(matchedVariant.price);
-        
-        // Update image if variant has a different image
-        if (matchedVariant.featured_image) {
-          sliderImages.forEach((img, index) => {
-            if (img.src.includes(matchedVariant.featured_image.src.split('?')[0])) {
-              goToSlide(index);
-            }
-          });
-        }
-        
-        return matchedVariant.id;
-      }
-      return null;
-    }
-    
-    // Handle option selection
-    optionButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const optionName = this.dataset.optionName;
-        const optionValue = this.dataset.optionValue;
-        
-        // Remove active class from all buttons in this option group
-        const optionGroup = activePopup.querySelectorAll(`.option-btn-d5[data-option-name="${optionName}"]`);
-        optionGroup.forEach(btn => btn.classList.remove('option-active'));
-        
-        // Add active class to clicked button
-        this.classList.add('option-active');
-        
-        // Update selected options
-        selectedOptions[optionName] = optionValue;
-        
-        // Update variant
-        updateVariant();
-      });
-    });
-    
-    // Initialize with default variant
-    updateVariant();
-  }
-
+  // Setup the Add to Cart functionality
   function setupAddToCart() {
     const activePopup = document.querySelector('.popup-q-open');
-    if (!activePopup) return;
 
-    const atcButton = activePopup.querySelector('#AddToCart');
-    const product = JSON.parse(activePopup.querySelector('[data-product-json]').textContent);
-    
-    atcButton.addEventListener('click', function(event) {
-      event.preventDefault();
-      
-      // Get selected options
-      const selectedOptions = {};
-      activePopup.querySelectorAll('.option-btn-d5.option-active').forEach(button => {
-        selectedOptions[button.dataset.optionName] = button.dataset.optionValue;
-      });
-      
-      // Find matching variant
-      const matchedVariant = product.variants.find(variant => {
-        return variant.options.every((option, index) => {
-          return option === selectedOptions[product.options[index].name];
-        });
-      });
-      
-      if (matchedVariant) {
-        const quantityInput = activePopup.querySelector('.quantity-input-d5');
-        const quantity = parseInt(quantityInput.value, 10);
-        const data = {
-          id: matchedVariant.id,
-          quantity: quantity
-        };
+    if (activePopup) {
+      const atcButton = activePopup.querySelector('#AddToCart');
+      let selectedVariantId = null;
+      let selectedPlanId = null;
 
-        atcButton.disabled = true;
-        activePopup.querySelector('.atc-content-d5').style.display = 'none';
-        activePopup.querySelector('.atc-spinner-d5').style.display = 'inline-block';
-
-        fetch('/cart/add.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-          fetch('/cart?view=drawer')
-            .then(response => response.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(html, 'text/html');
-              const updatedCartItems = doc.querySelector('.c-side-cart__items').innerHTML;
-              document.querySelector('.c-side-cart__items').innerHTML = updatedCartItems;
-
-              atcButton.disabled = false;
-              activePopup.querySelector('.atc-content-d5').style.display = 'inline-block';
-              activePopup.querySelector('.atc-spinner-d5').style.display = 'none';
-
-              document.body.classList.add('js-side-cart-open');
-              document.body.classList.remove('no-scroll_popup-body-d5');
-              popupopenD5.classList.remove('popup-q-open');
-            })
-            .catch(error => {
-              console.error('Error updating cart drawer:', error);
-              atcButton.disabled = false;
-              activePopup.querySelector('.atc-content-d5').style.display = 'inline-block';
-              activePopup.querySelector('.atc-spinner-d5').style.display = 'none';
-            });
-        })
-        .catch(error => {
-          console.error('Error adding to cart:', error);
-          atcButton.disabled = false;
-          activePopup.querySelector('.atc-content-d5').style.display = 'inline-block';
-          activePopup.querySelector('.atc-spinner-d5').style.display = 'none';
-        });
-      } else {
-        alert('Please select all available options.');
+      // Automatically select the first variant by default
+      const firstVariantBtn = activePopup.querySelector('.variant-btn-d5');
+      if (firstVariantBtn) {
+        firstVariantBtn.classList.add('variant-active');
+        selectedVariantId = firstVariantBtn.getAttribute('data-variant-id');
       }
-    });
+
+      activePopup.querySelectorAll('.variant-btn-d5').forEach(function(button) {
+        button.addEventListener('click', function() {
+          activePopup.querySelectorAll('.variant-btn-d5').forEach(function(btn) {
+            btn.classList.remove('variant-active');
+          });
+          this.classList.add('variant-active');
+          selectedVariantId = this.getAttribute('data-variant-id');
+        });
+      });
+
+      activePopup.querySelectorAll('.plan-btn-d5').forEach(function(button) {
+        button.addEventListener('click', function() {
+          activePopup.querySelectorAll('.plan-btn-d5').forEach(function(btn) {
+            btn.classList.remove('plan-active');
+          });
+          this.classList.add('plan-active');
+          selectedPlanId = this.getAttribute('data-plan-id');
+        });
+      });
+
+      atcButton.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        if (selectedVariantId) {
+          const quantityInput = activePopup.querySelector('.quantity-input-d5');
+          const quantity = parseInt(quantityInput.value, 10);
+          const data = {
+            id: selectedVariantId,
+            quantity: quantity
+          };
+
+          if (selectedPlanId) {
+            data.selling_plan = selectedPlanId;
+          }
+
+          atcButton.disabled = true;
+          activePopup.querySelector('.atc-content-d5').style.display = 'none';
+          activePopup.querySelector('.atc-spinner-d5').style.display = 'inline-block';
+
+          fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+          })
+          .then(response => response.json())
+          .then(data => {
+            fetch('/cart?view=drawer')
+              .then(response => response.text())
+              .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const updatedCartItems = doc.querySelector('.c-side-cart__items').innerHTML;
+                document.querySelector('.c-side-cart__items').innerHTML = updatedCartItems;
+
+                atcButton.disabled = false;
+                activePopup.querySelector('.atc-content-d5').style.display = 'inline-block';
+                activePopup.querySelector('.atc-spinner-d5').style.display = 'none';
+
+                document.body.classList.add('js-side-cart-open');
+                document.body.classList.remove('no-scroll_popup-body-d5');
+                popupopenD5.classList.remove('popup-q-open');
+              })
+              .catch(error => {
+                console.error('Error updating cart drawer:', error);
+                atcButton.disabled = false;
+                activePopup.querySelector('.atc-content-d5').style.display = 'inline-block';
+                activePopup.querySelector('.atc-spinner-d5').style.display = 'none';
+              });
+          })
+          .catch(error => {
+            console.error('Error adding to cart:', error);
+            atcButton.disabled = false;
+            activePopup.querySelector('.atc-content-d5').style.display = 'inline-block';
+            activePopup.querySelector('.atc-spinner-d5').style.display = 'none';
+          });
+        } else {
+          alert('Please select a variant or plan.');
+        }
+      });
+    }
   }
 
-  function initializeSlider() {
-    document.querySelectorAll('.q-slider-container-d5').forEach(function(container) {
-      const slider = container.querySelector('.q-slider-d5');
-      const slides = container.querySelectorAll('.q-slide-d5');
-      const prevBtn = container.querySelector('.q-prev-d5');
-      const nextBtn = container.querySelector('.q-next-d5');
-      const dotsContainer = container.querySelector('.q-dots-d5');
+function initializeSlider() {
+  document.querySelectorAll('.q-slider-container-d5').forEach(function(container) {
+    const slider = container.querySelector('.q-slider-d5');
+    const slides = container.querySelectorAll('.q-slide-d5');
+    const prevBtn = container.querySelector('.q-prev-d5');
+    const nextBtn = container.querySelector('.q-next-d5');
+    const dotsContainer = container.querySelector('.q-dots-d5');
 
-      let currentIndex = 0;
-      const totalSlides = slides.length;
-      let startX = 0;
-      let currentX = 0;
-      let isDragging = false;
-      const dragThreshold = 5; // 5px drag threshold
+    let currentIndex = 0;
+    const totalSlides = slides.length;
 
-      function updateButtons() {
-        if (totalSlides <= 1) {
+    function updateButtons() {
+      if (totalSlides <= 1) {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+      } else {
+        if (currentIndex === 0) {
           prevBtn.style.display = 'none';
+          nextBtn.style.display = 'block';
+        } else if (currentIndex === totalSlides - 1) {
+          prevBtn.style.display = 'block';
           nextBtn.style.display = 'none';
         } else {
-          prevBtn.style.display = currentIndex === 0 ? 'none' : 'block';
-          nextBtn.style.display = currentIndex === totalSlides - 1 ? 'none' : 'block';
+          prevBtn.style.display = 'block';
+          nextBtn.style.display = 'block';
         }
       }
+    }
 
-      function updateDots() {
-        dotsContainer.innerHTML = '';
-        if (totalSlides > 1) {
-          for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('span');
-            dot.classList.add('q-dot-d5');
-            if (i === currentIndex) {
-              dot.classList.add('active');
-            }
-            dot.addEventListener('click', () => {
-              goToSlide(i);
-            });
-            dotsContainer.appendChild(dot);
+    function updateDots() {
+      dotsContainer.innerHTML = '';
+      if (totalSlides > 1) {
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement('span');
+          dot.classList.add('q-dot-d5');
+          if (i === currentIndex) {
+            dot.classList.add('active');
           }
+          dot.addEventListener('click', () => {
+            goToSlide(i);
+          });
+          dotsContainer.appendChild(dot);
         }
       }
+    }
 
-      function goToSlide(index) {
-        currentIndex = index;
-        const offset = -currentIndex * 100;
-        slider.style.transform = `translateX(${offset}%)`;
-        slider.style.transition = 'transform 0.3s ease';
-        updateButtons();
-        updateDots();
-      }
-
-      function handleDragStart(e) {
-        isDragging = true;
-        startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-        currentX = startX;
-        slider.style.transition = 'none';
-      }
-
-      function handleDragMove(e) {
-        if (!isDragging) return;
-        const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-        const diff = x - currentX;
-        currentX = x;
-        
-        // Only proceed if drag exceeds threshold
-        if (Math.abs(x - startX) >= dragThreshold) {
-          const currentTransform = getComputedStyle(slider).transform;
-          let currentTranslate = 0;
-          
-          if (currentTransform !== 'none') {
-            const matrix = currentTransform.match(/^matrix\((.+)\)$/);
-            if (matrix) {
-              currentTranslate = parseFloat(matrix[1].split(', ')[4]);
-            }
-          }
-          
-          const newTranslate = currentTranslate + diff;
-          slider.style.transform = `translateX(${newTranslate}px)`;
-        }
-      }
-
-      function handleDragEnd(e) {
-        if (!isDragging) return;
-        isDragging = false;
-        
-        const x = e.type === 'touchend' ? e.changedTouches[0].clientX : e.clientX;
-        const diff = x - startX;
-        
-        // Only proceed if drag exceeded threshold
-        if (Math.abs(diff) >= dragThreshold) {
-          if (diff > 0 && currentIndex > 0) {
-            goToSlide(currentIndex - 1);
-          } else if (diff < 0 && currentIndex < totalSlides - 1) {
-            goToSlide(currentIndex + 1);
-          } else {
-            goToSlide(currentIndex); // Return to current slide
-          }
-        } else {
-          goToSlide(currentIndex); // Return to current slide
-        }
-      }
-
-      // Mouse events
-      slider.addEventListener('mousedown', handleDragStart);
-      document.addEventListener('mousemove', handleDragMove);
-      document.addEventListener('mouseup', handleDragEnd);
-      
-      // Touch events
-      slider.addEventListener('touchstart', handleDragStart, { passive: true });
-      document.addEventListener('touchmove', handleDragMove, { passive: false });
-      document.addEventListener('touchend', handleDragEnd);
-
-      prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-          goToSlide(currentIndex - 1);
-        }
-      });
-
-      nextBtn.addEventListener('click', () => {
-        if (currentIndex < totalSlides - 1) {
-          goToSlide(currentIndex + 1);
-        }
-      });
-
+    function goToSlide(index) {
+      currentIndex = index;
+      const offset = -currentIndex * 100;
+      slider.style.transform = `translateX(${offset}%)`;
       updateButtons();
       updateDots();
-    });
-  }
+    }
 
-  // Helper function to format money
-  function formatMoney(cents) {
-    return '$' + (cents / 100).toFixed(2);
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        goToSlide(currentIndex - 1);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < totalSlides - 1) {
+        goToSlide(currentIndex + 1);
+      }
+    });
+
+    updateButtons();
+    updateDots();
+  });
+}
+
+initializeSlider();
+
+
+  // Initialize tab functionality
+  function setupTabFunctionality() {
+    const activePopup = document.querySelector('.popup-q-open');
+    if (activePopup) {
+      const variantTabBtn = activePopup.querySelector('.variant-tab-btn');
+      const planTabBtn = activePopup.querySelector('.plan-tab-btn');
+      const variantsTab = activePopup.querySelector('.variants-tab-d5');
+      const planTab = activePopup.querySelector('.plan-tab-d5');
+      
+      let selectedPlanId = null;
+
+      variantTabBtn.classList.add('active');
+      planTab.style.display = 'none';
+
+      variantTabBtn.addEventListener('click', function() {
+        variantsTab.style.display = 'block';
+        planTab.style.display = 'none';
+        variantTabBtn.classList.add('active');
+        planTabBtn.classList.remove('active');
+        selectedPlanId = null;
+      });
+
+      planTabBtn.addEventListener('click', function() {
+        planTab.style.display = 'block';
+        variantsTab.style.display = 'none';
+        planTabBtn.classList.add('active');
+        variantTabBtn.classList.remove('active');
+      });
+    }
   }
 });
-</script>
+
+</script>>
 {% schema %}
 {
     "name": "D5 Quick Collection",
