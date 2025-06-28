@@ -93,7 +93,7 @@
         products.forEach(product => {
             const button = product.querySelector('[quickview-trigger-d5]');
             const handle = button.getAttribute('data-url');
-            getData(handle);
+            await getData(handle);
 
             button.addEventListener('click', () => {
                 quickModel.classList.add('model__open');
