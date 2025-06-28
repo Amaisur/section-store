@@ -146,7 +146,7 @@
     }
 
     function creatModel(product){
-        productImage.src = product.featured_image.src;
+        productImage.src = product.image.src;
         productImage.alt = product.title;
         productTitle.textContent = product.title;
         productPrice.textContent = `$${product.variants[0].price}`;
