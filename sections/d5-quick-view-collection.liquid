@@ -393,7 +393,7 @@ body{
     </div>
 </div>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
   const popupopenD5 = document.querySelector('.quick-add-d5');
   const addToCartBtns = document.querySelectorAll('.quick-add-popup-btn-d5');
   
@@ -454,7 +454,7 @@ body{
     const sliderImages = container.querySelectorAll('.q-slide-d5 img');
     
     let selectedOptions = {};
-    product.options.forEach(option => {
+    product.options.forEach((option, index) => {
       selectedOptions[option.name] = option.values[0];
     });
 
@@ -465,17 +465,23 @@ body{
     });
 
     function updateVariant() {
+      // Create an array of selected options in the proper order
+      const selectedValues = product.options.map(option => selectedOptions[option.name]);
+      
+      // Find the matching variant
       const matchedVariant = product.variants.find(variant => {
-        return variant.options.every((option, index) => {
-          return option === selectedOptions[product.options[index].name];
-        });
+        return variant.options.every((option, index) => option === selectedValues[index]);
       });
       
       if (matchedVariant) {
+        // Update price
         priceDisplay.textContent = Shopify.formatMoney(matchedVariant.price);
+        
+        // Update image if variant has one
         if (matchedVariant.featured_image) {
+          const imageSrc = matchedVariant.featured_image.src.split('?')[0];
           sliderImages.forEach((img, index) => {
-            if (matchedVariant.featured_image && img.src.includes(matchedVariant.featured_image.src.split('?')[0])) {
+            if (img.src.includes(imageSrc)) {
               goToSlide(container, index);
             }
           });
@@ -495,6 +501,7 @@ body{
       });
     });
 
+    // Initialize with first variant
     updateVariant();
   }
 
@@ -504,15 +511,18 @@ body{
     atcButton.addEventListener('click', function(e) {
       e.preventDefault();
       
+      // Get selected options
       const selectedOptions = {};
       container.querySelectorAll('.option-input-d5:checked').forEach(input => {
         selectedOptions[input.dataset.optionName] = input.value;
       });
       
+      // Create array of selected values in proper order
+      const selectedValues = product.options.map(option => selectedOptions[option.name]);
+      
+      // Find matching variant
       const matchedVariant = product.variants.find(variant => {
-        return variant.options.every((option, index) => {
-          return option === selectedOptions[product.options[index].name];
-        });
+        return variant.options.every((option, index) => option === selectedValues[index]);
       }) || product.variants[0];
       
       const quantityInput = container.querySelector('.quantity-input-d5');
@@ -534,10 +544,15 @@ body{
         document.body.classList.remove('no-scroll_popup-body-d5');
         container.classList.remove('popup-q-open');
         
-        // Optional: Show a success message instead of refreshing cart
-        // You can add a notification here if you want
+        // Show success message
+        if (window.showQuickAddMessage) {
+          window.showQuickAddMessage('Item added to cart');
+        }
       })
-      .catch(() => resetATCButton(container));
+      .catch(() => {
+        resetATCButton(container);
+        alert('Error adding item to cart');
+      });
     });
   }
 
