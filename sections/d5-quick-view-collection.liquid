@@ -463,14 +463,17 @@ document.addEventListener('DOMContentLoaded', function() {
             id: formData.get('id'),
             quantity: formData.get('quantity')
           })
-        }).finally(() => alert('done'));
+        }).finally(() => {
+        alert('done')
+         await reRender();
+      });
       });
     });
 
 
     async function reRender(){
       const req = await fetch('/sections?cart-drawer')
-      const res = req.text();
+      const res = await req.text();
       const drawer = document.querySelector('cart-drawer.drawer');
       drawer.html = req;
     }
