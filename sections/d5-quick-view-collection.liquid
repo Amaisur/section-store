@@ -421,6 +421,7 @@ body{
             return variant.options.every((opt, index) => opt === selectedOptions[index]);
           });
           return matchingVariant ? matchingVariant.id : null;
+          console.log('heel0', matchingVariant)
         } catch (err) {
           return null;
         }
