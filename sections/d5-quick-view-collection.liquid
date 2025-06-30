@@ -395,58 +395,56 @@ body{
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const cards = document.querySelectorAll('.cq-card-d5');
-  
-  cards.forEach(card => {
-    const dataVariant = card.querySelector('[data-product-json]');
-    if (!dataVariant) return;
+    const cards = document.querySelectorAll('.cq-card-d5');
+    
+    cards.forEach(card => {
+      const dataVariant = card.querySelector('[data-product-json]');
+      if (!dataVariant) return;
 
-    const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
-    const variants = JSON.parse(dataVariant.textContent);
+      const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
 
-    // Update variant when options change
-    form.querySelectorAll('.option-input-d5').forEach(input => {
-      input.addEventListener('change', function() {
-        const selectedOptions = Array.from(form.querySelectorAll('.option-input-d5:checked')).map(i => i.value);
-        const variant = variants.find(v => v.options.every((opt, i) => opt === selectedOptions[i]));
+      function getSelectedOptions() {
+        const optionContainers = form.querySelectorAll('.option-input-d5');
+        return Array.from(optionContainers).map(container => {
+          const selectedOption = container.querySelector('.up-option-value-d5.selected-value-d5');
+          return selectedOption ? selectedOption.getAttribute('value') : null;
+        });
+      }
+
+      function getVariantId() {
+        const selectedOptions = getSelectedOptions();
+        const productJson = dataVariant.textContent;
         
-        if (variant) {
-          console.log('Selected Variant ID:', variant.id);
-          form.querySelector('input[name="id"]').value = variant.id;
+        try {
+          const variants = JSON.parse(productJson);
+          const matchingVariant = variants.find(variant => {
+            return variant.options.every((opt, index) => opt === selectedOptions[index]);
+          });
+          console.log(matchingVariant ? matchingVariant.id : 'No variant found');
+          return matchingVariant ? matchingVariant.id : null;
+        } catch (err) {
+          return null;
         }
+      }
+
+      form.querySelectorAll('.option-input-d5').forEach(input => {
+        input.addEventListener('change', getVariantId);
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            id: formData.get('id'),
+            quantity: formData.get('quantity')
+          })
+        }).finally(() => alert('done'));
       });
     });
-
-    // ATC Form Submission
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const formData = new FormData(form);
-      const variantId = formData.get('id');
-      const quantity = formData.get('quantity') || 1;
-
-      fetch('/cart/add.js', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          items: [{
-            id: variantId,
-            quantity: parseInt(quantity)
-          }]
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Added to cart:', data);
-        // Optional: Refresh cart or show success message
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-    });
-  });
 });
 </script>
 
