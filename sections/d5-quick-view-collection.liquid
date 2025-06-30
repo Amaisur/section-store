@@ -402,41 +402,36 @@ body{
       if (!dataVariant) return;
 
       const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
-      
+
       function getSelectedOptions(){
-        const selectedOptions = {};
-        form.querySelectorAll('.option-input-d5').forEach(input => {
-          if(input.checked){
-            selectedOptions[input.getAttribute('option-id')] = input.value; 
-          }
+        const optionContainers = form.querySelectorAll('.option-input-d5');
+        const selectedOptions = Array.from(optionContainers).map(container => {
+          const selectedOption = container.querySelector('.up-option-value-d5.selected-value-d5');
+          return selectedOption ? selectedOption.getAttribute('value') : null;
         });
         return selectedOptions;
       }
 
-       function getVariantId(){
+      function getVariantId(){
         const selectedOptions = getSelectedOptions();
-        const productJson = dataVariant.textContent;
+        const productJson = dataVariant.textContent; // Ensure you're extracting the correct JSON from the attribute or textContent
         if (!productJson) return null;
 
-        let variant = '';
+        let variants = [];
         try {
-          variant = JSON.parse(productJson); // Attempt to parse the JSON
+          variants = JSON.parse(productJson); // Attempt to parse the JSON
         } catch (err) {
           console.error('Error parsing JSON:', err);
           return null;
         }
 
-        let match = true;
-        for (const optionId in selectedOptions){
-          if(selectedOptions.hasOwnProperty(optionId)){
-            if(variant[optionId] !== selectedOptions[optionId]){
-                match = false;
-                break;
-            }
-          }
-        }
-        if(match){
-          return variant.id;
+        // Find matching variant
+        const matchingVariant = variants.find(variant => {
+          return variant.options.every((opt, index) => opt === selectedOptions[index]);
+        });
+
+        if (matchingVariant) {
+          return matchingVariant.id;
         }
         return null;
       }
@@ -444,9 +439,9 @@ body{
       form.querySelectorAll('.option-input-d5').forEach(input => {
         input.addEventListener('change', () => {
           const variantId = getVariantId();
-          if(variantId){
+          if (variantId) {
             console.log('v', variantId);
-          }else{
+          } else {
             console.log('noid');
           }
         });
@@ -458,7 +453,7 @@ body{
         const id = formData.get('id');
         const quantity = formData.get('quantity');
 
-        try{
+        try {
           const req = fetch('/cart/add.js', {
             method: 'POST',
             headers: {
@@ -469,15 +464,16 @@ body{
               quantity: quantity
             })
           });
-        }catch(err){
+        } catch (err) {
           console.error(err);
-        }finally{
+        } finally {
           alert('done');
         }
       });
     });
-  })
+  });
 </script>
+
 
 
 <script>
