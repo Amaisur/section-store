@@ -413,9 +413,19 @@ body{
         return selectedOptions;
       }
 
-      function getVariantId(){
+       function getVariantId(){
         const selectedOptions = getSelectedOptions();
-        const variant = JSON.parse(dataVariant);
+        const productJson = dataVariant;
+        if (!productJson) return null;
+
+        let variant;
+        try {
+          variant = JSON.parse(productJson); // Attempt to parse the JSON
+        } catch (err) {
+          console.error('Error parsing JSON:', err);
+          return null;
+        }
+
         let match = true;
         for (const optionId in selectedOptions){
           if(selectedOptions.hasOwnProperty(optionId)){
