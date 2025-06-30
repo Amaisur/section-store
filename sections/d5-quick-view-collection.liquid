@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.cq-card-d5');
     
     cards.forEach(card => {
-      const qtyInput = card.querySelector('.quantity-input-d5');
+      let qtyInput = card.querySelector('.quantity-input-d5');
       const qtyPlus = card.querySelector('.quantity-plus-d5');
       const qtyMinus = card.querySelector('.quantity-minus-d5');
       qtyPlus.addEventListener('click', () => {
