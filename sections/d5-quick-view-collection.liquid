@@ -414,9 +414,13 @@ document.addEventListener('DOMContentLoaded', function() {
     cards.forEach(card => {
       const atcb = card.querySelector('.atc-buuton-d5-cart');
       const dataVariant = card.querySelector('[data-product-json]');
-      let qtyInput = card.querySelector('.quantity-input-d5');
-      const qtyPlus = card.querySelector('.quantity-plus-d5');
-      const qtyMinus = card.querySelector('.quantity-minus-d5');
+      
+      if (!dataVariant) return;
+      
+      const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
+      let qtyInput = form.querySelector('.quantity-input-d5');
+      const qtyPlus = form.querySelector('.quantity-plus-d5');
+      const qtyMinus = form.querySelector('.quantity-minus-d5');
 
       // Increment quantity
       qtyPlus.addEventListener('click', () => {
@@ -429,10 +433,6 @@ document.addEventListener('DOMContentLoaded', function() {
           qtyInput.value = parseInt(qtyInput.value) - 1;
         }
       });
-
-      if (!dataVariant) return;
-
-      const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
       const vinput = form.querySelector('input[name="id"]');
       const regPrice = card.querySelector('[regular-price-d5]');
       function getSelectedOptions() {
