@@ -466,7 +466,7 @@ document.addEventListener('DOMContentLoaded', function() {
           (async () => {
            const req = await fetch('/sections?cart-drawer');
             const res = await req.text();
-            const newDrawer = new DOMParser().parseFromString(res, 'text/html').querySelector('.drawer-inner');
+            const newDrawer = new DOMParser().parseFromString(res, 'text/html').querySelector('.drawer__inner');
             const drawer = document.querySelector('.cart-drawer.drawer');
             drawer.innerHTML = newDrawer.innerHTML;
             drawer.classList.add('active');
