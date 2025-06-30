@@ -399,7 +399,7 @@ body{
     forms.forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const formData = new FormData(e);
+      const formData = new FormData(e.target);
       const id = formData.id;
       const quantity = formData.quantity;
 
