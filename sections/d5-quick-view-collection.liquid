@@ -392,6 +392,35 @@ body{
         </div>
     </div>
 </div>
+
+<script>
+  (function() {
+    const form = document.querySelector('.quick-add-d5.popup-q-open form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const id = formData.id;
+      const quantity = formData.quantity;
+
+      try{
+        const req = fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            id: id,
+            quantity: quantity
+          })
+        })
+      }catch(err){
+          console.error(err)
+      }finally{
+        alert('done')
+      }
+    })
+  })()
+</script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // Quick View Popup Open and Close
