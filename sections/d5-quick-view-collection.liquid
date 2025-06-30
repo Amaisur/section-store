@@ -399,7 +399,9 @@ body{
     cards.forEach(card => {
 
       const dataVariant = card.querySelector('[data-product-json]');
-      const form = card.querySelector('form');
+      if (!dataVariant) return;
+
+      const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
       
       function getSelectedOptions(){
         const selectedOptions = {};
@@ -413,7 +415,7 @@ body{
 
       function getVariantId(){
         const selectedOptions = getSelectedOptions();
-        const variant = JSON.parse(dataVariant);
+        const variant = JSON.parse(dataVariant.getAttribute('data-product-json'));
         let match = true;
         for (const optionId in selectedOptions){
           if(selectedOptions.hasOwnProperty(optionId)){
@@ -428,10 +430,8 @@ body{
         }
         return null;
       }
-      
-      const options = form.querySelectorAll('.option-input-d5');
-      if(options.length > 1){
-        options.forEach(input => {
+
+      form.querySelectorAll('.option-input-d5').forEach(input => {
         input.addEventListener('change', () => {
           const variantId = getVariantId();
           if(variantId){
@@ -441,7 +441,7 @@ body{
           }
         });
       });
-              }
+
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -468,6 +468,7 @@ body{
     });
   })
 </script>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
