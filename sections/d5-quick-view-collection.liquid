@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
       const vinput = form.querySelector('input[name="id"]');
-      const regPrice = form.querySelector('[regular-price-d5]');
+      const regPrice = card.querySelector('[regular-price-d5]');
       function getSelectedOptions() {
         const optionContainers = card.querySelectorAll('.option-flex-d5');
         return Array.from(optionContainers).map(container => {
