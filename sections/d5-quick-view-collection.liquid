@@ -397,6 +397,52 @@ body{
   (function() {
     const forms = document.querySelectorAll('.cq-card-d5 form');
     forms.forEach(form => {
+    const dataVariants = form.querySelector('[data-product-json]');
+    
+    function getSelectedOptions(){
+      const selectedOptions = {};
+
+      form.querySelectorAll('.option-input-d5').forEach(input => {
+        if(input.checked){
+          selectedOptions[input.getAttribute('option-id')] = input.value;
+        }
+      });
+      return selectedOptions;
+    }
+
+    function getVariantId(){
+      const selectedOptions = getSelectedOptions();
+
+      for (i = 0; i < dataVariants.length; i++){
+        const variant = dataVariants[i];
+        const match = true;
+
+        for (const optionId in selectedOptions){
+          if(selectedOptions.hasOwnProperty(optionId)){
+            if(variant[optionId] !== selectedOptions[optionId]){
+                match = false;
+                break;
+            }
+          }
+        }
+        if(match){
+          return variant.id
+        }
+      }
+      return null;
+    }
+
+    form.querySelectorAll('.option-input-d5').forEach(input => {
+      input.addEventListener('change', () => {
+        const variantId = getVariantId();
+        if(variantId){
+          console.log('v', variantId)
+        }else{
+          console.log('noid')
+        }
+      })
+    })
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
