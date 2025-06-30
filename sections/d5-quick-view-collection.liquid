@@ -412,6 +412,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.cq-card-d5');
     
     cards.forEach(card => {
+      const atcb = card.querySelector('.atc-buuton-d5-cart');
+      const dataVariant = card.querySelector('[data-product-json]');
+      
       let qtyInput = card.querySelector('.quantity-input-d5');
       const qtyPlus = card.querySelector('.quantity-plus-d5');
       const qtyMinus = card.querySelector('.quantity-minus-d5');
@@ -422,8 +425,6 @@ document.addEventListener('DOMContentLoaded', function() {
       qtyMinus.addEventListener('click', () => {
         qtyInput.value = - 1;
       })}
-      const atcb = card.querySelector('.atc-buuton-d5-cart');
-      const dataVariant = card.querySelector('[data-product-json]');
       if (!dataVariant) return;
 
       const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
