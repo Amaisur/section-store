@@ -476,6 +476,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const res = await req.text();
       const drawer = document.querySelector('cart-drawer.drawer');
       drawer.html = req;
+      drawer.classList.add('active');
     }
 });
 </script>
