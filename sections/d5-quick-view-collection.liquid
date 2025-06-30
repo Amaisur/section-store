@@ -217,6 +217,8 @@ body{
   cursor: pointer;
   padding: 2px 0;
   flex: 1;
+  display: flex;
+  justify-content: center;
 }
 .sub-heading-d5{
   text-align: left;
@@ -410,6 +412,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.cq-card-d5');
     
     cards.forEach(card => {
+      const qtyInput = card.querySelector('.quantity-input-d5');
+      const qtyPlus = card.querySelector('.quantity-plus-d5');
+      const qtyMinus = card.querySelector('.quantity-minus-d5');
+      qtyPlus.addEventListener('click', () => {
+        qtyInput.value = + 1;
+      })
+      if(qtyInput.value < 1){
+      qtyMinus.addEventListener('click', () => {
+        qtyInput.value = - 1;
+      })}
       const atcb = card.querySelector('.atc-buuton-d5-cart');
       const dataVariant = card.querySelector('[data-product-json]');
       if (!dataVariant) return;
