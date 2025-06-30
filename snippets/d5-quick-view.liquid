@@ -1,6 +1,6 @@
 {%  liquid 
-    assign c_variant = product.variants.first       
-    if product.variants.size > 1
+    assign c_variant = home_product.variants.first       
+    if home_product.variants.size > 1
         assign m_variants = true
     endif
 %}
