@@ -394,9 +394,9 @@ body{
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const popupopenD5 = document.querySelector('.quick-add-d5');
+  // Quick View Popup Open and Close
   const addToCartBtns = document.querySelectorAll('.quick-add-popup-btn-d5');
-  
+
   addToCartBtns.forEach(function(addToCartBtn) {
     const quickAddContainer = addToCartBtn.nextElementSibling;
     const overlay = quickAddContainer.querySelector('.quick-add-overlay-d5');
@@ -405,15 +405,7 @@ document.addEventListener('DOMContentLoaded', function() {
     addToCartBtn.addEventListener('click', function() {
       quickAddContainer.classList.add('popup-q-open');
       document.body.classList.add('no-scroll_popup-body-d5');
-      setupQuantitySelectors();
       initializeSlider();
-      
-      const productJson = document.querySelector(`#ProductJson-${this.dataset.productId}`);
-      if (productJson) {
-        const product = JSON.parse(productJson.textContent);
-        setupOptionSelection(product, quickAddContainer);
-        setupAddToCart(product, quickAddContainer);
-      }
     });
 
     overlay.addEventListener('click', function() {
@@ -427,133 +419,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  function setupQuantitySelectors() {
-    const activePopup = document.querySelector('.popup-q-open');
-    if (!activePopup) return;
-
-    const quantityInput = activePopup.querySelector('.quantity-input-d5');
-    const minusButton = activePopup.querySelector('.quantity-minus-d5');
-    const plusButton = activePopup.querySelector('.quantity-plus-d5');
-
-    minusButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      let currentValue = parseInt(quantityInput.value);
-      if (currentValue > 1) quantityInput.value = currentValue - 1;
-    });
-
-    plusButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      let currentValue = parseInt(quantityInput.value);
-      quantityInput.value = currentValue + 1;
-    });
-  }
-
-  function setupOptionSelection(product, container) {
-    const optionInputs = container.querySelectorAll('.option-input-d5');
-    const priceDisplay = container.querySelector('.product-info-d5 p');
-    const sliderImages = container.querySelectorAll('.q-slide-d5 img');
-    
-    let selectedOptions = {};
-    product.options.forEach((option, index) => {
-      selectedOptions[option.name] = option.values[0];
-    });
-
-    // Select first option by default
-    product.options.forEach(option => {
-      const firstOptionInput = container.querySelector(`.option-input-d5[data-option-name="${option.name}"][value="${option.values[0]}"]`);
-      if (firstOptionInput) firstOptionInput.checked = true;
-    });
-
-    function updateVariant() {
-      // Create an array of selected options in the proper order
-      const selectedValues = product.options.map(option => selectedOptions[option.name]);
-      
-      // Find the matching variant
-      const matchedVariant = product.variants.find(variant => {
-        return variant.options.every((option, index) => option === selectedValues[index]);
-      });
-      
-      if (matchedVariant) {
-        // Update price
-        priceDisplay.textContent = Shopify.formatMoney(matchedVariant.price);
-
-        // Update image if variant has one
-        if (matchedVariant.featured_image) {
-          const imageSrc = matchedVariant.featured_image.src.split('?')[0];
-          sliderImages.forEach((img, index) => {
-            if (img.src.includes(imageSrc)) {
-              goToSlide(container, index);
-            }
-          });
-        }
-
-        // Return the matched variant ID
-        return matchedVariant.id;
-      }
-      return product.variants[0].id;
-    }
-
-    optionInputs.forEach(input => {
-      input.addEventListener('change', function() {
-        const optionName = this.dataset.optionName;
-        const optionValue = this.value;
-
-        selectedOptions[optionName] = optionValue;
-        const variantId = updateVariant();
-        setupAddToCart(product, container, variantId);
-      });
-    });
-
-    // Initialize with first variant
-    const initialVariantId = updateVariant();
-    setupAddToCart(product, container, initialVariantId);
-  }
-
-function setupAddToCart(product, container, variantId) {
-  const atcButton = container.querySelector('#AddToCart');
-
-  atcButton.addEventListener('click', function(e) {
-    e.preventDefault();
-
-    const quantityInput = container.querySelector('.quantity-input-d5');
-    const quantity = parseInt(quantityInput.value, 10);
-    const data = { id: variantId, quantity: quantity };
-
-    atcButton.disabled = true;
-    container.querySelector('.atc-content-d5').style.display = 'none';
-    container.querySelector('.atc-spinner-d5').style.display = 'inline-block';
-
-    fetch('/cart/add.js', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(() => {
-      resetATCButton(container);
-      document.body.classList.remove('no-scroll_popup-body-d5');
-      container.classList.remove('popup-q-open');
-
-      // Show success message
-      if (window.showQuickAddMessage) {
-        window.showQuickAddMessage('Item added to cart');
-      }
-    })
-    .catch(() => {
-      resetATCButton(container);
-      alert('Error adding item to cart');
-    });
-  });
-}
-
-
-  function resetATCButton(container) {
-    const atcButton = container.querySelector('#AddToCart');
-    atcButton.disabled = false;
-    container.querySelector('.atc-content-d5').style.display = 'inline-block';
-    container.querySelector('.atc-spinner-d5').style.display = 'none';
-  }
-
+  // Slider Initialization
   function initializeSlider() {
     document.querySelectorAll('.q-slider-container-d5').forEach(function(container) {
       const slider = container.querySelector('.q-slider-d5');
@@ -564,31 +430,20 @@ function setupAddToCart(product, container, variantId) {
 
       let currentIndex = 0;
       const totalSlides = slides.length;
-      let startX = 0;
-      let currentX = 0;
-      let isDragging = false;
-      const dragThreshold = 5;
 
       function updateButtons() {
-        if (totalSlides <= 1) {
-          prevBtn.style.display = 'none';
-          nextBtn.style.display = 'none';
-        } else {
-          prevBtn.style.display = currentIndex === 0 ? 'none' : 'block';
-          nextBtn.style.display = currentIndex === totalSlides - 1 ? 'none' : 'block';
-        }
+        prevBtn.style.display = currentIndex === 0 ? 'none' : 'block';
+        nextBtn.style.display = currentIndex === totalSlides - 1 ? 'none' : 'block';
       }
 
       function updateDots() {
         dotsContainer.innerHTML = '';
-        if (totalSlides > 1) {
-          for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('span');
-            dot.classList.add('q-dot-d5');
-            if (i === currentIndex) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(container, i));
-            dotsContainer.appendChild(dot);
-          }
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement('span');
+          dot.classList.add('q-dot-d5');
+          if (i === currentIndex) dot.classList.add('active');
+          dot.addEventListener('click', () => goToSlide(container, i));
+          dotsContainer.appendChild(dot);
         }
       }
 
@@ -601,56 +456,6 @@ function setupAddToCart(product, container, variantId) {
         updateDots();
       }
 
-      function handleDragStart(e) {
-        isDragging = true;
-        startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-        currentX = startX;
-        slider.style.transition = 'none';
-      }
-
-      function handleDragMove(e) {
-        if (!isDragging) return;
-        const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-        const diff = x - currentX;
-        currentX = x;
-        
-        if (Math.abs(x - startX) >= dragThreshold) {
-          const currentTransform = getComputedStyle(slider).transform;
-          let currentTranslate = 0;
-          if (currentTransform !== 'none') {
-            const matrix = currentTransform.match(/^matrix\((.+)\)$/);
-            if (matrix) currentTranslate = parseFloat(matrix[1].split(', ')[4]);
-          }
-          slider.style.transform = `translateX(${currentTranslate + diff}px)`;
-        }
-      }
-
-      function handleDragEnd(e) {
-        if (!isDragging) return;
-        isDragging = false;
-        const x = e.type === 'touchend' ? e.changedTouches[0].clientX : e.clientX;
-        const diff = x - startX;
-        
-        if (Math.abs(diff) >= dragThreshold) {
-          if (diff > 0 && currentIndex > 0) {
-            goToSlide(container, currentIndex - 1);
-          } else if (diff < 0 && currentIndex < totalSlides - 1) {
-            goToSlide(container, currentIndex + 1);
-          } else {
-            goToSlide(container, currentIndex);
-          }
-        } else {
-          goToSlide(container, currentIndex);
-        }
-      }
-
-      slider.addEventListener('mousedown', handleDragStart);
-      document.addEventListener('mousemove', handleDragMove);
-      document.addEventListener('mouseup', handleDragEnd);
-      slider.addEventListener('touchstart', handleDragStart, { passive: true });
-      document.addEventListener('touchmove', handleDragMove, { passive: false });
-      document.addEventListener('touchend', handleDragEnd);
-
       prevBtn.addEventListener('click', () => currentIndex > 0 && goToSlide(container, currentIndex - 1));
       nextBtn.addEventListener('click', () => currentIndex < totalSlides - 1 && goToSlide(container, currentIndex + 1));
 
@@ -658,7 +463,8 @@ function setupAddToCart(product, container, variantId) {
       updateDots();
     });
   }
-}); 
+});
+
 </script>
 {% schema %}
 {
