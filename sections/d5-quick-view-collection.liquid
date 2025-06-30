@@ -471,7 +471,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const oldDrawer = document.querySelector('.drawer__inner');
             oldDrawer.innerHTML = newDrawer.innerHTML;
             drawer.classList.add('active'); 
-
+              if(drawer.classList.contains('is-empty')){
+                drawer.classList.remove('is-empty');
+              }
           })();
         });
       });
