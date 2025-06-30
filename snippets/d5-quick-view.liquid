@@ -71,8 +71,8 @@
                     </div>
                 </div>
                 <input type="hidden" name="id" value="{{ c_variant.id }}">
-        <button type="submit" name="add" id="AddToCart" class="atc-buuton-d5-cart d5-button" {% unless c_variant.availble %}disabled{% endunless %}>
-        {% if c_variant.availble %}<span class="atc-content-d5">{{ 'Add to Cart' }}</span>{% else %}<span class="atc-content-d5">{{ 'Sold' }}</span>{% endif %}
+        <button type="submit" name="add" id="AddToCart" class="atc-buuton-d5-cart d5-button" {% unless c_variant.available %}disabled{% endunless %}>
+        {% if c_variant.available %}<span class="atc-content-d5">{{ 'Add to Cart' }}</span>{% else %}<span class="atc-content-d5">{{ 'Sold' }}</span>{% endif %}
                     <span class="atc-spinner-d5"></span>
                 </button>
                 </form>
