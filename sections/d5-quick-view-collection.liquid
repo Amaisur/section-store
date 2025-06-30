@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function getVariantId() {
   const selectedOptions = getSelectedOptions();
-  const productJson = document.querySelector('[data-product-json]').textContent;  // Get the product variants JSON
+  const productJson = card.querySelector('[data-product-json]').textContent;  // Get the product variants JSON
   
   try {
     const variants = JSON.parse(productJson);  // Parse the JSON into JavaScript objects
