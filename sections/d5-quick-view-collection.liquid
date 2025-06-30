@@ -465,20 +465,17 @@ document.addEventListener('DOMContentLoaded', function() {
           })
         }).finally(() => {
         alert('done')
-         await reRender();
-      });
-      });
-    });
-
-
-    async function reRender(){
+         (async () => {
       const req = await fetch('/sections?cart-drawer')
       const res = await req.text();
       const drawer = document.querySelector('cart-drawer.drawer');
       drawer.html = req;
       drawer.classList.add('active');
-    }
-});
+      })
+      });
+      });
+    });
+              })
 </script>
 
 
