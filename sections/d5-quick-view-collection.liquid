@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function() {
           const matchingVariant = variants.find(variant => {
             return variant.options.every((opt, index) => opt === selectedOptions[index]);
           });
-         if (matchingVariant) {
+          if (matchingVariant) {
             const price = matchingVariant.price;
             const comparePrice = matchingVariant.compare_at_price;
             const img = matchingVariant.image; 
@@ -430,7 +430,6 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Compare Price:', comparePrice);
             console.log('Image ID:', img);
 
-            // Return variant id and other details as needed
             return {
               id: matchingVariant.id,
               price: price,
@@ -447,7 +446,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
 
-
       form.querySelectorAll('.option-input-d5').forEach(input => {
         input.addEventListener('change', getVariantId);
       });
@@ -463,21 +461,20 @@ document.addEventListener('DOMContentLoaded', function() {
             id: formData.get('id'),
             quantity: formData.get('quantity')
           })
-        }).(async () => {
-  try {
-    const req = await fetch('/sections?cart-drawer');
-    const res = await req.text();
-    const drawer = document.querySelector('.cart-drawer.drawer');
-    drawer.innerHTML = res;
-    drawer.classList.add('active');
-    alert('done');
-  } catch (error) {
-    console.error('Error fetching cart drawer:', error);
-  }
-})();
+        }).finally(() => {
+          alert('done');
+          (async () => {
+            const req = await fetch('/sections?cart-drawer');
+            const res = await req.text();
+            const drawer = document.querySelector('.cart-drawer.drawer');
+            drawer.innerHTML = res;
+            drawer.classList.add('active');
+          })();
+        });
       });
     });
-              })
+});
+
 </script>
 
 
