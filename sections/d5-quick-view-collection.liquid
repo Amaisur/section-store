@@ -511,7 +511,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const doc = new DOMParser().parseFromString(res, 'text/html')
             const newDrawer = doc.querySelector('.drawer__inner');
             const newIcon = doc.querySelector('.cart-bubble-d5').innerHTML;
-            const oldIcon = doc.querySelector('#cart-icon-bubble');
+            const oldIcon = document.querySelector('#cart-icon-bubble');
             const drawer = document.querySelector('cart-drawer.drawer');
             const oldDrawer = document.querySelector('.drawer__inner');
             oldIcon.innerHTML = newIcon;
