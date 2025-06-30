@@ -468,7 +468,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const res = await req.text();
             const newDrawer = new DOMParser().parseFromString(res, 'text/html').querySelector('.drawer__inner');
             const drawer = document.querySelector('.cart-drawer.drawer');
-            drawer.innerHTML = newDrawer.innerHTML;
+            const oldDrawer = document.querySelector('.drawer__inner');
+            oldDrawer.innerHTML = newDrawer.innerHTML;
             drawer.classList.add('active');
 
           })();
