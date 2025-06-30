@@ -468,7 +468,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const res = await req.text();
             const newDrawer = req.querySelector('.drawer-inner');
             const innerDrawer = document.querySelector('drawer-inner');
-            const innerDrawer = document.querySelector('cart-drawer.drawer'); 
+            const drawer = document.querySelector('cart-drawer.drawer'); 
             drawer.innerHTML = newDrawer;
             drawer.classList.add('active');
           })();
