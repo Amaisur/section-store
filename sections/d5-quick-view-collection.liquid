@@ -414,18 +414,22 @@ document.addEventListener('DOMContentLoaded', function() {
     cards.forEach(card => {
       const atcb = card.querySelector('.atc-buuton-d5-cart');
       const dataVariant = card.querySelector('[data-product-json]');
-
       let qtyInput = card.querySelector('.quantity-input-d5');
       const qtyPlus = card.querySelector('.quantity-plus-d5');
       const qtyMinus = card.querySelector('.quantity-minus-d5');
+
+      // Increment quantity
       qtyPlus.addEventListener('click', () => {
-        qtyInput.value = + 1;
-      })
-      if(qtyInput.value < 1){
+        qtyInput.value = parseInt(qtyInput.value) + 1;
+      });
+
+      // Decrement quantity with validation
       qtyMinus.addEventListener('click', () => {
-        qtyInput.value = - 1;
-      })
-    }
+        if (parseInt(qtyInput.value) > 1) {
+          qtyInput.value = parseInt(qtyInput.value) - 1;
+        }
+      });
+
       if (!dataVariant) return;
 
       const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
