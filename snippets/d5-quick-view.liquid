@@ -1,3 +1,9 @@
+{%  liquid 
+    assign c_variant = product.variants.first       
+    if product.variants.size > 1
+        assign m_variants = true
+    endif
+%}
 <div class="main-popup-d5">
     <div class="close-icon-d5">
         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1" fill="none"
@@ -35,44 +41,46 @@
                 <div class="product-info-d5">
                     <h3>{{ home_product.title }}</h3>
                     {% comment %} {% render 'rating-star-d5', product: home_product %} {% endcomment %}
-                    <p>{{ home_product.price | money }}</p>
+                    <p>{{ c_variant.price | money }}</p>
                 </div>
-                
-               {% for option in home_product.options_with_values %}
-<div class="product-option-d5">
-    <p class="sub-heading-d5">{{ option.name }}</p>
-    <div class="option-flex-d5">
-        {% for value in option.values %}
-        <label class="option-label-d5">
-            <input type="radio" 
-                   class="option-input-d5" 
-                   name="{{ option.name | handleize }}" 
-                   value="{{ value }}"
-                   data-option-name="{{ option.name }}"
-                   {% if forloop.first %}checked{% endif %}>
-            <span class="option-value-d5">{{ value }}</span>
-        </label>
-        {% endfor %}
-    </div>
-</div>
-{% endfor %}
-                
+
+                <form action="cart/add" method="POST">
+                {% if m_variants %}
+                {% for option in home_product.options_with_values %}
+                <div class="product-option-d5">
+                    <p class="sub-heading-d5">{{ option.name }}</p>
+                    <div class="option-flex-d5">
+                        {% for value in option.values %}
+                        <label class="option-label-d5">
+                            <input type="radio" class="option-input-d5" name="{{ option.name | handleize }}"
+                                value="{{ value }}" data-option-name="{{ option.name }}" {% if forloop.first %}checked{%
+                                endif %}>
+                            <span class="option-value-d5">{{ value }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
                 <div class="main-quantity-box-d5">
                     <p class="sub-heading-d5">Quantity</p>
                     <div class="quantity-select-d5">
                         <span class="quantity-minus-d5 quantity-button-d5">-</span>
-                        <input type="text" class="quantity-input-d5" value="1" min="1" max="" step="1">
+                        <input type="text" class="quantity-input-d5" value="1" min="1" max="" step="1" name="quantity">
                         <span class="quantity-plus-d5 quantity-button-d5">+</span>
                     </div>
                 </div>
-                <button type="submit" name="add" id="AddToCart" class="atc-buuton-d5-cart d5-button">
-                    <span class="atc-content-d5">{{ 'Add to Cart' }}</span>
+                <input type="hidden" name="id" value="{{ c_variant.id }}">
+        <button type="submit" name="add" id="AddToCart" class="atc-buuton-d5-cart d5-button" {% unless c_variant.availble %}disabled{% endunless %}>
+        {% if c_variant.availble %}<span class="atc-content-d5">{{ 'Add to Cart' }}</span>{% else %}<span class="atc-content-d5">{{ 'Sold' }}</span>{% endif %}
                     <span class="atc-spinner-d5"></span>
                 </button>
+                </form>
             </div>
-        </div>
+            </div>
+            
     </div>
     <div type="application/json" data-product-json hidden>
-                {{ home_product | json |  escape }}
-                </div> 
+        {{ home_product | json | escape }}
+    </div>
 </div>
