@@ -413,7 +413,7 @@ body{
 
       function getVariantId(){
         const selectedOptions = getSelectedOptions();
-        const variant = JSON.parse(dataVariant.getAttribute('data-product-json'));
+        const variant = JSON.parse(dataVariant);
         let match = true;
         for (const optionId in selectedOptions){
           if(selectedOptions.hasOwnProperty(optionId)){
