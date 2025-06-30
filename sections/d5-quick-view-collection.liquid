@@ -466,6 +466,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }).finally(() => alert('done'));
       });
     });
+
+
+    async function reRender(){
+      const req = await fetch('/sections?cart-drawer')
+      const res = req.text();
+      const drawer = document.querySelector('cart-drawer.drawer');
+      drawer.html = req;
+    }
 });
 </script>
 
