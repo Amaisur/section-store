@@ -432,13 +432,14 @@ body{
 
         if (matchingVariant) {
           return matchingVariant.id;
+          console.log('vv', matchingVariant.id)
         }
         return null;
       }
 
       form.querySelectorAll('.option-input-d5').forEach(input => {
         input.addEventListener('change', () => {
-          const variantId = getVariantId();
+          getVariantId();
           if (variantId) {
             console.log('v', variantId);
           } else {
