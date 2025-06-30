@@ -404,28 +404,30 @@ document.addEventListener('DOMContentLoaded', function() {
       const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
 
       function getSelectedOptions() {
-        const optionContainers = form.querySelectorAll('.option-flex-d5');
-        return Array.from(optionContainers).map(container => {
-          const selectedOption = container.querySelector('.option-input-d5:checked');
-          return selectedOption ? selectedOption.getAttribute('value') : null;
-        });
-      }
+  const optionContainers = document.querySelectorAll('.option-flex-d5');
+  return Array.from(optionContainers).map(container => {
+    const selectedOption = container.querySelector('.option-input-d5:checked');
+    return selectedOption ? selectedOption.value : null;
+  });
+}
 
-      function getVariantId() {
-        const selectedOptions = getSelectedOptions();
-        const productJson = dataVariant.textContent;
-        
-        try {
-          const variants = JSON.parse(productJson);
-          const matchingVariant = variants.find(variant => {
-            return variant.options.every((opt, index) => opt === selectedOptions[index]);
-          });
-          console.log(matchingVariant ? matchingVariant.id : 'No variant found');
-          return matchingVariant ? matchingVariant.id : null;
-        } catch (err) {
-          return null;
-        }
-      }
+function getVariantId() {
+  const selectedOptions = getSelectedOptions();
+  const productJson = document.querySelector('[data-product-json]').textContent;  // Get the product variants JSON
+  
+  try {
+    const variants = JSON.parse(productJson);  // Parse the JSON into JavaScript objects
+    const matchingVariant = variants.find(variant => {
+      return variant.options.every((opt, index) => opt === selectedOptions[index]);
+    });
+    console.log(matchingVariant ? matchingVariant.id : 'No variant found');
+    return matchingVariant ? matchingVariant.id : null;  // Return the matching variant's ID or null if not found
+  } catch (err) {
+    console.error('Error parsing variant data:', err);
+    return null;
+  }
+}
+
 
       form.querySelectorAll('.option-input-d5').forEach(input => {
         input.addEventListener('change', getVariantId);
