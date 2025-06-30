@@ -396,80 +396,52 @@ body{
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.cq-card-d5');
+    
     cards.forEach(card => {
-
       const dataVariant = card.querySelector('[data-product-json]');
       if (!dataVariant) return;
 
       const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
 
-      function getSelectedOptions(){
+      function getSelectedOptions() {
         const optionContainers = form.querySelectorAll('.option-input-d5');
-        const selectedOptions = Array.from(optionContainers).map(container => {
+        return Array.from(optionContainers).map(container => {
           const selectedOption = container.querySelector('.up-option-value-d5.selected-value-d5');
           return selectedOption ? selectedOption.getAttribute('value') : null;
         });
-        return selectedOptions;
       }
 
-      function getVariantId(){
+      function getVariantId() {
         const selectedOptions = getSelectedOptions();
-        const productJson = dataVariant.textContent; // Ensure you're extracting the correct JSON from the attribute or textContent
-        if (!productJson) return null;
-
-        let variants = [];
+        const productJson = dataVariant.textContent;
+        
         try {
-          variants = JSON.parse(productJson); // Attempt to parse the JSON
+          const variants = JSON.parse(productJson);
+          const matchingVariant = variants.find(variant => {
+            return variant.options.every((opt, index) => opt === selectedOptions[index]);
+          });
+          return matchingVariant ? matchingVariant.id : null;
         } catch (err) {
-          console.error('Error parsing JSON:', err);
           return null;
         }
-
-        // Find matching variant
-        const matchingVariant = variants.find(variant => {
-          return variant.options.every((opt, index) => opt === selectedOptions[index]);
-        });
-
-        if (matchingVariant) {
-          return matchingVariant.id;
-          console.log('vv', matchingVariant.id)
-        }
-        return null;
       }
 
       form.querySelectorAll('.option-input-d5').forEach(input => {
-        input.addEventListener('change', () => {
-          getVariantId();
-          // if (variantId) {
-          //   console.log('v', variantId);
-          // } else {
-          //   console.log('noid');
-          // }
-        });
+        input.addEventListener('change', getVariantId);
       });
 
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
-        const id = formData.get('id');
-        const quantity = formData.get('quantity');
-
-        try {
-          const req = fetch('/cart/add.js', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              id: id,
-              quantity: quantity
-            })
-          });
-        } catch (err) {
-          console.error(err);
-        } finally {
-          alert('done');
-        }
+        
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            id: formData.get('id'),
+            quantity: formData.get('quantity')
+          })
+        }).finally(() => alert('done'));
       });
     });
   });
