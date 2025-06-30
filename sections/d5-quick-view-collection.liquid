@@ -420,13 +420,27 @@ document.addEventListener('DOMContentLoaded', function() {
           const matchingVariant = variants.find(variant => {
             return variant.options.every((opt, index) => opt === selectedOptions[index]);
           });
-          console.log(matchingVariant ? matchingVariant.id : 'No variant found');
-          return matchingVariant ? matchingVariant.id : null;  
-          const price = matchingVariant.price;
-          const comparePrice = matchingVariant.compare_at_price;
-          const img = matchingVariant.image.id;
+         if (matchingVariant) {
+            const price = matchingVariant.price;
+            const comparePrice = matchingVariant.compare_at_price;
+            const img = matchingVariant.image.id;
 
-          console.log('data:', price, comparePrice, img)
+            console.log('Matching Variant ID:', matchingVariant.id);
+            console.log('Price:', price);
+            console.log('Compare Price:', comparePrice);
+            console.log('Image ID:', img);
+
+            // Return variant id and other details as needed
+            return {
+              id: matchingVariant.id,
+              price: price,
+              comparePrice: comparePrice,
+              img: img
+            };
+          } else {
+            console.log('No matching variant found');
+            return null;
+          }
         } catch (err) {
           console.error('Error parsing variant data:', err);
           return null;
