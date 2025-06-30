@@ -418,13 +418,13 @@ body{
         const productJson = dataVariant;
         if (!productJson) return null;
 
-        let variant;
-        try {
-          variant = JSON.parse(productJson); // Attempt to parse the JSON
-        } catch (err) {
-          console.error('Error parsing JSON:', err);
-          return null;
-        }
+        let variant = dataVariant
+        // try {
+        //   variant = JSON.parse(productJson); // Attempt to parse the JSON
+        // } catch (err) {
+        //   console.error('Error parsing JSON:', err);
+        //   return null;
+        // }
 
         let match = true;
         for (const optionId in selectedOptions){
