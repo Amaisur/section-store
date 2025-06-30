@@ -428,8 +428,10 @@ body{
         }
         return null;
       }
-
-      form.querySelectorAll('input.option-input-d5').forEach(input => {
+      
+      const options = form.querySelectorAll('.option-input-d5');
+      if(options)
+        options.forEach(input => {
         input.addEventListener('change', () => {
           const variantId = getVariantId();
           if(variantId){
@@ -439,7 +441,7 @@ body{
           }
         });
       });
-
+              }
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
