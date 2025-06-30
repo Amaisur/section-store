@@ -394,58 +394,94 @@ body{
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.cq-card-d5');
-    
-    cards.forEach(card => {
-      const dataVariant = card.querySelector('[data-product-json]');
-      if (!dataVariant) return;
+document.addEventListener('DOMContentLoaded', function() {
+  const popup = document.querySelector('.main-popup-d5');
+  if (!popup) return;
 
-      const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
+  const form = popup.querySelector('.quick-atc-form-d5');
+  const variantData = JSON.parse(popup.querySelector('[data-product-json]').textContent);
 
-      function getSelectedOptions() {
-        const optionContainers = form.querySelectorAll('.option-input-d5');
-        return Array.from(optionContainers).map(container => {
-          const selectedOption = container.querySelector('.up-option-value-d5.selected-value-d5');
-          return selectedOption ? selectedOption.getAttribute('value') : null;
-        });
-      }
-
-      function getVariantId() {
-        const selectedOptions = getSelectedOptions();
-        const productJson = dataVariant.textContent;
-        
-        try {
-          const variants = JSON.parse(productJson);
-          const matchingVariant = variants.find(variant => {
-            return variant.options.every((opt, index) => opt === selectedOptions[index]);
-          });
-          return matchingVariant ? matchingVariant.id : null;
-          console.log('heel0', matchingVariant)
-        } catch (err) {
-          return null;
-        }
-      }
-
-      form.querySelectorAll('.option-input-d5').forEach(input => {
-        input.addEventListener('change', getVariantId);
-      });
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        
-        fetch('/cart/add.js', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            id: formData.get('id'),
-            quantity: formData.get('quantity')
-          })
-        }).finally(() => alert('done'));
-      });
+  // Update variant when options change
+  form.querySelectorAll('.option-input-d5').forEach(input => {
+    input.addEventListener('change', function() {
+      updateSelectedVariant();
     });
   });
+
+  function updateSelectedVariant() {
+    const selectedOptions = [];
+    
+    // Get all option groups
+    const optionGroups = form.querySelectorAll('.product-option-d5');
+    
+    optionGroups.forEach(group => {
+      const selectedInput = group.querySelector('.option-input-d5:checked');
+      if (selectedInput) {
+        selectedOptions.push(selectedInput.value);
+      }
+    });
+
+    // Find matching variant
+    const matchingVariant = variantData.find(variant => {
+      return variant.options.every((option, index) => {
+        return option === selectedOptions[index];
+      });
+    });
+
+    if (matchingVariant) {
+      // Update the hidden input with the variant ID
+      form.querySelector('input[name="id"]').value = matchingVariant.id;
+      
+      // Update price
+      const priceElement = popup.querySelector('.product-info-d5 p');
+      if (priceElement) {
+        // Format the price as needed (you might need to adjust this)
+        priceElement.textContent = '$' + (matchingVariant.price / 100).toFixed(2);
+      }
+      
+      // Update add to cart button availability
+      const addToCartButton = form.querySelector('.atc-buuton-d5-cart');
+      if (addToCartButton) {
+        addToCartButton.disabled = !matchingVariant.available;
+        const atcContent = addToCartButton.querySelector('.atc-content-d5');
+        if (atcContent) {
+          atcContent.textContent = matchingVariant.available ? 'Add to Cart' : 'Sold Out';
+        }
+      }
+    }
+  }
+
+  // Initialize with first variant
+  updateSelectedVariant();
+
+  // Form submission
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        items: [{
+          id: formData.get('id'),
+          quantity: formData.get('quantity') || 1
+        }]
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Handle successful add to cart
+      console.log('Added to cart:', data);
+      // You might want to update the cart count or show a success message here
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  });
+});
 </script>
 
 
