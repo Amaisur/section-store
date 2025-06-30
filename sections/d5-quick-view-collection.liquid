@@ -395,10 +395,10 @@ body{
 
 <script>
   (function() {
-    const forms = document.querySelectorAll('.cq-card-d5 form');
+    const forms = document.querySelectorAll('.cq-card-d5');
     forms.forEach(form => {
     const dataVariants = form.querySelector('[data-product-json]');
-    
+    const formEl = form.querySelector('form');
     function getSelectedOptions(){
       const selectedOptions = {};
 
@@ -443,7 +443,7 @@ body{
       })
     })
 
-    form.addEventListener('submit', (e) => {
+    formEl.addEventListener('submit', (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
       const id = formData.id;
