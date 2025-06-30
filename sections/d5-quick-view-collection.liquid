@@ -397,26 +397,23 @@ body{
   (function() {
     const forms = document.querySelectorAll('.cq-card-d5');
     forms.forEach(form => {
-    const dataVariants = form.querySelector('[data-product-json]');
-    const formEl = form.querySelector('.quick-atc-form-d5');
-    function getSelectedOptions(){
-      const selectedOptions = {};
+      const dataVariant = form.querySelector('[data-product-json]');
+      const formEl = form.querySelector('.quick-atc-form-d5');
+      
+      function getSelectedOptions(){
+        const selectedOptions = {};
+        form.querySelectorAll('.option-input-d5').forEach(input => {
+          if(input.checked){
+            selectedOptions[input.getAttribute('option-id')] = input.value; 
+          }
+        });
+        return selectedOptions;
+      }
 
-      form.querySelectorAll('.option-input-d5').forEach(input => {
-        if(input.checked){
-          selectedOptions[input.getAttribute('option-id')] = input.value; 
-        }
-      });
-      return selectedOptions;
-    }
-
-    function getVariantId(){
-      const selectedOptions = getSelectedOptions();
-
-      for (i = 0; i < dataVariants.length; i++){
-        const variant = dataVariants[i];
-        const match = true;
-
+      function getVariantId(){
+        const selectedOptions = getSelectedOptions();
+        const variant = JSON.parse(dataVariant.getAttribute('data-product-json'));
+        let match = true;
         for (const optionId in selectedOptions){
           if(selectedOptions.hasOwnProperty(optionId)){
             if(variant[optionId] !== selectedOptions[optionId]){
@@ -426,49 +423,49 @@ body{
           }
         }
         if(match){
-          return variant.id
+          return variant.id;
         }
+        return null;
       }
-      return null;
-    }
 
-    form.querySelectorAll('.option-input-d5').forEach(input => {
-      input.addEventListener('change', () => {
-        const variantId = getVariantId();
-        if(variantId){
-          console.log('v', variantId)
-        }else{
-          console.log('noid')
+      form.querySelectorAll('.option-input-d5').forEach(input => {
+        input.addEventListener('change', () => {
+          const variantId = getVariantId();
+          if(variantId){
+            console.log('v', variantId);
+          }else{
+            console.log('noid');
+          }
+        });
+      });
+
+      formEl.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const id = formData.get('id');
+        const quantity = formData.get('quantity');
+
+        try{
+          const req = fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              id: id,
+              quantity: quantity
+            })
+          });
+        }catch(err){
+          console.error(err);
+        }finally{
+          alert('done');
         }
-      })
-    })
-
-    formEl.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const formData = new FormData(e.target);
-      const id = formData.id;
-      const quantity = formData.quantity;
-
-      try{
-        const req = fetch('/cart/add.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            id: id,
-            quantity: quantity
-          })
-        })
-      }catch(err){
-          console.error(err)
-      }finally{
-        alert('done')
-      }
-    })
-    })
+      });
+    });
   })();
 </script>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // Quick View Popup Open and Close
