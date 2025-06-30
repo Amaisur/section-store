@@ -395,7 +395,8 @@ body{
 
 <script>
   (function() {
-    const form = document.querySelector('.quick-add-d5.popup-q-open form');
+    const forms = document.querySelector('.cq-card-d5 form');
+    forms.forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const formData = new FormData(this);
@@ -419,7 +420,8 @@ body{
         alert('done')
       }
     })
-  })()
+    })
+  })();
 </script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
