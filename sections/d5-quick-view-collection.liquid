@@ -464,13 +464,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }).finally(() => {
           alert('done');
           (async () => {
-            const req = await fetch('/sections?cart-drawer');
+           const req = await fetch('/sections?cart-drawer');
             const res = await req.text();
-            const newDrawer = req.querySelector('.drawer-inner');
-            const innerDrawer = document.querySelector('drawer-inner');
-            const drawer = document.querySelector('cart-drawer.drawer'); 
-            drawer.innerHTML = newDrawer;
+            const newDrawer = new DOMParser().parseFromString(res, 'text/html').querySelector('.drawer-inner');
+            const drawer = document.querySelector('.cart-drawer.drawer');
+            drawer.innerHTML = newDrawer.innerHTML;
             drawer.classList.add('active');
+
           })();
         });
       });
