@@ -434,14 +434,18 @@ document.addEventListener('DOMContentLoaded', function() {
             return variant.options.every((opt, index) => opt === selectedOptions[index]);
           });
           if (matchingVariant) {
-            function formatPrice(price) {
-              return new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 0, 
-                maximumFractionDigits: 2,   
-              }).format(price);
-            }
+           function formatPrice(price) {
+          
+            const priceInDollars = price / 100;
+
+            return new Intl.NumberFormat('en-US', {
+              style: 'currency',
+              currency: 'PKR',
+              minimumFractionDigits: 0,  
+              maximumFractionDigits: 2,  
+            }).format(priceInDollars);
+          }
+
             const price = formatPrice(matchingVariant.price);
             
             const comparePrice = matchingVariant.compare_at_price;
