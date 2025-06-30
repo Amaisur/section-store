@@ -396,9 +396,10 @@ body{
 <script>
   (function() {
     const forms = document.querySelectorAll('.cq-card-d5');
-    forms.forEach(form => {
-      const dataVariant = form.querySelector('[data-product-json]');
-      const formEl = form.querySelector('.main-popup-d5 .quick-atc-form-d5');
+    forms.forEach(card => {
+
+      const dataVariant = card.querySelector('[data-product-json]');
+      const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
       
       function getSelectedOptions(){
         const selectedOptions = {};
@@ -439,7 +440,7 @@ body{
         });
       });
 
-      formEl.addEventListener('submit', (e) => {
+      form.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const id = formData.get('id');
