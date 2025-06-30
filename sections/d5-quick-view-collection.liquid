@@ -402,7 +402,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!dataVariant) return;
 
       const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
-
+      const vinput = form.querySelector('input[name="id"]');
       function getSelectedOptions() {
         const optionContainers = card.querySelectorAll('.option-flex-d5');
         return Array.from(optionContainers).map(container => {
@@ -424,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const price = matchingVariant.price;
             const comparePrice = matchingVariant.compare_at_price;
             const img = matchingVariant.image; 
-
+            vinput.value = matchingVariant.id;
             console.log('Matching Variant ID:', matchingVariant.id);
             console.log('Price:', price);
             console.log('Compare Price:', comparePrice);
