@@ -41,7 +41,7 @@
                 <div class="product-info-d5">
                     <h3>{{ home_product.title }}</h3>
                     {% comment %} {% render 'rating-star-d5', product: home_product %} {% endcomment %}
-                    <p>{{ c_variant.price | money }}</p>
+                    <p regular-price-d5>{{ c_variant.price | money }}</p>
                 </div>
 
                 <form action="/cart/add" method="POST" class="quick-atc-form-d5">
