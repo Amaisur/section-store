@@ -397,7 +397,7 @@ body{
   (function() {
     const forms = document.querySelectorAll('.cq-card-d5 form');
     forms.forEach(form => {
-    const dataVariants = form.querySelector('[data-product-json]').JSON;
+    const dataVariants = form.querySelector('[data-product-json]').json();
     
     function getSelectedOptions(){
       const selectedOptions = {};
