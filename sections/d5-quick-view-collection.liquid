@@ -430,7 +430,7 @@ body{
       }
       
       const options = form.querySelectorAll('.option-input-d5');
-      if(options){
+      if(options.length > 1){
         options.forEach(input => {
         input.addEventListener('change', () => {
           const variantId = getVariantId();
