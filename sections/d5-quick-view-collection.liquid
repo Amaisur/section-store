@@ -361,7 +361,18 @@ body{
     box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
 }
 
-
+.atc-buuton-d5-cart{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+.atc-buuton-d5-cart.loading .atc-content-d5{
+  display: none;
+}
+.atc-buuton-d5-cart.loading .atc-spinner-d5{
+  display: block !important;
+}
 </style>
 
 <div class="cq-main-d5">
@@ -398,6 +409,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.cq-card-d5');
     
     cards.forEach(card => {
+      const atcb = card.querySelector('.atc-buuton-d5-cart');
       const dataVariant = card.querySelector('[data-product-json]');
       if (!dataVariant) return;
 
@@ -451,6 +463,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
       form.addEventListener('submit', (e) => {
+        atcb.classList.add('loading');
         e.preventDefault();
         const formData = new FormData(e.target);
         
@@ -462,7 +475,6 @@ document.addEventListener('DOMContentLoaded', function() {
             quantity: formData.get('quantity')
           })
         }).finally(() => {
-          alert('done');
           (async () => {
            const req = await fetch('/sections?cart-drawer');
             const res = await req.text();
@@ -475,6 +487,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 drawer.classList.remove('is-empty');
               }
           })();
+          atcb.classList.remove('loading');
         });
       });
     });
