@@ -404,7 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
 
       function getSelectedOptions() {
-        const optionContainers = form.querySelectorAll('.option-input-d5');
+        const optionContainers = form.querySelectorAll('.option-input-d5.checked');
         return Array.from(optionContainers).map(container => {
           const selectedOption = container.querySelector('.up-option-value-d5.selected-value-d5');
           return selectedOption ? selectedOption.getAttribute('value') : null;
