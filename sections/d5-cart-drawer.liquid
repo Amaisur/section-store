@@ -191,6 +191,38 @@
     </div>
 </div>
 
+
+
+<script>
+(function () {
+  async function changeQty(line, qty) {
+    await fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ line, quantity: qty })
+    });
+  }
+
+  const products = document.querySelectorAll('.cd-item-d5');
+  products.forEach(product => {
+    const qtyBtns = product.querySelectorAll('.cd-qty-btn-d5');
+    const qtyInput = product.querySelector('.cd-qty-input-d5');
+    const max = +qtyInput.dataset.max;
+    const line = +product.dataset.line;
+
+    qtyBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        let val = +qtyInput.value;
+        if (btn.classList.contains('cd-plus-d5') && val < max) val++;
+        if (btn.classList.contains('cd-minus-d5') && val > 0) val--;
+        qtyInput.value = val;
+        changeQty(line, val);
+      });
+    });
+  });
+})();
+</script>
+
 {% schema %}
 {
     "name": "D5 Cart Drawer",
