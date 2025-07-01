@@ -209,18 +209,18 @@
 //   }
 // }
  
-async function rerenderCart() {
-  const response = await fetch('/?sections=d5-cart-drawer');
-  const data = await response.json();
-  const html = data.
-  const doc = new DOMParser().parseFromString(data, 'text/html');
-  console.log('heelo', data)
-  const newDrawer = doc.querySelector('.cd-inner-d5');
-  const cartInner = document.querySelector('.cd-inner-d5');
-  if (cartInner) {
-    cartInner.innerHTML = newDrawer.innerHTML;
-  }
-}
+// async function rerenderCart() {
+//   const response = await fetch('/?sections=d5-cart-drawer');
+//   const data = await response.json();
+//   const html = data.
+//   const doc = new DOMParser().parseFromString(data, 'text/html');
+//   console.log('heelo', data)
+//   const newDrawer = doc.querySelector('.cd-inner-d5');
+//   const cartInner = document.querySelector('.cd-inner-d5');
+//   if (cartInner) {
+//     cartInner.innerHTML = newDrawer.innerHTML;
+//   }
+// }
 
 
   const products = document.querySelectorAll('.cd-item-d5');
