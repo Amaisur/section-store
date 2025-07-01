@@ -538,6 +538,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   addToCartBtns.forEach(function(addToCartBtn) {
     const quickAddContainer = addToCartBtn.nextElementSibling;
+    
     const overlay = quickAddContainer.querySelector('.quick-add-overlay-d5');
     const closeIcon = quickAddContainer.querySelector('.close-icon-d5');
     
@@ -594,7 +595,22 @@ document.addEventListener('DOMContentLoaded', function() {
         updateButtons();
         updateDots();
       }
-
+      
+      const inputIds = quickAddContainer.querySelectorAll('.option-input-d5');
+    
+        if(inputIds){
+        inputIds.forEach(input => {
+          if(input.hasAttribute('img-id'))
+          input.addEventListener('change', () => {
+              slides.forEach(slide => {
+                const imgId = slide.getAttribute('data-img');
+                if(imgId == input.getAttribute('img-id')){
+                  console.log('img', imgId)
+                }
+              })
+          })
+        })  
+      }
       prevBtn.addEventListener('click', () => currentIndex > 0 && goToSlide(container, currentIndex - 1));
       nextBtn.addEventListener('click', () => currentIndex < totalSlides - 1 && goToSlide(container, currentIndex + 1));
 
