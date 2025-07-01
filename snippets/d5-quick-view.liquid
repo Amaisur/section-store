@@ -18,7 +18,7 @@
                 <div class="q-slider-container-d5">
                     <div class="q-slider-d5">
                         {% for image in home_product.media %}
-                        <div class="q-slide-d5"><img src="{{ image | image_url: width: 1440 }}" alt="{{ image.alt }}">
+                        <div class="q-slide-d5"><img src="{{ image | image_url: width: 1440 }}" alt="{{ image.alt }}" data-img="{{ image.id }}">
                         </div>
                         {% endfor %}
                     </div>
