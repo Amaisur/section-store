@@ -210,7 +210,7 @@
 }
 
 async function rerenderCart() {
-  const response = await fetch('/?sections=d5-cart-drawer.json');
+  const response = await fetch('/?sections=d5-cart-drawer');
   const data = await response.text();
   const doc = new DOMParser().parseFromString(data, 'text/html');
   console.log('heelo', data)
