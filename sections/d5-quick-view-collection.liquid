@@ -477,10 +477,12 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Compare Price:', comparePrice);
             if(!matchingVariant.available){
               atcb.setAttribute('disables', 'disabled');
-              atcb.querySelector('.atc-content-d5').textContent = 'Sold'
+              atcb.querySelector('.atc-content-d5').textContent = 'Sold';
+              atcb.style.pointerEvents = 'none !important';
             }else{
               atcb.removeAttribute('disables', 'disabled');
-              atcb.querySelector('.atc-content-d5').textContent = 'Add to Cart'
+              atcb.querySelector('.atc-content-d5').textContent = 'Add to Cart';
+              atcb.style.pointerEvents = '';
             }
             return {
               id: matchingVariant.id,
