@@ -212,7 +212,7 @@
   async function rerenderCart() {
     const response = await fetch('/?sections=d5-cart-drawer');
     const data = await response.text();
-    const doc = new DOMParser().parseFromString(response, 'text/html');
+    const doc = new DOMParser().parseFromString(data, 'text/html');
     const newDrawer = doc.querySelector('.cd-inner-d5');
     const cartInner = document.querySelector('.cd-inner-d5');
     if (cartInner) {
