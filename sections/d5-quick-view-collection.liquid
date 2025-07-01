@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
           const variants = JSON.parse(productJson);  
           const matchingVariant = variants.find(variant => {
-            return variant.options.every((opt, index) => opt === selectedOptions[index]);
+            return variant.options.every((opt, index) => opt === selectedOptions[index]); 
           });
           if (matchingVariant) {
            function formatPrice(price) {
