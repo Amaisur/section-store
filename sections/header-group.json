@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.header.name",
   "type": "header",
@@ -94,11 +94,17 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
+    },
+    "d5_cart_drawer_gUxAwy": {
+      "type": "d5-cart-drawer",
+      "name": "D5 Cart Drawer",
+      "settings": {}
     }
   },
   "order": [
     "announcement_bar_scrolling_FdWECT",
     "announcement-bar",
-    "header"
+    "header",
+    "d5_cart_drawer_gUxAwy"
   ]
 }
