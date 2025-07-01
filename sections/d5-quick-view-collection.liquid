@@ -561,7 +561,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Slider Initialization
   function initializeSlider(card) {
-    card.querySelector('.q-slider-container-d5').forEach(function(container) {
+    const container = card.querySelector('.q-slider-container-d5')
+    if (container) {
       const slider = container.querySelector('.q-slider-d5');
       const slides = container.querySelectorAll('.q-slide-d5');
       const prevBtn = container.querySelector('.q-prev-d5');
@@ -618,7 +619,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       updateButtons();
       updateDots();
-    });
+    };
   }
 });
 
