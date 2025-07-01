@@ -579,7 +579,7 @@ document.addEventListener('DOMContentLoaded', function() {
       function updateDots() {
         dotsContainer.innerHTML = '';
         for (let i = 0; i < totalSlides; i++) {
-          const dot = document.createElement('span');
+          const dot = document.createElement('span'); 
           dot.classList.add('q-dot-d5');
           if (i === currentIndex) dot.classList.add('active');
           dot.addEventListener('click', () => goToSlide(container, i));
