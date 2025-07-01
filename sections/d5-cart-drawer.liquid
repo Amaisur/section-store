@@ -117,7 +117,6 @@
         border: none;
     }
     .cd-qty-input-d5{
-        appearance: none;
         width: 45px;
         text-align: center;
         border: none;
@@ -133,11 +132,6 @@
         justify-content: center;
         height: 100%;
         cursor: pointer;
-    }
-    .cd-qty-input-d5::-webkit-inner-spin-button,
-    .cd-qty-input-d5::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;                   
     }
 </style>
 
@@ -184,7 +178,7 @@
                          {% endif %}
                         <div class="cd-quantity-d5">
                             <div class="cd-qty-btn-d5 cd-minus-d5">-</div>
-                            <input type="number" value="{{ item.quantity }}" max="{{ item.variant.quantity_rule.max }}" readonly class="cd-qty-input-d5">
+                            <input type="text" value="{{ item.quantity }}" data-max="{{ item.variant.quantity_rule.max }}" readonly class="cd-qty-input-d5">
                             <div class="cd-qty-btn-d5 cd-plus-d5">+</div>
 
                         </div>
