@@ -26,6 +26,7 @@
     },
     "d5_collection_grid_FQfQwb": {
       "type": "d5-collection-grid",
+      "disabled": true,
       "name": "D5 Collection Grid",
       "settings": {
         "collection": "all"
