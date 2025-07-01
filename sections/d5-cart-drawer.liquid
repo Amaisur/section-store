@@ -195,30 +195,32 @@
   
 <script>
 (function () {
-  async function changeQty(line, qty) {
-    try{
+ async function changeQty(line, qty) {
+  try {
     await fetch('/cart/update.js', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-       body: JSON.stringify({ updates: { [line]: qty } })
+      body: JSON.stringify({ updates: { [line]: qty } })
     });
-        }catch(err){
-            console.error(err)
-        }finally{
-            await rerenderCart()
-        }
+  } catch (err) {
+    console.error(err);
+  } finally {
+    await rerenderCart();
   }
+}
 
-  async function rerenderCart() {
-    const response = await fetch('/?sections=d5-cart-drawer');
-    const data = await response.text();
-    const doc = new DOMParser().parseFromString(data, 'text/html');
-    const newDrawer = doc.querySelector('.cd-inner-d5');
-    const cartInner = document.querySelector('.cd-inner-d5');
-    if (cartInner) {
-      cartInner.innerHTML = newDrawer.innerHTML;
-    }
+async function rerenderCart() {
+  const response = await fetch('/?sections=d5-cart-drawer');
+  const data = await response.text();
+  const doc = new DOMParser().parseFromString(data, 'text/html');
+  console.log('heelo', data)
+  const newDrawer = doc.querySelector('.cd-inner-d5');
+  const cartInner = document.querySelector('.cd-inner-d5');
+  if (cartInner) {
+    cartInner.innerHTML = newDrawer.innerHTML;
   }
+}
+
 
   const products = document.querySelectorAll('.cd-item-d5');
   products.forEach(product => {
