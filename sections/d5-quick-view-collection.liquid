@@ -595,7 +595,8 @@ document.addEventListener('DOMContentLoaded', function() {
         updateButtons();
         updateDots();
       }
-      
+      const cards = document.querySelectorAll('.cq-card-d5');
+      cards.forEach(card => {
       const inputIds = card.querySelectorAll('.option-input-d5');
         console.log(inputIds)
           inputIds.forEach((input) => {
@@ -612,7 +613,7 @@ document.addEventListener('DOMContentLoaded', function() {
               });
             }
           });
-        
+        })
       prevBtn.addEventListener('click', () => currentIndex > 0 && goToSlide(container, currentIndex - 1));
       nextBtn.addEventListener('click', () => currentIndex < totalSlides - 1 && goToSlide(container, currentIndex + 1));
 
