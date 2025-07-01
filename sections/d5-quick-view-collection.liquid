@@ -598,19 +598,21 @@ document.addEventListener('DOMContentLoaded', function() {
       
       const inputIds =container.querySelectorAll('.option-input-d5');
     
-        if(inputIds){
-        inputIds.forEach(input => {
-          if(input.hasAttribute('img-id'))
-          input.addEventListener('change', () => {
-              slides.forEach(slide => {
-                const imgId = slide.getAttribute('data-img');
-                if(imgId == input.getAttribute('img-id')){
-                  console.log('img', imgId)
-                }
-              })
-          })
-        })  
-      }
+        if (inputIds) {
+          inputIds.forEach(input => {
+            if (input.hasAttribute('img-id')) {
+              input.addEventListener('change', () => {
+                slides.forEach((slide, index) => {
+                  const imgId = slide.getAttribute('data-img');
+                  if (imgId === input.getAttribute('img-id')) {
+                    console.log('img', imgId);
+                    goToSlide(container, index); // Navigate to the matching slide
+                  }
+                });
+              });
+            }
+          });
+        }
       prevBtn.addEventListener('click', () => currentIndex > 0 && goToSlide(container, currentIndex - 1));
       nextBtn.addEventListener('click', () => currentIndex < totalSlides - 1 && goToSlide(container, currentIndex + 1));
 
