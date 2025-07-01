@@ -151,7 +151,7 @@
         </div>
         <div class="cd-content-d5">
             {% for item in cart.items %}
-                <div class="cd-item-d5">
+                <div class="cd-item-d5" data-variant-id="{{ item.variant.id }}" data-line-item-key="{{ item.key }}">
                     <div class="cd-item-img-d5" style="--aspect-ratio: {{ item.image.aspect_ratio }}">
                         <img src="{{ item.image |  image_url: width: 400 }}" width="150" height="{{ item.image.height }}" alt="{{ item.title }}" loading="lazy">
                     </div>
@@ -196,10 +196,10 @@
 <script>
 (function () {
   async function changeQty(line, qty) {
-    await fetch('/cart/change.js', {
+    await fetch('/cart/.js', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ line, quantity: qty })
+       body: JSON.stringify({ updates: { [line]: qty } })
     });
   }
 
@@ -208,7 +208,7 @@
     const qtyBtns = product.querySelectorAll('.cd-qty-btn-d5');
     const qtyInput = product.querySelector('.cd-qty-input-d5');
     const max = +qtyInput.dataset.max;
-    const line = +product.dataset.line;
+    const line = product.getAttribute('data-line-item-key');
 
     qtyBtns.forEach(btn => {
       btn.addEventListener('click', () => {
