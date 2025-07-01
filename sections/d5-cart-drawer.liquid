@@ -196,11 +196,17 @@
 <script>
 (function () {
   async function changeQty(line, qty) {
+    try{
     await fetch('/cart/update.js', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
        body: JSON.stringify({ updates: { [line]: qty } })
     });
+        }catch(err){
+            console.error(err)
+        }finally{
+            await rerenderCart()
+        }
   }
 
   async function rerenderCart() {
