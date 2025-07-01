@@ -597,7 +597,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       
       const inputIds =container.querySelectorAll('.option-input-d5');
-        if (inputIds) {
+        
           inputIds.forEach(input => {
             console.log(input)
             if (input.hasAttribute('img-id')) {
@@ -612,7 +612,7 @@ document.addEventListener('DOMContentLoaded', function() {
               });
             }
           });
-        }
+        
       prevBtn.addEventListener('click', () => currentIndex > 0 && goToSlide(container, currentIndex - 1));
       nextBtn.addEventListener('click', () => currentIndex < totalSlides - 1 && goToSlide(container, currentIndex + 1));
 
