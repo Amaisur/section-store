@@ -54,7 +54,7 @@
                         <label class="option-label-d5">
                             <input type="radio" class="option-input-d5" name="{{ option.name | handleize }}"
                                 value="{{ value }}" data-option-name="{{ option.name }}" {% if forloop.first %}checked{%
-                                endif %} option-id="{{ value.id }}">
+                                endif %} option-id="{{ value.id }}" img-id="{{ value.variant.featured_image.id }}">
                             <span class="option-value-d5">{{ value }}</span>
                         </label>
                         {% endfor %}
