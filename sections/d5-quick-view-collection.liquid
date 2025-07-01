@@ -561,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Slider Initialization
   function initializeSlider(card) {
-    document.querySelector('.q-slider-container-d5').forEach(function(container) {
+    document.querySelectorAll('.q-slider-container-d5').forEach(function(container) {
       const slider = container.querySelector('.q-slider-d5');
       const slides = container.querySelectorAll('.q-slide-d5');
       const prevBtn = container.querySelector('.q-prev-d5');
