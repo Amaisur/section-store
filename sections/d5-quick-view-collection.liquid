@@ -545,7 +545,7 @@ document.addEventListener('DOMContentLoaded', function() {
     addToCartBtn.addEventListener('click', function() {
       quickAddContainer.classList.add('popup-q-open');
       document.body.classList.add('no-scroll_popup-body-d5');
-      initializeSlider();
+      initializeSlider(addToCartBtn);
     });
 
     overlay.addEventListener('click', function() {
@@ -560,7 +560,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Slider Initialization
-  function initializeSlider() {
+  function initializeSlider(con) {
     document.querySelectorAll('.q-slider-container-d5').forEach(function(container) {
       const slider = container.querySelector('.q-slider-d5');
       const slides = container.querySelectorAll('.q-slide-d5');
@@ -596,7 +596,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateDots();
       }
       
-      const inputIds =container.querySelectorAll('.option-input-d5');
+      const inputIds =con.querySelectorAll('.option-input-d5');
         console.log(inputIds)
           inputIds.forEach((input) => {
             console.log('hello', input)
