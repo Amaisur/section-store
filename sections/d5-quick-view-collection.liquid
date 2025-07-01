@@ -476,11 +476,11 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('avaiable', matchingVariant.available)
             console.log('Compare Price:', comparePrice);
             if(!matchingVariant.available){
-              atcb.setAttribute('disables', 'disabled');
+              atcb.setAttribute('disabled', 'disabled');
               atcb.querySelector('.atc-content-d5').textContent = 'Sold';
               atcb.style.pointerEvents = 'none !important';
             }else{
-              atcb.removeAttribute('disables', 'disabled');
+              atcb.removeAttribute('disabled', 'disabled');
               atcb.querySelector('.atc-content-d5').textContent = 'Add to Cart';
               atcb.style.pointerEvents = '';
             }
