@@ -196,7 +196,7 @@
 <script>
 (function () {
   async function changeQty(line, qty) {
-    await fetch('/cart/change.js', {
+    await fetch('/cart/update.js', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
        body: JSON.stringify({ updates: { [line]: qty } })
