@@ -234,7 +234,7 @@ async function rerenderCart() {
       btn.addEventListener('click', () => {
         let val = +qtyInput.value;
         if (btn.classList.contains('cd-plus-d5') && val < max) val++;
-        if (btn.classList.contains('cd-minus-d5') && val > 0) val--;
+        if (btn.classList.contains('cd-minus-d5')) val--;
         qtyInput.value = val;
         changeQty(line, val);
       });
