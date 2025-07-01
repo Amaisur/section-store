@@ -599,7 +599,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const inputIds =container.querySelectorAll('.option-input-d5');
         console.log(inputIds)
           inputIds.forEach(input => {
-            console.log(input)
+            console.log('hello', input)
             if (input.hasAttribute('img-id')) {
               input.addEventListener('change', () => {
                 slides.forEach((slide, index) => {
