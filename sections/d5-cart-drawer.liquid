@@ -179,7 +179,7 @@
                          {% endif %}
                         <div class="cd-quantity-d5">
                             <div class="cd-qty-btn-d5 cd-minus-d5">-</div>
-                            <input type="text" value="{{ item.quantity }}" data-max="{{ item.variant.quantity_rule.max }}" readonly class="cd-qty-input-d5">
+                            <input type="text" value="{{ item.quantity }}" data-max="{%if item.variant.inventory_quantity %}{{ item.variant.inventory_quantity }}{% else %}999{% endif %}" readonly class="cd-qty-input-d5">
                             <div class="cd-qty-btn-d5 cd-plus-d5">+</div>
 
                         </div>
