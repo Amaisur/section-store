@@ -475,7 +475,13 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Price:', price);
             console.log('avaiable', matchingVariant.available)
             console.log('Compare Price:', comparePrice);
-
+            if(!matchingVariant.available){
+              atcb.setAttribute('disables', 'disabled');
+              atcb.querySelector('.atc-content-d5').textContent = 'Sold'
+            }else{
+              atcb.removeAttribute('disables', 'disabled');
+              atcb.querySelector('.atc-content-d5').textContent = 'Add to Cart'
+            }
             return {
               id: matchingVariant.id,
               price: price,
