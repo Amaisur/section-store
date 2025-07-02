@@ -275,7 +275,7 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
         body: new FormData(form),
       });
 
-      if (typeof rerenderCart === 'function') {
+      if (typeof rerenderCart === 'function') { 
         await rerenderCart();
       }
 
