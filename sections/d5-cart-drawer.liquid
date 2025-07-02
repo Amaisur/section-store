@@ -64,6 +64,8 @@
         opacity: 0;
         visibility: hidden;
         transition: all .4s cubic-bezier(0.23, 1, 0.320, 1);
+        display: flex;
+        flex-direction: column;
     }
 
     .cd-overlay-d5 {
@@ -441,7 +443,7 @@
         </div>
         <div class="cd-footer-d5">
             <a href="/checkout" class="cd-checkout-btn-d5">
-                Checkout • <span class="cd-footer-total-price">{{ cart.original_total_price }}</span>
+                Checkout • <span class="cd-footer-total-price">{{ cart.original_total_price | money }}</span>
             </a>
         </div>
     </div>
