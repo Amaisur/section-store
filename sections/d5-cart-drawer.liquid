@@ -107,6 +107,7 @@
         align-items: center;
         gap: 16px;
         position: relative;
+        justify-content: center;
     }
 
     .cd-item-img-d5 {
@@ -187,12 +188,23 @@
         transform: translate(-50%, -50%);
         display: none;
         opacity: 0;
+        z-index: 10;
+    }
+    .item-light-overlay-d5{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(255, 255, 255, .3);
+        z-index: 7;
+        opacity: 0;
     }
     .item-loader-d5{
         width: 30px;
         height: 30px;
     }
-    .is-loader-d5.loading .btn-loader-d5, .item-loader-d5 {
+    .is-loader-d5.loading .btn-loader-d5, .item-loader-d5, .item-light-overlay-d5 {
         display: block !important;
         opacity: 1;
     }
@@ -339,6 +351,7 @@
             {% for item in cart.items %}
                 <div class="cd-item-d5 real-item-d5" data-variant-id="{{ item.variant.id }}" data-line-item-key="{{ item.key }}">
                     <span class="item-loader-d5"></span>
+                    <div class="item-light-overlay-d5"></div>
                     <div class="cd-item-img-d5" style="--aspect-ratio: {{ item.image.aspect_ratio }}">
                         <a href="{{ item.url }}">
                         <img src="{{ item.image |  image_url: width: 400 }}" width="150" height="{{ item.image.height }}" alt="{{ item.title }}" loading="lazy">
