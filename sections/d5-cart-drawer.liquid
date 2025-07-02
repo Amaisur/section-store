@@ -387,6 +387,57 @@
         font-size: 20px;
         font-weight: 600; 
     }
+    .cd-free-shipping-bar-d5 {
+  position: relative;
+  background-color: #f0f0f0;
+  height: 8px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.cd-free-shipping-bar__inner-d5 {
+  height: 100%;
+  background-color: #27ae60;
+  transition: width 0.5s ease-out;
+}
+
+.cd-free-shipping-bar__content-d5 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.cd-free-shipping-bar__text-d5 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.cd-free-shipping-bar__icon-d5 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #27ae60;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cd-free-shipping-bar__icon-d5 .cd-icon-tag-d5 {
+  background: url('path_to_tag_icon.png') no-repeat center center;
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+}
+
+.cd-free-shipping-bar__icon-d5 .cd-icon-check-d5 {
+  background: url('path_to_check_icon.png') no-repeat center center;
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+}
+
 </style>
 
 <div class="cart-drawer-d5 cd-drawer__open">
@@ -403,6 +454,28 @@
             </div>
         </div>
         <div class="cd-content-d5">
+            <div class="cd-rewards-bar-d5">
+                <div class="cd-free-shipping-bar-d5">
+                    <div class="cd-free-shipping-bar__inner-d5" style="width: {{ cart.total_price | divided_by: 100.0 | times: 100.0 | divided_by: section.settings.free_shipping | round }}%"></div>
+                    <div class="cd-free-shipping-bar__content-d5">
+                        <p class="cd-free-shipping-bar__text-d5">
+                        {% if cart.total_price >= settings.free_shipping_threshold * 100 %}
+                            🎉 You’ve earned free shipping!
+                        {% else %}
+                            You’re {{ settings.free_shipping_threshold | minus: (cart.total_price | divided_by: 100.0) | money }} away from free shipping!
+                        {% endif %}
+                        </p>
+                        <div class="cd-free-shipping-bar__icon-d5">
+                        {% if cart.total_price >= settings.free_shipping_threshold * 100 %}
+                            <span class="cd-icon-check-d5"></span>
+                        {% else %}
+                            <span class="cd-icon-tag-d5"></span>
+                        {% endif %}
+                        </div>
+                    </div>
+                    </div>
+
+            </div>
             <div class="atc-loader-d5">
             <span class="item-loader-d5"></span>
             </div>
@@ -412,7 +485,7 @@
                     <div class="item-light-overlay-d5"></div>
                     <div class="cd-item-img-d5" style="--aspect-ratio: {{ item.image.aspect_ratio }}">
                         <a href="{{ item.url }}">
-                        <img src="{{ item.image |  image_url: width: 400 }}" width="150" height="{{ item.image.height }}" alt="{{ item.title }}" loading="lazy">
+                        <img src="{{ item.image |  image_url: width: 400 }}" width="130" height="{{ item.image.height }}" alt="{{ item.title }}" loading="lazy">
                         </a>
                     </div>
                     <div class="cd-item-info-d5">
@@ -484,7 +557,12 @@ document.addEventListener('DOMContentLoaded', function () {
 {
     "name": "D5 Cart Drawer",
     "settings": [
-        
+        {
+            "type": "text",
+            "id": "free_shipping",
+            "label": "Free Shipping Amount",
+            "default": "40"
+        }
         ],
     "presets": [
         {
