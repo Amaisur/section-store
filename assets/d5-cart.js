@@ -1,6 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelector('cart-drawer').remove();
-})
+
 (function () {
   const cart = document.querySelector('.cart-drawer-d5');
   

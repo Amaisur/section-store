@@ -255,10 +255,12 @@
 
 
   
-{% comment %} <script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('cart-drawer').remove();
+})
 
-
-</script>  {% endcomment %}
+</script> 
 
 {% schema %}
 {
