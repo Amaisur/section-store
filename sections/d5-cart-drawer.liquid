@@ -265,18 +265,29 @@
     }
   }
 
-  document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
+    try {
       await fetch("/cart/add", {
-        method: "post",
+        method: "POST",
         body: new FormData(form),
-        });
-      await rerenderCart();
-      cart.classList.add('cd-drawer__open');
-    });
+      });
+
+      if (typeof rerenderCart === 'function') {
+        await rerenderCart();
+      }
+
+      if (cart) {
+        cart.classList.add('cd-drawer__open');
+      }
+    } catch (error) {
+      console.error('Error during form submission:', error);
+    }
   });
+});
+
 
   function addEventListenersToCart() {
     const products = document.querySelectorAll('.cd-item-d5');
