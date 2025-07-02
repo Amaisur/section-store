@@ -168,6 +168,15 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
+    .cd-title-price-d5 h4{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .cd-title-price-d5 h4 a{
+        text-decoration: none;
+    }
 </style>
 
 <div class="cart-drawer-d5 cd-drawer__open">
@@ -187,11 +196,17 @@
             {% for item in cart.items %}
                 <div class="cd-item-d5" data-variant-id="{{ item.variant.id }}" data-line-item-key="{{ item.key }}">
                     <div class="cd-item-img-d5" style="--aspect-ratio: {{ item.image.aspect_ratio }}">
+                        <a href="{{ item.url }}">
                         <img src="{{ item.image |  image_url: width: 400 }}" width="150" height="{{ item.image.height }}" alt="{{ item.title }}" loading="lazy">
+                        </a>
                     </div>
                     <div class="cd-item-info-d5">
                         <div class="cd-title-price-d5">
-                            <h4>{{ item.product.title }}</h4>
+                            <h4><a href="{{ item.product.url }}">{{ item.product.title }}</a>
+                            <div class="cd-remove-d5 cd-qty-btn-d5">
+                                {%  render 'd5-delete-icon' %}
+                            </div>
+                            </h4>
                             <p><span class="cd-regular-price">{{ item.original_price | money }}</span>
                             <span class="cd-compare-price">{{ item.product.final_price | money }}</span>
                             </p>
