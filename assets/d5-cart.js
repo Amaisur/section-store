@@ -7,7 +7,7 @@
     e.preventDefault();
     cart.classList.add('cd-drawer__open');
   })
-  async function changeQty(line, qty, btn, qtyInput) {
+  async function changeQty(line, qty, btn, qtyInput, product) {
     try {
       await fetch('/cart/update.js', {
         method: 'POST',
@@ -17,9 +17,12 @@
     } catch (err) {
       console.error(err);
     } finally {
-      qtyInput.value = qty;
       await rerenderCart();
+      // qtyInput.value = qty;
       btn.classList.remove('loading');
+      if(product.classList.contains('item--loading')){
+      product.classList.remove('item--loading'); 
+      }
     }
   }
 
@@ -83,8 +86,8 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
           if (btn.classList.contains('cd-remove-d5')) {
             btn.classList.add('loading');
             val = 0;
-            changeQty(line, val, btn, qtyInput);
-            product.classList.add('skeleton-active'); 
+            changeQty(line, val, btn, qtyInput, product);
+            product.classList.add('item--loading'); 
         }
         });
       });
