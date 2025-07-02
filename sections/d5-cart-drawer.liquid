@@ -283,13 +283,13 @@
     products.forEach(product => {
       const qtyBtns = product.querySelectorAll('.cd-qty-btn-d5');
       const qtyInput = product.querySelector('.cd-qty-input-d5');
-      const max = +qtyInput.dataset.max - 1;
+      const max = +qtyInput.dataset.max;
       const line = product.getAttribute('data-line-item-key');
   
       qtyBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           let val = +qtyInput.value;
-          if (btn.classList.contains('cd-plus-d5') && val < max){ 
+          if (btn.classList.contains('cd-plus-d5') && val <= max){ 
             btn.classList.add('loading');
             changeQty(line, val, btn, qtyInput);
             val++;
