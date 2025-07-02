@@ -150,7 +150,7 @@
         width: 105px;
         height: 30px;
         display: flex;
-        border: 1px solid #000000;
+        border: 1px solid #ddd;
     }
 
     .cd-qty-input-d5:focus-visible {
@@ -161,8 +161,8 @@
         width: 45px;
         text-align: center;
         border: none;
-        border-right: 1px solid #000000;
-        border-left: 1px solid #000000;
+        border-right: 1px solid #ddd;
+        border-left: 1px solid #ddd;
         border-radius: 0;
         pointer-events: none;
     }
@@ -175,6 +175,11 @@
         height: 100%;
         cursor: pointer;
         user-select: none;
+        transition: all .2s;
+    }
+
+    .cd-qty-btn-d5:hover{
+        background: #0000000d;
     }
 
     .is-loader-d5 {
@@ -348,6 +353,9 @@
     } */
     .cd-remove-icon-d5{
         flex-grow: 0;
+    }
+    .cd-remove-icon-d5:hover svg path{
+        fill: red;
     }
     .cd-item-info-d5{
         flex: 1;
