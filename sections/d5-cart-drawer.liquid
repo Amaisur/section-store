@@ -437,12 +437,16 @@
                         <div class="cd-quantity-d5">
                         {%  assign qty =  item.variant.inventory_management %}
                             <div class="cd-qty-btn-d5 is-loader-d5 {% if item.quantity == 1 %}cd-remove-d5{% else %}cd-minus-d5{% endif %}">
-                                <span class="btn-text-d5">-</span>
+                                <span class="btn-text-d5">
+                                    <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 10c0-.414.336-.75.75-.75h8.5c.414 0 .75.336.75.75s-.336.75-.75.75h-8.5c-.414 0-.75-.336-.75-.75Z"></path></svg>
+                                </span>
                                 <span class="btn-loader-d5"></span>
                             </div>
                             <input type="text" value="{{ item.quantity }}" data-max="{% if qty %}{%if item.variant.inventory_quantity > 1 %}{{ item.variant.inventory_quantity }}{% else %}0{% endif %}{% else %}999{% endif %}" readonly class="cd-qty-input-d5">
                             <div class="cd-qty-btn-d5 cd-plus-d5 is-loader-d5">
-                                <span class="btn-text-d5">+</span>
+                                <span class="btn-text-d5">
+                                    <svg viewBox="0 0 20 20"><path d="M10.75 5.75c0-.414-.336-.75-.75-.75s-.75.336-.75.75v3.5h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5Z"></path></svg>
+                                </span>
                                 <span class="btn-loader-d5"></span>
                             </div>
 
