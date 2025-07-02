@@ -291,18 +291,20 @@
           let val = +qtyInput.value;
           if (btn.classList.contains('cd-plus-d5') && val < max){ 
             btn.classList.add('loading');
+            changeQty(line, val, btn, qtyInput);
             val++;
         }
           if (btn.classList.contains('cd-minus-d5') && val > 1) {
             btn.classList.add('loading');
+            changeQty(line, val, btn, qtyInput);
             val--;
         }
           if (btn.classList.contains('cd-minus-d5') && val == 1) {
             btn.classList.add('loading');
             val--;
+            changeQty(line, val, btn, qtyInput);
             product.classList.add('product-remove-loading');
         }
-          changeQty(line, val, btn, qtyInput);
         });
       });
     });
