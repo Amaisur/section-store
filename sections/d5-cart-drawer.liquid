@@ -106,6 +106,7 @@
         display: flex;
         align-items: center;
         gap: 16px;
+        padding: 16px;
     }
 
     .cd-item-img-d5 {
@@ -125,9 +126,8 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
-        padding: 16px;
         overflow-y: auto;
-        height: 100%;
+        height: calc(100vh - 150px);
     }
 
     .cd-otpions-d5 {
@@ -229,82 +229,91 @@
     }
 
     /* Skeleton Styles */
-    .cd-item-skeleton {
-        display: flex;
-        padding: 15px;
-        background-color: #f9f9f9;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        margin-bottom: 15px;
+    .skeleton-active .real-item-d5 {
+        display: none !important;
+    }
+    
+    .skeleton-active .cd-item-skeleton {
+        display: flex !important;
     }
 
-    .cd-item-skeleton * {
-        border-color: #f9f9f9;
+    .cd-item-skeleton {
+        display: none;
+        background-color: #f9f9f9;
+        border-radius: 8px;
     }
 
     .skeleton {
         background-color: #e0e0e0;
-        animation: loading 1.5s infinite linear;
+        position: relative;
+        overflow: hidden;
     }
 
-    .skeleton-img {
-        background-color: #ccc;
-        height: 150px;
-        width: 150px;
-        border-radius: 8px;
+    .skeleton::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, 
+            rgba(255, 255, 255, 0) 0%, 
+            rgba(255, 255, 255, 0.6) 50%, 
+            rgba(255, 255, 255, 0) 100%);
+        animation: shimmer 1.5s infinite;
     }
 
-    .skeleton-text {
-        background-color: #ccc;
-        height: 10px;
-        width: 100%;
-        margin-bottom: 10px;
-        border-radius: 4px;
+    .cd-item-skeleton .cd-item-img-d5 {
+        background-color: #ddd;
+        min-height: 150px;
     }
 
-    .skeleton-title {
-        width: 60%;
+    .cd-item-skeleton .cd-item-info-d5 {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
     }
 
-    .skeleton-price {
-        width: 40%;
-    }
-
-    .skeleton-option {
+    .cd-item-skeleton .cd-title-price-d5 h4 a {
+        background-color: #ddd;
+        height: 20px;
         width: 80%;
     }
 
-    .skeleton-qty {
-        width: 20%;
+    .cd-item-skeleton .cd-title-price-d5 p {
+        background-color: #ddd;
+        height: 16px;
+        width: 60%;
     }
 
-    .skeleton-qty-input {
-        width: 50px;
-        height: 30px;
-        margin: 0;
-        border-radius: 5px;
+    .cd-item-skeleton .cd-otpions-d5 h5,
+    .cd-item-skeleton .cd-otpions-d5 p {
+        background-color: #ddd;
+        height: 14px;
+        width: 40px;
+    }
+
+    .cd-item-skeleton .cd-otpions-d5 p {
+        width: 60px;
+    }
+
+    .cd-item-skeleton .cd-quantity-d5 {
         background-color: #ddd;
     }
 
-    /* Animating the skeleton loader */
-    @keyframes loading {
+    .cd-item-skeleton .cd-qty-btn-d5,
+    .cd-item-skeleton .cd-qty-input-d5 {
+        background-color: #ccc;
+    }
+
+    @keyframes shimmer {
         0% {
-            background-position: -200% 0;
+            transform: translateX(-100%);
         }
-
         100% {
-            background-position: 200% 0;
+            transform: translateX(100%);
         }
-    }
-
-    .skeleton {
-        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-        background-size: 200% 100%;
-    }
-
-    .skeleton.skeleton-text {
-        margin-bottom: 8px;
-        height: 12px;
     }
 </style>
 
@@ -321,7 +330,7 @@
                 </path></svg>
             </div>
         </div>
-        <div class="cd-content-d5">
+        <div class="cd-content-d5 {% if cart.item_count == 0 %}skeleton-active{% endif %}">
             {% for item in cart.items %}
                 <div class="cd-item-d5 real-item-d5" data-variant-id="{{ item.variant.id }}" data-line-item-key="{{ item.key }}">
                     <div class="cd-item-img-d5" style="--aspect-ratio: {{ item.image.aspect_ratio }}">
@@ -366,47 +375,39 @@
                                 <span class="btn-text-d5">+</span>
                                 <span class="btn-loader-d5"></span>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <div class="cd-item-d5 cd-item-skeleton">
-                <div class="cd-item-img-d5 skeleton" style="--aspect-ratio: 1;">
-                    <div class="skeleton-img"></div>
-                </div>
-                <div class="cd-item-info-d5">
-                    <div class="cd-title-price-d5">
-                    <h4><span class="skeleton-text skeleton-title"></span></h4>
-                    <div class="cd-remove-d5 skeleton">
-                        <div class="skeleton-remove"></div>
-                    </div>
-                    <p>
-                        <span class="skeleton-text skeleton-price"></span>
-                        <span class="skeleton-text skeleton-price"></span>
-                    </p>
-                    </div>
-                    <div class="cd-item-variants-d5 skeleton">
-                    <div class="cd-otpions-d5 skeleton">
-                        <div class="skeleton-text skeleton-option"></div>
-                    </div>
-                    </div>
-                    <div class="cd-quantity-d5 skeleton">
-                    <div class="cd-qty-btn-d5 skeleton">
-                        <div class="skeleton-text skeleton-qty"></div>
-                    </div>
-                    <input type="text" value="..." class="cd-qty-input-d5 skeleton-text skeleton-qty-input" readonly>
-                    <div class="cd-qty-btn-d5 skeleton">
-                        <div class="skeleton-text skeleton-qty"></div>
-                    </div>
-                    </div>
-                </div>
-                </div>
 
+                <div class="cd-item-d5 cd-item-skeleton">
+                    <div class="cd-item-img-d5 skeleton"></div>
+                    <div class="cd-item-info-d5">
+                        <div class="cd-title-price-d5">
+                            <h4><a class="skeleton"></a>
+                            <div class="cd-remove-d5 cd-qty-btn-d5 skeleton"></div>
+                            </h4>
+                            <p class="skeleton"></p>
+                        </div>
+                        <div class="cd-item-variants-d5">
+                            <div class="cd-otpions-d5">
+                                <h5 class="skeleton"></h5>
+                                <p class="skeleton"></p>
+                            </div>
+                        </div>
+                        <div class="cd-quantity-d5 skeleton"></div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="cd-empty-cart">
+                    <p>Your cart is empty</p>
+                </div>
             {% endfor %}
         </div>
         <div class="cd-footer-d5"></div>
     </div>
 </div>
+
+<script>
 
 
   

@@ -79,7 +79,7 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
             btn.classList.add('loading');
             val = 0;
             changeQty(line, val, btn, qtyInput);
-            product.classList.add('product-remove-loading'); 
+            product.classList.add('skeleton-active'); 
         }
         });
       });
