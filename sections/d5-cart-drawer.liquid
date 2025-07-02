@@ -183,6 +183,80 @@
         color: #000;
         display: block;
     }
+    /* Skeleton Styles */
+    .cd-item-skeleton {
+        display: flex;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 15px;
+        }
+
+        .skeleton {
+        background-color: #e0e0e0;
+        animation: loading 1.5s infinite linear;
+        }
+
+        .skeleton-img {
+        background-color: #ccc;
+        height: 150px;
+        width: 150px;
+        border-radius: 8px;
+        }
+
+        .skeleton-text {
+        background-color: #ccc;
+        height: 10px;
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        }
+
+        .skeleton-title {
+        width: 60%;
+        }
+
+        .skeleton-price {
+        width: 40%;
+        }
+
+        .skeleton-option {
+        width: 80%;
+        }
+
+        .skeleton-qty {
+        width: 20%;
+        }
+
+        .skeleton-qty-input {
+        width: 50px;
+        height: 30px;
+        margin: 0;
+        border-radius: 5px;
+        background-color: #ddd;
+        }
+
+        /* Animating the skeleton loader */
+        @keyframes loading {
+        0% {
+            background-position: -200% 0;
+        }
+        100% {
+            background-position: 200% 0;
+        }
+        }
+
+        .skeleton {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        }
+
+        .skeleton.skeleton-text {
+        margin-bottom: 8px;
+        height: 12px;
+        }
+
 </style>
 
 <div class="cart-drawer-d5 cd-drawer__open">
@@ -200,7 +274,7 @@
         </div>
         <div class="cd-content-d5">
             {% for item in cart.items %}
-                <div class="cd-item-d5" data-variant-id="{{ item.variant.id }}" data-line-item-key="{{ item.key }}">
+                <div class="cd-item-d5 real-item-d5" data-variant-id="{{ item.variant.id }}" data-line-item-key="{{ item.key }}">
                     <div class="cd-item-img-d5" style="--aspect-ratio: {{ item.image.aspect_ratio }}">
                         <a href="{{ item.url }}">
                         <img src="{{ item.image |  image_url: width: 400 }}" width="150" height="{{ item.image.height }}" alt="{{ item.title }}" loading="lazy">
@@ -247,6 +321,38 @@
                         </div>
                     </div>
                 </div>
+                <div class="cd-item-d5 cd-item-skeleton">
+                <div class="cd-item-img-d5 skeleton" style="--aspect-ratio: 1;">
+                    <div class="skeleton-img"></div>
+                </div>
+                <div class="cd-item-info-d5">
+                    <div class="cd-title-price-d5">
+                    <h4><span class="skeleton-text skeleton-title"></span></h4>
+                    <div class="cd-remove-d5 skeleton">
+                        <div class="skeleton-remove"></div>
+                    </div>
+                    <p>
+                        <span class="skeleton-text skeleton-price"></span>
+                        <span class="skeleton-text skeleton-price"></span>
+                    </p>
+                    </div>
+                    <div class="cd-item-variants-d5 skeleton">
+                    <div class="cd-otpions-d5 skeleton">
+                        <div class="skeleton-text skeleton-option"></div>
+                    </div>
+                    </div>
+                    <div class="cd-quantity-d5 skeleton">
+                    <div class="cd-qty-btn-d5 skeleton">
+                        <div class="skeleton-text skeleton-qty"></div>
+                    </div>
+                    <input type="text" value="..." class="cd-qty-input-d5 skeleton-text skeleton-qty-input" readonly>
+                    <div class="cd-qty-btn-d5 skeleton">
+                        <div class="skeleton-text skeleton-qty"></div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
             {% endfor %}
         </div>
         <div class="cd-footer-d5"></div>
