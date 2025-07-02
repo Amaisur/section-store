@@ -97,7 +97,8 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
     if(cart.classList.contains('cd-drawer__open')){
         cart.classList.remove('cd-drawer__open');
     }
-    document.body.style.overflow = ''
+    document.body.style.overflow = '';
+    document.body.classList.remove('overflow-hidden');
     })
   })
 })();
