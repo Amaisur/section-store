@@ -272,9 +272,6 @@
         method: "post",
         body: new FormData(form),
         });
-
-      const req = await fetch('/cart.js');
-      const res = req.json();
       await rerenderCart();
       cart.classList.add('cd-drawer__open');
     });
