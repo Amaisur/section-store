@@ -1,7 +1,12 @@
 
 (function () {
   const cart = document.querySelector('.cart-drawer-d5');
-  
+  const cartIcon = document.querySelector('#cart-icon-bubble');
+
+  cartIcon.addEventListener('click', (e) => {
+    e.preventDefault();
+    cart.classList.add('cd-drawer__open');
+  })
   async function changeQty(line, qty, btn, qtyInput) {
     try {
       await fetch('/cart/update.js', {
