@@ -106,6 +106,7 @@
         display: flex;
         align-items: center;
         gap: 16px;
+        position: relative;
     }
 
     .cd-item-img-d5 {
@@ -175,7 +176,7 @@
         position: relative;
     }
 
-    .is-loader-d5 .btn-loader-d5 {
+    .is-loader-d5 .btn-loader-d5, .item-loader-d5 {
         position: absolute;
         width: 12px;
         height: 12px;
@@ -187,8 +188,11 @@
         display: none;
         opacity: 0;
     }
-
-    .is-loader-d5.loading .btn-loader-d5 {
+    .item-loader-d5{
+        width: 30px;
+        height: 30px;
+    }
+    .is-loader-d5.loading .btn-loader-d5, .item-loader-d5 {
         display: block !important;
         opacity: 1;
     }
@@ -230,7 +234,7 @@
     }
 
     /* Skeleton Styles */
-    .cd-item-skeleton, .real-item-d5.hidden{
+    /* .cd-item-skeleton, .real-item-d5.hidden{
         display: none !important;
     }
     .cd-item-skeleton.visible {
@@ -290,7 +294,7 @@
         background-color: #ddd;
     }
 
-    /* Animating the skeleton loader */
+    
     @keyframes loading {
         0% {
             background-position: -200% 0;
@@ -309,7 +313,7 @@
     .skeleton.skeleton-text {
         margin-bottom: 8px;
         height: 12px;
-    }
+    } */
     .cd-remove-icon-d5{
         flex-grow: 0;
     }
@@ -334,6 +338,7 @@
         <div class="cd-content-d5">
             {% for item in cart.items %}
                 <div class="cd-item-d5 real-item-d5" data-variant-id="{{ item.variant.id }}" data-line-item-key="{{ item.key }}">
+                    <span class="item-loader-d5"></span>
                     <div class="cd-item-img-d5" style="--aspect-ratio: {{ item.image.aspect_ratio }}">
                         <a href="{{ item.url }}">
                         <img src="{{ item.image |  image_url: width: 400 }}" width="150" height="{{ item.image.height }}" alt="{{ item.title }}" loading="lazy">
