@@ -77,7 +77,7 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
         }
           if (btn.classList.contains('cd-remove-d5')) {
             btn.classList.add('loading');
-            val == 0;
+            val = 0;
             changeQty(line, val, btn, qtyInput);
             product.classList.add('product-remove-loading'); 
         }
