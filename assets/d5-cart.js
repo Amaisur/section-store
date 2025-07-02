@@ -41,7 +41,9 @@
 document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
+      if (cart) {
+        cart.classList.add('cd-drawer__open', 'atc-loading-d5');
+      }
     try {
       await fetch("/cart/add", {
         method: "POST",
@@ -50,11 +52,9 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
 
       if (typeof rerenderCart === 'function') { 
         await rerenderCart();
+        cart.classList.remove('atc-loading-d5');
       }
 
-      if (cart) {
-        cart.classList.add('cd-drawer__open');
-      }
     } catch (error) {
       console.error('Error during form submission:', error);
     }

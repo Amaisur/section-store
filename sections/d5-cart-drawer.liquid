@@ -130,6 +130,8 @@
         padding: 16px;
         overflow-y: auto;
         height: 100%;
+        position: relative;
+        align-items: center;
     }
 
     .cd-otpions-d5 {
@@ -204,6 +206,13 @@
         width: 30px;
         height: 30px;
         border-top-width: 4px;
+    }
+    .atc-loader-d5{
+        position: relative;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .is-loader-d5.loading .btn-loader-d5, .item--loading .item-loader-d5, .item--loading .item-light-overlay-d5 {
         display: block !important;
@@ -349,6 +358,9 @@
             </div>
         </div>
         <div class="cd-content-d5">
+            <div class="atc-loader-d5">
+            <span class="item-loader-d5"></span>
+            </div>
             {% for item in cart.items %}
                 <div class="cd-item-d5 real-item-d5" data-variant-id="{{ item.variant.id }}" data-line-item-key="{{ item.key }}">
                     <span class="item-loader-d5"></span>
