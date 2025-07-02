@@ -212,12 +212,12 @@
                         </div>
                          {% endif %}
                         <div class="cd-quantity-d5">
-                        qty{% if item.variant.inventory_management %}h{% else %}n{% endif %}
+                        {%  assign qty =  item.variant.inventory_management %}
                             <div class="cd-qty-btn-d5 cd-minus-d5 is-loader-d5">
                                 <span class="btn-text-d5">-</span>
                                 <span class="btn-loader-d5"></span>
                             </div>
-                            <input type="text" value="{{ item.quantity }}" data-max="{%if item.variant.inventory_quantity %}{{ item.variant.inventory_quantity }}{% else %}999{% endif %}" readonly class="cd-qty-input-d5">
+                            <input type="text" value="{{ item.quantity }}" data-max="{%if item.variant.inventory_quantity > 1 and qty %}{{ item.variant.inventory_quantity }}{% else %}999{% endif %}" readonly class="cd-qty-input-d5">
                             <div class="cd-qty-btn-d5 cd-plus-d5 is-loader-d5">
                                 <span class="btn-text-d5">+</span>
                                 <span class="btn-loader-d5"></span>
