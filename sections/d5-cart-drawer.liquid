@@ -131,7 +131,6 @@
         overflow-y: auto;
         height: 100%;
         position: relative;
-        align-items: center;
     }
 
     .cd-otpions-d5 {
@@ -213,8 +212,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 100%;
+        background: #eee;
+        display: none;
     }
-    .is-loader-d5.loading .btn-loader-d5, .item--loading .item-loader-d5, .item--loading .item-light-overlay-d5 {
+    .is-loader-d5.loading .btn-loader-d5,
+    .item--loading .item-loader-d5,
+    .item--loading .item-light-overlay-d5,
+    .atc-loader-d5 .item-loader-d5,
+    .atc-loading-d5 .atc-loader-d5{
         display: block !important;
         opacity: 1;
     }
