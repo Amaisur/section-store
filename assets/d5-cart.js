@@ -95,8 +95,9 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
   document.querySelectorAll('[close-cart-d5]').forEach(btn => {
     btn.addEventListener('click', () => {
     if(cart.classList.contains('cd-drawer__open')){
-        cart.classList.remove('cd-drawer__open')
+        cart.classList.remove('cd-drawer__open');
     }
+    document.body.style.overflow = ''
     })
   })
 })();
