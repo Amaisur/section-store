@@ -282,7 +282,7 @@
     products.forEach(product => {
       const qtyBtns = product.querySelectorAll('.cd-qty-btn-d5');
       const qtyInput = product.querySelector('.cd-qty-input-d5');
-      const max = +qtyInput.dataset.max;
+      const max = +qtyInput.dataset.max - 1;
       const line = product.getAttribute('data-line-item-key');
   
       qtyBtns.forEach(btn => {
