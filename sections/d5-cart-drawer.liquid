@@ -134,6 +134,39 @@
         height: 100%;
         cursor: pointer;
     }
+    .is-loader-d5 {
+        position: relative;
+    }
+
+    .is-loader-d5 .btn-loader-d5 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 12px;
+        height: 12px;
+        border: 3px solid #fff;
+        border-top: 3px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        transform: translate(-50%, -50%);
+        display: none;
+        opacity: 0;
+    }
+
+    .is-loader-d5.loading .btn-loader-d5 {
+        display: block !important;
+        opacity: 1;
+    }
+    .is-loader-d5.loading{
+        pointer-events: none;
+    }
+    .is-loader-d5.loading .btn-text-d5{
+        opacity: 0;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
 </style>
 
 <div class="cart-drawer-d5 cd-drawer__open">
@@ -178,9 +211,15 @@
                         </div>
                          {% endif %}
                         <div class="cd-quantity-d5">
-                            <div class="cd-qty-btn-d5 cd-minus-d5">-</div>
+                            <div class="cd-qty-btn-d5 cd-minus-d5 is-loader-d5">
+                                <span class="btn-text-d5">-</span>
+                                <span class="btn-loader-d5"></span>
+                            </div>
                             <input type="text" value="{{ item.quantity }}" data-max="{%if item.variant.inventory_quantity %}{{ item.variant.inventory_quantity }}{% else %}999{% endif %}" readonly class="cd-qty-input-d5">
-                            <div class="cd-qty-btn-d5 cd-plus-d5">+</div>
+                            <div class="cd-qty-btn-d5 cd-plus-d5 is-loader-d5">
+                                <span class="btn-text-d5">+</span>
+                                <span class="btn-loader-d5"></span>
+                            </div>
 
                         </div>
                     </div>
@@ -195,50 +234,63 @@
   
 <script>
 (function () {
- async function changeQty(line, qty) {
-  try {
-    await fetch('/cart/update.js', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ updates: { [line]: qty } })
-    });
-  } catch (err) {
-    console.error(err);
-  } finally {
-    await rerenderCart();
+  const cart = document.querySelector('.cart-drawer-d5');
+  
+  async function changeQty(line, qty, btn) {
+    try {
+      await fetch('/cart/update.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ updates: { [line]: qty } })
+      });
+    } catch (err) {
+      console.error(err);
+    } finally {
+      await rerenderCart();
+      btn.classList.remove('loading');
+    }
   }
-}
- 
-async function rerenderCart() {
-  const response = await fetch('/?section_id=d5-cart-drawer');
-  const data = await response.text();
-  const doc = new DOMParser().parseFromString(data, 'text/html');
-  const newDrawer = doc.querySelector('.cd-inner-d5');
-  const cartInner = document.querySelector('.cd-inner-d5');
-  if (cartInner) {
-    cartInner.innerHTML = newDrawer.innerHTML; 
+
+  async function rerenderCart() {
+    const response = await fetch('/?section_id=d5-cart-drawer');
+    const data = await response.text();
+    const doc = new DOMParser().parseFromString(data, 'text/html');
+    const newDrawer = doc.querySelector('.cd-inner-d5');
+    const cartInner = document.querySelector('.cd-inner-d5');
+    if (cartInner) {
+      cartInner.innerHTML = newDrawer.innerHTML;
+      addEventListenersToCart();
+    }
   }
-}
 
-
-  const products = document.querySelectorAll('.cd-item-d5');
-  products.forEach(product => {
-    const qtyBtns = product.querySelectorAll('.cd-qty-btn-d5');
-    const qtyInput = product.querySelector('.cd-qty-input-d5');
-    const max = +qtyInput.dataset.max;
-    const line = product.getAttribute('data-line-item-key');
-
-    qtyBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        let val = +qtyInput.value;
-        if (btn.classList.contains('cd-plus-d5') && val < max) val++;
-        if (btn.classList.contains('cd-minus-d5')) val--;
-        qtyInput.value = val;
-        changeQty(line, val);
+  function addEventListenersToCart() {
+    const products = document.querySelectorAll('.cd-item-d5');
+    products.forEach(product => {
+      const qtyBtns = product.querySelectorAll('.cd-qty-btn-d5');
+      const qtyInput = product.querySelector('.cd-qty-input-d5');
+      const max = +qtyInput.dataset.max;
+      const line = product.getAttribute('data-line-item-key');
+  
+      qtyBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          let val = +qtyInput.value;
+          btn.classList.add('loading');
+          if (btn.classList.contains('cd-plus-d5') && val < max){ val++;}
+          if (btn.classList.contains('cd-minus-d5') && val < 0) val--;
+          if (btn.classList.contains('cd-minus-d5') && val == 1) {
+            val--;
+            product.classList.add('product-remove-loading');
+        }
+          qtyInput.value = val;
+          changeQty(line, val, btn);
+        });
       });
     });
-  });
+  }
+
+  addEventListenersToCart();
 })();
+
 </script> 
 
 {% schema %}
