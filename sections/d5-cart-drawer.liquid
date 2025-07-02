@@ -237,7 +237,7 @@
 (function () {
   const cart = document.querySelector('.cart-drawer-d5');
   
-  async function changeQty(line, qty, btn) {
+  async function changeQty(line, qty, btn, qtyInput) {
     try {
       await fetch('/cart/update.js', {
         method: 'POST',
@@ -247,6 +247,7 @@
     } catch (err) {
       console.error(err);
     } finally {
+      qtyInput.value = qty;
       await rerenderCart();
       btn.classList.remove('loading');
     }
@@ -301,8 +302,7 @@
             val--;
             product.classList.add('product-remove-loading');
         }
-          qtyInput.value = val;
-          changeQty(line, val, btn);
+          changeQty(line, val, btn, qtyInput);
         });
       });
     });
