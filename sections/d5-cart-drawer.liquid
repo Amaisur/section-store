@@ -213,7 +213,7 @@
                          {% endif %}
                         <div class="cd-quantity-d5">
                         {%  assign qty =  item.variant.inventory_management %}
-                            <div class="cd-qty-btn-d5 cd-minus-d5 is-loader-d5">
+                            <div class="cd-qty-btn-d5 is-loader-d5 {% if item.quantity == 1 %}cd-remove-d5{% else %}cd-minus-d5{% endif %}">
                                 <span class="btn-text-d5">-</span>
                                 <span class="btn-loader-d5"></span>
                             </div>
@@ -311,7 +311,7 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
             val--;
             changeQty(line, val, btn, qtyInput);
         }
-          if (btn.classList.contains('cd-minus-d5') && val == 1) {
+          if (btn.classList.contains('cd-remove-d5')) {
             btn.classList.add('loading');
             val--;
             changeQty(line, val, btn, qtyInput);
