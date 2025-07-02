@@ -1,5 +1,7 @@
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('cart-drawer').remove();
+})
 (function () {
-  document.querySelector('cart-drawer').remove();
   const cart = document.querySelector('.cart-drawer-d5');
   
   async function changeQty(line, qty, btn, qtyInput) {
