@@ -455,25 +455,27 @@
         </div>
         <div class="cd-content-d5">
             <div class="cd-rewards-bar-d5">
-                <div class="cd-free-shipping-bar-d5">
-                    <div class="cd-free-shipping-bar__inner-d5" style="width: {{ cart.total_price | divided_by: 100.0 | times: 100.0 | divided_by: section.settings.free_shipping | round }}%"></div>
-                    <div class="cd-free-shipping-bar__content-d5">
-                        <p class="cd-free-shipping-bar__text-d5">
-                        {% if cart.total_price >= settings.free_shipping_threshold * 100 %}
-                            🎉 You’ve earned free shipping!
-                        {% else %}
-                            You’re {{ settings.free_shipping_threshold | minus: (cart.total_price | divided_by: 100.0) | money }} away from free shipping!
-                        {% endif %}
-                        </p>
-                        <div class="cd-free-shipping-bar__icon-d5">
-                        {% if cart.total_price >= settings.free_shipping_threshold * 100 %}
-                            <span class="cd-icon-check-d5"></span>
-                        {% else %}
-                            <span class="cd-icon-tag-d5"></span>
-                        {% endif %}
-                        </div>
-                    </div>
-                    </div>
+               <div class="cd-free-shipping-bar-d5">
+  <div class="cd-free-shipping-bar__inner-d5" style="width: {{ cart.total_price | times: 100.0 | divided_by: settings.free_shipping_threshold | at_most: 100 }}%"></div>
+  <div class="cd-free-shipping-bar__content-d5">
+    <p class="cd-free-shipping-bar__text-d5">
+      {% assign remaining_amount = settings.free_shipping_threshold | times: 100 | minus: cart.total_price %}
+      
+      {% if cart.total_price >= settings.free_shipping_threshold %}
+        🎉 You've earned free shipping!
+      {% else %}
+        You're {{ remaining_amount | money }} away from free shipping!
+      {% endif %}
+    </p>
+    <div class="cd-free-shipping-bar__icon-d5">
+      {% if cart.total_price >= settings.free_shipping_threshold %}
+        <span class="cd-icon-check-d5"></span>
+      {% else %}
+        <span class="cd-icon-tag-d5"></span>
+      {% endif %}
+    </div>
+  </div>
+</div>
 
             </div>  
             <div class="atc-loader-d5">
