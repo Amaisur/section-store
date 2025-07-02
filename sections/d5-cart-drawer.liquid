@@ -291,13 +291,13 @@
           let val = +qtyInput.value;
           if (btn.classList.contains('cd-plus-d5') && val <= max){ 
             btn.classList.add('loading');
-            changeQty(line, val, btn, qtyInput);
             val++;
+            changeQty(line, val, btn, qtyInput);
         }
           if (btn.classList.contains('cd-minus-d5') && val > 2) {
             btn.classList.add('loading');
-            changeQty(line, val, btn, qtyInput);
             val--;
+            changeQty(line, val, btn, qtyInput);
         }
           if (btn.classList.contains('cd-minus-d5') && val == 1) {
             btn.classList.add('loading');
