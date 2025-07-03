@@ -455,7 +455,7 @@
         </div>
         <div class="cd-content-d5">
             <div class="cd-rewards-bar-d5">
-              <div class="cd-free-shipping-bar-d5">
+              <div class="cd-free-shipping-bar-d5" {{ cart.total_price }}>
   <div class="cd-free-shipping-bar__inner-d5" style="width: {{ cart.total_price | divided_by: section.settings.free_shipping | times: 100 | at_most: 100 }}%"></div>
   <div class="cd-free-shipping-bar__content-d5">
     <p class="cd-free-shipping-bar__text-d5">
