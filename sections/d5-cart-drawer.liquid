@@ -466,7 +466,7 @@
   <div class="cd-overlay-d5" close-cart-d5></div>
   <div class="cd-inner-d5">
     <div class="cd-header-d5">
-      <div class="cd-heading-d5">
+      <div class="cd-heading-d5" render-d5>
         <p>
           Your Cart <span class="cd-count-d5"> ({{ cart.item_count }})</span>
         </p>
@@ -508,8 +508,7 @@
           
           <div
             class="cd-free-shipping-bar__inner-d5"
-            shipping-bar-d5
-            data-width="{{ percentage | round: 2 }}%"
+            style="width: {{ percentage | round: 2 }}%;"
           ></div>
            <div class="cd-free-shipping-bar__icon-d5 {% if cart.total_price >= threshold_in_cents %}rewards-true{% else %}rewards-false{% endif %}">
               {% if cart.total_price >= threshold_in_cents %}
@@ -523,7 +522,7 @@
       <div class="atc-loader-d5">
         <span class="item-loader-d5"></span>
       </div>
-      <div class="cd-cart-items-d5">
+      <div class="cd-cart-items-d5" render-d5 data-width="{{ percentage | round: 2 }}%" shipping-bar-d5>
       {% for item in cart.items %}
         <div
           class="cd-item-d5 real-item-d5"
@@ -602,7 +601,7 @@
       {% endfor %}
       </div>
     </div>
-    <div class="cd-footer-d5">
+    <div class="cd-footer-d5" render-d5>
       <a href="/checkout" class="cd-checkout-btn-d5">
         Checkout&nbsp;&nbsp;•&nbsp;&nbsp;<span class="cd-footer-total-price">
           {{- cart.original_total_price | money -}}

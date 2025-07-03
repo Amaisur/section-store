@@ -2,8 +2,7 @@
 (function () {
   const cart = document.querySelector('.cart-drawer-d5');
   const cartIcon = document.querySelector('#cart-icon-bubble');
-  const rewardsBar = document.querySelector('.cd-free-shipping-bar__inner-d5');
-  const dataW = rewardsBar.getAttribute('data-width');
+  const rewardsBar = cart.querySelector('.cd-free-shipping-bar__inner-d5');
   setTimeout(() => {
       rewardsBar.style.width = dataW;
     },100)
@@ -34,16 +33,18 @@
     const response = await fetch('/?section_id=d5-cart-drawer');
     const data = await response.text();
     const doc = new DOMParser().parseFromString(data, 'text/html');
-    const oldElems = ['']
-    const newDrawer = doc.querySelector('.cd-inner-d5');
-    const cartInner = document.querySelector('.cd-inner-d5');
-    if (cartInner) {
-      cartInner.innerHTML = newDrawer.innerHTML;
-      addEventListenersToCart();
+    const oldElems = document.querySelectorAll('[render-d5]')
+    const newElems = doc.querySelectorAll('[render-d5]');
+    if (oldElems && newElems) {
+      oldElems.forEach((el, index) => {
+        const newElem = newElems[index];
+        if (newElem) {
+          el.replaceWith(newElem);
+        }
+      });
     }
-    setTimeout(() => {
-      rewardsBar.style.width = dataW;
-    },100);
+    const dataRW = doc.querySelector('[shipping-bar-d5]').getAttribute('data-width');
+    rewardsBar.style.width = dataRW;
   }
 
 document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
