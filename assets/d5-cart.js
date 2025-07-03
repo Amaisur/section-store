@@ -41,6 +41,7 @@
         }
       });
     }
+    addEventListenersToCart();
     const dataRW = doc.querySelector('[shipping-bar-d5]').getAttribute('data-width');
     rewardsBar.style.width = dataRW;
   }
