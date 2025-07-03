@@ -507,7 +507,8 @@
           
           <div
             class="cd-free-shipping-bar__inner-d5"
-            style="width:{{ percentage | round: 2 }}%;"
+            shipping-bar-d5
+            data-width="{{ percentage | round: 2 }}%"
           ></div>
            <div class="cd-free-shipping-bar__icon-d5 {% if cart.total_price >= threshold_in_cents %}rewards-true{% else %}rewards-false{% endif %}">
               {% if cart.total_price >= threshold_in_cents %}
