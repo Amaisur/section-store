@@ -455,8 +455,8 @@
         </div>
         <div class="cd-content-d5">
             <div class="cd-rewards-bar-d5">
-              <div class="cd-free-shipping-bar-d5" {{ cart.total_price |  money_without_trailing_zeros }}>
-                    <div class="cd-free-shipping-bar__inner-d5" style="width: {{ cart.total_price |  money_without_trailing_zeros | divided_by: section.settings.free_shipping | times: 100 | at_most: 100 }}%">
+              <div class="cd-free-shipping-bar-d5" hh {{ cart.total_price |  money_without_trailing_zeros }}>
+                    <div class="cd-free-shipping-bar__inner-d5" style="width: {{ cart.original_total_price | divided_by: section.settings.free_shipping | times: 100 | at_most: 100 }}%">
                     </div>
                     <div class="cd-free-shipping-bar__content-d5">
                         <p class="cd-free-shipping-bar__text-d5">
