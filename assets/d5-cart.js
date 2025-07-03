@@ -2,6 +2,11 @@
 (function () {
   const cart = document.querySelector('.cart-drawer-d5');
   const cartIcon = document.querySelector('#cart-icon-bubble');
+  const rewardsBar = document.querySelector('.cd-free-shipping-bar__inner-d5');
+  const dataW = rewardsBar.getAttribute('data-width');
+  setTimeout(() => {
+      rewardsBar.style.width = dataW;
+    },100)
   cartIcon.addEventListener('click', (e) => {
     e.preventDefault();
     cart.classList.add('cd-drawer__open');
@@ -35,11 +40,9 @@
       cartInner.innerHTML = newDrawer.innerHTML;
       addEventListenersToCart();
     }
-    const rewardsBar = document.querySelector('.cd-free-shipping-bar__inner-d5');
-    const dataW = rewardsBar.getAttribute('data-width');
     setTimeout(() => {
       rewardsBar.style.width = dataW;
-    },100)
+    },100);
   }
 
 document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
