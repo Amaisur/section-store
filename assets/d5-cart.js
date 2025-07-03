@@ -32,6 +32,7 @@
     const doc = new DOMParser().parseFromString(data, 'text/html');
     const oldElems = document.querySelectorAll('[render-d5]')
     const newElems = doc.querySelectorAll('[render-d5]');
+    const dataRW = doc.querySelector('.cd-cart-items-d5');
     if (oldElems && newElems) {
       oldElems.forEach((el, index) => {
         const newElem = newElems[index];
@@ -42,10 +43,9 @@
     }
     addEventListenersToCart();
     const rewardsBar = document.querySelector('.cd-free-shipping-bar__inner-d5');
-    const dataRW = doc.querySelector('.cd-cart-items-d5');
     if(dataRW){
-    let width = dataRW.getAttribute('data-width');
-    rewardsBar.style.width = width;
+      let width = dataRW.getAttribute('data-width');
+      rewardsBar.style.width = width;
     }
   }
 
