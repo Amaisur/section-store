@@ -455,11 +455,11 @@
         </div>
         <div class="cd-content-d5">
             <div class="cd-rewards-bar-d5">
-               <div class="cd-free-shipping-bar-d5">
-  <div class="cd-free-shipping-bar__inner-d5" style="width: {{ cart.original_total_price | times: 100.0 | divided_by: section.settings.free_shipping | at_most: 100 }}%"></div>
+              <div class="cd-free-shipping-bar-d5">
+  <div class="cd-free-shipping-bar__inner-d5" style="width: {{ cart.total_price | divided_by: section.settings.free_shipping | times: 100 | at_most: 100 }}%"></div>
   <div class="cd-free-shipping-bar__content-d5">
     <p class="cd-free-shipping-bar__text-d5">
-      {% assign remaining_amount = section.settings.free_shipping | times: 100 | minus: cart.total_price %}
+      {% assign remaining_amount = section.settings.free_shipping | minus: cart.total_price %}
       
       {% if cart.total_price >= section.settings.free_shipping %}
         🎉 You've earned free shipping!
@@ -476,6 +476,7 @@
     </div>
   </div>
 </div>
+
 
             </div>  
             <div class="atc-loader-d5">
