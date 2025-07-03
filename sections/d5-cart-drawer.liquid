@@ -470,7 +470,7 @@
             assign threshold_with_cents = threshold | append: '00'
             assign total = cart.total_price
             assign difference = threshold_with_cents | minus: total
-            assign percentage = total | divided_by: threshold_with_cents
+            assign percentage = threshold_with_cents | divided_by: total
           %}
           <div
             class="cd-free-shipping-bar__inner-d5 {{ threshold_with_cents }} {{ cart.total_price }} {{ percentage }} {{ difference }}"
