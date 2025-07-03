@@ -495,7 +495,7 @@
             assign percentage = total | times: 100 | divided_by: threshold_in_cents
           %}
          <div class="cd-free-shipping-bar__content-d5">
-            <p class="cd-free-shipping-bar__text-d5">
+            <p class="cd-free-shipping-bar__text-d5" render-d5>
 
               {% if cart.total_price >= threshold_in_cents %}
                 🎉 You've earned free shipping!
