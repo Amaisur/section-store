@@ -3,9 +3,7 @@
   const cart = document.querySelector('.cart-drawer-d5');
   const cartIcon = document.querySelector('#cart-icon-bubble');
   const rewardsBar = cart.querySelector('.cd-free-shipping-bar__inner-d5');
-  setTimeout(() => {
-      rewardsBar.style.width = dataW;
-    },100)
+
   cartIcon.addEventListener('click', (e) => {
     e.preventDefault();
     cart.classList.add('cd-drawer__open');
