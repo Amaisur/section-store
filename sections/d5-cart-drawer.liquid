@@ -511,9 +511,11 @@
             style="width: {{ percentage | round: 2 }}%;"
           ></div>
            <div render-d5 class="cd-free-shipping-bar__icon-d5 {% if cart.total_price >= threshold_in_cents %}rewards-true{% else %}rewards-false{% endif %}">
-              {% if cart.total_price >= threshold_in_cents %}
+           
                 <span class="cd-icon-check-d5"></span>
+              
                 <span class="cd-icon-tag-d5"></span>
+              
             </div>
         </div>
       </div>
@@ -521,7 +523,7 @@
         <span class="item-loader-d5"></span>
       </div>
       <div class="cd-cart-items-d5" render-d5 data-width="{{ percentage | round: 2 }}%" shipping-bar-d5>
-      {% for item in cart.items %} 
+      {% for item in cart.items %}
         <div
           class="cd-item-d5 real-item-d5"
           data-variant-id="{{ item.variant.id }}"
