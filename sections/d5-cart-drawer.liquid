@@ -453,6 +453,9 @@
         height: 18px;
         background-size: contain;
     }
+    .cd-rewards-bar-d5{
+        padding: 0 16px 20px;
+    }
 </style>
 
 <div class="cart-drawer-d5 cd-drawer__open">
@@ -480,19 +483,7 @@
     </div>
     <div class="cd-content-d5">
       <div class="cd-rewards-bar-d5">
-        <div class="cd-free-shipping-bar-d5">
-          {% liquid
-            assign threshold = section.settings.free_shipping
-            assign threshold_in_cents = threshold | times: 100
-            assign total = cart.total_price
-            assign difference = threshold_in_cents | minus: total
-            assign percentage = total | times: 100 | divided_by: threshold_in_cents
-          %}
-          <div
-            class="cd-free-shipping-bar__inner-d5"
-            style="width:{{ percentage | round: 2 }}%;"
-          ></div>
-          <div class="cd-free-shipping-bar__content-d5">
+         <div class="cd-free-shipping-bar__content-d5">
             <p class="cd-free-shipping-bar__text-d5">
 
               {% if cart.total_price >= threshold_in_cents %}
@@ -509,6 +500,18 @@
               {% endif %}
             </div>
           </div>
+        <div class="cd-free-shipping-bar-d5">
+          {% liquid
+            assign threshold = section.settings.free_shipping
+            assign threshold_in_cents = threshold | times: 100
+            assign total = cart.total_price
+            assign difference = threshold_in_cents | minus: total
+            assign percentage = total | times: 100 | divided_by: threshold_in_cents
+          %}
+          <div
+            class="cd-free-shipping-bar__inner-d5"
+            style="width:{{ percentage | round: 2 }}%;"
+          ></div>
         </div>
       </div>
       <div class="atc-loader-d5">
