@@ -404,9 +404,10 @@
     .cd-free-shipping-bar-d5 {
         position: relative;
         background-color: #f0f0f0;
-        height: 8px;
+        height: 10px;
         width: 100%;
         margin: 20px 0;
+        border-radius: 8px;
     }
 
     .cd-free-shipping-bar__inner-d5 {
@@ -415,6 +416,7 @@
         transition: width 0.5s ease-out;
         max-width: 100%;
         display: block !important;
+        border-radius: 8px;
     }
 
     .cd-free-shipping-bar__content-d5 {
@@ -426,8 +428,8 @@
 
     .cd-free-shipping-bar__text-d5 {
         font-size: 14px;
-        font-weight: bold;
         color: #333;
+        text-align: center;
     }
 
     .cd-free-shipping-bar__icon-d5 {
@@ -435,7 +437,6 @@
         height: 40px;
         border-radius: 50%;
         border-color: #27ae60;
-        background: #eee;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -443,7 +444,9 @@
         top: -17px;
         right: 0;
     }
-
+    .cd-free-shipping-bar__icon-d5.rewards-false{
+        background-color: #27ae60;
+    }
     .cd-free-shipping-bar__icon-d5 .cd-icon-tag-d5 {
         background: url('https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg_839bf509-8ad7-4cbd-909d-2ec24ac733f0.webp?v=1751567482') no-repeat center center;
         width: 18px;
@@ -481,29 +484,30 @@
     </div>
     <div class="cd-content-d5">
       <div class="cd-rewards-bar-d5">
-         <div class="cd-free-shipping-bar__content-d5">
-            <p class="cd-free-shipping-bar__text-d5">
-
-              {% if cart.total_price >= threshold_in_cents %}
-                🎉 You've earned free shipping!
-              {% else %}
-                You're {{ difference | money }} away from free shipping!
-              {% endif %}
-            </p>
-          </div>
-        <div class="cd-free-shipping-bar-d5">
-          {% liquid
+        {% liquid
             assign threshold = section.settings.free_shipping
             assign threshold_in_cents = threshold | times: 100
             assign total = cart.total_price
             assign difference = threshold_in_cents | minus: total
             assign percentage = total | times: 100 | divided_by: threshold_in_cents
           %}
+         <div class="cd-free-shipping-bar__content-d5">
+            <p class="cd-free-shipping-bar__text-d5">
+
+              {% if cart.total_price >= threshold_in_cents %}
+                🎉 You've earned free shipping!
+              {% else %}
+                You're <strong>{{ difference | money }}</strong> away from free shipping!
+              {% endif %}
+            </p>
+          </div>
+        <div class="cd-free-shipping-bar-d5">
+          
           <div
             class="cd-free-shipping-bar__inner-d5"
             style="width:{{ percentage | round: 2 }}%;"
           ></div>
-           <div class="cd-free-shipping-bar__icon-d5">
+           <div class="cd-free-shipping-bar__icon-d5 {% cart.total_price >= threshold_in_cents %}rewards-true{% else %}rewards-false{% endif %}">
               {% if cart.total_price >= threshold_in_cents %}
                 <span class="cd-icon-check-d5"></span>
               {% else %}
