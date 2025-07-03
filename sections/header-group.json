@@ -99,7 +99,7 @@
       "type": "d5-cart-drawer",
       "name": "D5 Cart Drawer",
       "settings": {
-        "free_shipping": 200
+        "free_shipping": 20000
       }
     }
   },
