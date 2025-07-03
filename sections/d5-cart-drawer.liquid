@@ -470,8 +470,6 @@
             assign threshold_in_cents = threshold | times: 100
             assign total = cart.total_price
             assign difference = threshold_in_cents | minus: total
-            
-            # Calculate percentage properly with floating point math
             assign percentage = total | times: 100 | divided_by: threshold_in_cents
           %}
           <div
