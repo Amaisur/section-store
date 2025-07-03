@@ -98,7 +98,9 @@
     "d5_cart_drawer_gUxAwy": {
       "type": "d5-cart-drawer",
       "name": "D5 Cart Drawer",
-      "settings": {}
+      "settings": {
+        "free_shipping": 200
+      }
     }
   },
   "order": [
