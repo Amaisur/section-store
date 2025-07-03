@@ -438,6 +438,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        position: absolute;
+        top: -15px;
+        right: 0;
     }
 
     .cd-free-shipping-bar__icon-d5 .cd-icon-tag-d5 {
@@ -492,13 +495,6 @@
                 You're {{ difference | money }} away from free shipping!
               {% endif %}
             </p>
-            <div class="cd-free-shipping-bar__icon-d5">
-              {% if cart.total_price >= threshold_in_cents %}
-                <span class="cd-icon-check-d5"></span>
-              {% else %}
-                <span class="cd-icon-tag-d5"></span>
-              {% endif %}
-            </div>
           </div>
         <div class="cd-free-shipping-bar-d5">
           {% liquid
@@ -512,6 +508,13 @@
             class="cd-free-shipping-bar__inner-d5"
             style="width:{{ percentage | round: 2 }}%;"
           ></div>
+           <div class="cd-free-shipping-bar__icon-d5">
+              {% if cart.total_price >= threshold_in_cents %}
+                <span class="cd-icon-check-d5"></span>
+              {% else %}
+                <span class="cd-icon-tag-d5"></span>
+              {% endif %}
+            </div>
         </div>
       </div>
       <div class="atc-loader-d5">
