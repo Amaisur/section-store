@@ -2,7 +2,7 @@
 (function () {
   const cart = document.querySelector('.cart-drawer-d5');
   const cartIcon = document.querySelector('#cart-icon-bubble');
-  const rewardsBar = cart.querySelector('[shipping-bar-d5]');
+  const rewardsBar = cart.querySelector('.cd-free-shipping-bar__inner-d5');
   cartIcon.addEventListener('click', (e) => {
     e.preventDefault();
     cart.classList.add('cd-drawer__open');
