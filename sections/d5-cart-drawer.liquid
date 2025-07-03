@@ -474,21 +474,19 @@
           %}
           <div
             class="cd-free-shipping-bar__inner-d5 {{ threshold_with_cents }} {{ cart.total_price }} {{ percentage }} {{ difference }}"
-            style="width:{{ percentage | round: 2 }}%"
+            style="width:{{ percentage | round: 2 }}%; display: block;"
           ></div>
           <div class="cd-free-shipping-bar__content-d5">
             <p class="cd-free-shipping-bar__text-d5">
-              {% assign free_shipping_in_cents = section.settings.free_shipping | times: 100 %}
-              {% assign remaining_amount_in_cents = free_shipping_in_cents | minus: cart.total_price %}
 
-              {% if cart.total_price >= free_shipping_in_cents %}
+              {% if cart.total_price >= threshold_in_cents %}
                 🎉 You've earned free shipping!
               {% else %}
-                You're {{ remaining_amount_in_cents | divided_by: 100 | money }} away from free shipping!
+                You're {{ threshold_in_cents | money }} away from free shipping!
               {% endif %}
             </p>
             <div class="cd-free-shipping-bar__icon-d5">
-              {% if cart.total_price >= free_shipping_in_cents %}
+              {% if cart.total_price >= threshold_in_cents %}
                 <span class="cd-icon-check-d5"></span>
               {% else %}
                 <span class="cd-icon-tag-d5"></span>
