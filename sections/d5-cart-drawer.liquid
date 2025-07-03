@@ -471,7 +471,7 @@
           %}
           <div
             class="cd-free-shipping-bar__inner-d5 {{ threshold_with_cents }}"
-            style="width: {{ cart.total_price | divided_by: threshold_with_cents | times: 100 }}%"
+            style="width:{{ cart.total_price | divided_by: threshold_with_cents | round: 2 }}%"
           ></div>
           <div class="cd-free-shipping-bar__content-d5">
             <p class="cd-free-shipping-bar__text-d5">
