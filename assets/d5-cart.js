@@ -42,7 +42,7 @@
     }
     addEventListenersToCart();
     const rewardsBar = cart.querySelector('.cd-free-shipping-bar__inner-d5');
-    const dataRW = doc.querySelector('[shipping-bar-d5]').getAttribute('data-width');
+    const dataRW = doc.querySelector('.cd-cart-items-d5').getAttribute('data-width');
     rewardsBar.style.width = dataRW;
   }
 
