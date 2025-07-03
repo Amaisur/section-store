@@ -470,7 +470,7 @@
             assign threshold_with_cents = threshold | append: '00'
           %}
           <div
-            class="cd-free-shipping-bar__inner-d5 {{ threshold_with_cents }}"
+            class="cd-free-shipping-bar__inner-d5 {{ threshold_with_cents }} {{ cart.total_price }}"
             style="width:{{ cart.total_price | divided_by: threshold_with_cents | times: 100 | round: 2 }}%"
           ></div>
           <div class="cd-free-shipping-bar__content-d5">
