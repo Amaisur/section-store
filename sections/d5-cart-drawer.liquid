@@ -399,6 +399,8 @@
     height: 100%;
     background-color: #27ae60;
     transition: width 0.5s ease-out;
+    max-width: 100%;
+    display: block !important;
   }
 
   .cd-free-shipping-bar__content-d5 {
@@ -474,7 +476,7 @@
           %}
           <div
             class="cd-free-shipping-bar__inner-d5"
-            style="width:{{ percentage | round: 2 }}%; display: block;"
+            style="width:{{ percentage | round: 2 }}%;"
           ></div>
           <div class="cd-free-shipping-bar__content-d5">
             <p class="cd-free-shipping-bar__text-d5">
