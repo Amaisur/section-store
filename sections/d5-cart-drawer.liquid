@@ -467,10 +467,12 @@
         <div class="cd-free-shipping-bar-d5">
           {% liquid
             assign threshold = section.settings.free_shipping
-            assign threshold_with_cents = threshold | append: '00'
+            assign threshold_in_cents = threshold | times: 100
             assign total = cart.total_price
-            assign difference = threshold_with_cents | minus: total
-            assign percentage = total | divided_by: threshold_with_cents | times: 100
+            assign difference = threshold_in_cents | minus: total
+            
+            # Calculate percentage properly with floating point math
+            assign percentage = total | times: 100 | divided_by: threshold_in_cents
           %}
           <div
             class="cd-free-shipping-bar__inner-d5 {{ threshold_with_cents }} {{ cart.total_price }} {{ percentage }} {{ difference }}"
