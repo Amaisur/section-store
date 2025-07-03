@@ -37,7 +37,9 @@
     }
     const rewardsBar = document.querySelector('.cd-free-shipping-bar__inner-d5');
     const dataW = rewardsBar.getAttribute('data-width');
-    rewardsBar.style.width = dataW;
+    setTimeout(() => {
+      rewardsBar.style.width = dataW;
+    },100)
   }
 
 document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
