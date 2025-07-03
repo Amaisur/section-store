@@ -2,7 +2,6 @@
 (function () {
   const cart = document.querySelector('.cart-drawer-d5');
   const cartIcon = document.querySelector('#cart-icon-bubble');
-  const rewardsBar = cart.querySelector('.cd-free-shipping-bar__inner-d5');
   cartIcon.addEventListener('click', (e) => {
     e.preventDefault();
     cart.classList.add('cd-drawer__open');
@@ -36,6 +35,7 @@
       cartInner.innerHTML = newDrawer.innerHTML;
       addEventListenersToCart();
     }
+    const rewardsBar = document.querySelector('.cd-free-shipping-bar__inner-d5');
     const dataW = rewardsBar.getAttribute('data-width');
     rewardsBar.style.width = dataW;
   }
