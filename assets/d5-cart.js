@@ -41,7 +41,7 @@
       });
     }
     addEventListenersToCart();
-    const rewardsBar = cart.querySelector('.cd-free-shipping-bar__inner-d5');
+    const rewardsBar = document.querySelector('.cd-free-shipping-bar__inner-d5');
     const dataRW = doc.querySelector('.cd-cart-items-d5');
     if(dataRW){
     let width = dataRW.getAttribute('data-width');
