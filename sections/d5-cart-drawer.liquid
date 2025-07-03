@@ -473,7 +473,7 @@
             assign percentage = total | divided_by: threshold_with_cents | times: 100
           %}
           <div
-            class="cd-free-shipping-bar__inner-d5 {{ threshold_with_cents }} {{ cart.total_price }} {{ percentage | round: 2 }} {{ difference }}"
+            class="cd-free-shipping-bar__inner-d5 {{ threshold_with_cents }} {{ cart.total_price }} {{ percentage }} {{ difference }}"
             style="width:{{ percentage | round: 2 }}%"
           ></div>
           <div class="cd-free-shipping-bar__content-d5">
