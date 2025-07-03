@@ -34,6 +34,7 @@
     const response = await fetch('/?section_id=d5-cart-drawer');
     const data = await response.text();
     const doc = new DOMParser().parseFromString(data, 'text/html');
+    const oldElems = ['']
     const newDrawer = doc.querySelector('.cd-inner-d5');
     const cartInner = document.querySelector('.cd-inner-d5');
     if (cartInner) {
