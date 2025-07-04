@@ -556,7 +556,7 @@
                 assign percent_of = 100 | divided_by: rewards_block_count
                 assign width = percent_of | times: rewards_block_count
               %}
-            <div render-d5 percent="{{ percent_off }}" data-width="{{ width }}" class="cd-free-shipping-bar__icon-d5" {% if block.settings.reward_product != blank %}product-handle="{{ block.settings.reward_product.handle }}" {% endif %} data-price-threshold="{{ block.settings.reward_threshold }}">
+            <div render-d5 percent="{{ percent_of }}" data-width="{{ width }}" class="cd-free-shipping-bar__icon-d5" {% if block.settings.reward_product != blank %}product-handle="{{ block.settings.reward_product.handle }}" {% endif %} data-price-threshold="{{ block.settings.reward_threshold }}">
                 <span class="cd-icon-tag-d5"></span>
                 <span class="cd-icon-tooltip-d5">
                   {{ block.settings.reward_label }}
