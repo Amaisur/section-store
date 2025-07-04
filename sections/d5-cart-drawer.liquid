@@ -605,7 +605,7 @@
       </div>
     </div>
     <div class="cd-content-d5">
-  
+      ```liquid
 <div class="cd-rewards-bar-d5">
   {% liquid
     assign total = cart.total_price
@@ -670,35 +670,51 @@
     </p>
   </div>
 
-  <div class="cd-free-shipping-bar-d5">
+  <div class="cd-free-shipping-bar-d5" style="position: relative;">
     <div class="cd-free-shipping-bar__inner-d5" style="width: {{ percentage }}%;"></div>
 
     {% assign thresholds_array = all_thresholds | split: ',' | sort | map: 'to_number' %}
     {% for threshold in thresholds_array %}
       {% liquid
-        # Calculate milestone position
-        assign threshold_percentage = threshold | times: 100.0 | divided_by: highest_threshold | round: 2
-        # Fix comparison by using explicit conditional
-        if total >= threshold
-          assign is_achieved = true
+        # Ensure threshold is valid
+        if threshold > 0
+          # Calculate milestone position
+          if highest_threshold > 0
+            assign threshold_percentage = threshold | times: 100.0 | divided_by: highest_threshold | round: 2
+            if threshold_percentage > 100
+              assign threshold_percentage = 100
+            endif
+          else
+            assign threshold_percentage = 0
+          endif
+          # Set achieved status
+          if total >= threshold
+            assign is_achieved = true
+          else
+            assign is_achieved = false
+          endif
         else
+          # Skip invalid thresholds
+          assign threshold_percentage = 0
           assign is_achieved = false
         endif
       %}
-      <div class="cd-rewards-milestone-d5 {% if is_achieved %}achieved{% endif %}" style="left: {{ threshold_percentage }}%;">
-        <div class="cd-rewards-milestone-marker-d5"></div>
-        <div class="cd-rewards-milestone-label-d5">
-          {% for block in section.blocks %}
-            {% if block.type == 'rewards' %}
-              {% assign block_threshold = block.settings.reward_threshold | times: 100 %}
-              {% if block_threshold == threshold %}
-                {{ block.settings.reward_label }}
-                {% break %}
+      {% if threshold > 0 %}
+        <div class="cd-rewards-milestone-d5 {% if is_achieved %}achieved{% endif %}" style="position: absolute; left: {{ threshold_percentage }}%;">
+          <div class="cd-rewards-milestone-marker-d5"></div>
+          <div class="cd-rewards-milestone-label-d5">
+            {% for block in section.blocks %}
+              {% if block.type == 'rewards' %}
+                {% assign block_threshold = block.settings.reward_threshold | times: 100 %}
+                {% if block_threshold == threshold %}
+                  {{ block.settings.reward_label }}
+                  {% break %}
+                {% endif %}
               {% endif %}
-            {% endif %}
-          {% endfor %}
+            {% endfor %}
+          </div>
         </div>
-      </div>
+      {% endif %}
     {% endfor %}
 
     <div class="cd-free-shipping-bar__icon-d5 {% if percentage >= 100 %}rewards-true{% else %}rewards-false{% endif %}">
@@ -707,7 +723,7 @@
     </div>
   </div>
 </div>
-
+```
       <div class="atc-loader-d5">
         <span class="item-loader-d5"></span>
       </div>
