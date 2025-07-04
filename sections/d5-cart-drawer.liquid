@@ -451,11 +451,11 @@
         background-color: #27ae60;
     }
     .cd-free-shipping-bar__icon-d5 .cd-icon-tag-d5 {
-        background-repeat: no-repeat;
-        background-position: center;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
         width: 25px; 
         height: 25px;
-        background-size: 17px;
+        background-size: 17px !important;
         background-color: #fff;
         border-radius: 50%;
     }
@@ -557,7 +557,7 @@
                 assign percent_of = 100 | divided_by: rewards_block_count
               %}
             <div render-d5 style="left: calc({{ percent_of }}% - 40px);" class="cd-free-shipping-bar__icon-d5" {% if block.settings.reward_product != blank %}product-handle="{{ block.settings.reward_product.handle }}" {% endif %} data-price-threshold="{{ block.settings.reward_threshold }}">
-                <span class="cd-icon-tag-d5" style="background: url('{{ block.settings.reward_icon |  image_url: width: 50 }}')"></span>
+                <span class="cd-icon-tag-d5" style="background-image: url('{{ block.settings.reward_icon |  image_url: width: 50 }}')"></span>
                 <span class="cd-icon-tooltip-d5">
                   {{ block.settings.reward_label }} 
                 </span>
