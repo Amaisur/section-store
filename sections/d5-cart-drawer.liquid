@@ -474,7 +474,7 @@
       font-size: 8px;
       text-wrap: nowrap;
       letter-spacing: 0.2px;
-      margin-bottom: 6px;
+      margin-bottom: -3px;
     }
     .cd-heading-d5 p{
         font-size: 20px;
@@ -505,6 +505,11 @@
       width: 100%;
       align-items: center;
       justify-content: space-between;
+      padding-right: 30px;
+    }
+    .total-price-d5-cd{
+      font-weight: 600;
+      color: #000;
     }
 </style>
 
@@ -605,7 +610,7 @@
               {% if item.quantity > 1 %}
               <p class="cd-total-price-d5">
                 <span class="cd-totalprice-d5">Total Price</span>
-                {{ item.original_price |  times: item.quantity |  money }}
+                <span class="total-price-d5-cd">{{ item.original_price |  times: item.quantity |  money }}</span>
               </p>
               {% endif %}
               </div>
