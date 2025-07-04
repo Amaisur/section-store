@@ -545,7 +545,7 @@
           {% for block in section.blocks %}
             {% if block.type == 'rewards' %}
               {% assign rewards_block_count = rewards_block_count | plus: 1 %}
-            <p class="cd-free-shipping-bar__text-d5" render-d5 style="order: -{{ rewards_block_count }}">
+            <p class="cd-free-shipping-bar__text-d5" style="order: -{{ rewards_block_count }}">
               {%  assign threshold = block.settings.reward_threshold | append: '00' %}
               You are <strong>{{ threshold |  minus: cart.total_price | money }}</strong> Away from {{ block.settings.reward_label }}
             </p>
@@ -562,7 +562,7 @@
                 assign rewards_block_count = rewards_block_count | plus: 1 
                 assign percent_of = 100 | divided_by: rewards_block_count
               %}
-            <div render-d5 style="left: calc({{ percent_of }}% - 40px);" class="cd-free-shipping-bar__icon-d5" {% if block.settings.reward_product != blank %}product-handle="{{ block.settings.reward_product.handle }}" {% endif %} data-price-threshold="{{ block.settings.reward_threshold }}">
+            <div style="left: calc({{ percent_of }}% - 40px);" class="cd-free-shipping-bar__icon-d5" {% if block.settings.reward_product != blank %}product-handle="{{ block.settings.reward_product.handle }}" {% endif %} data-price-threshold="{{ block.settings.reward_threshold }}">
                 <span class="cd-icon-tag-d5" style="background-image: url('{{ block.settings.reward_icon |  image_url: width: 50 }}')"></span>
                 <span class="cd-icon-tooltip-d5">
                   {{ block.settings.reward_label }} 
