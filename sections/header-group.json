@@ -112,6 +112,7 @@
           "settings": {
             "reward_threshold": 200,
             "reward_label": "Free Shipping",
+            "reward_icon": "shopify://shop_images/icons8-shipping-50.png",
             "reward_product": ""
           }
         }
