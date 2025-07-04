@@ -478,6 +478,15 @@
       font-weight: 600;
       color: #000;
       margin: 18px 0;
+      text-align: center;
+    }
+    .cd-empty-cart-d5{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 20px 16px;
+
     }
     .cd-empty-cart-text-d5{
       font-size: 22px;
@@ -641,9 +650,11 @@
       {%  else %}
       <div class="cd-empty-footer-d5">
         <p class="cd-empty-announcement-d5">Add your favourite items to your cart.</p>
-        <a href="{{ section.settings.empty_checkout_page }}" class="cd-checkout-btn-d5">
+        {% if empty_cart_page != blank %}
+        <a href="{{ section.settings.empty_cart_page }}" class="cd-checkout-btn-d5">
           Shop Now
         </a>  
+        {% endif %}
       </div>
       {% endif %}
     </div>
@@ -665,6 +676,11 @@
             "id": "free_shipping",
             "label": "Free Shipping Amount",
             "default": 200
+        },
+        {
+            "type": "url",
+            "id": "empty_cart_page",
+            "label": "Empty Cart Drawer Collection URL"
         }
         ],
     "presets": [
