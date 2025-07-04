@@ -493,6 +493,12 @@
       font-weight: 300;
       color: #111;
     }
+    .cd-prices-d5{
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+    }
 </style>
 
 <div class="cart-drawer-d5">
@@ -589,9 +595,11 @@
                 <span class="cd-regular-price">{{ item.original_price | money }}</span>
                 <span class="cd-compare-price">{{ item.product.final_price | money }}</span>
               </p>
+              {% if item.quantity > 1 %}
               <p class="cd-total-price-d5">
                 {{ item.original_price |  times: item.quantity |  money }}
               </p>
+              {% endif %}
               </div>
             </div>
             {%- if item.product.has_only_default_variant == false
