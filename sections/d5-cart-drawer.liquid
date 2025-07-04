@@ -545,6 +545,40 @@
     text-align: center;
     margin-bottom: 10px;
   }
+   .cd-rewards-milestone-d5 {
+    position: absolute;
+    top: -5px;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 2;
+  }
+  .cd-rewards-milestone-marker-d5 {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #ccc;
+    margin: 0 auto;
+  }
+  .cd-rewards-milestone-d5.achieved .cd-rewards-milestone-marker-d5 {
+    background: #000;
+    border-color: #000;
+  }
+  .cd-rewards-milestone-label-d5 {
+    font-size: 12px;
+    margin-top: 5px;
+    white-space: nowrap;
+  }
+  .cd-free-shipping-bar__icon-d5 {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .cd-free-shipping-bar__content-d5 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
 </style>
 
 <div class="cart-drawer-d5">
@@ -633,7 +667,7 @@
         </div>
 
         <div class="cd-free-shipping-bar-d5">
-          <div class="cd-free-shipping-bar__inner-d5" style="width: {{ percentage }}%;"></div>
+          <div class="cd-free-shipping-bar__inner-d5 {{ percentage }}" style="width: {{ percentage }}%;"></div>
 
           {% # Create milestone markers %}
           {% assign thresholds_array = all_thresholds | split: ',' | uniq | sort | map: 'to_number' %}
