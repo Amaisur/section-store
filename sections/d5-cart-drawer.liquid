@@ -542,14 +542,18 @@
        
          <div class="cd-free-shipping-bar__content-d5">
 <p class="cd-free-shipping-bar__text-d5">
+  {% assign exceeded_1 = cart.total_price | minus: section.settings.reward_threshold_1 %}
+  {% assign exceeded_2 = cart.total_price | minus: section.settings.reward_threshold_2 %}
+  {% assign exceeded_3 = cart.total_price | minus: section.settings.reward_threshold_3 %}
+
   {% if cart.total_price >= section.settings.reward_threshold_3 %}
-    All rewards unlocked! You've earned {{ section.settings.reward_label_1 }}, {{ section.settings.reward_label_2 }}, and {{ section.settings.reward_label_3 }}
+    You've exceeded the highest reward by <strong>{{ exceeded_3 | money }}</strong>!
   {% elsif cart.total_price >= section.settings.reward_threshold_2 %}
-    You are <strong>{{ section.settings.reward_threshold_3 | minus: cart.total_price | money }}</strong> away from {{ section.settings.reward_label_3 }}
+    You are <strong>{{ exceeded_2 | money }}</strong> beyond {{ section.settings.reward_label_2 }}
   {% elsif cart.total_price >= section.settings.reward_threshold_1 %}
-    You are <strong>{{ section.settings.reward_threshold_2 | minus: cart.total_price | money }}</strong> away from {{ section.settings.reward_label_2 }}
+    You are <strong>{{ exceeded_1 | money }}</strong> beyond {{ section.settings.reward_label_1 }}
   {% else %}
-    You are <strong>{{ section.settings.reward_threshold_1 | minus: cart.total_price | money }}</strong> away from {{ section.settings.reward_label_1 }}
+    You need <strong>{{ section.settings.reward_threshold_1 | minus: cart.total_price | money }}</strong> to reach the first reward
   {% endif %}
 </p>
 
