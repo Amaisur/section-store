@@ -720,39 +720,98 @@
             "type": "url",
             "id": "empty_cart_page",
             "label": "Empty Cart Drawer Collection URL"
-        }
-        ],
-    "blocks": [
-      {
-        "type": "rewards",
-        "name": "Rewards",
-        "settings": [
-          {
+        },
+        {
+          "type": "select",
+          "id": "reward_count",
+          "label": "Number of Milestones",
+          "default": "2",
+          "options": [
+            {"label": "1","value": "1"},
+            {"label": "2","value": "2"},
+            {"label": "3","value": "3"}
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Free Reward Milestone 1"
+        },
+         {
             "type": "number",
-            "id": "reward_threshold",
-            "label": "Reward Price",
+            "id": "reward_threshold_1",
+            "label": "Reward Price 1",
             "default": 200
           },
           {
             "type": "text",
-            "id": "reward_label",
-            "label": "Reward Label",
+            "id": "reward_label_1",
+            "label": "Reward Label 1",
             "default": "Free Shipping"
           },
           {
             "type": "image_picker",
-            "id": "reward_icon",
-            "label": "Reward Icon"
+            "id": "reward_icon_1",
+            "label": "Reward Icon 1"
           },
           {
             "type": "product",
-            "id": "reward_product",
-            "label": "Product as a Reward",
+            "id": "reward_product_1",
+            "label": "Product as a Reward 1",
+            "info": "Selected product can only be added to the cart after a specific milestone is achieved."
+          },
+           {
+          "type": "header",
+          "content": "Free Reward Milestone 2"
+        },
+         {
+            "type": "number",
+            "id": "reward_threshold_2",
+            "label": "Reward Price 2",
+            "default": 400
+          },
+          {
+            "type": "text",
+            "id": "reward_label_2",
+            "label": "Reward Label 2",
+            "default": "Free Product"
+          },
+          {
+            "type": "image_picker",
+            "id": "reward_icon_2",
+            "label": "Reward Icon 2"
+          },
+          {
+            "type": "product",
+            "id": "reward_product_2",
+            "label": "Product as a Reward 2",
+            "info": "Selected product can only be added to the cart after a specific milestone is achieved."
+          },
+           {
+          "type": "header",
+          "content": "Free Reward Milestone 3"
+        },
+         {
+            "type": "number",
+            "id": "reward_threshold_3",
+            "label": "Reward Price 3"
+          },
+          {
+            "type": "text",
+            "id": "reward_label_3",
+            "label": "Reward Label 3"
+          },
+          {
+            "type": "image_picker",
+            "id": "reward_icon_3",
+            "label": "Reward Icon 3"
+          },
+          {
+            "type": "product",
+            "id": "reward_product_3",
+            "label": "Product as a Reward 3",
             "info": "Selected product can only be added to the cart after a specific milestone is achieved."
           }
-        ]
-      }
-    ],
+        ],
     "presets": [
         {
             "name": "D5 Cart Drawer" 
