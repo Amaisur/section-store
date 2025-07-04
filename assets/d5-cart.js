@@ -23,9 +23,6 @@
       if(product.classList.contains('item--loading')){
       product.classList.remove('item--loading'); 
     }
-      if(cart){
-        cart.classList.add('cd-drawer__open');
-      }
     }
   }
 
@@ -77,6 +74,10 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
 
     } catch (error) {
       console.error('Error during form submission:', error);
+    }finally{
+       if(cart){
+        cart.classList.add('cd-drawer__open');
+      }
     }
   });
 });
