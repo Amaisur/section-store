@@ -541,9 +541,11 @@
       <div class="cd-rewards-bar-d5">
        
          <div class="cd-free-shipping-bar__content-d5">
+           {% assign rewards_block_count = 0 %}
           {% for block in section.blocks %}
             {% if block.type == 'rewards' %}
-            <p class="cd-free-shipping-bar__text-d5" render-d5>
+              {% assign rewards_block_count = rewards_block_count | plus: 1 %}
+            <p class="cd-free-shipping-bar__text-d5" render-d5 style="order: {{ rewards_block_count }}">
               {%  assign threshold = block.settings.reward_threshold | append: '00' %}
               You are <strong>{{ threshold |  minus: cart.total_price | money }}</strong> Away from {{ block.settings.reward_label }}
             </p>
@@ -553,7 +555,6 @@
         <div class="cd-free-shipping-bar-d5">
           
           <div class="cd-free-shipping-bar__inner-d5"></div>
-          {% assign rewards_block_count = 0 %}
           {% for block in section.blocks %}
             {% if block.type == 'rewards' %}
               {%  liquid 
