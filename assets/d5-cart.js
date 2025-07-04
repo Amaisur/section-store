@@ -43,15 +43,16 @@
         }
       });
     }
+    if(oldIcon && newIcon){
+      oldIcon.innerHTML = newIcon.innerHTML; 
+    }
     addEventListenersToCart();
     const rewardsBar = document.querySelector('.cd-free-shipping-bar__inner-d5');
     if(dataRW){
       let width = dataRW.getAttribute('data-width');
       rewardsBar.style.width = width;
     }
-    if(oldIcon && newIcon){
-      oldIcon.innerHTML = newIcon.innerHTML; 
-    }
+    
   }
 
 document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
