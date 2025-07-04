@@ -1,4 +1,3 @@
-
 <style>
     * {
         padding: 0;
@@ -538,7 +537,6 @@
       </div>
     </div>
     <div class="cd-content-d5">
-
       <div class="cd-rewards-bar-d5">
         {% liquid
             assign threshold = section.settings.free_shipping
@@ -556,7 +554,6 @@
                 You're <strong>{{ difference | money }}</strong> away from free shipping!
               {% endif %}
             </p>
-
           </div>
         <div class="cd-free-shipping-bar-d5">
           
@@ -572,16 +569,7 @@
                 <span class="cd-icon-tooltip-d5">Free Shipping</span>
             </div>
         </div>
-      {% endif %}
-    {% endfor %}
-
-    <div class="cd-free-shipping-bar__icon-d5 {% if percentage >= 100 %}rewards-true{% else %}rewards-false{% endif %}">
-      <span class="cd-icon-check-d5"></span>
-      <span class="cd-icon-tag-d5"></span>
-    </div>
-  </div>
-</div>
-```
+      </div>
       <div class="atc-loader-d5">
         <span class="item-loader-d5"></span>
       </div>
