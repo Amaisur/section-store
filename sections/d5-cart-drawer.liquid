@@ -545,7 +545,7 @@
             {% if block.type == 'rewards' %}
             <p class="cd-free-shipping-bar__text-d5" render-d5>
               {%  assign threshold = block.settings.reward_threshold | append: '00' %}
-              You are <strong>{{ threshold |  minus: cart.total_price | money }}</strong>
+              You are <strong>{{ threshold |  minus: cart.total_price | money }}</strong> Away from {{ block.settings.reward_label }}
             </p>
             {% endif %}
             {% endfor %}
