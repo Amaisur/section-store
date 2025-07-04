@@ -538,38 +538,100 @@
     </div>
     <div class="cd-content-d5">
       <div class="cd-rewards-bar-d5">
-        {% liquid
-            assign threshold = section.settings.free_shipping
-            assign threshold_in_cents = threshold | times: 100
-            assign total = cart.total_price
-            assign difference = threshold_in_cents | minus: total
-            assign percentage = total | times: 100 | divided_by: threshold_in_cents
-          %}
-         <div class="cd-free-shipping-bar__content-d5">
-            <p class="cd-free-shipping-bar__text-d5" render-d5>
-
-              {% if cart.total_price >= threshold_in_cents %}
-                🎉 You've earned free shipping!
-              {% else %}
-                You're <strong>{{ difference | money }}</strong> away from free shipping!
+  {% liquid
+    assign total = cart.total_price
+    assign highest_threshold = 0
+    assign next_threshold = false
+    assign current_reward = false
+    assign all_thresholds = ''
+    
+    # Collect all thresholds and determine current/next rewards
+    for block in section.blocks
+      if block.type == 'rewards'
+        assign threshold = block.settings.reward_threshold | times: 100
+        assign all_thresholds = all_thresholds | append: threshold | append: ','
+        
+        # Check if current total meets this threshold
+        if total >= threshold
+          assign current_reward = block
+        else
+          # Find the next closest threshold
+          if next_threshold == false or threshold < next_threshold
+            assign next_threshold = threshold
+            assign next_reward = block
+          endif
+        endif
+        
+        # Track the highest threshold for percentage calculation
+        if threshold > highest_threshold
+          assign highest_threshold = threshold
+        endif
+      endif
+    endfor
+    
+    # Calculate progress percentage
+    if highest_threshold > 0
+      assign percentage = total | times: 100 | divided_by: highest_threshold
+      if percentage > 100
+        assign percentage = 100
+      endif
+    else
+      assign percentage = 0
+    endif
+  %}
+  
+  <div class="cd-free-shipping-bar__content-d5">
+    <p class="cd-free-shipping-bar__text-d5">
+      {% if current_reward %}
+        {% if next_reward %}
+          🎉 You've earned {{ current_reward.settings.reward_label }}! Just {{ next_threshold | minus: total | money }} to {{ next_reward.settings.reward_label }}.
+        {% else %}
+          🎉 You've earned all rewards!
+        {% endif %}
+      {% else %}
+        {% if next_reward %}
+          You're <strong>{{ next_threshold | minus: total | money }}</strong> away from {{ next_reward.settings.reward_label }}!
+        {% endif %}
+      {% endif %}
+    </p>
+  </div>
+  
+  <div class="cd-free-shipping-bar-d5">
+    <div class="cd-free-shipping-bar__inner-d5" style="width: {{ percentage }}%;"></div>
+    
+    {% # Create milestone markers %}
+    {% assign thresholds_array = all_thresholds | split: ',' | uniq | sort | map: 'to_number' %}
+    {% for threshold in thresholds_array %}
+      {% liquid
+        assign threshold_percentage = threshold | times: 100 | divided_by: highest_threshold
+        assign is_achieved = false
+        if total >= threshold
+          assign is_achieved = true
+        endif
+      %}
+      <div class="cd-rewards-milestone-d5 {% if is_achieved %}achieved{% endif %}" style="left: {{ threshold_percentage }}%;">
+        <div class="cd-rewards-milestone-marker-d5"></div>
+        <div class="cd-rewards-milestone-label-d5">
+          {% # Find the matching reward block for this threshold %}
+          {% for block in section.blocks %}
+            {% if block.type == 'rewards' %}
+              {% assign block_threshold = block.settings.reward_threshold | times: 100 %}
+              {% if block_threshold == threshold %}
+                {{ block.settings.reward_label }}
+                {% break %}
               {% endif %}
-            </p>
-          </div>
-        <div class="cd-free-shipping-bar-d5">
-          
-          <div
-            class="cd-free-shipping-bar__inner-d5"
-            style="width: {{ percentage | round: 2 }}%;"
-          ></div>
-           <div render-d5 class="cd-free-shipping-bar__icon-d5 {% if cart.total_price >= threshold_in_cents %}rewards-true{% else %}rewards-false{% endif %}">
-           
-                <span class="cd-icon-check-d5"></span>
-              
-                <span class="cd-icon-tag-d5"></span>
-                <span class="cd-icon-tooltip-d5">Free Shipping</span>
-            </div>
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
+    {% endfor %}
+    
+    <div class="cd-free-shipping-bar__icon-d5 {% if percentage >= 100 %}rewards-true{% else %}rewards-false{% endif %}">
+      <span class="cd-icon-check-d5"></span>
+      <span class="cd-icon-tag-d5"></span>
+    </div>
+  </div>
+</div>
       <div class="atc-loader-d5">
         <span class="item-loader-d5"></span>
       </div>
