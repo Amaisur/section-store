@@ -541,15 +541,16 @@
       <div class="cd-rewards-bar-d5">
        
          <div class="cd-free-shipping-bar__content-d5">
-         <p class="cd-free-shipping-bar__text-d5">
-  {% if cart.total_price >= section.settings.reward_threshold_3 %}
+   <p class="cd-free-shipping-bar__text-d5">
+  {% if cart.total_price > section.settings.reward_threshold_3 %}
     You are <strong>{{ cart.total_price | minus: section.settings.reward_threshold_3 | money }}</strong> away from {{ section.settings.reward_label_3 }}
-  {% elsif cart.total_price >= section.settings.reward_threshold_2 %}
+  {% elsif cart.total_price > section.settings.reward_threshold_2 and section.settings.reward_threshold_2 > section.settings.reward_threshold_1 %}
     You are <strong>{{ cart.total_price | minus: section.settings.reward_threshold_2 | money }}</strong> away from {{ section.settings.reward_label_2 }}
-  {% elsif cart.total_price >= section.settings.reward_threshold_1 %}
+  {% elsif cart.total_price > section.settings.reward_threshold_1 %}
     You are <strong>{{ cart.total_price | minus: section.settings.reward_threshold_1 | money }}</strong> away from {{ section.settings.reward_label_1 }}
   {% endif %}
 </p>
+
 
 
           </div>
