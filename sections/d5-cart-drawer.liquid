@@ -584,10 +584,15 @@
                   {% render 'd5-delete-icon' %}
                 </div>
               </h4>
+              <div class="cd-prices-d5">
               <p>
                 <span class="cd-regular-price">{{ item.original_price | money }}</span>
                 <span class="cd-compare-price">{{ item.product.final_price | money }}</span>
               </p>
+              <p class="cd-total-price-d5">
+                {{ item.original_price |  times: item.quantity |  money }}
+              </p>
+              </div>
             </div>
             {%- if item.product.has_only_default_variant == false
               or item.properties.size != 0
