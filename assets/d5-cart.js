@@ -33,6 +33,8 @@
     const oldElems = document.querySelectorAll('[render-d5]')
     const newElems = doc.querySelectorAll('[render-d5]');
     const dataRW = doc.querySelector('.cd-cart-items-d5');
+    const oldIcon = document.querySelector('#cart-icon-bubble');
+    const newIcon = doc.querySelector('#cart-icon-bubble');
     if (oldElems && newElems) {
       oldElems.forEach((el, index) => {
         const newElem = newElems[index];
@@ -46,6 +48,9 @@
     if(dataRW){
       let width = dataRW.getAttribute('data-width');
       rewardsBar.style.width = width;
+    }
+    if(oldIcon && newIcon){
+      oldIcon.innerHTML = newIcon.innerHTML;
     }
   }
 
