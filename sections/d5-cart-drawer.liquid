@@ -538,36 +538,32 @@
     </div>
     <div class="cd-content-d5">
       <div class="cd-rewards-bar-d5">
-        {% liquid
-            assign threshold = section.settings.free_shipping
-            assign threshold_in_cents = threshold | times: 100
-            assign total = cart.total_price
-            assign difference = threshold_in_cents | minus: total
-            assign percentage = total | times: 100 | divided_by: threshold_in_cents
-          %}
+       
          <div class="cd-free-shipping-bar__content-d5">
             <p class="cd-free-shipping-bar__text-d5" render-d5>
 
-              {% if cart.total_price >= threshold_in_cents %}
-                🎉 You've earned free shipping!
-              {% else %}
-                You're <strong>{{ difference | money }}</strong> away from free shipping!
-              {% endif %}
+              
             </p>
           </div>
         <div class="cd-free-shipping-bar-d5">
           
-          <div
-            class="cd-free-shipping-bar__inner-d5"
-            style="width: {{ percentage | round: 2 }}%;"
-          ></div>
-           <div render-d5 class="cd-free-shipping-bar__icon-d5 {% if cart.total_price >= threshold_in_cents %}rewards-true{% else %}rewards-false{% endif %}">
-           
-                <span class="cd-icon-check-d5"></span>
-              
+          <div class="cd-free-shipping-bar__inner-d5"></div>
+          {% assign rewards_block_count = 0 %}
+          {% for block in section.blocks %}
+            {% if block.type == 'rewards' %}
+              {%  liquid 
+                assign rewards_block_count = rewards_block_count | plus: 1 
+                assign percent_of = 100 | divided_by: rewards_block_count
+                assign width = percent_of | times: rewards_block_count
+              %}
+            <div render-d5 percent="{{ percent_off }}" data-width="{{ width }}" class="cd-free-shipping-bar__icon-d5" {% if block.settings.reward_product != blank %}product-handle="{{ block.settings.reward_product.handle }}" {% endif %} data-price-threshold="{{ block.settings.reward_threshold }}">
                 <span class="cd-icon-tag-d5"></span>
-                <span class="cd-icon-tooltip-d5">Free Shipping</span>
+                <span class="cd-icon-tooltip-d5">
+                  {{ block.settings.reward_label }}
+                </span>
             </div>
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
       <div class="atc-loader-d5">
