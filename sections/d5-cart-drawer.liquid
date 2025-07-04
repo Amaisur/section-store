@@ -544,9 +544,9 @@
 <p class="cd-free-shipping-bar__text-d5">
   {% liquid
     assign total = cart.total_price
-    assign t_1 = section.settings.reward_threshold_1 
-    assign t_2 = section.settings.reward_threshold_2 
-    assign t_3 = section.settings.reward_threshold_3 
+    assign t_1 = section.settings.reward_threshold_1
+    assign t_2 = section.settings.reward_threshold_2
+    assign t_3 = section.settings.reward_threshold_3
   %}
 
   {% if total > t_3 %} 
