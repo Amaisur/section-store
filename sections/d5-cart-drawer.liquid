@@ -511,6 +511,65 @@
       font-weight: 600;
       color: #000;
     }
+  .cd-rewards-bar {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+.cd-rewards-bar__content {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.cd-rewards-bar__text {
+  font-size: 16px;
+  color: #333;
+}
+.cd-rewards-bar__progress {
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.cd-rewards-bar__progress-inner {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}
+.cd-rewards-bar__icon {
+  text-align: center;
+  margin-top: 10px;
+}
+.cd-rewards-bar__icon-image {
+  width: 32px;
+  height: 32px;
+}
+.cd-rewards-bar__tooltip {
+  font-size: 14px;
+  color: #555;
+}
+.rewards-achieved .cd-icon-check,
+.rewards-pending .cd-icon-tag {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+.rewards-achieved .cd-icon-check::before {
+  content: '✔';
+  color: #4caf50;
+}
+.rewards-pending .cd-icon-tag::before {
+  content: '🏷';
+  color: #ff9800;
+}
+.product-reward {
+  border-color: #4caf50;
+}
+.custom-reward {
+  border-color: #2196f3;
+}
 </style>
 
 <div class="cart-drawer-d5">
@@ -537,39 +596,62 @@
       </div>
     </div>
     <div class="cd-content-d5">
-      <div class="cd-rewards-bar-d5">
-        {% liquid
-            assign threshold = section.settings.free_shipping
-            assign threshold_in_cents = threshold | times: 100
-            assign total = cart.total_price
-            assign difference = threshold_in_cents | minus: total
-            assign percentage = total | times: 100 | divided_by: threshold_in_cents
-          %}
-         <div class="cd-free-shipping-bar__content-d5">
-            <p class="cd-free-shipping-bar__text-d5" render-d5>
-
-              {% if cart.total_price >= threshold_in_cents %}
-                🎉 You've earned free shipping!
-              {% else %}
-                You're <strong>{{ difference | money }}</strong> away from free shipping!
-              {% endif %}
-            </p>
-          </div>
-        <div class="cd-free-shipping-bar-d5">
-          
-          <div
-            class="cd-free-shipping-bar__inner-d5"
-            style="width: {{ percentage | round: 2 }}%;"
-          ></div>
-           <div render-d5 class="cd-free-shipping-bar__icon-d5 {% if cart.total_price >= threshold_in_cents %}rewards-true{% else %}rewards-false{% endif %}">
-           
-                <span class="cd-icon-check-d5"></span>
-              
-                <span class="cd-icon-tag-d5"></span>
-                <span class="cd-icon-tooltip-d5">Free Shipping</span>
-            </div>
-        </div>
+      {% for block in section.blocks %}
+  {% if block.type == 'rewards' %}
+    {% liquid
+      assign threshold = block.settings.reward_threshold | default: 200
+      assign threshold_in_cents = threshold | times: 100
+      assign total = cart.total_price
+      assign difference = threshold_in_cents | minus: total
+      assign percentage = total | times: 100 | divided_by: threshold_in_cents
+      assign reward_label = block.settings.reward_label | default: 'Free Shipping'
+      assign has_product = block.settings.reward_product
+      assign reward_icon = block.settings.reward_icon
+    %}
+    <div class="cd-rewards-bar {% if has_product %}product-reward{% else %}custom-reward{% endif %}" {{ block.shopify_attributes }}>
+      <div class="cd-rewards-bar__content">
+        <p class="cd-rewards-bar__text">
+          {% if total >= threshold_in_cents %}
+            🎉 You've earned 
+            {% if has_product %}
+              {{ has_product.title }}!
+            {% else %}
+              {{ reward_label }}!
+            {% endif %}
+          {% else %}
+            You're <strong>{{ difference | money }}</strong> away from 
+            {% if has_product %}
+              {{ has_product.title }}!
+            {% else %}
+              {{ reward_label }}!
+            {% endif %}
+          {% endif %}
+        </p>
       </div>
+      <div class="cd-rewards-bar__progress">
+        <div 
+          class="cd-rewards-bar__progress-inner" 
+          style="width: {{ percentage | round: 2 }}%;"
+          data-percentage="{{ percentage | round: 2 }}"
+        ></div>
+      </div>
+      <div class="cd-rewards-bar__icon {% if total >= threshold_in_cents %}rewards-achieved{% else %}rewards-pending{% endif %}">
+        {% if reward_icon %}
+          <img src="{{ reward_icon | img_url: '32x32' }}" alt="Reward Icon" class="cd-rewards-bar__icon-image">
+        {% else %}
+          <span class="cd-icon-{% if total >= threshold_in_cents %}check{% else %}tag{% endif %}"></span>
+        {% endif %}
+        <span class="cd-rewards-bar__tooltip">
+          {% if has_product %}
+            {{ has_product.title }}
+          {% else %}
+            {{ reward_label }}
+          {% endif %}
+        </span>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
       <div class="atc-loader-d5">
         <span class="item-loader-d5"></span>
       </div>
@@ -690,7 +772,37 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
       document.querySelector('cart-drawer').remove();
-  })
+  function updateProgressBar() {
+    const progressBar = document.querySelector('.cd-rewards-bar__progress-inner');
+    if (progressBar) {
+      // This assumes Shopify's cart.js is available for dynamic cart updates
+      fetch('/cart.js')
+        .then(response => response.json())
+        .then(cart => {
+          const threshold = {{ threshold_in_cents }};
+          const total = cart.total_price;
+          const percentage = Math.min((total * 100 / threshold), 100);
+          progressBar.style.width = `${percentage}%`;
+          progressBar.setAttribute('data-percentage', percentage.toFixed(2));
+          
+          const text = document.querySelector('.cd-rewards-bar__text');
+          const icon = document.querySelector('.cd-rewards-bar__icon');
+          const achieved = total >= threshold;
+          text.innerHTML = achieved
+            ? `🎉 You've earned {% if has_product %}{{ has_product.title }}{% else %}{{ reward_label }}{% endif %}!`
+            : `You're <strong>${((threshold - total) / 100).toFixed(2)}</strong> away from {% if has_product %}{{ has_product.title }}{% else %}{{ reward_label }}{% endif %}!`;
+          icon.classList.toggle('rewards-achieved', achieved);
+          icon.classList.toggle('rewards-pending', !achieved);
+        });
+    }
+  }
+
+  // Initial update
+  updateProgressBar();
+
+  // Listen for cart changes (Shopify-specific event)
+  document.addEventListener('cart:updated', updateProgressBar);
+});
 </script>
  <a hidden href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble" style="display: none !important;">
         {%- liquid
