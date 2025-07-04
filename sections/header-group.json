@@ -98,6 +98,15 @@
     "d5_cart_drawer_gUxAwy": {
       "type": "d5-cart-drawer",
       "blocks": {
+        "rewards_3VE8ip": {
+          "type": "rewards",
+          "settings": {
+            "reward_threshold": 600,
+            "reward_label": "Product",
+            "reward_icon": "shopify://shop_images/box_8905756.png",
+            "reward_product": "alice-vintage"
+          }
+        },
         "rewards_yy77dy": {
           "type": "rewards",
           "settings": {
@@ -105,19 +114,11 @@
             "reward_label": "Free Shipping",
             "reward_product": ""
           }
-        },
-        "rewards_3VE8ip": {
-          "type": "rewards",
-          "settings": {
-            "reward_threshold": 600,
-            "reward_label": "Product",
-            "reward_product": ""
-          }
         }
       },
       "block_order": [
-        "rewards_yy77dy",
-        "rewards_3VE8ip"
+        "rewards_3VE8ip",
+        "rewards_yy77dy"
       ],
       "name": "D5 Cart Drawer",
       "settings": {
