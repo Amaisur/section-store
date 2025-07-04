@@ -103,6 +103,7 @@
           "settings": {
             "reward_threshold": 600,
             "reward_label": "Product",
+            "reward_icon": "shopify://shop_images/box_8905756.png",
             "reward_product": "alice-vintage"
           }
         },
