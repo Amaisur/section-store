@@ -451,7 +451,7 @@
         background-color: #27ae60;
     }
     .cd-free-shipping-bar__icon-d5 .cd-icon-tag-d5 {
-        background: url('https://cdn.shopify.com/s/files/1/0562/7763/1105/files/icons8-shipping-50.png?v=1751637244') no-repeat center center;
+        background: url(var(--bg-icon)) no-repeat center center;
         width: 25px; 
         height: 25px;
         background-size: 17px;
@@ -555,7 +555,7 @@
                 assign rewards_block_count = rewards_block_count | plus: 1 
                 assign percent_of = 100 | divided_by: rewards_block_count
               %}
-            <div render-d5 style="left: calc({{ percent_of }}% - 40px);" class="cd-free-shipping-bar__icon-d5" {% if block.settings.reward_product != blank %}product-handle="{{ block.settings.reward_product.handle }}" {% endif %} data-price-threshold="{{ block.settings.reward_threshold }}">
+            <div render-d5 style="--bg-icon: {{ block.settings.reward_icon |  image_url: width: 50 }};left: calc({{ percent_of }}% - 40px);" class="cd-free-shipping-bar__icon-d5" {% if block.settings.reward_product != blank %}product-handle="{{ block.settings.reward_product.handle }}" {% endif %} data-price-threshold="{{ block.settings.reward_threshold }}">
                 <span class="cd-icon-tag-d5"></span>
                 <span class="cd-icon-tooltip-d5">
                   {{ block.settings.reward_label }} 
