@@ -23,7 +23,9 @@
       if(product.classList.contains('item--loading')){
       product.classList.remove('item--loading'); 
     }
-    cart.classList.add('cd-drawer__open');
+      if(cart){
+        cart.classList.add('cd-drawer__open');
+      }
     }
   }
 
