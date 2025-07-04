@@ -97,33 +97,20 @@
     },
     "d5_cart_drawer_gUxAwy": {
       "type": "d5-cart-drawer",
-      "blocks": {
-        "rewards_3VE8ip": {
-          "type": "rewards",
-          "settings": {
-            "reward_threshold": 600,
-            "reward_label": "Product",
-            "reward_icon": "shopify://shop_images/box_8905756.png",
-            "reward_product": "alice-vintage"
-          }
-        },
-        "rewards_yy77dy": {
-          "type": "rewards",
-          "settings": {
-            "reward_threshold": 200,
-            "reward_label": "Free Shipping",
-            "reward_icon": "shopify://shop_images/icons8-shipping-50.png",
-            "reward_product": ""
-          }
-        }
-      },
-      "block_order": [
-        "rewards_3VE8ip",
-        "rewards_yy77dy"
-      ],
       "name": "D5 Cart Drawer",
       "settings": {
-        "empty_cart_page": "shopify://pages/test-atc"
+        "empty_cart_page": "shopify://pages/test-atc",
+        "reward_count": "2",
+        "reward_threshold_1": 200,
+        "reward_label_1": "Free Shipping",
+        "reward_icon_1": "shopify://shop_images/icons8-shipping-50.png",
+        "reward_product_1": "",
+        "reward_threshold_2": 400,
+        "reward_label_2": "Free Product",
+        "reward_icon_2": "shopify://shop_images/box_8905756.png",
+        "reward_product_2": "ingrid-maxikleid",
+        "reward_label_3": "",
+        "reward_product_3": ""
       }
     }
   },
