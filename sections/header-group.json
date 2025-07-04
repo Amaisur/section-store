@@ -97,9 +97,30 @@
     },
     "d5_cart_drawer_gUxAwy": {
       "type": "d5-cart-drawer",
+      "blocks": {
+        "rewards_yy77dy": {
+          "type": "rewards",
+          "settings": {
+            "reward_threshold": 200,
+            "reward_label": "Free Shipping",
+            "reward_product": ""
+          }
+        },
+        "rewards_3VE8ip": {
+          "type": "rewards",
+          "settings": {
+            "reward_threshold": 600,
+            "reward_label": "Product",
+            "reward_product": ""
+          }
+        }
+      },
+      "block_order": [
+        "rewards_yy77dy",
+        "rewards_3VE8ip"
+      ],
       "name": "D5 Cart Drawer",
       "settings": {
-        "free_shipping": 200,
         "empty_cart_page": "shopify://pages/test-atc"
       }
     }
