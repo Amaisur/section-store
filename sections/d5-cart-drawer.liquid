@@ -469,6 +469,13 @@
         text-wrap: nowrap;
         letter-spacing: 0.2px;
     }
+    .cd-totalprice-d5{
+      display: block;
+      font-size: 8px;
+      text-wrap: nowrap;
+      letter-spacing: 0.2px;
+      margin-bottom: 6px;
+    }
     .cd-heading-d5 p{
         font-size: 20px;
         font-weight: 600; 
@@ -597,6 +604,7 @@
               </p>
               {% if item.quantity > 1 %}
               <p class="cd-total-price-d5">
+                <span class="cd-totalprice-d5">Total Price</span>
                 {{ item.original_price |  times: item.quantity |  money }}
               </p>
               {% endif %}
