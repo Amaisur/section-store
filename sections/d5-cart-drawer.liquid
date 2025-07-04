@@ -542,19 +542,20 @@
        
          <div class="cd-free-shipping-bar__content-d5">
 <p class="cd-free-shipping-bar__text-d5">
-  {% assign exceeded_1 = cart.total_price | minus: section.settings.reward_threshold_1 %}
-  {% assign exceeded_2 = cart.total_price | minus: section.settings.reward_threshold_2 %}
-  {% assign exceeded_3 = cart.total_price | minus: section.settings.reward_threshold_3 %}
+  {% liquid
+    assign total = cart.total_price
+    assign t_1 = section.settings.reward_threshold_1 | append: '00'
+    assign t_2 = section.settings.reward_threshold_2 | append: '00'
+    assign t_3 = section.settings.reward_threshold_3 | append: '00'
+  %}
 
-  {% if cart.total_price >= section.settings.reward_threshold_3 %}
-    You've exceeded the highest reward by <strong>{{ exceeded_3 | money }}</strong>!
-  {% elsif cart.total_price >= section.settings.reward_threshold_2 %}
-    You are <strong>{{ exceeded_2 | money }}</strong> beyond {{ section.settings.reward_label_2 }}
-  {% elsif cart.total_price >= section.settings.reward_threshold_1 %}
-    You are <strong>{{ exceeded_1 | money }}</strong> beyond {{ section.settings.reward_label_1 }}
-  {% else %}
-    You need <strong>{{ section.settings.reward_threshold_1 | minus: cart.total_price | money }}</strong> to reach the first reward
-  {% endif %}
+  {% if total > t_3 %}
+    All <strong>Rewards</strong> Unlocked!
+  {% elsif t_2 > total and t_2 > t_1 %}
+    You Have Unlcoked {{ section.settings.reward_label_1 }} and You are <strong>{{ total | minus: t_3 | money }}</strong> from {{ section.settings.reward_label_2 }}
+    {% elsif t_1 > total and t_1 < t_2 %}
+    You are <strong>{{ t_1 | minus: total | money }}</strong> from {{ section.settings.reward_label_1 }}
+   {% endif %}
 </p>
 
 
