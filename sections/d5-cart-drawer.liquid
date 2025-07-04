@@ -715,17 +715,36 @@
     "name": "D5 Cart Drawer",
     "settings": [
         {
-            "type": "number",
-            "id": "free_shipping",
-            "label": "Free Shipping Amount",
-            "default": 200
-        },
-        {
             "type": "url",
             "id": "empty_cart_page",
             "label": "Empty Cart Drawer Collection URL"
         }
         ],
+    "blocks": [
+      {
+        "type": "rewards",
+        "name": "Rewards",
+        "settings": [
+          {
+            "type": "number",
+            "id": "reward_threshold",
+            "label": "Reward Price",
+            "default": 200
+          },    
+          {
+            "type": "text",
+            "id": "reward_label",
+            "label": "Reward Label",
+            "default": "Free Shipping"
+          },
+          {
+            "type": "image_picker",
+            "id": "reward_icon",
+            "label": "Reward Icon"
+          }
+        ]
+      }
+    ],
     "presets": [
         {
             "name": "D5 Cart Drawer"
