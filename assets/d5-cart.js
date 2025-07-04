@@ -50,7 +50,7 @@
       rewardsBar.style.width = width;
     }
     if(oldIcon && newIcon){
-      oldIcon.innerHTML = newIcon.innerHTML;
+      oldIcon.innerHTML = newIcon.innerHTML; 
     }
   }
 
