@@ -543,12 +543,19 @@
     <p class="cd-free-shipping-bar__text-d5">
       {% liquid
         assign total = cart.total_price
+        if section.settings.reward_count == "1"
+        assign t_1 = section.settings.reward_threshold_1 | times: 100
+        elsif section.settings.reward_count == "2"
+        assign t_1 = section.settings.reward_threshold_1 | times: 100
+        assign t_2 = section.settings.reward_threshold_2 | times: 100
+        elsif section.settings.reward_count == "3"
         assign t_1 = section.settings.reward_threshold_1 | times: 100
         assign t_2 = section.settings.reward_threshold_2 | times: 100
         assign t_3 = section.settings.reward_threshold_3 | times: 100
+        endif
       %}
 
-      {% if total > t_4 %} 
+      {% if total > t_3 %} 
         All <strong>Rewards</strong> Unlocked!
       {% elsif total > t_2 and t_2 > t_1 %}
         You Have Unlcoked {{ section.settings.reward_label_1 }} and {% if total > t_2 %}You are <strong>{{ t_3 | minus: total | money }}</strong> from {% endif %} {{ section.settings.reward_label_2 }}
