@@ -548,7 +548,7 @@
         assign t_3 = section.settings.reward_threshold_3 | times: 100
       %}
 
-      {% if total > t_3 %} 
+      {% if total > t_4 %} 
         All <strong>Rewards</strong> Unlocked!
       {% elsif total > t_2 and t_2 > t_1 %}
         You Have Unlcoked {{ section.settings.reward_label_1 }} and {% if total > t_2 %}You are <strong>{{ t_3 | minus: total | money }}</strong> from {% endif %} {{ section.settings.reward_label_2 }}
