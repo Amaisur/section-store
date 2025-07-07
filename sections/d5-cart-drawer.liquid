@@ -755,6 +755,9 @@
   };
 
 
+;(function(window){
+  function initRewardsBar(config, containerId) {
+    /* …all your existing code… */
 
      function initRewardsBar(c, id) {
   var e = document.getElementById(id);
@@ -793,7 +796,9 @@
   }
   e.querySelector('.cd-free-shipping-bar__text-d5').innerHTML = txt;
 }
-    if (window.rewardsConfig) initRewardsBar(window.rewardsConfig,'cd-rewards-bar-d5');
+     }
+  window.initRewardsBar = initRewardsBar;
+})(window);
   })
 </script>
  <a hidden href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble" style="display: none !important;">
