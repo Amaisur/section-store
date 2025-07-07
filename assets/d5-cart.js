@@ -50,7 +50,7 @@
     const rewardsBar = document.querySelector('.cd-free-shipping-bar__inner-d5');
     if(dataRW){
       let width = dataRW.getAttribute('data-width');
-      rewardsBar.style.width = width;
+      if (window.rewardsConfig) initRewardsBar(window.rewardsConfig,'cd-rewards-bar-d5')
     }
     
   }
@@ -125,4 +125,46 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
     document.body.classList.remove('overflow-hidden');
     })
   })
+
+  function initRewardsBar(c, id) {
+  var e = document.getElementById(id);
+  if (!e) return;
+  var rc = c.rewardCount;
+  var t = c.thresholds;
+  var l = c.labels;
+  var i = c.icons;
+  var ct = c.cartTotal;
+  var mt = t[t.length-1]||0;
+  var p = mt ? Math.min(Math.round(ct/mt*100),100) : 0;
+  var h = '<div class="cd-rewards-bar-d5" render-d5>'
+        + '<div class="cd-free-shipping-bar__content-d5">'
+        + '<p class="cd-free-shipping-bar__text-d5"></p>'
+        + '</div>'
+        + '<div class="cd-free-shipping-bar-d5">'
+        + '<div class="cd-free-shipping-bar__inner-d5" style="width:'+p+'%;"></div>';
+  t.forEach(function(v,x){
+    var pos = mt ? v/mt*100 : 0;
+    h += '<div class="cd-free-shipping-bar__icon-d5" style="left:calc('+pos+'% - 40px)">'
+      + '<span class="cd-icon-tag-d5" style="background-image:url(\''+i[x]+'\')"></span>'
+      + '<span class="cd-icon-tooltip-d5">'+l[x]+'</span>'
+      + '</div>';
+  });
+  h += '</div></div>';
+  e.innerHTML = h;
+  var txt = '';
+  if (ct >= mt) {
+    txt = 'All <strong>Rewards</strong> Unlocked!';
+  } else if (rc === 3 && ct >= t[1]) {
+    txt = 'You have unlocked '+l[0]+' and you are <strong>'+(mt-ct)+'</strong> from unlocking '+l[2];
+  } else if (ct >= t[0] && rc >= 2) {
+    txt = 'You are <strong>'+(t[1]-ct)+'</strong> from unlocking '+l[1];
+  } else {
+    txt = 'You are <strong>'+(t[0]-ct)+'</strong> from unlocking '+l[0];
+  }
+  e.querySelector('.cd-free-shipping-bar__text-d5').innerHTML = txt;
+}
+document.addEventListener('DOMContentLoaded',function(){
+  if (window.rewardsConfig) initRewardsBar(window.rewardsConfig,'cd-rewards-bar-d5');
+});
+
 })();
