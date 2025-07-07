@@ -538,79 +538,72 @@
       </div>
     </div>
     <div class="cd-content-d5">
-      <div class="cd-rewards-bar-d5" render-d5>
-       
-         <div class="cd-free-shipping-bar__content-d5">
-<p class="cd-free-shipping-bar__text-d5">
-  {% liquid
-    assign total = cart.total_price
-    assign t_1 = section.settings.reward_threshold_1 | times: 100
-    assign t_2 = section.settings.reward_threshold_2 | times: 100
-    assign t_3 = section.settings.reward_threshold_3 | times: 100
-  %}
+     <div class="cd-rewards-bar-d5" render-d5>
+  <div class="cd-free-shipping-bar__content-d5">
+    <p class="cd-free-shipping-bar__text-d5">
+      {% liquid
+        assign total = cart.total_price
+        assign t_1 = section.settings.reward_threshold_1 | times: 100
+        assign t_2 = section.settings.reward_threshold_2 | times: 100
+        assign t_3 = section.settings.reward_threshold_3 | times: 100
+      %}
 
-  {% if total > t_3 %} 
-    All <strong>Rewards</strong> Unlocked!
-  {% elsif total > t_2 and t_2 > t_1 %}
-    You Have Unlcoked {{ section.settings.reward_label_1 }} and {% if total > t_2 %}You are <strong>{{ t_3 | minus: total | money }}</strong> from {% endif %} {{ section.settings.reward_label_2 }}
-    {% elsif total > t_1 and t_1 < t_2 %}
-    You are <strong>{{ t_2 | minus: total | money }}</strong> from {{ section.settings.reward_label_1 }}
-   {% endif %}
-</p>
+      {% if total > t_3 %} 
+        All <strong>Rewards</strong> Unlocked!
+      {% elsif total > t_2 and t_2 > t_1 %}
+        You Have Unlcoked {{ section.settings.reward_label_1 }} and {% if total > t_2 %}You are <strong>{{ t_3 | minus: total | money }}</strong> from {% endif %} {{ section.settings.reward_label_2 }}
+        {% elsif total > t_1 and t_1 < t_2 %}
+        You are <strong>{{ t_2 | minus: total | money }}</strong> from {{ section.settings.reward_label_1 }}
+       {% endif %}
+    </p>
+  </div>
+  <div class="cd-free-shipping-bar-d5">
+    <div class="cd-free-shipping-bar__inner-d5"></div>
+      {%  liquid 
+        if section.settings.reward_count == "1"
+        assign left_1 = 100
+        elsif section.settings.reward_count == "2"
+        assign left_1 = 50
+        elsif section.settings.reward_count == "3"
+        assign left_1 = 33 
+        endif
 
+        if section.settings.reward_count == "2"
+        assign left_2 = 100
+        elsif section.settings.reward_count == "3"
+        assign left_2 = 66
+        endif
 
-
-          </div>
-        <div class="cd-free-shipping-bar-d5">
-          
-          <div class="cd-free-shipping-bar__inner-d5"></div>
-            {%  liquid 
-              if section.settings.reward_count == "1"
-              assign left_1 = 100
-              elsif section.settings.reward_count == "2"
-              assign left_1 = 50
-              elsif section.settings.reward_count == "3"
-              assign left_1 = 33 
-              endif
-
-              if section.settings.reward_count == "2"
-              assign left_2 = 100
-              elsif section.settings.reward_count == "3"
-              assign left_2 = 66
-              endif
-
-              
-              if section.settings.reward_count == "3"
-              assign left_3 = 100
-              endif
-            %}
-            {% if section.settings.reward_threshold_1 != blank %}
-            <div class="cd-free-shipping-bar__icon-d5" style="left: calc({{ left_1 }}% - 40px);">
-                <span class="cd-icon-tag-d5" style="background-image: url('{{ section.settings.reward_icon_1 |  image_url: width: 50 }}')"></span>
-                <span class="cd-icon-tooltip-d5">
-                  {{ section.settings.reward_label_1 }}
-                </span>
-            </div>
-            {% endif %}
-            {% if section.settings.reward_threshold_2 != blank %}
-            <div class="cd-free-shipping-bar__icon-d5" style="left: calc({{ left_2 }}% - 40px);">
-                <span class="cd-icon-tag-d5" style="background-image: url('{{ section.settings.reward_icon_2 |  image_url: width: 50 }}')"></span>
-                <span class="cd-icon-tooltip-d5">
-                  {{ section.settings.reward_label_2 }}
-                </span>
-            </div>
-            {% endif %}
-            {% if section.settings.reward_threshold_3 != blank %}
-            <div class="cd-free-shipping-bar__icon-d5" style="left: calc({{ left_3 }}% - 40px);">
-               
-                <span class="cd-icon-tag-d5" style="background-image: url('{{ section.settings.reward_icon_3 |  image_url: width: 50 }}')"></span>
-                <span class="cd-icon-tooltip-d5">
-                  {{ section.settings.reward_label_3 }}
-                </span>
-            </div>
-            {% endif %}
-        </div>
+        if section.settings.reward_count == "3"
+        assign left_3 = 100
+        endif
+      %}
+      {% if section.settings.reward_threshold_1 != blank %}
+      <div class="cd-free-shipping-bar__icon-d5" style="left: calc({{ left_1 }}% - 40px);">
+          <span class="cd-icon-tag-d5" style="background-image: url('{{ section.settings.reward_icon_1 |  image_url: width: 50 }}')"></span>
+          <span class="cd-icon-tooltip-d5">
+            {{ section.settings.reward_label_1 }}
+          </span>
       </div>
+      {% endif %}
+      {% if section.settings.reward_threshold_2 != blank %}
+      <div class="cd-free-shipping-bar__icon-d5" style="left: calc({{ left_2 }}% - 40px);">
+          <span class="cd-icon-tag-d5" style="background-image: url('{{ section.settings.reward_icon_2 |  image_url: width: 50 }}')"></span>
+          <span class="cd-icon-tooltip-d5">
+            {{ section.settings.reward_label_2 }}
+          </span>
+      </div>
+      {% endif %}
+      {% if section.settings.reward_threshold_3 != blank %}
+      <div class="cd-free-shipping-bar__icon-d5" style="left: calc({{ left_3 }}% - 40px);">
+          <span class="cd-icon-tag-d5" style="background-image: url('{{ section.settings.reward_icon_3 |  image_url: width: 50 }}')"></span>
+          <span class="cd-icon-tooltip-d5">
+            {{ section.settings.reward_label_3 }}
+          </span>
+      </div>
+      {% endif %}
+  </div>
+</div>
       <div class="atc-loader-d5">
         <span class="item-loader-d5"></span>
       </div>
