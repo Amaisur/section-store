@@ -557,9 +557,9 @@
 
       {% if total > t_3 %} 
         All <strong>Rewards</strong> Unlocked!
-      {% elsif total > t_2 and t_2 > t_1 %}
+      {% elsif total > t_2 and total < t_3 %}
         You Have Unlcoked {{ section.settings.reward_label_1 }} and {% if total > t_2 %}You are <strong>{{ t_3 | minus: total | money }}</strong> from {% endif %} {{ section.settings.reward_label_2 }}
-        {% elsif total > t_1 and t_1 < t_2 %}
+        {% elsif total > t_1 and total < t_2 %}
         You are <strong>{{ t_2 | minus: total | money }}</strong> from {{ section.settings.reward_label_1 }}
        {% endif %}
     </p>
