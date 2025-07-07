@@ -731,6 +731,28 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
       document.querySelector('cart-drawer').remove();
+
+    
+  window.rewardsConfig = {
+    rewardCount: {{ section.settings.reward_count }},
+    thresholds: [
+      {% if section.settings.reward_threshold_1 != blank %}{{ section.settings.reward_threshold_1 | times: 100 }}{% else %}0{% endif %},
+      {% if section.settings.reward_threshold_2 != blank %}{{ section.settings.reward_threshold_2 | times: 100 }}{% else %}0{% endif %},
+      {% if section.settings.reward_threshold_3 != blank %}{{ section.settings.reward_threshold_3 | times: 100 }}{% else %}0{% endif %}
+    ].slice(0, {{ section.settings.reward_count }}),
+    labels: [
+      {% if section.settings.reward_label_1 != blank %}"{{ section.settings.reward_label_1 }}"{% endif %},
+      {% if section.settings.reward_label_2 != blank %},"{{ section.settings.reward_label_2 }}"{% endif %},
+      {% if section.settings.reward_label_3 != blank %},"{{ section.settings.reward_label_3 }}"{% endif %}
+    ].slice(0, {{ section.settings.reward_count }}),
+    icons: [
+      {% if section.settings.reward_icon_1 != blank %}"{{ section.settings.reward_icon_1 | image_url: width:50 }}"{% endif %},
+      {% if section.settings.reward_icon_2 != blank %},"{{ section.settings.reward_icon_2 | image_url: width:50 }}"{% endif %},
+      {% if section.settings.reward_icon_3 != blank %},"{{ section.settings.reward_icon_3 | image_url: width:50 }}"{% endif %}
+    ].slice(0, {{ section.settings.reward_count }}),
+    cartTotal: {{ cart.total_price }}  // in cents/pennies
+  };
+
   })
 </script>
  <a hidden href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble" style="display: none !important;">
