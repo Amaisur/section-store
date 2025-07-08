@@ -1,42 +1,62 @@
-{% schema %}
-{
-  "name": "EL Media Hero",
-  "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Makeup that adapts to your rhythm" },
-    { "type": "text", "id": "highlight", "label": "Highlight Text", "default": "ritmo" },
-    { "type": "text", "id": "description", "label": "Description", "default": "Designed for real, active women" },
-    { "type": "text", "id": "button_text", "label": "Button Text", "default": "BUY THE ESSENTIAL KIT" },
-    { "type": "url", "id": "button_url", "label": "Button URL" },
-    { "type": "text", "id": "review_text", "label": "Review Text", "default": "No matter if I'm at the beach, training or running all day... this kit is my lifesaver. I don't leave without it." },
-    { "type": "text", "id": "reviewer_name", "label": "Reviewer Name", "default": "Verified Elysia User." },
-    { "type": "image_picker", "id": "reviewer_image", "label": "Reviewer Image" },
-    { "type": "number", "id": "review_stars", "label": "Stars", "default": 5 },
-    { "type": "number", "id": "review_count", "label": "Review Count", "default": 431 }
-  ],
-  "blocks": [
-    {
-      "type": "media",
-      "name": "Media Slide",
-      "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "select", "id": "media_type", "label": "Type", "options": [ {"value": "image", "label": "Image"}, {"value": "video", "label": "Video"} ], "default": "image" },
-        { "type": "video", "id": "video", "label": "Video (if type is video)" }
-      ]
-    },
-    {
-      "type": "video_thumb",
-      "name": "Video Thumbnail",
-      "settings": [
-        { "type": "image_picker", "id": "thumb_image", "label": "Thumbnail Image" },
-        { "type": "video", "id": "video", "label": "Video" }
-      ]
-    }
-  ],
-  "presets": [
-    { "name": "EL Media Hero", "category": "Custom" }
-  ]
+<style>
+.el-media-hero { width: 100%; background: #fff; padding: 40px 0; }
+.el-media-hero-inner { max-width: 1300px; margin: 0 auto; display: flex; gap: 0; align-items: stretch; }
+.el-media-hero-gallery, .el-media-hero-content { flex: 1 1 0; min-width: 0; }
+.el-media-hero-gallery { display: flex; gap: 18px; align-items: stretch; }
+.el-media-hero-thumbs { display: flex; flex-direction: column; gap: 12px; }
+.el-media-hero-thumb, .el-media-hero-video-thumb { cursor: pointer; border-radius: 8px; overflow: hidden; border: 2px solid transparent; transition: border 0.2s; }
+.el-media-hero-thumb:hover, .el-media-hero-video-thumb:hover { border: 2px solid #b48bb6; }
+.el-media-hero-thumb img, .el-media-hero-video-thumb img { width: 60px; height: 60px; object-fit: cover; display: block; }
+.el-media-hero-thumb-placeholder, .el-media-hero-video-thumb-placeholder { width: 60px; height: 60px; background: #eee; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 1rem; }
+.el-media-hero-slider-wrapper { position: relative; width: 100%; aspect-ratio: 1/1; background: #faf7f2; border-radius: 16px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.el-media-hero-slider { width: 100%; height: 100%; display: flex; align-items: center; justify-content: flex-start; transition: transform 0.3s; touch-action: pan-y; }
+.el-media-hero-slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.el-media-hero-main-image, .el-media-hero-main-video { max-width: 100%; max-height: 100%; border-radius: 12px; }
+.el-media-hero-slide-placeholder { width: 100%; height: 100%; background: #eee; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 1.2rem; border-radius: 12px; }
+.el-media-hero-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: #fff; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.5rem; color: #b48bb6; cursor: pointer; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: background 0.2s; }
+.el-media-hero-arrow-left { left: 10px; }
+.el-media-hero-arrow-right { right: 10px; }
+.el-media-hero-arrow:hover { background: #f3e6f7; }
+.el-media-hero-content { padding: 0 32px; display: flex; flex-direction: column; justify-content: center; }
+.el-media-hero-heading { font-size: 2.4rem; font-weight: 700; margin-bottom: 8px; color: #222; }
+.el-media-hero-highlight { color: #b48bb6; font-weight: 700; }
+.el-media-hero-description { font-size: 1.1rem; color: #555; margin-bottom: 24px; }
+.el-media-hero-review-box { background: #faf7f2; border: 1px solid #e5e5e5; border-radius: 12px; padding: 18px 22px; margin-bottom: 24px; }
+.el-media-hero-reviewer { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.el-media-hero-reviewer-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+.el-media-hero-reviewer-name { font-weight: 600; color: #222; }
+.el-media-hero-review-stars { display: flex; align-items: center; gap: 6px; font-size: 1.1rem; color: #b48bb6; margin-bottom: 8px; }
+.el-media-hero-star { color: #b48bb6; }
+.el-media-hero-review-count { color: #555; font-size: 0.95em; margin-left: 8px; }
+.el-media-hero-review-text { font-size: 1.05em; color: #333; margin: 0; font-style: italic; }
+.el-media-hero-btn { display: inline-block; margin: 24px 0 0 0; padding: 14px 36px; background: #b48bb6; color: #fff; border-radius: 6px; font-size: 1.1rem; text-decoration: none; font-weight: 700; transition: background 0.2s; }
+.el-media-hero-btn:hover { background: #a07aa6; }
+.el-media-hero-videos { margin-top: 32px; }
+.el-media-hero-videos-label { font-weight: 600; color: #222; margin-bottom: 10px; }
+.el-media-hero-video-thumbs { display: flex; gap: 12px; }
+.el-media-hero-video-thumb img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+.el-media-hero-video-thumb-placeholder { width: 56px; height: 56px; background: #eee; display: flex; align-items: center; justify-content: center; color: #bbb; border-radius: 50%; font-size: 1rem; }
+.el-media-hero-modal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 9999; }
+.el-media-hero-modal-content { background: #fff; border-radius: 12px; padding: 24px; position: relative; max-width: 90vw; max-height: 90vh; display: flex; align-items: center; justify-content: center; }
+.el-media-hero-modal-close { position: absolute; top: 12px; right: 18px; font-size: 2rem; color: #b48bb6; cursor: pointer; }
+.el-media-hero-modal-video-wrapper { width: 70vw; max-width: 700px; }
+.el-media-hero-modal-video-wrapper video, .el-media-hero-modal-video-wrapper iframe { width: 100%; height: 400px; border-radius: 8px; }
+@media (max-width: 1100px) {
+  .el-media-hero-inner { flex-direction: column; gap: 32px; }
+  .el-media-hero-slider-wrapper { width: 100%; height: auto; aspect-ratio: 1/1; }
 }
-{% endschema %}
+@media (max-width: 768px) {
+  .el-media-hero-inner { flex-direction: column; gap: 0; }
+  .el-media-hero-gallery { width: 100%; }
+  .el-media-hero-slider-wrapper { width: 100vw; max-width: 100vw; height: auto; aspect-ratio: 1/1; border-radius: 0; }
+  .el-media-hero-content { padding: 32px 10px 0 10px; }
+}
+@media (max-width: 700px) {
+  .el-media-hero-inner { padding: 0 0px; }
+  .el-media-hero-slider-wrapper { height: auto; aspect-ratio: 1/1; }
+  .el-media-hero-modal-video-wrapper video, .el-media-hero-modal-video-wrapper iframe { height: 200px; }
+}
+</style>
 
 <section class="el-media-hero">
   <div class="el-media-hero-inner">
@@ -126,76 +146,16 @@
   </div>
 </section>
 
-<style>
-.el-media-hero { width: 100%; background: #fff; padding: 40px 0; }
-.el-media-hero-inner { max-width: 1300px; margin: 0 auto; display: flex; gap: 0; align-items: stretch; }
-.el-media-hero-gallery, .el-media-hero-content { flex: 1 1 0; min-width: 0; }
-.el-media-hero-gallery { display: flex; gap: 18px; align-items: stretch; }
-.el-media-hero-thumbs { display: flex; flex-direction: column; gap: 12px; }
-.el-media-hero-thumb, .el-media-hero-video-thumb { cursor: pointer; border-radius: 8px; overflow: hidden; border: 2px solid transparent; transition: border 0.2s; }
-.el-media-hero-thumb:hover, .el-media-hero-video-thumb:hover { border: 2px solid #b48bb6; }
-.el-media-hero-thumb img, .el-media-hero-video-thumb img { width: 60px; height: 60px; object-fit: cover; display: block; }
-.el-media-hero-thumb-placeholder, .el-media-hero-video-thumb-placeholder { width: 60px; height: 60px; background: #eee; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 1rem; }
-.el-media-hero-slider-wrapper { position: relative; width: 100%; aspect-ratio: 1/1; background: #faf7f2; border-radius: 16px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.el-media-hero-slider { width: 100%; height: 100%; display: flex; align-items: center; justify-content: flex-start; transition: transform 0.3s; touch-action: pan-y; }
-.el-media-hero-slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
-.el-media-hero-main-image, .el-media-hero-main-video { max-width: 100%; max-height: 100%; border-radius: 12px; }
-.el-media-hero-slide-placeholder { width: 100%; height: 100%; background: #eee; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 1.2rem; border-radius: 12px; }
-.el-media-hero-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: #fff; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.5rem; color: #b48bb6; cursor: pointer; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: background 0.2s; }
-.el-media-hero-arrow-left { left: 10px; }
-.el-media-hero-arrow-right { right: 10px; }
-.el-media-hero-arrow:hover { background: #f3e6f7; }
-.el-media-hero-content { padding: 0 32px; display: flex; flex-direction: column; justify-content: center; }
-.el-media-hero-heading { font-size: 2.4rem; font-weight: 700; margin-bottom: 8px; color: #222; }
-.el-media-hero-highlight { color: #b48bb6; font-weight: 700; }
-.el-media-hero-description { font-size: 1.1rem; color: #555; margin-bottom: 24px; }
-.el-media-hero-review-box { background: #faf7f2; border: 1px solid #e5e5e5; border-radius: 12px; padding: 18px 22px; margin-bottom: 24px; }
-.el-media-hero-reviewer { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-.el-media-hero-reviewer-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
-.el-media-hero-reviewer-name { font-weight: 600; color: #222; }
-.el-media-hero-review-stars { display: flex; align-items: center; gap: 6px; font-size: 1.1rem; color: #b48bb6; margin-bottom: 8px; }
-.el-media-hero-star { color: #b48bb6; }
-.el-media-hero-review-count { color: #555; font-size: 0.95em; margin-left: 8px; }
-.el-media-hero-review-text { font-size: 1.05em; color: #333; margin: 0; font-style: italic; }
-.el-media-hero-btn { display: inline-block; margin: 24px 0 0 0; padding: 14px 36px; background: #b48bb6; color: #fff; border-radius: 6px; font-size: 1.1rem; text-decoration: none; font-weight: 700; transition: background 0.2s; }
-.el-media-hero-btn:hover { background: #a07aa6; }
-.el-media-hero-videos { margin-top: 32px; }
-.el-media-hero-videos-label { font-weight: 600; color: #222; margin-bottom: 10px; }
-.el-media-hero-video-thumbs { display: flex; gap: 12px; }
-.el-media-hero-video-thumb img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
-.el-media-hero-video-thumb-placeholder { width: 56px; height: 56px; background: #eee; display: flex; align-items: center; justify-content: center; color: #bbb; border-radius: 50%; font-size: 1rem; }
-.el-media-hero-modal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 9999; }
-.el-media-hero-modal-content { background: #fff; border-radius: 12px; padding: 24px; position: relative; max-width: 90vw; max-height: 90vh; display: flex; align-items: center; justify-content: center; }
-.el-media-hero-modal-close { position: absolute; top: 12px; right: 18px; font-size: 2rem; color: #b48bb6; cursor: pointer; }
-.el-media-hero-modal-video-wrapper { width: 70vw; max-width: 700px; }
-.el-media-hero-modal-video-wrapper video, .el-media-hero-modal-video-wrapper iframe { width: 100%; height: 400px; border-radius: 8px; }
-@media (max-width: 1100px) {
-  .el-media-hero-inner { flex-direction: column; gap: 32px; }
-  .el-media-hero-slider-wrapper { width: 100%; height: auto; aspect-ratio: 1/1; }
-}
-@media (max-width: 768px) {
-  .el-media-hero-inner { flex-direction: column; gap: 0; }
-  .el-media-hero-gallery { width: 100%; }
-  .el-media-hero-slider-wrapper { width: 100vw; max-width: 100vw; height: auto; aspect-ratio: 1/1; border-radius: 0; }
-  .el-media-hero-content { padding: 32px 10px 0 10px; }
-}
-@media (max-width: 700px) {
-  .el-media-hero-inner { padding: 0 0px; }
-  .el-media-hero-slider-wrapper { height: auto; aspect-ratio: 1/1; }
-  .el-media-hero-modal-video-wrapper video, .el-media-hero-modal-video-wrapper iframe { height: 200px; }
-}
-</style>
-
 <script>
 (function() {
   'use strict';
-  var thumbs = document.querySelectorAll('.el-media-hero-thumb');
-  var slides = document.querySelectorAll('.el-media-hero-slide');
-  var slider = document.querySelector('.el-media-hero-slider');
-  var leftArrow = document.querySelector('.el-media-hero-arrow-left');
-  var rightArrow = document.querySelector('.el-media-hero-arrow-right');
-  var currentIndex = 0;
-  var totalSlides = slides.length;
+  const thumbs = document.querySelectorAll('.el-media-hero-thumb');
+  const slides = document.querySelectorAll('.el-media-hero-slide');
+  const slider = document.querySelector('.el-media-hero-slider');
+  const leftArrow = document.querySelector('.el-media-hero-arrow-left');
+  const rightArrow = document.querySelector('.el-media-hero-arrow-right');
+  let currentIndex = 0;
+  const totalSlides = slides.length;
 
   function showSlide(idx) {
     currentIndex = idx;
@@ -211,31 +171,31 @@
   });
 
   leftArrow.addEventListener('click', function() {
-    var newIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    const newIndex = (currentIndex - 1 + totalSlides) % totalSlides;
     showSlide(newIndex);
   });
   rightArrow.addEventListener('click', function() {
-    var newIndex = (currentIndex + 1) % totalSlides;
+    const newIndex = (currentIndex + 1) % totalSlides;
     showSlide(newIndex);
   });
 
   // Prevent image drag
-  var imgs = document.querySelectorAll('.el-media-hero-main-image, .el-media-hero-thumb img, .el-media-hero-video-thumb img');
+  const imgs = document.querySelectorAll('.el-media-hero-main-image, .el-media-hero-thumb img, .el-media-hero-video-thumb img');
   imgs.forEach(function(img) {
     img.addEventListener('dragstart', function(e) { e.preventDefault(); });
   });
 
   // Drag functionality (desktop)
-  var startX = 0;
-  var isDragging = false;
-  var dragThreshold = 50;
+  let startX = 0;
+  let isDragging = false;
+  const dragThreshold = 50;
   slider.addEventListener('mousedown', function(e) {
     isDragging = true;
     startX = e.pageX;
   });
   slider.addEventListener('mousemove', function(e) {
     if (!isDragging) return;
-    var diff = e.pageX - startX;
+    const diff = e.pageX - startX;
     if (diff > dragThreshold) {
       leftArrow.click();
       isDragging = false;
@@ -254,7 +214,7 @@
   });
   slider.addEventListener('touchmove', function(e) {
     if (!isDragging) return;
-    var diff = e.touches[0].pageX - startX;
+    const diff = e.touches[0].pageX - startX;
     if (diff > dragThreshold) {
       leftArrow.click();
       isDragging = false;
@@ -266,13 +226,13 @@
   slider.addEventListener('touchend', function() { isDragging = false; });
 
   // Video modal logic
-  var videoThumbs = document.querySelectorAll('.el-media-hero-video-thumb');
-  var modal = document.getElementById('el-media-hero-modal');
-  var modalContent = modal.querySelector('.el-media-hero-modal-video-wrapper');
-  var closeBtn = modal.querySelector('.el-media-hero-modal-close');
+  const videoThumbs = document.querySelectorAll('.el-media-hero-video-thumb');
+  const modal = document.getElementById('el-media-hero-modal');
+  const modalContent = modal.querySelector('.el-media-hero-modal-video-wrapper');
+  const closeBtn = modal.querySelector('.el-media-hero-modal-close');
   videoThumbs.forEach(function(thumb) {
     thumb.addEventListener('click', function() {
-      var video = thumb.querySelector('.el-video-hidden');
+      const video = thumb.querySelector('.el-video-hidden');
       if(video) {
         modalContent.innerHTML = video.innerHTML;
         modal.style.display = 'flex'; 
@@ -290,4 +250,44 @@
     }
   });
 })();
-</script> 
+</script>
+
+{% schema %}
+{
+  "name": "EL Media Hero",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Makeup that adapts to your rhythm" },
+    { "type": "text", "id": "highlight", "label": "Highlight Text", "default": "ritmo" },
+    { "type": "text", "id": "description", "label": "Description", "default": "Designed for real, active women" },
+    { "type": "text", "id": "button_text", "label": "Button Text", "default": "BUY THE ESSENTIAL KIT" },
+    { "type": "url", "id": "button_url", "label": "Button URL" },
+    { "type": "text", "id": "review_text", "label": "Review Text", "default": "No matter if I'm at the beach, training or running all day... this kit is my lifesaver. I don't leave without it." },
+    { "type": "text", "id": "reviewer_name", "label": "Reviewer Name", "default": "Verified Elysia User." },
+    { "type": "image_picker", "id": "reviewer_image", "label": "Reviewer Image" },
+    { "type": "number", "id": "review_stars", "label": "Stars", "default": 5 },
+    { "type": "number", "id": "review_count", "label": "Review Count", "default": 431 }
+  ],
+  "blocks": [
+    {
+      "type": "media",
+      "name": "Media Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "select", "id": "media_type", "label": "Type", "options": [ {"value": "image", "label": "Image"}, {"value": "video", "label": "Video"} ], "default": "image" },
+        { "type": "video", "id": "video", "label": "Video (if type is video)" }
+      ]
+    },
+    {
+      "type": "video_thumb",
+      "name": "Video Thumbnail",
+      "settings": [
+        { "type": "image_picker", "id": "thumb_image", "label": "Thumbnail Image" },
+        { "type": "video", "id": "video", "label": "Video" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "EL Media Hero", "category": "Custom" }
+  ]
+}
+{% endschema %} 
