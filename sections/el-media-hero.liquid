@@ -179,13 +179,13 @@
             {% if block.type == 'media' %}
               <div class="el-media-hero-slide" data-index="{{ forloop.index0 }}" style="display: {% if forloop.first %}flex{% else %}none{% endif %}; position:relative;">
                 {% if block.settings.media_type == 'image' and block.settings.image != blank %}
-                  <img src="{{ block.settings.image | img_url: 'master' }}" alt="Media Slide" class="el-media-hero-main-image" draggable="false">
+                  <img src="{{ block.settings.image | image_url: width: 1000 }}" alt="Media Slide" class="el-media-hero-main-image" draggable="false">
                   <div class="el-media-hero-magnify" data-magnify-index="{{ forloop.index0 }}">
                     <!-- Placeholder SVG icon -->
                     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/><line x1="16" y1="16" x2="21" y2="21" stroke="currentColor" stroke-width="2"/></svg>
                   </div>
                 {% elsif block.settings.media_type == 'video' and block.settings.video != blank %}
-                  <video controls class="el-media-hero-main-video" autoplay muted loop playsinline src="{{ block.settings.video | video_url: autoplay: true }}"></video>
+                  <video controls class="el-media-hero-main-video" autoplay muted loop playsinline src="{{ block.settings.video | video_url: autoplay: true, controls: true }}"></video>
                 {% else %}
                   <div class="el-media-hero-slide-placeholder">Media</div>
                 {% endif %}
