@@ -1,0 +1,135 @@
+{% schema %}
+{
+  "name": "EL Hero Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Makeup that adapts to your rhythm"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Designed for real, active women"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "EL Hero Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="el-hero-section">
+  <div class="el-hero-container">
+    <div class="el-hero-content">
+      <h1 class="el-hero-headline">{{ section.settings.headline }}</h1>
+      <p class="el-hero-subheadline">{{ section.settings.subheadline }}</p>
+      {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+        <a href="{{ section.settings.button_url }}" class="el-hero-btn">{{ section.settings.button_text }}</a>
+      {% endif %}
+    </div>
+    <div class="el-hero-image-wrapper">
+      {% if section.settings.main_image != blank %}
+        <img class="el-hero-image" src="{{ section.settings.main_image | img_url: '800x' }}" alt="Hero Image">
+      {% else %}
+        <div class="el-hero-image-placeholder">Image Placeholder</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+.el-hero-section {
+  width: 100%;
+  background: #faf7f2;
+  padding: 60px 0;
+}
+.el-hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.el-hero-content {
+  flex: 1 1 400px;
+  min-width: 300px;
+}
+.el-hero-headline {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #222;
+}
+.el-hero-subheadline {
+  font-size: 1.3rem;
+  margin-bottom: 32px;
+  color: #555;
+}
+.el-hero-btn {
+  display: inline-block;
+  padding: 14px 36px;
+  background: #222;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.el-hero-btn:hover {
+  background: #444;
+}
+.el-hero-image-wrapper {
+  flex: 1 1 400px;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.el-hero-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+}
+.el-hero-image-placeholder {
+  width: 400px;
+  height: 300px;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 1.2rem;
+  border-radius: 12px;
+}
+@media (max-width: 900px) {
+  .el-hero-container {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+</style> 
