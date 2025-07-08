@@ -1,6 +1,166 @@
+{% comment %}
+  Section: Cursor AI Collection Cards
+  - All possible section settings
+  - Block: Collection card with bottom-left overlay (title + button)
+  - Uses custom CSS only (no theme CSS)
+{% endcomment %}
+
+<style>
+.cursor-ai-section {
+  width: 100%;
+  box-sizing: border-box;
+}
+.cursor-ai-section h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.cursor-ai-collection-list {
+  display: grid;
+  gap: 2rem;
+}
+@media (min-width: 750px) {
+  .cursor-ai-collection-list.grid--1-col-desktop { grid-template-columns: 1fr; }
+  .cursor-ai-collection-list.grid--2-col-desktop { grid-template-columns: 1fr 1fr; }
+  .cursor-ai-collection-list.grid--3-col-desktop { grid-template-columns: 1fr 1fr 1fr; }
+  .cursor-ai-collection-list.grid--4-col-desktop { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .cursor-ai-collection-list.grid--5-col-desktop { grid-template-columns: 1fr 1fr 1fr 1fr 1fr; }
+}
+@media (max-width: 749px) {
+  .cursor-ai-collection-list.grid--1-col-tablet-down { grid-template-columns: 1fr; }
+  .cursor-ai-collection-list.grid--2-col-tablet-down { grid-template-columns: 1fr 1fr; }
+}
+.cursor-ai-collection-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  background: #fff;
+  min-height: 300px;
+}
+.cursor-ai-collection-card img.card__media,
+.cursor-ai-collection-card .card__media {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  background: #eee;
+}
+.cursor-ai-overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 80%;
+  border-top-right-radius: 1rem;
+  z-index: 2;
+  margin: 1rem;
+}
+.cursor-ai-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+.cursor-ai-overlay .button {
+  background: #fff;
+  color: #222;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 0.2rem;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.cursor-ai-overlay .button--secondary {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+.cursor-ai-overlay .button:hover {
+  background: #222;
+  color: #fff;
+}
+</style>
+
+<div class="cursor-ai-section color-{{ section.settings.color_scheme }} gradient" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  {% if section.settings.heading != blank %}
+    <h2 class="{{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+  {% endif %}
+  <div class="cursor-ai-collection-list grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down">
+    {% for block in section.blocks %}
+      {% assign collection = block.settings.collection %}
+      <div class="cursor-ai-collection-card">
+        {% if collection.featured_image %}
+          <img src="{{ collection.featured_image | image_url: width: 800 }}" alt="{{ collection.title | escape }}" class="card__media">
+        {% else %}
+          <div class="card__media"></div>
+        {% endif %}
+        <div class="cursor-ai-overlay">
+          <div class="cursor-ai-title">{{ block.settings.title | default: collection.title }}</div>
+          {% if block.settings.button_label != blank %}
+            <a href="{{ block.settings.button_link | default: collection.url }}" class="button {% if block.settings.button_style_secondary %}button--secondary{% endif %}">{{ block.settings.button_label }}</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Collection Cards",
+  "tag": "section",
+  "class": "section section-cursor-ai-collection-cards",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Featured Collections" },
+    { "type": "select", "id": "heading_size", "label": "Heading size", "options": [ { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" } ], "default": "h2" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "columns_desktop", "label": "Columns (desktop)", "min": 1, "max": 5, "step": 1, "default": 3 },
+    { "type": "select", "id": "columns_mobile", "label": "Columns (mobile)", "options": [ { "value": "1", "label": "1" }, { "value": "2", "label": "2" } ], "default": "1" },
+    { "type": "checkbox", "id": "full_width", "label": "Full width", "default": false },
+    { "type": "checkbox", "id": "show_view_all", "label": "Show view all button", "default": false },
+    { "type": "text", "id": "view_all_label", "label": "View all label", "default": "View all collections" },
+    { "type": "url", "id": "view_all_link", "label": "View all link" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 36 },
+    { "type": "header", "content": "Animation" },
+    { "type": "select", "id": "animation", "label": "Animation", "options": [ { "value": "none", "label": "None" }, { "value": "fade", "label": "Fade" }, { "value": "slide", "label": "Slide" } ], "default": "none" },
+    { "type": "paragraph", "content": "This section supports all setting types." }
+  ],
+  "blocks": [
+    {
+      "type": "collection_card",
+      "name": "Collection Card",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "title", "label": "Title (override)", "default": "Collection Title" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },
+        { "type": "url", "id": "button_link", "label": "Button link" },
+        { "type": "checkbox", "id": "button_style_secondary", "label": "Secondary button style", "default": false },
+        { "type": "color_scheme", "id": "overlay_color_scheme", "label": "Overlay color scheme", "default": "scheme-1" },
+        { "type": "range", "id": "overlay_opacity", "label": "Overlay opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 50 },
+        { "type": "select", "id": "title_size", "label": "Title size", "options": [ { "value": "small", "label": "Small" }, { "value": "medium", "label": "Medium" }, { "value": "large", "label": "Large" } ], "default": "medium" },
+        { "type": "select", "id": "button_size", "label": "Button size", "options": [ { "value": "small", "label": "Small" }, { "value": "medium", "label": "Medium" }, { "value": "large", "label": "Large" } ], "default": "medium" },
+        { "type": "header", "content": "Advanced" },
+        { "type": "checkbox", "id": "show_description", "label": "Show collection description", "default": false },
+        { "type": "paragraph", "content": "Block supports all setting types." }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Featured Collections Cursor", "blocks": [ { "type": "collection_card" }, { "type": "collection_card" }, { "type": "collection_card" } ] }
+  ]
+}
 {% endschema %}
