@@ -15,9 +15,96 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "cursor_ai_63BBPG": {
+      "type": "cursor-ai",
+      "blocks": {
+        "collection_card_4iLXjF": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "face-masks",
+            "title": "",
+            "button_label": "Shop now",
+            "button_link": "",
+            "button_style_secondary": false,
+            "overlay_color_scheme": "",
+            "overlay_opacity": 0,
+            "title_size": "medium",
+            "button_size": "medium",
+            "show_description": false
+          }
+        },
+        "collection_card_gJHhwX": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "stickers",
+            "title": "",
+            "button_label": "Shop now",
+            "button_link": "",
+            "button_style_secondary": false,
+            "overlay_color_scheme": "",
+            "overlay_opacity": 0,
+            "title_size": "medium",
+            "button_size": "medium",
+            "show_description": false
+          }
+        },
+        "collection_card_KKPVYp": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "little-lights",
+            "title": "",
+            "button_label": "Shop now",
+            "button_link": "",
+            "button_style_secondary": false,
+            "overlay_color_scheme": "",
+            "overlay_opacity": 0,
+            "title_size": "medium",
+            "button_size": "medium",
+            "show_description": false
+          }
+        },
+        "collection_card_Dwhf7F": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "stickers",
+            "title": "",
+            "button_label": "Shop now",
+            "button_link": "",
+            "button_style_secondary": false,
+            "overlay_color_scheme": "",
+            "overlay_opacity": 0,
+            "title_size": "medium",
+            "button_size": "medium",
+            "show_description": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_4iLXjF",
+        "collection_card_gJHhwX",
+        "collection_card_KKPVYp",
+        "collection_card_Dwhf7F"
+      ],
+      "name": "Featured Collections Cursor",
+      "settings": {
+        "heading": "Featured Collections",
+        "heading_size": "h2",
+        "color_scheme": "",
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_label": "View all collections",
+        "view_all_link": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "animation": "fade"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "cursor_ai_63BBPG"
   ]
 }

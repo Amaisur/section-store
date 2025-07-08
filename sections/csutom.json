@@ -81,6 +81,7 @@
         "collection_card_pfmLfA",
         "collection_card_DyQeBh"
       ],
+      "disabled": true,
       "name": "Featured Collections Cursor",
       "settings": {
         "heading": "Featured Collections",
