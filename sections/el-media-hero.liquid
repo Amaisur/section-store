@@ -104,7 +104,7 @@
             {% if block.type == 'video_thumb' %}
               <div class="el-media-hero-video-thumb">
                 <div class="el-video-hidden" hidden>
-                    {{ block.settings.video | video_url: autoplay: true }}
+                    {{ block.settings.video | video_tag: autoplay: true }}
                 </div>
                 {% if block.settings.thumb_image != blank %}
                   <img src="{{ block.settings.thumb_image | img_url: '80x80' }}" alt="Video Thumbnail" draggable="false">
