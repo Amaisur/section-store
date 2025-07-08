@@ -177,30 +177,28 @@
           "type": "media",
           "settings": {
             "image": "shopify://shop_images/Rectangle107_1.png",
-            "media_type": "image",
-            "video_url": ""
+            "media_type": "image"
           }
         },
         "media_YGzzUV": {
           "type": "media",
           "settings": {
             "image": "shopify://shop_images/Natural-Jackson-Everwood-Supplement-12.png",
-            "media_type": "image",
-            "video_url": ""
+            "media_type": "image"
           }
         },
         "video_thumb_Q4HVka": {
           "type": "video_thumb",
           "settings": {
             "thumb_image": "shopify://shop_images/C2_f117af7c-e4de-4ed2-99dd-9830efe6275a.png",
-            "video_url": ""
+            "video": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4"
           }
         },
         "video_thumb_eHtW7Y": {
           "type": "video_thumb",
           "settings": {
             "thumb_image": "shopify://shop_images/C3_1_2b76cb21-ac50-46c4-8331-a092395399c9.png",
-            "video_url": ""
+            "video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4"
           }
         }
       },
