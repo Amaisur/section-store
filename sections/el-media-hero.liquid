@@ -272,9 +272,9 @@
   var closeBtn = modal.querySelector('.el-media-hero-modal-close');
   videoThumbs.forEach(function(thumb) {
     thumb.addEventListener('click', function() {
-      var video = thumb.querySelector('el-video-hidden');
+      var video = thumb.querySelector('.el-video-hidden');
       if(video) {
-        modalContent.innerHTML = video;
+        modalContent.innerHTML = video.innerHTML;
         modal.style.display = 'flex'; 
       }
     });
