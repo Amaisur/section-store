@@ -1,0 +1,1020 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"><style data-shopify="">
+  @font-face {
+  font-family: "Josefin Sans";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.c8300d95fd4ce72542a6efba9c682da40d144fba.woff2?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=1081bc13bac779d73b77022741d8b8608aa5451af6a05907fc023625940c00f1") format("woff2"),
+       url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=3f19a3e11bab2423756ce410220df09957f15affd53a78fa0ec435e5660aa636") format("woff");
+}
+  
+  .section-{{ section.id }} {
+    border-top: solid #000000 0px;
+    border-bottom: solid #000000 0px;
+    margin-top: 27px;
+    margin-bottom: 48px;
+  }
+  
+  .section-{{ section.id }}-settings {
+    background: {{ section.settings.section_bg_color }};
+    margin: 0 auto;
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    padding-left: {{ section.settings.padding_left_mobile }}rem;
+    padding-right: {{ section.settings.padding_right_mobile }}rem;
+  }
+
+  .multicolumns-title-{{ section.id }} {
+    margin: 0;
+    margin-top: 0px;
+    margin-bottom: 18px;
+    font-size: {{ section.settings.title_font_size_mobile }}px;
+    color: {{ section.settings.title_color }};
+    line-height: 130%;
+    letter-spacing: 0.2px;
+    text-transform: unset;
+    text-align: center;
+  }
+  
+  .multicolumns-text-{{ section.id }} {
+    margin: 0;
+    font-size: {{ section.settings.subtitle_font_size_mobile }}px;
+    color: {{ section.settings.subtitle_color }};
+    line-height: 160%;
+    letter-spacing: 0px;
+    text-transform: unset;
+    text-align: center;
+  }
+  
+  .multicolumns-items-{{ section.id }} {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .multicolumns-items-{{ section.id }} .multicolumns-item-{{ section.id }} {
+    flex: 0 1 100% !important;
+  }
+  
+  .multicolumns-item-number-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #343643;
+  }
+  
+  .multicolumns-item-number-{{ section.id }} p {
+    font-size: 30.6px;
+    color: #ffffff;
+  }
+  
+  .multicolumns-item-image-{{ section.id }} {
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 12px;
+  }
+  
+  .multicolumns-item-image-{{ section.id }} img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .multicolumns-item-image-{{ section.id }} .placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+    border-radius: 12px;
+    background-color: #CABBB6;
+  }
+  
+  .multicolumns-item-video-{{ section.id }} {
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+
+  .multicolumns-item-video-{{ section.id }} video {
+    display: block;
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    border: 0;
+    border-radius: 16px;
+    background-color: #CABBB6;
+  }
+
+  .multicolumns-item-video-{{ section.id }} .placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+    border-radius: 12px;
+    background-color: #CABBB6;
+  }
+  
+  .multicolumns-item-title-{{ section.id }} {
+    margin: 0px;
+    margin-top: 15px;
+    font-size: 23.8px;
+    color: #121212;
+    line-height: 130%;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+  
+  .multicolumns-item-text-{{ section.id }} {
+    margin: 0px;
+    margin-top: 12px;
+    font-size: 13.6px;
+    color: #121212;
+    line-height: 150%;
+    letter-spacing: 0px;
+    text-align: center;
+  }
+  
+  .multicolumns-item-link-{{ section.id }} {
+    display: block;
+    margin: 0px;
+    margin-top: 12px;
+    font-size: 11.9px;
+    color: #ffffff;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-align: center;
+    transition: all 0.1s ease-in 0s;
+    text-decoration: none;
+  }
+  
+  .multicolumns-item-link-{{ section.id }}:hover {
+    transition: all 0.1s ease-in 0s;
+    color: #ffffff;
+  }
+
+  .multicolumns-slider-wrapper-{{ section.id }} {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    margin-top: 24px;
+    display: none;
+    position: relative;
+  }
+
+  .multicolumns-slider-{{ section.id }} {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  .multicolumns-btn-next-{{ section.id }},
+  .multicolumns-btn-prev-{{ section.id }} {
+    position: absolute !important;
+    top: 50% !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    border-radius: 50%;
+    border: 1px solid #333333 !important;
+    width: 40px !important;
+    height: 40px !important;
+    background: #333333 !important;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+
+  .multicolumns-btn-prev-{{ section.id }} {
+    left: 5px !important;
+  }
+  .multicolumns-btn-next-{{ section.id }} {
+    right: 5px !important;
+  }
+
+  .multicolumns-btn-next-{{ section.id }} svg {
+    transform: rotate(180deg);
+  }
+
+  .multicolumns-btn-next-{{ section.id }} svg,
+  .multicolumns-btn-prev-{{ section.id }} svg {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .multicolumns-btn-next-{{ section.id }} svg path,
+  .multicolumns-btn-prev-{{ section.id }} svg path {
+    fill: #ffffff;
+    transition: all 0.25s ease 0s;
+  }
+  
+  .multicolumns-btn-prev-{{ section.id }} svg {
+    margin-left: -2px;
+  }
+
+  .multicolumns-btn-next-{{ section.id }}:hover,
+  .multicolumns-btn-prev-{{ section.id }}:hover {
+    border: 1px solid #121212 !important;
+    background: #121212 !important;
+  }
+
+  .multicolumns-btn-next-{{ section.id }}:hover svg path,
+  .multicolumns-btn-prev-{{ section.id }}:hover svg path {
+    fill: #ffffff !important;
+    transition: all 0.25s ease 0s;
+  }
+
+  .multicolumns-btn-next-{{ section.id }}.swiper-button-disabled,
+  .multicolumns-btn-prev-{{ section.id }}.swiper-button-disabled {
+    opacity: 0;
+  }
+  
+  @media(min-width: 768px) {
+
+  .multicolumns-item-video-{{ section.id }} .placeholder {
+    border-radius: 16px;
+  }
+
+  .multicolumns-item-video-{{ section.id }} video {
+    height: 290px;
+  }
+
+  .multicolumns-item-image-{{ section.id }} .placeholder {
+    border-radius: 16px;
+  }
+
+  .multicolumns-item-image-{{ section.id }} img {
+    border-radius: 16px;
+  }
+    
+    .section-{{ section.id }} {
+      margin-top: 36px;
+      margin-bottom: 64px;
+    }
+    
+    .section-{{ section.id }}-settings {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+      padding-left: {{ section.settings.padding_left_desktop }}rem;
+      padding-right: {{ section.settings.padding_right_desktop }}rem;
+    }
+    
+    .multicolumns-title-{{ section.id }} {
+      font-size: {{ section.settings.title_font_size_desktop }}px;
+      margin-top: px;
+      margin-bottom: 24px;
+    }
+    
+    .multicolumns-text-{{ section.id }} {
+      font-size: {{ section.settings.subtitle_font_size_desktop }}px;
+    }
+    
+    .multicolumns-items-{{ section.id }} {
+      margin-top: 32px;
+      gap: 20px;
+    }
+    
+
+    .multicolumns-items-{{ section.id }} .multicolumns-item-{{ section.id }} {
+      flex: 0 1 29% !important;
+    }
+    
+    .multicolumns-item-image-{{ section.id }} {
+      height: 290px;
+      max-width: 500px;
+    }
+    
+    .multicolumns-item-title-{{ section.id }} {
+      margin-top: 20px;
+      font-size: 28px;
+    }
+    
+    .multicolumns-item-text-{{ section.id }} {
+      margin-top: 12px;
+      font-size: 16px;
+    }
+    
+    .multicolumns-item-link-{{ section.id }} {
+      margin-top: 16px;
+      font-size: 14px;
+    }
+    
+    .multicolumns-item-number-{{ section.id }} p {
+      font-size: 36px;
+    }
+
+    .multicolumns-slider-wrapper-{{ section.id }} {
+      margin-left: 0;
+      margin-right: 0 
+      margin-top: 32px;
+    }
+
+    .multicolumns-slider-{{ section.id }} {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    .multicolumns-btn-next-{{ section.id }},
+    .multicolumns-btn-prev-{{ section.id }} {
+      width: 50px !important;
+      height: 50px !important;
+    }
+
+    .multicolumns-btn-next-{{ section.id }} svg,
+    .multicolumns-btn-prev-{{ section.id }} svg {
+      height: 38px !important;
+      width: 38px !important;
+    }
+  }
+  @media(max-width: 500px) {
+    .multicolumns-title-{{ section.id }},
+    .multicolumns-text-{{ section.id }} {
+      padding: 0px 20px;
+    }
+  }</style>
+  <style>
+    .section-{{ section.id }}-settings {
+      max-width: 190rem;
+    }
+  </style>
+
+
+
+
+
+
+
+  <style>
+    .multicolumns-item-number-{{ section.id }} {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .multicolumns-item-link-{{ section.id }} {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+
+
+
+
+
+
+
+
+
+
+
+  <style>
+    .multicolumns-item-link-{{ section.id }} {
+      background-color: #343643;
+      padding: 12px 18px;
+      border-radius: 3px;
+    }
+    
+    .multicolumns-item-link-{{ section.id }}:hover {
+      color: #ffffff;
+      background-color: #434654;
+    }
+    
+    @media(min-width:768px) {
+      .multicolumns-item-link-{{ section.id }} {
+        padding: 16px 24px;
+        border-radius: 4px;
+      }
+    }
+  </style>
+
+
+
+  <style>
+    .multicolumns-item-link-{{ section.id }} {
+      max-width: 140px;
+    }
+  </style>
+
+
+
+  <style>
+    
+      .multicolumns-slider-wrapper-{{ section.id }} {
+        display: block;
+      }
+      .multicolumns-items-{{ section.id }} {
+        display: none;
+      }
+    
+    @media(min-width: 768px) {
+      
+        .multicolumns-slider-wrapper-{{ section.id }} {
+          display: none;
+        }
+        .multicolumns-items-{{ section.id }} {
+          display: flex;
+        }
+      
+    }
+  </style>
+
+
+
+
+<div class="section-{{ section.id }} multicolumns-video-{{ section.id }}" style="background-color:#ffffff; background-image: ;">
+  <div class="section-{{ section.id }}-settings">
+    
+        
+          <h2 class="multicolumns-title-{{ section.id }}">{{ section.settings.title_text }}</h2>
+        
+        
+        
+          <p class="multicolumns-text-{{ section.id }}">{{ section.settings.subtitle_text }}</p>
+        
+        
+        <div class="multicolumns-items-{{ section.id }}">
+          
+             {% for block in section.blocks %}  
+                <style>
+                  @media (min-width: 767px){
+                  .d5-{{ block.id }}-item h3{
+                    font-size: {{ block.settings.item_title_font_size_desktop }}px;
+                    color: {{ block.settings.item_title_color }};
+                  }
+                  .d5-{{ block.id }}-item p{
+                    font-size: {{ block.settings.item_text_font_size_desktop }}px;
+                    color: {{ block.settings.item_text_color }};
+                  }
+                  .d5-{{ block.id }}-item a{
+                    padding: {{ block.settings.item_link_padding_desktop }}px;
+                    background: {{ block.settings.item_link_bg_color }};
+                    color: {{ block.settings.item_link_color }};
+                    border-radius: {{ block.settings.btn-r }}px;
+                  }
+                  .multicolumns-item-{{ section.id }} {
+                    border-radius: 28px !important;
+                    padding-top: 16px !important;
+                    padding-bottom: 24px !important;
+                    padding-left: 16px !important;
+                    padding-right: 16px !important;
+                  }
+                  }
+                </style>
+            <div class="multicolumns-item-{{ section.id }} d5-{{ block.id }}-item">
+
+            
+                
+                <div id="multicolumns-item-video" class="multicolumns-item-video-{{ section.id }}">
+                {{ block.settings.item_video | video_tag: poster: block.settings.item_image, autoplay: block.settings.autoplay, loop: block.settings.loop, muted: block.settings.muted, playsinline: block.settings.playsinline, controls: block.settings.controls }}
+                </div>
+              
+
+              
+                <h3 class="multicolumns-item-title-{{ section.id }}">{{ block.settings.item_title }}</h3>
+              
+
+              
+                <p class="multicolumns-item-text-{{ section.id }}">{{ block.settings.item_text }}</p>
+              
+            
+              
+                <a href="{{ block.settings.item_link }}" class="multicolumns-item-link-{{ section.id }}">{{ block.settings.item_link_txt }}</a>
+              
+            
+            </div>
+            {% endfor %}
+          
+        </div>
+
+        <div class="multicolumns-slider-wrapper-{{ section.id }}">
+          <div class="multicolumns-slider-{{ section.id }} swiper swiper-initialized swiper-horizontal swiper-pointer-events" data-slider-view-mobile="1.3" data-column-gap-mobile="20" data-column-gap="20" data-column-row="3" data-column-row-tablet="2" data-column-row-mobile="1" data-autoplay="false" data-autoplay-speed="3" data-block-size="3">
+            <div class="multicolumns-wrapper-{{ section.id }} swiper-wrapper" id="swiper-wrapper-045d1dde3e5417102" aria-live="polite" style="transition-duration: 0ms;">
+              
+              {% for block in section.blocks %}  
+                <style>
+                  @media (max-width: 768px){
+                  .d5-{{ block.id }}-item h3{
+                    font-size: {{ block.settings.item_title_font_size_mobile }}px;
+                    color: {{ block.settings.item_title_color }};
+                  }
+                  .d5-{{ block.id }}-item p{
+                    font-size: {{ block.settings.item_text_font_size_mobile }}px;
+                    color: {{ block.settings.item_text_color }};
+                  }
+                  .d5-{{ block.id }}-item a{
+                    padding: {{ block.settings.item_link_padding_mobile }}px;
+                    background: {{ block.settings.item_link_bg_color }};
+                    color: {{ block.settings.item_link_color }};
+                    border-radius: {{ block.settings.btn-r }}px;
+                  }
+                    .multicolumns-item-{{ section.id }} {
+                      border-radius: 21px !important;
+                      background-color: #f3f3f3 !important;
+                      padding-top: 12px !important;
+                      padding-bottom: 18px !important;
+                      padding-left: 12px !important;
+                      padding-right: 12px !important;
+                      box-sizing: border-box !important;
+                    }
+                  }
+                </style>
+                <div class="multicolumns-item-{{ section.id }} swiper-slide d5-{{ block.id }}-item">
+    
+                
+                    
+                  
+                    <div id="multicolumns-item-video" class="multicolumns-item-video-{{ section.id }}">
+                      
+                      {{ block.settings.item_video | video_tag: poster: block.settings.item_image, autoplay: block.settings.autoplay, loop: block.settings.loop, muted: block.settings.muted, playsinline: block.settings.playsinline, controls: block.settings.controls }}
+               </div>
+                  
+    
+                  
+                    <h3 class="multicolumns-item-title-{{ section.id }}">{{ block.settings.item_title }}</h3>
+                  
+    
+                  
+                    <p class="multicolumns-item-text-{{ section.id }}">{{ block.settings.item_title }}</p>
+                  
+                
+                  
+                    <a href="{{ block.settings.item_link }}" class="multicolumns-item-link-{{ section.id }}">{{ block.settings.item_link_txt }}</a>
+                  
+                
+                </div>
+                {% endfor %}
+              
+            </div>
+        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+        <div class="multicolumns-btn-prev-{{ section.id }} swiper-btn-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-045d1dde3e5417102" aria-disabled="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g id="Left"><path d="M14,17a1,1,0,0,1-.707-.293l-4-4a1,1,0,0,1,0-1.414l4-4a1,1,0,1,1,1.414,1.414L11.414,12l3.293,3.293A1,1,0,0,1,14,17Z"></path></g></svg>
+        </div>
+        <div class="multicolumns-btn-next-{{ section.id }} swiper-btn-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-045d1dde3e5417102" aria-disabled="false">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g id="Left"><path d="M14,17a1,1,0,0,1-.707-.293l-4-4a1,1,0,0,1,0-1.414l4-4a1,1,0,1,1,1.414,1.414L11.414,12l3.293,3.293A1,1,0,0,1,14,17Z"></path></g></svg>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.min.js"></script>
+
+
+
+
+
+
+<script>
+  function loadSwiper(callback) {
+    if (window.Swiper) {
+      callback();
+    } else {
+      const script = document.createElement('script');
+      script.src = "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js";
+      script.onload = callback;
+      document.head.appendChild(script);
+    }
+  }
+  
+  function multicolumnVideoSliderInit(sectionId) {
+    const sliderElement = document.querySelector(`.multicolumns-slider-${sectionId}`);
+    if (!sliderElement) return;
+    
+    const settings = {
+      sliderViewMobile: parseFloat(sliderElement.dataset.sliderViewMobile),
+      columnGapMobile: parseInt(sliderElement.dataset.columnGapMobile),
+      columnGap: parseInt(sliderElement.dataset.columnGap),
+      columnRow: parseInt(sliderElement.dataset.columnRow),
+      columnRowTablet: parseInt(sliderElement.dataset.columnRowTablet),
+      columnRowMobile: parseInt(sliderElement.dataset.columnRowMobile),
+      autoplay: sliderElement.dataset.autoplay === 'true',
+      autoplaySpeed: parseInt(sliderElement.dataset.autoplaySpeed),
+      blockSize: parseInt(sliderElement.dataset.blockSize)
+    };
+
+    const sliderConfig = {
+      speed: 300,
+      watchOverflow: false,
+      navigation: {
+        nextEl: `.multicolumns-btn-next-${sectionId}`,
+        prevEl: `.multicolumns-btn-prev-${sectionId}`,
+      },
+      breakpoints: {
+        320: {
+          loop: settings.autoplay && settings.blockSize > settings.columnRowMobile,
+          slidesPerView: settings.sliderViewMobile,
+          spaceBetween: settings.columnGapMobile
+        },
+        768: {
+          loop: settings.autoplay && settings.blockSize > settings.columnRowTablet,
+          slidesPerView: Math.round(settings.columnRow * 0.5),
+          spaceBetween: settings.columnGapMobile
+        },
+        992: {
+          loop: settings.autoplay && settings.blockSize > settings.columnRow,
+          slidesPerView: settings.columnRow,
+          spaceBetween: settings.columnGap
+        }
+      }
+    };
+
+    if (settings.autoplay) {
+      sliderConfig.autoplay = {
+        delay: settings.autoplaySpeed * 1000
+      };
+    }
+
+    const slider = new Swiper(sliderElement, sliderConfig);
+    
+    const videos = document.querySelectorAll(`.section-${sectionId} video`);
+    videos.forEach(video => {
+      video.setAttribute('controlsList', 'nodownload');
+    });
+
+    if (typeof LazyLoad !== 'undefined') {
+      new LazyLoad();
+    }
+
+    return slider;
+  }
+
+  function initSliders() {
+    document.querySelectorAll('[id^="shopify-section-"]').forEach(section => {
+      const sectionId = section.id.replace('shopify-section-', '');
+      if (section.querySelector(`.multicolumns-slider-${sectionId}`)) {
+        loadSwiper(() => multicolumnVideoSliderInit(sectionId));
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSliders);
+  } else {
+    initSliders();
+  }
+
+  if (Shopify.designMode) {
+    document.addEventListener('shopify:section:load', (event) => {
+      const sectionId = event.detail.sectionId;
+      if (event.target.querySelector(`.multicolumns-slider-${sectionId}`)) {
+        loadSwiper(() => multicolumnVideoSliderInit(sectionId));
+      }
+    });
+  }
+</script>
+
+
+
+
+
+
+
+{% schema %}
+  {
+  "name": "Video Multicolumn",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Title Settings"
+    },
+    {
+      "type": "text",
+      "id": "title_text",
+      "label": "Title Text",
+      "default": "Reimagine Your Everyday"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "label": "Title Font Size (Desktop)",
+      "default": 44,
+      "unit": "px",
+      "min": 10,
+      "max": 80
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title Font Size (Mobile)",
+      "default": 37,
+      "unit": "px",
+      "min": 10,
+      "max": 80
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Subtitle Settings"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_text",
+      "label": "Subtitle Text",
+      "default": "Enhance your lifestyle with cutting-edge technology designed for you."
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_desktop",
+      "label": "Subtitle Font Size (Desktop)",
+      "default": 20,
+      "unit": "px",
+      "min": 10,
+      "max": 80
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_mobile",
+      "label": "Subtitle Font Size (Mobile)",
+      "default": 17,
+      "unit": "px",
+      "min": 10,
+      "max": 80
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Items Layout"
+    },
+    {
+      "type": "range",
+      "id": "items_gap_desktop",
+      "label": "Items Gap (Desktop)",
+      "default": 20,
+      "unit": "px",
+      "min": 0,
+      "max": 50
+    },
+    {
+      "type": "range",
+      "id": "items_gap_mobile",
+      "label": "Items Gap (Mobile)",
+      "default": 20,
+      "unit": "px",
+      "min": 0,
+      "max": 50
+    },
+     {
+      "type": "header",
+      "content": "Section Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "default": 36,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "default": 36,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_left_desktop",
+      "label": "Padding Left (Desktop)",
+      "default": 5,
+      "unit": "rem",
+      "min": 0,
+      "max": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_right_desktop",
+      "label": "Padding Right (Desktop)",
+      "default": 5,
+      "unit": "rem",
+      "min": 0,
+      "max": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "default": 27,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "default": 27,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+     {
+      "type": "range",
+      "id": "padding_left_mobile",
+      "label": "Padding Left (Mobile)",
+      "default": 5,
+      "unit": "rem",
+      "min": 0,
+      "max": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_right_mobile",
+      "label": "Padding Right (Mobile)",
+      "default": 5,
+      "unit": "rem",
+      "min": 0,
+      "max": 5
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Multicolumn Item",
+      "settings": [
+        {
+          "type": "color_background",
+          "id": "card-bg",
+          "label": "Card Background Color",
+          "default": "#f3f3f3"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_image",
+          "label": "Item Image"
+        },
+        {
+          "type": "video",
+          "id": "item_video",
+          "label": "Item Video"
+        },
+         {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "Autoplay",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "loop",
+          "label": "Loop"
+        },
+        {
+          "type": "checkbox",
+          "id": "muted",
+          "label": "Muted"
+        },
+        {
+          "type": "checkbox",
+          "id": "playsinline",
+          "label": "Plays Inline"
+        },
+        {
+          "type": "checkbox",
+          "id": "controls",
+          "label": "Show Controls"
+        },
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Item Title",
+          "default": "Stay Connected, Stay Ahead"
+        },
+        {
+          "type": "range",
+          "id": "item_title_font_size_desktop",
+          "label": "Item Title Font Size (Desktop)",
+          "default": 28,
+          "unit": "px",
+          "min": 10,
+          "max": 80
+        },
+        {
+          "type": "range",
+          "id": "item_title_font_size_mobile",
+          "label": "Item Title Font Size (Mobile)",
+          "default": 23,
+          "unit": "px",
+          "min": 10,
+          "max": 80
+        },
+        {
+          "type": "color",
+          "id": "item_title_color",
+          "label": "Item Title Color",
+          "default": "#121212"
+        },
+        {
+          "type": "text",
+          "id": "item_text",
+          "label": "Item Description",
+          "default": "Monitor your fitness, stay on track, and look stylish all day long."
+        },
+        {
+          "type": "range",
+          "id": "item_text_font_size_desktop",
+          "label": "Item Text Font Size (Desktop)",
+          "default": 16,
+          "unit": "px",
+          "min": 10,
+          "max": 80
+        },
+        {
+          "type": "range",
+          "id": "item_text_font_size_mobile",
+          "label": "Item Text Font Size (Mobile)",
+          "default": 13,
+          "unit": "px",
+          "min": 10,
+          "max": 80
+        },
+        {
+          "type": "color",
+          "id": "item_text_color",
+          "label": "Item Text Color",
+          "default": "#121212"
+        },
+        {
+          "type": "text",
+          "id": "item_link_txt",
+          "label": "Button Label",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "item_link",
+          "label": "Item Link URL"
+        },
+         {
+          "type": "color",
+          "id": "item_link_color",
+          "label": "Button Text Color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "item_link_bg_color",
+          "label": "Item Link Background Color",
+          "default": "#343643"
+        },
+        {
+          "type": "range",
+          "id": "item_link_padding_desktop",
+          "label": "Item Link Padding (Desktop)",
+          "default": 16,
+          "unit": "px",
+          "min": 0,
+          "max": 50
+        },
+        {
+          "type": "range",
+          "id": "item_link_padding_mobile",
+          "label": "Item Link Padding (Mobile)",
+          "default": 12,
+          "unit": "px",
+          "min": 0,
+          "max": 50
+        },
+         {
+          "type": "range",
+          "id": "btn-r",
+          "label": "Button Border Radius",
+          "default": 12,
+          "unit": "px",
+          "min": 0,
+          "max": 100
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Multicolumn",
+      "category": "Featured Sections"
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,396 @@
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    .main-trust-3-d9{
+        width: 100%;
+        min-width: 430px;
+        margin: 0 auto;
+        margin-left: -60px !important;
+    }
+    .inner-trust-3-d9{
+        width: 100%;
+        padding: {{ block.settings.padding-vertical }}rem  {{ block.settings.padding-horizontal }}rem ;
+    }
+    .row-trust-3-d9{
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .col-trust-3-d9{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+    .col-trust-3-d9 .img-trust-3-d9{
+        width: {{ block.settings.img-size }}px;
+        overflow: hidden;
+    }
+    .col-trust-3-d9 .img-trust-3-d9 img, .col-trust-3-d9 .img-trust-3-d9 svg{
+        width: 100%;
+    }
+    .col-trust-3-d9 .img-trust-3-d9 span {
+      font-size: {{ block.settings.icon-size }}px;
+    }
+    .col-trust-3-d9{
+      padding: {{ block.settings.c-padding-vertical }}rem  {{ block.settings.c-padding-horizontal }}rem;
+      min-height: 70px;
+    }
+    .col-trust-3-d9:nth-child(odd){
+        border-right: 1px solid {{ block.settings.br-color }};
+        border-bottom: 1px solid {{ block.settings.br-color }};
+    }
+    .col-trust-3-d9:nth-child(-n+2){
+        border-top: none;
+    }
+    .col-trust-3-d9:nth-child(even){
+        border-bottom: 1px solid {{ block.settings.br-color }};
+    }
+    .content-trust-3-d9 h4{
+      font-size: {{ block.settings.head-size }}px;
+      line-height: 130%;
+      color: {{ block.settings.head-color }};
+    }
+    .content-trust-3-d9 p{
+      font-size: {{ block.settings.para-size }}px;
+      line-height: 120%;
+      color: {{ block.settings.sub-color }};
+    }
+
+@media (max-width: 768px){
+  .main-trust-3-d9{
+    min-width: 200px;
+    margin: 0 auto !important;
+  }
+  .inner-trust-3-d9{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .col-trust-3-d9{
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+@media (min-width: 1400px){
+   .main-trust-3-d9{
+    margin: 0 auto !important;
+  }
+}
+.d05-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.d05-popup-content {
+    background-color: #fff;
+    width: 660px;
+    overflow-x: auto;
+    max-height: 100vh;
+}
+
+.d05-popup-content h2 {
+    color: #000;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: normal;
+    width: 60%;
+}
+
+.d05-product-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.d05-popup-content img {
+    max-width: 30%;
+    height: auto;
+    aspect-ratio: 187/120;
+    object-fit: cover;
+}
+
+.d05-popup-content label {
+    display: block;
+    width: 47%;
+    color: #000;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.d05-popup-content input[type="text"],
+.d05-popup-content input[type="tel"],
+.d05-popup-content input[type="email"] {
+    width: 100%;
+    padding: 12px 10px;
+    margin-top: 8px;
+    border: 1px solid #C2C2C2;
+    border-radius: 2px;
+    font-size: 0.9em;
+    box-sizing: border-box;
+}
+
+.d05-popup-content #continue-button {
+    background: #4190D2;
+    color: #fff;
+}
+
+.d05-popup-content #cancel-button {
+    border: 0.66px solid #8A8A8A;
+    background: #FDFDFD;
+}
+
+.d05-popup-header {
+    padding: 20px;
+    background: #4190D2;
+}
+
+.d05-popup-header p {
+    color: #FFF;
+    text-align: left;
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.d05-popup-body {
+    padding: 30px 20px;
+}
+
+.d05-form-feilds {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 24px 0 0;
+    gap: 24px;
+    justify-content: space-between;
+}
+
+.d05-popup-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 16px 20px;
+    border-top: 1px solid #E3E3E3;
+}
+
+.d05-popup-footer a {
+    display: block;
+    padding: 6px 12px;
+    overflow: hidden;
+    color: #303030;
+    text-overflow: ellipsis;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.d05-form-feilds .d05-label-name {
+    width: 100%;
+}
+
+@media (max-width: 500px){
+  .d05-popup-content label{
+    width: 100%;
+  }
+}
+    </style>
+
+    <div class="main-trust-3-d9">
+        <div class="inner-trust-3-d9"> 
+            <div class="row-trust-3-d9">
+                <div class="col-trust-3-d9">
+                    <div class="img-trust-3-d9">
+                        {% if block.settings.emoji-img_1 %}
+                        <img src="{{ block.settings.emoji-img_1 |  image_url: width: 200, height: 200  }}">
+                        {% endif %}
+                        <span> {{ block.settings.emoji-svg_1 }} </span>
+                    </div>
+                    <div class="content-trust-3-d9">
+                        <h4> {{ block.settings.heading_1 }} </h4>
+                        <p> {{ block.settings.text_1 }} </p>
+                    </div>
+                </div>
+
+
+                 <div class="col-trust-3-d9">
+                    <div class="img-trust-3-d9">
+                        {% if block.settings.emoji-img_2 %}
+                        <img src="{{ block.settings.emoji-img_2 |  image_url: width: 200, height: 200  }}">
+                        {% endif %}
+                        <span> {{ block.settings.emoji-svg_2 }} </span>
+                    </div>
+                    <div class="content-trust-3-d9">
+                        <h4> {{ block.settings.heading_2 }} </h4>
+                        <p> {{ block.settings.text_2 }} </p>
+                    </div>
+                </div>
+
+               <div class="col-trust-3-d9">
+                    <div class="img-trust-3-d9">
+                        {% if block.settings.emoji-img_3 %}
+                        <img src="{{ block.settings.emoji-img_3 |  image_url: width: 200, height: 200  }}">
+                        {% endif %}
+                        <span> {{ block.settings.emoji-svg_3 }} </span>
+                    </div>
+                    <div class="content-trust-3-d9">
+                        <h4> {{ block.settings.heading_3 }} </h4>
+                        <p> {{ block.settings.text_3 }} </p>
+                    </div>
+                </div>
+
+
+               <div class="col-trust-3-d9">
+                    <div class="img-trust-3-d9">
+                        {% if block.settings.emoji-img_4 %}
+                        <img src="{{ block.settings.emoji-img_4 |  image_url: width: 200, height: 200  }}">
+                        {% endif %}
+                        <span> {{ block.settings.emoji-svg_4 }} </span>
+                    </div>
+                    <div class="content-trust-3-d9">
+                        <h4> {{ block.settings.heading_4 }} </h4>
+                        <p> {{ block.settings.text_4 }} </p>
+                    </div>
+                </div>
+
+               <div class="col-trust-3-d9" style="border-bottom: none;">
+                    <div class="img-trust-3-d9">
+                        {% if block.settings.emoji-img_5 %}
+                        <img src="{{ block.settings.emoji-img_5 |  image_url: width: 200, height: 200  }}">
+                        {% endif %}
+                        <span> {{ block.settings.emoji-svg_5 }} </span>
+                    </div>
+                    <div class="content-trust-3-d9">
+                        <h4> {{ block.settings.heading_5 }} </h4>
+                        <p> {{ block.settings.text_5 }} </p>
+                    </div>
+                </div>
+
+
+               <div class="col-trust-3-d9" style="border-bottom: none;">
+                    <div class="img-trust-3-d9">
+                        {% if block.settings.emoji-img_6 %}
+                        <img src="{{ block.settings.emoji-img_6 |  image_url: width: 200, height: 200  }}">
+                        {% endif %}
+                        <span> {{ block.settings.emoji-svg_6 }} </span>
+                    </div>
+                    <div class="content-trust-3-d9">
+                        <h4> {{ block.settings.heading_6 }} </h4>
+                        <p> {{ block.settings.text_6 }} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+  <a id="customer-info-popup" style="text-decoration: none;" href="{{ block.settings.redirect_to }}?productHandle={{ product.handle }}"><button class="quote-btn-d11" >
+    Request a Quote
+</button></a>
+
+<script>
+   document.addEventListener('DOMContentLoaded', function () {
+    const popupTriggers = document.querySelectorAll('#customer-info-popup');
+
+    popupTriggers.forEach(popupTrigger => {
+        popupTrigger.addEventListener('click', event => {
+            alert('hello');
+            event.preventDefault();
+            
+            const url = new URL(popupTrigger.href);
+            const productHandle = url.searchParams.get('productHandle');
+            
+            if (productHandle) {
+                fetch(`/products/${productHandle}.json`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const product = data.product;
+                        showPopup(product.title, product.images[0].src);
+                    })
+                    .catch(error => console.error('Error fetching product details:', error));
+            } else {
+                console.error('Product handle is missing');
+            }
+        });
+    });
+    
+    const showPopup = (title, imageSrc) => {
+        const popupOverlay = document.createElement('div');
+        popupOverlay.className = 'd05-popup-overlay';
+        
+        const popupContent = document.createElement('div');
+        popupContent.className = 'd05-popup-content';
+        
+        popupContent.innerHTML = `
+            <div class="d05-popup-header">
+                <p class="d05-popup-heading">Request A Quote</p>
+            </div>
+            <form id="customer-info-form">
+                <div class="d05-popup-body">
+                    <div class="d05-product-info">
+                        <img src="${imageSrc}" alt="${title}"/>
+                        <h2>${title}</h2>
+                    </div>
+                    <div class="d05-form-feilds">
+                        <label class="d05-label-name">
+                            Name
+                            <input type="text" id="name" required placeholder="Enter your name">
+                        </label>
+                        <label class="d05-label-phone">
+                            Phone Number
+                            <input type="tel" id="phone" required placeholder="(000) 000-0000">
+                        </label>
+                        <label class="d05-label-email">
+                            Email Address
+                            <input type="email" id="email" required placeholder="Example@xyz.com">
+                        </label>
+                    </div>
+                </div>
+                <div class="d05-popup-footer">
+                    <a href="#" id="cancel-button">Cancel</a>
+                    <a href="#" id="continue-button">Continue</a>
+                </div>
+            </form>
+        `;
+        
+        popupOverlay.appendChild(popupContent);
+        document.body.appendChild(popupOverlay);
+        
+        document.getElementById('continue-button').addEventListener('click', event => {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            console.log('Form Submitted:', { name, phone, email });
+            document.body.removeChild(popupOverlay);
+        });
+        
+        document.getElementById('cancel-button').addEventListener('click', event => {
+            event.preventDefault();
+            document.body.removeChild(popupOverlay);
+        });
+    };
+      
+
+});
+
+</script>
+
+
+    

@@ -1,0 +1,135 @@
+<div class="sq-app">
+  <div class="sq-loader"></div>
+
+  <sq-config
+          app-id="WLVNRA8WV9G32XEJZ3THSK8T"
+          collection-id="KVZJYR2ULPGS8R4VGUXDHLA9"
+          search-token="XYQ9F4HQTHFVJ6CP9XX5T5Z9"
+  ></sq-config>
+  <sq-url-manager></sq-url-manager>
+
+  <sq-loader-listener parent=".sq-loader"></sq-loader-listener>
+  <div class="sq-filter-main">
+    <div
+            id="overlay"
+            class="sq-overlay"
+            onclick="removeClass()"
+    ></div>
+    <div class="sq-desktop-filter-header-title">Filter by</div>
+    <div class="sq-filter-header">
+      <div class="sq-filter-header-title">Filter by</div>
+      <div class="sq-filter-header-clear">
+        <sq-clear>
+          <div class="sq-clear-btn">Clear all</div>
+        </sq-clear>
+
+        <span class="sq-cross" onclick="removeClass()">
+          <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+          >
+            <path d="M4.70703 3.29297L3.29297 4.70703L10.5859 12L3.29297 19.293L4.70703 20.707L12 13.4141L19.293 20.707L20.707 19.293L13.4141 12L20.707 4.70703L19.293 3.29297L12 10.5859L4.70703 3.29297Z" fill="#23263B" />
+          </svg>
+        </span>
+      </div>
+      <div class="sq-filter-bottom" onclick="removeClass()">
+        <span>Apply Filter</span>
+      </div>
+    </div>
+    <div class="sort-container-mobile">
+      <label for="SortBy" class="hidden-label">Sort by:</label>
+      <sq-sort></sq-sort>
+    </div>
+    <sq-applied-filter></sq-applied-filter>
+    <sq-clear v-if="store.filters?.flatMap(x=>x.items)?.filter(x=>!!x?.selected)?.length > 0">
+      <div class="sq-clear-btn-desktop">Clear all</div>
+    </sq-clear>
+    <sq-filter-group></sq-filter-group>
+  </div>
+
+  <div class="sparq-container">
+    <div class="collection-filter__item collection-filter__item--sort">
+      <div class="mobile--filter">
+        <span class="mobile-facets__open" onclick="toggleFilter()">
+          <svg
+                  class="icon icon-filter"
+                  aria-hidden="true"
+                  focusable="false"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="none"
+          >
+            <path fill-rule="evenodd" d="M4.833 6.5a1.667 1.667 0 1 1 3.334 0 1.667 1.667 0 0 1-3.334 0ZM4.05 7H2.5a.5.5 0 0 1 0-1h1.55a2.5 2.5 0 0 1 4.9 0h8.55a.5.5 0 0 1 0 1H8.95a2.5 2.5 0 0 1-4.9 0Zm11.117 6.5a1.667 1.667 0 1 0-3.334 0 1.667 1.667 0 0 0 3.334 0ZM13.5 11a2.5 2.5 0 0 1 2.45 2h1.55a.5.5 0 0 1 0 1h-1.55a2.5 2.5 0 0 1-4.9 0H2.5a.5.5 0 0 1 0-1h8.55a2.5 2.5 0 0 1 2.45-2Z" fill="currentColor"></path>
+          </svg>
+          <span class="mobile-facets__open-label button-label medium-hide large-up-hide">Filter and sort</span>
+        </span>
+        <div class="on-load">  {% raw %} {{ store.totalHits }} {% endraw %} products</div>
+      </div>
+    </div>
+    <div class="collection-filter__sort-container">
+      <label for="SortBy" class="hidden-label">Sort by:</label>
+      <div class="sort-container">
+        <sq-sort></sq-sort>
+      </div>
+      <div class="on-load">  {% raw %} {{ store.totalHits }} {% endraw %} products</div>
+    </div>
+
+    <sq-data-grid :class="window.sq.custom?.isList ? 'sq-list-view' : ''">
+      <template #tpl="item">
+        <div class="sparq-card">
+          <div class="sparq-thumbnail-wrap">
+            <a
+                    :href="'/products/' + item.handle"
+                    class="sparq-loop-product"
+                    :class="item.images.length >1 && item.images[1].src ? 'sq-class':''"
+            >
+              <sq-sy-image
+                      :size="300"
+                      :item="item"
+                      :show-secondary-image="false"
+              ></sq-sy-image>
+              <div
+                      class="discount-label"
+                      v-if="item.compare_at_price && item.price && item.compare_at_price > item.price"
+              >
+                Sale
+              </div>
+              <div class="outofstock-label" v-if="item.in_stock===0">Sold out</div>
+            </a>
+          </div>
+          <div class="sparq-bottom">
+            <div class="sparq-bottom-items">
+              <div class="sparq-product-title">
+                <a :href="'/products/' + item.handle" class="sparq-title h5">
+
+                  {% raw %} {{ item.title }} {% endraw %}
+
+                </a>
+              </div>
+              <div class="sq-product-price">
+                <sq-sy-price
+                        :item="item"
+                        :decimal-count="2"
+                ></sq-sy-price>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </sq-data-grid>
+    <sq-pagination
+            @change="
+      window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+      })
+    "
+    ></sq-pagination>
+  </div>
+
+
+</div>

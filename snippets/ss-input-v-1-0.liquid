@@ -1,0 +1,39 @@
+  <label class="ss-input-v1 ss-label-{{ type }}" style="--direction: {{ label_position }}; --width: {{ width }}%">
+    {% if label != blank %}<span class="ss-input-label">{{ label }}</span>{% endif %}
+{% unless type == 'textarea' %}
+  <input
+    type="{{ type }}"
+    name="{{ name }}"
+    value="{{ value }}"
+    placeholder="{{ place_holder }}"
+    {% if required %}
+      required
+    {% endif %}
+    {% if readonly %}
+      readonly
+    {% endif %}
+    {% if disabled %}
+      disabled
+    {% endif %}
+    class="ss-input ss-{{ type }}"
+    aria-label="{{ aria_label | default: label }}"
+  >
+{% else %}
+  <textarea
+    name="{{ name }}"
+    placeholder="{{ place_holder }}"
+    rows="{{ rows }}"
+    {% if required %}
+      required
+    {% endif %}
+    {% if readonly %}
+      readonly
+    {% endif %}
+    {% if disabled %}
+      disabled
+    {% endif %}
+    class="ss-input ss-textatria"
+    aria-label="{{ aria_label | default: label }}"
+  ></textarea>
+{% endunless %}
+</label>

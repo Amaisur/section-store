@@ -1,0 +1,280 @@
+
+<style>
+#shopify-section-{{ section.id }} *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#shopify-section-{{ section.id }} .wraper-d9-28{
+    max-width: 1200px;
+    padding: 0 40px;
+    margin: 50px auto;
+    position: relative;
+}
+#shopify-section-{{ section.id }} .wraper-d9-28 .carousel-d9-28{
+    white-space: nowrap;
+    display: flex;
+    gap: 14px;
+    overflow-x: hidden;
+    justify-content: flex-start;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
+#shopify-section-{{ section.id }} .carousel-d9-28.dragging-d9-28{
+    scroll-behavior: auto !important;
+    cursor: grabbing;
+}
+#shopify-section-{{ section.id }} .carousel-d9-28 .carousel-img-d9-28{
+    /* min-width: calc(100%/5);
+    max-width: calc(100%/5); */
+    min-width: 200px;
+}
+#shopify-section-{{ section.id }} .carousel-d9-28 .carousel-img-d9-28 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#shopify-section-{{ section.id }} .slider-button-d9-28{
+    width: 45px;
+    height: 45px;
+    line-height: 31px;
+    text-align: center;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    font-size: 1.2rem;
+    transform: translateY(-50%);
+    user-select: none;
+    transition: all .3s;
+}
+#shopify-section-{{ section.id }} .next-d9-28{
+    right: 20px;
+}
+#shopify-section-{{ section.id }} .next-d9-28:hover{
+    right: 10px;
+}
+#shopify-section-{{ section.id }} .prev-d9-28{
+    left: 20px;
+    display: none;
+}
+#shopify-section-{{ section.id }} .prev-d9-28:hover{
+    left: 10px;
+}
+#shopify-section-{{ section.id }} .collection-ss-2{
+    width: 100%;
+    text-align: center;
+}
+@media (max-width:900px){
+    .carousel-d9-28 .carousel-img-d9-28{
+    /* min-width: calc(100%/4);
+    max-width: calc(100%/4); */
+}
+}
+@media (max-width:550px){
+    .carousel-d9-28 .carousel-img-d9-28{
+    /* min-width: calc(100%/3);
+    max-width: calc(100%/3); */
+}
+}
+#shopify-section-{{ section.id }} .collection-ss-img-2{
+    width: 100%;
+    height: 200px;
+    border-radius: 50%;
+    transition: all .3s;
+}
+#shopify-section-{{ section.id }} .collection-ss-img-2 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+}
+#shopify-section-{{ section.id }} .ss-padding-2-img{
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(purple,blue,red);
+}
+#shopify-section-{{ section.id }} .collection-link-ss-2{
+    text-decoration: none;
+    color: black;
+    display: block;
+    transition: all .3s;
+}
+#shopify-section-{{ section.id }} .arrows-d9-28 .ss-padding-2{
+    padding: 5px !important;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(purple,blue,red);
+}
+#shopify-section-{{ section.id }} .icon-inner-ss-2{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 50%;
+    font-size: 28px;
+    font-weight: bold;
+}
+#shopify-section-{{ section.id }} .collection-ss-title-2{
+    margin: 15px 0 0;
+    display: inline-block;
+    font-size: 18px;
+}
+#shopify-section-{{ section.id }} .line-ss-2{
+    width: 0%;
+    display: block !important;
+    height: 3px;
+    border-radius: 5px;
+    background: linear-gradient(purple,blue,red);
+    transition: all .3s;
+}
+#shopify-section-{{ section.id }} .collection-link-ss-2:hover .line-ss-2{
+    width: 100%;
+}
+#shopify-section-{{ section.id }} .collection-link-ss-2:hover{
+    transform: translateY(-5px);
+} 
+
+
+</style>
+
+
+
+    <div class="wraper-d9-28">
+        <div class="arrows-d9-28">
+        <div id="left-d9-28" class="slider-button-d9-28 prev-d9-28"> <div class="ss-padding-2">
+            <div class="icon-inner-ss-2">
+                &larr;
+                </div>
+            </div></div>
+        <div id="right-d9-28" class="slider-button-d9-28 next-d9-28"> <div class="ss-padding-2">
+            <div class="icon-inner-ss-2"> &rarr;</div>
+            </div></div>
+        </div>
+        <div class="carousel-d9-28">
+        {% for block in section.blocks %}
+            {%  assign collection = block.settings.collection %}
+            <div class="carousel-img-d9-28" draggable="false">
+                <a class="collection-link-ss-2" href="{{ collection.url }}">
+                <div class="collection-ss-2">
+                    <div class="collection-ss-img-2">
+                        <div class="ss-padding-2-img">
+                        <img src="{{ collection.featured_image |  img_url: 'master' }}">
+                        </div>
+                    </div>
+                    <div class="collection-ss-title-2">
+                        <p>
+                             {{ collection.title }} 
+                            <div class="line-ss-2"></div>
+                        </p>
+                    </div>
+                </div>
+                </a>
+            </div>
+        {% endfor %}
+        </div> 
+
+    </div>
+
+
+   
+       <script>
+(function() {
+    const carouselD9 = document.querySelector('.carousel-d9-28');
+    const fisrtSlide = carouselD9.querySelectorAll('.carousel-img-d9-28')[0];
+    const arrowIconsD9 = document.querySelectorAll('.slider-button-d9-28');
+    let isDragStart = false, prevPageX, prevScrollLeft, positionDiff;
+
+    const autoSlide = () => {
+        positionDiff = Math.abs(positionDiff);
+        let secondSlideWidth = fisrtSlide.clientWidth + 14;
+        let valueDifference = secondSlideWidth - positionDiff;
+
+        if (carouselD9.scrollLeft > prevScrollLeft) {
+            return carouselD9.scrollLeft += positionDiff > secondSlideWidth / 3 ? valueDifference : -positionDiff;
+        }
+        carouselD9.scrollRight += positionDiff > secondSlideWidth / 3 ? valueDifference : -positionDiff;
+    }
+
+    const showHideIcons = () => {
+        let scrollWidth = carouselD9.scrollWidth - carouselD9.clientWidth;
+        arrowIconsD9[0].style.display = carouselD9.scrollLeft == 0 ? "none" : "block";
+        arrowIconsD9[1].style.display = carouselD9.scrollLeft >= scrollWidth ? "none" : "block";
+        carouselD9.scrollLeft === scrollWidth ? "none" : "block";
+    }
+
+    arrowIconsD9.forEach(icon => {
+        icon.addEventListener('click', () => {
+            let noSlide = 1;
+            let fisrtSlideWidth = (fisrtSlide.clientWidth + 14) * noSlide;
+            carouselD9.scrollLeft += icon.id == 'left-d9-28' ? -fisrtSlideWidth : fisrtSlideWidth;
+            setTimeout(() => showHideIcons(), 60)
+        })
+    });
+
+    const dragStart = (e) => {
+        isDragStart = true;
+        prevPageX = e.pageX || e.touches[0].pageX;
+        prevScrollLeft = carouselD9.scrollLeft;
+    }
+
+    const dragging = (e) => {
+        if (!isDragStart) return;
+        e.preventDefault();
+        carouselD9.classList.add('dragging-d9-28');
+        positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
+        carouselD9.scrollLeft = prevScrollLeft - positionDiff;
+        setTimeout(() => showHideIcons(), 60)
+    }
+
+    const dragStop = () => {
+        isDragStart = false;
+        carouselD9.classList.remove('dragging-d9-28');
+    }
+
+    carouselD9.addEventListener('mousedown', dragStart);
+    carouselD9.addEventListener('touchstart', dragStart);
+    carouselD9.addEventListener('mouseup', dragStop);
+    carouselD9.addEventListener('mouseleave', dragStop);
+    carouselD9.addEventListener('touchend', dragStop);
+    carouselD9.addEventListener('mousemove', dragging);
+    carouselD9.addEventListener('touchmove', dragging);
+})();
+</script>
+
+
+
+
+{% schema %}
+{
+    "name": "Collection Slider",
+    "settings": [
+        
+        ],
+        "blocks": [
+            {
+                "name": "Collection",
+                "type": "Collection",
+                "settings": [
+                    {
+                        "type": "collection",
+                        "id": "collection",
+                        "label": "Collection"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Collection Slider"
+            }
+        ]
+}
+{% endschema %}

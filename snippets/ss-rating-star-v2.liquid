@@ -1,0 +1,39 @@
+
+{% comment %}
+  Documentation for rendering this snippet: https://muscled.notion.site/SS-Rating-Star-snippet-rendering-documentaion-14d277b1656a802cb2ffe4049c6d026e?pvs=4
+{% endcomment %}
+<style>
+  .ss-rating-container i:before{
+    background: var(--background-full);
+  }
+</style>
+<div class="ss-rating-main">
+  <div
+    class="ss-rating-container"
+    ss-data-rating="{{ rating | default: '5' }}"
+    style="{% if star_size != blank %}--star-size: {{ star_size }}px;{% endif %} --ss-star-gap: {{ gap }}px;--background-full:{% if full_star != blank %}url({{ full_star | image_url:width: '200px' }}) {% else %}url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-star.svg?v=1732888283){% endif %};--background-empty: {% if empty_star != blank %}url({{ empty_star | image_url: width: '200px' }}) {% else %}url(https://cdn.shopify.com/s/files/1/0562/7763/1105/files/svg-0.svg?v=1732889585){% endif %}"
+  ></div>
+  <div class="ss-total-rating">
+    {% if rating > 0 %}
+      <p class="ss-av-rating">{{ rating }}</p>&nbsp;
+      {{ text | default: '<p>Out of 433 <strong>Reviews</strong></p>' }}
+    {% else %}
+      {{ no_rating | default: '<p>No Rating Available</p>' }}
+    {% endif %}
+  </div>
+</div>
+
+<div class="ss-star-images-hidden" hidden>
+  <i
+    class="ss-star ss-full"
+    style="background: var(--background-full)"
+  ></i>
+  <i
+    class="ss-star ss-partial"
+    style="background: var(--background-empty)"
+  ></i>
+  <i
+    class="ss-star ss-empty"
+    style="background: var(--background-empty)"
+  ></i>
+</div>

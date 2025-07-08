@@ -1,1 +1,123 @@
-{"name":"t:sections.header.name","type":"header","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"announcement-bar-0":{"type":"announcement","settings":{"text":"Welcome to our store","link":""}}},"block_order":["announcement-bar-0"],"settings":{"color_scheme":"scheme-1","show_line_separator":true,"show_social":false,"auto_rotate":false,"change_slides_speed":5,"enable_country_selector":false,"enable_language_selector":false}},"header":{"type":"header","settings":{"logo_position":"middle-left","menu":"main-menu","menu_type_desktop":"dropdown","sticky_header_type":"on-scroll-up","show_line_separator":true,"color_scheme":"scheme-1","menu_color_scheme":"scheme-1","enable_country_selector":true,"enable_language_selector":true,"mobile_logo_position":"center","margin_bottom":0,"padding_top":20,"padding_bottom":20}}},"order":["announcement-bar","header"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement_bar_scrolling_FdWECT": {
+      "type": "Announcement-bar-scrolling",
+      "blocks": {
+        "logo_GNx9AN": {
+          "type": "logo",
+          "settings": {
+            "text": "Wellcome to my store!",
+            "logo-url": "",
+            "my-height": 0
+          }
+        },
+        "logo_6hhfga": {
+          "type": "logo",
+          "settings": {
+            "text": "Wellcome to my store!",
+            "logo-url": "",
+            "my-height": 0
+          }
+        }
+      },
+      "block_order": [
+        "logo_GNx9AN",
+        "logo_6hhfga"
+      ],
+      "settings": {
+        "heading": "",
+        "background": "linear-gradient(180deg, rgba(46, 45, 47, 1), rgba(53, 56, 56, 1) 100%)",
+        "text-color": "#f5efef",
+        "smooth_speed": 25,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "logos_gap": 100,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "padding_left_mobile": 0,
+        "padding_right_mobile": 0,
+        "logos_gap_mobile": 30
+      }
+    },
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-bar-0": {
+          "type": "announcement",
+          "settings": {
+            "text": "Welcome to our store",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement-bar-0"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-1",
+        "show_line_separator": true,
+        "show_social": false,
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "middle-left",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": true,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "d5_cart_drawer_gUxAwy": {
+      "type": "d5-cart-drawer",
+      "name": "D5 Cart Drawer",
+      "settings": {
+        "empty_cart_page": "shopify://pages/test-atc",
+        "reward_count": "2",
+        "reward_threshold_1": 200,
+        "reward_label_1": "Free Shipping",
+        "reward_icon_1": "shopify://shop_images/icons8-shipping-50.png",
+        "reward_product_1": "",
+        "reward_threshold_2": 400,
+        "reward_label_2": "Free Product",
+        "reward_icon_2": "shopify://shop_images/box_8905756.png",
+        "reward_product_2": "ingrid-maxikleid",
+        "reward_label_3": "",
+        "reward_product_3": ""
+      }
+    }
+  },
+  "order": [
+    "announcement_bar_scrolling_FdWECT",
+    "announcement-bar",
+    "header",
+    "d5_cart_drawer_gUxAwy"
+  ]
+}

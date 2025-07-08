@@ -1,1 +1,1664 @@
-{"sections":{"image_banner":{"type":"image-banner","blocks":{"heading":{"type":"heading","settings":{"heading":"Browse our latest products","heading_size":"h0"}},"button":{"type":"buttons","settings":{"button_label_1":"Shop all","button_link_1":"shopify:\/\/collections\/all","button_style_secondary_1":true,"button_label_2":"","button_link_2":"","button_style_secondary_2":false}}},"block_order":["heading","button"],"settings":{"image_overlay_opacity":40,"image_height":"large","desktop_content_position":"bottom-center","show_text_box":false,"desktop_content_alignment":"center","color_scheme":"scheme-3","image_behavior":"none","mobile_content_alignment":"center","stack_images_on_mobile":false,"show_text_below":false}},"featured_collection":{"type":"featured-collection","settings":{"title":"Featured products","heading_size":"h2","description":"","show_description":false,"description_style":"body","collection":"all","products_to_show":8,"columns_desktop":4,"full_width":false,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":false,"color_scheme":"scheme-1","image_ratio":"adapt","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"enable_quick_add":false,"columns_mobile":"2","swipe_on_mobile":false,"padding_top":44,"padding_bottom":36}}},"order":["image_banner","featured_collection"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "disabled": true,
+      "settings": {
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "announcement_bar_2_WB7e3k": {
+      "type": "announcement-bar-2",
+      "blocks": {
+        "text_pVApVc": {
+          "type": "text",
+          "settings": {
+            "text": "WORLD WIDE SHIPPING",
+            "min-text": "small text",
+            "img": "shopify://shop_images/cherries_small_37667dea-9942-414c-a463-8af2c5d1c47c.png",
+            "svg": "",
+            "position": "column"
+          }
+        },
+        "text_yWhkzT": {
+          "type": "text",
+          "settings": {
+            "text": "WORLD WIDE SHIPPING",
+            "min-text": "hello",
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"50px\" height=\"50px\" viewBox=\"0 0 50 50\" fill=\"currentColor\"><path d=\"M 25 3 C 18.363281 3 13 8.363281 13 15 L 13 20 L 9 20 C 7.355469 20 6 21.355469 6 23 L 6 47 C 6 48.644531 7.355469 50 9 50 L 41 50 C 42.644531 50 44 48.644531 44 47 L 44 23 C 44 21.355469 42.644531 20 41 20 L 37 20 L 37 15 C 37 8.363281 31.636719 3 25 3 Z M 25 5 C 30.566406 5 35 9.433594 35 15 L 35 20 L 15 20 L 15 15 C 15 9.433594 19.433594 5 25 5 Z M 9 22 L 41 22 C 41.554688 22 42 22.445313 42 23 L 42 47 C 42 47.554688 41.554688 48 41 48 L 9 48 C 8.445313 48 8 47.554688 8 47 L 8 23 C 8 22.445313 8.445313 22 9 22 Z M 25 30 C 23.300781 30 22 31.300781 22 33 C 22 33.898438 22.398438 34.6875 23 35.1875 L 23 38 C 23 39.101563 23.898438 40 25 40 C 26.101563 40 27 39.101563 27 38 L 27 35.1875 C 27.601563 34.6875 28 33.898438 28 33 C 28 31.300781 26.699219 30 25 30 Z\"></path></svg>",
+            "position": "column"
+          }
+        },
+        "text_QwMaWK": {
+          "type": "text",
+          "settings": {
+            "text": "WORLD WIDE SHIPPING",
+            "min-text": "",
+            "svg": "",
+            "position": "column"
+          }
+        }
+      },
+      "block_order": [
+        "text_pVApVc",
+        "text_yWhkzT",
+        "text_QwMaWK"
+      ],
+      "settings": {
+        "bar-type": "single",
+        "an-bg": "#000",
+        "an-bg-2": "#000",
+        "anim": "d5-lr-anim",
+        "anim_2": "d5-lr-anim",
+        "anim-time": 50,
+        "pause": true,
+        "g-main-d": 50,
+        "g-main": 30,
+        "g-t-d": 50,
+        "g-t": 30,
+        "pt": 36,
+        "pb": 36,
+        "pt-d": 36,
+        "padding-bottom-desktop": 36,
+        "mt-d": 50,
+        "mb-d": 50,
+        "mt": 50,
+        "mb": 50,
+        "icons-s": 60,
+        "icons-s-m": 38,
+        "fs-t-d": 25,
+        "fs-t": 16,
+        "f-w-m": "400",
+        "c-t": "#ffffff",
+        "fs-t-s-d": 18,
+        "fs-t-s": 12,
+        "c-t-s": "#ffffff",
+        "f-w-s": "400",
+        "gap-t": 10,
+        "font_choice": "Montserrat"
+      }
+    },
+    "hotspots_detail_qtngrJ": {
+      "type": "hotspots-detail",
+      "blocks": {
+        "hotspot_Na7UjU": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Hotspot Title",
+            "description": "Hotspot description text here.",
+            "position_x": 33,
+            "position_y": 64
+          }
+        },
+        "hotspot_e9x8jT": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Hotspot Title",
+            "description": "Hotspot description text here.",
+            "position_x": 70,
+            "position_y": 28
+          }
+        },
+        "hotspot_zcLCDQ": {
+          "type": "hotspot",
+          "settings": {
+            "title": "Hotspot Title",
+            "description": "Hotspot description text here.",
+            "position_x": 50,
+            "position_y": 50
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_Na7UjU",
+        "hotspot_e9x8jT",
+        "hotspot_zcLCDQ"
+      ],
+      "settings": {
+        "section_title": "Our Featured Products",
+        "title_font_size": 40,
+        "title_color": "#000000",
+        "title_text_align": "center",
+        "hotspots_image": "shopify://shop_images/c205643ed7e99ee4450cda03fad2ce99.png",
+        "hotspots_image_mobile": "shopify://shop_images/684dc7cf4706522d388ae95f11dc691a.png",
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "background_color": "#ffffff",
+        "image_border_radius": 0,
+        "image_object_fit": "cover",
+        "image_aspect_ratio": "12/5",
+        "hotspot_background_color": "#ffffff",
+        "hotspot_text_color": "#000000",
+        "hotspot_border_radius": 28,
+        "hotspot_padding": 38,
+        "icon_color": "#000000",
+        "tooltip_background_color": "#ffffff",
+        "tooltip_border_radius": 5,
+        "animation_duration": 4,
+        "title_text_align_m": "center",
+        "title_font_size_m": 40,
+        "hotspot_padding_m": 26
+      }
+    },
+    "coundown_timer_apcC7X": {
+      "type": "coundown-timer",
+      "blocks": {
+        "heading_xnR7Vg": {
+          "type": "heading",
+          "settings": {
+            "heading": "50% off all suits and accessories",
+            "font-size": 30,
+            "f-color": "#ffffff"
+          }
+        },
+        "subtext_WhHbhe": {
+          "type": "subtext",
+          "settings": {
+            "subtext": "GET YOUR BASKET READY",
+            "font-size": 16,
+            "f-color": "#ffffff"
+          }
+        },
+        "timer_Any8Y6": {
+          "type": "timer",
+          "settings": {
+            "days": 433,
+            "hours": 3,
+            "mins": 30,
+            "f-color": "#ffffff"
+          }
+        },
+        "button_aFzxLT": {
+          "type": "button",
+          "settings": {
+            "btn-text": "View Discounted Items",
+            "btn-link": "",
+            "btn-bg-color": "#ffffff",
+            "font-size": 18,
+            "f-color": "#000000",
+            "btn-radius": 28
+          }
+        }
+      },
+      "block_order": [
+        "heading_xnR7Vg",
+        "subtext_WhHbhe",
+        "timer_Any8Y6",
+        "button_aFzxLT"
+      ],
+      "settings": {
+        "bg-img": "shopify://shop_images/high-fashion-model-in-red_2000x_7b2d5d49-acab-429a-a19c-9fe18b0b19db.jpg",
+        "bg-img-m": "shopify://shop_images/high-fashion-model-in-red_2000x_7b2d5d49-acab-429a-a19c-9fe18b0b19db.jpg",
+        "height-m": 500,
+        "height-d": 600,
+        "pw": true,
+        "main-radius": 16,
+        "pt": 28,
+        "pb": 28,
+        "pt-d": 28,
+        "pb-d": 28,
+        "bg-color": "#fff"
+      }
+    },
+    "coundown_timer_gMm4Mg": {
+      "type": "coundown-timer",
+      "blocks": {
+        "heading_7GN4YW": {
+          "type": "heading",
+          "settings": {
+            "heading": "50% off all suits and accessories",
+            "font-size": 30,
+            "f-color": "#ffffff"
+          }
+        },
+        "subtext_8tfkbq": {
+          "type": "subtext",
+          "settings": {
+            "subtext": "GET YOUR BASKET READY",
+            "font-size": 16,
+            "f-color": "#ffffff"
+          }
+        },
+        "button_Q33Ew6": {
+          "type": "button",
+          "settings": {
+            "btn-text": "View Discounted Items",
+            "btn-link": "",
+            "btn-bg-color": "#ffffff",
+            "font-size": 18,
+            "f-color": "#000000",
+            "btn-radius": 28
+          }
+        },
+        "timer_WDBx4X": {
+          "type": "timer",
+          "settings": {
+            "days": 433,
+            "hours": 3,
+            "mins": 30,
+            "f-color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_7GN4YW",
+        "subtext_8tfkbq",
+        "button_Q33Ew6",
+        "timer_WDBx4X"
+      ],
+      "settings": {
+        "bg-img": "shopify://shop_images/karollyne-videira-hubert-NH0cfo8Qrfg-unsplash_2000x_d80ce1da-6746-4644-9243-4bcf98fd1a47.jpg",
+        "bg-img-m": "shopify://shop_images/karollyne-videira-hubert-NH0cfo8Qrfg-unsplash_2000x_d80ce1da-6746-4644-9243-4bcf98fd1a47.jpg",
+        "height-m": 500,
+        "height-d": 600,
+        "pw": false,
+        "main-radius": 0,
+        "pt": 28,
+        "pb": 28,
+        "pt-d": 28,
+        "pb-d": 28,
+        "bg-color": "#fff"
+      }
+    },
+    "feature_6_tLGJcN": {
+      "type": "feature-6",
+      "blocks": {
+        "feature_4TmzX4": {
+          "type": "feature",
+          "settings": {
+            "img": "shopify://shop_images/cheese_small_99a34dc2-535d-4847-85ff-d9304bb97331.png",
+            "heading": "Feature text",
+            "info": "<p>Explain why your product or service is amazing. What are the benefits. Sell the whole in the wall not the drill.</p>"
+          }
+        },
+        "feature_DtkiUw": {
+          "type": "feature",
+          "settings": {
+            "img": "shopify://shop_images/lemon_small_dfc49785-8fca-4808-bbfa-28bdf82614da.png",
+            "heading": "Feature text",
+            "info": "<p>Explain why your product or service is amazing. What are the benefits. Sell the whole in the wall not the drill.</p>"
+          }
+        },
+        "feature_kaiDrL": {
+          "type": "feature",
+          "settings": {
+            "img": "shopify://shop_images/cherries_small_37667dea-9942-414c-a463-8af2c5d1c47c.png",
+            "heading": "Feature text",
+            "info": "<p>Explain why your product or service is amazing. What are the benefits. Sell the whole in the wall not the drill.</p>"
+          }
+        },
+        "feature_3drAiQ": {
+          "type": "feature",
+          "settings": {
+            "img": "shopify://shop_images/orange_small_8a823796-e66b-4544-9779-cc5331d09857.png",
+            "heading": "Feature text",
+            "info": "<p>Explain why your product or service is amazing. What are the benefits. Sell the whole in the wall not the drill.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_4TmzX4",
+        "feature_DtkiUw",
+        "feature_kaiDrL",
+        "feature_3drAiQ"
+      ],
+      "settings": {
+        "m-heading": "Why should you buy?",
+        "m-head": 35,
+        "mh-color": "#000000",
+        "text-align": "center",
+        "bg-color": "none",
+        "pt": 35,
+        "pb": 35,
+        "pt-m": 35,
+        "pb-m": 35,
+        "c-head": 20,
+        "ch-color": "#000000",
+        "cd-info": 15,
+        "c-info": "#000000",
+        "card-bg": "#ffffff",
+        "main-section-id": "feature-6"
+      }
+    },
+    "ss_timer_fYJqV9": {
+      "type": "ss-timer",
+      "settings": {}
+    },
+    "hotspots_4_HGjatk": {
+      "type": "hotspots-4",
+      "blocks": {
+        "hotspot_4BhpzY": {
+          "type": "hotspot",
+          "settings": {
+            "heading": "Health Monitoring",
+            "info": "<p>Woven with conductive fibers that can subtly monitor room conditions and foot traffic, potentially integrating with smart home systems to provide insights into wellness and activity levels.</p>",
+            "fhc": "#000000",
+            "fic": "#000000",
+            "fhs": 48,
+            "fis": 24,
+            "fhs-m": 28,
+            "fis-m": 14,
+            "left": 62,
+            "top": 73,
+            "left-d": 59,
+            "top-d": 67
+          }
+        },
+        "hotspot_XRGtYd": {
+          "type": "hotspot",
+          "settings": {
+            "heading": "Sustainable Materials",
+            "info": "<p>Made entirely from bio-based fibers that are not only biodegradable but also actively capture and neutralize airborne pollutants, improving indoor air quality.</p>",
+            "fhc": "#000000",
+            "fic": "#000000",
+            "fhs": 48,
+            "fis": 24,
+            "fhs-m": 28,
+            "fis-m": 14,
+            "left": 65,
+            "top": 64,
+            "left-d": 18,
+            "top-d": 10
+          }
+        },
+        "hotspot_JyiNiP": {
+          "type": "hotspot",
+          "settings": {
+            "heading": "Temperature Regulation",
+            "info": "<p>Embedded with phase change materials that absorb excess heat when the environment is warm and release it when cooler, providing year-round comfort.</p>",
+            "fhc": "#000000",
+            "fic": "#000000",
+            "fhs": 48,
+            "fis": 24,
+            "fhs-m": 28,
+            "fis-m": 14,
+            "left": 35,
+            "top": 35,
+            "left-d": 35,
+            "top-d": 35
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_4BhpzY",
+        "hotspot_XRGtYd",
+        "hotspot_JyiNiP"
+      ],
+      "settings": {
+        "img": "shopify://shop_images/9_fa14b1c9-f68d-4623-865c-ef6461e4d1e1.png",
+        "img-direct": "2",
+        "pt": 35,
+        "pb": 35,
+        "pv": 10,
+        "pt-m": 35,
+        "pb-m": 35,
+        "pv-m": 1
+      }
+    },
+    "video_multicolumn_eYdPVb": {
+      "type": "video-multicolumn",
+      "blocks": {
+        "item_6hh6ty": {
+          "type": "item",
+          "settings": {
+            "card-bg": "#f3f3f3",
+            "item_image": "shopify://shop_images/C1_971306a5-007d-43d4-93a7-e5074e0355ff.png",
+            "item_video": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
+            "autoplay": true,
+            "loop": true,
+            "muted": true,
+            "playsinline": true,
+            "controls": true,
+            "item_title": "Stay Connected, Stay Ahead",
+            "item_title_font_size_desktop": 28,
+            "item_title_font_size_mobile": 23,
+            "item_title_color": "#121212",
+            "item_text": "Monitor your fitness, stay on track, and look stylish all day long.",
+            "item_text_font_size_desktop": 16,
+            "item_text_font_size_mobile": 13,
+            "item_text_color": "#121212",
+            "item_link_txt": "Shop Now",
+            "item_link": "",
+            "item_link_color": "#ffffff",
+            "item_link_bg_color": "#343643",
+            "item_link_padding_desktop": 16,
+            "item_link_padding_mobile": 12,
+            "btn-r": 12
+          }
+        },
+        "item_nCKrAH": {
+          "type": "item",
+          "settings": {
+            "card-bg": "#f3f3f3",
+            "item_video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
+            "autoplay": true,
+            "loop": true,
+            "muted": true,
+            "playsinline": true,
+            "controls": true,
+            "item_title": "Stay Connected, Stay Ahead",
+            "item_title_font_size_desktop": 28,
+            "item_title_font_size_mobile": 23,
+            "item_title_color": "#121212",
+            "item_text": "Monitor your fitness, stay on track, and look stylish all day long.",
+            "item_text_font_size_desktop": 16,
+            "item_text_font_size_mobile": 13,
+            "item_text_color": "#121212",
+            "item_link_txt": "Shop Now",
+            "item_link": "",
+            "item_link_color": "#ffffff",
+            "item_link_bg_color": "#343643",
+            "item_link_padding_desktop": 16,
+            "item_link_padding_mobile": 12,
+            "btn-r": 12
+          }
+        },
+        "item_LARPby": {
+          "type": "item",
+          "settings": {
+            "card-bg": "#f3f3f3",
+            "item_video": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
+            "autoplay": true,
+            "loop": true,
+            "muted": true,
+            "playsinline": true,
+            "controls": true,
+            "item_title": "Stay Connected, Stay Ahead",
+            "item_title_font_size_desktop": 28,
+            "item_title_font_size_mobile": 23,
+            "item_title_color": "#121212",
+            "item_text": "Monitor your fitness, stay on track, and look stylish all day long.",
+            "item_text_font_size_desktop": 16,
+            "item_text_font_size_mobile": 13,
+            "item_text_color": "#121212",
+            "item_link_txt": "Shop Now",
+            "item_link": "",
+            "item_link_color": "#ffffff",
+            "item_link_bg_color": "#343643",
+            "item_link_padding_desktop": 16,
+            "item_link_padding_mobile": 12,
+            "btn-r": 12
+          }
+        }
+      },
+      "block_order": [
+        "item_6hh6ty",
+        "item_nCKrAH",
+        "item_LARPby"
+      ],
+      "settings": {
+        "title_text": "Reimagine Your Everyday",
+        "title_font_size_desktop": 44,
+        "title_font_size_mobile": 37,
+        "title_color": "#121212",
+        "subtitle_text": "Enhance your lifestyle with cutting-edge technology designed for you.",
+        "subtitle_font_size_desktop": 20,
+        "subtitle_font_size_mobile": 17,
+        "subtitle_color": "#121212",
+        "items_gap_desktop": 20,
+        "items_gap_mobile": 20,
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 36,
+        "padding_left_desktop": 5,
+        "padding_right_desktop": 5,
+        "padding_top_mobile": 27,
+        "padding_bottom_mobile": 27,
+        "padding_left_mobile": 5,
+        "padding_right_mobile": 5,
+        "section_bg_color": "#ffffff"
+      }
+    },
+    "faq_9_Dz7J73": {
+      "type": "faq-9",
+      "blocks": {
+        "text_RftGhL": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Have Questions?<br/>We Have Answers.</h2>",
+            "t-color": "#005c53",
+            "t-fs-d": 48,
+            "t-fs": 30,
+            "align-d": "left",
+            "align": "left",
+            "t-mt": 0,
+            "t-mb": 0
+          }
+        },
+        "text_4XViE7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Get quick solutions to your common lawn care concerns, from mowing to pest control.</p>",
+            "t-color": "#757575",
+            "t-fs-d": 18,
+            "t-fs": 16,
+            "align-d": "left",
+            "align": "left",
+            "t-mt": 19,
+            "t-mb": 45
+          }
+        },
+        "button_6AUPfr": {
+          "type": "button",
+          "settings": {
+            "text": "Get Now",
+            "url": "",
+            "b-color": "#ffffff",
+            "b-bg-color": "#000000",
+            "b-fs-d": 16,
+            "b-fs": 14,
+            "b-p": 16,
+            "b-r": 5,
+            "position-d": "start",
+            "position": "start"
+          }
+        },
+        "question_dia9DF": {
+          "type": "question",
+          "settings": {
+            "quest": "What is your return and exchange policy?",
+            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "question_HVbGHb": {
+          "type": "question",
+          "settings": {
+            "quest": "What is your return and exchange policy?",
+            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "question_GaxQJV": {
+          "type": "question",
+          "settings": {
+            "quest": "What is your return and exchange policy?",
+            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "question_AUwypH": {
+          "type": "question",
+          "settings": {
+            "quest": "What is your return and exchange policy?",
+            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_RftGhL",
+        "text_4XViE7",
+        "button_6AUPfr",
+        "question_dia9DF",
+        "question_HVbGHb",
+        "question_GaxQJV",
+        "question_AUwypH"
+      ],
+      "disabled": true,
+      "settings": {
+        "bg-color": "#f0f3f4",
+        "left": true,
+        "q-color": "#005c53",
+        "a-color": "#757575",
+        "q-fs-d": 18,
+        "q-fs-m": 16,
+        "a-fs-d": 16,
+        "a-fs-m": 12,
+        "q-bg": "#ffffff",
+        "pt-d": 36,
+        "pb-d": 36,
+        "pt": 36,
+        "pb": 36,
+        "p-lr-d": 5,
+        "p-lr": 1,
+        "m-w": 120,
+        "mt-d": 36,
+        "lr-s-d": 40,
+        "mt": 36,
+        "lr-s": 20
+      }
+    },
+    "star_component_yfpycd": {
+      "type": "star-component",
+      "disabled": true,
+      "settings": {}
+    },
+    "media_snippet_GnmmYj": {
+      "type": "media-snippet",
+      "blocks": {
+        "image_RBiXeQ": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/7.jpg"
+          }
+        },
+        "video_kck3HM": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
+            "play_pause": false,
+            "controls": true,
+            "autoplay": true,
+            "muted": true,
+            "loop": true
+          }
+        },
+        "image_QXz7VF": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/Sf1cc08fc398d4e6da38beeabbd920f59l.jpg"
+          }
+        },
+        "image_KgwWkY": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/UOTZMen-s-Motorcycle-Leather-Jacket-Large-Size-Pocket-Black-Zipper-Lapel-Slim-Fit-Male-Spring-and_480x480_16a67d51-8082-45ff-9f33-f1de4aa6eb91.jpg"
+          }
+        },
+        "image_DzwPWc": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/5_1800x1800_1800x1800_a8a6478b-9d2b-4fa1-a74c-3dd1348662ee.jpg"
+          }
+        },
+        "image_n4k6rB": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/download_4_720x_1.jpg"
+          }
+        },
+        "image_wyPcdd": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/BlaElliotJackaDunjackavarmNordistamodevintervinterjackaparkanordisknordisktmode.png"
+          }
+        },
+        "image_GV6iKB": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/A_b78cf4dd-46de-4be7-843f-c21298f680bc.png"
+          }
+        },
+        "video_mjCwqN": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
+            "poster": "shopify://shop_images/image_1057.png",
+            "play_pause": true,
+            "controls": false,
+            "autoplay": false,
+            "muted": false,
+            "loop": false
+          }
+        },
+        "reviews_EnPmfe": {
+          "type": "reviews",
+          "settings": {
+            "text": "<p>Out of<strong> 433 Review</strong></p>",
+            "rating": 4.7,
+            "star_size": 25,
+            "full_star": "shopify://shop_images/full-star.svg",
+            "empty_star": "shopify://shop_images/empty-star.svg",
+            "gap": 4,
+            "no_rating": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_RBiXeQ",
+        "video_kck3HM",
+        "image_QXz7VF",
+        "image_KgwWkY",
+        "image_DzwPWc",
+        "image_n4k6rB",
+        "image_wyPcdd",
+        "image_GV6iKB",
+        "video_mjCwqN",
+        "reviews_EnPmfe"
+      ],
+      "disabled": true,
+      "settings": {
+        "img": "shopify://shop_images/9_fa14b1c9-f68d-4623-865c-ef6461e4d1e1.png"
+      }
+    },
+    "collection_slider_iHc74y": {
+      "type": "Collection-slider",
+      "blocks": {
+        "collection_iP99EY": {
+          "type": "Collection",
+          "settings": {
+            "collection": "face-masks"
+          }
+        },
+        "collection_xjgpaL": {
+          "type": "Collection",
+          "disabled": true,
+          "settings": {
+            "collection": "ice-cream-1"
+          }
+        },
+        "collection_ipVmrE": {
+          "type": "Collection",
+          "settings": {
+            "collection": "all"
+          }
+        },
+        "collection_3WfmUy": {
+          "type": "Collection",
+          "settings": {
+            "collection": "stickers"
+          }
+        },
+        "collection_qWRBmR": {
+          "type": "Collection",
+          "settings": {
+            "collection": "watch"
+          }
+        },
+        "collection_RGLQWp": {
+          "type": "Collection",
+          "settings": {
+            "collection": "little-lights"
+          }
+        }
+      },
+      "block_order": [
+        "collection_iP99EY",
+        "collection_xjgpaL",
+        "collection_ipVmrE",
+        "collection_3WfmUy",
+        "collection_qWRBmR",
+        "collection_RGLQWp"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "echo_section_ss_3_Tp6ghe": {
+      "type": "Echo-section-ss-3",
+      "blocks": {
+        "box_aa3QyR": {
+          "type": "Box",
+          "settings": {
+            "block-img": "shopify://shop_images/RicepuffyLittleLight1.webp",
+            "block-text": "Kills 99% of all bacteria",
+            "block-link": ""
+          }
+        },
+        "box_DLjAwc": {
+          "type": "Box",
+          "settings": {
+            "block-img": "shopify://shop_images/RicelogiLittleLight1.webp",
+            "block-text": "Kills 99% of all bacteria",
+            "block-link": ""
+          }
+        },
+        "box_bXKbFJ": {
+          "type": "Box",
+          "settings": {
+            "block-img": "shopify://shop_images/RicemoguLittleLight1.webp",
+            "block-text": "Kills 99% of all bacteria",
+            "block-link": ""
+          }
+        },
+        "box_rjMP8U": {
+          "type": "Box",
+          "settings": {
+            "block-img": "shopify://shop_images/RicedinoLittleLight1.webp",
+            "block-text": "Kills 99% of all bacteria",
+            "block-link": ""
+          }
+        },
+        "box_3a4VVy": {
+          "type": "Box",
+          "settings": {
+            "block-img": "shopify://shop_images/RicemintyLittleLight1.webp",
+            "block-text": "Kills 99% of all bacteria",
+            "block-link": ""
+          }
+        },
+        "box_qPTFGd": {
+          "type": "Box",
+          "settings": {
+            "block-img": "shopify://shop_images/RicepuddingLittleLight1.webp",
+            "block-text": "Kills 99% of all bacteria",
+            "block-link": ""
+          }
+        }
+      },
+      "block_order": [
+        "box_aa3QyR",
+        "box_DLjAwc",
+        "box_bXKbFJ",
+        "box_rjMP8U",
+        "box_3a4VVy",
+        "box_qPTFGd"
+      ],
+      "disabled": true,
+      "settings": {
+        "main-head": "OUTSTANDING QUALITY BACKED BY A NUMBER OF REASONS.  OUR PRODUCT IS SETTING NEW BOUNDARIES FOR THE SO FAR EXISTING HAND SANITIZERS.",
+        "font-size-head": 35,
+        "main-subtext": "Special offer to get a discount after testing one of our new products so better take the chance now before it’s to late.",
+        "main-btn-t": "Get in touch",
+        "main-btn-l": "",
+        "section-color": "#233e16"
+      }
+    },
+    "details_slider_iWGfm4": {
+      "type": "details-slider",
+      "blocks": {
+        "block_xtCJGC": {
+          "type": "block",
+          "settings": {
+            "img-ss-4": "shopify://shop_images/Self-loveStickers.webp",
+            "heading": "Plan",
+            "richtext": "<h3></h3><p>They say an idiot with a plan can beat a genius without a plan. But what if we can do both? Team up with Arctic Grey & get paired with your new team that specializes in all things Commerce, and create a <strong>plan of action</strong> for world domination.</p><p></p>"
+          }
+        },
+        "block_CcjddU": {
+          "type": "block",
+          "settings": {
+            "img-ss-4": "shopify://shop_images/HalloweenStickersC.webp",
+            "heading": "Design",
+            "richtext": "<h3></h3><p>Steve Jobs said design is not just what it looks like and feels like. <strong>Design is how it works.</strong> Partner with Arctic Grey to build an intuitive user experience designed to improve conversion rates & average order values.</p>"
+          }
+        },
+        "block_Rhn4p8": {
+          "type": "block",
+          "settings": {
+            "img-ss-4": "shopify://shop_images/featured-tab-collection-img.webp",
+            "heading": "Develop",
+            "richtext": "<h3></h3><p>Your online store is the heart of your business - <strong>don't let bad development slow you down</strong>. Let our Shopify experts take the reins on development so you can focus on your customer experience, not your back end. <a href=\"https://arcticgrey.com/#\" title=\"#\">🍑</a></p>"
+          }
+        },
+        "block_gzGYh8": {
+          "type": "block",
+          "settings": {
+            "img-ss-4": "shopify://shop_images/featured-tab-collection-img.webp",
+            "heading": "Deploy",
+            "richtext": "<h3></h3><p>We have created a deployment process to <strong>launch everything from complex feature upgrades to brand new site builds</strong> via Github for perfect version control. No more, “oops! that update broke something on the live site!”</p>"
+          }
+        },
+        "block_AzXkGj": {
+          "type": "block",
+          "settings": {
+            "img-ss-4": "shopify://shop_images/RicesantaFaceMask.webp",
+            "heading": "A/B Testing",
+            "richtext": "<h3></h3><p>Take the guess work out of everything! <strong>A/B Testing is the cheat code to success</strong>. Let us help you make decisions backed by data, showing you what changes actually work and what doesn't.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_xtCJGC",
+        "block_CcjddU",
+        "block_Rhn4p8",
+        "block_gzGYh8",
+        "block_AzXkGj"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading-size": 35,
+        "font-weight": "bold",
+        "heading-color": "#222222",
+        "para-size": 18,
+        "para-color": "#222222"
+      }
+    },
+    "ss_review_section_c8aKDf": {
+      "type": "ss-review-section",
+      "blocks": {
+        "review_Vzey9m": {
+          "type": "review",
+          "settings": {
+            "heading": "Pants are Great",
+            "content": "<p>I love the pants. Delivery was really quick</p>",
+            "name": "Jhon K",
+            "reviewer_image": "shopify://shop_images/pleased-man.jpg",
+            "date": "25 DEC 2019",
+            "rating": 4.5,
+            "verified": true,
+            "review_image": "shopify://shop_images/H5695eae0686d4ba78c3951bbaeaf4a096_1080x_1800x1800_1_b8518da0-cff1-4e62-a8ee-497a0ecc8fa9.png",
+            "product": "ice-cream"
+          }
+        },
+        "review_6G6gQQ": {
+          "type": "review",
+          "settings": {
+            "heading": "Pants are Great",
+            "content": "<p>I love the pants. Delivery was really quick</p>",
+            "name": "Jhon K",
+            "reviewer_image": "shopify://shop_images/tattood-man-looking-sad.jpg",
+            "date": "25 DEC 2019",
+            "rating": 2.6,
+            "verified": true,
+            "review_image": "shopify://shop_images/211_393aaa529b-5-full.png",
+            "product": "premium-watch"
+          }
+        },
+        "review_yzhKbJ": {
+          "type": "review",
+          "settings": {
+            "heading": "Pants are Great",
+            "content": "<p>I love the pants. Delivery was really quick</p>",
+            "name": "Jhon K",
+            "reviewer_image": "shopify://shop_images/3f4075f6ebb9f898ab627f62199f2dfa.png",
+            "date": "25 DEC 2019",
+            "rating": 5,
+            "verified": true,
+            "review_image": "shopify://shop_images/GI000443U33435_2157_6_9363a933-3d94-48da-bc39-170c3c3390e1.jpg",
+            "product": "miss-dino-face-mask"
+          }
+        }
+      },
+      "block_order": [
+        "review_Vzey9m",
+        "review_6G6gQQ",
+        "review_yzhKbJ"
+      ],
+      "disabled": true,
+      "settings": {
+        "star_size": 13,
+        "gap": 2
+      }
+    },
+    "umair_V9hqMn": {
+      "type": "umair",
+      "blocks": {
+        "name_FFtfBH": {
+          "type": "name",
+          "settings": {
+            "leeger-coll-text__12": "",
+            "leeger-coll": "face-masks"
+          }
+        },
+        "name_JJcqHU": {
+          "type": "name",
+          "settings": {
+            "leeger-coll-text__12": "",
+            "leeger-coll": "frontpage"
+          }
+        }
+      },
+      "block_order": [
+        "name_FFtfBH",
+        "name_JJcqHU"
+      ],
+      "disabled": true,
+      "settings": {
+        "desk-view": "desk-grid-v",
+        "mobl-view": "mobl-grid-v"
+      }
+    },
+    "trust_badges_GrcVBx": {
+      "type": "trust-badges",
+      "blocks": {
+        "block_nB6nLA": {
+          "type": "Block",
+          "settings": {
+            "emoji-svg": "🏆",
+            "heading": "Ships Free + Saves",
+            "text": "Subscribe and save"
+          }
+        },
+        "block_dwAfLz": {
+          "type": "Block",
+          "settings": {
+            "emoji-svg": "🌎",
+            "heading": "100% Plastic free",
+            "text": "Refillable tin jar"
+          }
+        },
+        "block_zTnPBF": {
+          "type": "Block",
+          "settings": {
+            "emoji-svg": "💪",
+            "heading": "Tackles sensitivity",
+            "text": ""
+          }
+        },
+        "block_P64zDN": {
+          "type": "Block",
+          "settings": {
+            "emoji-svg": "🍃",
+            "heading": "Clean ingredients",
+            "text": ""
+          }
+        },
+        "block_zVMWiV": {
+          "type": "Block",
+          "settings": {
+            "emoji-svg": "🐰",
+            "heading": "Cruelty Free",
+            "text": "100% Vegan"
+          }
+        },
+        "block_RKQAXt": {
+          "type": "Block",
+          "settings": {
+            "emoji-svg": "📮",
+            "heading": "Free returns",
+            "text": "30 days"
+          }
+        }
+      },
+      "block_order": [
+        "block_nB6nLA",
+        "block_dwAfLz",
+        "block_zTnPBF",
+        "block_P64zDN",
+        "block_zVMWiV",
+        "block_RKQAXt"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding-horizontal": 2,
+        "padding-vertical": 2
+      }
+    },
+    "circle_menu_Dzrqrn": {
+      "type": "circle-menu",
+      "blocks": {
+        "menu_UgdJtY": {
+          "type": "menu",
+          "settings": {
+            "c-img": "shopify://shop_images/Ricecarrot-Face-Mask.webp",
+            "text-1": "Link",
+            "c-link": ""
+          }
+        },
+        "menu_RBrbnE": {
+          "type": "menu",
+          "settings": {
+            "c-img": "shopify://shop_images/MissDinoFaceMask_46c550e4-1b0f-481e-b8e6-c48fe06cb6f3.webp",
+            "text-1": "Link",
+            "c-link": ""
+          }
+        },
+        "menu_wkDmAR": {
+          "type": "menu",
+          "settings": {
+            "c-img": "shopify://shop_images/RicemousseFaceMask.webp",
+            "text-1": "Link",
+            "c-link": ""
+          }
+        },
+        "product_cVLKeL": {
+          "type": "product",
+          "settings": {
+            "product": "flash-masking-tape"
+          }
+        },
+        "product_fRbqWM": {
+          "type": "product",
+          "settings": {
+            "product": "chairs"
+          }
+        },
+        "product_LMqYRK": {
+          "type": "product",
+          "settings": {
+            "product": "black-paper-tape"
+          }
+        }
+      },
+      "block_order": [
+        "menu_UgdJtY",
+        "menu_RBrbnE",
+        "menu_wkDmAR",
+        "product_cVLKeL",
+        "product_fRbqWM",
+        "product_LMqYRK"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Circle Menus",
+        "h-font": 34,
+        "h-color": "#000000",
+        "h-weight": "light",
+        "p-top": 5,
+        "p-bottom": 5,
+        "img-size": 25,
+        "t-size": 20,
+        "t-color": "#000000",
+        "gap-d": 30,
+        "border-size": 5,
+        "menu-hover": true,
+        "border-color": "linear-gradient(180deg, rgba(255, 0, 0, 1), rgba(255, 255, 0, 1) 50%, rgba(255, 165, 0, 1) 100%)",
+        "sl-gd-view": "grid",
+        "h-font-m": 20,
+        "h-weight-m": "light-m",
+        "p-top-m": 3,
+        "p-bottom-m": 3,
+        "img-size-m": 12,
+        "t-size-m": 18,
+        "gap-m": 30,
+        "border-size-m": 5,
+        "sl-gd-view-m": "slider-m"
+      }
+    },
+    "comparison_tabel_mmWhpy": {
+      "type": "comparison-tabel",
+      "blocks": {
+        "block_3bNyYq": {
+          "type": "block",
+          "settings": {
+            "content-img": "shopify://shop_images/Ricecarrot-Face-Mask.webp",
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "no",
+            "yes-no-button-others": "yes"
+          }
+        },
+        "block_h3KUQw": {
+          "type": "block",
+          "settings": {
+            "content-img": "shopify://shop_images/LunarNewYearStickers2023.webp",
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
+          }
+        },
+        "block_iXYDHQ": {
+          "type": "block",
+          "settings": {
+            "content-img": "shopify://shop_images/RicemousseFaceMask_e2a98b36-f372-4bec-a940-893ff75b707f.webp",
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
+          }
+        },
+        "block_wt4wcW": {
+          "type": "block",
+          "settings": {
+            "content-img": "shopify://shop_images/Kraft-Paper-Tape.webp",
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
+          }
+        }
+      },
+      "block_order": [
+        "block_3bNyYq",
+        "block_h3KUQw",
+        "block_iXYDHQ",
+        "block_wt4wcW"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding-vertical": 3,
+        "padding-horizontal": 0,
+        "heading": "Why Choose Us",
+        "btn-size-d": 16,
+        "btn-padding-d": 15,
+        "btn-font-weight": true,
+        "btn-border-d": 6,
+        "btn-style-1": "style-2",
+        "btn-label-1": "Our Story",
+        "btn-link-1": "",
+        "btn-style-2": "style-3",
+        "btn-label-2": "Explore More Products",
+        "btn-link-2": "",
+        "img-size": 50,
+        "our-image": "shopify://shop_images/Self-loveStickers.webp",
+        "our-text": "Ours",
+        "other-text": "Others",
+        "yes-text": "Yes",
+        "yes-image": "shopify://shop_images/8c9613ab55c80cd983b11c8e44fd9d5d.png",
+        "no-text": "No",
+        "no-image": "shopify://shop_images/831cd70c702b17a0b430f10b2790b6c6.png",
+        "head-size": 34,
+        "text-size": 16,
+        "head-weight": "bold",
+        "padding-vertical-m": 3,
+        "padding-horizontal-m": 0,
+        "img-size-m": 40,
+        "btn-size-m": 13,
+        "btn-padding-m": 10,
+        "head-size-m": 22,
+        "text-size-m": 14,
+        "main-color": "#983a3e",
+        "container-color": "#ffffff",
+        "bg-color": "#e1e1e1",
+        "head-color": "#222222",
+        "text-color": "#363636"
+      }
+    },
+    "comparison_tabel_WGR3qb": {
+      "type": "comparison-tabel",
+      "blocks": {
+        "block_zecJWj": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "no",
+            "yes-no-button-others": "no"
+          }
+        },
+        "block_YpyGpw": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "yes"
+          }
+        },
+        "block_FtEgwV": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
+          }
+        },
+        "block_KYCBjj": {
+          "type": "block",
+          "settings": {
+            "content-text": "NATIVE SHOPIFY PAGE BUILDER",
+            "yes-no-button-our": "yes",
+            "yes-no-button-others": "no"
+          }
+        }
+      },
+      "block_order": [
+        "block_zecJWj",
+        "block_YpyGpw",
+        "block_FtEgwV",
+        "block_KYCBjj"
+      ],
+      "disabled": true,
+      "settings": {
+        "padding-vertical": 3,
+        "padding-horizontal": 0,
+        "heading": "Why Choose Us",
+        "btn-size-d": 20,
+        "btn-padding-d": 15,
+        "btn-font-weight": true,
+        "btn-border-d": 6,
+        "btn-style-1": "style-1",
+        "btn-label-1": "Our Story",
+        "btn-link-1": "",
+        "btn-style-2": "style-3",
+        "btn-label-2": "Explore More Products",
+        "btn-link-2": "",
+        "img-size": 50,
+        "our-text": "Ours",
+        "other-text": "Others",
+        "yes-text": "Yes",
+        "no-text": "No",
+        "head-size": 34,
+        "text-size": 16,
+        "head-weight": "bold",
+        "padding-vertical-m": 3,
+        "padding-horizontal-m": 0,
+        "img-size-m": 40,
+        "btn-size-m": 13,
+        "btn-padding-m": 10,
+        "head-size-m": 22,
+        "text-size-m": 14,
+        "main-color": "#3a8a98",
+        "container-color": "#a296a5",
+        "bg-color": "#090101",
+        "head-color": "#3a8a98",
+        "text-color": "#fff8f8"
+      }
+    },
+    "product_ing_X7pJXp": {
+      "type": "product-ing",
+      "blocks": {
+        "slide_D83T4R": {
+          "type": "slide",
+          "settings": {
+            "ingredient_name": "Pea Protein",
+            "content-text": "<p>comes from dried peas that are processed into     a powder form. They’re high in essential amino acids, and the perfect choice for vegans<br/>  and vegeterians looking for an alternative to                        whey or say protien. </p>",
+            "content-img": "shopify://shop_images/Ricecarrot-Face-Mask.webp"
+          }
+        },
+        "slide_AMcTLP": {
+          "type": "slide",
+          "settings": {
+            "ingredient_name": "Rice",
+            "content-text": "<p>comes from dried peas that are processed into     a powder form. They’re high in essential amino acids, and the perfect choice for vegans<br/>  and vegeterians looking for an alternative to                        whey or say protien. </p>",
+            "content-img": "shopify://shop_images/MissDinoFaceMask_46c550e4-1b0f-481e-b8e6-c48fe06cb6f3.webp"
+          }
+        },
+        "slide_HKGznb": {
+          "type": "slide",
+          "settings": {
+            "ingredient_name": "Arabica Instant Cofee",
+            "content-text": "<p>comes from dried peas that are processed into     a powder form. They’re high in essential amino acids, and the perfect choice for vegans<br/>  and vegeterians looking for an alternative to                        whey or say protien. </p>",
+            "content-img": "shopify://shop_images/Flash-Masking-Tape.webp"
+          }
+        },
+        "slide_EaPdXQ": {
+          "type": "slide",
+          "settings": {
+            "ingredient_name": "Fair Instant Cofee",
+            "content-text": "<p>comes from dried peas that are processed into     a powder form. They’re high in essential amino acids, and the perfect choice for vegans<br/>  and vegeterians looking for an alternative to                        whey or say protien. </p>",
+            "content-img": "shopify://shop_images/RicedinoLittleLight1.webp"
+          }
+        },
+        "slide_DHnKhp": {
+          "type": "slide",
+          "settings": {
+            "ingredient_name": "Monk Fruit",
+            "content-text": "<p>comes from dried peas that are processed into     a powder form. They’re high in essential amino acids, and the perfect choice for vegans<br/>  and vegeterians looking for an alternative to                        whey or say protien. </p>",
+            "content-img": "shopify://shop_images/cap-with-wings-940481067.png"
+          }
+        }
+      },
+      "block_order": [
+        "slide_D83T4R",
+        "slide_AMcTLP",
+        "slide_HKGznb",
+        "slide_EaPdXQ",
+        "slide_DHnKhp"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "High quality ingredients",
+        "subtext": "<p>We carefully selected plant-based ingredients to create the world's healthiest protein coffee that's low in sugar, high in protein, and tastes delicious.</p>",
+        "btn-text-1": "Pre Order Now",
+        "btn-link-1": "",
+        "btn-1-style": "btn-2",
+        "btn-text-2": "Button",
+        "btn-link-2": "",
+        "btn-2-style": "btn-1",
+        "padding-top-d": 5,
+        "padding-left-d": 0,
+        "heading-size-d": 37,
+        "heading-weight-d": "bold",
+        "text-size-d": 16,
+        "btn-size-d": 18,
+        "btn-weight-d": "bold",
+        "dots-d": false,
+        "arrows-d": true,
+        "arrow-position": "center",
+        "padding-top-m": 1,
+        "padding-left-m": 0,
+        "heading-size-m": 24,
+        "heading-weight-m": "bold",
+        "text-size-m": 16,
+        "btn-size-m": 16,
+        "dots-m": true,
+        "arrows-m": true,
+        "btn-weight-m": "light",
+        "img-color": "#a68f8f",
+        "main-color": "#1c161a",
+        "second-color": "#ffffff",
+        "text-color": "#1c161a",
+        "subtext-color": "#222222",
+        "bg-color": "#fcf8f5"
+      }
+    },
+    "ss_icon_with_text_xHCURJ": {
+      "type": "ss-icon-with-text",
+      "blocks": {
+        "icon_text_W4i8L4": {
+          "type": "icon-text",
+          "settings": {
+            "img": "shopify://shop_images/cherries_small_37667dea-9942-414c-a463-8af2c5d1c47c.png",
+            "svg": "",
+            "heading": "Heading",
+            "seo_heading": "h1",
+            "text": "<p>Discover the Superior Taste of Freshly Picked Organic Cherry Delights.</p>",
+            "button_label": "shop",
+            "button_url": ""
+          }
+        },
+        "icon_text_za3RKR": {
+          "type": "icon-text",
+          "settings": {
+            "img": "shopify://shop_images/lemon_small_dfc49785-8fca-4808-bbfa-28bdf82614da.png",
+            "svg": "",
+            "heading": "Heading",
+            "seo_heading": "h1",
+            "text": "<p>Boost Your Health with Vitamin C-Rich Lemon Goodness.</p>",
+            "button_label": "shop",
+            "button_url": ""
+          }
+        },
+        "icon_text_czFYVq": {
+          "type": "icon-text",
+          "settings": {
+            "img": "shopify://shop_images/cheese_small_99a34dc2-535d-4847-85ff-d9304bb97331.png",
+            "svg": "",
+            "heading": "Heading",
+            "seo_heading": "h1",
+            "text": "<p>Explore the World of Cheese: Perfecting Plant-Based Cheeses for Everyone.</p>",
+            "button_label": "shop",
+            "button_url": ""
+          }
+        },
+        "icon_text_4KBKRj": {
+          "type": "icon-text",
+          "settings": {
+            "img": "shopify://shop_images/download_3_720x_a165583f-4517-42a9-94e4-ef05da2390c8.jpg",
+            "svg": "",
+            "heading": "Heading",
+            "seo_heading": "h1",
+            "text": "<p>Discover Timeless Sophistication in Every Stitch of Our White Shirts.</p>",
+            "button_label": "Shop",
+            "button_url": ""
+          }
+        },
+        "icon_text_Mtmw3B": {
+          "type": "icon-text",
+          "settings": {
+            "img": "shopify://shop_images/C1_971306a5-007d-43d4-93a7-e5074e0355ff.png",
+            "svg": "",
+            "heading": "Heading",
+            "seo_heading": "h1",
+            "text": "<p>Step up your Fashion Game with our Stylish Collection of Black Coats.</p>",
+            "button_label": "Shop",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_text_W4i8L4",
+        "icon_text_za3RKR",
+        "icon_text_czFYVq",
+        "icon_text_4KBKRj",
+        "icon_text_Mtmw3B"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "ss_form_9EVQxA": {
+      "type": "ss-form",
+      "blocks": {
+        "heading_q8mxzY": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Heading"
+          }
+        },
+        "text_UYeJtj": {
+          "type": "text",
+          "settings": {
+            "input-type": "",
+            "label": "",
+            "placeholder": "Name",
+            "value": "",
+            "name": "email",
+            "required": true,
+            "disabled": false,
+            "readonly": false,
+            "position": "column",
+            "width": "50"
+          }
+        },
+        "text_wjzjA9": {
+          "type": "text",
+          "settings": {
+            "input-type": "email",
+            "label": "",
+            "placeholder": "Email",
+            "value": "",
+            "name": "email",
+            "required": true,
+            "disabled": false,
+            "readonly": false,
+            "position": "column",
+            "width": "50"
+          }
+        },
+        "text_HfiDXM": {
+          "type": "text",
+          "settings": {
+            "input-type": "number",
+            "label": "",
+            "placeholder": "Phone",
+            "value": "",
+            "name": "phone",
+            "required": true,
+            "disabled": false,
+            "readonly": false,
+            "position": "column",
+            "width": "100"
+          }
+        },
+        "textarea_63RHR6": {
+          "type": "textarea",
+          "settings": {
+            "label": "",
+            "placeholder": "Message",
+            "name": "message",
+            "required": true,
+            "rows": 10,
+            "position": "column",
+            "width": "100"
+          }
+        },
+        "text_FNx4zX": {
+          "type": "text",
+          "settings": {
+            "input-type": "submit",
+            "label": "",
+            "placeholder": "",
+            "value": "Submit",
+            "name": "",
+            "required": true,
+            "disabled": false,
+            "readonly": false,
+            "position": "column",
+            "width": "50"
+          }
+        }
+      },
+      "block_order": [
+        "heading_q8mxzY",
+        "text_UYeJtj",
+        "text_wjzjA9",
+        "text_HfiDXM",
+        "textarea_63RHR6",
+        "text_FNx4zX"
+      ],
+      "settings": {}
+    },
+    "ss_carousel_Xwz3TW": {
+      "type": "ss-carousel",
+      "blocks": {
+        "image_thcGKL": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/1_1.png"
+          }
+        },
+        "image_MBFarW": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/1-1_6b8c7009-a970-4361-a910-601dd5d160ac.jpg"
+          }
+        },
+        "image_dJLQ6U": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/C3_9e9b6c00-a1f9-4148-975c-a75d27745494.png"
+          }
+        },
+        "image_PjthtH": {
+          "type": "image",
+          "settings": {
+            "img": "shopify://shop_images/download_3_720x_a165583f-4517-42a9-94e4-ef05da2390c8.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_thcGKL",
+        "image_MBFarW",
+        "image_dJLQ6U",
+        "image_PjthtH"
+      ],
+      "settings": {
+        "collection": "face-masks"
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "announcement_bar_2_WB7e3k",
+    "hotspots_detail_qtngrJ",
+    "coundown_timer_apcC7X",
+    "coundown_timer_gMm4Mg",
+    "feature_6_tLGJcN",
+    "ss_timer_fYJqV9",
+    "hotspots_4_HGjatk",
+    "video_multicolumn_eYdPVb",
+    "faq_9_Dz7J73",
+    "star_component_yfpycd",
+    "media_snippet_GnmmYj",
+    "collection_slider_iHc74y",
+    "echo_section_ss_3_Tp6ghe",
+    "details_slider_iWGfm4",
+    "ss_review_section_c8aKDf",
+    "umair_V9hqMn",
+    "trust_badges_GrcVBx",
+    "circle_menu_Dzrqrn",
+    "comparison_tabel_mmWhpy",
+    "comparison_tabel_WGR3qb",
+    "product_ing_X7pJXp",
+    "ss_icon_with_text_xHCURJ",
+    "ss_form_9EVQxA",
+    "ss_carousel_Xwz3TW"
+  ]
+}

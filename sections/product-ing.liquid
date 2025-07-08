@@ -1,0 +1,888 @@
+<style>
+     #shopify-section-{{ section.id }} *{
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+      }
+      #shopify-section-{{ section.id }}{
+          --padding-vertical-d9: {{ section.settings.padding-top-d }}rem;
+          --padding-horizontal-d9: {{ section.settings.padding-left-d }}rem;
+          --main-color-d9: {{ section.settings.main-color }};
+          --text-color-d9: {{ section.settings.text-color }};
+          --subtext-color-d9: {{ section.settings.subtext-color }};
+          --second-color-d9: {{ section.settings.second-color }};
+          --heading-font-d9: {{ section.settings.heading-size-d }}px;
+          --text-font-d9: {{ section.settings.text-size-d }}px;
+          --btn-font-d9: {{ section.settings.btn-size-d }}px;
+          --heading-weight-d9: {% if section.settings.heading-weight-d == 'bold' %}bold{% else %}light{% endif %};
+          --btn-weight-d9:  {% if section.settings.heading-weight-d == 'bold' %}bold{% else %}light{% endif %};
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-main{
+      width: 100%;
+      background: {{ section.settings.bg-color }};
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-inner{
+      max-width: 1140px;
+      width: 95%;
+      margin: 0 auto;
+      padding: var(--padding-vertical-d9) var(--padding-horizontal-d9);
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+  }
+
+  #shopify-section-{{ section.id }} .pi-37-d9-ingredients {
+      width: 50%;
+      padding: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .pi-37-d9-pills button {
+      display: inline-block;
+      padding: 7px 15px;
+      font-size: calc(var(--text-font-d9) + 1px);
+      background: var(--second-color-d9);
+      border: 1px solid var(--main-color-d9);
+      border-radius: 20px;
+      cursor: pointer;
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-pills {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      flex-wrap: wrap;
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-pills button:first-child{
+      margin-left: 0;
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-pills button.active-pill-d9 {
+      background: var(--main-color-d9);
+      color: white;
+  }
+  #shopify-section-{{ section.id }} .pi-37-slider-container{
+      width: 40%;
+      position: relative;
+      border: 1px solid var(--main-color-d9);
+      border-radius: 30px;
+      background: var(--second-color-d9);
+      margin-bottom: 30px;
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-slider {
+      width: 100%;
+      overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .pi-37-d9-slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+  }
+
+  #shopify-section-{{ section.id }} .pi-37-d9-slide {
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+  }
+
+  #shopify-section-{{ section.id }} .pi-37-d9-indicators {
+      display:{% if section.settings.dots-d %}flex{% else %}none{% endif %};
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+
+  #shopify-section-{{ section.id }} .pi-37-d9-dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .pi-37-d9-dot.active {
+      background-color: var(--main-color-d9);
+  }
+
+  #shopify-section-{{ section.id }} .pi-37-d9-arrows {
+      display: {% if section.settings.arrows-d %} flex{% else %}none {% endif %};
+      position: absolute;
+      width: 100%;
+      gap: 40px;
+      {% if section.settings.arrow-position == 'bottom' %}
+      bottom: -26px;
+      justify-content: center;
+      {% else %}
+      justify-content: space-between;
+      bottom: 50%;
+      transform: translatey(50%);
+      {% endif %}
+  }
+
+  #shopify-section-{{ section.id }} .pi-37-d9-arrow {
+      background: rgba(0, 0, 0, 0.9);
+      border: none;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      width: 46px;
+      height: 46px;
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-arrow svg{
+      fill: #fff;
+  }
+
+  #shopify-section-{{ section.id }} .pi-37-d9-arrow.not-available-d9 {
+      background: rgba(0, 0, 0, 0.2);
+      cursor: not-allowed;
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-arrow svg{
+      width: 14px;
+      height: 14px;
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-slides.grabbing {
+      cursor: grabbing;
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-slides.grabbing *{
+      user-select: none !important;
+  }
+  #shopify-section-{{ section.id }} .img-content-pi-37-d9{
+      width: 70%;
+      margin: 30px auto;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 5px solid {{ section.settings.img-color }};
+      aspect-ratio: 1/1;
+  }
+  #shopify-section-{{ section.id }} .img-content-pi-37-d9 img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      aspect-ratio: 1/1;
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-arrow-left{
+      transform: rotate(180deg);
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-slide h2,#shopify-section-{{ section.id }}  .pi-37-d9-slide p{
+      text-align: center;
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-slide h2,#shopify-section-{{ section.id }}  .pi-37-d9-slide p,#shopify-section-{{ section.id }}  .text-div-d9 p,#shopify-section-{{ section.id }}  .pi-37-d9-ingredients h2{
+      margin: 10px 0;
+      line-height: 130%;
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-slide h2,#shopify-section-{{ section.id }}  .pi-37-d9-ingredients h2{
+      color: var(--text-color-d9);
+      font-size: var(--heading-font-d9);
+      font-weight: var(--heading-weight-d9);
+      margin-bottom: 20px;
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-slide p,#shopify-section-{{ section.id }}  .text-div-d9 p{
+      color: var(--subtext-color-d9);
+      font-size: var(--text-font-d9);
+  }
+  #shopify-section-{{ section.id }} .btn-div-d9{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
+      margin-top: 30px;
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-main-btn{
+      text-decoration: none;
+      border: 1px solid var(--main-color-d9);
+      border-radius: 50px;
+      transition: all .4s;
+      padding: 12px 25px;
+      display: block;
+      min-width: 120px;
+      text-align: center;
+      font-size: var(--btn-font-d9);
+      font-weight: var(--btn-weight-d9);
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-main-btn.style-btn-1-d9{
+      background: var(--main-color-d9);
+      color: var(--second-color-d9);
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-main-btn.style-btn-2-d9{
+      color: var(--main-color-d9);
+      background: var(--second-color-d9);
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-main-btn.style-btn-2-d9:hover{
+      background: var(--main-color-d9);
+      color: var(--second-color-d9);
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-main-btn.style-btn-1-d9:hover{
+      color: var(--main-color-d9);
+      background: var(--second-color-d9);
+  }
+  #shopify-section-{{ section.id }} .hide-on-d-d9{
+      display: none;
+  }
+  #shopify-section-{{ section.id }} .hide-on-m-d9{
+          display: flex;
+      }
+  @media (max-width: 900px){
+      #shopify-section-{{ section.id }}{
+          --padding-vertical-d9: {{ section.settings.padding-top-m }}rem;
+          --padding-horizontal-d9: {{ section.settings.padding-left-m }}rem;
+          --heading-font-d9: {{ section.settings.heading-size-m }}px;
+          --text-font-d9: {{ section.settings.text-size-m }}px;
+          --btn-font-d9: {{ section.settings.btn-size-m }}px;
+          --heading-weight-d9: {% if section.settings.heading-weight-m == 'bold' %}bold{% else %}light{% endif %};
+          --btn-weight-d9:  {% if section.settings.btn-weight-m == 'bold' %}bold{% else %}light{% endif %};
+  }
+  #shopify-section-{{ section.id }} .pi-37-d9-arrows {
+      display: {% if section.settings.arrows-m %} flex{% else %}none {% endif %};
+      }
+      #shopify-section-{{ section.id }}  .pi-37-d9-indicators {
+      display:{% if section.settings.dots-m %}flex{% else %}none{% endif %};
+      }
+      #shopify-section-{{ section.id }}  .pi-37-d9-ingredients p,#shopify-section-{{ section.id }}  .pi-37-d9-ingredients h2{
+          text-align: center;
+      }
+      #shopify-section-{{ section.id }}  .btn-div-d9{
+          margin: 0;
+      }
+      #shopify-section-{{ section.id }}  .pi-37-d9-pills{
+          justify-content: center;
+      }
+      #shopify-section-{{ section.id }}  .hide-on-d-d9{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      }
+      #shopify-section-{{ section.id }}  .hide-on-m-d9{
+          display: none;
+      }
+      #shopify-section-{{ section.id }}  .pi-37-d9-container{
+          flex-direction: column;
+          gap: 10px;
+      }
+      #shopify-section-{{ section.id }}  .pi-37-d9-ingredients,  #shopify-section-{{ section.id }}  .pi-37-slider-container{
+          width: 100%;
+      }
+      #shopify-section-{{ section.id }}  .text-div-d9 p{
+          margin-top: 30px;
+          text-align: center;
+      }
+  }
+</style>
+<div class="pi-37-d9-main">
+  <div class="pi-37-d9-inner">
+    <div class="pi-37-d9-container">
+      <div class="pi-37-d9-ingredients">
+        <h2>{{ section.settings.heading }}</h2>
+        <div class="text-div-d9 hide-on-m-d9">
+          {{ section.settings.subtext }}
+        </div>
+        <div class="pi-37-d9-pills">
+          {% for block in section.blocks %}
+            {% if block.settings.ingredient_name != blank %}
+              <button class="pi-37-d9-pill">{{ block.settings.ingredient_name }}</button>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="btn-div-d9 hide-on-m-d9">
+          <a
+            class="pi-37-d9-main-btn {% if section.settings.btn-1-style == 'btn-2' %} style-btn-2-d9 {% else %}style-btn-1-d9 {% endif %}"
+            href="{{ section.settings.btn-link-1 }}"
+          >
+            {{- section.settings['btn-text-1'] -}}
+          </a>
+          <a
+            class="pi-37-d9-main-btn {% if section.settings.btn-2-style == 'btn-2' %} style-btn-2-d9 {% else %}style-btn-1-d9 {% endif %}"
+            href="{{ section.settings.btn-link-2 }}"
+          >
+            {{- section.settings['btn-text-2'] -}}
+          </a>
+        </div>
+      </div>
+      <div class="pi-37-slider-container">
+        <div class="pi-37-d9-slider">
+          <div class="pi-37-d9-slides">
+            {% for block in section.blocks %}
+              <div class="pi-37-d9-slide">
+                <h2>{{ block.settings.ingredient_name }}</h2>
+                {{ block.settings['content-text'] }}
+                <div class="img-content-pi-37-d9">
+                  <img src="{{ block.settings.content-img |  image_url: width: 1440 }}" alt="">
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="pi-37-d9-indicators">
+            {% for block in section.blocks %}
+              <span class="pi-37-d9-dot"></span>
+            {% endfor %}
+          </div>
+
+          <div class="pi-37-d9-arrows">
+            <button class="pi-37-d9-arrow pi-37-d9-arrow-left">
+              <svg
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="307.046px"
+                height="307.046px"
+                viewBox="0 0 307.046 307.046"
+                style="enable-background:new 0 0 307.046 307.046;"
+                xml:space="preserve"
+              >
+                <path d="M281.828,142.427L144.002,4.597c-6.129-6.129-16.07-6.129-22.199,0l-11.101,11.101c-6.133,6.133-6.133,16.076,0,22.201
+                	l92.071,92.077H36.321c-8.668,0-15.701,7.035-15.701,15.701v15.699c0,8.664,7.033,15.701,15.701,15.701h166.445l-92.063,92.059
+                	c-6.133,6.136-6.133,16.086,0,22.209l11.101,11.101c6.129,6.136,16.07,6.136,22.199,0l137.826-137.831
+                	C287.959,158.487,287.959,148.556,281.828,142.427z"></path>
+              </svg>
+            </button>
+            <button class="pi-37-d9-arrow pi-37-d9-arrow-right">
+              <svg
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="307.046px"
+                height="307.046px"
+                viewBox="0 0 307.046 307.046"
+                style="enable-background:new 0 0 307.046 307.046;"
+                xml:space="preserve"
+              >
+                <path d="M281.828,142.427L144.002,4.597c-6.129-6.129-16.07-6.129-22.199,0l-11.101,11.101c-6.133,6.133-6.133,16.076,0,22.201
+                	l92.071,92.077H36.321c-8.668,0-15.701,7.035-15.701,15.701v15.699c0,8.664,7.033,15.701,15.701,15.701h166.445l-92.063,92.059
+                	c-6.133,6.136-6.133,16.086,0,22.209l11.101,11.101c6.129,6.136,16.07,6.136,22.199,0l137.826-137.831
+                	C287.959,158.487,287.959,148.556,281.828,142.427z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="text-div-d9 hide-on-d-d9">
+        {{ section.settings.subtext }}
+      </div>
+      <div class="btn-div-d9 hide-on-d-d9">
+        <a
+          class="pi-37-d9-main-btn {% if section.settings.btn-1-style == 'btn-2' %} style-btn-2-d9 {% else %}style-btn-1-d9 {% endif %}"
+          href="{{ section.settings.btn-link-1 }}"
+        >
+          {{- section.settings['btn-text-1'] -}}
+        </a>
+        <a
+          class="pi-37-d9-main-btn {% if section.settings.btn-2-style == 'btn-2' %} style-btn-2-d9 {% else %}style-btn-1-d9 {% endif %}"
+          href="{{ section.settings.btn-link-2 }}"
+        >
+          {{- section.settings['btn-text-2'] -}}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+    document.addEventListener('DOMContentLoaded', () => {
+        const containerSelector = '.pi-37-d9-container';
+
+        document.querySelectorAll(containerSelector).forEach(container => {
+            const pills = container.querySelectorAll('.pi-37-d9-pill');
+            const slides = container.querySelector('.pi-37-d9-slides');
+            const dots = container.querySelectorAll('.pi-37-d9-dot');
+            const leftArrow = container.querySelector('.pi-37-d9-arrow-left');
+            const rightArrow = container.querySelector('.pi-37-d9-arrow-right');
+
+            let currentIndex = 0;
+            let startX = 0;
+            let currentTranslate = 0;
+            let prevTranslate = 0;
+            let isDragging = false;
+            let animationID;
+
+            function updateSlide(index) {
+                currentTranslate = index * -100;
+                prevTranslate = currentTranslate;
+                slides.style.transform = `translateX(${currentTranslate}%)`;
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+                pills.forEach(pill => pill.classList.remove('active-pill-d9'));
+                pills[index].classList.add('active-pill-d9');
+                currentIndex = index;
+                updateArrows();
+            }
+
+            function updateArrows() {
+                if (currentIndex === 0) {
+                    leftArrow.classList.add('not-available-d9');
+                } else {
+                    leftArrow.classList.remove('not-available-d9');
+                }
+                if (currentIndex === pills.length - 1) {
+                    rightArrow.classList.add('not-available-d9');
+                } else {
+                    rightArrow.classList.remove('not-available-d9');
+                }
+            }
+
+            function startDrag(event) {
+    event.preventDefault();  // Prevent default behavior to stop page scrolling
+    startX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+    isDragging = true;
+    animationID = requestAnimationFrame(animation);
+    slides.classList.add('grabbing');
+}
+
+function moveDrag(event) {
+    if (isDragging) {
+        const currentPosition = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+        const movedBy = currentPosition - startX;
+        currentTranslate = prevTranslate + (movedBy / container.clientWidth) * 100;
+
+        // Prevent moving the slide beyond the initial and final positions
+        if (currentTranslate > 0) {
+            currentTranslate = 0;
+        } else if (currentTranslate < -(pills.length - 1) * 100) {
+            currentTranslate = -(pills.length - 1) * 100;
+        }
+
+        event.preventDefault();  // Again, prevent the default behavior to ensure smooth dragging
+    }
+}
+
+function endDrag(event) {
+    event.preventDefault();
+    cancelAnimationFrame(animationID);
+    isDragging = false;
+    slides.classList.remove('grabbing');
+    const movedBy = currentTranslate - prevTranslate;
+
+    // Calculate the percentage equivalent of 2 pixels based on the container width
+    const thresholdPercentage = (0 / container.clientWidth) * 100;
+
+    if (movedBy < -thresholdPercentage && currentIndex < pills.length - 1) {
+        currentIndex += 1;
+    } else if (movedBy > thresholdPercentage && currentIndex > 0) {
+        currentIndex -= 1;
+    }
+    updateSlide(currentIndex);
+}
+
+
+            function animation() {
+                slides.style.transform = `translateX(${currentTranslate}%)`;
+                if (isDragging) requestAnimationFrame(animation);
+            }
+
+            pills.forEach((pill, index) => {
+                pill.addEventListener('click', () => {
+                    updateSlide(index);
+                });
+            });
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    updateSlide(index);
+                });
+            });
+
+            leftArrow.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    updateSlide(currentIndex - 1);
+                }
+            });
+
+            rightArrow.addEventListener('click', () => {
+                if (currentIndex < pills.length - 1) {
+                    updateSlide(currentIndex + 1);
+                }
+            });
+
+            slides.addEventListener('mousedown', startDrag);
+            slides.addEventListener('mousemove', moveDrag);
+            slides.addEventListener('mouseup', endDrag);
+            slides.addEventListener('mouseleave', endDrag);
+
+            slides.addEventListener('touchstart', startDrag);
+            slides.addEventListener('touchmove', moveDrag);
+            slides.addEventListener('touchend', endDrag);
+
+            updateSlide(currentIndex);
+            updateArrows();
+        });
+    });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Product Ingradiants",
+  "settings": [
+    {
+        "type": "header",
+        "content": "Basic Configurations"
+    },
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "High quality ingredients"
+    },
+    {
+        "type": "richtext",
+        "id": "subtext",
+        "label": "Text",
+        "default": "<p>We carefully selected plant-based ingredients to create the world's healthiest protein coffee that's low in sugar, high in protein, and tastes delicious.</p>"
+    },
+    {
+        "type": "text",
+        "id": "btn-text-1",
+        "label": "Button Label 1",
+        "default": "Pre Order Now"
+    },
+    {
+        "type": "url",
+        "id": "btn-link-1",
+        "label": "Button Url 1"
+    },
+    {
+        "type": "select",
+        "id": "btn-1-style",
+        "label": "Button Style 1",
+        "default": "btn-2",
+        "options": [
+            {
+                "value": "btn-2",
+                "label": "Outline"
+            },
+            {
+                "value": "btn-1",
+                "label": "Fill Background"
+            }
+        ]
+    },
+    {
+        "type": "text",
+        "id": "btn-text-2",
+        "label": "Button Label 2",
+        "default": "Button"
+    },
+    {
+        "type": "url",
+        "id": "btn-link-2",
+        "label": "Button Url 2"
+    },
+    {
+        "type": "select",
+        "id": "btn-2-style",
+        "label": "Button Style 2",
+        "default": "btn-1",
+        "options": [
+            {
+                "value": "btn-2",
+                "label": "Outline"
+            },
+            {
+                "value": "btn-1",
+                "label": "Fill Background"
+            }
+        ]
+    },
+    {
+        "type": "header",
+        "content": "Desktop Configurations"
+    },
+    {
+        "type": "range",
+        "id": "padding-top-d",
+        "default": 2,
+        "max": 30,
+        "min": 0,
+        "unit": "rem",
+        "step": 1,
+        "label": "Vertical Padding"
+    },
+    {
+        "type": "range",
+        "id": "padding-left-d",
+        "default": 0,
+        "max": 30,
+        "min": 0,
+        "unit": "rem",
+        "step": 1,
+        "label": "Horizontal Padding"
+    },
+    {
+        "type": "range",
+        "id": "heading-size-d",
+        "default": 35,
+        "max": 70,
+        "min": 8,
+        "unit": "px",
+        "step": 1,
+        "label": "Heading Font Size"
+    },
+    {
+        "type": "select",
+        "id": "heading-weight-d",
+        "label": "Heading Font Weight",
+        "default": "bold",
+        "options": [
+            {
+                "label": "Bold",
+                "value": "bold"
+            },
+            {
+                "label": "Light",
+                "value": "light"
+            }
+        ]
+    },
+    {
+        "type": "range",
+        "id": "text-size-d",
+        "default": 16,
+        "max": 30,
+        "min": 6,
+        "unit": "px",
+        "step": 1,
+        "label": "Text Font Size"
+    },
+    {
+        "type": "range",
+        "id": "btn-size-d",
+        "default": 18,
+        "max": 35,
+        "min": 8,
+        "unit": "px",
+        "step": 1,
+        "label": "Button Font Size"
+    },
+    {
+        "type": "select",
+        "id": "btn-weight-d",
+        "label": "Button Font Weight",
+        "default": "bold",
+        "options": [
+            {
+                "label": "Bold",
+                "value": "bold"
+            },
+            {
+                "label": "Light",
+                "value": "light"
+            }
+        ]
+    },
+    {
+        "type": "header",
+        "content": "Desktop Slider Settings"
+    },
+    {
+        "type": "checkbox",
+        "id": "dots-d",
+        "label": "Show Dots indicator",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "arrows-d",
+        "label": "Show slider Arrows",
+        "default": true
+    },
+    {
+        "type": "select",
+        "id": "arrow-position",
+        "label": "Arrows Position",
+        "default": "bottom",
+        "options": [
+            {
+                "value": "center",
+                "label": "Center"
+            },
+            {
+                "value": "bottom",
+                "label": "Bottom"
+            }
+        ]
+    },
+    {
+        "type": "header",
+        "content": "Mobile Configurations"
+    },
+    {
+        "type": "range",
+        "id": "padding-top-m",
+        "default": 1,
+        "max": 30,
+        "min": 0,
+        "unit": "rem",
+        "step": 1,
+        "label": "Vertical Padding"
+    },
+    {
+        "type": "range",
+        "id": "padding-left-m",
+        "default": 0,
+        "max": 30,
+        "min": 0,
+        "unit": "rem",
+        "step": 1,
+        "label": "Horizontal Padding"
+    },
+    {
+        "type": "range",
+        "id": "heading-size-m",
+        "default": 25,
+        "max": 70,
+        "min": 8,
+        "unit": "px",
+        "step": 1,
+        "label": "Heading Font Size"
+    },
+    {
+        "type": "select",
+        "id": "heading-weight-m",
+        "label": "Heading Font Weight",
+        "default": "bold",
+        "options": [
+            {
+                "label": "Bold",
+                "value": "bold"
+            },
+            {
+                "label": "Light",
+                "value": "light"
+            }
+        ]
+    },
+    {
+        "type": "range",
+        "id": "text-size-m",
+        "default": 14,
+        "max": 30,
+        "min": 6,
+        "unit": "px",
+        "step": 1,
+        "label": "Text Font Size"
+    },
+    {
+        "type": "range",
+        "id": "btn-size-m",
+        "default": 14,
+        "max": 35,
+        "min": 8,
+        "unit": "px",
+        "step": 1,
+        "label": "Button Font Size"
+    },
+    {
+        "type": "checkbox",
+        "id": "dots-m",
+        "label": "Show Dots indicator",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "arrows-m",
+        "label": "Show slider Arrows",
+        "default": true
+    },
+    {
+        "type": "select",
+        "id": "btn-weight-m",
+        "label": "Button Font Weight",
+        "default": "bold",
+        "options": [
+            {
+                "label": "Bold",
+                "value": "bold"
+            },
+            {
+                "label": "Light",
+                "value": "light"
+            }
+        ]
+    },
+    {
+        "type": "header",
+        "content": "Mobile Slider Settings"
+    },
+    {
+        "type": "header",
+        "content": "Color Schemes"
+    },
+    {
+        "type": "color",
+        "id": "img-color",
+        "label": "Image Outline Color",
+        "default": "#a68f8f"
+    },
+    {
+        "type": "color",
+        "id": "main-color",
+        "label": "Main Color",
+        "default": "#1c161a"
+    },
+    {
+        "type": "color",
+        "id": "second-color",
+        "label": "Secondary Color",
+        "default": "#fff"
+    },
+    {
+        "type": "color",
+        "id": "text-color",
+        "label": "text-color",
+        "default": "#1c161a"
+    },
+    {
+        "type": "color",
+        "id": "subtext-color",
+        "label": "subtext color",
+        "default": "#222"
+    },
+    {
+        "type": "color",
+        "id": "bg-color",
+        "label": "Background color",
+        "default": "#FCF8F5"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "ingredient_name",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "content-text",
+          "label": "Description"
+        },
+        {
+            "type": "image_picker",
+            "id": "content-img",
+            "label": "Upload Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Ingradiants",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

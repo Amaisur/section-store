@@ -1,0 +1,602 @@
+<style data-shopify="">@font-face {
+  font-family: "Josefin Sans";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.c8300d95fd4ce72542a6efba9c682da40d144fba.woff2?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=1081bc13bac779d73b77022741d8b8608aa5451af6a05907fc023625940c00f1") format("woff2"),
+       url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=3f19a3e11bab2423756ce410220df09957f15affd53a78fa0ec435e5660aa636") format("woff");
+}
+
+
+.section-{{ section.id }} {
+    border-top: solid #000000 0px;
+    border-bottom: solid #000000 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.section-{{ section.id }}-settings {
+    margin: 0 auto;
+    padding-top: {{ section.settings.pt-m }}px;
+    padding-bottom: {{ section.settings.pb-m }}px;
+    padding-left: {{ section.settings.pv-m }}rem;
+    padding-right: {{ section.settings.pv-m }}rem;
+}
+
+.hotspots-body-{{ section.id }} {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+    align-items: center;
+}
+
+.hotspots-image-{{ section.id }} {
+    border-radius: 12px;
+    border: 1px solid #000000;
+    position: relative;
+    order: 1;
+}
+
+.hotspots-image-{{ section.id }} > img,
+.hotspots-image-{{ section.id }} > svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.hotspots-image-{{ section.id }} > svg {
+    background-color: #DDDDDD;
+}
+
+.hotspots-image-{{ section.id }}:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    z-index: 1;
+}
+
+.hotspots-hotspot-{{ section.id }} {
+    position: absolute;
+    z-index: 2;
+}
+
+.hotspots-circle-{{ section.id }} {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: all 0.25s ease 0s;
+}
+
+.hotspots-circle-{{ section.id }}:hover {
+    border: 1px solid #000000;
+    background-color: #ffcf9f;
+    transition: all 0.25s ease 0s;
+}
+
+.hotspots-circle-{{ section.id }}.active {
+    border: 1px solid #000000;
+    background-color: #ffcf9f;
+    transition: all 0.25s ease 0s;
+}
+
+.hotspots-circle-{{ section.id }} span {
+    margin: 0;
+    line-height: 100%;
+    text-transform: unset;
+    transition: all 0.25s ease 0s;
+}
+
+.hotspots-circle-{{ section.id }}:hover span {
+    transition: all 0.25s ease 0s;
+}
+
+.hotspots-circle-{{ section.id }}.active span {
+    transition: all 0.25s ease 0s;
+}
+
+.hotspots-content-{{ section.id }} {
+    order: {{ section.settings.img-direct }};
+}
+
+.hotspots-content-inner-{{ section.id }} {
+    width: 100%;
+    margin: 0px auto;
+}
+
+.hotspots-desktop-{{ section.id }} {
+    display: none;
+}
+
+.hotspots-heading-{{ section.id }} {
+    text-align: center;
+}
+
+.hotspots-heading-{{ section.id }} * {
+    margin: 0;
+    text-transform: unset;
+}
+
+.hotspots-item-{{ section.id }} {
+    display: none;
+}
+
+.hotspots-item-{{ section.id }}.active {
+    display: block;
+}
+
+.hotspots-text-{{ section.id }} {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.hotspots-text-{{ section.id }} * {
+    margin: 0;
+    line-height: 150%;
+    text-transform: unset;
+}
+
+.hotspots-circles-{{ section.id }} {
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+@media(min-width: 1024px) {
+
+    .section-{{ section.id }} {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .section-{{ section.id }}-settings {
+        padding-top: {{ section.settings.pt }}px;
+        padding-bottom: {{ section.settings.pb }}px;
+        padding-left: {{ section.settings.pv }}rem;
+        padding-right: {{ section.settings.pv }}rem;
+    }
+
+    .hotspots-body-{{ section.id }} {
+        margin-top: 0px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+
+    .hotspots-image-{{ section.id }} {
+        order: 1;
+    }
+
+    .hotspots-circle-{{ section.id }} {
+        width: 36px;
+        height: 36px;
+    }
+
+    .hotspots-content-inner-{{ section.id }} {
+        max-width: 550px;
+    }
+
+    .hotspots-content-{{ section.id }} {
+        order: {{ section.settings.img-direct }};
+    }
+
+    .hotspots-desktop-{{ section.id }} {
+        display: block;
+    }
+
+    .hotspots-mobile-{{ section.id }} {
+        display: none;
+    }
+
+    .hotspots-heading-{{ section.id }} {
+        text-align: center;
+    }
+
+    .hotspots-text-{{ section.id }} {
+        margin-top: 14px;
+        text-align: center;
+    }
+
+    .hotspots-circles-{{ section.id }} {
+        margin-top: 40px;
+        justify-content: center;
+    }
+}
+
+  <style>
+    .section-{{ section.id }}-settings {
+      max-width: 130rem;
+    }
+  </style>
+
+
+
+
+
+
+
+
+
+
+
+  <style>
+    .hotspots-image-{{ section.id }} {
+     aspect-ratio: 12/10; 
+    }
+  </style>
+
+
+
+  <style>
+    @media(min-width: 1024px) {
+      .hotspots-image-{{ section.id }} {
+       aspect-ratio: 12/10; 
+      }
+    }
+  </style>
+
+
+
+{% for block in section.blocks %}
+  <style>
+    .hotspots-hotspot-hotspot_{{ block.id }} {
+      left: {{ block.settings.left }}%;
+      top: {{ block.settings.top }}%;
+      transform: translate(-{{ block.settings.left }}%, -{{ block.settings.top }}%);
+    }
+    .hotspots-item-{{ block.id }} .heading-d5 *{
+      font-size: {{ block.settings.fhs-m }}px;
+      line-height: 130%;
+      color: {{ block.settings.fhc }};
+    }
+    .hotspots-item-{{ block.id }} .info-d5 *{
+      font-size: {{ block.settings.fis-m }}px;
+      line-height: 130%;
+      color: {{ block.settings.fic }};
+    }
+    @media(min-width: 1024px) {
+      .hotspots-hotspot-hotspot_{{ block.id }} {
+        left: {{ block.settings.left }}%;
+        top: {{ block.settings.top-d }}%;
+        transform: translate(-{{ block.settings.left }}%, -{{ block.settings.top-d }}%);
+      }
+    .hotspots-item-{{ block.id }} .heading-d5 *{
+      font-size: {{ block.settings.fhs }}px;
+    }
+    .hotspots-item-{{ block.id }} .info-d5 *{
+      font-size: {{ block.settings.fis }}px;
+    }
+    }
+  </style>
+{% endfor %}
+
+
+<div class="section-{{ section.id }} hotspots-{{ section.id }}" style="background-color:#ffffff; background-image: ;">
+    <div class="section-{{ section.id }}-settings">
+      
+      <div class="hotspots-body-{{ section.id }}">
+        {% if section.settings.img != blank %}
+        <div class="hotspots-image-{{ section.id }}">
+          
+            <img src="{{ section.settings.img | img_url: 'master' }}" alt="SUNSET THROW - NAMING THIS LATER - NTL" lazy="loading">
+          
+          
+          {% for block in section.blocks %}
+            <div class="hotspots-circle-{{ section.id }} hotspots-hotspot-{{ section.id }} hotspots-hotspot-hotspot_{{ block.id }} {% if forloop.first %}active{% endif %}" data-id="hotspot_{{ block.id }}">
+              <span>{{ forloop.index }}</span>
+            </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <div class="hotspots-content-{{ section.id }}">
+          <div class="hotspots-content-inner-{{ section.id }}">
+            
+            <div class="hotspots-items-{{ section.id }}">
+              
+              {% for block in section.blocks %}
+                <div class="hotspots-item-{{ block.id }} hotspots-item-{{ section.id }} {% if forloop.first %}active{% endif %}" id="hotspot_{{ block.id }}">
+                  
+                    <div class="heading-d5 hotspots-heading-{{ section.id }}"><p><strong>{{ block.settings.heading }}</strong></p></div>
+                  
+                  <div class="info-d5 hotspots-text-{{ section.id }}">
+                    {{ block.settings.info }}
+                  </div>
+                </div>
+              {% endfor %}
+              
+            </div>
+            
+            <div class="hotspots-circles-{{ section.id }}">
+              {% for block in section.blocks %}
+                <div class="hotspots-circle-{{ section.id }} {% if forloop.first %}active{% endif %}" data-id="hotspot_{{ block.id }}">
+                  <span>{{ forloop.index }}</span>
+                </div>
+              {% endfor %}
+              
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+</div>
+
+<script>
+  function initHotspots4() {
+    if(document.querySelectorAll('.hotspots-circle-{{ section.id }}')) {
+      let circles = document.querySelectorAll('.hotspots-circle-{{ section.id }}');
+      let texts = document.querySelectorAll('.hotspots-item-{{ section.id }}');
+      
+      circles.forEach(el => {
+        el.addEventListener('click', () => {
+          let dataId = el.getAttribute('data-id');
+
+          circles.forEach(element => {
+            let dataElementId = element.getAttribute('data-id');
+            
+            if(dataId != dataElementId) {
+              element.classList.remove('active');
+            } else {
+              element.classList.add('active');
+            }
+          })
+
+          if(texts) {
+            texts.forEach(element => {
+              
+              if(element.id != dataId ) {
+                element.classList.remove('active');
+              } else {
+                element.classList.add('active');
+              }
+              
+            })
+          }
+        })
+      })
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initHotspots4);
+  
+  if (Shopify.designMode) {
+     document.addEventListener('shopify:section:unload', initHotspots4);
+     document.addEventListener('shopify:section:load', initHotspots4);
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Hotssots 4",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Image"
+      },
+      {
+        "type": "select",
+        "id": "img-direct",
+        "label": "Image Position",
+        "options": [
+          {
+            "value": "2",
+            "label": "Image on Left"
+          },
+          {
+            "value": "0",
+            "label": "Image on right"
+          }
+        ]
+      },
+     {
+        "type": "range",
+        "id": "pt",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top"
+     },     
+     {
+        "type": "range",
+        "id": "pb",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom"
+     },     
+    {
+        "type": "range",
+        "id": "pv",
+        "min": 0,
+        "max": 100,
+        "default": 5,
+        "step": 1,
+        "unit": "rem",
+        "label": "Padding Left and Right"
+     },     
+     {
+        "type": "range",
+        "id": "pt-m",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top Mobile"
+     },     
+     {
+        "type": "range",
+        "id": "pb-m",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom Mobile"
+     },    
+     {
+        "type": "range",
+        "id": "pv-m",
+        "min": 0,
+        "max": 35,
+        "default": 1,
+        "step": 1,
+        "unit": "rem",
+        "label": "Padding Mobile Left and Right"
+     }
+    ],
+    "blocks": [
+      {
+        "type": "hotspot",
+        "name": "Hotspot",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Health Monitoring"
+          },
+          {
+            "type": "richtext",
+            "id": "info",
+            "label": "Description"
+          },
+          {
+            "type": "color",
+            "id": "fhc",
+            "label": "Heading Color",
+            "default": "#000"
+          },
+           {
+            "type": "color",
+            "id": "fic",
+            "label": "Description Color",
+            "default": "#000"
+          },
+           {
+            "type": "range",
+            "id": "fhs",
+            "min": 0,
+            "max": 100,
+            "default": 48,
+            "step": 1,
+            "unit": "px",
+            "label": "Font Size Heading"
+         },
+          {
+            "type": "range",
+            "id": "fis",
+            "min": 0,
+            "max": 100,
+            "default": 24,
+            "step": 1,
+            "unit": "px",
+            "label": "Font Size Decription"
+         },
+          {
+            "type": "range",
+            "id": "fhs-m",
+            "min": 0,
+            "max": 100,
+            "default": 28,
+            "step": 1,
+            "unit": "px",
+            "label": "Font Size Heading Mobile"
+         },
+           {
+            "type": "range",
+            "id": "fis-m",
+            "min": 0,
+            "max": 100,
+            "default": 14,
+            "step": 1,
+            "unit": "px",
+            "label": "Font Size Decription Mobile"
+         },
+          {
+            "type": "header",
+            "content": "Circle Position"
+          },
+          {
+            "type": "range",
+            "id": "left",
+            "min": 0,
+            "max": 100,
+            "default": 35,
+            "step": 1,
+            "unit": "%",
+            "label": "Horizontal Position Mobile"
+          },
+          {
+            "type": "range",
+            "id": "top",
+            "min": 0,
+            "max": 100,
+            "default": 35,
+            "step": 1,
+            "unit": "%",
+            "label": "Vertical Position Mobile"
+          },
+           {
+            "type": "range",
+            "id": "left-d",
+            "min": 0,
+            "max": 100,
+            "default": 35,
+            "step": 1,
+            "unit": "%",
+            "label": "Horizontal Position Desktop"
+          },
+          {
+            "type": "range",
+            "id": "top-d",
+            "min": 0,
+            "max": 100,
+            "default": 35,
+            "step": 1,
+            "unit": "%",
+            "label": "Vertical Position Desktop"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hotspotsb4"
+      }
+    ]
+  }
+{% endschema %}

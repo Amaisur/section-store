@@ -1,0 +1,45 @@
+.ss-it-main * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.ss-it-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+}
+.ss-it-content * {
+  text-align: center;
+  line-height: normal;
+}
+.ss-it-description * {
+  margin: 6px 0;
+}
+.ss-it-row .ss-it-images img,
+.ss-it-row .ss-it-images svg {
+  width: 100%;
+  height: 100%;
+  object-fit: var(--object-fit);
+}
+.ss-it-row .ss-it-images {
+  width: var(--icon-size);
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+.ss-it-button {
+  display: block;
+  width: fit-content;
+  padding: 7px 25px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  box-shadow: inset 0 0 0 1px #000;
+  transition: all 0.3s ease-in-out;
+  margin: 10px auto;
+}
+.ss-it-button:hover {
+  background: #000;
+  color: #fff;
+}

@@ -1,0 +1,89 @@
+{% comment %}
+  Documentation for rendering this snippet: https://muscled.notion.site/Media-Component-14b277b1656a80d18629ea3ab392dd67?pvs=4
+{% endcomment %}
+
+{% if img != blank or video != blank %}
+  <div class="general-media-d5">
+    {% if img != blank %}
+      <img
+        style="object-fit: {{ object_fit | default: 'contain' }};"
+        srcset="
+          {%- if img.width >= 550 -%}{{ img | image_url: width: 550 }} 550w,{%- endif -%}
+          {%- if img.width >= 1100 -%}{{ img | image_url: width: 1100 }} 1100w,{%- endif -%}
+          {%- if img.width >= 1445 -%}{{ img | image_url: width: 1445 }} 1445w,{%- endif -%}
+          {%- if img.width >= 1680 -%}{{ img | image_url: width: 1680 }} 1680w,{%- endif -%}
+          {%- if img.width >= 2048 -%}{{ img | image_url: width: 2048 }} 2048w,{%- endif -%}
+          {%- if img.width >= 2200 -%}{{ img | image_url: width: 2200 }} 2200w,{%- endif -%}
+          {%- if img.width >= 2890 -%}{{ img | image_url: width: 2890 }} 2890w,{%- endif -%}
+          {%- if img.width >= 4096 -%}{{ img | image_url: width: 4096 }} 4096w,{%- endif -%}
+          {{ img | image_url }} {{ img.width }}w
+        "
+        sizes="(min-width: 750px) calc(100vw - 22rem), 1100px"
+        src="{{ img | image_url: width: 1445 }}"
+        alt="{{ media.alt | escape }}"
+        loading="lazy"
+        width="1100"
+        height="{{ 1100 | divided_by: img.aspect_ratio | ceil }}"
+      >
+    {% elsif video != blank %}
+      <video
+        id="video-{{ video.id }}"
+        {% if controls %}
+          controls
+        {% endif %}
+        {% if autoplay %}
+          autoplay
+        {% endif %}
+        {% if muted %}
+          muted
+        {% endif %}
+        {% if loop %}
+          loop
+        {% endif %}
+        {% if poster_image != blank %}
+          poster="{{ poster_image | image_url: width: '1440px' }}"
+        {% else %}
+          poster="{{ video.preview_image.src | image_url: width: '1440px' }}"
+        {% endif %}
+        style="object-fit: {{ object_fit | default: 'contain' }};"
+      >
+        {% for source in video.sources %}
+          <source src="{{ source.url }}" type="{{ source.mime_type }}">
+        {% endfor %}
+      </video>
+      {% if play_pause %}
+        <button class="play-pause-ss-d5">
+          <svg
+            class="play-svg-d5"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <svg
+            class="pause-svg-d5"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+        </button>
+      {% endif %}
+    {% endif %}
+  </div>
+{% endif %}

@@ -1,0 +1,25 @@
+{%- liquid
+  assign product_price = product.price | money
+  assign compare_price = product.compare_at_price | money
+  assign variant = product.selected_or_first_available_variant
+  assign variant_price = variant.price | money
+  assign variant_compare_price = variant.compare_at_price | money
+-%}
+
+<div class="ss-price-display">
+  {% unless variant %}
+  <div class="ss-product-pricing">
+    {% if compare_price > product_price %}
+      <span class="ss-compare-price"><del>{{ compare_price }}</del></span>
+    {% endif %}
+    <span class="ss-selling-price">{{ product_price }}</span>
+  </div>
+  {% else %}
+    <div class="ss-variant-pricing">
+      {% if variant_compare_price > variant_price %}
+        <span class="ss-compare-price"><del>{{ variant_compare_price }}</del></span>
+      {% endif %}
+      <span class="ss-selling-price">{{ variant_price }}</span>
+    </div>
+ {% endunless %}
+</div>

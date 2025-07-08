@@ -1,0 +1,129 @@
+
+{% assign collection = section.settings.collection %}
+{% for product in collection.products %}
+  <div class="test-atc-product">
+    <h2 class="product-d5" data-handle="{{ product.handle }}" data-id="{{ product.first_available_variant.id }}">{{ product.title }}</h2>
+    <form action="/cart/add" class="atc-form">
+     {% if product.variants.size > 1 %}
+    <label for="ProductSelect">Choose a variant:</label>
+    <select class="variant-id-d" name="id" id="ProductSelect">
+      {% for variant in product.variants %}
+        {% assign variant = variant %}
+        <option value="{{ variant.id }}" data-qty="{{ variant.inventory_quantity }}" {% if variant.available %} {% else %}disabled{% endif %}>
+          {{ variant.title }} - {{ variant.price | money_with_currency }}
+        </option>
+      {% endfor %}
+    </select>
+  {% else %}
+    <input data-qty="{{ product.variants.first.inventory_quantity }}" class="variant-id-d" type="hidden" name="id" value="{{ product.variants.first.id }}">
+  {% endif %}
+ <label for="Quantity">Quantity:</label>
+  <input class="qty-input" type="number" id="Quantity" name="quantity" value="1" min="1" pattern="[0-9]*">
+    <button class="atc-button" type="submit">Add to Cart</button>
+    </form>
+    <p class="atc-loading" style="display: none;">Loading...</p>
+    <button class="extra-info-d">extra info</button>
+  </div>
+  
+{% endfor %}
+
+
+<script>
+  let mainProduct = document.querySelectorAll('.test-atc-product');
+
+  mainProduct.forEach(product => {
+    
+ const btnex = product.querySelector('.extra-info-d');
+  const pdHandle = product.querySelector('.product-d5').getAttribute('data-handle');
+  console.log(pdHandle);
+  if (btnex && pdHandle) {
+    btnex.addEventListener('click', () => {
+      fetch(`/products/${pdHandle}.js`)
+        .then(res => res.json())
+        .then(product => {
+          let productVendor = product.title;
+          console.log(productVendor);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    });
+  }
+
+    
+    product.querySelector('.atc-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const loaderatc = product.querySelector('.atc-loading');
+      const vId = product.querySelector('.variant-id-d').value;
+      const maxQty = product.querySelector('.variant-id-d').getAttribute('data-qty');
+      const qty = product.querySelector('#Quantity').value;
+  
+      function showLoading() {
+        loaderatc.style.display = 'block';
+      }
+
+      function hideLoading() {
+        loaderatc.style.display = 'none';
+      }
+
+      showLoading();
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: vId,
+          quantity: qty
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        updateCount();
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      })
+      .finally(() => {
+        hideLoading();
+      });
+    });
+  });
+
+  function updateCount() {
+    fetch('/cart.js')
+    .then(res => res.json())
+    .then(cart => {
+      const cartBubble = document.querySelector('.cart-count-bubble span[aria-hidden="true"]');
+      // if (cartBubble) {
+        cartBubble.textContent = cart.item_count;
+      
+    })
+    .catch(error => {
+      console.error('Error fetching cart data:', error);
+    });
+  }
+
+
+
+  // mainProduct.forEach(item => {
+   
+  // })
+</script>
+
+
+
+
+{% schema %}
+  {
+    "name": "Test ATC",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+      }
+    ]
+  }
+{% endschema %}

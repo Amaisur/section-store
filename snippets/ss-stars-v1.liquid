@@ -1,0 +1,69 @@
+{% case rating %}
+  {% when 5.0 %}
+    <div class="5-star">
+      {% for i in (1..5) %}
+        <img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-100.png?v=1732826080">
+      {% endfor %}
+      5.0
+    </div>
+  {% when 4.6, 4.7, 4.9, 4.9 %}
+    <div class="4-7-star">
+      {% for i in (1..4) %}
+        <img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-100.png?v=1732826080">
+      {% endfor %}
+      <img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-75.png?v=1732826080">
+      4.7
+    </div>
+  {% when 4.5 %}
+    <div class="4-5-star">
+      {% for i in (1..4) %}
+        <img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-100.png?v=1732826080">
+      {% endfor %}
+      <img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-50.png?v=1732826080">
+      4.5
+    </div>
+  {% when 4.1, 4.2, 4.3, 4.4 %}
+    <div class="4-3-star">
+      {% for i in (1..4) %}
+        <img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-100.png?v=1732826080">
+      {% endfor %}
+      <img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-25.png?v=1732826080">
+      4.3
+    </div>
+  {% when 4.0 %}
+    <div class="4-star">
+      {% for i in (1..4) %}
+        <img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-100.png?v=1732826080">
+      {% endfor %}
+      <img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-0.png?v=1732826080">
+      4.0
+    </div>
+  {% when 3.0 %}
+    <div class="3-star">
+      {% for i in (1..3) %}
+        <img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-100.png?v=1732826080">
+      {% endfor %}
+      {% for i in (1..2) %}
+        <img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-0.png?v=1732826080">
+      {% endfor %}
+      3.0
+    </div>
+  {% when 2.0 %}
+    <div class="2-star">
+      {% for i in (1..2) %}
+        <img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-100.png?v=1732826080">
+      {% endfor %}
+      {% for i in (1..3) %}
+        <img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-0.png?v=1732826080">
+      {% endfor %}
+      2.0
+    </div>
+  {% when 1.0 %}
+    <div class="1-star">
+      <img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-100.png?v=1732826080">
+      {% for i in (1..4) %}
+        <img src="https://cdn.shopify.com/s/files/1/0562/7763/1105/files/fill-0.png?v=1732826080">
+      {% endfor %}
+      1.0
+    </div>
+{% endcase %}

@@ -1,0 +1,278 @@
+<style>
+#shopify-section-{{ section.id }} *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#shopify-section-{{ section.id }} .wraper-d9-31{
+    max-width: 1200px;
+    padding: 0 40px;
+    margin: 80px auto 50px !important;
+    position: relative;
+}
+#shopify-section-{{ section.id }} .wraper-d9-31 .carousel-d9-31{
+    display: flex;
+    gap: 60px;
+    overflow-x: hidden; 
+    justify-content: flex-start;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
+#shopify-section-{{ section.id }} .carousel-d9-31.dragging-d9-31{
+    scroll-behavior: auto !important;
+    cursor: grabbing;
+}
+#shopify-section-{{ section.id }} .carousel-d9-31 .carousel-img-d9-31{
+    min-width: 288px;
+    max-width: 288px;
+}
+#shopify-section-{{ section.id }} .carousel-d9-31 .carousel-img-d9-31 img{
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+}
+#shopify-section-{{ section.id }} .slider-button-d9-31{
+    width: 45px;
+    height: 45px;
+    line-height: 31px;
+    text-align: center;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    font-size: 1.2rem;
+    transform: translateY(-50%);
+    user-select: none;
+    transition: all .3s;
+}
+#shopify-section-{{ section.id }} .next-d9-31{
+    right: 20px;
+}
+#shopify-section-{{ section.id }} .arrows-d9-31{
+    display: none;
+}
+#shopify-section-{{ section.id }} .next-d9-31:hover{
+    right: 10px;
+}
+#shopify-section-{{ section.id }} .prev-d9-31{
+    left: 20px;
+    display: none;
+}
+#shopify-section-{{ section.id }} .prev-d9-31:hover{
+    left: 10px;
+}
+#shopify-section-{{ section.id }} .line-ss-4{
+    width: 95%;
+    height: 0;
+    border-bottom: 1px dashed black;
+    color: transparent;
+}
+#shopify-section-{{ section.id }} .img-ss-4-col{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+#shopify-section-{{ section.id }} .text-ss-4-col{
+    margin-top: 20px !important;
+}
+#shopify-section-{{ section.id }} .text-ss-4-col h2{
+    margin-bottom: 10px;
+    font-size: {{ section.settings.heading-size }}px;
+    font-weight: {% if section.settings.font-weight == 'bold' %}
+        bold
+        {%  else %}
+        light
+    {% endif %};
+    color: {{ section.settings.heading-color }};
+}
+#shopify-section-{{ section.id }} .text-ss-4-col p{
+    font-size: {{ section.settings.para-size }}px;
+    color: {{ section.settings.para-color }};
+}
+</style>
+<div class="wraper-d9-31">
+    <div class="arrows-d9-31">
+    <div id="left-d9-31" class="slider-button-d9-31 prev-d9-31"> <div class="ss-padding-4">
+        <div class="icon-inner-ss-4">
+            &larr;
+            </div>  
+        </div></div>
+    <div id="right-d9-31" class="slider-button-d9-31 next-d9-31"> <div class="ss-padding-4">
+        <div class="icon-inner-ss-4"> &rarr;</div>
+        </div></div>
+    </div>
+    <div class="carousel-d9-31">
+    {% for block in section.blocks %}
+        <div class="carousel-img-d9-31" draggable="false">
+           <div class="main-ss-4">
+            <div class="col-ss-4 img-ss-4-col">
+                <div class="img-ss-4">
+                    <img src="{{ block.settings.img-ss-4 |  img_url: 'master' }}" alt="" width="48" height="48">
+                </div>
+                <div class="line-ss-4">.</div>
+            </div>
+            <div class="col-ss-4 text-ss-4-col">
+                <h2> {{ block.settings.heading }} </h2>
+                {{ block.settings.richtext }}
+            </div>
+           </div>
+        </div>
+    {% endfor %}
+    </div> 
+
+</div>
+
+
+<script>
+    (function() {
+        const carouselD9 = document.querySelector('.carousel-d9-31');
+        const fisrtSlide = carouselD9.querySelectorAll('.carousel-img-d9-31')[0];
+        const arrowIconsD9 = document.querySelectorAll('.slider-button-d9-31');
+        let isDragStart = false, prevPageX, prevScrollLeft, positionDiff;
+    
+        const autoSlide = () => {
+            positionDiff = Math.abs(positionDiff);
+            let secondSlideWidth = fisrtSlide.clientWidth + 14;
+            let valueDifference = secondSlideWidth - positionDiff;
+    
+            if (carouselD9.scrollLeft > prevScrollLeft) {
+                return carouselD9.scrollLeft += positionDiff > secondSlideWidth / 3 ? valueDifference : -positionDiff;
+            }
+            carouselD9.scrollRight += positionDiff > secondSlideWidth / 3 ? valueDifference : -positionDiff;
+        }
+    
+        const showHideIcons = () => {
+            let scrollWidth = carouselD9.scrollWidth - carouselD9.clientWidth;
+            arrowIconsD9[0].style.display = carouselD9.scrollLeft == 0 ? "none" : "block";
+            arrowIconsD9[1].style.display = carouselD9.scrollLeft >= scrollWidth ? "none" : "block";
+            carouselD9.scrollLeft === scrollWidth ? "none" : "block";
+        }
+    
+        arrowIconsD9.forEach(icon => {
+            icon.addEventListener('click', () => {
+                let noSlide = 1;
+                let fisrtSlideWidth = (fisrtSlide.clientWidth + 14) * noSlide;
+                carouselD9.scrollLeft += icon.id == 'left-d9-31' ? -fisrtSlideWidth : fisrtSlideWidth;
+                setTimeout(() => showHideIcons(), 60)
+            })
+        });
+    
+        const dragStart = (e) => {
+            isDragStart = true;
+            prevPageX = e.pageX || e.touches[0].pageX;
+            prevScrollLeft = carouselD9.scrollLeft;
+        }
+    
+        const dragging = (e) => {
+            if (!isDragStart) return;
+            e.preventDefault();
+            carouselD9.classList.add('dragging-d9-31');
+            positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
+            carouselD9.scrollLeft = prevScrollLeft - positionDiff;
+            setTimeout(() => showHideIcons(), 60)
+        }
+    
+        const dragStop = () => {
+            isDragStart = false;
+            carouselD9.classList.remove('dragging-d9-31');
+        }
+    
+        carouselD9.addEventListener('mousedown', dragStart);
+        carouselD9.addEventListener('touchstart', dragStart);
+        carouselD9.addEventListener('mouseup', dragStop);
+        carouselD9.addEventListener('mouseleave', dragStop);
+        carouselD9.addEventListener('touchend', dragStop);
+        carouselD9.addEventListener('mousemove', dragging);
+        carouselD9.addEventListener('touchmove', dragging);
+    })();
+    </script>
+
+
+{% schema %}
+{
+    "name": "Details Slider",
+    "settings": [
+        {
+            "type": "range",
+            "id": "heading-size",
+            "min": 10,
+            "max": 60,
+            "default": 35,
+            "step": 1,
+            "unit": "px",
+            "label": "Heading Font Size"
+        },
+        {
+            "type": "select",
+            "label": "Font Weight",
+            "id": "font-weight",
+            "default": "bold",
+            "options": [
+                {
+                    "value": "bold",
+                    "label":"Bold"
+                },
+                {
+                    "value": "light",
+                    "label":"Light"
+                }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "heading-color",
+            "label": "Heading Color",
+            "default": "#222"
+        },
+        {
+            "type": "range",
+            "id": "para-size",
+            "min": 10,
+            "max": 30,
+            "default": 18,
+            "step": 1,
+            "unit": "px",
+            "label": "Paragraph Font Size"
+        },
+        {
+            "type": "color",
+            "id": "para-color",
+            "label": "Paragraph Color",
+            "default": "#222"
+        }
+        
+        ],
+        "blocks": [
+            {
+                "name": "block",
+                "type": "block",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "img-ss-4",
+                        "label": "Your Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "heading",
+                        "label": "Heading"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "richtext",
+                        "label": "Description"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Details Slider"
+            }
+        ]
+}
+{% endschema %}

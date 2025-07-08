@@ -1,0 +1,105 @@
+{% comment %}
+Instagram-style feed section with blocks for cards. Each card has image and link settings, shows overlay with Instagram icon on hover, and is responsive (4 per row desktop, 2 per row mobile).
+{% endcomment %}
+
+<style>
+.cursor-insta-feed {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+@media (min-width: 750px) {
+  .cursor-insta-feed {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.cursor-insta-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 1/1;
+  background: #f7f7f7;
+  transition: box-shadow 0.2s;
+}
+.cursor-insta-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+.cursor-insta-card:hover img {
+  transform: scale(1.05);
+}
+.cursor-insta-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 2;
+}
+.cursor-insta-card:hover .cursor-insta-overlay {
+  opacity: 1;
+}
+.cursor-insta-icon {
+  width: 48px;
+  height: 48px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
+
+<div class="cursor-insta-feed section-{{ section.id }}-padding">
+  {% for block in section.blocks %}
+    <a href="{{ block.settings.link }}" class="cursor-insta-card" target="_blank" rel="noopener" {{ block.shopify_attributes }}>
+      {% if block.settings.image != blank %}
+        <img src="{{ block.settings.image | image_url: width: 600 }}" alt="Instagram image" loading="lazy" />
+      {% else %}
+        <div style="width:100%;height:100%;background:#eee;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:2rem;">No Image</div>
+      {% endif %}
+      <div class="cursor-insta-overlay">
+        {% render 'icon-instagram' %}
+      </div>
+    </a>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Cursor InstaFeed",
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Instagram Feed" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 36 },
+    { "type": "checkbox", "id": "show_heading", "label": "Show heading", "default": true },
+    { "type": "text", "id": "custom_text", "label": "Custom text", "default": "Follow us on Instagram!" },
+    { "type": "url", "id": "instagram_url", "label": "Instagram profile URL", "default": "https://instagram.com/" },
+    { "type": "select", "id": "heading_size", "label": "Heading size", "options": [ { "value": "h1", "label": "Large" }, { "value": "h2", "label": "Medium" }, { "value": "h3", "label": "Small" } ], "default": "h2" },
+    { "type": "header", "content": "Section style" },
+    { "type": "color", "id": "overlay_color", "label": "Overlay color", "default": "#000000" },
+    { "type": "color", "id": "icon_color", "label": "Instagram icon color", "default": "#ffffff" }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Instagram Card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "url", "id": "link", "label": "Link URL" },
+        { "type": "text", "id": "alt_text", "label": "Alt text", "default": "Instagram image" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    { "name": "Cursor InstaFeed", "blocks": [ { "type": "card" }, { "type": "card" }, { "type": "card" }, { "type": "card" } ] }
+  ]
+}
+{% endschema %}

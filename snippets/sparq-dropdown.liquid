@@ -1,0 +1,74 @@
+<div class="container sq-app sq-dropdown">
+  <sq-config
+    app-id="WLVNRA8WV9G32XEJZ3THSK8T"
+    collection-id="KVZJYR2ULPGS8R4VGUXDHLA9"
+    search-token="XYQ9F4HQTHFVJ6CP9XX5T5Z9"
+  ></sq-config>
+  <sq-search-listener parent="[name='q']"></sq-search-listener>
+  <sq-dropdown
+    class="search-product-card"
+    parent="[name='q']"
+    :height="500"
+    style="width: 400px;"
+    open-evt="keydown"
+    close-evt="click"
+    :init="() => window.sq.initSearch(store)"
+  >
+    <slot>
+      <div class="row">
+        <div class="column-xs-100 column column-67 pl0 column pb50">
+          <div class="sq-head">Products</div>
+          <sq-data-grid>
+            <template #tpl="item">
+              <div class="search-result">
+                <a :href="'/products/' + item.handle" class="search-bar__result-item">
+                  <div class="column column-20 float-left pl0 mb0 pr0">
+                    <div class="result-img">
+                      <sq-sy-image
+                        :lazy="item._sq.index >8"
+                        :size="100"
+                        :show-secondary-image="false"
+                        :item="item"
+                      ></sq-sy-image>
+                    </div>
+                    <div class="column column-80 float-left pl0 mb0">
+                      <div class="result-content">
+                        <h3
+                          class="sq-dropdown-title"
+                        >
+                          {% raw %} {{ item.title }} {% endraw %}
+                        </h3>
+                        <p
+                          class="sq-dropdown-vendor"
+                        >
+                          {% raw %} {{ item.vendor }} {% endraw %}
+                        </p>
+                        <div class="float-left">
+                          <div class="price-outer">
+                            <sq-sy-price
+                              :item="item"
+                              :decimal-count="2"
+                            ></sq-sy-price>
+                          </div>
+                        </div>
+                        <div class="float-right"></div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </template>
+            <template #empty>
+              <div class="sq-no-results">NO RESULTS FOUND</div>
+            </template>
+          </sq-data-grid>
+        </div>
+      </div>
+      <div class="row" v-if="store.totalHits > 0">
+        <div class="column pl6 pr6">
+          <a :href="'/search?q='+store.query" class="button btn-blue"> VIEW ALL {% raw %} {{ store.totalHits }} {% endraw %}PRODUCTS </a>
+        </div>
+      </div>
+    </slot>
+  </sq-dropdown>
+</div>

@@ -1,0 +1,174 @@
+{% comment %}
+<!-- Swiper.js CSS -->
+doc file:
+{% endcomment %}
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<style>
+  #shopify-section-{{ section.id }} *{
+    box-sizing: border-box;
+  }
+  .ss-swiper-container {
+    width: 100%;
+    max-width: calc(1200px - 20px);
+    margin: 0 auto;
+    padding: 20px 10px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .swiper-slide:hover {
+    transform: scale(1.05);
+  }
+
+  .swiper-slide img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .swiper-slide p {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    margin-bottom: 0;
+  }
+
+  .swiper-pagination-bullet {
+    background-color: #0070f3;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #ff6600;
+  }
+
+  .ss-swiper-button-next,
+  .ss-swiper-button-prev {
+    color: #0070f3;
+    font-size: 24px;
+  }
+.ss-swiper-pagination{
+  position: static !important;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.ss-swiper-buttons-d5{
+  display: flex;
+  width: calc(100% - 20px);
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 60;
+}
+.ss-swiper-buttons-d5 .btn-s{
+  display: flex;
+  position: static !important;
+  cursor: pointer;
+  background: rgba(0,0,0,0.4);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  align-items: center;
+  justify-content: center;
+}
+  .ss-swiper-buttons-d5 .btn-s span{
+    margin-top: -4px;
+  }
+  @media (min-width: 768px) {
+    .swiper-container {
+      /* padding: 40px 0; */
+    }
+  }
+</style>
+
+
+<div class="ss-swiper-container">
+  <div class="swiper-wrapper">
+    {% assign collection = section.settings.collection %}
+    {% for product in collection.products %}
+      <div class="swiper-slide">
+     {% render 'ss-product-card-v-1-0', product: product %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="ss-swiper-pagination"></div>
+  <div class="ss-swiper-buttons-d5">
+  <div class="ss-swiper-button-next btn-s">
+    <span>
+     &#8594;
+      </span>
+  </div>
+  <div class="ss-swiper-button-prev btn-s">
+    <span>
+    &#8592;
+    </span>
+  </div>
+  </div>
+</div>
+
+<script>
+  var swiper = new Swiper('.ss-swiper-container', {
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 20,
+    pagination: {
+      el: '.ss-swiper-pagination',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '.ss-swiper-button-next',
+      prevEl: '.ss-swiper-button-prev'
+    }
+  });
+</script>
+
+
+{% schema %}
+  {
+    "name": "SS Carousel",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "SS Carousel"
+      }
+    ]
+  }
+{% endschema %}

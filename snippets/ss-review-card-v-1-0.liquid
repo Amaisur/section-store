@@ -1,0 +1,77 @@
+<div class="r-slide-rcv-1-0">
+  {% render 'ss-media-snippet', img: review_image %}
+  <div class="main-custom-wrapper-rcv-1-0">
+    <div class="card-header-rcv-1-0">
+      <div class="card-header-col-rcv-1-0">
+        {% render 'ss-rating-star-v2',
+          no_rating: no_rating,
+          text: text,
+          rating: rating,
+          star_size: star_size,
+          full_star: full_star,
+          empty_star: empty_star,
+          gap: gap
+        %}
+      </div>
+      {% if verified %}
+        <div class="card-header-col-rcv-1-0 verified-col-rcv-1-0">
+          {% if verified_image != blank %}
+            {{ verified_image | image_url: width: '150px' | image_tag }}
+          {% elsif verified_svg != blank %}
+            {{ verified_svg }}
+          {% else %}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              version="1.1"
+              width="512"
+              height="512"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background:new 0 0 512 512"
+              xml:space="preserve"
+              class=""
+            >
+              <g><path d="m12 1c-6.08 0-11 4.92-11 11s4.92 11 11 11 11-4.92 11-11-4.92-11-11-11zm5.72 8.57-6 6.25c-.19.2-.46.3-.72.3-.22 0-.45-.07-.63-.22l-4-3.25c-.43-.35-.49-.98-.15-1.41.35-.42.98-.49 1.41-.14l3.29 2.67 5.36-5.59c.38-.39 1.02-.4 1.41-.03.4.38.41 1.02.03 1.42z" fill="#6c6c85" data-original="#2c96ff" class=""/></g>
+            </svg>
+          {% endif %}
+          <span>{{ verified_text | default: 'Certified' }}</span>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="card-body-rcv-1-0">
+      <p class="heading-rcv-1-0">{{ heading }}</p>
+      <p class="content-rcv-1-0">{{ content }}</p>
+      <div class="ss-rbody-reviewer-info">
+        {% if reviewer_image != blank %}
+          <span class="ss-reviewer-image">
+            {{ reviewer_image | image_url: width: '250px' | image_tag }}
+          </span>
+        {% endif %}
+        <span class="light-text-rcv-1-0">{{ name }}</span>
+        <span class="light-text-rcv-1-0">{{ date }}</span>
+      </div>
+    </div>
+  </div>
+  {% if product != blank %}
+    <div class="ss-rc-product">
+      <a href="{{ product.url }}">
+        <div class="ss-rc-product-image">
+          {% render 'ss-media-snippet', img: product.featured_image, object_fit: 'cover' %}
+        </div>
+        <div class="ss-rc-product-info">
+          <p class="ss-rc-product-title heading-rcv-1-0">{{ product.title }}</p>
+          <div class="ss-price">
+            <span class="light-text-rcv-1-0">{{ product.price | money }}</span>
+            {% if product.compare_at_price > product.price %}
+            <span class="light-text-rcv-1-0 compare_price">{{ product.compare_at_price | money }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </a>
+    </div>
+  {% endif %}
+</div>

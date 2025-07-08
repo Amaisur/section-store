@@ -1,0 +1,228 @@
+{{ 'ss-media-snippet.css' | asset_url | stylesheet_tag }}
+{{ 'ss-rating-star-v2.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'ss-media-snippet.js' | asset_url }}" defer="defer"></script>
+<style>
+  .general-media-d5, .general-media-d5 img{
+      aspect-ratio: 1/1;
+    }
+  .general-media-d5{
+    border: 1px solid #000;
+    border-radius: 10px;
+  }
+  .main-parent-d5{
+    max-width: calc(1200px + 100px);
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 0 50px;
+    margin: 100px auto;
+  }
+  .main-parent-d5 .col-d5{
+    width: 50%;
+  }
+  .right-side-small-image{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+  .media-reivews-d5{
+    position: absolute;
+    top: 1px;
+    right: 2px;
+    background: rgb(255 255 255);
+    padding: 10px 20px;
+    border-radius: 9px;
+  }
+  .left-side-large-image{
+    position: relative;
+  }
+  .media-reivews-d5 .ss-rating-main{
+    flex-direction: column;
+  }
+  @media (max-width: 768px){
+    .main-parent-d5{
+      padding: 0 25px;
+      margin: 50px 0;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .main-parent-d5 .col-d5{
+    width: 100%;
+   }
+    .right-side-small-image{
+      gap: 12px;
+    }
+  }
+</style>
+<div class="main-parent-d5">
+  <div class="left-side-large-image col-d5">
+    {% render 'ss-media-snippet', img: section.settings.img %}
+    {% for block in section.blocks %}
+      {% if block.type == 'reviews' %}
+        <div class="media-reivews-d5">
+        {% render 'ss-rating-star-v2',
+          no_rating: block.settings.no_rating,
+          text: block.settings.text,
+          rating: block.settings.rating,
+          star_size: block.settings.star_size,
+          full_star: block.settings.full_star,
+          empty_star: block.settings.empty_star,
+          gap: block.settings.gap
+        %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="right-side-small-image col-d5">
+    {% for block in section.blocks %}
+      {%
+        render 'ss-media-snippet',
+        img: block.settings.img,
+        video: block.settings.video,
+        poster_image: block.settings.poster,
+        controls: block.settings.controls;
+        loop: block.settings.loop,
+        autoplay: block.settings.autoplay,
+        muted: block.settings.muted,
+        play_pause: block.settings.play_pause
+      %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Section name",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "video",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Poster Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "play_pause",
+          "label": "Show Play Pause button",
+          "default": false
+        },
+          {
+    "type": "checkbox",
+    "id": "controls",
+    "label": "Enable Controls",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "autoplay",
+    "label": "Enable Autoplay",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "muted",
+    "label": "Mute Video",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "loop",
+    "label": "Loop Video",
+    "default": true
+  }
+      ]
+    },
+    {
+      "type": "reviews",
+      "name": "Reviews",
+       "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Rating Text",
+      "info": "Text to display alongside the rating stars."
+    },
+    {
+      "type": "range",
+      "id": "rating",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "default": 0,
+      "info": "Set the rating value between 0 and 5."
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "label": "Star Size",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "default": 25,
+      "info": "Choose the size of the stars (in pixels)."
+    },
+    {
+      "type": "image_picker",
+      "id": "full_star",
+      "label": "Full Star Image",
+      "info": "Upload an image to represent a full star."
+    },
+    {
+      "type": "image_picker",
+      "id": "empty_star",
+      "label": "Empty Star Image",
+      "info": "Upload an image to represent an empty star."
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Star Gap",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 8,
+      "info": "Set the gap between the stars (in pixels)."
+    },
+     {
+      "type": "text",
+      "id": "no_rating",
+      "label": "No Rating Text",
+      "info": "Text to display when there is no rating."
+    }
+  ],
+    }
+  ],
+  "presets": [
+    {
+      "name": "Media Snippets"
+    }
+  ]
+}
+{% endschema %}

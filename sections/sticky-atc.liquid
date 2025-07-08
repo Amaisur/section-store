@@ -1,0 +1,376 @@
+{% if section.settings.enable_section and request.page_type == 'product' and product.available %}
+    {% liquid 
+        assign current_variant = product.selected_or_first_available_variant
+        assign product_form_id = 'product-form-' | append: section.id
+        assign image = current_variant.image | default: product.featured_image 
+        assign img_size = section.settings.img_width | append: 'x' | append: section.settings.img_height
+    %}
+
+<style>
+  #md-sticky-atc {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    padding-top: {{ section.settings.pt }}rem;
+    padding-bottom: {{ section.settings.pb }}rem;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all .15s ease-out;
+    border-top: 0.1rem solid rgba(var(--color-foreground),.08);
+  }
+  #md-sticky-atc.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #md-sticky-atc .page-width-inner,
+  #md-sticky-atc .quantity-input-wrapper {
+    height: 85px;
+  }
+  @media (min-width: 990px) {
+    #md-sticky-atc .page-width-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+  }
+  #md-sticky-atc .product-content {
+    display: flex;
+    align-items: center;
+    padding-bottom: .5rem;
+  }
+  @media (min-width: 990px) {
+    #md-sticky-atc .product-content {
+      padding-bottom: 0;
+      padding-right: 2rem;
+    }
+  }
+  #md-sticky-atc .product-content .product__title {
+    margin: 0 0 .5rem;
+  }
+  #md-sticky-atc .product-content .price {
+    display: flex;
+    align-items: center;
+  }
+  #md-sticky-atc .product-content img {
+    margin-right: .75rem;
+  }
+  #md-sticky-atc .product-form {
+    flex-shrink: 0;
+  }
+  #md-sticky-atc .product-form .select {
+    flex-shrink: 0;
+    width: auto;
+    margin-right: .75rem;
+    flex-grow: 1;
+    max-width: 50%;
+    cursor: pointer;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  #md-sticky-atc .product-form .select__select {
+    cursor: pointer;
+  }
+  @media (min-width: 990px) {
+    #md-sticky-atc .product-form .select {
+      flex-grow: 0;
+    }
+  }
+  #md-sticky-atc .product-form .select__select {
+    padding: 0.9rem;
+  }
+  #md-sticky-atc .product-form .quantity-input-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  #md-sticky-atc .product-form .quantity {
+    display: none;
+    flex-shrink: 0;
+    margin-right: .75rem;
+  }
+  #md-sticky-atc .ProductMeta__Title {
+    font-size: 18px;
+  }
+  #md-sticky-atc .product-content img {
+    width: 80px;
+    height: 80px;
+  }
+  #md-sticky-atc .product-form button[name="add"] {
+    font-size: 1rem;
+    min-height: calc(3.5rem + var(--buttons-border-width) * 2);
+  }
+  #md-sticky-atc .product-content .product__title, #md-sticky-atc .product-content .price, #md-sticky-atc .price-item {
+    font-size: 18px !important;
+  }
+  .color-background-1, .color-background-2, .color-inverse, .color-accent-1, .color-accent-2 {
+    color: rgba(var(--color-foreground),.75);
+    background-color: #fff;
+  }
+  @media (min-width: 990px) {
+    #md-sticky-atc .product-form .quantity {
+      display: flex;
+    }
+  }
+  #md-sticky-atc .product-form button[name="add"] {
+    flex-shrink: 0;
+    flex-grow: 1;
+    margin: 0;
+    border: 1px solid;
+  }
+  @media (min-width: 990px) {
+    #md-sticky-atc .product-form button[name="add"] {
+      flex-grow: 0;
+    }
+  }
+  @media (max-width: 800px) {
+    #eg-sticky-atc {
+      display: block;
+    }
+    #md-sticky-atc .ProductMeta__Title {
+      font-size: 13px;
+    }
+    #md-sticky-atc .page-width-inner, #md-sticky-atc .quantity-input-wrapper {
+      height: unset;
+    }
+    #md-sticky-atc .product-form .select {
+      margin-right: 5;
+    }
+    #md-sticky-atc .product-form .select__select {
+      width: 99%;
+    }
+    #md-sticky-atc .product-form button[name="add"] {
+      width: min-content;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+</style>
+
+
+    <div id="md-sticky-atc" class="color-{{ section.settings.color_scheme }}" aria-hidden="true" data-offset="{{ section.settings.offset }}">
+        <div class="page-width">
+            <div class="page-width-inner">
+                <div class="product-content">
+                    {% if section.settings.show_img %}
+                        <img
+                            src="{{ image | img_url: img_size, crop: 'center' }}"
+                            class=""
+                            width="{{ section.settings.img_width }}"
+                            height="{{ section.settings.img_height }}"
+                            loading="lazy">
+                    {% endif %}
+                    <div class="">
+                         
+                        <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                          <span class="h6">{{ product.title }}</span>
+                          {%- render 'price-list', variant: product.selected_or_first_available_variant, form_id: form_id, hide_unit_price: true, context: 'card' -%}
+                        </div>
+                    </div>
+                </div>
+                <product-form class="product-form">
+                    <div class="product-form__error-message-wrapper" role="alert" hidden>
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
+                            <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+                            <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+                            <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+                            <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+                        </svg>
+                        <span class="product-form__error-message"></span>
+                    </div>
+                    {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate' -%}
+                        <div class="quantity-input-wrapper">
+                            <div class="select" style="{% if product.has_only_default_variant %}display: none;{% endif %}">
+                                <select class="select__select" name="id" aria-label="Select variant">
+                                    {% for variant in product.variants %}
+                                        {% assign variant_image = variant.image | default: product.featured_image %}
+                                        <option 
+                                            value="{{ variant.id }}"
+                                            data-img="{{ variant_image | img_url: img_size }}"
+                                            {% if current_variant.id == variant.id %}selected{% endif %}>
+                                            {{ variant.title }} - {{ variant.price | money }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                               
+                            </div>
+                            {% if section.settings.show_quantity_input %}
+                 
+ 
+                            {% endif %}
+                            <button type="submit" name="add" class="Button Button--primary ProductForm_AddToCart product-form_submit button button--{{ section.settings.btn_style }}">
+                               <span>Add to cart</span>
+
+<!--                                 <div class="loading-overlay__spinner hidden">
+                                    <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30" style="stroke: rgb(var(--color-background));"></circle>
+                                    </svg>
+                                </div> -->
+                            </button>
+                        </div>
+                    {% endform %}
+                </product-form>
+            </div>
+        </div>
+    </div>
+
+
+  
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const stickyATC = document.querySelector('#md-sticky-atc')
+            const img = stickyATC.querySelector('.product-content img')
+            const btn = stickyATC.querySelector('[name="add"]')
+            const btnSpinner = btn.querySelector('.loading-overlay__spinner')
+            const selectField = stickyATC.querySelector('select[name="id"]')
+            const threshold = document.querySelector('button[name="add"]').getBoundingClientRect().bottom + Number(stickyATC.dataset.offset)
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > threshold) {
+                    stickyATC.classList.add('show')
+                    document.documentElement.style.paddingBottom = `${stickyATC.clientHeight}px`
+                    document.documentElement.style.height = 'auto'
+                } else {
+                    stickyATC.classList.remove('show')
+                    document.documentElement.style.paddingBottom = '0'
+                }
+            })
+
+            if (selectField) {
+                selectField.addEventListener('change', () => {
+                    img.setAttribute('src', selectField.options[selectField.selectedIndex].dataset.img)
+                })
+            }
+
+            document.querySelector('.product-form [name="id"]')?.addEventListener('change', (e) => {
+                const value = Number(e.target.value)
+
+                if (value) {
+                    selectField.value = value
+                }
+            })
+            
+        })
+    </script>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Sticky ATC",
+    "settings": [
+        {
+            "type": "header",
+            "content": "General"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_section",
+            "label": "Enable \"Sticky ATC\"",
+            "info": "Quickly enable or disable this feature",
+            "default": true
+        },
+        {
+            "type": "select",
+            "id": "color_scheme",
+            "options": [
+                { "value": "accent-1", "label": "Accent 1" },
+                { "value": "accent-2", "label": "Accent 2" },
+                { "value": "background-1", "label": "Background 1" },
+                { "value": "background-2", "label": "Background 2" },
+                { "value": "inverse",  "label": "Inverse" }
+            ],
+            "default": "background-1",
+            "label": "Color scheme"
+        },
+        {
+            "type": "select",
+            "id": "title_size",
+            "label": "Title Size",
+            "default": "h4",
+            "options": [
+                {  "value": "h1", "label": "H1" },
+                {  "value": "h2", "label": "H2" },
+                {  "value": "h3", "label": "H3" },
+                {  "value": "h4", "label": "H4" },
+                {  "value": "h5", "label": "H5" },
+                {  "value": "h6", "label": "H6" }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "id": "show_img",
+            "default": true,
+            "label": "Show image"
+        },
+        {
+            "type": "text",
+            "id": "img_width",
+            "default": "80",
+            "label": "Image width (px)"
+        },
+        {
+            "type": "text",
+            "id": "img_height",
+            "default": "80",
+            "label": "Image height (px)"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_quantity_input",
+            "default": true,
+            "label": "Show quantity field"
+        },
+        {
+            "type": "select",
+            "id": "btn_style",
+            "options": [
+                { "value": "primary", "label": "Primary" },
+                { "value": "secondary", "label": "Secondary" }
+            ],
+            "default": "primary",
+            "label": "'Add to cart' button style"
+        },
+        {
+            "type": "header",
+            "content": "Advanced"
+        },
+        {
+            "type": "range",
+            "id": "offset",
+            "label": "Offset",
+            "min": 0,
+            "max": 500,
+            "step": 10,
+            "default": 0,
+            "info": "Adjust the offset value when showing the Sticky ATC section related to the main product form."
+        },
+        {
+            "type": "header",
+            "content": "Spacing",
+            "info": "Based on 'rem' values [Learn more](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units)"
+        },
+        {
+            "type": "range",
+            "id": "pt",
+            "label": "Padding top",
+            "min": 0,
+            "max": 5,
+            "step": 0.5,
+            "step": 0.5,
+            "default": 0.5
+        },
+        {
+            "type": "range",
+            "id": "pb",
+            "label": "Padding bottom",
+            "min": 0,
+            "max": 5,
+            "step": 0.5,
+            "default": 0.5
+        }
+    ]
+}
+{% endschema %}

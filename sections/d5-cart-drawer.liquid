@@ -1,0 +1,923 @@
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    h1,
+    h2 {
+        font-size: 17px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    h5 {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    h6,
+    p {
+        font-size: 14px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #000;
+    }
+
+    p {
+        color: #111;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .cart-drawer-d5 {
+        position: relative;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .cd-inner-d5 {
+        width: 90%;
+        max-width: 450px;
+        background: #fff;
+        box-shadow: 0 0 8px 1px #7f7b7b75;
+        position: fixed;
+        height: 100vh;
+        top: 0;
+        right: -500px;
+        z-index: 999999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .4s cubic-bezier(0.23, 1, 0.320, 1);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cd-overlay-d5 {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, .4);
+        z-index: 999998;
+        display: none;
+    }
+
+    .cd-drawer__open .cd-overlay-d5 {
+        display: block !important;
+    }
+
+    .cd-drawer__open .cd-inner-d5 {
+        opacity: 1;
+        visibility: visible;
+        right: 0;
+    }
+
+    .cd-header-d5 {
+        width: 100%;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #00000065;
+    }
+
+    .cd-close-d5 {
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+    }
+
+    .cd-item-d5 {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        position: relative;
+        justify-content: center;
+        padding: 15px 16px;
+        border-bottom: 1px solid rgba(0, 0, 0, .1);
+    }
+
+    .cd-item-img-d5 {
+        width: 100%;
+        max-width: 130px;
+        aspect-ratio: var(--aspect-ratio);
+    }
+
+    .cd-item-img-d5 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background: #eee;
+    }
+
+    .cd-content-d5 {
+        display: flex;
+        flex-direction: column;
+        padding: 16px 0;
+        overflow-y: auto;
+        height: 100%;
+        position: relative;
+    }
+
+    .cd-otpions-d5 {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .cd-title-price-d5 h4 {
+        font-size: 16px;
+    }
+
+    .cd-quantity-d5 {
+        width: 105px;
+        height: 30px;
+        display: flex;
+        border: 1px solid #ddd;
+    }
+
+    .cd-qty-input-d5:focus-visible {
+        border: none;
+    }
+
+    .cd-qty-input-d5 {
+        width: 45px;
+        text-align: center;
+        border: none;
+        border-right: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+        border-radius: 0;
+        pointer-events: none;
+    }
+
+    .btn-text-d5 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 6px;
+    }
+
+    .cd-qty-btn-d5 {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        cursor: pointer;
+        user-select: none;
+        transition: all .2s;
+    }
+
+    .cd-qty-btn-d5:hover {
+        background: #0000000d;
+    }
+
+    .is-loader-d5 {
+        position: relative;
+    }
+
+    .is-loader-d5 .btn-loader-d5,
+    .item-loader-d5 {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border: 2px solid #000;
+        border-top: 3px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        transform: translate(-50%, -50%);
+        display: none;
+        opacity: 0;
+        z-index: 10;
+    }
+
+    .item-light-overlay-d5 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(255, 255, 255, .5);
+        z-index: 7;
+        opacity: 0;
+    }
+
+    .item-loader-d5 {
+        width: 30px;
+        height: 30px;
+        border-top-width: 4px;
+    }
+
+    .atc-loader-d5 {
+        position: relative;
+        min-height: 80px;
+        max-height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        background: #eee;
+        display: none;
+    }
+
+    .is-loader-d5.loading .btn-loader-d5,
+    .item--loading .item-loader-d5,
+    .item--loading .item-light-overlay-d5,
+    .atc-loader-d5 .item-loader-d5 {
+        display: block !important;
+        opacity: 1;
+    }
+
+    .atc-loading-d5 .atc-loader-d5 {
+        display: flex !important;
+    }
+
+    .is-loader-d5.loading {
+        pointer-events: none;
+    }
+
+    .is-loader-d5.loading .btn-text-d5 {
+        opacity: 0;
+    }
+
+    .product-remove-loading {
+        display: none !important;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .cd-title-price-d5 h4 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 16px;
+    }
+
+    .cd-title-price-d5 h4 a {
+        text-decoration: none;
+        color: #000;
+        display: block;
+    }
+
+    /* Skeleton Styles */
+    /* .cd-item-skeleton, .real-item-d5.hidden{
+          display: none !important;
+      }
+      .cd-item-skeleton.visible {
+          display: flex;
+          padding: 15px;
+          background-color: #f9f9f9;
+          border-radius: 8px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          margin-bottom: 15px;
+      }
+
+      .cd-item-skeleton * {
+          border-color: #f9f9f9;
+      }
+
+      .skeleton {
+          background-color: #e0e0e0;
+          animation: loading 1.5s infinite linear;
+      }
+
+      .skeleton-img {
+          background-color: #ccc;
+          height: 150px;
+          width: 150px;
+          border-radius: 8px;
+      }
+
+      .skeleton-text {
+          background-color: #ccc;
+          height: 10px;
+          width: 100%;
+          margin-bottom: 10px;
+          border-radius: 4px;
+      }
+
+      .skeleton-title {
+          width: 60%;
+      }
+
+      .skeleton-price {
+          width: 40%;
+      }
+
+      .skeleton-option {
+          width: 80%;
+      }
+
+      .skeleton-qty {
+          width: 20%;
+      }
+
+      .skeleton-qty-input {
+          width: 50px;
+          height: 30px;
+          margin: 0;
+          border-radius: 5px;
+          background-color: #ddd;
+      }
+
+
+      @keyframes loading {
+          0% {
+              background-position: -200% 0;
+          }
+
+          100% {
+              background-position: 200% 0;
+          }
+      }
+
+      .skeleton {
+          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+          background-size: 200% 100%;
+      }
+
+      .skeleton.skeleton-text {
+          margin-bottom: 8px;
+          height: 12px;
+      } */
+    .cd-remove-icon-d5 {
+        flex-grow: 0;
+        background: none !important;
+    }
+
+    .cd-remove-icon-d5:hover svg path {
+        stroke: red;
+    }
+
+    .cd-item-info-d5 {
+        flex: 1;
+    }
+
+    .cd-footer-d5 {
+        padding: 23px 16px;
+        border-top: 1px solid rgba(0, 0, 0, .1);
+        background: #f6f6f7;
+        position: sticky;
+        bottom: 0;
+    }
+
+    .cd-footer-d5 a {
+        height: 50px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #277b8e;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .cd-free-shipping-bar-d5 {
+        position: relative;
+        background-color: #f0f0f0;
+        height: 10px;
+        width: 100%;
+        margin: 20px 0;
+        border-radius: 8px;
+    }
+
+    .cd-free-shipping-bar__inner-d5 {
+        height: 100%;
+        background-color: #27ae60;
+        transition: width 0.5s ease-out;
+        max-width: 100%;
+        display: block !important;
+        border-radius: 8px;
+        width: 0;
+    }
+
+    .cd-free-shipping-bar__content-d5 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .cd-free-shipping-bar__text-d5 {
+        font-size: 14px;
+        color: #333;
+        text-align: center;
+        width: 100%;
+    } 
+
+    .cd-free-shipping-bar__icon-d5 {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid #27ae60;
+        display: flex;
+        background: #fff;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: -17px;
+        right: 0;
+    }
+    .cd-free-shipping-bar__icon-d5.rewards-true{
+        background-color: #27ae60;
+    }
+    .cd-free-shipping-bar__icon-d5 .cd-icon-tag-d5 {
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        width: 25px; 
+        height: 25px;
+        background-size: 17px !important;
+        background-color: #fff;
+        border-radius: 50%;
+    }
+
+    .cd-rewards-bar-d5{ 
+        padding: 0 16px 20px;
+    }
+    .cd-icon-tooltip-d5{
+        position: absolute; 
+        bottom: -18px;
+        font-size: 8px;
+        text-wrap: nowrap;
+        letter-spacing: 0.2px;
+    }
+    .cd-totalprice-d5{
+      display: block;
+      font-size: 8px;
+      text-wrap: nowrap;
+      letter-spacing: 0.2px;
+      margin-bottom: -3px;
+    }
+    .cd-heading-d5 p{
+        font-size: 20px;
+        font-weight: 600; 
+    }
+    .cd-empty-announcement-d5{
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+      margin: 0px 0 18px;
+      text-align: center;
+    }
+    .cd-empty-cart-d5{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 20px 16px;
+
+    }
+    .cd-empty-cart-text-d5{
+      font-size: 22px;
+      font-weight: 300;
+      color: #111;
+    }
+    .cd-prices-d5{
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 30px;
+    }
+    .total-price-d5-cd{
+      font-weight: 600;
+      color: #000;
+    }
+</style>
+
+<div class="cart-drawer-d5">
+  <div class="cd-overlay-d5" close-cart-d5></div>
+  <div class="cd-inner-d5">
+    <div class="cd-header-d5">
+      <div class="cd-heading-d5" render-d5>
+        <p>
+          Your Cart&nbsp;•&nbsp;<span class="cd-count-d5"> {{ cart.item_count }}</span>
+        </p>
+      </div>
+      <div class="cd-close-d5" close-cart-d5>
+        <svg
+          xmlns="http://www.w3.org/2000/svg" 
+          aria-hidden="true"
+          focusable="false"
+          class="icon icon-close" 
+          fill="none"
+          viewBox="0 0 18 17"
+        >
+          <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="currentColor">
+          </path>
+        </svg>
+      </div>
+    </div>
+    <div class="cd-content-d5">
+     {% comment %}<div class="cd-rewards-bar-d5" render-d5>
+  <div class="cd-free-shipping-bar__content-d5">
+    <p class="cd-free-shipping-bar__text-d5">
+      {% liquid
+        assign total = cart.total_price
+        if section.settings.reward_count == "1"
+        assign t_1 = section.settings.reward_threshold_1 | times: 100
+        elsif section.settings.reward_count == "2"
+        assign t_1 = section.settings.reward_threshold_1 | times: 100
+        assign t_2 = section.settings.reward_threshold_2 | times: 100
+        elsif section.settings.reward_count == "3"
+        assign t_1 = section.settings.reward_threshold_1 | times: 100
+        assign t_2 = section.settings.reward_threshold_2 | times: 100
+        assign t_3 = section.settings.reward_threshold_3 | times: 100
+        endif
+      %}
+
+      {% if total > t_3 %} 
+        All <strong>Rewards</strong> Unlocked!
+      {% elsif total > t_2 and total < t_3 %}
+        You Have Unlcoked {{ section.settings.reward_label_1 }} and {% if total > t_2 %}You are <strong>{{ t_3 | minus: total | money }}</strong> from {% endif %} {{ section.settings.reward_label_2 }}
+        {% elsif total > t_1 and total < t_2 %}
+        You are <strong>{{ t_2 | minus: total | money }}</strong> from {{ section.settings.reward_label_1 }}
+       {% endif %}
+    </p>
+  </div>
+  <div class="cd-free-shipping-bar-d5">
+    <div class="cd-free-shipping-bar__inner-d5"></div>
+      {%  liquid 
+        if section.settings.reward_count == "1"
+        assign left_1 = 100
+        elsif section.settings.reward_count == "2"
+        assign left_1 = 50
+        elsif section.settings.reward_count == "3"
+        assign left_1 = 33 
+        endif
+
+        if section.settings.reward_count == "2"
+        assign left_2 = 100
+        elsif section.settings.reward_count == "3"
+        assign left_2 = 66
+        endif
+
+        if section.settings.reward_count == "3"
+        assign left_3 = 100
+        endif
+      %}
+      {% if section.settings.reward_threshold_1 != blank %}
+      <div class="cd-free-shipping-bar__icon-d5" style="left: calc({{ left_1 }}% - 40px);">
+          <span class="cd-icon-tag-d5" style="background-image: url('{{ section.settings.reward_icon_1 |  image_url: width: 50 }}')"></span>
+          <span class="cd-icon-tooltip-d5">
+            {{ section.settings.reward_label_1 }}
+          </span>
+      </div>
+      {% endif %}
+      {% if section.settings.reward_threshold_2 != blank %}
+      <div class="cd-free-shipping-bar__icon-d5" style="left: calc({{ left_2 }}% - 40px);">
+          <span class="cd-icon-tag-d5" style="background-image: url('{{ section.settings.reward_icon_2 |  image_url: width: 50 }}')"></span>
+          <span class="cd-icon-tooltip-d5">
+            {{ section.settings.reward_label_2 }}
+          </span>
+      </div>
+      {% endif %}
+      {% if section.settings.reward_threshold_3 != blank %}
+      <div class="cd-free-shipping-bar__icon-d5" style="left: calc({{ left_3 }}% - 40px);">
+          <span class="cd-icon-tag-d5" style="background-image: url('{{ section.settings.reward_icon_3 |  image_url: width: 50 }}')"></span>
+          <span class="cd-icon-tooltip-d5">
+            {{ section.settings.reward_label_3 }}
+          </span>
+      </div>
+      {% endif %}
+  </div>
+</div>{% endcomment %}
+<div id="cd-rewards-bar-d5"></div>
+      <div class="atc-loader-d5">
+        <span class="item-loader-d5"></span>
+      </div>
+      <div class="cd-cart-items-d5" render-d5 data-width="{{ percentage | round: 2 }}%" shipping-bar-d5>
+        {% if cart.item_count > 0 %}
+      {% for item in cart.items %}
+        <div
+          class="cd-item-d5 real-item-d5"
+          data-variant-id="{{ item.variant.id }}"
+          data-line-item-key="{{ item.key }}"
+        >
+          <span class="item-loader-d5"></span>
+          <div class="item-light-overlay-d5"></div>
+          <div class="cd-item-img-d5" style="--aspect-ratio: {{ item.image.aspect_ratio }}">
+            <a href="{{ item.url }}">
+              <img
+                src="{{ item.image |  image_url: width: 400 }}"
+                width="130"
+                height="{{ item.image.height }}"
+                alt="{{ item.title }}"
+                loading="lazy"
+              >
+            </a>
+          </div>
+          <div class="cd-item-info-d5">
+            <div class="cd-title-price-d5">
+              <h4>
+                <a href="{{ item.product.url }}">{{ item.product.title }}</a>
+                <div class="cd-remove-d5 cd-qty-btn-d5 cd-remove-icon-d5">
+                  {% render 'd5-delete-icon' %}
+                </div>
+              </h4>
+              <div class="cd-prices-d5">
+              <p>
+                <span class="cd-regular-price">{{ item.original_price | money }}</span>
+                <span class="cd-compare-price">{{ item.product.final_price | money }}</span>
+              </p>
+              {% if item.quantity > 1 %}
+              <p class="cd-total-price-d5">
+                <span class="cd-totalprice-d5">Total Price</span>
+                <span class="total-price-d5-cd">{{ item.original_price |  times: item.quantity |  money }}</span>
+              </p>
+              {% endif %}
+              </div>
+            </div>
+            {%- if item.product.has_only_default_variant == false
+              or item.properties.size != 0
+              or item.selling_plan_allocation != null
+            -%}
+              <div class="cd-item-variants-d5">
+                {% if item.product.has_only_default_variant == false %}
+                  {% for option in item.options_with_values %}
+                    <div class="cd-otpions-d5">
+                      <h5>{{ option.name }}:</h5>
+                      <p>{{ option.value }}</p>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              </div>
+            {% endif %}
+            <div class="cd-quantity-d5">
+              {% assign qty = item.variant.inventory_management %}
+              <div class="cd-qty-btn-d5 is-loader-d5 {% if item.quantity == 1 %}cd-remove-d5{% else %}cd-minus-d5{% endif %}">
+                <span class="btn-text-d5">
+                  <svg viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5 10c0-.414.336-.75.75-.75h8.5c.414 0 .75.336.75.75s-.336.75-.75.75h-8.5c-.414 0-.75-.336-.75-.75Z"></path>
+                  </svg>
+                </span>
+                <span class="btn-loader-d5"></span>
+              </div>
+              <input
+                type="text"
+                value="{{ item.quantity }}"
+                data-max="{% if qty %}{%if item.variant.inventory_quantity > 1 %}{{ item.variant.inventory_quantity }}{% else %}0{% endif %}{% else %}999{% endif %}"
+                readonly
+                class="cd-qty-input-d5"
+              >
+              <div class="cd-qty-btn-d5 cd-plus-d5 is-loader-d5">
+                <span class="btn-text-d5">
+                  <svg viewBox="0 0 20 20">
+                    <path d="M10.75 5.75c0-.414-.336-.75-.75-.75s-.75.336-.75.75v3.5h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5Z"></path>
+                  </svg>
+                </span>
+                <span class="btn-loader-d5"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      {% else %}
+        <div class="cd-empty-cart-d5">
+          <p class="cd-empty-cart-text-d5">Your cart is empty</p>
+        </div>   
+    {% endif %}
+      </div>
+    </div>
+    <div class="cd-footer-d5" render-d5>
+      {% if cart.item_count > 0 %}
+      <a href="/checkout" class="cd-checkout-btn-d5">
+        Checkout&nbsp;&nbsp;•&nbsp;&nbsp;<span class="cd-footer-total-price">
+          {{- cart.original_total_price | money -}}
+        </span>
+      </a>
+      {%  else %}
+      <div class="cd-empty-footer-d5">
+        <p class="cd-empty-announcement-d5">Add your favourite items to your cart.</p>
+        
+        <a href="{{ section.settings.empty_cart_page }}" class="cd-checkout-btn-d5">
+          Shop Now
+        </a>  
+        
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      document.querySelector('cart-drawer').remove();
+
+    
+  window.rewardsConfig = {
+    rewardCount: {{ section.settings.reward_count }},
+    thresholds: [
+      {% if section.settings.reward_threshold_1 != blank %}{{ section.settings.reward_threshold_1 | times: 100 }}{% else %}0{% endif %},
+      {% if section.settings.reward_threshold_2 != blank %}{{ section.settings.reward_threshold_2 | times: 100 }}{% else %}0{% endif %},
+      {% if section.settings.reward_threshold_3 != blank %}{{ section.settings.reward_threshold_3 | times: 100 }}{% else %}0{% endif %}
+    ].slice(0, {{ section.settings.reward_count }}),
+    labels: [
+      {% if section.settings.reward_label_1 != blank %}"{{ section.settings.reward_label_1 }}"{% endif %},
+      {% if section.settings.reward_label_2 != blank %},"{{ section.settings.reward_label_2 }}"{% endif %},
+      {% if section.settings.reward_label_3 != blank %},"{{ section.settings.reward_label_3 }}"{% endif %}
+    ].slice(0, {{ section.settings.reward_count }}),
+    icons: [
+      {% if section.settings.reward_icon_1 != blank %}"{{ section.settings.reward_icon_1 | image_url: width:50 }}"{% endif %},
+      {% if section.settings.reward_icon_2 != blank %},"{{ section.settings.reward_icon_2 | image_url: width:50 }}"{% endif %},
+      {% if section.settings.reward_icon_3 != blank %},"{{ section.settings.reward_icon_3 | image_url: width:50 }}"{% endif %}
+    ].slice(0, {{ section.settings.reward_count }}),
+    cartTotal: {{ cart.total_price }}  // in cents/pennies
+  };
+
+
+
+     function initRewardsBar(c, id) {
+  var e = document.getElementById(id);
+  if (!e) return;
+  var rc = c.rewardCount;
+  var t = c.thresholds;
+  var l = c.labels;
+  var i = c.icons;
+  var ct = c.cartTotal;
+  var mt = t[t.length-1]||0;
+  var p = mt ? Math.min(Math.round(ct/mt*100),100) : 0;
+  var h = '<div class="cd-rewards-bar-d5" render-d5>'
+        + '<div class="cd-free-shipping-bar__content-d5">'
+        + '<p class="cd-free-shipping-bar__text-d5"></p>'
+        + '</div>'
+        + '<div class="cd-free-shipping-bar-d5">'
+        + '<div class="cd-free-shipping-bar__inner-d5" style="width:'+p+'%;"></div>';
+  t.forEach(function(v,x){
+    var pos = mt ? v/mt*100 : 0;
+    h += '<div class="cd-free-shipping-bar__icon-d5" style="left:calc('+pos+'% - 40px)">'
+      + '<span class="cd-icon-tag-d5" style="background-image:url(\''+i[x]+'\')"></span>'
+      + '<span class="cd-icon-tooltip-d5">'+l[x]+'</span>'
+      + '</div>';
+  });
+  h += '</div></div>';
+  e.innerHTML = h;
+  var txt = '';
+  if (ct >= mt) {
+    txt = 'All <strong>Rewards</strong> Unlocked!';
+  } else if (rc === 3 && ct >= t[1]) {
+    txt = 'You have unlocked '+l[0]+' and you are <strong>'+(mt-ct)+'</strong> from unlocking '+l[2];
+  } else if (ct >= t[0] && rc >= 2) {
+    txt = 'You are <strong>'+(t[1]-ct)+'</strong> from unlocking '+l[1];
+  } else {
+    txt = 'You are <strong>'+(t[0]-ct)+'</strong> from unlocking '+l[0];
+  }
+  e.querySelector('.cd-free-shipping-bar__text-d5').innerHTML = txt;
+}
+    if (window.rewardsConfig) initRewardsBar(window.rewardsConfig,'cd-rewards-bar-d5');
+  })
+</script>
+ <a hidden href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble" style="display: none !important;">
+        {%- liquid
+          if cart == empty
+            render 'icon-cart-empty'
+          else
+            render 'icon-cart'
+          endif
+        -%}
+        <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+        {%- if cart != empty -%}
+          <div class="cart-count-bubble">
+            {%- if cart.item_count < 100 -%}
+              <span aria-hidden="true">{{ cart.item_count }}</span>
+            {%- endif -%}
+            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+          </div>
+        {%- endif -%}
+      </a>
+{% schema %}
+{
+    "name": "D5 Cart Drawer",
+    "settings": [
+        {
+            "type": "url",
+            "id": "empty_cart_page",
+            "label": "Empty Cart Drawer Collection URL"
+        },
+        {
+          "type": "select",
+          "id": "reward_count",
+          "label": "Number of Milestones",
+          "default": "2",
+          "options": [
+            {"label": "1","value": "1"},
+            {"label": "2","value": "2"},
+            {"label": "3","value": "3"}
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Free Reward Milestone 1"
+        },
+         {
+            "type": "number",
+            "id": "reward_threshold_1",
+            "label": "Reward Price 1",
+            "default": 200
+          },
+          {
+            "type": "text",
+            "id": "reward_label_1",
+            "label": "Reward Label 1",
+            "default": "Free Shipping"
+          },
+          {
+            "type": "image_picker",
+            "id": "reward_icon_1",
+            "label": "Reward Icon 1"
+          },
+          {
+            "type": "product",
+            "id": "reward_product_1",
+            "label": "Product as a Reward 1",
+            "info": "Selected product can only be added to the cart after a specific milestone is achieved."
+          },
+           {
+          "type": "header",
+          "content": "Free Reward Milestone 2"
+        },
+         {
+            "type": "number",
+            "id": "reward_threshold_2",
+            "label": "Reward Price 2",
+            "default": 400
+          },
+          {
+            "type": "text",
+            "id": "reward_label_2",
+            "label": "Reward Label 2",
+            "default": "Free Product"
+          },
+          {
+            "type": "image_picker",
+            "id": "reward_icon_2",
+            "label": "Reward Icon 2"
+          },
+          {
+            "type": "product",
+            "id": "reward_product_2",
+            "label": "Product as a Reward 2",
+            "info": "Selected product can only be added to the cart after a specific milestone is achieved."
+          },
+           {
+          "type": "header",
+          "content": "Free Reward Milestone 3"
+        },
+         {
+            "type": "number",
+            "id": "reward_threshold_3",
+            "label": "Reward Price 3"
+          },
+          {
+            "type": "text",
+            "id": "reward_label_3",
+            "label": "Reward Label 3"
+          },
+          {
+            "type": "image_picker",
+            "id": "reward_icon_3",
+            "label": "Reward Icon 3"
+          },
+          {
+            "type": "product",
+            "id": "reward_product_3",
+            "label": "Product as a Reward 3",
+            "info": "Selected product can only be added to the cart after a specific milestone is achieved."
+          }
+        ],
+    "presets": [
+        {
+            "name": "D5 Cart Drawer" 
+        }
+    ]
+}
+{% endschema %}

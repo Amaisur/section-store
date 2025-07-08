@@ -1,0 +1,348 @@
+{{ 'ss-input-v-1-0.css' | asset_url | stylesheet_tag }}
+<style>
+  .ss-form-d5{
+    max-width: 700px;
+    margin: 100px auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 98%;
+  }
+</style>
+<form class="ss-form-d5">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'heading' %}
+        block{{ block.type }}
+        <h2>{{ block.settings.heading }}</h2>
+      {% when 'text' %}
+      {% liquid
+        if block.settings.input-type != blank
+          assign type = block.settings.input-type
+        else
+        assign type = block.type
+       endif
+      %}
+        {% render 'ss-input-v-1-0',
+          width: block.settings.width,
+          label: block.settings.label,
+          place_holder: block.settings.placeholder,
+          type: type,
+          value: block.settings.value,
+          name: block.settings.name,
+          required: block.settings.required,
+          readonly: block.settings.readonly,
+          disabled: block.settings.disabled
+        %}
+      {% when 'textarea' %}
+        {% render 'ss-input-v-1-0',
+          width: block.settings.width,
+          type: block.type,
+          place_holder: block.settings.placeholder,
+          label: block.settings.label,
+          name: block.settings.name,
+          required: block.settings.required,
+          rows: block.settings.rows
+        %}
+      {% when 'checkbox' %}
+        {% render 'ss-input-v-1-0',
+          type: block.type,
+          label: block.settings.label,
+          name: block.settings.name,
+          required: block.settings.required
+        %}
+      {% when 'radio' %}
+       {% render 'ss-input-v-1-0',
+          type: block.type,
+          label: block.settings.label,
+          name: block.settings.name,
+          required: block.settings.required
+        %}
+    {% endcase %}
+  {% endfor %}
+</form>
+
+{% schema %}
+{
+  "name": "SS Form",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Type Text",
+      "settings": [
+         {
+          "type": "text",
+          "id": "input-type",
+          "label": "Input Type"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Input Label"
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Place Holder"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Required",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "disabled",
+          "label": "Disable"
+        },
+        {
+          "type": "checkbox",
+          "id": "readonly",
+          "label": "Read Only"
+        },
+         {
+          "type": "select",
+          "id": "position",
+          "label": "Label Position",
+          "options": [
+            {
+              "label": "Above the Input",
+              "value": "column"
+            },
+            {
+              "label": "Below the Input",
+              "value": "column-reverse"
+            },
+            {
+              "label": "Left of the Input",
+              "value": "row"
+            },
+            {
+              "label": "Right of the Input",
+              "value": "row-reverse"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Input Width",
+          "options": [
+            {
+              "label": "Half Width",
+              "value": "50"
+            },
+             {
+              "label": "Full Width",
+              "value": "100"
+            }
+          ]
+        }
+      ],
+
+    },
+    {
+      "type": "textarea",
+      "name": "Textaria",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Input Label"
+        },
+         {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Place Holder"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Required",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "rows",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "label": "Rows",
+          "default": 10
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Label Position",
+          "options": [
+            {
+              "label": "Above the Input",
+              "value": "column"
+            },
+            {
+              "label": "Below the Input",
+              "value": "column-reverse"
+            },
+            {
+              "label": "Left of the Input",
+              "value": "row"
+            },
+            {
+              "label": "Right of the Input",
+              "value": "row-reverse"
+            }
+          ]
+        },
+         {
+          "type": "select",
+          "id": "width",
+          "label": "Input Width",
+          "options": [
+            {
+              "label": "Half Width",
+              "value": "50"
+            },
+             {
+              "label": "Full Width",
+              "value": "100"
+            }
+          ]
+        }
+      ],
+
+    },
+     {
+      "type": "checkbox",
+      "name": "Type Checkbox",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Input Label"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Required",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Label Position",
+          "options": [
+            {
+              "label": "Above the Input",
+              "value": "column"
+            },
+            {
+              "label": "Below the Input",
+              "value": "column-reverse"
+            },
+            {
+              "label": "Left of the Input",
+              "value": "row"
+            },
+            {
+              "label": "Right of the Input",
+              "value": "row-reverse"
+            }
+        ]
+    }
+  ]
+ },
+     {
+      "type": "radio",
+      "name": "Type Radio",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Input Label"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Required",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Label Position",
+          "options": [
+            {
+              "label": "Above the Input",
+              "value": "column"
+            },
+            {
+              "label": "Below the Input",
+              "value": "column-reverse"
+            },
+            {
+              "label": "Left of the Input",
+              "value": "row"
+            },
+            {
+              "label": "Right of the Input",
+              "value": "row-reverse"
+            }
+        ]
+    }
+  ]
+ }
+  ],
+  "presets": [
+    {
+      "name": "SS Form"
+    }
+  ]
+}
+{% endschema %}

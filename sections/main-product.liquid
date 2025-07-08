@@ -84,6 +84,15 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
+
+            {% when 'trust-badge' %}
+              {% render 'trust-badges', block: block %}
+
+        {% when 'add-on' %}
+      {% render 'add-on-d9'
+       ad-title: block.settings.heading-add
+      %}
+              
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -782,6 +791,270 @@
     {
       "type": "@app"
     },
+    {
+      "type": "add-on",
+      "name": "Addon products",
+      "settings": [
+        {
+          "type":"text",
+          "id": "heading-add",
+          "label": "Heading",
+          "default": "Style It With"
+        }
+      ]
+    },
+    {
+      "type": "trust-badge",
+      "name": "Trust Badges",
+      "settings": [
+
+         {
+                "type": "range",
+                "id": "padding-horizontal",
+                "label": "Horizonta Padding",
+                "max": 50,
+                "min": 0,
+                "step": 1,
+                "unit": "rem",
+                "default": 2
+            },
+            {
+                "type": "range",
+                "id": "padding-vertical",
+                "label": "Vertical Padding",
+                "max": 50,
+                "min": 0,
+                "step": 1,
+                "unit": "rem",
+                "default": 2
+            },
+         {
+                "type": "range",
+                "id": "c-padding-horizontal",
+                "label": "Column Horizonta Padding",
+                "max": 50,
+                "min": 0,
+                "step": 1,
+                "unit": "rem",
+                "default": 1
+            },
+            {
+                "type": "range",
+                "id": "c-padding-vertical",
+                "label": "Column Vertical Padding",
+                "max": 50,
+                "min": 0,
+                "step": 1,
+                "unit": "rem",
+                "default": 1
+            },
+           {
+                "type": "range",
+                "id": "img-size",
+                "label": "Image Size",
+                "max": 40,
+                "min": 10,
+                "step": 1,
+                "unit": "px",
+                "default": 35
+            },
+              {
+                "type": "color",
+                "id": "br-color",
+                "label": "Border Color",
+                "default": "#dedede"
+              },
+          {
+                "type": "range",
+                "id": "icon-size",
+                "label": "Icon Size",
+                "max": 40,
+                "min": 10,
+                "step": 1,
+                "unit": "px",
+                "default": 24
+            },
+           {
+                "type": "range",
+                "id": "head-size",
+                "label": "Heading Size",
+                "max": 40,
+                "min": 10,
+                "step": 1,
+                "unit": "px",
+                "default": 14
+            },
+          {
+                "type": "color",
+                "id": "head-color",
+                "label": "Heading Color",
+                "default": "#222"
+              },
+          {
+                "type": "range",
+                "id": "para-size",
+                "label": "Subtext Size",
+                "max": 40,
+                "min": 10,
+                "step": 1,
+                "unit": "px",
+                "default": 12
+            },
+          {
+                "type": "color",
+                "id": "sub-color",
+                "label": "Subtext Color",
+                "default": "#222"
+              },
+        
+                    {
+                        "type": "image_picker",
+                        "id": "emoji-img_1",
+                        "label": "Upload Image 1",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "emoji-svg_1",
+                        "label": "Add SVG code 1",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "heading_1",
+                        "label": "Heading 1",
+                        "default": "Ships Free + Saves"
+                    },
+                    {
+                        "type": "text",
+                        "id": "text_1",
+                        "label": "Subtext 1"
+                    },
+
+         {
+                        "type": "image_picker",
+                        "id": "emoji-img_2",
+                        "label": "Upload Image 2",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "emoji-svg_2",
+                        "label": "Add SVG code 2",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "heading_2",
+                        "label": "Heading 2",
+                        "default": "Ships Free + Saves"
+                    },
+                    {
+                        "type": "text",
+                        "id": "text_2",
+                        "label": "Subtext 2"
+                    },
+
+         {
+                        "type": "image_picker",
+                        "id": "emoji-img_3",
+                        "label": "Upload Image 3",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "emoji-svg_3",
+                        "label": "Add SVG code 3",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "heading_3",
+                        "label": "Heading 3",
+                        "default": "Ships Free + Saves"
+                    },
+                    {
+                        "type": "text",
+                        "id": "text_3",
+                        "label": "Subtext 3"
+                    },
+
+         {
+                        "type": "image_picker",
+                        "id": "emoji-img_4",
+                        "label": "Upload Image 4",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "emoji-svg_4",
+                        "label": "Add SVG code 4",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "heading_4",
+                        "label": "Heading 4",
+                        "default": "Ships Free + Saves"
+                    },
+                    {
+                        "type": "text",
+                        "id": "text_4",
+                        "label": "Subtext 4"
+                    },
+
+         {
+                        "type": "image_picker",
+                        "id": "emoji-img_5",
+                        "label": "Upload Image 5",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "emoji-svg_5",
+                        "label": "Add SVG code 5",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "heading_5",
+                        "label": "Heading 5",
+                        "default": "Ships Free + Saves"
+                    },
+                    {
+                        "type": "text",
+                        "id": "text_5",
+                        "label": "Subtext 5"
+                    },
+
+         {
+                        "type": "image_picker",
+                        "id": "emoji-img_6",
+                        "label": "Upload Image 6",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "emoji-svg_6",
+                        "label": "Add SVG code 6",
+                        "info": "Upload Image or SVG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "heading_6",
+                        "label": "Heading 6",
+                        "default": "Ships Free + Saves"
+                    },
+                    {
+                        "type": "text",
+                        "id": "text_6",
+                        "label": "Subtext 6"
+                    }
+
+      ]
+    },
+
+    
     {
       "type": "text",
       "name": "t:sections.main-product.blocks.text.name",

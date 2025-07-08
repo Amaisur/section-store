@@ -1,0 +1,277 @@
+<style data-shopify="">
+  .section-{{ section.id }} {}
+  .section-{{ section.id }}-padding {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    padding-top: {{ section.settings.pt-m }}px;
+    padding-bottom: {{ section.settings.pb-m }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding: 0 5rem;
+      padding-top: {{ section.settings.pt }}px;
+      padding-bottom: {{ section.settings.pb }}px;
+    }
+  }
+
+ #shopify-section-{{ section.id }} p {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+  }
+  
+  #shopify-section-{{ section.id }} .feature-logo-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+  }
+  
+  #shopify-section-{{ section.id }} .feature-logo-row-block {
+      background-color: {{ section.settings.card-bg }};
+      flex: 1;
+      max-width: 500px;
+      min-width: 450px;
+      margin: 10px;
+      display: flex;
+      border: solid 1px #efefef;
+      height: auto;
+      padding: 20px;
+      text-align: left;
+      transition: 0.2s;
+      border-radius: 4px;
+      position: relative;
+      align-items: center;
+      color: white;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  #shopify-section-{{ section.id }} .feature-logo-row-icon {
+      margin-right: 30px;
+      height: 60px;
+    }
+  
+  #shopify-section-{{ section.id }} .feature-logo-row-header {
+      margin: 15px 0px 5px 0px;
+      font-size: {{ section.settings.c-head }}px;
+      letter-spacing: 0.1em;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      color: {{ section.settings.ch-color }};
+  }
+  
+  #shopify-section-{{ section.id }} .feature-logo-row-subtext {
+      font-size: {{ section.settings.cd-info }}px;
+      color: {{ section.settings.c-info }};
+      line-height: 1.4;
+      margin: 5px 0px;
+  }
+  
+  @media (max-width: 680px) {
+      #shopify-section-{{ section.id }} .feature-logo-row-block {
+          flex-direction: column;
+          justify-content: center;
+          padding: 20px;
+          min-width: 100%;
+          text-align: center;
+      }
+      #shopify-section-{{ section.id }} .feature-logo-row-icon {
+          margin-right: 0px;
+      }
+      #shopify-section-{{ section.id }} .feature-logo-row-header {
+          text-align: center;
+      }
+      #shopify-section-{{ section.id }} .feature-logo-row-subtext {
+          text-align: center;
+          margin-bottom: 5px;
+      }
+  }</style><div id="{{ section.settings.main-section-id }}" style="background-color:#ffffff;">
+  <div class="section-{{ section.id }}-padding">
+      <h1 style="text-align: {{ section.settings.text-align }}; padding: 20px"> Why should you buy? </h1>
+      <div class="feature-logo-row">
+        {% for block in section.blocks %}
+          <div class="feature-logo-row-block">
+            {% if block.settings.img != blank %}
+            <img class="feature-logo-row-icon" src="{{ block.settings.img | img_url: '300x' }}" alt="{{ block.settings.heading }}-image" width="auto" height="">
+            {% endif %}
+            <div class="feature-logo-row-text">
+              <p class="feature-logo-row-header">{{ block.settings.heading }}</p>
+              <div class="feature-logo-row-subtext">{{ block.settings.info }}</div>
+            </div>
+          </div> 
+        {% endfor %}
+      </div>
+  </div> 
+</div>
+
+
+{% schema %}
+  {
+    "name": "Features",
+    "settings": [
+      {
+        "type": "text",
+        "id": "m-heading",
+        "label": "Heading",
+        "default": "Why should you buy?"
+      },
+      {
+        "type": "range",
+        "id": "m-head",
+        "min": 5,
+        "max": 75,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading"
+      },
+      {
+        "type": "color",
+        "id": "mh-color",
+        "label": "Heading Color",
+        "default": "#000"
+      },
+      {
+        "type": "select",
+        "id": "text-align",
+        "label": "Heading Alignment",
+        "default": "center",
+        "options": [
+          {
+            "label": "Left",
+            "value": "left"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          }
+        ]
+      },
+      {
+        "type": "color_background",
+        "id": "bg-color",
+        "label": "Background Color",
+        "default": "none"
+      },
+       {
+        "type": "range",
+        "id": "pt",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top"
+      },
+      {
+        "type": "range",
+        "id": "pb",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom"
+      },
+      {
+        "type": "range",
+        "id": "pt-m",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top Mobile"
+      },
+      {
+        "type": "range",
+        "id": "pb-m",
+        "min": 0,
+        "max": 100,
+        "default": 35,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom Mobile"
+      }, 
+      {
+        "type": "header",
+        "content": "Card Configurations"
+      },
+      {
+        "type": "range",
+        "id": "c-head",
+        "min": 5,
+        "max": 75,
+        "default": 20,
+        "step": 1,
+        "unit": "px",
+        "label": "Card Heading Font Size"
+      },
+      {
+        "type": "color",
+        "id": "ch-color",
+        "label": "Card Heading Color",
+        "default": "#000"
+      },
+       {
+        "type": "range",
+        "id": "cd-info",
+        "min": 5,
+        "max": 75,
+        "default": 15,
+        "step": 1,
+        "unit": "px",
+        "label": "Card Description Font Size"
+      },
+      {
+        "type": "color",
+        "id": "c-info",
+        "label": "Card Description Color",
+        "default": "#000"
+      },
+          {
+            "type": "color",
+            "id": "card-bg",
+            "label": "Card Background",
+            "default": "#fff"
+          },
+      {
+        "type": "text",
+        "id": "main-section-id",
+        "label": "Main Section Id",
+        "default": "feature-6"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "feature",
+        "name": "Feature",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Feature text"
+          },
+           {
+            "type": "richtext",
+            "id": "info",
+            "label": "Description",
+            "default": "<p>Explain why your product or service is amazing. What are the benefits. Sell the whole in the wall not the drill.</p>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Features"
+      }
+    ]
+  }
+{% endschema %}

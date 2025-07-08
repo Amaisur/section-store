@@ -1,0 +1,717 @@
+<style>
+   #shopify-section-{{ section.id }}  *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    #shopify-section-{{ section.id }}  .main-card-38-d9{
+        max-width: 500px;
+        width: min-content;
+        border: 1px solid {{ section.settings.border-color }};
+        border-radius: 10px;
+        box-shadow: {{ section.settings.shade-color }} 0px 2px 5px;
+        background: {{ section.settings.card-color }};
+    }
+    #shopify-section-{{ section.id }} .row-card-38-d9{
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+    }
+    #shopify-section-{{ section.id }} .verification-d9{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    #shopify-section-{{ section.id }} .detail-col-38-d9{
+        min-width: 320px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    #shopify-section-{{ section.id }} .img-col-38-d9 {
+        overflow: hidden;
+        border-radius: 10px;
+        min-width: 70px;
+        max-width: 70px;
+    }
+    #shopify-section-{{ section.id }} .img-col-38-d9 img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    #shopify-section-{{ section.id }} .name-38-d9 h4{
+        font-size: {{ section.settings.name-size }}px;
+        font-weight: 700;
+        color: {{ section.settings.color-1 }};
+    }
+    #shopify-section-{{ section.id }} .detail-col-38-d9 p{
+        font-size: {{ section.settings.text-size }}px;
+        font-weight: 400;
+        line-height: 15.6px;
+        color: {{ section.settings.color-2 }};
+    }
+    #shopify-section-{{ section.id }} .verification-d9 svg{
+        width: 16px;
+        height: 16px;
+    }
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left: {{ section.settings.padding_left_mobile }}px;
+      padding-right: {{ section.settings.padding_right_mobile }}px;
+      border-radius: 0px;
+      background: {{ section.settings.background }}; 
+      max-width: fit-content;
+      margin: auto;
+      margin: 10px 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-left: {{ section.settings.padding_left }}px;
+      padding-right: {{ section.settings.padding_right }}px;
+    }
+    #shopify-section-{{ section.id }}{
+    padding: 0px 0px;
+  }
+  }
+  #shopify-section-{{ section.id }} .custom-slider-container-wrapper{
+      max-width: fit-content;
+      overflow: hidden;
+      padding-left: {{ section.settings.padding_left }}px;
+      padding-right:{{ section.settings.padding_right }}px;
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom:{{ section.settings.padding_bottom }}px;
+      background: transparent !important;
+      
+
+    }
+    #shopify-section-{{ section.id }} .announcement-text{
+      color: white;
+    }
+    #shopify-section-{{ section.id }} .custom-slider-wrapper{
+      display: flex;
+      justify-content: flex-start;
+      overflow: hidden;
+      min-width: max-content;
+      margin: auto;
+      background: transparent;
+    }
+    #shopify-section-{{ section.id }} .custom-slider-wrapper-inner{
+      display: flex;
+      min-width: fit-content;
+      width: fit-content;
+      animation: {% if section.settings.direction  == 'rtol' %}logoslide-l {% else %}logoslide-r {% endif %} {{ section.settings.smooth_speed }}s infinite cubic-bezier(0, 0, 0, 0);
+      gap: {{ section.settings.logos_gap }}px;
+      padding-right: {{ section.settings.logos_gap }}px;
+    }
+
+#shopify-section-{{ section.id }} .custom-slider-wrapper:hover .custom-slider-wrapper-inner {
+  animation-play-state: paused;
+}  
+
+
+
+#shopify-section-{{ section.id }} .logo-container:hover {
+      background: #d8e9de;
+}
+
+  
+  
+    #shopify-section-{{ section.id }} .announcement-link{
+      display: flex;
+      gap: 10px;
+      min-width: fit-content;
+      align-items: center;
+      justify-content: flex-start;
+      padding-right: 100px;
+    }
+
+    #shopify-section-{{ section.id }} .announcement-icon{
+      padding-left: 100px;
+      height: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .slide-logo{
+      height: auto;
+      max-height: 100px;
+   /*   min-height: 32px; */
+      max-width: 140px;
+      object-fit: contain;
+    }
+    @media (width > 768px) {
+      #shopify-section-{{ section.id }} .slide-logo{
+        max-height: 120px;
+        max-width: 200px;
+        max-width: 414px;
+        height: 39px;
+        width: auto;
+      }
+    }
+
+
+  
+    #shopify-section-{{ section.id }} .logo-container{
+      padding-right: {{ section.settings.logos_gap }}px;
+  /*    border:  2px solid red; */
+      padding-left: {{ section.settings.logos_gap }}px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      margin-right:0px;
+    }
+
+      #shopify-section-{{ section.id }} .logo-container:hover {
+      background-color: transparent;
+    }
+    
+    @keyframes logoslide-l {
+      
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    @keyframes logoslide-r{
+
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+
+
+    #shopify-section-{{ section.id }} .logo-scroll__heading {
+      color: {{ section.settings.head-color }};
+      font-size: {{ section.settings.head-size }}px !important;
+      font-style:;
+      font-weight:  {% if section.settings.head-weight == 'normal' %}normal {% elsif section.settings.head-weight == 'light' %} light {% else %}bold{% endif %};
+      line-height: normal;
+      text-align: center;
+      padding-bottom: 30px;
+  }
+
+  @media (width > 768px) {
+    #shopify-section-{{ section.id }} .logo-scroll__heading {
+      font-size: 32px;
+    }
+  }
+
+  .announcement-bar__logo-scroll {
+    padding-bottom: 0;
+       {% if section.settings.box-shadow %}
+      box-shadow: 4px 4px 20px rgba(191, 191, 191, 0.5);
+      {% endif %}
+  }
+  @media only screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} .logo-container{
+      padding-right: {{ section.settings.logos_gap_mobile }}px;
+      {% comment %} height: 16px; {% endcomment %}
+    }
+
+     
+  }
+
+@media screen and (min-width:2500px) {
+      #shopify-section-{{ section.id }} .custom-slider-wrapper-inner{
+      display: flex;
+      min-width: fit-content;
+      width: fit-content;
+      animation: logoslide 25s infinite cubic-bezier(0, 0, 0, 0);
+    }
+}
+  
+@media screen and (min-width:1800px) and (max-width:2499px) {
+      #shopify-section-{{ section.id }} .custom-slider-wrapper-inner{
+      display: flex;
+      min-width: fit-content;
+      width: fit-content;
+      animation: logoslide 31s infinite cubic-bezier(0, 0, 0, 0);
+    }
+}
+  
+@media screen and (max-width:480px) {
+  #shopify-section-{{ section.id }} .logo-scroll__heading {
+    font-size: {{ section.settings.head-size-m }}px;
+  }
+  #shopify-section-{{section.id}} {
+    /* display:none; */
+  }
+  #shopify-section-{{ section.id }} .logo-container{
+      padding: 0;
+    }
+  #shopify-section-{{ section.id }} .custom-slider-wrapper-inner{
+  }
+  #announcement-smooth-{{ section.id }}{
+    padding-right: 20px;
+  }
+}
+   #shopify-section-{{ section.id }} a[href]:not([href=""]) {
+  cursor: pointer;
+}
+   #shopify-section-{{ section.id }} a:hover{
+    cursor: default;
+  }
+  
+</style>
+<section class="section page-width__logo-scroll section-{{ section.id }}-padding">
+    <h2 class="logo-scroll__heading">{{ section.settings.heading }}</h2>
+    <div class="custom-announcement-bar announcement-bar__logo-scroll">
+        <div class="page-width custom-slider-container-wrapper">
+            <div class="custom-slider-wrapper">
+                {% for i in (1..4) %}
+                <div class="custom-slider-wrapper-inner"
+                    id="{% if forloop.first %}{%  else %}duplicate{{ i }}-{% endif %}announcement-smooth-{{ section.id }}">
+                    {%- for block in section.blocks -%}
+                    {% if block.type == 'logo' %}
+
+
+
+
+                    <div class="main-card-38-d9">
+                        <div class="inner-card-38-d9">
+                            <div class="row-card-38-d9">
+                                {% if block.settings.buy-img != blank %}
+                                <div class="col-card-38-d9 img-col-38-d9">
+                                    <img src="{{ block.settings.buy-img |  image_url: width: 1440  }}">
+                                </div>
+                                {% endif %}
+                                <div class="col-card-38-d9 detail-col-38-d9">
+                                    {% if block.settings.star-rate == '5-star' %}
+                                    <div class="star-rating-d9">
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path id="Vector"
+                                                d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                fill="#F6CF02" />
+                                        </svg>
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path id="Vector"
+                                                d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                fill="#F6CF02" />
+                                        </svg>
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path id="Vector"
+                                                d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                fill="#F6CF02" />
+                                        </svg>
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path id="Vector"
+                                                d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                fill="#F6CF02" />
+                                        </svg>
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path id="Vector"
+                                                d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                fill="#F6CF02" />
+                                        </svg>
+                                    </div>
+                                    {% elsif block.settings.star-rate == '4-star' %}
+                                    <div class="star-rating-d9">
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path id="Vector"
+                                                d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                fill="#F6CF02" />
+                                        </svg>
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path id="Vector"
+                                                d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                fill="#F6CF02" />
+                                        </svg>
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path id="Vector"
+                                                d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                fill="#F6CF02" />
+                                        </svg>
+                                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path id="Vector"
+                                                d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                fill="#F6CF02" />
+                                        </svg>
+
+                                    </div>
+                                    {% elsif block.settings.star-rate == '3-star' %}
+                                        <div class="star-rating-d9">
+                                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path id="Vector"
+                                                    d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                    fill="#F6CF02" />
+                                            </svg>
+                                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path id="Vector"
+                                                    d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                    fill="#F6CF02" />
+                                            </svg>
+                                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path id="Vector"
+                                                    d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                    fill="#F6CF02" />
+                                            </svg>
+                                            
+    
+                                        </div>
+                                    {% elsif block.settings.star-rate == '2-star' %}
+                                        <div class="star-rating-d9">
+                                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path id="Vector"
+                                                    d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                    fill="#F6CF02" />
+                                            </svg>
+                                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path id="Vector"
+                                                    d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                                    fill="#F6CF02" />
+                                            </svg>
+    
+                                        </div>
+                                    {% else block.settings.star-rate == '1-star' %}
+                                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path id="Vector"
+                                            d="M2.40819 12.7051L3.44396 8.2671L0 5.28339L4.53654 4.89079L6.31324 0.705078L8.08993 4.88996L12.6256 5.28255L9.18251 8.26626L10.2183 12.7042L6.31324 10.3487L2.40819 12.7051Z"
+                                            fill="#F6CF02" />
+                                    </svg>
+                                    {% endif %}
+                                    <div class="name-38-d9">
+                                        <h4> {{ block.settings.name }} </h4>
+                                    </div>
+                                    {% if block.settings.verified %}
+                                    <div class="verification-d9">
+                                        {% if section.settings.veri-img != blank %}
+                                         <img src="{{ section.settings.veri-img |  image_url: width:300  }}" width="17" height="17"> 
+                                            {% else %}
+                                        <svg width="16" height="16" viewBox="0 0 17 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g id="Group 48097212">
+                                                <circle id="Ellipse 51" cx="8.335" cy="9.04008" r="8.335"
+                                                    fill="#475CF1" />
+                                                <path id="Vector" d="M4.00098 9.59533L7.11271 12.7071L13.3362 6.03906"
+                                                    stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                        </svg>
+                                        {% endif %}
+                                        <p> {{ section.settings.veri-text }} </p>
+                                    </div>
+                                    {% endif %}
+                                    <div class="content-38-d9">
+                                        {{ block.settings.review }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    {% endif %}
+                    {%- endfor -%}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% schema %}
+{
+    "name": "Scrolling Testimonial",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+        },
+      {
+        "type": "range",
+        "id": "head-size",
+        "label": "Heading Font size",
+        "min": 10,
+        "max": 40,
+        "step": 1,
+        "default": 22,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "head-size-m",
+        "label": "Heading Font size for mobile",
+        "min": 10,
+        "max": 40,
+        "step": 1,
+        "default": 22,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "head-color",
+        "label": "Heading Color",
+        "default": "#222"
+      },
+      {
+        "type": "select",
+        "id": "head-weight",
+        "label": "Font Weight",
+        "default": "bold",
+        "options": [
+          {
+            "label": "Light",
+            "value": "light"
+          },
+          {
+            "label": "Normal",
+            "value": "normal"
+          },
+          {
+            "label": "Bold",
+            "value": "bold"
+          }
+        ]
+      },
+     
+
+        {
+            "type": "image_picker",
+            "id": "veri-img",
+            "label": "Verified Tick Image"
+        },
+        {
+            "type": "text",
+            "id": "veri-text",
+            "label": "Verified Text",
+            "default": "Verified Buyer"
+        },
+
+
+      {
+        "type": "select",
+        "id": "direction",
+        "label": "Direction of sliding",
+        "default": "rtol",
+        "options": [
+           {
+            "label": "Right to Left",
+            "value": "rtol"
+          },
+          {
+            "label": "Left to Right",
+            "value": "ltor"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "box-shadow",
+        "label": "Enable Box Shadow",
+        "default":true
+      },
+        {
+        "type":"number",
+        "id":"smooth_speed",
+        "label":"Smooth slider speed",
+        "default":10
+      },
+      {
+        "type": "header",
+        "content": "Desktop configuration"
+      },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Left",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Right",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "logos_gap",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Logos gap",
+      "default": 40
+    },
+    {
+        "type": "range",
+        "id": "name-size",
+        "label": "Buyer Name Font size",
+        "min": 10,
+        "max": 40,
+        "step": 1,
+        "default": 14,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "text-size",
+        "label": "text Font size",
+        "min": 10,
+        "max": 40,
+        "step": 1,
+        "default": 12,
+        "unit": "px"
+      },
+    {
+      "type": "header",
+      "content": "Color configuration"
+    },
+    
+    {
+        "type": "color_background",
+        "id": "background",
+        "label": "Background",
+        "default": "linear-gradient(#ffffff, #ffffff)"
+      },
+      {
+        "type": "color",
+        "id": "card-color",
+        "label": "Testimonial Card Color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "color-1",
+        "label": "Name Color",
+        "default": "#BABABA"
+      },
+      {
+        "type": "color",
+        "id": "color-2",
+        "label": "Review Color",
+        "default": "#B1B1B1"
+      },
+      {
+        "type": "color",
+        "id": "border-color",
+        "label": "Border Color",
+        "default": "#EBEBEB"
+      },
+      {
+        "type": "color_background",
+        "id": "shade-color",
+        "label": "Shadow Color",
+        "default": "rgba(115,114,114,0.15)"
+      }
+    ],
+    "blocks": [
+        {
+            "type":"logo",
+            "name": "Slide",
+            "settings": [
+                {
+                    "type": "select",
+                    "id": "star-rate",
+                    "default": "5-star",
+                    "label": "Star Rating",
+                    "options": [
+                        {
+                            "label": "5 Star",
+                            "value": "5-star"
+                        },
+                        {
+                            "label": "4 Star",
+                            "value": "4-star"
+                        },
+                        {
+                            "label": "3 Star",
+                            "value": "3-star"
+                        },
+                        {
+                            "label": "2 Star",
+                            "value": "2-star"
+                        },
+                        {
+                            "label": "1 Star",
+                            "value": "1-star"
+                        }
+                    ]
+                },
+                {
+                    "type": "image_picker",
+                    "id": "buy-img",
+                    "label": "Buyer Image"
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Buyer Name",
+                    "default": "John Doe"
+                },
+                {
+                    "type": "richtext",
+                    "id": "review",
+                    "label": "Buyer Review",
+                    "default": " <p>“Owner.com has almost everything need to run your restaurant online. An awesome partner to have for restaurants”</p>"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "verified",
+                    "label": "Add Verified Label",
+                    "default": true
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Scrolling Testimonial"
+        }
+    ]
+}
+{% endschema %}

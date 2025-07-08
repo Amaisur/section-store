@@ -1,0 +1,30 @@
+.ss-timer-div-counter * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #000;
+  text-underline-offset: 5px;
+}
+.ss-timer-div-counter {
+  width: 100%;
+  margin: 0 auto;
+}
+.ss-timer-ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.ss-timer-ul li {
+  list-style: none;
+}
+.ss-sale-live {
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+  display: none;
+}
+.ss-sale-on-d5 .ss-sale-live {
+  display: flex;
+}

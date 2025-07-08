@@ -1,0 +1,655 @@
+{% assign collection = section.settings.collection %}
+<style>
+body{
+    --product-color: #dd2c6c;
+}
+    /* popus configurations */
+.no-scroll_popup-body-d5{
+  height: 100vh;
+  overflow: hidden;
+}
+.no-scroll_popup-body-d5 #MainContent.content-for-layout{
+  z-index: 5;
+}
+.quick-add-d5 {
+  display: none;
+}
+.popup-q-open {
+  display: block !important;
+  position: relative;
+  z-index: 99999;
+}
+.quick-add-overlay-d5 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: block !important;
+}
+.quick-popup-d5 {
+  position: fixed;
+  width: 90%;
+  max-width: 900px;
+  height: 80vh;
+  max-height: 600px;
+  overflow: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+}
+
+/* main pupup divisions */
+
+.row-popup-d5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.col-popup-d5 {
+  width: 100%;
+}
+/* image gallery */
+.q-slider-container-d5 {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.q-slider-d5 {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.q-slide-d5 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+.q-slide-d5 img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.q-slider-button-d5 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 50%;
+}
+.q-slider-button-d5 svg{
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.7);
+}
+.q-slider-button-d5:hover svg{
+  background: var(--product-color);
+}
+.q-prev-d5 {
+  left: 10px;
+}
+.q-prev-d5 svg{
+  transform: rotate(180deg);
+}
+.q-next-d5 {
+  right: 10px;
+}
+.q-dots-d5 {
+  max-width: 70%;
+  margin: 20px auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.q-dot-d5 {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 3px solid rgba(0,0,0,.4);
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  background: #fff;
+}
+.q-dot-d5.active {
+  background: #000000;
+}
+/* Tab buttons */
+.tab-buttons-d5 {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tab-buttons-d5 button {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  background: none;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  color: #363636;
+  cursor: pointer;
+  transition: all 0.3s ease, color 0.3s ease;
+}
+.tab-buttons-d5 button.active {
+  color: var(--product-color);
+  border-bottom: 3px solid var(--product-color);
+}
+
+.plan-tab-d5 {
+  display: none; /* Hide by default, controlled by JS */
+}
+
+/* Individual variant and plan buttons */
+.variant-btn-d5,
+.plan-btn-d5 {
+  display: inline-block;
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Active state for variant and plan buttons */
+.variant-btn-d5.variant-active,
+.plan-btn-d5.plan-active {
+  background-color: var(--product-color);
+  color: #fff;
+  border-color: #e67e22;
+}
+
+/* Hover effect */
+.variant-btn-d5:hover,
+.plan-btn-d5:hover {
+  background-color: #eee;
+}
+.atc-spinner-d5 {
+  width: 20px;
+  height: 20px;
+  animation: spind 0.5s linear infinite;
+  background: yellow;
+}
+@keyframes spind {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.main-popup-d5 {
+  padding: 20px;
+}
+.close-icon-d5 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.quantity-input-d5 {
+  width: 20px;
+  background: none;
+  border: none;
+  outline: none;
+  text-align: center;
+  color: #fff;
+}
+.quantity-select-d5 {
+  padding: 5px 10px;
+  background: var(--product-color);
+  border-radius: 20px;
+  max-width: 110px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.quantity-button-d5{
+  cursor: pointer;
+  padding: 2px 0;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.sub-heading-d5{
+  text-align: left;
+  padding-bottom: 5px;
+}
+.variant-flex-d5{
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+.atc-buuton-d5-cart{
+  width: 100%;
+  margin-top: 20px;
+}
+.variants-tab-d5{
+  margin: 20px 0 10px;
+}
+.product-info-d5 h3, .product-info-d5 p{
+  text-align: left;
+}
+.product-info-d5 p{
+  margin: 10px 0;
+}
+.main-popup-d5 .d5-star-rating{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 5px;
+  border: none;
+  padding: 10px 0;
+  margin: 0;
+  width: fit-content;
+  background: none !important;
+}
+.main-popup-d5 .c-product__rating__info{
+  margin-top: -6px;
+}
+.d5-button{
+  color: #000000;
+  transition: all .3s;
+  border: 1px solid var(--product-color);
+}
+.d5-button:hover{
+  background: var(--product-color);
+  color: #fff;
+}
+.quick-add-popup-btn-d5{
+  margin-top: 20px;
+}
+.product-info-d5 .d5-star-rating svg path{
+  fill: var(--product-color);
+}
+
+ .cq-main-d5 {
+        width: 100%;
+    }
+
+    .cq-inner-d5 {
+        max-width: 1440px;
+        padding: 0 40px;
+        margin: 80px auto;
+    }
+
+    .cq-row-d5 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    .cq-card-d5 {
+        border: 1px solid;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .cq-image-d5 {
+        width: 100%;
+        aspect-ratio: 1;
+    }
+
+    .cq-image-d5 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .cq-info-d5 {
+        padding: 10px 15px;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .cq-info-d5 h4 {
+        font-size: 16px;
+        line-height: normal;
+        margin-bottom: 10px;
+    }
+
+    .cq-quick-d5 {
+        width: fit-content;
+        align-self: end;
+        background: #000;
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        height: 35px;
+        width: 100px;
+        cursor: pointer;
+    }
+
+
+.option-label-d5 {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.option-input-d5 {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.option-value-d5 {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.option-input-d5:checked + .option-value-d5 {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+.option-input-d5:focus + .option-value-d5 {
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+}
+
+.atc-buuton-d5-cart{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+.atc-buuton-d5-cart:disabled{
+  pointer-events: none !important;
+}
+.atc-buuton-d5-cart.loading .atc-content-d5, .atc-spinner-d5{
+  display: none;
+}
+.atc-buuton-d5-cart.loading .atc-spinner-d5{
+  display: block !important;
+}
+</style>
+
+<div class="cq-main-d5">
+    <div class="cq-inner-d5">
+        <div class="cq-row-d5">
+            {% for product in collection.products limit: 20 %}
+            <div class="cq-card-d5" products-d5>
+                <div class="cq-image-d5">
+                    <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}"
+                        loading="lazy">
+                </div>
+                <div class="cq-info-d5">
+                    <h4>{{ product.title }}</h4>
+                    <div class="cq-price-d5">{{ product.price | money }}</div>
+                    <button class="quick-add-popup-btn-d5 d5-button" data-url="{{ product.handle }}">
+                        + View
+                    </button>
+                    <div class="quick-add-d5">
+                        <div class="quick-add-overlay-d5"></div>
+                        <div class="quick-popup-d5">
+                            {% render 'd5-quick-view' , home_product: product %}
+                        </div>
+                    </div>
+                </div>
+                
+                </div>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.cq-card-d5');
+    
+    cards.forEach(card => {
+      const atcb = card.querySelector('.atc-buuton-d5-cart');
+      const dataVariant = card.querySelector('[data-product-json]');
+      
+      if (!dataVariant) return;
+      
+      const form = card.querySelector('.main-popup-d5 .quick-atc-form-d5');
+      let qtyInput = form.querySelector('.quantity-input-d5');
+      const qtyPlus = form.querySelector('.quantity-plus-d5');
+      const qtyMinus = form.querySelector('.quantity-minus-d5');
+
+      // Increment quantity
+      qtyPlus.addEventListener('click', () => {
+        qtyInput.value = parseInt(qtyInput.value) + 1;
+      });
+
+      // Decrement quantity with validation
+      qtyMinus.addEventListener('click', () => {
+        if (parseInt(qtyInput.value) > 1) {
+          qtyInput.value = parseInt(qtyInput.value) - 1;
+        }
+      });
+      const vinput = form.querySelector('input[name="id"]');
+      const regPrice = card.querySelector('[regular-price-d5]');
+      function getSelectedOptions() {
+        const optionContainers = card.querySelectorAll('.option-flex-d5');
+        return Array.from(optionContainers).map(container => {
+          const selectedOption = container.querySelector('.option-input-d5:checked');
+          return selectedOption ? selectedOption.value : null;
+        });
+      }
+
+      function getVariantId() {
+        const selectedOptions = getSelectedOptions();
+        const productJson = card.querySelector('[data-product-json]').textContent; 
+        
+        try {
+          const variants = JSON.parse(productJson);  
+          const matchingVariant = variants.find(variant => {
+            return variant.options.every((opt, index) => opt === selectedOptions[index]); 
+          });
+          if (matchingVariant) {
+           function formatPrice(price) {
+          
+            const priceInDollars = price / 100;
+
+            return new Intl.NumberFormat('en-US', {
+              style: 'currency',
+              currency: 'PKR',  
+            }).format(priceInDollars); 
+          }
+
+            const price = formatPrice(matchingVariant.price);
+            regPrice.textContent = price;
+            const comparePrice = matchingVariant.compare_at_price;
+            const img = matchingVariant.image; 
+            vinput.value = matchingVariant.id;
+            console.log('Matching Variant ID:', matchingVariant);
+            console.log('Price:', price);
+            console.log('avaiable', matchingVariant.available)
+            console.log('Compare Price:', comparePrice);
+            if(!matchingVariant.available){
+              atcb.setAttribute('disabled', 'disabled');
+              atcb.querySelector('.atc-content-d5').textContent = 'Sold';
+              atcb.style.pointerEvents = 'none !important';
+            }else{
+              atcb.removeAttribute('disabled', 'disabled');
+              atcb.querySelector('.atc-content-d5').textContent = 'Add to Cart';
+              atcb.style.pointerEvents = '';
+            }
+            return {
+              id: matchingVariant.id,
+              price: price,
+              comparePrice: comparePrice,
+              img: img
+            };
+          } else {
+            console.log('No matching variant found');
+            return null;
+          }
+        } catch (err) {
+          console.error('Error parsing variant data:', err);
+          return null;
+        }
+      }
+
+      form.querySelectorAll('.option-input-d5').forEach(input => {
+        input.addEventListener('change', getVariantId);
+      });
+       if(!atcb.hasAttribute('disabled')) {
+      // form.addEventListener('submit', (e) => {
+      //   atcb.classList.add('loading');
+      //   e.preventDefault();
+      //   const formData = new FormData(e.target);
+        
+      //   fetch('/cart/add.js', {
+      //     method: 'POST',
+      //     headers: {'Content-Type': 'application/json'},
+      //     body: JSON.stringify({
+      //       id: formData.get('id'),
+      //       quantity: formData.get('quantity')
+      //     })
+      //   }).finally(() => {
+      //     (async () => {
+      //      const req = await fetch('/sections?cart-drawer');
+      //       const res = await req.text();
+      //       const doc = new DOMParser().parseFromString(res, 'text/html')
+      //       const newDrawer = doc.querySelector('.drawer__inner');
+      //       const newIcon = doc.querySelector('.cart-bubble-d5').innerHTML;
+      //       const oldIcon = document.querySelector('#cart-icon-bubble');
+      //       const drawer = document.querySelector('cart-drawer.drawer');
+      //       const oldDrawer = document.querySelector('.drawer__inner');
+      //       oldIcon.innerHTML = newIcon;
+      //       oldDrawer.innerHTML = newDrawer.innerHTML;
+      //       drawer.classList.add('active'); 
+      //         if(drawer.classList.contains('is-empty')){
+      //           drawer.classList.remove('is-empty');
+      //         }
+      //     })();
+      //     atcb.classList.remove('loading');
+      //   });
+      // });
+        }
+    });
+});
+
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Quick View Popup Open and Close
+  const addToCartBtns = document.querySelectorAll('.quick-add-popup-btn-d5');
+
+  addToCartBtns.forEach(function(addToCartBtn) {
+    const quickAddContainer = addToCartBtn.nextElementSibling;
+    
+    const overlay = quickAddContainer.querySelector('.quick-add-overlay-d5');
+    const closeIcon = quickAddContainer.querySelector('.close-icon-d5');
+    
+    addToCartBtn.addEventListener('click', function() {
+      quickAddContainer.classList.add('popup-q-open');
+      document.body.classList.add('no-scroll_popup-body-d5');
+      initializeSlider(addToCartBtn);
+    });
+
+    overlay.addEventListener('click', function() {
+      quickAddContainer.classList.remove('popup-q-open');
+      document.body.classList.remove('no-scroll_popup-body-d5');
+    });
+
+    closeIcon.addEventListener('click', function() {
+      quickAddContainer.classList.remove('popup-q-open');
+      document.body.classList.remove('no-scroll_popup-body-d5');
+    });
+  });
+
+  // Slider Initialization
+  function initializeSlider(card) {
+    document.querySelectorAll('.q-slider-container-d5').forEach(function(container) {
+      const slider = container.querySelector('.q-slider-d5');
+      const slides = container.querySelectorAll('.q-slide-d5');
+      const prevBtn = container.querySelector('.q-prev-d5');
+      const nextBtn = container.querySelector('.q-next-d5');
+      const dotsContainer = container.querySelector('.q-dots-d5');
+
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+
+      function updateButtons() {
+        prevBtn.style.display = currentIndex === 0 ? 'none' : 'block';
+        nextBtn.style.display = currentIndex === totalSlides - 1 ? 'none' : 'block';
+      }
+
+      function updateDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement('span'); 
+          dot.classList.add('q-dot-d5');
+          if (i === currentIndex) dot.classList.add('active');
+          dot.addEventListener('click', () => goToSlide(container, i));
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      function goToSlide(container, index) {
+        currentIndex = index;
+        const offset = -currentIndex * 100;
+        slider.style.transform = `translateX(${offset}%)`;
+        slider.style.transition = 'transform 0.3s ease';
+        updateButtons();
+        updateDots();
+      }
+      const cards = document.querySelectorAll('.cq-card-d5');
+      cards.forEach(card => {
+      const inputIds = card.querySelectorAll('.option-input-d5');
+          inputIds.forEach((input) => {
+            if (input.hasAttribute('img-id')) {
+              input.addEventListener('change', () => {
+                slides.forEach((slide, index) => {
+                  const imgId = slide.getAttribute('data-img');
+                  if (imgId === input.getAttribute('img-id')) {
+                    goToSlide(container, index); // Navigate to the matching slide
+                  } 
+                }); 
+              });
+            }
+          });
+        })
+      prevBtn.addEventListener('click', () => currentIndex > 0 && goToSlide(container, currentIndex - 1));
+      nextBtn.addEventListener('click', () => currentIndex < totalSlides - 1 && goToSlide(container, currentIndex + 1));
+
+      updateButtons();
+      updateDots();
+    });
+  }
+});
+
+</script>
+{% schema %}
+{
+    "name": "D5 Quick Collection",
+    "settings": [
+        {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+        }
+        ],
+        "presets": [
+            {
+                "name": "D5 Quick Collection"
+            }
+        ]
+}
+{% endschema %}

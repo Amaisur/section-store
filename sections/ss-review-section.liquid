@@ -1,0 +1,163 @@
+{{ 'ss-media-snippet.css' | asset_url | stylesheet_tag }}
+{{ 'ss-rating-star-v2.css' | asset_url | stylesheet_tag }}
+{{ 'ss-review-card-v-1-0.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'ss-rating-star-v2.js' | asset_url }}" defer="defer"></script>
+<style>
+  .main-r-d5{
+    width: 100%;
+    padding: 2vw 50px;
+    margin: 50px 0;
+  }
+  .row-r-d5{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .main-r-d5 .ss-total-rating{
+    display: none;
+  }
+  .col-r-d5{
+    min-width: 300px;
+    width: 30%;
+  }
+ .main-r-d5 .general-media-d5{
+    margin-bottom: 25px;
+  }
+</style>
+<div class="main-r-d5">
+  <div class="inner-r-d5">
+    <div class="row-r-d5">
+      {% for block in section.blocks %}
+        {% assign product = block.settings.product %}
+        <div class="col-r-d5" pdp="{{ product.title }}">
+        {% render 'ss-review-card-v-1-0',
+          heading: block.settings.heading,
+          content: block.settings.content,
+          name: block.settings.name,
+          date: block.settings.date,
+          verified_text: section.settings.verified_text,
+          verified_image: section.settings.verified_image,
+          verified_svg: section.settings.verified_svg,
+          verified: block.settings.verified,
+          no_rating: section.settings.no_rating,
+          text: block.settings.text,
+          rating: block.settings.rating,
+          star_size: section.settings.star_size,
+          full_star: section.settings.full_star,
+          empty_star: section.settings.empty_star,
+          gap: section.settings.gap,
+          review_image: block.settings.review_image,
+          product: product,
+          reviewer_image: block.settings.reviewer_image
+        %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SS Reviews",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "full_star",
+      "label": "Full Star"
+    },
+    {
+      "type": "image_picker",
+      "id": "empty_star",
+      "label": "Empty Star"
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "label": "Star Size",
+      "min": 2,
+      "max": 75,
+      "step": 1,
+      "default": 13,
+      "unit": "px"
+    },
+     {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap b/w stars",
+      "min": 0,
+      "max": 25,
+      "step": 1,
+      "default": 2,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Pants are Great"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>I love the pants. Delivery was really quick</p>"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Jhon K"
+        },
+        {
+          "type": "image_picker",
+          "id": "reviewer_image",
+          "label": "Reviewer Image"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "25 DEC 2019"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "min": 0,
+          "max": 5,
+          "step": 0.1,
+          "default": 4.5
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Add Verified Label",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "review_image",
+          "label": "Review_image"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SS Reviews"
+    }
+  ]
+}
+{% endschema %}

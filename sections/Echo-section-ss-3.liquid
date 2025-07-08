@@ -1,0 +1,218 @@
+<style>
+   #shopify-section-{{ section.id }} *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    :root{
+        --text-color: {{ section.settings.section-color }};
+    }
+    #shopify-section-{{ section.id }} .main-ss-echo-3{
+    width: 100%;
+    margin: 50px 0;
+}
+#shopify-section-{{ section.id }} .inner-ss-echo-3{
+    width: 90%;
+    margin: 0 auto;
+}
+#shopify-section-{{ section.id }} .row-ss-echo-3{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+#shopify-section-{{ section.id }} .text-ss-3{
+    width: 40%;
+}
+#shopify-section-{{ section.id }} .text-ss-3 a{
+    display: inline-block;
+    padding: 17px 40px;
+    border-radius: 100px;
+    text-decoration: none;
+    border: 1px solid var(--text-color);
+    box-shadow: 3px 3px 0px 1px var(--text-color);
+    transition: all .3s;
+    color: var(--text-color);
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin: 25px 0 0;
+}
+#shopify-section-{{ section.id }} .text-ss-3 a:hover,#shopify-section-{{ section.id }}  .block-ss-3-main:hover{
+    box-shadow: -3px -3px 0px 1px var(--text-color);
+}
+#shopify-section-{{ section.id }} .text-ss-3 h3{
+    font-size: {{ section.settings.font-size-head }}px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+#shopify-section-{{ section.id }} .text-ss-3 p{
+    color: var(--text-color);
+    font-size: 18px;
+    letter-spacing: .5px;
+    line-height: 22px;
+    margin: 15px 0;
+}
+#shopify-section-{{ section.id }} .blocks-ss-3{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+#shopify-section-{{ section.id }} .blocks-ss-3{
+    width: 60%;
+}
+#shopify-section-{{ section.id }} .block-ss-3-img{
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#shopify-section-{{ section.id }} .block-ss-3-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#shopify-section-{{ section.id }} .block-ss-3-main{
+    width: 100%;
+    border: 1px solid var(--text-color);
+    border-radius: 30px;
+    overflow: hidden;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 3px 3px 0px 1px var(--text-color);
+    transition: all .3s;
+}
+#shopify-section-{{ section.id }} .block-ss-3-main a{
+    text-decoration: none;
+    color: var(--text-color);
+}
+@media (min-width: 768px) and (max-width: 1150px){
+    #shopify-section-{{ section.id }} .blocks-ss-3{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 768px){
+    #shopify-section-{{ section.id }} .row-ss-echo-3{
+        flex-direction: column;
+    }
+    #shopify-section-{{ section.id }} .col-ss-echo-3{
+        width: 100% !important;
+    }
+    #shopify-section-{{ section.id }} .text-ss-3 a{
+        margin: 25px auto 15px !important;
+        display: table;
+    }
+}
+@media (max-width: 540px){
+    #shopify-section-{{ section.id }} .blocks-ss-3{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 370px){
+    #shopify-section-{{ section.id }} .blocks-ss-3{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+</style>
+        <div class="main-ss-echo-3">
+
+        <div class="inner-ss-echo-3">
+            <div class="row-ss-echo-3">
+                <div class="col-ss-echo-3 text-ss-3">
+                    <h3>{{ section.settings.main-head }}</h3>
+                    <p> {{ section.settings.main-subtext }} </p>
+                    <a class="btn-ss-3" href=" {{ section.settings.main-btn-l }} ">{{ section.settings.main-btn-t }}</a>
+                </div>
+                <div class="col-ss-echo-3 blocks-ss-3">
+                    {%  for block in section.blocks %}  
+                    <div class="block-ss-3-main">
+                        <a href="{{ block.settings.block-link }}">
+                        <div class="block-ss-3-img">
+                            <img src="{{ block.settings.block-img |  img_url: 'master' }}" alt="">
+                        </div>
+                        <div class="block-ss-3-text">
+                            <p>{{ block.settings.block-text }}</p>
+                        </div>
+                        </a>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+
+
+
+{% schema %}
+{
+    "name": "Echo Section 1",
+    "settings": [
+        {
+            "type": "text",
+            "id": "main-head",
+            "label": "Heading"
+        },
+        {
+            "type": "range",
+            "id": "font-size-head",
+            "label": "Heading size",
+            "min": 10,
+            "max": 60,
+            "default": 35,
+            "step": 1,
+            "unit": "px"
+        },
+        {
+            "type": "text",
+            "id": "main-subtext",
+            "label": "Sub Text"
+        },
+        {
+            "type": "text",
+            "id": "main-btn-t",
+            "label": "Button Label",
+            "default": "Get in touch"
+        },
+        {
+            "type": "url",
+            "id": "main-btn-l",
+            "label": "Button Link"
+        },
+        {
+            "type": "color",
+            "id": "section-color",
+            "default": "#222",
+            "label": "Color Schema"
+        }
+        ],
+        "blocks": [
+            {
+                "name": "Box",
+                "type": "Box",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "block-img",
+                        "label": "Your Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "block-text",
+                        "label": "Text"
+                    },
+                    {
+                        "type": "url",
+                        "id": "block-link",
+                        "label": "Box Link"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Echo Section 1"
+            }
+        ]
+}
+{% endschema %}

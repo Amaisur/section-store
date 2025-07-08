@@ -1,0 +1,31 @@
+.general-media-d5 {
+  overflow: hidden;
+  position: relative;
+}
+.general-media-d5 img,
+.general-media-d5 video {
+  width: 100%;
+  height: 100%;
+}
+.general-media-d5 button {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.general-media-d5 .active-video-d5 {
+  opacity: 0;
+}
+.general-media-d5:hover .active-video-d5 {
+  opacity: 1;
+}
+.play-pause-ss-d5 .pause-svg-d5 {
+  display: none;
+}

@@ -1,0 +1,48 @@
+<div
+  class="ss-it-main"
+  style="
+    --object-fit: {{ object_fit | default: 'contain' }};
+    --icon-size: {{ icon_size | default: 70 }}px;
+    --icon-size-m: {{ icon_size_m | default: 45 }}px;
+  "
+>
+  <div class="ss-it-row">
+    {% if img != blank or svg != blank %}
+      <div class="ss-it-images">
+        {% if img != blank %}
+          <img
+            class="ss-it-icon"
+            srcset="
+              {%- if img.width >= 50 -%}{{ img | image_url: width: 50 }} 50w,{%- endif -%}
+              {%- if img.width >= 100 -%}{{ img | image_url: width: 100 }} 100w,{%- endif -%}
+              {%- if img.width >= 150 -%}{{ img | image_url: width: 150 }} 150w,{%- endif -%}
+              {%- if img.width >= 200 -%}{{ img | image_url: width: 200 }} 200w,{%- endif -%}
+              {{ img | image_url }} {{ img.width }}w
+            "
+            sizes="(min-width: 750px) calc(100vw - 22rem), 150px"
+            src="{{ img | image_url: width: 1000 }}"
+            alt="{{ media.alt | escape }}"
+            loading="lazy"
+            width="150"
+            height="{{ 150 | divided_by: img.aspect_ratio | ceil }}"
+          >
+        {% else %}
+          {{ svg }}
+        {% endif %}
+      </div>
+    {% endif %}
+    <div class="ss-it-content">
+      {% if heading != blank %}
+        <{{ seo_heading | default: 'h2' }} class="ss-it-heading">{{ heading }}</{{ seo_heading | default: 'h2' }}>
+      {% endif %}
+      {% if text != blank %}
+        <div class="ss-it-description">
+          {{ text }}
+        </div>
+      {% endif %}
+      {% if button_label != blank %}
+        <a class="ss-it-button" href="{{ button_url }}">{{ button_label }}</a>
+      {% endif %}
+    </div>
+  </div>
+</div>

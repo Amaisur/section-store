@@ -1,0 +1,447 @@
+<div id="shopify-section-{{ section.id }}" class="shopify-section">
+  <style>
+        @font-face {
+          font-family: "{{ section.settings.font_family }}";
+          font-weight: {{ section.settings.font_weight }};
+          font-style: {{ section.settings.font_style }};
+          font-display: swap;
+          src: url("{{ section.settings.font_url }}") format("woff2");
+        }
+
+        .section-{{ section.id }} {
+          background-color: {{ section.settings.background_color }};
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+          margin-top: {{ section.settings.margin_top }}px;
+          margin-bottom: {{ section.settings.margin_bottom }}px;
+        }
+
+        .section-title-{{ section.id }} {
+          font-family: "{{ section.settings.title_font_family }}";
+          font-size: {{ section.settings.title_font_size }}px;
+          color: {{ section.settings.title_color }};
+          text-align: {{ section.settings.title_text_align }};
+          margin-bottom: 20px;
+        }
+
+        .hotspots-image-{{ section.id }} {
+          border-radius: {{ section.settings.image_border_radius }}px;
+          position: relative;
+          width: 100%;
+          aspect-ratio: {{ section.settings.image_aspect_ratio }};
+        }
+
+        .hotspots-image-{{ section.id }}  img,.hotspots-image-{{ section.id }}  picture,.hotspots-image-{{ section.id }}  source  {
+          width: 100%;
+          height: 100%;
+          object-fit: {{ section.settings.image_object_fit }};
+          border-radius: {{ section.settings.image_border_radius }}px;
+        }
+
+        .hotspot-item-{{ section.id }} {
+          position: absolute;
+          cursor: pointer;
+          color: {{ section.settings.hotspot_text_color }};
+          border-radius: {{ section.settings.hotspot_border_radius }}px;
+          width: {{ section.settings.hotspot_padding }}px;
+          height: {{ section.settings.hotspot_padding }}px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .hotspot-item-{{ section.id }} .hotspot-icon{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          background-color: {{ section.settings.hotspot_background_color }};
+          position: relative;
+          z-index: 1;
+          border-radius: 50%;
+        }
+        .hotspot-item-{{ section.id }} .hotspot-icon svg path{
+          fill: {{ section.settings.icon_color }};
+        }
+        .hotspot-item-{{ section.id }} .hotspot-content {
+          opacity: 0;
+          position: absolute;
+          top: 120%;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: {{ section.settings.tooltip_background_color }};
+          min-width: 300px;
+          padding: 12px 12px;
+          border-radius: {{ section.settings.tooltip_border_radius }}px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          transition: all 0.25s ease 0s;
+        }
+        .hotspot-item-{{ section.id }} .hotspot-content:before{
+          content: "";
+          position: absolute;
+          top: -2px;
+          left: 49.6%;
+          transform: rotate(45deg) translateX(-50%);
+          width: 10px;
+          height: 10px;
+          background-color: #ffffff;
+        }
+
+        .hotspot-item-{{ section.id }} .hotspot-content p{
+          margin: 0;
+          line-height: normal;
+        }
+        .hotspot-item-{{ section.id }}:hover .hotspot-content {
+          opacity: 1;
+        }
+        .hotspot-item-{{ section.id }}:hover{
+          z-index: 10;
+        }
+
+        /* Keyframes for hotspot animation */
+        .hotspot-item-{{ section.id }}::before{
+          position: absolute;
+          z-index: 0;
+          top: 0px;
+          left: 0px;
+          background: #000000;
+          border-radius: inherit;
+          content: "";
+          width: 100%;
+          height: 100%;
+          animation: {{ section.settings.animation_duration }}s ease 0s infinite normal none running animation-wave;
+        }
+
+        @keyframes animation-wave {
+          100% {
+            transform: scale(1.78);
+            opacity: 0;
+          }
+        }
+
+    @media(max-width: 768px) {
+        .hotspot-item-{{ section.id }} .hotspot-content{
+          min-width: 190px;
+          max-width: 90vw;
+        }
+        .section-title-{{ section.id }} {
+          font-size: {{ section.settings.title_font_size_m }}px;
+          text-align: {{ section.settings.title_text_align_m }};
+          margin-bottom: 20px;
+        }
+        .hotspot-item-{{ section.id }} {
+          width: {{ section.settings.hotspot_padding_m }}px;
+          height: {{ section.settings.hotspot_padding_m }}px;
+        }
+      }
+  </style>
+
+  <div class="section-{{ section.id }}">
+    <h2 class="section-title-{{ section.id }}">{{ section.settings.section_title }}</h2>
+    <div class="hotspots-image-{{ section.id }}">
+      <picture>
+        <source
+          media="(max-width: 768px)"
+          srcset="{{ section.settings.hotspots_image_mobile | image_url: width: '768px' }}"
+        >
+        <source media="(min-width: 769px)" srcset="{{ section.settings.hotspots_image | image_url: width: '1440px' }}">
+      <img src="{{ section.settings.hotspots_image | image_url: width: '1440px' }}" alt="Hotspot Image">
+      </picture>
+
+      {% for block in section.blocks %}
+        <div
+          class="hotspot-item-{{ section.id }}"
+          style="left: {{ block.settings.position_x }}%; top: {{ block.settings.position_y }}%;"
+        >
+          <div class="hotspot-animation-d5"></div>
+          <div class="hotspot-icon">
+            {% if block.settings.hotspot_image %}
+              <img src="{{ block.settings.hotspot_image | img_url: '100' }}" alt="Hotspot Icon">
+            {% else %}
+              <svg stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+              </svg>
+            {% endif %}
+          </div>
+          <div class="hotspot-content">
+            <strong>{{ block.settings.title }}</strong>
+            <p>{{ block.settings.description }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script>
+    function initHotspots() {
+      let items = document.querySelectorAll('.hotspot-item-{{ section.id }}');
+      items.forEach(el => {
+        el.addEventListener('click', () => {
+          items.forEach(item => item.classList.remove('active'));
+          el.classList.toggle('active');
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initHotspots);
+
+    if (Shopify.designMode) {
+      document.addEventListener('shopify:section:unload', initHotspots);
+      document.addEventListener('shopify:section:load', initHotspots);
+    }
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "Hotspots Detail",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Our Featured Products"
+    },
+
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title Font Size",
+      "min": 10,
+      "max": 80,
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "title_text_align",
+      "label": "Title Text Align",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "image_picker",
+      "id": "hotspots_image",
+      "label": "Hotspot Image"
+    },
+     {
+      "type": "image_picker",
+      "id": "hotspots_image_mobile",
+      "label": "Hotspot Mobile Image"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 0,
+      "max": 200,
+      "default": 30,
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 0,
+      "max": 200,
+      "default": 30,
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top (px)",
+      "min": 0,
+      "max": 200,
+      "default": 0,
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom (px)",
+      "min": 0,
+      "max": 200,
+      "default": 0,
+      "step": 2
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image Border Radius (px)",
+      "min": 0,
+      "max": 100,
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "image_object_fit",
+      "label": "Image Object Fit",
+      "options": [
+        { "value": "cover", "label": "Cover" },
+        { "value": "contain", "label": "Contain" },
+        { "value": "fill", "label": "Fill" }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "text",
+      "id": "image_aspect_ratio",
+      "label": "Image Aspect Ratio (e.g., 12/8)",
+      "default": "12/8"
+    },
+    {
+      "type": "color",
+      "id": "hotspot_background_color",
+      "label": "Hotspot Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "hotspot_text_color",
+      "label": "Hotspot Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "hotspot_border_radius",
+      "label": "Hotspot Border Radius (px)",
+      "min": 0,
+      "max": 100,
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "hotspot_padding",
+      "label": "Hotspot Padding (px)",
+      "min": 0,
+      "max": 50,
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "tooltip_background_color",
+      "label": "Tooltip Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "tooltip_border_radius",
+      "label": "Tooltip Border Radius (px)",
+      "min": 0,
+      "max": 50,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "animation_duration",
+      "label": "Animation Duration (seconds)",
+      "min": 1,
+      "max": 10,
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Mobile configurations"
+    },
+     {
+      "type": "select",
+      "id": "title_text_align_m",
+      "label": "Title Text Align",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+     {
+      "type": "range",
+      "id": "title_font_size_m",
+      "label": "Title Font Size",
+      "min": 10,
+      "max": 80,
+      "default": 40
+    },
+      {
+      "type": "range",
+      "id": "hotspot_padding_m",
+      "label": "Hotspot Padding (px)",
+      "min": 0,
+      "max": 50,
+      "default": 8
+    },
+  ],
+  "blocks": [
+    {
+      "type": "hotspot",
+      "name": "Hotspot",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Hotspot Title",
+          "default": "Hotspot Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Hotspot Description",
+          "default": "Hotspot description text here."
+        },
+        {
+          "type": "range",
+          "id": "position_x",
+          "label": "Position X (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "position_y",
+          "label": "Position Y (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        },
+        {
+          "type": "image_picker",
+          "id": "hotspot_image",
+          "label": "Hotspot Icon (Optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hotspots detail",
+      "category": "Hotspots"
+    }
+  ]
+}
+{% endschema %}

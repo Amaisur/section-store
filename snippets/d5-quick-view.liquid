@@ -1,0 +1,86 @@
+{%  liquid 
+    assign c_variant = home_product.variants.first       
+    if home_product.variants.size > 1
+        assign m_variants = true
+    endif
+%}
+<div class="main-popup-d5">
+    <div class="close-icon-d5">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1" fill="none"
+            stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    </div>
+    <div class="inner-popup-d5">
+        <div class="row-popup-d5">
+            <div class="col-popup-d5 q-gallery-d5">
+                <div class="q-slider-container-d5">
+                    <div class="q-slider-d5">
+                        {% for image in home_product.media %}
+                        <div class="q-slide-d5" data-img="{{ image.id }}"><img src="{{ image | image_url: width: 1440 }}" alt="{{ image.alt }}">
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="q-slider-button-d5 q-prev-d5" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="8 4 16 12 8 20"></polyline>
+                        </svg>
+                    </div>
+                    <div class="q-slider-button-d5 q-next-d5" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="8 4 16 12 8 20"></polyline>
+                        </svg>
+                    </div>
+                    <div class="q-dots-d5"></div>
+                </div>
+            </div>
+            <div class="col-popup-d5 q-info-d5">
+                <div class="product-info-d5"> 
+                    <h3>{{ home_product.title }}</h3>
+                    {% comment %} {% render 'rating-star-d5', product: home_product %} {% endcomment %}
+                    <p regular-price-d5>{{ c_variant.price | money }}</p>
+                </div>
+
+                <form action="/cart/add" method="POST" class="quick-atc-form-d5">
+                {% if m_variants %}
+                {% for option in home_product.options_with_values %}
+                <div class="product-option-d5">
+                    <p class="sub-heading-d5">{{ option.name }}</p>
+                    <div class="option-flex-d5">
+                        {% for value in option.values %}
+                        <label class="option-label-d5">
+                            <input type="radio" class="option-input-d5" name="{{ option.name | handleize }}"
+                                value="{{ value }}" data-option-name="{{ option.name }}" {% if forloop.first %}checked{%
+                                endif %} option-id="{{ value.id }}" {% if value.variant.featured_media.id != blank %}img-id="{{ value.variant.featured_media.id }}"{% endif %}>
+                            <span class="option-value-d5">{{ value }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+                <div class="main-quantity-box-d5">
+                    <p class="sub-heading-d5">Quantity</p>
+                    <div class="quantity-select-d5">
+                        <span class="quantity-minus-d5 quantity-button-d5">-</span>
+                        <input type="text" class="quantity-input-d5" value="1" min="1" max="" step="1" name="quantity">
+                        <span class="quantity-plus-d5 quantity-button-d5">+</span>
+                    </div>
+                </div>
+                <input type="hidden" name="id" value="{{ c_variant.id }}">
+        <button type="submit" name="add" id="AddToCart" class="atc-buuton-d5-cart d5-button" {% unless c_variant.available %}disabled{% endunless %}>
+        {% if c_variant.available %}<span class="atc-content-d5">{{ 'Add to Cart' }}</span>{% else %}<span class="atc-content-d5">{{ 'Sold' }}</span>{% endif %}
+                    <span class="atc-spinner-d5"></span>
+                </button>
+                </form>
+            </div>
+            </div>
+            
+    </div>
+    <div data-product-json hidden>
+        {{ home_product.variants | json | escape }}
+    </div>
+</div>

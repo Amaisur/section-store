@@ -1,0 +1,926 @@
+       
+
+<style data-shopify="">@font-face {
+  font-family: "Josefin Sans";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.c8300d95fd4ce72542a6efba9c682da40d144fba.woff2?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=1081bc13bac779d73b77022741d8b8608aa5451af6a05907fc023625940c00f1") format("woff2"),
+       url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.ed7230a86e75b34b997bd12a5e1b87fcaf7104d8.woff?h1=c2VjdGlvbi5zdG9yZQ&h2=c2VjdGlvbi1zdG9yZS1hcHAuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=3f19a3e11bab2423756ce410220df09957f15affd53a78fa0ec435e5660aa636") format("woff");
+}
+  .section-{{ section.id }} *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+
+  #shopify-section-{{ section.id }}{
+    margin: {{ section.settings.mt }}px auto;
+    padding: 0 {{ section.settings.lr-s }}px;
+  }
+  .section-{{ section.id }} {
+    max-width: {{ section.settings.m-w }}rem;
+    border-radius: 30px;
+    border: 0px solid #000000;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  
+  .section-{{ section.id }}-settings {
+    margin: 0 auto;
+    padding-top: {{ section.settings.pt }}px;
+    padding-bottom: {{ section.settings.pb }}px;
+    padding-left: {{ section.settings.p-lr }}rem;
+    padding-right: {{ section.settings.p-lr }}rem;
+  }
+
+  .faq-body-{{ section.id }} {
+    display: grid;
+    gap: 20px;
+  }
+
+  .faq-item-{{ section.id }} {
+    padding: 20px 20px;
+    border-radius: 10px;
+    border: 0px solid #000000;
+    background-color: {{ section.settings.q-bg }};
+    position: relative;
+  }
+
+  .faq-item-{{ section.id }}:not(:first-child) {
+    margin-top: 8px;
+  }
+
+  .faq-toggle-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    gap: 12px;
+  }
+
+  .faq-arrow-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 24px;
+    height: 24px;
+    transition: all 0.3s ease 0s;
+    transform: rotate(var(--rotate));
+    border-radius: 50%;
+    border: 0px solid #6c584c;
+  }
+
+  .faq-arrow-{{ section.id }} svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .faq-arrow-{{ section.id }} svg path {
+    fill: {{ section.settings.a-color }};
+  }
+
+  .faq-question-{{ section.id }} {
+    margin: 0px;
+    font-size: {{ section.settings.q-fs-m }}px;
+    color: {{ section.settings.q-color }};
+    line-height: 130%;
+    text-transform: unset;
+    font-weight: 700;
+  }
+
+  .faq-answer-{{ section.id }} {
+    transition: all 0.2s ease-in-out;
+    overflow: hidden;
+  }
+
+  .faq-answer-{{ section.id }} * {
+    margin: 0px;
+    font-size: {{ section.settings.a-fs-m }}px;
+    color: {{ section.settings.a-color }};
+    line-height: 170%;
+    text-transform: unset;
+  }
+
+  .faq-answer-{{ section.id }} p {
+    min-height: 10px;
+  }
+
+  .faq-answer-{{ section.id }} p:not(:first-child ) {
+    margin-top: 10px;
+  } 
+
+  .faq-height-cal-{{ section.id }} {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 40px);
+    padding-top: 16px;
+  }
+
+  .faq-height-cal-{{ section.id }} * {
+    margin: 0px;
+    font-size: 12px;
+    color: #757575;
+    line-height: 170%;
+    text-transform: unset;
+  }
+
+  .faq-height-cal-{{ section.id }} p {
+    min-height: 10px;
+  }
+
+  .faq-height-cal-{{ section.id }} p:not(:first-child ) {
+    margin-top: 10px;
+  } 
+   .button-alignment-d5{
+      display: flex;
+      align-items: center;
+   }
+  @media(min-width: 1024px) {
+   #shopify-section-{{ section.id }}{
+      margin: {{ section.settings.mt-d }}px auto;
+      padding: 0 {{ section.settings.lr-s-d }}px;
+   }
+   .section-{{ section.id }}-settings {
+      margin: 0 auto;
+      padding-top: {{ section.settings.pt-d }}px;
+      padding-bottom: {{ section.settings.pb-d }}px;
+      padding-left: {{ section.settings.p-lr-d }}rem;
+      padding-right: {{ section.settings.p-lr-d }}rem;
+   }
+    .section-{{ section.id }} {
+      max-width: {{ section.settings.m-w }}rem;
+    }
+    
+    .section-{{ section.id }}-settings {
+      padding: 0 5rem;
+      padding-top: 60px;
+      padding-bottom: 60px;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+
+    .faq-body-{{ section.id }} {
+      gap: 30px;
+    }
+
+    .faq-item-{{ section.id }} {
+      padding: 20px 20px;
+    }
+    
+    .faq-item-{{ section.id }}:not(:first-child) {
+      margin-top: 10px;
+    }
+
+    .faq-question-{{ section.id }} {
+      font-size: {{ section.settings.q-fs-d }}px;
+    }
+
+    .faq-answer-{{ section.id }} * {
+      font-size: {{ section.settings.a-fs-d }}px;
+    }
+
+    .faq-arrow-{{ section.id }} {
+      flex: 0 0 24px;
+      height: 24px;
+    }
+  
+    .faq-arrow-{{ section.id }} svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .faq-height-cal-{{ section.id }} {
+      width: calc(100% - 40px);
+    }
+
+    .faq-height-cal-{{ section.id }} * {
+      font-size: 16px;
+    }
+  }</style>
+  <style>
+    .section-{{ section.id }}-settings {
+      max-width: 130rem;
+    }
+  </style>
+
+
+
+
+
+
+
+  <style>
+    .faq-items-{{ section.id }} {
+      order: 2;
+    }
+
+    .faq-content-{{ section.id }} {
+      order: 1;
+    }
+  </style>
+
+
+
+  <style>
+    @media(min-width: 1024px) {
+      {% if section.settings.left %}
+      .faq-body-{{ section.id }} {
+        grid-template-columns: 1fr 1fr;
+      }
+      {% endif %}
+      .faq-items-{{ section.id }} {
+        order: 2;
+      }
+  
+      .faq-content-{{ section.id }} {
+        order: 1;
+      }
+    }
+  </style>
+
+
+
+  <style>
+    .faq-item-{{ section.id }} {
+      box-shadow: rgba(18, 18, 23, 0.08) 0px 6px 4px -1px;
+    }
+  </style>
+  
+
+  
+{% for block in section.blocks %}
+  {% if block.type == 'button' %}
+  <style>
+   .button-{{ block.id }} .faq-button_{{ section.id }} {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 200px;
+      margin: 0 auto;
+      color: {{ block.settings.b-color }};
+      background: {{ block.settings.b-bg-color }};
+      border-radius: {{ block.settings.b-r }}px;
+      font-size: {{ block.settings.b-fs }}px;
+      padding: {{ block.settings.b-p }}px calc({{ block.settings.b-p }}px * 1.5);
+      line-height: 100%;
+      text-align: center;
+      text-transform: unset;
+      text-decoration: none;
+      transition: all 0.25s ease 0s;
+      position: relative;
+      font-weight: 700;
+      z-index: 2;
+    }
+  
+   .button-{{ block.id }} .faq-button_{{ section.id }}:hover {
+      opacity: .8;
+      transition: all 0.25s ease 0s;
+    }
+  
+   .button-{{ block.id }} .faq-button_{{ section.id }} svg {
+      width: 14px;
+      height: 14px;
+    }
+  
+    .button-{{ block.id }} .faq-button_{{ section.id }} svg path {
+      fill: {{ block.settings.b-color }};
+      transition: all 0.25s ease 0s;
+    }
+  
+    .button-{{ block.id }} .faq-button_{{ section.id }}:hover svg path {
+      fill: {{ block.settings.b-color }};
+      transition: all 0.25s ease 0s;
+    }
+    .button-alignment-d5.button-{{ block.id }}{
+      display: flex;
+      align-items: center;
+      justify-content: {{ block.settings.position }};
+    }
+    @media(min-width: 768px) {
+     .button-{{ block.id }} .faq-button_{{ section.id }} {
+        max-width: 200px;
+        font-size: {{ block.settings.b-fs-d }}px;
+        margin: 0;
+      }
+       .button-alignment-d5.button-{{ block.id }}{
+      display: flex;
+      align-items: center;
+      justify-content: {{ block.settings.position-d }};
+    }
+    }
+</style>
+    {% endif %}
+    {% endfor %}
+
+  
+  
+  
+<div class="section-{{ section.id }} faq-{{ section.id }}" style="background-color: {{ section.settings.bg-color }};{% if section.settings.bg-img != blank %} background-image: url({{ section.settings.bg-img | image_url: width: '1440px' }});{% endif %}">
+    <div class="section-{{ section.id }}-settings">
+      <div class="faq-body-{{ section.id }}">
+        <div class="faq-content-{{ section.id }}">
+          
+          {% for block in section.blocks %}  
+            {% case block.type %}
+              {% when 'text' %}
+              <style>
+                .text-{{ block.id }}{
+                  margin: {{ block.settings.t-mt }}px 0 {{ block.settings.t-mb }}px;
+                }
+                .text-{{ block.id }} *{
+                  font-size: {{ block.settings.t-fs }}px;
+                  color: {{ block.settings.t-color }};
+                  line-height: normal;
+                  text-align: {{ block.settings.align }};
+                }
+                @media (min-width: 768px){
+                .text-{{ block.id }} *{
+                  font-size: {{ block.settings.t-fs-d }}px;
+                   text-align: {{ block.settings.align-d }};
+                }
+                }
+              </style>
+              <div class="text-d5 text-{{ block.id }}">
+                {{ block.settings.text }}
+              </div>
+              {% when 'button' %}
+              <div class="button-alignment-d5 button-{{ block.id }}">
+                <a href="{{ block.settings.url }}" class="faq-button_{{ section.id }}">
+                {{ block.settings.text }}
+                
+                  <svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M187.827 98.7858C188.123 98.4749 188.123 98.4749 188.123 98.1761C188.419 97.8652 188.419 97.5663 188.704 97.5663C189 96.9566 189 96.6458 189 96.0361C189 95.4263 189 94.8166 188.704 94.5058C188.704 94.195 188.408 93.8961 188.123 93.5852C188.123 93.2744 187.827 93.2744 187.827 92.9755L103.287 4.21945C102.41 3.29889 101.533 3 100.668 3C99.791 3 98.6295 3.31083 98.0488 4.21945C97.1719 5.14 96.8872 6.06058 96.8872 6.96919C96.8872 7.88974 97.1833 9.10918 98.0488 9.7189L175.587 92.0539H6.79206C4.75371 92.0539 3 93.895 3 96.0351C3 98.1751 4.75365 100.016 6.79206 100.016H175.575L97.7543 182.042C96.2967 183.572 96.2967 186.322 97.7543 187.852C99.2119 189.383 101.831 189.383 103.288 187.852L187.827 98.7858Z" fill="black"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M188.607 97.5657C188.432 97.5657 188.365 97.6788 188.27 97.8382C188.211 97.9378 188.141 98.0554 188.027 98.1748C188.027 98.4734 188.027 98.4734 187.731 98.7839L103.281 187.759C101.825 189.287 99.2085 189.287 97.7524 187.759C96.2963 186.23 96.2963 183.483 97.7524 181.954L175.492 100.013L6.88489 100.013C4.8486 100.013 3.09677 98.1739 3.09677 96.036C3.09677 93.8982 4.84866 92.059 6.88489 92.059L175.504 92.059L98.0465 9.80878C97.182 9.19968 96.8862 7.9815 96.8862 7.0619C96.8862 6.15422 97.1706 5.2346 98.0465 4.315C98.6267 3.40732 99.787 3.0968 100.663 3.0968C101.527 3.0968 102.403 3.39539 103.279 4.315L187.731 92.9796C187.731 93.1274 187.804 93.2021 187.877 93.2774C187.952 93.3543 188.027 93.4319 188.027 93.5887C188.046 93.6098 188.066 93.6308 188.085 93.6518C188.338 93.9267 188.584 94.1935 188.606 94.4689C188.607 94.482 188.607 94.4951 188.607 94.5083C188.903 94.8188 188.903 95.4279 188.903 96.037C188.903 96.6461 188.903 96.9566 188.607 97.5657ZM191.489 93.2767C191.79 93.8661 191.89 94.4204 191.934 94.7363C192.001 95.2226 192 95.7194 192 95.9856L192 96.037C192 96.0544 192 96.0729 192 96.0926C192 96.3523 192.001 96.8096 191.924 97.2931C191.828 97.8884 191.64 98.41 191.393 98.9184L190.546 100.663H190.212C190.127 100.759 190.038 100.852 189.988 100.905L189.974 100.92L105.527 189.891C102.85 192.701 98.1865 192.704 95.51 189.895C94.1476 188.464 93.5636 186.587 93.5636 184.857C93.5636 183.128 94.1468 181.252 95.5071 179.822M191.489 93.2767C191.316 92.7908 191.078 92.4357 190.938 92.2406C190.903 92.1912 190.866 92.142 190.828 92.0939V91.7408L105.522 2.17912C104.076 0.661813 102.397 0 100.663 0C99.3914 0 97.0569 0.401401 95.6212 2.37737C94.3151 3.83819 93.7895 5.45521 93.7895 7.0619C93.7895 8.26663 94.1183 10.6061 95.9608 12.111L168.333 88.9622L6.88489 88.9622C2.9981 88.9622 0 92.3316 0 96.036C0 99.7405 2.99801 103.11 6.88489 103.11L168.285 103.11" fill="black"></path>
+                    <path d="M169.5 104L16.5 102.5V90H171L97.5 10.5V7L107.5 4.5C131.167 29.6667 180.2 81.5 187 87.5C193.8 93.5 191.5 99 189.5 101L105.5 184L94 181.5L169.5 104Z" fill="black"></path>
+                  </svg>
+                
+              </a>
+              </div>
+            {% endcase %}
+          {% endfor %}
+        </div>
+        <div class="faq-items-{{ section.id }}">
+       {% for block in section.blocks %}
+         {% if block.type == 'question' %}
+              <div class="faq-item-{{ section.id }}">
+                <div class="faq-toggle-{{ section.id }}">
+                  <p class="faq-question-{{ section.id }}">{{ block.settings.quest }}</p>
+                  <div class="faq-arrow-{{ section.id }}" style="--rotate: 0deg;">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 143.000000 83.000000" preserveAspectRatio="xMidYMid meet">
+                      <g transform="translate(0.000000,83.000000) scale(0.100000,-0.100000)" fill="" stroke="none">
+                      <path d="M57 772 l-57 -57 360 -360 360 -360 357 357 358 358 -63 62 -62 63 -298 -298 -297 -297 -295 295 c-162 162 -297 295 -300 295 -3 0 -31 -26 -63 -58z"></path>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+                <div class="faq-answer-{{ section.id }}" style="display: none; height: 0px; padding-top: 0px; padding-bottom: 0px;">
+                  {{ block.settings.ans }}
+                   </div>
+                <div class="faq-height-cal-{{ section.id }}">
+                  {{ block.settings.ans }}
+                   </div>
+              </div>
+          {% endif %}
+        {% endfor %}
+          
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+  function initFAQ9() {
+    
+    const answerPaddingTop = 16;
+    const answerPaddingBottom = 0;
+
+    const faqs = document.querySelectorAll(
+      '.faq-item-{{ section.id }}'
+    );
+    const buttons = document.querySelectorAll(
+      '.faq-toggle-{{ section.id }}'
+    );
+    const answers = document.querySelectorAll(
+      '.faq-answer-{{ section.id }}'
+    );
+    const answersHeightCalElements = document.querySelectorAll(
+      '.faq-height-cal-{{ section.id }}'
+    );
+    const icons = document.querySelectorAll(
+      '.faq-arrow-{{ section.id }}'
+    );
+
+    let activeIndex = -1;
+
+    function openAnswer(index) {
+      console.log( answersHeightCalElements[index]);
+      const height = answersHeightCalElements[index].offsetHeight;
+
+      answers[index].style.display = 'block';
+      setTimeout(() => {
+        answers[index].style.paddingTop = `${answerPaddingTop}px`;
+        answers[index].style.paddingBottom = `${answerPaddingBottom}px`;
+        answers[index].style.height = `${height }px`;
+        icons[index].style.setProperty('--rotate', '180deg');
+      });
+    }
+    function closeAnswer(index) {
+      answers[index].style.paddingTop = 0;
+      answers[index].style.paddingBottom = 0;
+      answers[index].style.height = 0;
+      icons[index].style.setProperty('--rotate', '0deg');
+
+      setTimeout(() => {
+        answers[index].style.display = 'none';
+      }, 300);
+    }
+    function toggleAnswer(index) {
+      if (answers[index].style.display === 'none') {
+        openAnswer(index);
+        activeIndex = index;
+      } else {
+        closeAnswer(index);
+        activeIndex = -1;
+      }
+    }
+    function closeAllAnswerBut(index) {
+      answers.forEach((answer, i) => {
+        if (i !== index) {
+          closeAnswer(i);
+        }
+      });
+    }
+
+    // When clicked, toggle the answer, animate the answer's height:
+    buttons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        toggleAnswer(index);
+        // closeAllAnswerBut(index);
+      });
+    });
+
+    // When the window is resized, debounce the answer's height:
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (activeIndex !== -1) {
+          const height = answersHeightCalElements[activeIndex].offsetHeight;
+          answers[activeIndex].style.height = `${height}px`;
+        }
+      }, 250);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initFAQ9);
+  
+</script>
+
+
+
+
+{% schema %}
+  {
+    "name": "FAQs",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Background"
+      },
+      {
+        "type": "image_picker",
+        "id": "bg-img",
+        "label": "Background Image"
+      },
+      {
+        "type": "color_background",
+        "id": "bg-color",
+        "label": "Background Color",
+        "default": "#f0f3f4"
+      },
+      {
+        "type": "checkbox",
+        "id": "left",
+        "label": "Show Text on in Column",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Question Block"
+      },
+       {
+        "type": "color",
+        "id": "q-color",
+        "label": "Question Color",
+        "default": "#005c53"
+      },
+      {
+        "type": "color",
+        "id": "a-color",
+        "label": "Answer Color",
+        "default": "#757575"
+      },
+      {
+        "type": "range",
+        "id": "q-fs-d",
+        "label": "Question Font Size (Desktop)",
+        "min": 12,
+        "max": 60,
+        "step": 1,
+        "unit": "px",
+        "default": 18
+      },
+      {
+        "type": "range",
+        "id": "q-fs-m",
+        "label": "Question Font Size (Mobile)",
+        "min": 12,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "a-fs-d",
+        "label": "Answer Font Size (Desktop)",
+        "min": 6,
+        "max": 60,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "a-fs-m",
+        "label": "Answer Font Size (Mobile)",
+        "min": 6,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "default": 12
+      },
+      {
+        "type": "color",
+        "id": "q-bg",
+        "label": "Question Item Background",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Section Layout"
+      },
+     
+      {
+        "type": "range",
+        "id": "pt-d",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Padding Top (Desktop)",
+        "step": 1,
+        "default": 36
+      },{
+        "type": "range",
+        "id": "pb-d",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Padding Bottom (Desktop)",
+        "step": 1,
+        "default": 36
+      },
+       {
+        "type": "range",
+        "id": "pt",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Padding Top (Mobile)",
+        "step": 1,
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "pb",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Padding Bottom (Mobile)",
+        "step": 1,
+        "default": 36
+      },
+       {
+        "type": "range",
+        "id": "p-lr-d",
+        "min": 0,
+        "max": 35,
+        "unit": "rem",
+        "label": "Padding Left Right (Desktop)",
+        "step": 1,
+        "default": 1
+      },
+       {
+        "type": "range",
+        "id": "p-lr",
+        "min": 0,
+        "max": 35,
+        "unit": "rem",
+        "label": "Padding Left Right (Mobile)",
+        "step": 1,
+        "default": 5
+      },
+      {
+        "type": "range",
+        "id": "m-w",
+        "min": 50,
+        "max": 220,
+        "unit": "rem",
+        "label": "Max Width",
+        "step": 2,
+        "default": 190
+      },
+      {
+        "type": "header",
+        "content": "Section Spacing"
+      },
+           
+      {
+        "type": "range",
+        "id": "mt-d",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Vertical Space (Desktop)",
+        "step": 1,
+        "default": 60
+      },{
+        "type": "range",
+        "id": "lr-s-d",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Horizontal Space (Desktop)",
+        "step": 1,
+        "default": 40
+      },
+         {
+        "type": "range",
+        "id": "mt",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Vertical Space (Mobile)",
+        "step": 1,
+        "default": 50
+      },
+      {
+        "type": "range",
+        "id": "lr-s",
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "label": "Horizontal Space (Mobile)",
+        "step": 1,
+        "default": 20
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+          },
+          {
+            "type": "color",
+            "id": "t-color",
+            "label": "Color",
+            "default": "#005c53"
+          },
+          {
+            "type": "range",
+            "id": "t-fs-d",
+            "label": "Font Size (Desktop)",
+            "min": 6,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 48
+          },
+          {
+            "type": "range",
+            "id": "t-fs",
+            "label": "Font Size (Mobile)",
+            "min": 6,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 30
+          },
+          {
+            "type": "select",
+            "id": "align-d",
+            "label": "Text Align (Desktop)",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+            {
+            "type": "select",
+            "id": "align",
+            "label": "Text Align (Mobile)",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "id": "t-mt",
+            "label": "Margin Top",
+            "min": 0,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 0
+          },
+          {
+            "type": "range",
+            "id": "t-mb",
+            "label": "Margin Bottom",
+            "min": 0,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 0
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "Button",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Button Label",
+            "default": "Get Now"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Button Link"
+          },
+          {
+            "type": "color",
+            "id": "b-color",
+            "label": "Color",
+            "default": "#fff"
+          },
+          {
+            "type": "color",
+            "id": "b-bg-color",
+            "label": "Button Background Color",
+            "default": "#000000"
+          },
+          {
+            "type": "range",
+            "id": "b-fs-d",
+            "label": "Font Size (Desktop)",
+            "min": 6,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 16
+          },
+          {
+            "type": "range",
+            "id": "b-fs",
+            "label": "Font Size (Mobile)",
+            "min": 6,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 14
+          },
+          {
+            "type": "range",
+            "id": "b-p",
+            "label": "Button Padding",
+            "min": 0,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 0
+          },
+          {
+            "type": "range",
+            "id": "b-r",
+            "label": "Button Border Radius",
+            "min": 0,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "default": 5
+          },
+           {
+            "type": "select",
+            "id": "position-d",
+            "label": "Button Position (Desktop)",
+            "options": [
+              {
+                "value": "start",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "end",
+                "label": "Right"
+              }
+            ]
+          },
+          
+          {
+            "type": "select",
+            "id": "position",
+            "label": "Button Position (Mobile)",
+            "options": [
+              {
+                "value": "start",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "end",
+                "label": "Right"
+              }
+            ]
+          },
+          
+        ]
+      },
+      {
+        "type": "question",
+        "name": "Question",
+        "settings": [
+          {
+            "type": "text",
+            "id": "quest",
+            "label": "Question",
+            "default": "What is your return and exchange policy?"
+          },
+         {
+            "type": "richtext",
+            "id": "ans",
+            "label": "Answer",
+            "default": "<p>Answer</p>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "FAQs"
+      }
+    ]
+  }
+{% endschema %}

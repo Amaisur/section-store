@@ -1,0 +1,43 @@
+.ss-rating-container i,
+.ss-rating-container i:before {
+  width: var(--star-size);
+  height: var(--star-size);
+  background-repeat: no-repeat !important;
+  background-position: 0 0;
+  background-size: var(--star-size) !important;
+  display: inline-block;
+}
+.ss-rating-container i {
+  position: relative;
+}
+.ss-rating-container i:before {
+  content: none;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--partial-width, 0);
+}
+.ss-rating-container i.ss-partial:before {
+  content: "";
+  display: block;
+}
+.ss-total-rating {
+  display: flex;
+  align-items: center;
+}
+.ss-total-rating * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.ss-rating-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ss-rating-container {
+  display: flex;
+  align-items: center;
+  gap: var(--ss-star-gap);
+}

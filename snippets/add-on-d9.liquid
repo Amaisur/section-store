@@ -1,0 +1,120 @@
+{% comment %}
+   {% render 'add-on-d9'
+       ad-title: block.settings.heading-add
+      %}
+
+ {% endcomment %}
+ 
+ {% assign metafield = product.metafields.custom.addon.value %}
+ {% if metafield %}
+<style>
+.main-adon-45-d9{
+  width: 100%;
+}
+.row-adon-45-d9{
+  display: flex;
+  flex-direction: column;
+}
+.col-adon-45-d9{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 32px;
+  border: 0.63px solid rgba(87, 87, 87, 0.4);
+  padding: 16px;
+}
+.col-adon-45-d9:first-child{
+  border-radius: 5px 5px 0 0;
+}
+.col-adon-45-d9:last-child{
+  border-radius: 0px 0px 5px 5px;
+}
+.content-col-45{
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} 
+.img-col-45 {
+  aspect-ratio: 80 / 104;
+  width: 80px;
+  overflow: hidden;
+}
+.img-col-45 img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  aspect-ratio: 80 / 104;
+}
+.content-col-45 h4{
+  font-family: Futura LT Paneuropean;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 22.4px;
+  text-align: left;
+  color: #000000;
+}
+.content-col-45 span{
+  font-family: Futura LT Paneuropean;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 22.4px;
+  text-align: left;
+  color: rgba(98, 97, 97, 0.7);
+}
+.content-col-45 button{
+  padding: 8px 0px !important;
+  width: 79px !important;
+  border-radius: 0px !important;
+  background: rgba(254, 249, 232, 1);
+  font-family: Futura LT Paneuropean;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 20.4px;
+  text-align: center;
+  color: #000000 !important;
+}
+.inner-adon-45-d9 h3{
+  font-family: Futura LT Paneuropean;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 21.41px;
+  text-align: left;
+  color: #000000;
+  margin-bottom: 16px;
+}
+</style>
+<div class="main-adon-45-d9">
+  <div class="inner-adon-45-d9">
+    <h3>{{ ad-title }}</h3>
+    <div class="row-adon-45-d9">
+     
+      
+        {% for product in metafield %}
+          {% assign product = all_products[handle] %}
+          
+          {% if product %}
+            <div class="col-adon-45-d9">
+              <div class="mini-col-adon-45-d9 img-col-45">
+                {% if product.featured_image %}
+                  <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title }}">
+                {% endif %}
+              </div>
+              <div class="mini-col-adon-45-d9 content-col-45">
+                <div class="title-price-d9">
+                  <h4>{{ product.title }}</h4>
+                  <span>{{ product.price | money }}</span>
+                </div>
+                <div class="atc-btn-45-d9">
+                  {% render 'buy-buttons' %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      
+    </div>
+  </div>
+</div>
+{% endif %}
+

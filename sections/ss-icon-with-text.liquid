@@ -1,0 +1,240 @@
+{{ 'ss-text-icon-v-1-0.css' | asset_url | stylesheet_tag  }}
+<style>
+  .icon-with-text-d5 {
+    max-width: calc(1200px + 100px);
+    margin: 100px auto;
+    width: 100%;
+  }
+  .it-d5-inner {
+    padding: 0 50px;
+  }
+  .d5-row-it {
+    display: flex;
+    overflow: hidden;
+    gap: 50px;
+    scroll-behavior: smooth;
+  }
+  .d5-it-col {
+    min-width: calc(33% - var(--gap-it));
+    flex-shrink: 0;
+  }
+  .d5-row-it::-webkit-scrollbar {
+    display: none;
+  }
+  .d5-it-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 20px;
+  }
+  .d5-it-dots .it-dot-d5 {
+    width: 10px;
+    height: 10px;
+    display: block;
+    border-radius: 50%;
+    border: 1px solid #000;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .d5-it-dots .it-dot-d5.active {
+    background-color: #000;
+  }
+  @media (max-width: 768px) {
+    .d5-row-it {
+      gap: 20px;
+    }
+    .d5-it-col {
+      min-width: 100%;
+    }
+    .it-d5-inner {
+      padding: 0 20px;
+    }
+  }
+</style>
+<div class="icon-with-text-d5">
+  <div class="it-d5-inner">
+    <div class="d5-row-it" id="draggable-container-d5">
+      {% for block in section.blocks %}
+        <div class="d5-it-col" style="--gap-it: 50px * 3">
+        {% render 'ss-text-icon-v-1-0',
+          img: block.settings.img,
+          svg: block.settings.svg,
+          heading: block.settings.heading,
+          seo_heading: block.settings.seo-heading,
+          text: block.settings.text,
+          button_label: block.settings.button_label,
+          button_url: block.settings.button_url,
+          icon_size: block.settings.icon-size
+        %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="d5-it-dots" id="dots-container-d5">
+      {% for block in section.blocks %}
+        <div class="it-dot-d5"></div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script>
+const container = document.getElementById('draggable-container-d5');
+const dotsContainer = document.getElementById('dots-container-d5');
+const dots = Array.from(dotsContainer.children);
+const slides = Array.from(container.children);
+
+let currentIndex = 0;
+
+// Function to update active dot
+function updateActiveDot() {
+  dots.forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentIndex);
+  });
+}
+
+// Function to scroll to the slide
+function scrollToSlide(index) {
+  const slideWidth = slides[0].offsetWidth + parseInt(getComputedStyle(container).gap);
+  container.scrollTo({
+    left: index * slideWidth,
+    behavior: 'smooth'
+  });
+  currentIndex = index;
+  updateActiveDot();
+}
+
+// Add click functionality to dots
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    scrollToSlide(index);
+  });
+});
+
+// Add drag-to-slide functionality
+let isDragging = false;
+let startX;
+let currentScrollLeft;
+
+container.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  startX = e.pageX;
+  currentScrollLeft = container.scrollLeft;
+});
+
+container.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - startX;
+  container.scrollLeft = currentScrollLeft - x;
+});
+
+container.addEventListener('mouseup', () => {
+  if (isDragging) {
+    const slideWidth = slides[0].offsetWidth + parseInt(getComputedStyle(container).gap);
+    const scrolledIndex = Math.round(container.scrollLeft / slideWidth);
+    scrollToSlide(scrolledIndex);
+  }
+  isDragging = false;
+});
+
+container.addEventListener('mouseleave', () => {
+  if (isDragging) {
+    const slideWidth = slides[0].offsetWidth + parseInt(getComputedStyle(container).gap);
+    const scrolledIndex = Math.round(container.scrollLeft / slideWidth);
+    scrollToSlide(scrolledIndex);
+  }
+  isDragging = false;
+});
+
+// Initialize the first dot as active
+updateActiveDot();
+</script>
+
+
+{% schema %}
+  {
+    "name": "SS Icon with Text",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "icon-text",
+        "name": "Icon Text",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+          },
+          {
+            "type": "liquid",
+            "id": "svg",
+            "label": "SVG",
+            "info": "Paste SVG code here"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Heading"
+          },
+          {
+            "type": "select",
+            "id": "seo_heading",
+            "label": "SEO Heading",
+            "options": [
+               {
+                "label": "H1",
+                "value": "h1"
+              },
+              {
+                "label": "H2",
+                "value": "h2"
+              },
+               {
+                "label": "H3",
+                "value": "h3"
+              },
+               {
+                "label": "H4",
+                "value": "h4"
+              },
+               {
+                "label": "H5",
+                "value": "h5"
+              },
+               {
+                "label": "H6",
+                "value": "h6"
+              },
+               {
+                "label": "p",
+                "value": "p"
+              }
+            ]
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Label",
+          },
+          {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button Url"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "SS Icon with Text"
+      }
+    ]
+  }
+{% endschema %}

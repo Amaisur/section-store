@@ -1,0 +1,661 @@
+{% assign collection = section.settings.collection %}
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .cq-main-d5 {
+        width: 100%;
+    }
+
+    .cq-inner-d5 {
+        max-width: 1440px;
+        padding: 0 40px;
+        margin: 80px auto;
+    }
+
+    .cq-row-d5 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    .cq-card-d5 {
+        border: 1px solid;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .cq-image-d5 {
+        width: 100%;
+        aspect-ratio: 1;
+    }
+
+    .cq-image-d5 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .cq-info-d5 {
+        padding: 10px 15px;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .cq-info-d5 h4 {
+        font-size: 16px;
+        line-height: normal;
+        margin-bottom: 10px;
+    }
+
+    .cq-quick-d5 {
+        width: fit-content;
+        align-self: end;
+        background: #000;
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        height: 35px;
+        width: 100px;
+        cursor: pointer;
+    }
+
+    /* Model Styles */
+    .cq-model-d5 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .cq-model-d5.model__open {
+        display: flex;
+        opacity: 1;
+    }
+
+    .cq-model-inner-d5 {
+        background: #fff;
+        width: 90%;
+        max-width: 900px;
+        max-height: 90vh;
+        overflow-y: auto;
+        border-radius: 10px;
+        padding: 30px;
+        position: relative;
+    }
+
+    .cq-model-close-d5 {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .cq-model-content-d5 {
+        display: flex;
+        gap: 30px;
+    }
+
+    .cq-model-img-d5 {
+        flex: 1;
+    }
+
+    .cq-model-img-d5 img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .cq-model-info-d5 {
+        flex: 1;
+    }
+
+    .cq-model-title-d5 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .cq-model-price-d5 {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .cq-model-variant-d5 {
+        margin-bottom: 20px;
+    }
+
+    .cq-model-option-d5 {
+        margin-bottom: 15px;
+    }
+
+    .cq-model-option-d5 label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+
+    .cq-model-option-d5 select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .cq-model-quantity-d5 {
+        margin-bottom: 25px;
+    }
+
+    .cq-model-quantity-d5 label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+
+    .cq-model-quantity-d5 input {
+        width: 100px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .cq-model-addtocart-d5 {
+        background: #000;
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        height: 45px;
+        width: 100%;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: background 0.3s ease;
+    }
+
+    .cq-model-addtocart-d5:hover {
+        background: #333;
+    }
+
+    .cq-model-addtocart-d5:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+    }
+
+    .cq-model-description-d5 {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+    }
+
+    /* Loading States */
+    .cq-skeleton-loading {
+        background: #f0f0f0;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cq-skeleton-loading::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+        animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+        0% {
+            transform: translateX(-100%);
+        }
+
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    .cq-model-loading-d5 {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.8);
+        z-index: 10;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cq-model-loading-d5.active {
+        display: flex;
+    }
+
+    .cq-spinner-d5 {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #000;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    /* Gallery Styles */
+    .cq-model-gallery-d5 {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        flex: 1;
+    }
+
+    .cq-model-main-image-container {
+        width: 100%;
+        aspect-ratio: 1;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+
+    .cq-model-main-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .cq-model-thumbnails-d5 {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        scrollbar-width: thin;
+    }
+
+    .cq-model-thumbnail {
+        width: 70px;
+        height: 70px;
+        border: 2px solid transparent;
+        border-radius: 4px;
+        overflow: hidden;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .cq-model-thumbnail.active {
+        border-color: #000;
+    }
+
+    .cq-model-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Hide scrollbar but keep functionality */
+    .cq-model-thumbnails-d5::-webkit-scrollbar {
+        height: 5px;
+    }
+
+    .cq-model-thumbnails-d5::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .cq-model-thumbnails-d5::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    .cq-model-thumbnails-d5::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<div class="cq-main-d5">
+    <div class="cq-inner-d5">
+        <div class="cq-row-d5">
+            {% for product in collection.products limit: 20 %}
+            <div class="cq-card-d5" products-d5>
+                <div class="cq-image-d5">
+                    <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}"
+                        loading="lazy">
+                </div>
+                <div class="cq-info-d5">
+                    <h4>{{ product.title }}</h4>
+                    <div class="cq-price-d5">{{ product.price | money }}</div>
+                    <button class="cq-quick-d5" data-url="{{ product.handle }}" quickview-trigger-d5>
+                        + View
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="cq-model-d5" quick-model>
+        <div class="cq-model-loading-d5">
+            <div class="cq-spinner-d5"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+   (function() {
+    const products = document.querySelectorAll('[products-d5]');
+    const quickModel = document.querySelector('[quick-model]');
+    const loadingSpinner = quickModel.querySelector('.cq-model-loading-d5');
+
+    // Close model when clicking outside
+    quickModel.addEventListener('click', (e) => {
+        if (e.target === quickModel) {
+            quickModel.classList.remove('model__open');
+        }
+    });
+
+    products.forEach(product => {
+        const button = product.querySelector('[quickview-trigger-d5]');
+        button.addEventListener('click', async () => {
+            const handle = button.getAttribute('data-url');
+            try {
+                loadingSpinner.classList.add('active');
+                quickModel.classList.add('model__open');
+                await getData(handle);
+            } catch (error) {
+                console.error('Error loading product:', error);
+                loadingSpinner.classList.remove('active');
+            }
+        });
+    });
+
+    async function getData(handle) {
+        try {
+            quickModel.innerHTML = `
+                <div class="cq-model-loading-d5 active">
+                    <div class="cq-spinner-d5"></div>
+                </div>
+            `;
+            
+            const req = await fetch(`/products/${handle}.js`);
+            if (!req.ok) throw new Error('Failed to fetch product');
+            
+            const product = await req.json();
+            renderProductModal(product);
+            
+        } catch (err) {
+            console.error(err);
+            quickModel.innerHTML = `
+                <div class="cq-model-error-d5">
+                    <p>Failed to load product. Please try again.</p>
+                    <button onclick="window.location.reload()">Retry</button>
+                </div>
+            `;
+            throw err;
+        }
+    }
+
+    function renderProductModal(product) {
+        quickModel.innerHTML = `
+            <div class="cq-model-loading-d5">
+                <div class="cq-spinner-d5"></div>
+            </div>
+            <div class="cq-model-inner-d5">
+                <button class="cq-model-close-d5" close-model>&times;</button>
+                <div class="cq-model-content-d5">
+                    <div class="cq-model-gallery-d5">
+                        <div class="cq-model-main-image-container">
+                            <img src="${product.featured_image}" alt="${product.title}" id="model-main-image" loading="lazy">
+                        </div>
+                        <div class="cq-model-thumbnails-d5" id="thumbnail-container">
+                            ${product.images.map((image, index) => `
+                                <div class="cq-model-thumbnail ${index === 0 ? 'active' : ''}" data-image-index="${index}">
+                                    <img src="${image}" alt="${product.title} - thumbnail ${index + 1}" loading="lazy">
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="cq-model-info-d5">
+                        <h2 class="cq-model-title-d5">${product.title}</h2>
+                        <div class="cq-model-price-d5" id="model-price">${formatMoney(product.price)}</div>
+                        
+                        ${product.options.length > 0 ? 
+                            product.options.map((option, index) => `
+                                <div class="cq-model-option-d5">
+                                    <label for="option-${index}">${option.name}</label>
+                                    <select id="option-${index}" class="variant-selector" data-option-index="${index}">
+                                        ${option.values.map(value => `
+                                            <option value="${value}">${value}</option>
+                                        `).join('')}
+                                    </select>
+                                </div>
+                            `).join('') : ''
+                        }
+                        
+                        <div class="cq-model-quantity-d5">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" name="quantity" value="1" min="1">
+                        </div>
+                        
+                        <button class="cq-model-addtocart-d5" id="add-to-cart" data-product-id="${product.id}">Add to Cart</button>
+                        
+                        <div class="cq-model-description-d5">
+                            ${product.description}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        setupModalFunctionality(product);
+    }
+
+    function setupModalFunctionality(product) {
+        const loadingSpinner = quickModel.querySelector('.cq-model-loading-d5');
+        const innerModel = quickModel.querySelector('.cq-model-inner-d5');
+        let currentVariant = product.variants[0];
+        
+        innerModel.style.opacity = '0';
+        
+        Promise.all(
+            Array.from(quickModel.querySelectorAll('img')).map(img => {
+                return new Promise((resolve) => {
+                    if (img.complete) {
+                        resolve();
+                    } else {
+                        img.addEventListener('load', resolve);
+                        img.addEventListener('error', resolve);
+                    }
+                });
+            })
+        ).then(() => {
+            loadingSpinner.classList.remove('active');
+            innerModel.style.opacity = '1';
+            
+            // Setup variants
+            const variantSelectors = quickModel.querySelectorAll('.variant-selector');
+            if (product.variants.length > 1) {
+                variantSelectors.forEach(select => {
+                    select.addEventListener('change', () => {
+                        const selectedOptions = Array.from(variantSelectors).map(s => s.value);
+                        currentVariant = product.variants.find(variant => 
+                            variant.options.every((option, index) => option === selectedOptions[index])
+                        );
+                        
+                        if (currentVariant) {
+                            document.getElementById('model-price').textContent = formatMoney(currentVariant.price);
+                            const addToCartBtn = document.getElementById('add-to-cart');
+                            addToCartBtn.disabled = !currentVariant.available;
+                            addToCartBtn.textContent = currentVariant.available ? 'Add to Cart' : 'Sold Out';
+                            
+                            if (currentVariant.featured_image) {
+                                const thumbnails = quickModel.querySelectorAll('.cq-model-thumbnail');
+                                thumbnails.forEach((thumb, index) => {
+                                    const imgSrc = thumb.querySelector('img').src;
+                                    if (imgSrc.includes(currentVariant.featured_image.src.split('?')[0])) {
+                                        thumbnails.forEach(t => t.classList.remove('active'));
+                                        thumb.classList.add('active');
+                                        thumb.scrollIntoView({
+                                            behavior: 'smooth',
+                                            block: 'nearest',
+                                            inline: 'center'
+                                        });
+                                        document.getElementById('model-main-image').src = currentVariant.featured_image.src;
+                                    }
+                                });
+                            }
+                        }
+                    });
+                });
+            }
+            
+            // Setup thumbnails
+            const thumbnails = quickModel.querySelectorAll('.cq-model-thumbnail');
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    this.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest',
+                        inline: 'center'
+                    });
+                    const imgIndex = this.getAttribute('data-image-index');
+                    document.getElementById('model-main-image').src = product.images[imgIndex];
+                });
+            });
+            
+            // Setup add to cart
+            document.getElementById('add-to-cart').addEventListener('click', async function() {
+                const quantity = parseInt(document.getElementById('quantity').value) || 1;
+                const btn = this;
+                
+                if (!currentVariant) return;
+                
+                btn.disabled = true;
+                btn.textContent = 'Adding...';
+                
+                try {
+                    const response = await fetch('/cart/add.js', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id: currentVariant.id,
+                            quantity: quantity
+                        })
+                    });
+                    
+                    const result = await response.json();
+                    if (result.status === 422) throw new Error(result.description);
+                    
+                    btn.textContent = 'Added to Cart!';
+                    
+                    // Update cart drawer
+                    await updateCartDrawer();
+                    
+                    setTimeout(() => {
+                        btn.textContent = 'Add to Cart';
+                        btn.disabled = false;
+                    }, 2000);
+                    
+                } catch (error) {
+                    console.error('Error adding to cart:', error);
+                    btn.textContent = 'Error - Try Again';
+                    btn.disabled = false;
+                }
+            });
+            
+            // Setup close button
+            quickModel.querySelector('[close-model]').addEventListener('click', () => {
+                quickModel.classList.remove('model__open');
+            });
+            
+        }).catch(error => {
+            console.error('Error loading images:', error);
+            loadingSpinner.classList.remove('active');
+            innerModel.style.opacity = '1';
+        });
+    }
+
+    async function updateCartDrawer() {
+        try {
+            // Fetch updated cart
+            const response = await fetch('/cart.js');
+            const cart = await response.json();
+            
+            // Update cart drawer section
+            const cartDrawer = document.querySelector('.cart-drawer');
+            if (cartDrawer) {
+                // Remove is-empty class if present
+                cartDrawer.classList.remove('is-empty');
+                // Add active class
+                cartDrawer.classList.add('active');
+                
+                // You might want to trigger a custom event if your theme uses it
+                // document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart } }));
+                
+                // Alternatively, if your theme has a specific function to update the cart
+                // if (typeof updateCartDrawer === 'function') updateCartDrawer(cart);
+                
+                // Or force a section reload if using Shopify sections
+                const sectionsToUpdate = ['cart-drawer'];
+                const response = await fetch(`${window.location.pathname}?sections=${sectionsToUpdate.join(',')}`);
+                const text = await response.text();
+                const data = JSON.parse(text);
+                
+                for (const [id, html] of Object.entries(data)) {
+                    const element = document.getElementById(id);
+                    if (element) element.innerHTML = html;
+                }
+            }
+        } catch (error) {
+            console.error('Error updating cart drawer:', error);
+        }
+    }
+
+    function formatMoney(cents) {
+        return '$' + (cents / 100).toFixed(2);
+    }
+})();
+</script>
+
+{% schema %}
+{
+"name": "D5 Collection Grid",
+"settings": [
+{
+"type": "collection",
+"id": "collection",
+"label": "Collection"
+}
+],
+"presets": [
+{
+"name": "D5 Collection Grid"
+}
+]
+}
+{% endschema %}

@@ -1,0 +1,11 @@
+{{ 'sq-config.min.js' | asset_url | script_tag }}
+
+{{ 'sq-app.min.css' | asset_url | stylesheet_tag }}
+
+<script type="module" src="{{ 'sq-app.min.js' | asset_url }}" async></script>
+
+{{ 'sq-theme.css' | asset_url | stylesheet_tag }}
+{{ 'sq-theme.js' | asset_url | script_tag }}
+
+{{ 'sq-custom.css' | asset_url | stylesheet_tag }}
+{{ 'sq-custom.js' | asset_url | script_tag }}

@@ -1,0 +1,605 @@
+<style>
+  .countdown-banner-{{ section.id }}-wrapper {
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+  }
+  @media screen and (min-width: 750px) {
+    .countdown-banner-{{ section.id }}-wrapper {
+      padding-top: var(--pt-desktop);
+      padding-bottom: var(--pb-desktop);
+    }
+  }
+  .countdown-banner-{{ section.id }} {
+    position: relative;
+    height: var(--section-height-mobile);
+    overflow: hidden;
+  }
+  @media screen and (min-width: 750px) {
+    .countdown-banner-{{ section.id }} {
+      height: var(--section-height);
+    }
+  }
+  .countdown-banner-{{ section.id }} .countdown-banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .countdown-banner-{{ section.id }} .countdown-banner-image--desktop {
+    display: none;
+  }
+  @media screen and (min-width: 750px) {
+    .countdown-banner-{{ section.id }} .countdown-banner-image--desktop {
+      display: block;
+    }
+    .countdown-banner-{{ section.id }} .countdown-banner-image--mobile {
+      display: none;
+    }
+  }
+</style>
+<div
+  class="countdown-banner-{{ section.id }}-wrapper"
+  style="
+    --pt: {{ section.settings.pt }}px;
+    --pt-desktop: {{ section.settings.pt-d }}px;
+    --pb: {{ section.settings.pb }}px;
+    --pb-desktop: {{ section.settings.pb-d }}px;
+    background-color:{{ section.settings.bg-color }};
+  "
+>
+  <div
+    class="
+            countdown-banner-{{ section.id }}
+    {% if section.settings.pw %}
+      page-width
+      {% endif %}
+    "
+    style="
+      --section-height: {{ section.settings.height-d }}px;
+      --section-height-mobile: {{ section.settings.height-m }}px;
+    "
+  >
+    <div
+      style="
+        height: 100%; width: 100%; position: relative; overflow: hidden;
+        border-radius: {{ section.settings.main-radius }}px;
+      "
+    >
+    {% if section.settings.bg-img %}
+  <img
+    class="countdown-banner-image countdown-banner-image--desktop"
+    src="{{ section.settings.bg-img | img_url: '500x' }}"
+    srcset="
+      {{ section.settings.bg-img | img_url: '500x' }} 500w,
+      {{ section.settings.bg-img | img_url: '800x' }} 800w,
+      {{ section.settings.bg-img | img_url: '1200x' }} 1200w,
+      {{ section.settings.bg-img | img_url: '1600x' }} 1600w,
+      {{ section.settings.bg-img | img_url: '2000x' }} 2000w,
+      {{ section.settings.bg-img | img_url: 'master' }} 2400w
+    "
+    alt="{{ section.title }}"
+    loading="lazy"
+    width="auto"
+    height=""
+  >
+{% endif %}
+
+{% if section.settings.bg-img-m %}
+  <img
+    class="countdown-banner-image countdown-banner-image--mobile"
+    src="{{ section.settings.bg-img-m | img_url: '500x' }}"
+    srcset="
+      {{ section.settings.bg-img-m | img_url: '500x' }} 500w,
+      {{ section.settings.bg-img-m | img_url: '800x' }} 800w,
+      {{ section.settings.bg-img-m | img_url: '1200x' }} 1200w,
+      {{ section.settings.bg-img-m | img_url: '1600x' }} 1600w,
+      {{ section.settings.bg-img-m | img_url: '2000x' }} 2000w,
+      {{ section.settings.bg-img-m | img_url: 'master' }} 2400w
+    "
+    alt="{{ section.title }}"
+    loading="lazy"
+    width="auto"
+    height=""
+  >
+{% endif %}
+
+
+      <style>
+        .countdown-banner-content-{{ section.id }} {
+          position: relative;
+          z-index: 1;
+          overflow: hidden;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 2rem;
+          text-align: center;
+          line-height: 1.1;
+        }
+      </style>
+      <div class="countdown-banner-content-{{ section.id }}">
+        <div
+          style="
+            opacity: 0.3;
+            background-color: #000000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            display: block;
+          "
+        ></div>
+        {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'heading' %}
+        <style>
+          .countdown-banner-heading-{{ section.id }}-{{ section.id }}-{{ block.id }} {
+          }
+          .countdown-banner-heading-{{ section.id }}-{{ section.id }}-{{ block.id }} p {
+            margin:0 10px;
+          }
+        </style>
+        <div
+          class="countdown-banner-heading-{{ section.id }}-{{ section.id }}-{{ block.id }}"
+          style="
+            font-size: {{ block.settings.font-size }}px;
+            color: {{ block.settings.f-color }};
+          "
+        >
+          <p><strong>{{ block.settings.heading }}</strong></p>
+        </div>
+      {% when 'subtext' %}
+           <style>
+          .countdown-banner-heading-{{ section.id }}-{{ section.id }}-{{ block.id }} {
+          }
+          .countdown-banner-heading-{{ section.id }}-{{ section.id }}-{{ block.id }} p {
+            margin:0 10px;
+          }
+        </style>
+        <div
+          class="countdown-banner-heading-{{ section.id }}-{{ section.id }}-{{ block.id }}"
+         style="
+            font-size: {{ block.settings.font-size }}px;
+            color: {{ block.settings.f-color }};
+          "
+        >
+          <p>{{ block.settings.subtext }}</p>
+        </div>
+      {% when 'button' %}
+        <style>
+          .countdown-banner-button-{{ section.id }}-{{ section.id }}-{{ block.id }} {
+            padding: 9px 25px;
+            text-decoration: none;
+          }
+          @media screen and (min-width: 750px) {
+            .countdown-banner-button-{{ section.id }}-{{ section.id }}-{{ block.id }} {
+              padding: 11px 25px;
+            }
+          }
+        </style>
+        <a
+          href="{{ block.settings.btn-link }}"
+          class="countdown-banner-button-{{ section.id }}-{{ section.id }}-{{ block.id }}"
+          style="
+            color: {{ block.settings.f-color }};
+            background-color: {{ block.settings.btn-bg-color }};
+            border-radius: {{ block.settings.btn-radius }}px;
+            font-size: {{ block.settings.font-size }}px;
+            border: 0px #ffffff solid;
+            margin: 5px 10px;
+          "
+        >
+          {{ block.settings.btn-text }}
+        </a>
+
+          {% when 'timer' %}
+      
+        <style>
+          .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            margin: 5px 10px;
+          }
+          @media (min-width: 750px) {
+            .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} {
+               gap: 20px;
+            }
+          }
+          .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} .time-block {
+            position: relative;
+            border-radius: 12px;
+            /*padding: 20px;*/
+            padding: 0 1rem;
+          }
+          .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} .time-block__num,
+          .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} .time-block__unit {
+            display: block;
+            text-align: center;
+          }
+          .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} .time-block__num {
+            font-size: 25px;
+            line-height: 1;
+          }
+          .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} .time-block__unit {
+            text-transform: uppercase;
+            margin-top: 6px;
+            font-size: 10px;
+          }
+          @media (min-width: 750px) {
+            .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} .time-block__unit {
+              font-size: 12px;
+            }
+          }
+          .countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }} .time-divier {
+            position: relative;
+            width: 1px;
+            height: 40px;
+            background-color: {{ block.settings.f-color }};
+          }
+        </style>
+
+        <div
+          class="countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }}"
+          style="
+            color: {{ block.settings.f-color }};
+          "
+        >
+          <div class="time-block">
+            <span class="time-block__num js-timer-days">{{ block.settings.days }}</span>
+            <span class="time-block__unit">Days</span>
+          </div>
+
+          <span class="time-divier"></span>
+          <div class="time-block">
+            <span class="time-block__num js-timer-hours">{{ block.settings.hours }}</span>
+            <span class="time-block__unit">Hours</span>
+          </div>
+
+          <span class="time-divier"></span>
+          <div class="time-block">
+            <span class="time-block__num js-timer-minutes">{{ block.settings.mins }}</span>
+            <span class="time-block__unit">Minutes</span>
+          </div>
+
+          <span class="time-divier"></span>
+          <div class="time-block">
+            <span class="time-block__num js-timer-seconds">19</span>
+            <span class="time-block__unit">Seconds</span>
+          </div>
+        </div>
+
+        <style>
+          .countdown-timer-completed-text-{{ section.id }}-{{ section.id }}-{{ block.id }} {
+            display: none;
+          }
+        </style>
+        <div class="countdown-timer-completed-text-{{ section.id }}-{{ section.id }}-{{ block.id }}"></div>
+
+        <script
+          type="text/javascript"
+        >
+                (function () {
+                  function startTimer() {
+                    const second = 1000,
+                      minute = second * 60,
+                      hour = minute * 60,
+                      day = hour * 24,
+                      wrapper = document.querySelector(
+                        '.countdown-timer-{{ section.id }}-{{ section.id }}-{{ block.id }}'
+                      );
+                
+                    // Create UTC date string in a Safari-friendly format
+                    const dateString = `2026/01/01 00:00:00 UTC`;
+                    const countDown = Date.parse(dateString);
+                
+                    console.log('start timer, end date:', dateString);
+                
+                    const interval = setInterval(function () {
+                      let now = Date.now(); // Используем Date.now() вместо new Date().getTime()
+                      let distance = countDown - now;
+                
+                      // Handle case when distance is negative or invalid
+                      if (distance < 0 || isNaN(distance)) {
+                        wrapper.querySelector('.js-timer-days').innerText = '00';
+                        wrapper.querySelector('.js-timer-hours').innerText = '00';
+                        wrapper.querySelector('.js-timer-minutes').innerText = '00';
+                        wrapper.querySelector('.js-timer-seconds').innerText = '00';
+                        
+                        document.querySelector(
+                          '.countdown-timer-completed-text-{{ section.id }}-{{ section.id }}-{{ block.id }}'
+                        ).style.display = 'block';
+                
+                        clearInterval(interval);
+                        return;
+                      }
+                
+                      // Calculate time units
+                      const days = Math.floor(distance / day);
+                      const hours = Math.floor((distance % day) / hour);
+                      const minutes = Math.floor((distance % hour) / minute);
+                      const seconds = Math.floor((distance % minute) / second);
+                
+                      // Format numbers to always show two digits
+                      const formatNumber = (num) => (num < 10 ? '0' + num : num);
+                
+                      // Update DOM
+                      wrapper.querySelector('.js-timer-days').innerText = formatNumber(days);
+                      wrapper.querySelector('.js-timer-hours').innerText = formatNumber(hours);
+                      wrapper.querySelector('.js-timer-minutes').innerText = formatNumber(minutes);
+                      wrapper.querySelector('.js-timer-seconds').innerText = formatNumber(seconds);
+                
+                    }, second);
+                
+                    // Clean up interval on section unload
+                    document.addEventListener('shopify:section:unload', function (event) {
+                      if (event.detail.sectionId === '{{ section.id }}') clearInterval(interval);
+                    });
+                  }
+                
+                  // Start timer initially
+                  startTimer();
+                
+                  // Reinitialize timer when section is reloaded in theme editor
+                  if (window.Shopify && Shopify.designMode) {
+                    document.addEventListener('shopify:section:load', function (event) {
+                      if (event.detail.sectionId === '{{ section.id }}') {
+                        startTimer();
+                      }
+                    });
+                  }
+                })();
+        </script>
+          {% endcase %}
+        {% endfor %}
+      </div>
+      
+    </div>
+    
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Countdown Timer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg-img",
+      "label": "Background Image"
+    },
+     {
+      "type": "image_picker",
+      "id": "bg-img-m",
+      "label": "Background Image Mobile"
+    },
+    {
+      "type": "number",
+      "id": "height-m",
+      "label": "Mobile Height",
+      "default": 500
+    },
+     {
+      "type": "number",
+      "id": "height-d",
+      "label": "Desktop Height",
+      "default": 600
+    },
+    {
+      "type": "checkbox",
+      "id": "pw",
+      "label": "Add Page width",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "main-radius",
+      "label": "Border Radius",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "pt",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 28
+    },
+     {
+      "type": "range",
+      "id": "pb",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 28
+    },
+     {
+      "type": "range",
+      "id": "pt-d",
+      "label": "Padding top desktop",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 28
+    },
+     {
+      "type": "range",
+      "id": "pb-d",
+      "label": "Padding bottom desktop",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 28
+    },
+    {
+      "type": "color_background",
+      "id": "bg-color",
+      "label": "Background Color",
+      "default": "#fff"
+    }
+
+  ],
+  "blocks": [
+    {
+      "type": "timer",
+      "name": "Timer",
+      "settings": [
+        {
+          "type": "number",
+          "id": "days",
+          "label": "Add Days",
+          "default": 433
+        },
+          {
+          "type": "number",
+          "id": "hours",
+          "label": "Add Hours",
+          "default": 3
+        },
+          {
+          "type": "number",
+          "id": "mins",
+          "label": "Add Minuetes",
+          "default": 30
+        },
+        
+        {
+          "type": "color",
+          "id": "f-color",
+          "label": "Text Color",
+          "default": "#fff"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+    {
+      "type": "text",
+      "id": "btn-text",
+      "label": "Button Label",
+      "default": "View Discounted Items"
+    },
+    {
+      "type": "url",
+      "id": "btn-link",
+      "label": "Button Link"
+    },
+        {
+          "type": "color",
+          "id": "btn-bg-color",
+          "label": "Button Background",
+          "default": "#fff"
+        },
+        {
+      "type": "range",
+      "id": "font-size",
+      "label": "Font Size",
+      "min": 5,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "f-color",
+      "label": "Text Color",
+      "default": "#000"
+    },
+          {
+      "type": "range",
+      "id": "btn-radius",
+      "label": "Button Border Radius",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 28
+    },
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "50% off all suits and accessories"
+    },
+      {
+      "type": "range",
+      "id": "font-size",
+      "label": "Font Size",
+      "min": 5,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 30
+    },
+    {
+      "type": "color",
+      "id": "f-color",
+      "label": "Text Color",
+      "default": "#fff"
+    },
+        
+      ]
+    },
+    {
+      "type": "subtext",
+      "name": "Subtext",
+      "settings": [
+   {
+      "type": "text",
+      "id": "subtext",
+      "label": "Sub Text",
+      "default": "GET YOUR BASKET READY"
+    },
+    {
+      "type": "range",
+      "id": "font-size",
+      "label": "Font Size",
+      "min": 5,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "f-color",
+      "label": "Text Color",
+      "default": "#fff"
+    },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Countdown Timer"
+    }
+  ]
+}
+{% endschema %}
