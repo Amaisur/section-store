@@ -1,0 +1,19 @@
+<div class="el-feature-card">
+  <div class="el-feature-icon">
+    {% if feature_image != blank %}
+      <img src="{{ feature_image | img_url: '100x100' }}" alt="Feature Icon">
+    {% else %}
+      <div style="width:60px;height:60px;background:#eee;display:flex;align-items:center;justify-content:center;color:#aaa;">Icon</div>
+    {% endif %}
+  </div>
+  <div class="el-feature-content">
+    <h3>{{ feature_title }}</h3>
+    <p>{{ feature_description }}</p>
+  </div>
+</div>
+<style>
+.el-feature-card { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+.el-feature-icon { flex-shrink: 0; }
+.el-feature-content h3 { margin: 0 0 8px 0; font-size: 1.1em; }
+.el-feature-content p { margin: 0; color: #555; }
+</style> 

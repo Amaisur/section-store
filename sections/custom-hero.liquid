@@ -1,0 +1,60 @@
+{% schema %}
+{
+  "name": "EL Hero Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Makeup that adapts to your rhythm"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Designed for real, active women"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="el-hero-section">
+  <div class="el-hero-content">
+    <h1>{{ section.settings.headline }}</h1>
+    <p>{{ section.settings.subheadline }}</p>
+    <a href="{{ section.settings.button_url }}" class="el-hero-btn">{{ section.settings.button_text }}</a>
+  </div>
+  <div class="el-hero-image">
+    {% if section.settings.main_image != blank %}
+      <img src="{{ section.settings.main_image | img_url: 'master' }}" alt="Hero Image">
+    {% else %}
+      <div style="width:400px;height:300px;background:#eee;display:flex;align-items:center;justify-content:center;color:#aaa;">Image Placeholder</div>
+    {% endif %}
+  </div>
+</section>
+<style>
+.el-hero-section { display: flex; align-items: center; justify-content: space-between; padding: 40px 0; }
+.el-hero-content { max-width: 50%; }
+.el-hero-image { max-width: 45%; }
+.el-hero-btn { display: inline-block; margin-top: 20px; padding: 12px 32px; background: #222; color: #fff; border-radius: 4px; text-decoration: none; }
+@media (max-width: 768px) {
+  .el-hero-section { flex-direction: column; }
+  .el-hero-content, .el-hero-image { max-width: 100%; }
+}
+</style> 
