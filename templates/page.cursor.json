@@ -15,9 +15,153 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "cursor_ai_d98NhK": {
+      "type": "cursor-ai",
+      "blocks": {
+        "collection_card_tRDfmc": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "face-masks",
+            "title": "",
+            "button_label": "Shop now",
+            "button_link": "",
+            "button_style_secondary": false,
+            "overlay_color_scheme": "",
+            "overlay_opacity": 0,
+            "title_size": "medium",
+            "button_size": "medium",
+            "show_description": false
+          }
+        },
+        "collection_card_rKGdUb": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "stickers",
+            "title": "",
+            "button_label": "Shop now",
+            "button_link": "",
+            "button_style_secondary": false,
+            "overlay_color_scheme": "",
+            "overlay_opacity": 0,
+            "title_size": "medium",
+            "button_size": "medium",
+            "show_description": false
+          }
+        },
+        "collection_card_BECC7Q": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "little-lights",
+            "title": "",
+            "button_label": "Shop now",
+            "button_link": "",
+            "button_style_secondary": false,
+            "overlay_color_scheme": "",
+            "overlay_opacity": 0,
+            "title_size": "medium",
+            "button_size": "medium",
+            "show_description": false
+          }
+        },
+        "collection_card_Q4R6We": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "stickers",
+            "title": "",
+            "button_label": "Shop now",
+            "button_link": "",
+            "button_style_secondary": false,
+            "overlay_color_scheme": "",
+            "overlay_opacity": 0,
+            "title_size": "medium",
+            "button_size": "medium",
+            "show_description": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_tRDfmc",
+        "collection_card_rKGdUb",
+        "collection_card_BECC7Q",
+        "collection_card_Q4R6We"
+      ],
+      "name": "Featured Collections Cursor",
+      "settings": {
+        "heading": "Featured Collections",
+        "heading_size": "h2",
+        "color_scheme": "",
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_label": "View all collections",
+        "view_all_link": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "animation": "fade"
+      }
+    },
+    "cursor_instafeed_U8jePV": {
+      "type": "cursor-instafeed",
+      "blocks": {
+        "card_FXejTX": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Jaqueta-curta-de-trespassado-de-l-feminina-casacos-casuais-soltos-gola-alta-outerwear-senhora-do-escrit.jpg__3.webp",
+            "link": "#",
+            "alt_text": "Instagram image"
+          }
+        },
+        "card_nBAwca": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/S6b82c6c1c08d47a4a651cfa7a22a4256G_jpg_640x640_jpg.webp",
+            "link": "#",
+            "alt_text": "Instagram image"
+          }
+        },
+        "card_8hF9Bf": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Casaco-de-bolso-de-lapela-de-peito-nico-feminino-manga-comprida-casaco-curto-vers-til-casaco.jpg__4.webp",
+            "link": "#",
+            "alt_text": "Instagram image"
+          }
+        },
+        "card_cDgh9R": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/5_1_129a3c03-8ae7-4313-a36b-07efa9d78e40.png",
+            "link": "#",
+            "alt_text": "Instagram image"
+          }
+        }
+      },
+      "block_order": [
+        "card_FXejTX",
+        "card_nBAwca",
+        "card_8hF9Bf",
+        "card_cDgh9R"
+      ],
+      "name": "Cursor InstaFeed",
+      "settings": {
+        "heading": "Instagram Feed",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "show_heading": true,
+        "custom_text": "Follow us on Instagram!",
+        "instagram_url": "",
+        "heading_size": "h2",
+        "overlay_color": "#000000",
+        "icon_color": "#ffffff"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "cursor_ai_d98NhK",
+    "cursor_instafeed_U8jePV"
   ]
 }
