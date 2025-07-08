@@ -187,7 +187,7 @@
                 {% elsif block.settings.media_type == 'video' and block.settings.video != blank %}
                   <video controls class="el-media-hero-main-video" autoplay muted loop playsinline src="{{ block.settings.video | video_url: autoplay: true, controls: true }}"></video>
                 {% else %}
-                  <div class="el-media-hero-slide-placeholder">Media</div>
+                  <div class="el-media-hero-slide-placeholder">Media</div> 
                 {% endif %}
               </div>
             {% endif %}
