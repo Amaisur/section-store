@@ -192,12 +192,14 @@
         "video_thumb_Q4HVka": {
           "type": "video_thumb",
           "settings": {
+            "thumb_image": "shopify://shop_images/C2_f117af7c-e4de-4ed2-99dd-9830efe6275a.png",
             "video_url": ""
           }
         },
         "video_thumb_eHtW7Y": {
           "type": "video_thumb",
           "settings": {
+            "thumb_image": "shopify://shop_images/C3_1_2b76cb21-ac50-46c4-8331-a092395399c9.png",
             "video_url": ""
           }
         }
