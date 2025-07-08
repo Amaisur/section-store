@@ -10,13 +10,108 @@
 .el-media-hero-thumb-placeholder, .el-media-hero-video-thumb-placeholder { width: 60px; height: 60px; background: #eee; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 1rem; }
 .el-media-hero-slider-wrapper { position: relative; width: 100%; aspect-ratio: 1/1; background: #faf7f2; border-radius: 16px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .el-media-hero-slider { width: 100%; height: 100%; display: flex; align-items: center; justify-content: flex-start; transition: transform 0.3s; touch-action: pan-y; }
-.el-media-hero-slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.el-media-hero-slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position:relative; }
 .el-media-hero-main-image, .el-media-hero-main-video { max-width: 100%; max-height: 100%; border-radius: 12px; }
 .el-media-hero-slide-placeholder { width: 100%; height: 100%; background: #eee; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 1.2rem; border-radius: 12px; }
 .el-media-hero-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: #fff; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.5rem; color: #b48bb6; cursor: pointer; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: background 0.2s; }
 .el-media-hero-arrow-left { left: 10px; }
 .el-media-hero-arrow-right { right: 10px; }
 .el-media-hero-arrow:hover { background: #f3e6f7; }
+.el-media-hero-magnify {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 2;
+}
+.el-media-hero-slide:hover .el-media-hero-magnify {
+  opacity: 1;
+}
+.el-media-hero-magnify svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  fill: #b48bb6;
+}
+.el-media-hero-lightbox {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+.el-media-hero-lightbox.active { display: flex; }
+.el-media-hero-lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.el-media-hero-lightbox-img {
+  max-width: 80vw;
+  max-height: 70vh;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  background: #fff;
+}
+.el-media-hero-lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  font-size: 2.2rem;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+.el-media-hero-lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.7);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 2rem;
+  color: #b48bb6;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.el-media-hero-lightbox-arrow.left { left: 12px; }
+.el-media-hero-lightbox-arrow.right { right: 12px; }
+.el-media-hero-lightbox-counter {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  background: rgba(0,0,0,0.4);
+  padding: 6px 18px;
+  border-radius: 16px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
 .el-media-hero-content { padding: 0 32px; display: flex; flex-direction: column; justify-content: center; }
 .el-media-hero-heading { font-size: 2.4rem; font-weight: 700; margin-bottom: 8px; color: #222; }
 .el-media-hero-highlight { color: #b48bb6; font-weight: 700; }
@@ -79,11 +174,16 @@
       <div class="el-media-hero-slider-wrapper">
         <button class="el-media-hero-arrow el-media-hero-arrow-left" aria-label="Previous slide">&#8592;</button>
         <div class="el-media-hero-slider">
+          {% assign image_blocks = section.blocks | where: 'type', 'media' %}
           {% for block in section.blocks %}
             {% if block.type == 'media' %}
-              <div class="el-media-hero-slide" data-index="{{ forloop.index0 }}" style="display: {% if forloop.first %}flex{% else %}none{% endif %};">
+              <div class="el-media-hero-slide" data-index="{{ forloop.index0 }}" style="display: {% if forloop.first %}flex{% else %}none{% endif %}; position:relative;">
                 {% if block.settings.media_type == 'image' and block.settings.image != blank %}
                   <img src="{{ block.settings.image | img_url: 'master' }}" alt="Media Slide" class="el-media-hero-main-image" draggable="false">
+                  <div class="el-media-hero-magnify" data-magnify-index="{{ forloop.index0 }}">
+                    <!-- Placeholder SVG icon -->
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/><line x1="16" y1="16" x2="21" y2="21" stroke="currentColor" stroke-width="2"/></svg>
+                  </div>
                 {% elsif block.settings.media_type == 'video' and block.settings.video != blank %}
                   <video controls class="el-media-hero-main-video" autoplay muted loop playsinline src="{{ block.settings.video | video_url: autoplay: true }}"></video>
                 {% else %}
@@ -142,6 +242,15 @@
     <div class="el-media-hero-modal-content">
       <span class="el-media-hero-modal-close">&times;</span>
       <div class="el-media-hero-modal-video-wrapper"></div>
+    </div>
+  </div>
+  <div id="el-media-hero-lightbox" class="el-media-hero-lightbox">
+    <div class="el-media-hero-lightbox-content">
+      <button class="el-media-hero-lightbox-close" aria-label="Close">&times;</button>
+      <button class="el-media-hero-lightbox-arrow left" aria-label="Previous">&#8592;</button>
+      <img class="el-media-hero-lightbox-img" src="" alt="Lightbox Image" style="display:none;" />
+      <button class="el-media-hero-lightbox-arrow right" aria-label="Next">&#8594;</button>
+      <div class="el-media-hero-lightbox-counter"></div>
     </div>
   </div>
 </section>
@@ -248,6 +357,59 @@
       modal.style.display = 'none';
       modalContent.innerHTML = '';
     }
+  });
+
+  // Lightbox logic
+  const lightbox = document.getElementById('el-media-hero-lightbox');
+  const lightboxImg = lightbox.querySelector('.el-media-hero-lightbox-img');
+  const lightboxClose = lightbox.querySelector('.el-media-hero-lightbox-close');
+  const lightboxPrev = lightbox.querySelector('.el-media-hero-lightbox-arrow.left');
+  const lightboxNext = lightbox.querySelector('.el-media-hero-lightbox-arrow.right');
+  const lightboxCounter = lightbox.querySelector('.el-media-hero-lightbox-counter');
+  const magnifyBtns = document.querySelectorAll('.el-media-hero-magnify');
+  const galleryImages = Array.from(document.querySelectorAll('.el-media-hero-main-image'));
+  let currentLightboxIndex = 0;
+
+  function openLightbox(idx) {
+    if (!galleryImages[idx]) return;
+    lightboxImg.src = galleryImages[idx].src;
+    lightboxImg.style.display = 'block';
+    lightbox.classList.add('active');
+    currentLightboxIndex = idx;
+    updateLightboxCounter();
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    lightboxImg.src = '';
+    lightboxImg.style.display = 'none';
+  }
+  function showLightboxImage(idx) {
+    if (!galleryImages[idx]) return;
+    lightboxImg.src = galleryImages[idx].src;
+    currentLightboxIndex = idx;
+    updateLightboxCounter();
+  }
+  function updateLightboxCounter() {
+    lightboxCounter.textContent = (currentLightboxIndex+1) + ' / ' + galleryImages.length;
+  }
+  magnifyBtns.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const idx = parseInt(btn.getAttribute('data-magnify-index'));
+      openLightbox(idx);
+    });
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', function() {
+    let idx = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
+    showLightboxImage(idx);
+  });
+  lightboxNext.addEventListener('click', function() {
+    let idx = (currentLightboxIndex + 1) % galleryImages.length;
+    showLightboxImage(idx);
+  });
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
   });
 })();
 </script>
