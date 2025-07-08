@@ -158,11 +158,23 @@
         "overlay_color": "#000000",
         "icon_color": "#ffffff"
       }
+    },
+    "el_hero_JwkUA3": {
+      "type": "el-hero",
+      "name": "EL Hero Section",
+      "settings": {
+        "headline": "Makeup that adapts to your rhythm",
+        "subheadline": "Designed for real, active women",
+        "main_image": "shopify://shop_images/Rectangle107_1.png",
+        "button_text": "Learn More",
+        "button_url": "#"
+      }
     }
   },
   "order": [
     "main",
     "cursor_ai_d98NhK",
-    "cursor_instafeed_U8jePV"
+    "cursor_instafeed_U8jePV",
+    "el_hero_JwkUA3"
   ]
 }
