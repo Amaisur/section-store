@@ -102,7 +102,10 @@
         <div class="el-media-hero-video-thumbs">
           {% for block in section.blocks %}
             {% if block.type == 'video_thumb' %}
-              <div class="el-media-hero-video-thumb" data-video="{{ block.settings.video | video_url: autoplay: true }}">
+              <div class="el-media-hero-video-thumb">
+                <div class="el-video-hidden" hidden>
+                    {{ block.settings.video | video_url: autoplay: true }}
+                </div>
                 {% if block.settings.thumb_image != blank %}
                   <img src="{{ block.settings.thumb_image | img_url: '80x80' }}" alt="Video Thumbnail" draggable="false">
                 {% else %}
@@ -269,9 +272,9 @@
   var closeBtn = modal.querySelector('.el-media-hero-modal-close');
   videoThumbs.forEach(function(thumb) {
     thumb.addEventListener('click', function() {
-      var video = thumb.getAttribute('data-video');
+      var video = thumb.querySelector('el-video-hidden');
       if(video) {
-        modalContent.innerHTML = '<video controls autoplay style="width:100%;height:100%;border-radius:8px;"><source src="'+video+'"></video>';
+        modalContent.innerHTML = video;
         modal.style.display = 'flex';
       }
     });
