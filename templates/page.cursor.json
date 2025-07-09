@@ -302,6 +302,7 @@
         "benefit_yxA8NX": {
           "type": "benefit",
           "settings": {
+            "icon": "shopify://shop_images/Group_1410111031.avif",
             "icon_alt": "Icono",
             "title": "Cobertura natural",
             "desc": "Disimula imperfecciones, enrojecimientos y tono desigual sin ocultar la textura real de tu piel."
@@ -360,6 +361,7 @@
       "settings": {
         "title": "El Nuevo Dúo Favorito De Tu Piel",
         "subtitle": "La base + corrector diseñados para moverse contigo, iluminar tu rostro y cuidar tu piel desde el primer toque.",
+        "product_image": "shopify://shop_images/Natural-Jackson-Rocketwood-herbal-supplement-11.png",
         "product_image_alt": "Producto",
         "button_text": "Compra el Kit Esencial",
         "button_link": "/"
