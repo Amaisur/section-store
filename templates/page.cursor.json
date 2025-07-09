@@ -428,6 +428,56 @@
         "title": "Piel real, Resultados reales",
         "subtitle": "Lo aplicas en minutos, te dura todo el día. Ellas te lo muestran."
       }
+    },
+    "el_steps_Fkc9Ex": {
+      "type": "el-steps",
+      "blocks": {
+        "feature_cNEEwg": {
+          "type": "feature",
+          "settings": {
+            "title": "Título de la característica",
+            "desc": "Descripción de la característica."
+          }
+        },
+        "feature_6fGHxW": {
+          "type": "feature",
+          "settings": {
+            "title": "Título de la característica",
+            "desc": "Descripción de la característica."
+          }
+        },
+        "feature_mgKPjm": {
+          "type": "feature",
+          "settings": {
+            "title": "Título de la característica",
+            "desc": "Descripción de la característica."
+          }
+        },
+        "feature_VxjK8T": {
+          "type": "feature",
+          "settings": {
+            "title": "Título de la característica",
+            "desc": "Descripción de la característica."
+          }
+        }
+      },
+      "block_order": [
+        "feature_cNEEwg",
+        "feature_6fGHxW",
+        "feature_mgKPjm",
+        "feature_VxjK8T"
+      ],
+      "name": "Steps/Features with Image",
+      "settings": {
+        "headline": "Cansada De Un Maquillaje Que No Te",
+        "headline_accent": "Acompaña?",
+        "subtitle": "Elysia fue creado para acompañarte en días largos, manteniéndose firme sin importar el sudor o la actividad.",
+        "main_image_alt": "Mujer con maquillaje Elysia",
+        "cta_label": "Compra el Kit Esencial",
+        "cta_link": "",
+        "info_1": "Envío a todo colombia",
+        "info_2": "Garantía por 30 días"
+      }
     }
   },
   "order": [
@@ -439,6 +489,7 @@
     "feature_icons_row_8gxDRH",
     "el_featured_product_8GnRaQ",
     "el_benefits_CdwGYX",
-    "el_video_slider_aqxQMm"
+    "el_video_slider_aqxQMm",
+    "el_steps_Fkc9Ex"
   ]
 }
