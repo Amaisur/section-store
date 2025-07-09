@@ -295,6 +295,75 @@
         "featured_product": "aimee-fourrure",
         "swatch_triggers": "Couleur"
       }
+    },
+    "el_benefits_CdwGYX": {
+      "type": "el-benefits",
+      "blocks": {
+        "benefit_yxA8NX": {
+          "type": "benefit",
+          "settings": {
+            "icon_alt": "Icono",
+            "title": "Cobertura natural",
+            "desc": "Disimula imperfecciones, enrojecimientos y tono desigual sin ocultar la textura real de tu piel."
+          }
+        },
+        "benefit_mycMBG": {
+          "type": "benefit",
+          "settings": {
+            "icon_alt": "Icono",
+            "title": "Cobertura natural",
+            "desc": "Disimula imperfecciones, enrojecimientos y tono desigual sin ocultar la textura real de tu piel."
+          }
+        },
+        "benefit_W46cFa": {
+          "type": "benefit",
+          "settings": {
+            "icon_alt": "Icono",
+            "title": "Cobertura natural",
+            "desc": "Disimula imperfecciones, enrojecimientos y tono desigual sin ocultar la textura real de tu piel."
+          }
+        },
+        "benefit_3TcmQG": {
+          "type": "benefit",
+          "settings": {
+            "icon_alt": "Icono",
+            "title": "Cobertura natural",
+            "desc": "Disimula imperfecciones, enrojecimientos y tono desigual sin ocultar la textura real de tu piel."
+          }
+        },
+        "benefit_Nq7PHF": {
+          "type": "benefit",
+          "settings": {
+            "icon_alt": "Icono",
+            "title": "Cobertura natural",
+            "desc": "Disimula imperfecciones, enrojecimientos y tono desigual sin ocultar la textura real de tu piel."
+          }
+        },
+        "benefit_8wjrLJ": {
+          "type": "benefit",
+          "settings": {
+            "icon_alt": "Icono",
+            "title": "Cobertura natural",
+            "desc": "Disimula imperfecciones, enrojecimientos y tono desigual sin ocultar la textura real de tu piel."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_yxA8NX",
+        "benefit_mycMBG",
+        "benefit_W46cFa",
+        "benefit_3TcmQG",
+        "benefit_Nq7PHF",
+        "benefit_8wjrLJ"
+      ],
+      "name": "EL Benefits",
+      "settings": {
+        "title": "El Nuevo Dúo Favorito De Tu Piel",
+        "subtitle": "La base + corrector diseñados para moverse contigo, iluminar tu rostro y cuidar tu piel desde el primer toque.",
+        "product_image_alt": "Producto",
+        "button_text": "Compra el Kit Esencial",
+        "button_link": "/"
+      }
     }
   },
   "order": [
@@ -304,6 +373,7 @@
     "el_hero_JwkUA3",
     "el_media_hero_4NV8ab",
     "feature_icons_row_8gxDRH",
-    "el_featured_product_8GnRaQ"
+    "el_featured_product_8GnRaQ",
+    "el_benefits_CdwGYX"
   ]
 }
