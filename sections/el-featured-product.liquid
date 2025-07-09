@@ -1,6 +1,7 @@
 {% comment %} Enhanced swatch logic: use trigger for color, show value for others. On option change, update main image and price. {% endcomment %}
 {% comment %} Add tooltips to all swatches (color and text) showing the value on hover/focus. {% endcomment %}
 {% comment %} Add switch trigger: if option.name matches a block trigger, show swatch; otherwise, show pill with value. Both have tooltips. {% endcomment %}
+{% comment %} Add swatch trigger setting and ensure first option is selected by default. {% endcomment %}
 
 {% assign el_product = all_products[section.settings.featured_product] %}
 
@@ -225,15 +226,19 @@
     <form id="el-featured-product-form" action="/cart/add" method="post">
       <input type="hidden" name="id" value="{{ el_product.selected_or_first_available_variant.id }}" />
       <div class="el-featured-product-options">
-        {% assign trigger_options = section.blocks | map: 'settings' | map: 'text' | join: ',' | downcase %}
+        {% assign swatch_triggers = section.settings.swatch_triggers | downcase | split: ',' %}
         {% for option in el_product.options_with_values %}
           <label class="el-featured-product-option-label">{{ option.name | upcase }}</label>
           <div class="el-featured-product-swatches" data-option-index="{{ forloop.index0 }}">
             {% assign option_name_downcase = option.name | downcase %}
-            {% assign is_trigger = trigger_options contains option_name_downcase %}
+            {% assign is_trigger = false %}
+            {% if swatch_triggers contains option_name_downcase %}
+              {% assign is_trigger = true %}
+            {% endif %}
             {% for value in option.values %}
+              {% assign is_first = forloop.first %}
               {% if is_trigger %}
-                <div class="el-featured-product-swatch"
+                <div class="el-featured-product-swatch{% if is_first %} selected{% endif %}"
                   data-value="{{ value }}"
                   data-option-index="{{ forloop.parentloop.index0 }}"
                   tabindex="0"
@@ -243,7 +248,7 @@
                   <span class="el-featured-product-tooltip">{{ value }}</span>
                 </div>
               {% else %}
-                <div class="el-featured-product-pill"
+                <div class="el-featured-product-pill{% if is_first %} selected{% endif %}"
                   data-value="{{ value }}"
                   data-option-index="{{ forloop.parentloop.index0 }}"
                   tabindex="0"
@@ -381,6 +386,12 @@
       "type": "product",
       "id": "featured_product",
       "label": "Featured Product"
+    },
+    {
+      "type": "text",
+      "id": "swatch_triggers",
+      "label": "Swatch Triggers (comma separated option names, e.g. Color,Size)",
+      "default": "Color"
     }
   ],
   "blocks": [
