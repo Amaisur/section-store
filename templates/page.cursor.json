@@ -292,7 +292,8 @@
       ],
       "name": "EL Featured Product",
       "settings": {
-        "featured_product": "aimee-fourrure"
+        "featured_product": "aimee-fourrure",
+        "swatch_triggers": "Couleur"
       }
     }
   },
