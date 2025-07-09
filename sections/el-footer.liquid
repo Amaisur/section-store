@@ -1,0 +1,254 @@
+{% comment %} el-footer: Custom Footer Section with Newsletter Signup {% endcomment %}
+
+<style>
+.el-footer-section {
+  background: #f6f1ef;
+  padding: 2.5rem 1rem 0.5rem 1rem;
+  border-radius: 2rem 2rem 0 0;
+  max-width: 100vw;
+  margin: 0 auto;
+  box-shadow: 0 -2px 16px rgba(44, 34, 54, 0.07);
+}
+.el-footer-newsletter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2rem 2.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #bc9bb2;
+}
+.el-footer-newsletter-text {
+  flex: 1 1 320px;
+  min-width: 220px;
+}
+.el-footer-newsletter-headline {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #181818;
+  margin-bottom: 0.5rem;
+}
+.el-footer-newsletter-subtitle {
+  font-size: 1.1rem;
+  color: #333;
+}
+.el-footer-newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1 1 320px;
+  min-width: 220px;
+  justify-content: flex-end;
+}
+.el-footer-newsletter-input {
+  padding: 0.8rem 1.2rem;
+  border: 1px solid #bc9bb2;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  outline: none;
+  flex: 1;
+}
+.el-footer-newsletter-btn {
+  background: #bc9bb2;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 0.8rem 1.8rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.el-footer-newsletter-btn:hover {
+  background: #a07e9c;
+}
+.el-footer-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.el-footer-links {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.el-footer-link {
+  color: #181818;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.el-footer-link:hover {
+  color: #bc9bb2;
+}
+.el-footer-socials {
+  display: flex;
+  gap: 1.2rem;
+}
+.el-footer-social-link {
+  color: #181818;
+  font-size: 1.4rem;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+.el-footer-social-link:hover {
+  color: #bc9bb2;
+}
+.el-footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #e5dbe2;
+  padding: 1.2rem 0 0.5rem 0;
+  margin-top: 1.2rem;
+  font-size: 0.98rem;
+  color: #444;
+}
+.el-footer-copyright {
+  font-size: 0.98rem;
+}
+@media (max-width: 900px) {
+  .el-footer-newsletter {
+    flex-direction: column;
+    padding: 1.2rem 1rem;
+    gap: 1rem;
+  }
+  .el-footer-links-row {
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+  .el-footer-bottom {
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: flex-start;
+  }
+}
+</style>
+
+<div class="el-footer-section">
+  <div class="el-footer-newsletter">
+    <div class="el-footer-newsletter-text">
+      <div class="el-footer-newsletter-headline">{{ section.settings.newsletter_headline | escape }}</div>
+      <div class="el-footer-newsletter-subtitle">{{ section.settings.newsletter_subtitle | escape }}</div>
+    </div>
+    <form class="el-footer-newsletter-form" method="post" action="{{ section.settings.newsletter_form_action }}">
+      <input type="email" class="el-footer-newsletter-input" name="email" placeholder="{{ section.settings.newsletter_input_placeholder | escape }}" required>
+      <button type="submit" class="el-footer-newsletter-btn">{{ section.settings.newsletter_button_label | escape }}</button>
+    </form>
+  </div>
+  <div class="el-footer-links-row">
+    <div class="el-footer-links">
+      {% for block in section.blocks %}
+        {% if block.type == 'link' and block.settings.position == 'main' %}
+          <a class="el-footer-link" href="{{ block.settings.url }}">{{ block.settings.label | escape }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="el-footer-socials">
+      {% for block in section.blocks %}
+        {% if block.type == 'social' %}
+          <a class="el-footer-social-link" href="{{ block.settings.url }}" target="_blank" rel="noopener">
+            {{ block.settings.icon | raw }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="el-footer-bottom">
+    <div class="el-footer-copyright">{{ section.settings.copyright | escape }}</div>
+    <div class="el-footer-links">
+      {% for block in section.blocks %}
+        {% if block.type == 'link' and block.settings.position == 'bottom' %}
+          <a class="el-footer-link" href="{{ block.settings.url }}">{{ block.settings.label | escape }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "El Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "newsletter_headline",
+      "label": "Newsletter Headline",
+      "default": "Sé parte de Elysia y descubre Tips, promos y noticias solo para ti."
+    },
+    {
+      "type": "text",
+      "id": "newsletter_subtitle",
+      "label": "Newsletter Subtitle",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "newsletter_input_placeholder",
+      "label": "Newsletter Input Placeholder",
+      "default": "Enter your Email"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button_label",
+      "label": "Newsletter Button Label",
+      "default": "Subscribe Now"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_form_action",
+      "label": "Newsletter Form Action URL",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright Text",
+      "default": "© 2024 Elysia. All Rights Reserved."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Footer Link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Link Label", "default": "" },
+        { "type": "url", "id": "url", "label": "Link URL" },
+        { "type": "select", "id": "position", "label": "Link Position", "options": [
+          { "value": "main", "label": "Main Links Row" },
+          { "value": "bottom", "label": "Bottom Links Row" }
+        ], "default": "main" }
+      ]
+    },
+    {
+      "type": "social",
+      "name": "Social Link",
+      "settings": [
+        { "type": "html", "id": "icon", "label": "Social Icon SVG (HTML)", "default": "" },
+        { "type": "url", "id": "url", "label": "Social URL", "default": "" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "El Footer",
+      "blocks": [
+        { "type": "link", "settings": { "label": "Shop Now", "url": "", "position": "main" } },
+        { "type": "link", "settings": { "label": "Refund Policy", "url": "", "position": "main" } },
+        { "type": "link", "settings": { "label": "Privacy Policy", "url": "", "position": "bottom" } },
+        { "type": "link", "settings": { "label": "Terms of Service", "url": "", "position": "bottom" } },
+        { "type": "social", "settings": { "icon": "", "url": "" } },
+        { "type": "social", "settings": { "icon": "", "url": "" } }
+      ]
+    }
+  ]
+}
+{% endschema %} 
