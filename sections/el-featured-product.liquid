@@ -3,7 +3,7 @@
 {% comment %} Add switch trigger: if option.name matches a block trigger, show swatch; otherwise, show pill with value. Both have tooltips. {% endcomment %}
 {% comment %} Add swatch trigger setting and ensure first option is selected by default. {% endcomment %}
 
-{% assign el_product = all_products[section.settings.featured_product] %}
+{% assign el_product = section.settings.featured_product %}
 
 <style>
   .el-featured-product-section {
