@@ -1,4 +1,4 @@
-{% comment %} EL Video Slider Section - Infinite, draggable, video carousel with dynamic blocks and continuous seamless looping by duplicating the first slide on every slide change {% endcomment %}
+{% comment %} EL Video Slider Section - Fixed infinite draggable video carousel {% endcomment %}
 
 <style>
 .el-video-slider-outer {
@@ -186,70 +186,181 @@
     </div>
   </div>
   <div class="el-video-slider-nav">
-    <button class="el-video-slider-arrow" id="el-video-slider-prev" aria-label="Anterior">&#8592;</button>
-    <button class="el-video-slider-arrow" id="el-video-slider-next" aria-label="Siguiente">&#8594;</button>
+    <button class="el-video-slider-arrow" id="el-video-slider-prev" aria-label="Previous">&#8592;</button>
+    <button class="el-video-slider-arrow" id="el-video-slider-next" aria-label="Next">&#8594;</button>
   </div>
 </div>
 
 <script>
 (function() {
-  var track = document.getElementById('el-video-slider-track');
-  var initialSlides = Array.from(track.children);
-  var slideWidth = initialSlides[0] ? initialSlides[0].offsetWidth + 32 : 340 + 32;
-  var activeIdx = 0;
-  var isDragging = false, startX = 0, dragOffset = 0;
-
-  // Helper to update the slides NodeList and array
-  function getSlides() {
-    return Array.from(track.children);
+  const track = document.getElementById('el-video-slider-track');
+  const slides = Array.from(track.children);
+  const prevBtn = document.getElementById('el-video-slider-prev');
+  const nextBtn = document.getElementById('el-video-slider-next');
+  
+  if (!slides.length) return;
+  
+  let currentIndex = 0;
+  let slideWidth = slides[0].offsetWidth + 32;
+  let isDragging = false;
+  let startPos = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let animationID = 0;
+  
+  // Clone first and last slides for infinite effect
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[slides.length - 1].cloneNode(true);
+  
+  firstClone.setAttribute('data-clone', 'first');
+  lastClone.setAttribute('data-clone', 'last');
+  
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, slides[0]);
+  
+  const allSlides = Array.from(track.children);
+  const slideCount = allSlides.length;
+  
+  // Set initial position
+  currentIndex = 1;
+  setSliderPosition();
+  
+  // Update slide width on resize
+  window.addEventListener('resize', () => {
+    slideWidth = allSlides[0].offsetWidth + 32;
+    setSliderPosition();
+  });
+  
+  // Navigation buttons
+  prevBtn.addEventListener('click', goToPrevSlide);
+  nextBtn.addEventListener('click', goToNextSlide);
+  
+  // Touch events
+  track.addEventListener('touchstart', touchStart);
+  track.addEventListener('touchend', touchEnd);
+  track.addEventListener('touchmove', touchMove);
+  
+  // Mouse events
+  track.addEventListener('mousedown', touchStart);
+  track.addEventListener('mouseup', touchEnd);
+  track.addEventListener('mouseleave', touchEnd);
+  track.addEventListener('mousemove', touchMove);
+  
+  function touchStart(e) {
+    if (e.type === 'mousedown') e.preventDefault();
+    isDragging = true;
+    startPos = getPositionX(e);
+    prevTranslate = currentTranslate;
+    track.style.transition = 'none';
+    animationID = requestAnimationFrame(animation);
   }
-
-  // Center the active slide
-  function getOffset(idx) {
-    var slides = getSlides();
-    var center = Math.floor(slides.length / 2);
-    var offset = (idx - center) * slideWidth;
-    return -offset;
+  
+  function touchEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    cancelAnimationFrame(animationID);
+    
+    const movedBy = currentTranslate - prevTranslate;
+    
+    if (movedBy < -100) goToNextSlide();
+    else if (movedBy > 100) goToPrevSlide();
+    else setSliderPosition();
   }
-
-  function updateSlides() {
-    var slides = getSlides();
-    slides.forEach(function(slide, i) {
-      slide.classList.toggle('active', i === activeIdx);
-      var video = slide.querySelector('video');
-      var muteBtn = slide.querySelector('.el-video-slider-mute-btn');
-      if (i === activeIdx && video) {
+  
+  function touchMove(e) {
+    if (!isDragging) return;
+    const currentPosition = getPositionX(e);
+    currentTranslate = prevTranslate + currentPosition - startPos;
+  }
+  
+  function animation() {
+    track.style.transform = `translateX(${currentTranslate}px)`;
+    if (isDragging) requestAnimationFrame(animation);
+  }
+  
+  function getPositionX(e) {
+    return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+  }
+  
+  function goToPrevSlide() {
+    if (isDragging) return;
+    currentIndex--;
+    if (currentIndex < 0) {
+      currentIndex = slideCount - 2;
+      track.style.transition = 'none';
+      setSliderPosition();
+      setTimeout(() => {
+        track.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
+        currentIndex = slideCount - 3;
+        setSliderPosition();
+      }, 10);
+    } else {
+      track.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
+      setSliderPosition();
+    }
+    updateActiveSlide();
+  }
+  
+  function goToNextSlide() {
+    if (isDragging) return;
+    currentIndex++;
+    if (currentIndex >= slideCount) {
+      currentIndex = 1;
+      track.style.transition = 'none';
+      setSliderPosition();
+      setTimeout(() => {
+        track.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
+        currentIndex = 2;
+        setSliderPosition();
+      }, 10);
+    } else {
+      track.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
+      setSliderPosition();
+    }
+    updateActiveSlide();
+  }
+  
+  function setSliderPosition() {
+    currentTranslate = -currentIndex * slideWidth;
+    track.style.transform = `translateX(${currentTranslate}px)`;
+  }
+  
+  function updateActiveSlide() {
+    allSlides.forEach((slide, index) => {
+      const isActive = index === currentIndex;
+      slide.classList.toggle('active', isActive);
+      
+      const video = slide.querySelector('video');
+      const muteBtn = slide.querySelector('.el-video-slider-mute-btn');
+      
+      if (isActive && video) {
         video.play();
-        muteBtn.style.display = 'flex';
+        if (muteBtn) muteBtn.style.display = 'flex';
       } else if (video) {
         video.pause();
-        muteBtn.style.display = 'none';
+        if (muteBtn) muteBtn.style.display = 'none';
+      }
+      
+      // Handle mute button for active slide
+      if (isActive && muteBtn && video) {
+        muteBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          video.muted = !video.muted;
+          muteBtn.querySelector('.mute-icon').style.display = video.muted ? '' : 'none';
+          muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : '';
+        });
+        
+        muteBtn.querySelector('.mute-icon').style.display = video.muted ? '' : 'none';
+        muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : '';
       }
     });
   }
-
-  function moveTo(idx, animate) {
-    var slides = getSlides();
-    activeIdx = idx;
-    var offset = getOffset(activeIdx);
-    track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.4,0,0.2,1)' : 'none';
-    track.style.transform = 'translateX(' + offset + 'px)';
-    updateSlides();
-  }
-
-  function duplicateFirstSlide() {
-    var slides = getSlides();
-    if (slides.length === 0) return;
-    var first = slides[0];
-    var clone = first.cloneNode(true);
-    // Remove any 'active' class from the clone
-    clone.classList.remove('active');
-    // Update data-index to be the new last
-    clone.setAttribute('data-index', slides.length);
-    track.appendChild(clone);
-    // Re-attach mute/unmute event for the new video if present
-    var video = clone.querySelector('video');
-    var muteBtn = clone.querySelector('.el-video-slider-mute-btn');
+  
+  // Initialize mute buttons for original slides (not clones)
+  slides.forEach(slide => {
+    const video = slide.querySelector('video');
+    const muteBtn = slide.querySelector('.el-video-slider-mute-btn');
+    
     if (video && muteBtn) {
       muteBtn.addEventListener('click', function(e) {
         e.stopPropagation();
@@ -257,110 +368,11 @@
         muteBtn.querySelector('.mute-icon').style.display = video.muted ? '' : 'none';
         muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : '';
       });
-      muteBtn.querySelector('.mute-icon').style.display = video.muted ? '' : 'none';
-      muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : '';
-    }
-  }
-
-  function nextSlide() {
-    duplicateFirstSlide();
-    moveTo(activeIdx + 1, true);
-    setTimeout(function() {
-      // Remove the first slide to keep the DOM size constant
-      var slides = getSlides();
-      if (slides.length > initialSlides.length) {
-        track.removeChild(slides[0]);
-        activeIdx--;
-        moveTo(activeIdx, false);
-      }
-    }, 510);
-  }
-
-  function prevSlide() {
-    // To allow seamless left movement, prepend a clone of the last slide
-    var slides = getSlides();
-    var last = slides[slides.length - 1];
-    var clone = last.cloneNode(true);
-    clone.classList.remove('active');
-    clone.setAttribute('data-index', -1);
-    track.insertBefore(clone, slides[0]);
-    activeIdx++;
-    moveTo(activeIdx - 1, false); // Jump to the new clone
-    setTimeout(function() {
-      moveTo(activeIdx - 1, true);
-      setTimeout(function() {
-        // Remove the last slide to keep the DOM size constant
-        var slides = getSlides();
-        if (slides.length > initialSlides.length) {
-          track.removeChild(slides[slides.length - 1]);
-          activeIdx--;
-          moveTo(activeIdx, false);
-        }
-      }, 510);
-    }, 10);
-  }
-
-  // --- Drag Logic ---
-  function onDragStart(e) {
-    isDragging = true;
-    startX = (e.touches ? e.touches[0].clientX : e.clientX);
-    track.style.transition = 'none';
-    document.body.style.cursor = 'grabbing';
-  }
-  function onDragMove(e) {
-    if (!isDragging) return;
-    var x = (e.touches ? e.touches[0].clientX : e.clientX);
-    dragOffset = x - startX;
-    var offset = getOffset(activeIdx) + dragOffset;
-    track.style.transform = 'translateX(' + offset + 'px)';
-  }
-  function onDragEnd(e) {
-    if (!isDragging) return;
-    isDragging = false;
-    document.body.style.cursor = '';
-    if (Math.abs(dragOffset) > slideWidth/4) {
-      if (dragOffset < 0) nextSlide();
-      else prevSlide();
-    } else {
-      moveTo(activeIdx, true);
-    }
-    dragOffset = 0;
-  }
-
-  // --- Arrow Navigation ---
-  document.getElementById('el-video-slider-prev').addEventListener('click', prevSlide);
-  document.getElementById('el-video-slider-next').addEventListener('click', nextSlide);
-  // --- Drag Events ---
-  track.addEventListener('mousedown', onDragStart);
-  track.addEventListener('touchstart', onDragStart, {passive:true});
-  window.addEventListener('mousemove', onDragMove);
-  window.addEventListener('touchmove', onDragMove, {passive:false});
-  window.addEventListener('mouseup', onDragEnd);
-  window.addEventListener('touchend', onDragEnd);
-  // --- Mute/Unmute for initial slides ---
-  initialSlides.forEach(function(slide) {
-    var video = slide.querySelector('video');
-    var muteBtn = slide.querySelector('.el-video-slider-mute-btn');
-    if (video && muteBtn) {
-      muteBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        video.muted = !video.muted;
-        muteBtn.querySelector('.mute-icon').style.display = video.muted ? '' : 'none';
-        muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : '';
-      });
-      muteBtn.querySelector('.mute-icon').style.display = video.muted ? '' : 'none';
-      muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : '';
     }
   });
-  // --- Responsive ---
-  function updateSlideWidth() {
-    var slides = getSlides();
-    slideWidth = slides[0] ? slides[0].offsetWidth + 32 : 340 + 32;
-    moveTo(activeIdx, false);
-  }
-  window.addEventListener('resize', updateSlideWidth);
-  // --- Init ---
-  moveTo(0, false);
+  
+  // Set initial active slide
+  updateActiveSlide();
 })();
 </script>
 
@@ -372,13 +384,13 @@
       "type": "text",
       "id": "title",
       "label": "Section Title",
-      "default": "Piel real, Resultados reales"
+      "default": "Real Skin, Real Results"
     },
     {
       "type": "text",
       "id": "subtitle",
       "label": "Section Subtitle",
-      "default": "Lo aplicas en minutos, te dura todo el día. Ellas te lo muestran."
+      "default": "Apply in minutes, lasts all day. See it in action."
     }
   ],
   "blocks": [
@@ -400,19 +412,19 @@
           "type": "text",
           "id": "image_alt",
           "label": "Image Alt Text",
-          "default": "Imagen"
+          "default": "Slide image"
         },
         {
           "type": "text",
           "id": "title",
           "label": "Slide Title",
-          "default": "Título del Slide"
+          "default": "Slide Title"
         },
         {
           "type": "textarea",
           "id": "desc",
           "label": "Slide Description",
-          "default": "Descripción del slide."
+          "default": "Slide description text goes here."
         }
       ]
     }
@@ -429,4 +441,4 @@
     }
   ]
 }
-{% endschema %} 
+{% endschema %}
