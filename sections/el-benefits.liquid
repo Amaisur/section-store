@@ -1,0 +1,390 @@
+{% comment %} EL Benefits Section - Pixel-perfect, responsive, mobile slider, full schema control {% endcomment %}
+
+<style>
+.el-benefits-section {
+  background: #fff;
+  border-radius: 2.5rem;
+  padding: 2.5rem 40px 2rem 40px;
+  margin: 2rem auto;
+  max-width: 1360px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.el-benefits-content {
+  flex: 1 1 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.el-benefits-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #181818;
+}
+.el-benefits-subtitle {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+.el-benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.el-benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  background: none;
+}
+.el-benefit-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 1.2rem;
+  background: #f4f1ef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.el-benefit-icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+.el-benefit-icon-placeholder {
+  width: 28px;
+  height: 28px;
+  background: #bc9bb2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.3rem;
+}
+.el-benefit-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.el-benefit-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #181818;
+}
+.el-benefit-desc {
+  font-size: 1rem;
+  color: #444;
+}
+.el-benefits-image {
+  flex: 1 1 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f1ef;
+  border-radius: 2rem;
+  padding: 2rem;
+  min-width: 260px;
+  min-height: 340px;
+  max-width: 400px;
+  max-height: 500px;
+}
+.el-benefits-image img {
+  max-width: 100%;
+  max-height: 420px;
+  border-radius: 1.5rem;
+  object-fit: contain;
+}
+.el-benefits-image-placeholder {
+  width: 180px;
+  height: 340px;
+  background: #e5e0e7;
+  border-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bc9bb2;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+.el-benefits-btn {
+  margin-top: 2.5rem;
+  background: #bc9bb2;
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+.el-benefits-btn:active {
+  background: #a07c9b;
+}
+
+/* Mobile styles & slider */
+@media (max-width: 900px) {
+  .el-benefits-section {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.2rem 10px 1.5rem 10px;
+    align-items: stretch;
+  }
+  .el-benefits-content {
+    gap: 1.2rem;
+  }
+  .el-benefits-list {
+    flex-direction: row;
+    gap: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1.2rem;
+  }
+  .el-benefit-item {
+    min-width: 85vw;
+    max-width: 90vw;
+    flex: 0 0 85vw;
+    scroll-snap-align: start;
+    background: #fff;
+    border-radius: 1.2rem;
+    box-shadow: 0 2px 8px rgba(188,155,178,0.07);
+    margin-right: 1.2rem;
+    padding: 1.2rem 1rem;
+    flex-direction: row;
+  }
+  .el-benefits-image {
+    min-width: 180px;
+    min-height: 220px;
+    max-width: 90vw;
+    max-height: 260px;
+    padding: 1rem;
+    margin: 0 auto;
+  }
+}
+
+/* Slider dots/arrows for mobile */
+.el-benefits-slider-controls {
+  display: none;
+}
+@media (max-width: 900px) {
+  .el-benefits-slider-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1.2rem;
+  }
+  .el-benefits-slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e5e0e7;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .el-benefits-slider-dot.active {
+    background: #bc9bb2;
+  }
+}
+</style>
+
+<div class="el-benefits-section" id="el-benefits-section">
+  <div class="el-benefits-content">
+    <div class="el-benefits-title">{{ section.settings.title }}</div>
+    <div class="el-benefits-subtitle">{{ section.settings.subtitle }}</div>
+    <div class="el-benefits-list" id="el-benefits-list">
+      {% for block in section.blocks %}
+        <div class="el-benefit-item" data-index="{{ forloop.index0 }}">
+          <div class="el-benefit-icon">
+            {% if block.settings.icon != blank %}
+              <img src="{{ block.settings.icon | img_url: '60x' }}" alt="{{ block.settings.icon_alt | default: block.settings.title }}" loading="lazy" />
+            {% else %}
+              <span class="el-benefit-icon-placeholder" aria-hidden="true">★</span>
+            {% endif %}
+          </div>
+          <div class="el-benefit-texts">
+            <div class="el-benefit-title">{{ block.settings.title }}</div>
+            <div class="el-benefit-desc">{{ block.settings.desc }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="el-benefits-slider-controls" id="el-benefits-slider-controls">
+      {% for block in section.blocks %}
+        <button class="el-benefits-slider-dot{% if forloop.first %} active{% endif %}" data-dot-index="{{ forloop.index0 }}" aria-label="Ir a beneficio {{ forloop.index }}"></button>
+      {% endfor %}
+    </div>
+    {% if section.settings.button_text and section.settings.button_link %}
+      <a href="{{ section.settings.button_link }}" class="el-benefits-btn">{{ section.settings.button_text }}</a>
+    {% endif %}
+  </div>
+  <div class="el-benefits-image">
+    {% if section.settings.product_image != blank %}
+      <img src="{{ section.settings.product_image | img_url: '400x' }}" alt="{{ section.settings.product_image_alt | default: 'Producto' }}" loading="lazy" />
+    {% else %}
+      <div class="el-benefits-image-placeholder" aria-hidden="true">IMG</div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+(function() {
+  function isMobile() {
+    return window.innerWidth <= 900;
+  }
+  var list = document.getElementById('el-benefits-list');
+  var controls = document.getElementById('el-benefits-slider-controls');
+  var items = list ? list.querySelectorAll('.el-benefit-item') : [];
+  var dots = controls ? controls.querySelectorAll('.el-benefits-slider-dot') : [];
+  var current = 0;
+  function showSlide(idx) {
+    if (!isMobile()) return;
+    current = idx;
+    items.forEach(function(item, i) {
+      item.style.display = (i === idx) ? 'flex' : 'none';
+    });
+    dots.forEach(function(dot, i) {
+      dot.classList.toggle('active', i === idx);
+    });
+  }
+  function setupSlider() {
+    if (!isMobile()) {
+      items.forEach(function(item) { item.style.display = 'flex'; });
+      if (controls) controls.style.display = 'none';
+      return;
+    }
+    items.forEach(function(item, i) {
+      item.style.display = (i === 0) ? 'flex' : 'none';
+    });
+    if (controls) controls.style.display = 'flex';
+  }
+  if (list && items.length > 1) {
+    setupSlider();
+    window.addEventListener('resize', setupSlider);
+    if (controls) {
+      dots.forEach(function(dot, i) {
+        dot.addEventListener('click', function() {
+          showSlide(i);
+        });
+      });
+    }
+    // Swipe support
+    var startX = null;
+    list.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+    });
+    list.addEventListener('touchend', function(e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) {
+        if (dx < 0 && current < items.length - 1) showSlide(current + 1);
+        else if (dx > 0 && current > 0) showSlide(current - 1);
+      }
+      startX = null;
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "EL Benefits",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "El Nuevo Dúo Favorito De Tu Piel"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "La base + corrector diseñados para moverse contigo, iluminar tu rostro y cuidar tu piel desde el primer toque."
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "product_image_alt",
+      "label": "Product Image Alt Text",
+      "default": "Producto"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Compra el Kit Esencial"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "icon_alt",
+          "label": "Icon Alt Text",
+          "default": "Icono"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Benefit Title",
+          "default": "Cobertura natural"
+        },
+        {
+          "type": "textarea",
+          "id": "desc",
+          "label": "Benefit Description",
+          "default": "Disimula imperfecciones, enrojecimientos y tono desigual sin ocultar la textura real de tu piel."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "EL Benefits",
+      "blocks": [
+        { "type": "benefit" },
+        { "type": "benefit" },
+        { "type": "benefit" },
+        { "type": "benefit" },
+        { "type": "benefit" },
+        { "type": "benefit" }
+      ]
+    }
+  ]
+}
+{% endschema %} 
