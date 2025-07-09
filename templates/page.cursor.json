@@ -221,6 +221,47 @@
         "review_stars": -13,
         "review_count": 431
       }
+    },
+    "feature_icons_row_8gxDRH": {
+      "type": "feature-icons-row",
+      "blocks": {
+        "feature_ppbRht": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Group_1410111031.avif",
+            "text": "Feature text"
+          }
+        },
+        "feature_kUaxB4": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Group_1410111031.avif",
+            "text": "Feature text"
+          }
+        },
+        "feature_anAmYV": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Group_1410111031.avif",
+            "text": "Feature text"
+          }
+        },
+        "feature_FzcBq7": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Group_1410111031.avif",
+            "text": "Feature text"
+          }
+        }
+      },
+      "block_order": [
+        "feature_ppbRht",
+        "feature_kUaxB4",
+        "feature_anAmYV",
+        "feature_FzcBq7"
+      ],
+      "name": "Feature Icons Row",
+      "settings": {}
     }
   },
   "order": [
@@ -228,6 +269,7 @@
     "cursor_ai_d98NhK",
     "cursor_instafeed_U8jePV",
     "el_hero_JwkUA3",
-    "el_media_hero_4NV8ab"
+    "el_media_hero_4NV8ab",
+    "feature_icons_row_8gxDRH"
   ]
 }
