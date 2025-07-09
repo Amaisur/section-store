@@ -302,6 +302,7 @@
         "benefit_yxA8NX": {
           "type": "benefit",
           "settings": {
+            "icon": "shopify://shop_images/Group_1410111031.avif",
             "icon_alt": "Icono",
             "title": "Cobertura natural",
             "desc": "Disimula imperfecciones, enrojecimientos y tono desigual sin ocultar la textura real de tu piel."
