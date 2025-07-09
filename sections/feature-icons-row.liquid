@@ -1,10 +1,12 @@
 <style>
-  .feature-icons-row-section {
-    background: #f4f1ef;
-    border-radius: 2.5rem;
+#shopify-section-{{ section.id }} {
     padding: 2rem 40px;
     margin: 2rem auto;
     max-width: 1360px;
+}
+  .feature-icons-row-section {
+    background: #f4f1ef;
+    border-radius: 2.5rem;
     width: 100%;
     box-sizing: border-box;
     overflow-x: auto;
@@ -66,9 +68,12 @@
     }
   }
   @media (max-width: 600px) {
+    #shopify-section-{{ section.id }} {
+        padding: 1rem 16px;
+    }
     .feature-icons-row-section {
       border-radius: 1.2rem;
-      padding: 1rem 16px;
+      
     }
     .feature-icons-row-list {
       flex-direction: column;
