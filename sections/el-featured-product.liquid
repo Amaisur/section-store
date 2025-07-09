@@ -230,7 +230,10 @@
           <label class="el-featured-product-option-label">{{ option.name | upcase }}</label>
           <div class="el-featured-product-swatches" data-option-index="{{ forloop.index0 }}">
             {% assign option_name_downcase = option.name | downcase %}
-            {% assign is_trigger = trigger_options contains option_name_downcase %}
+            {% assign is_trigger = false %}
+            {% if trigger_options contains option_name_downcase %}
+              {% assign is_trigger = true %}
+            {% endif %}
             {% for value in option.values %}
               {% if is_trigger %}
                 <div class="el-featured-product-swatch"
