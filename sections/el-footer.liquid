@@ -139,8 +139,8 @@
       <div class="el-footer-newsletter-headline">{{ section.settings.newsletter_headline | escape }}</div>
       <div class="el-footer-newsletter-subtitle">{{ section.settings.newsletter_subtitle | escape }}</div>
     </div>
-    <form class="el-footer-newsletter-form" method="post" action="{{ section.settings.newsletter_form_action }}">
-      <input type="email" class="el-footer-newsletter-input" name="email" placeholder="{{ section.settings.newsletter_input_placeholder | escape }}" required>
+    <form class="el-footer-newsletter-form" method="post" action="/contact">
+      <input type="email" class="el-footer-newsletter-input" name="contact[email]" placeholder="{{ section.settings.newsletter_input_placeholder | escape }}" required>
       <button type="submit" class="el-footer-newsletter-btn">{{ section.settings.newsletter_button_label | escape }}</button>
     </form>
   </div>
