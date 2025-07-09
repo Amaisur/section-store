@@ -203,6 +203,13 @@
       padding: 1rem;
     }
   }
+  .el-featured-product-swatch span {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: inline-block;
+    background-size: contain;
+  }
 </style>
 
 <div class="el-featured-product-section" id="el-featured-product-section">
@@ -244,7 +251,7 @@
                   tabindex="0"
                   role="button"
                   aria-label="{{ value }}">
-                  <span style="background: url('{{ value.variant.featured_image |  image_url: width: 100  }}'); width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></span>
+                  <span style="background: url('{{ value.variant.featured_image |  image_url: width: 100  }}');"></span>
                   <span class="el-featured-product-tooltip">{{ value }}</span>
                 </div>
               {% else %}
