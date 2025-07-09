@@ -1,4 +1,4 @@
-{% comment %} Seamless Infinite Looping Video Slider {% endcomment %}
+{% comment %} Seamless Infinite Looping Slider (No Progressive Scaling) {% endcomment %}
 
 <style>
   .el-slider-container {
@@ -224,26 +224,19 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Initialize the slider
   function initSlider() {
-    // Center the first slide
     currentIndex = 0;
     updateTrackWidth();
     centerActiveSlide(true);
-    
-    // Set first slide as active
     updateActiveSlide();
-    
-    // Add event listeners for mute buttons
     setupMuteButtons();
   }
   
-  // Update track width when slides change
   function updateTrackWidth() {
     slideWidth = slides[0].offsetWidth + 32;
     trackWidth = slideWidth * slides.length;
     track.style.width = `${trackWidth}px`;
   }
   
-  // Center the active slide in viewport
   function centerActiveSlide(instant = false) {
     const viewportWidth = track.parentElement.offsetWidth;
     const targetPosition = (viewportWidth / 2) - (slideWidth / 2) - (currentIndex * slideWidth);
@@ -252,7 +245,6 @@ document.addEventListener('DOMContentLoaded', function() {
     track.style.transform = `translateX(${targetPosition}px)`;
   }
   
-  // Update active slide state
   function updateActiveSlide() {
     slides.forEach((slide, index) => {
       const isActive = index === currentIndex;
@@ -271,7 +263,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Setup mute buttons for all slides
   function setupMuteButtons() {
     slides.forEach(slide => {
       const video = slide.querySelector('video');
@@ -285,14 +276,12 @@ document.addEventListener('DOMContentLoaded', function() {
           muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : '';
         });
         
-        // Set initial state
         muteBtn.querySelector('.mute-icon').style.display = video.muted ? '' : 'none';
         muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : '';
       }
     });
   }
   
-  // Handle navigation to next slide
   function goToNextSlide() {
     if (isAnimating) return;
     isAnimating = true;
@@ -304,35 +293,25 @@ document.addEventListener('DOMContentLoaded', function() {
     clone.setAttribute('data-cloned', 'true');
     track.appendChild(clone);
     
-    // Update slides array
     slides = Array.from(track.children);
     updateTrackWidth();
     
-    // Move to next slide
     currentIndex++;
     centerActiveSlide();
     
-    // After animation completes
     setTimeout(() => {
-      // Remove the old first slide
       track.removeChild(slides[0]);
-      
-      // Update slides array and reset index
       slides = Array.from(track.children);
       currentIndex--;
-      
-      // Update active slide
       updateActiveSlide();
       isAnimating = false;
     }, 500);
   }
   
-  // Handle navigation to previous slide
   function goToPrevSlide() {
     if (isAnimating) return;
     isAnimating = true;
     
-    // Duplicate first slide and append to end (for seamless transition)
     const firstSlide = slides[0];
     const clone = firstSlide.cloneNode(true);
     clone.removeAttribute('data-index');
@@ -341,20 +320,13 @@ document.addEventListener('DOMContentLoaded', function() {
     slides = Array.from(track.children);
     updateTrackWidth();
     
-    // Move to previous slide (which is technically the last slide)
     currentIndex = slides.length - 2;
     centerActiveSlide();
     
-    // After animation completes
     setTimeout(() => {
-      // Remove the newly added clone
       track.removeChild(slides[slides.length - 1]);
-      
-      // Update slides array and reset index
       slides = Array.from(track.children);
       currentIndex = 0;
-      
-      // Update active slide
       updateActiveSlide();
       isAnimating = false;
     }, 500);
@@ -364,14 +336,12 @@ document.addEventListener('DOMContentLoaded', function() {
   prevBtn.addEventListener('click', goToPrevSlide);
   nextBtn.addEventListener('click', goToNextSlide);
   
-  // Handle window resize
   window.addEventListener('resize', function() {
     slides = Array.from(track.children);
     updateTrackWidth();
     centerActiveSlide(true);
   });
   
-  // Initialize the slider
   initSlider();
 });
 </script>
