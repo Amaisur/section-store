@@ -1,348 +1,283 @@
-{% comment %} EL Video Slider Section - Fixed infinite draggable video carousel {% endcomment %}
+{% comment %} Seamless Infinite Looping Video Slider {% endcomment %}
 
 <style>
-.el-video-slider-outer {
-  max-width: 1360px;
-  margin: 2rem auto;
-  padding-inline: 40px;
-  box-sizing: border-box;
-  width: 100%;
-}
-.el-video-slider-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  color: #181818;
-  text-align: center;
-}
-.el-video-slider-subtitle {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-.el-video-slider-carousel {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  margin: 0 auto;
-  user-select: none;
-}
-.el-video-slider-track {
-  display: flex;
-  align-items: stretch;
-  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
-  will-change: transform;
-}
-.el-video-slider-slide {
-  flex: 0 0 340px;
-  margin: 0 16px;
-  background: #f4f1ef;
-  border-radius: 1.5rem;
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  min-height: 420px;
-}
-.el-video-slider-slide.active {
-  z-index: 2;
-  transform: scale(1.08);
-  box-shadow: 0 6px 32px rgba(0,0,0,0.13);
-}
-.el-video-slider-slide .el-video-slider-media {
-  position: relative;
-  width: 100%;
-  height: 340px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.el-video-slider-slide video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 1.5rem 1.5rem 0 0;
-  background: #000;
-}
-.el-video-slider-overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg,rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.38) 100%);
-  z-index: 1;
-}
-.el-video-slider-content {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  z-index: 2;
-  color: #fff;
-  padding: 1.2rem 1.2rem 1.7rem 1.2rem;
-  text-align: left;
-  background: linear-gradient(0deg,rgba(0,0,0,0.55) 60%,rgba(0,0,0,0.0) 100%);
-}
-.el-video-slider-slide .el-video-slider-mute-btn {
-  position: absolute;
-  bottom: 1.2rem;
-  right: 1.2rem;
-  z-index: 3;
-  background: rgba(0,0,0,0.55);
-  border: none;
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 1.3rem;
-  cursor: pointer;
-  outline: none;
-  transition: background 0.2s;
-}
-.el-video-slider-slide .el-video-slider-mute-btn:active {
-  background: rgba(0,0,0,0.85);
-}
-.el-video-slider-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.2rem;
-  margin: 1.5rem 0 0 0;
-}
-.el-video-slider-arrow {
-  background: #e5e0e7;
-  border: none;
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #bc9bb2;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.el-video-slider-arrow:active {
-  background: #bc9bb2;
-  color: #fff;
-}
-@media (max-width: 900px) {
-  .el-video-slider-outer {
-    padding-inline: 8px;
+  .el-slider-container {
+    max-width: 1360px;
+    margin: 2rem auto;
+    padding: 0 40px;
+    width: 100%;
+    box-sizing: border-box;
   }
-  .el-video-slider-title,
-  .el-video-slider-subtitle {
-    text-align: left;
+  
+  .el-slider-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: #181818;
+    text-align: center;
   }
-  .el-video-slider-carousel {
-    width: 100vw;
-    margin-left: -8px;
-    margin-right: -8px;
+  
+  .el-slider-subtitle {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
   }
-  .el-video-slider-slide {
-    flex: 0 0 80vw;
-    min-width: 220px;
-    min-height: 320px;
-    margin: 0 6px;
+  
+  .el-slider-viewport {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
   }
-  .el-video-slider-slide .el-video-slider-media {
-    height: 220px;
+  
+  .el-slider-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
   }
-}
+  
+  .el-slider-slide {
+    flex: 0 0 calc(33.333% - 32px);
+    margin: 0 16px;
+    background: #f4f1ef;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    min-height: 420px;
+  }
+  
+  .el-slider-slide.active {
+    transform: scale(1.08);
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.13);
+    z-index: 2;
+  }
+  
+  .el-slide-media {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .el-slide-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1.5rem 1.5rem 0 0;
+    background: #000;
+  }
+  
+  .el-slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.38) 100%);
+    z-index: 1;
+  }
+  
+  .el-slide-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    color: #fff;
+    padding: 1.2rem 1.2rem 1.7rem 1.2rem;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.55) 60%, rgba(0, 0, 0, 0) 100%);
+  }
+  
+  .el-mute-btn {
+    position: absolute;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.55);
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .el-mute-btn:active {
+    background: rgba(0, 0, 0, 0.85);
+  }
+  
+  .el-slider-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+  }
+  
+  .el-slider-arrow {
+    background: #e5e0e7;
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bc9bb2;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .el-slider-arrow:active {
+    background: #bc9bb2;
+    color: #fff;
+  }
+  
+  @media (max-width: 900px) {
+    .el-slider-container {
+      padding: 0 8px;
+    }
+    
+    .el-slider-title,
+    .el-slider-subtitle {
+      text-align: left;
+      padding: 0 8px;
+    }
+    
+    .el-slider-slide {
+      flex: 0 0 calc(100% - 12px);
+      min-height: 320px;
+      margin: 0 6px;
+    }
+    
+    .el-slide-media {
+      height: 220px;
+    }
+  }
 </style>
 
-<div class="el-video-slider-outer">
-  <div class="el-video-slider-title">{{ section.settings.title }}</div>
-  <div class="el-video-slider-subtitle">{{ section.settings.subtitle }}</div>
-  <div class="el-video-slider-carousel">
-    <div class="el-video-slider-track" id="el-video-slider-track">
+<div class="el-slider-container">
+  <div class="el-slider-title">{{ section.settings.title }}</div>
+  <div class="el-slider-subtitle">{{ section.settings.subtitle }}</div>
+  
+  <div class="el-slider-viewport">
+    <div class="el-slider-track" id="el-slider-track">
       {% for block in section.blocks %}
-        <div class="el-video-slider-slide" data-index="{{ forloop.index0 }}">
-          <div class="el-video-slider-media">
+        <div class="el-slider-slide" data-index="{{ forloop.index0 }}" data-id="{{ block.id }}">
+          <div class="el-slide-media">
             {% if block.settings.video_url != blank %}
               <video src="{{ block.settings.video_url }}" preload="metadata" playsinline muted loop></video>
             {% elsif block.settings.image != blank %}
-              <img src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.image_alt | default: block.settings.title }}" style="width:100%;height:100%;object-fit:cover;" />
+              <img src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.image_alt | default: block.settings.title }}" loading="lazy">
             {% else %}
-              <div style="width:100%;height:100%;background:#e5e0e7;display:flex;align-items:center;justify-content:center;color:#bc9bb2;font-size:2rem;">IMG</div>
+              <div style="background:#e5e0e7;display:flex;align-items:center;justify-content:center;color:#bc9bb2;font-size:2rem;width:100%;height:100%;">
+                {{ 'image' | placeholder_svg_tag }}
+              </div>
             {% endif %}
-            <div class="el-video-slider-overlay"></div>
-            <button class="el-video-slider-mute-btn" style="display:none" aria-label="Mute/Unmute">
+            <div class="el-slide-overlay"></div>
+            <button class="el-mute-btn" aria-label="Toggle mute" style="display: none;">
               <span class="mute-icon">🔇</span>
               <span class="unmute-icon" style="display:none">🔊</span>
             </button>
           </div>
-          <div class="el-video-slider-content">
-            <div class="el-video-slider-slide-title">{{ block.settings.title }}</div>
-            <div class="el-video-slider-slide-desc">{{ block.settings.desc }}</div>
+          <div class="el-slide-content">
+            <h3 class="el-slide-title">{{ block.settings.title }}</h3>
+            <p class="el-slide-desc">{{ block.settings.desc }}</p>
           </div>
         </div>
       {% endfor %}
     </div>
   </div>
-  <div class="el-video-slider-nav">
-    <button class="el-video-slider-arrow" id="el-video-slider-prev" aria-label="Previous">&#8592;</button>
-    <button class="el-video-slider-arrow" id="el-video-slider-next" aria-label="Next">&#8594;</button>
+  
+  <div class="el-slider-nav">
+    <button class="el-slider-arrow" id="el-slider-prev" aria-label="Previous slide">&#8592;</button>
+    <button class="el-slider-arrow" id="el-slider-next" aria-label="Next slide">&#8594;</button>
   </div>
 </div>
 
 <script>
-(function() {
-  const track = document.getElementById('el-video-slider-track');
-  const slides = Array.from(track.children);
-  const prevBtn = document.getElementById('el-video-slider-prev');
-  const nextBtn = document.getElementById('el-video-slider-next');
+document.addEventListener('DOMContentLoaded', function() {
+  const track = document.getElementById('el-slider-track');
+  const prevBtn = document.getElementById('el-slider-prev');
+  const nextBtn = document.getElementById('el-slider-next');
   
-  if (!slides.length) return;
+  if (!track || !track.children.length) return;
   
+  let slides = Array.from(track.children);
+  const originalSlides = [...slides];
   let currentIndex = 0;
+  let isAnimating = false;
   let slideWidth = slides[0].offsetWidth + 32;
-  let isDragging = false;
-  let startPos = 0;
-  let currentTranslate = 0;
-  let prevTranslate = 0;
-  let animationID = 0;
+  let trackWidth = slideWidth * slides.length;
   
-  // Clone first and last slides for infinite effect
-  const firstClone = slides[0].cloneNode(true);
-  const lastClone = slides[slides.length - 1].cloneNode(true);
-  
-  firstClone.setAttribute('data-clone', 'first');
-  lastClone.setAttribute('data-clone', 'last');
-  
-  track.appendChild(firstClone);
-  track.insertBefore(lastClone, slides[0]);
-  
-  const allSlides = Array.from(track.children);
-  const slideCount = allSlides.length;
-  
-  // Set initial position
-  currentIndex = 1;
-  setSliderPosition();
-  
-  // Update slide width on resize
-  window.addEventListener('resize', () => {
-    slideWidth = allSlides[0].offsetWidth + 32;
-    setSliderPosition();
-  });
-  
-  // Navigation buttons
-  prevBtn.addEventListener('click', goToPrevSlide);
-  nextBtn.addEventListener('click', goToNextSlide);
-  
-  // Touch events
-  track.addEventListener('touchstart', touchStart);
-  track.addEventListener('touchend', touchEnd);
-  track.addEventListener('touchmove', touchMove);
-  
-  // Mouse events
-  track.addEventListener('mousedown', touchStart);
-  track.addEventListener('mouseup', touchEnd);
-  track.addEventListener('mouseleave', touchEnd);
-  track.addEventListener('mousemove', touchMove);
-  
-  function touchStart(e) {
-    if (e.type === 'mousedown') e.preventDefault();
-    isDragging = true;
-    startPos = getPositionX(e);
-    prevTranslate = currentTranslate;
-    track.style.transition = 'none';
-    animationID = requestAnimationFrame(animation);
-  }
-  
-  function touchEnd() {
-    if (!isDragging) return;
-    isDragging = false;
-    cancelAnimationFrame(animationID);
+  // Initialize the slider
+  function initSlider() {
+    // Center the first slide
+    currentIndex = 0;
+    updateTrackWidth();
+    centerActiveSlide(true);
     
-    const movedBy = currentTranslate - prevTranslate;
+    // Set first slide as active
+    updateActiveSlide();
     
-    if (movedBy < -100) goToNextSlide();
-    else if (movedBy > 100) goToPrevSlide();
-    else setSliderPosition();
+    // Add event listeners for mute buttons
+    setupMuteButtons();
   }
   
-  function touchMove(e) {
-    if (!isDragging) return;
-    const currentPosition = getPositionX(e);
-    currentTranslate = prevTranslate + currentPosition - startPos;
+  // Update track width when slides change
+  function updateTrackWidth() {
+    slideWidth = slides[0].offsetWidth + 32;
+    trackWidth = slideWidth * slides.length;
+    track.style.width = `${trackWidth}px`;
   }
   
-  function animation() {
-    track.style.transform = `translateX(${currentTranslate}px)`;
-    if (isDragging) requestAnimationFrame(animation);
+  // Center the active slide in viewport
+  function centerActiveSlide(instant = false) {
+    const viewportWidth = track.parentElement.offsetWidth;
+    const targetPosition = (viewportWidth / 2) - (slideWidth / 2) - (currentIndex * slideWidth);
+    
+    track.style.transition = instant ? 'none' : 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+    track.style.transform = `translateX(${targetPosition}px)`;
   }
   
-  function getPositionX(e) {
-    return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-  }
-  
-  function goToPrevSlide() {
-    if (isDragging) return;
-    currentIndex--;
-    if (currentIndex < 0) {
-      currentIndex = slideCount - 2;
-      track.style.transition = 'none';
-      setSliderPosition();
-      setTimeout(() => {
-        track.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
-        currentIndex = slideCount - 3;
-        setSliderPosition();
-      }, 10);
-    } else {
-      track.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
-      setSliderPosition();
-    }
-    updateActiveSlide();
-  }
-  
-  function goToNextSlide() {
-    if (isDragging) return;
-    currentIndex++;
-    if (currentIndex >= slideCount) {
-      currentIndex = 1;
-      track.style.transition = 'none';
-      setSliderPosition();
-      setTimeout(() => {
-        track.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
-        currentIndex = 2;
-        setSliderPosition();
-      }, 10);
-    } else {
-      track.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
-      setSliderPosition();
-    }
-    updateActiveSlide();
-  }
-  
-  function setSliderPosition() {
-    currentTranslate = -currentIndex * slideWidth;
-    track.style.transform = `translateX(${currentTranslate}px)`;
-  }
-  
+  // Update active slide state
   function updateActiveSlide() {
-    allSlides.forEach((slide, index) => {
+    slides.forEach((slide, index) => {
       const isActive = index === currentIndex;
       slide.classList.toggle('active', isActive);
       
       const video = slide.querySelector('video');
-      const muteBtn = slide.querySelector('.el-video-slider-mute-btn');
+      const muteBtn = slide.querySelector('.el-mute-btn');
       
       if (isActive && video) {
-        video.play();
+        video.play().catch(e => console.log('Autoplay prevented:', e));
         if (muteBtn) muteBtn.style.display = 'flex';
       } else if (video) {
         video.pause();
         if (muteBtn) muteBtn.style.display = 'none';
       }
+    });
+  }
+  
+  // Setup mute buttons for all slides
+  function setupMuteButtons() {
+    slides.forEach(slide => {
+      const video = slide.querySelector('video');
+      const muteBtn = slide.querySelector('.el-mute-btn');
       
-      // Handle mute button for active slide
-      if (isActive && muteBtn && video) {
+      if (video && muteBtn) {
         muteBtn.addEventListener('click', function(e) {
           e.stopPropagation();
           video.muted = !video.muted;
@@ -350,53 +285,118 @@
           muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : '';
         });
         
+        // Set initial state
         muteBtn.querySelector('.mute-icon').style.display = video.muted ? '' : 'none';
         muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : '';
       }
     });
   }
   
-  // Initialize mute buttons for original slides (not clones)
-  slides.forEach(slide => {
-    const video = slide.querySelector('video');
-    const muteBtn = slide.querySelector('.el-video-slider-mute-btn');
+  // Handle navigation to next slide
+  function goToNextSlide() {
+    if (isAnimating) return;
+    isAnimating = true;
     
-    if (video && muteBtn) {
-      muteBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        video.muted = !video.muted;
-        muteBtn.querySelector('.mute-icon').style.display = video.muted ? '' : 'none';
-        muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : '';
-      });
-    }
+    // Duplicate first slide and append to end
+    const firstSlide = slides[0];
+    const clone = firstSlide.cloneNode(true);
+    clone.removeAttribute('data-index');
+    clone.setAttribute('data-cloned', 'true');
+    track.appendChild(clone);
+    
+    // Update slides array
+    slides = Array.from(track.children);
+    updateTrackWidth();
+    
+    // Move to next slide
+    currentIndex++;
+    centerActiveSlide();
+    
+    // After animation completes
+    setTimeout(() => {
+      // Remove the old first slide
+      track.removeChild(slides[0]);
+      
+      // Update slides array and reset index
+      slides = Array.from(track.children);
+      currentIndex--;
+      
+      // Update active slide
+      updateActiveSlide();
+      isAnimating = false;
+    }, 500);
+  }
+  
+  // Handle navigation to previous slide
+  function goToPrevSlide() {
+    if (isAnimating) return;
+    isAnimating = true;
+    
+    // Duplicate first slide and append to end (for seamless transition)
+    const firstSlide = slides[0];
+    const clone = firstSlide.cloneNode(true);
+    clone.removeAttribute('data-index');
+    clone.setAttribute('data-cloned', 'true');
+    track.appendChild(clone);
+    slides = Array.from(track.children);
+    updateTrackWidth();
+    
+    // Move to previous slide (which is technically the last slide)
+    currentIndex = slides.length - 2;
+    centerActiveSlide();
+    
+    // After animation completes
+    setTimeout(() => {
+      // Remove the newly added clone
+      track.removeChild(slides[slides.length - 1]);
+      
+      // Update slides array and reset index
+      slides = Array.from(track.children);
+      currentIndex = 0;
+      
+      // Update active slide
+      updateActiveSlide();
+      isAnimating = false;
+    }, 500);
+  }
+  
+  // Event listeners
+  prevBtn.addEventListener('click', goToPrevSlide);
+  nextBtn.addEventListener('click', goToNextSlide);
+  
+  // Handle window resize
+  window.addEventListener('resize', function() {
+    slides = Array.from(track.children);
+    updateTrackWidth();
+    centerActiveSlide(true);
   });
   
-  // Set initial active slide
-  updateActiveSlide();
-})();
+  // Initialize the slider
+  initSlider();
+});
 </script>
 
 {% schema %}
 {
-  "name": "EL Video Slider",
+  "name": "Seamless Looping Slider",
   "settings": [
     {
       "type": "text",
       "id": "title",
-      "label": "Section Title",
-      "default": "Real Skin, Real Results"
+      "label": "Title",
+      "default": "Featured Videos"
     },
     {
       "type": "text",
       "id": "subtitle",
-      "label": "Section Subtitle",
-      "default": "Apply in minutes, lasts all day. See it in action."
+      "label": "Subtitle",
+      "default": "Watch them in action"
     }
   ],
   "blocks": [
     {
       "type": "slide",
-      "name": "Video Slide",
+      "name": "Slide",
       "settings": [
         {
           "type": "url",
@@ -411,19 +411,18 @@
         {
           "type": "text",
           "id": "image_alt",
-          "label": "Image Alt Text",
-          "default": "Slide image"
+          "label": "Image Alt Text"
         },
         {
           "type": "text",
           "id": "title",
-          "label": "Slide Title",
+          "label": "Title",
           "default": "Slide Title"
         },
         {
           "type": "textarea",
           "id": "desc",
-          "label": "Slide Description",
+          "label": "Description",
           "default": "Slide description text goes here."
         }
       ]
@@ -432,11 +431,17 @@
   "max_blocks": 10,
   "presets": [
     {
-      "name": "EL Video Slider",
+      "name": "Seamless Looping Slider",
       "blocks": [
-        { "type": "slide" },
-        { "type": "slide" },
-        { "type": "slide" }
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
       ]
     }
   ]
