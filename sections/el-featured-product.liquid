@@ -1,4 +1,5 @@
 {% comment %} Enhanced swatch logic: use trigger for color, show value for others. On option change, update main image and price. {% endcomment %}
+{% comment %} Add tooltips to all swatches (color and text) showing the value on hover/focus. {% endcomment %}
 
 {% assign el_product = all_products[section.settings.featured_product] %}
 
@@ -79,6 +80,7 @@
     align-items: center;
     justify-content: center;
     transition: border 0.2s;
+    position: relative;
   }
   .el-featured-product-swatch.selected {
     border: 3px solid #bc9bb2;
@@ -98,10 +100,43 @@
     background: #fff;
     cursor: pointer;
     transition: border 0.2s;
+    position: relative;
   }
   .el-featured-product-swatch-text.selected {
     border: 3px solid #bc9bb2;
     box-shadow: 0 0 0 2px #f4f1ef;
+  }
+  /* Tooltip styles */
+  .el-featured-product-swatch,
+  .el-featured-product-swatch-text {
+    position: relative;
+  }
+  .el-featured-product-tooltip {
+    visibility: hidden;
+    opacity: 0;
+    background: #181818;
+    color: #fff;
+    text-align: center;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.7rem;
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    top: -2.2rem;
+    transform: translateX(-50%);
+    font-size: 0.95rem;
+    pointer-events: none;
+    transition: opacity 0.15s;
+    white-space: nowrap;
+  }
+  .el-featured-product-swatch:hover .el-featured-product-tooltip,
+  .el-featured-product-swatch:focus .el-featured-product-tooltip,
+  .el-featured-product-swatch:focus-visible .el-featured-product-tooltip,
+  .el-featured-product-swatch-text:hover .el-featured-product-tooltip,
+  .el-featured-product-swatch-text:focus .el-featured-product-tooltip,
+  .el-featured-product-swatch-text:focus-visible .el-featured-product-tooltip {
+    visibility: visible;
+    opacity: 1;
   }
   .el-featured-product-price {
     font-size: 2rem;
@@ -178,6 +213,7 @@
                   role="button"
                   aria-label="{{ value }}">
                   <span style="background: {{ value | handle | replace: '-', '' | prepend: '#' }}; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></span>
+                  <span class="el-featured-product-tooltip">{{ value }}</span>
                 </div>
               {% else %}
                 <div class="el-featured-product-swatch-text"
@@ -187,6 +223,7 @@
                   role="button"
                   aria-label="{{ value }}">
                   {{ value }}
+                  <span class="el-featured-product-tooltip">{{ value }}</span>
                 </div>
               {% endif %}
             {% endfor %}
