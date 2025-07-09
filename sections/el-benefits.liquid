@@ -1,14 +1,30 @@
-{% comment %} EL Benefits Section - Centered image, 3 benefits left, 3 right, mobile slider unchanged {% endcomment %}
+{% comment %} EL Benefits Section - Main image at top on mobile, desktop max-width 1360px and padding-inline 40px, mobile padding-inline 16px {% endcomment %}
 
 <style>
+.el-benefits-outer {
+  max-width: 1360px;
+  margin: 2rem auto;
+  padding-inline: 40px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.el-benefits-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #181818;
+  text-align: center;
+}
+.el-benefits-subtitle {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
 .el-benefits-section {
   background: #fff;
   border-radius: 2.5rem;
-  padding: 2.5rem 40px 2rem 40px;
-  margin: 2rem auto;
-  max-width: 1360px;
-  width: 100%;
-  box-sizing: border-box;
+  padding: 2.5rem 0 2rem 0;
   display: flex;
   gap: 0;
   align-items: stretch;
@@ -111,19 +127,6 @@
   font-size: 1rem;
   color: #444;
 }
-.el-benefits-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  color: #181818;
-  text-align: center;
-}
-.el-benefits-subtitle {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
 .el-benefits-btn {
   margin: 2.5rem auto 0 auto;
   background: #bc9bb2;
@@ -144,15 +147,18 @@
 }
 
 @media (max-width: 900px) {
-  .el-benefits-section {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1.2rem 10px 1.5rem 10px;
-    align-items: stretch;
+  .el-benefits-outer {
+    padding-inline: 16px;
   }
   .el-benefits-title,
   .el-benefits-subtitle {
     text-align: left;
+  }
+  .el-benefits-section {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.2rem 0 1.5rem 0;
+    align-items: stretch;
   }
   .el-benefits-col.left,
   .el-benefits-col.right,
@@ -165,6 +171,7 @@
   }
   .el-benefits-col.center {
     margin-bottom: 1.2rem;
+    order: -1;
   }
   .el-benefits-image {
     min-width: 180px;
@@ -206,13 +213,60 @@
 }
 </style>
 
-<div class="el-benefits-title">{{ section.settings.title }}</div>
-<div class="el-benefits-subtitle">{{ section.settings.subtitle }}</div>
-<div class="el-benefits-section" id="el-benefits-section">
-  {% assign left_benefits = section.blocks | slice: 0, 3 %}
-  {% assign right_benefits = section.blocks | slice: 3, 3 %}
-  <div class="el-benefits-col left">
-    {% for block in left_benefits %}
+<div class="el-benefits-outer">
+  <div class="el-benefits-title">{{ section.settings.title }}</div>
+  <div class="el-benefits-subtitle">{{ section.settings.subtitle }}</div>
+  <div class="el-benefits-section" id="el-benefits-section">
+    {% assign left_benefits = section.blocks | slice: 0, 3 %}
+    {% assign right_benefits = section.blocks | slice: 3, 3 %}
+    <div class="el-benefits-col left">
+      {% for block in left_benefits %}
+        <div class="el-benefit-item" data-index="{{ forloop.index0 }}">
+          <div class="el-benefit-icon">
+            {% if block.settings.icon != blank %}
+              <img src="{{ block.settings.icon | img_url: '60x' }}" alt="{{ block.settings.icon_alt | default: block.settings.title }}" loading="lazy" />
+            {% else %}
+              <span class="el-benefit-icon-placeholder" aria-hidden="true">★</span>
+            {% endif %}
+          </div>
+          <div class="el-benefit-texts">
+            <div class="el-benefit-title">{{ block.settings.title }}</div>
+            <div class="el-benefit-desc">{{ block.settings.desc }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="el-benefits-col center">
+      <div class="el-benefits-image">
+        {% if section.settings.product_image != blank %}
+          <img src="{{ section.settings.product_image | img_url: '400x' }}" alt="{{ section.settings.product_image_alt | default: 'Producto' }}" loading="lazy" />
+        {% else %}
+          <div class="el-benefits-image-placeholder" aria-hidden="true">IMG</div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="el-benefits-col right">
+      {% for block in right_benefits %}
+        <div class="el-benefit-item" data-index="{{ forloop.index0 | plus: 3 }}">
+          <div class="el-benefit-icon">
+            {% if block.settings.icon != blank %}
+              <img src="{{ block.settings.icon | img_url: '60x' }}" alt="{{ block.settings.icon_alt | default: block.settings.title }}" loading="lazy" />
+            {% else %}
+              <span class="el-benefit-icon-placeholder" aria-hidden="true">★</span>
+            {% endif %}
+          </div>
+          <div class="el-benefit-texts">
+            <div class="el-benefit-title">{{ block.settings.title }}</div>
+            <div class="el-benefit-desc">{{ block.settings.desc }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Mobile slider (unchanged) -->
+  <div class="el-benefits-list" id="el-benefits-list" style="display:none">
+    {% for block in section.blocks %}
       <div class="el-benefit-item" data-index="{{ forloop.index0 }}">
         <div class="el-benefit-icon">
           {% if block.settings.icon != blank %}
@@ -228,60 +282,15 @@
       </div>
     {% endfor %}
   </div>
-  <div class="el-benefits-col center">
-    <div class="el-benefits-image">
-      {% if section.settings.product_image != blank %}
-        <img src="{{ section.settings.product_image | img_url: '400x' }}" alt="{{ section.settings.product_image_alt | default: 'Producto' }}" loading="lazy" />
-      {% else %}
-        <div class="el-benefits-image-placeholder" aria-hidden="true">IMG</div>
-      {% endif %}
-    </div>
-  </div>
-  <div class="el-benefits-col right">
-    {% for block in right_benefits %}
-      <div class="el-benefit-item" data-index="{{ forloop.index0 | plus: 3 }}">
-        <div class="el-benefit-icon">
-          {% if block.settings.icon != blank %}
-            <img src="{{ block.settings.icon | img_url: '60x' }}" alt="{{ block.settings.icon_alt | default: block.settings.title }}" loading="lazy" />
-          {% else %}
-            <span class="el-benefit-icon-placeholder" aria-hidden="true">★</span>
-          {% endif %}
-        </div>
-        <div class="el-benefit-texts">
-          <div class="el-benefit-title">{{ block.settings.title }}</div>
-          <div class="el-benefit-desc">{{ block.settings.desc }}</div>
-        </div>
-      </div>
+  <div class="el-benefits-slider-controls" id="el-benefits-slider-controls" style="display:none">
+    {% for block in section.blocks %}
+      <button class="el-benefits-slider-dot{% if forloop.first %} active{% endif %}" data-dot-index="{{ forloop.index0 }}" aria-label="Ir a beneficio {{ forloop.index }}"></button>
     {% endfor %}
   </div>
+  {% if section.settings.button_text and section.settings.button_link %}
+    <a href="{{ section.settings.button_link }}" class="el-benefits-btn">{{ section.settings.button_text }}</a>
+  {% endif %}
 </div>
-
-<!-- Mobile slider (unchanged) -->
-<div class="el-benefits-list" id="el-benefits-list" style="display:none">
-  {% for block in section.blocks %}
-    <div class="el-benefit-item" data-index="{{ forloop.index0 }}">
-      <div class="el-benefit-icon">
-        {% if block.settings.icon != blank %}
-          <img src="{{ block.settings.icon | img_url: '60x' }}" alt="{{ block.settings.icon_alt | default: block.settings.title }}" loading="lazy" />
-        {% else %}
-          <span class="el-benefit-icon-placeholder" aria-hidden="true">★</span>
-        {% endif %}
-      </div>
-      <div class="el-benefit-texts">
-        <div class="el-benefit-title">{{ block.settings.title }}</div>
-        <div class="el-benefit-desc">{{ block.settings.desc }}</div>
-      </div>
-    </div>
-  {% endfor %}
-</div>
-<div class="el-benefits-slider-controls" id="el-benefits-slider-controls" style="display:none">
-  {% for block in section.blocks %}
-    <button class="el-benefits-slider-dot{% if forloop.first %} active{% endif %}" data-dot-index="{{ forloop.index0 }}" aria-label="Ir a beneficio {{ forloop.index }}"></button>
-  {% endfor %}
-</div>
-{% if section.settings.button_text and section.settings.button_link %}
-  <a href="{{ section.settings.button_link }}" class="el-benefits-btn">{{ section.settings.button_text }}</a>
-{% endif %}
 
 <script>
 (function() {
