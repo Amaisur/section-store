@@ -67,7 +67,7 @@
     {% for block in section.blocks %}
       <div class="el-slide">
         {% if block.settings.video_url != blank %}
-          <video src="{{ block.settings.video_url }}" controls muted playsinline style="width:100%;height:auto;display:block;"></video>
+          {{ block.settings.video_url |  video_tag: autoplay: true }}
         {% elsif block.settings.image_url != blank %}
           <img src="{{ block.settings.image_url }}" alt="{{ block.settings.alt | escape }}" style="width:100%;display:block;">
         {% endif %}
@@ -150,8 +150,8 @@ document.addEventListener('DOMContentLoaded', function() {
       "settings": [
         {
           "type": "url",
-          "id": "video_url",
-          "label": "Video URL"
+          "id": "video",
+          "label": "Video"
         },
         {
           "type": "url",
@@ -171,9 +171,9 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       "name": "El Slider",
       "blocks": [
-        { "type": "video", "settings": { "video_url": "", "image_url": "", "alt": "" } },
-        { "type": "video", "settings": { "video_url": "", "image_url": "", "alt": "" } },
-        { "type": "video", "settings": { "video_url": "", "image_url": "", "alt": "" } }
+        { "type": "video", "settings": { "video": "", "image_url": "", "alt": "" } },
+        { "type": "video", "settings": { "video": "", "image_url": "", "alt": "" } },
+        { "type": "video", "settings": { "video": "", "image_url": "", "alt": "" } }
       ]
     }
   ]
