@@ -1,4 +1,4 @@
-{% comment %} EL Video Slider Section - Infinite, draggable, video carousel with dynamic blocks {% endcomment %}
+{% comment %} EL Video Slider Section - Infinite, draggable, video carousel with dynamic blocks and seamless looping by duplicating the first slide at the end {% endcomment %}
 
 <style>
 .el-video-slider-outer {
@@ -161,6 +161,7 @@
   <div class="el-video-slider-subtitle">{{ section.settings.subtitle }}</div>
   <div class="el-video-slider-carousel">
     <div class="el-video-slider-track" id="el-video-slider-track">
+      {% assign slide_count = section.blocks.size %}
       {% for block in section.blocks %}
         <div class="el-video-slider-slide" data-index="{{ forloop.index0 }}">
           <div class="el-video-slider-media">
@@ -183,6 +184,30 @@
           </div>
         </div>
       {% endfor %}
+      {# Duplicate the first slide at the end for seamless looping #}
+      {% if section.blocks.size > 0 %}
+        {% assign block = section.blocks[0] %}
+        <div class="el-video-slider-slide" data-index="{{ slide_count }}" data-duplicate="true">
+          <div class="el-video-slider-media">
+            {% if block.settings.video_url != blank %}
+              <video src="{{ block.settings.video_url }}" preload="metadata" playsinline muted loop></video>
+            {% elsif block.settings.image != blank %}
+              <img src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.image_alt | default: block.settings.title }}" style="width:100%;height:100%;object-fit:cover;" />
+            {% else %}
+              <div style="width:100%;height:100%;background:#e5e0e7;display:flex;align-items:center;justify-content:center;color:#bc9bb2;font-size:2rem;">IMG</div>
+            {% endif %}
+            <div class="el-video-slider-overlay"></div>
+            <button class="el-video-slider-mute-btn" style="display:none" aria-label="Mute/Unmute">
+              <span class="mute-icon">🔇</span>
+              <span class="unmute-icon" style="display:none">🔊</span>
+            </button>
+          </div>
+          <div class="el-video-slider-content">
+            <div class="el-video-slider-slide-title">{{ block.settings.title }}</div>
+            <div class="el-video-slider-slide-desc">{{ block.settings.desc }}</div>
+          </div>
+        </div>
+      {% endif %}
     </div>
   </div>
   <div class="el-video-slider-nav">
@@ -193,18 +218,18 @@
 
 <script>
 (function() {
-  // --- Carousel State ---
   var track = document.getElementById('el-video-slider-track');
   var slides = Array.from(track.children);
-  var slideCount = slides.length;
+  var slideCount = slides.length - 1; // last is duplicate
   var activeIdx = 0;
-  var isDragging = false, startX = 0, currentX = 0, dragOffset = 0;
-  var slideWidth = slides[0] ? slides[0].offsetWidth + 32 : 340 + 32; // margin
-  var autoplay = false;
+  var isDragging = false, startX = 0, dragOffset = 0;
+  var slideWidth = slides[0] ? slides[0].offsetWidth + 32 : 340 + 32;
 
-  // --- Infinite Loop Helpers ---
-  function getLoopedIndex(idx) {
-    return (idx + slideCount) % slideCount;
+  // Center the active slide
+  function getOffset(idx) {
+    var center = Math.floor(slideCount / 2);
+    var offset = (idx - center) * slideWidth;
+    return -offset;
   }
   function updateSlides() {
     slides.forEach(function(slide, i) {
@@ -221,17 +246,44 @@
     });
   }
   function moveTo(idx, animate) {
-    activeIdx = getLoopedIndex(idx);
-    var offset = -activeIdx * slideWidth;
+    activeIdx = idx;
+    var offset = getOffset(activeIdx);
     track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.4,0,0.2,1)' : 'none';
     track.style.transform = 'translateX(' + offset + 'px)';
     updateSlides();
+  }
+  function nextSlide() {
+    if (activeIdx < slideCount) {
+      moveTo(activeIdx + 1, true);
+    } else {
+      // If at duplicate, jump to real first slide instantly after transition
+      moveTo(activeIdx + 1, true);
+      setTimeout(function() {
+        track.style.transition = 'none';
+        activeIdx = 0;
+        track.style.transform = 'translateX(' + getOffset(activeIdx) + 'px)';
+        updateSlides();
+      }, 510);
+    }
+  }
+  function prevSlide() {
+    if (activeIdx > 0) {
+      moveTo(activeIdx - 1, true);
+    } else {
+      // If at first, jump to duplicate at end instantly after transition
+      moveTo(activeIdx - 1, true);
+      setTimeout(function() {
+        track.style.transition = 'none';
+        activeIdx = slideCount;
+        track.style.transform = 'translateX(' + getOffset(activeIdx) + 'px)';
+        updateSlides();
+      }, 510);
+    }
   }
   // --- Drag Logic ---
   function onDragStart(e) {
     isDragging = true;
     startX = (e.touches ? e.touches[0].clientX : e.clientX);
-    currentX = startX;
     track.style.transition = 'none';
     document.body.style.cursor = 'grabbing';
   }
@@ -239,27 +291,24 @@
     if (!isDragging) return;
     var x = (e.touches ? e.touches[0].clientX : e.clientX);
     dragOffset = x - startX;
-    track.style.transform = 'translateX(' + (-activeIdx * slideWidth + dragOffset) + 'px)';
+    var offset = getOffset(activeIdx) + dragOffset;
+    track.style.transform = 'translateX(' + offset + 'px)';
   }
   function onDragEnd(e) {
     if (!isDragging) return;
     isDragging = false;
     document.body.style.cursor = '';
     if (Math.abs(dragOffset) > slideWidth/4) {
-      if (dragOffset < 0) moveTo(activeIdx + 1, true);
-      else moveTo(activeIdx - 1, true);
+      if (dragOffset < 0) nextSlide();
+      else prevSlide();
     } else {
       moveTo(activeIdx, true);
     }
     dragOffset = 0;
   }
   // --- Arrow Navigation ---
-  document.getElementById('el-video-slider-prev').addEventListener('click', function() {
-    moveTo(activeIdx - 1, true);
-  });
-  document.getElementById('el-video-slider-next').addEventListener('click', function() {
-    moveTo(activeIdx + 1, true);
-  });
+  document.getElementById('el-video-slider-prev').addEventListener('click', prevSlide);
+  document.getElementById('el-video-slider-next').addEventListener('click', nextSlide);
   // --- Drag Events ---
   track.addEventListener('mousedown', onDragStart);
   track.addEventListener('touchstart', onDragStart, {passive:true});
@@ -278,7 +327,6 @@
         muteBtn.querySelector('.mute-icon').style.display = video.muted ? '' : 'none';
         muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : '';
       });
-      // Set initial state
       muteBtn.querySelector('.mute-icon').style.display = video.muted ? '' : 'none';
       muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : '';
     }
@@ -289,7 +337,6 @@
     moveTo(activeIdx, false);
   }
   window.addEventListener('resize', updateSlideWidth);
-  // --- Infinite Loop (simulate by wrapping index) ---
   // --- Init ---
   moveTo(0, false);
 })();
