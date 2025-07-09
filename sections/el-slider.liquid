@@ -16,22 +16,23 @@
   will-change: transform;
 }
 .el-slide {
-  min-width: 20vw;
+  min-width: 320px;
   max-width: 320px;
-  aspect-ratio: .8;
+  margin: 0 18px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px #0001;
+  overflow: hidden;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  aspect-ratio: .8;
 }
 .el-slide video, .el-slide img{
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-.el-slide.el-slide-active {
-  box-shadow: 0 4px 24px #bc9bb2aa;
-  z-index: 2;
-  /* highlight effect */
 }
 .el-slider-btn {
   position: absolute;
@@ -56,7 +57,7 @@
 .el-slider-prev { left: 45%; transform: translateX(-120%); }
 .el-slider-next { right: 45%; transform: translateX(120%); }
 @media (max-width: 1100px) {
-  .el-slide { min-width: 90vw; max-width: 100vw; }
+  .el-slide { min-width: 220px; max-width: 220px; }
   .el-slider-container { width: 98vw; }
 }
 </style>
@@ -89,9 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const sectionId = '{{ section.id }}';
   const track = document.getElementById('elSliderTrack-' + sectionId);
   const slides = Array.from(track.children);
-  let slidesToShow = window.innerWidth < 900 ? 1 : 5;
+  const slidesToShow = 3;
   const slideWidth = slides[0] ? (slides[0].offsetWidth + 36) : 356;
-
   // Clone last N slides and prepend (in correct order)
   for (let i = slides.length - slidesToShow; i < slides.length; i++) {
     if (slides[i]) track.insertBefore(slides[i].cloneNode(true), track.firstChild);
@@ -100,11 +100,10 @@ document.addEventListener('DOMContentLoaded', function() {
   for (let i = 0; i < slidesToShow; i++) {
     if (slides[i]) track.appendChild(slides[i].cloneNode(true));
   }
-
   let currentIndex = slidesToShow;
   function updateSlider() {
     track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
-    // Pause all videos except the active one, and highlight center
+    // Pause all videos except the active one
     const allSlides = Array.from(track.children);
     allSlides.forEach((slide, idx) => {
       const video = slide.querySelector('video');
@@ -115,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function() {
           video.pause();
         }
       }
-      slide.classList.toggle('el-slide-active', idx === currentIndex);
     });
   }
   updateSlider();
