@@ -367,6 +367,54 @@
         "button_link": "/"
       }
     },
+    "el_slider_gqfkaq": {
+      "type": "el-slider",
+      "blocks": {
+        "video_6QxXYd": {
+          "type": "video",
+          "settings": {
+            "video_url": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
+            "image_url": "",
+            "alt": ""
+          }
+        },
+        "video_QQL49T": {
+          "type": "video",
+          "settings": {
+            "video_url": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
+            "image_url": "",
+            "alt": ""
+          }
+        },
+        "video_8EdVCA": {
+          "type": "video",
+          "settings": {
+            "video_url": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
+            "image_url": "",
+            "alt": ""
+          }
+        },
+        "video_mMtqmN": {
+          "type": "video",
+          "settings": {
+            "video_url": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
+            "image_url": "",
+            "alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_6QxXYd",
+        "video_QQL49T",
+        "video_8EdVCA",
+        "video_mMtqmN"
+      ],
+      "name": "El Slider",
+      "settings": {
+        "headline": "Piel real, Resultados reales",
+        "subtitle": "Lo aplicas en minutos, te dura todo el día. Ellas te lo muestran."
+      }
+    },
     "el_video_slider_aqxQMm": {
       "type": "el-video-slider",
       "blocks": {
@@ -423,6 +471,7 @@
         "slide_rmAdH7",
         "slide_CgXUMa"
       ],
+      "disabled": true,
       "name": "EL Video Slider",
       "settings": {
         "title": "Piel real, Resultados reales",
@@ -547,54 +596,6 @@
         "newsletter_form_action": "",
         "copyright": "© 2024 Elysia. All Rights Reserved."
       }
-    },
-    "el_slider_gqfkaq": {
-      "type": "el-slider",
-      "blocks": {
-        "video_6QxXYd": {
-          "type": "video",
-          "settings": {
-            "video_url": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
-            "image_url": "",
-            "alt": ""
-          }
-        },
-        "video_QQL49T": {
-          "type": "video",
-          "settings": {
-            "video_url": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
-            "image_url": "",
-            "alt": ""
-          }
-        },
-        "video_8EdVCA": {
-          "type": "video",
-          "settings": {
-            "video_url": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
-            "image_url": "",
-            "alt": ""
-          }
-        },
-        "video_mMtqmN": {
-          "type": "video",
-          "settings": {
-            "video_url": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
-            "image_url": "",
-            "alt": ""
-          }
-        }
-      },
-      "block_order": [
-        "video_6QxXYd",
-        "video_QQL49T",
-        "video_8EdVCA",
-        "video_mMtqmN"
-      ],
-      "name": "El Slider",
-      "settings": {
-        "headline": "Piel real, Resultados reales",
-        "subtitle": "Lo aplicas en minutos, te dura todo el día. Ellas te lo muestran."
-      }
     }
   },
   "order": [
@@ -606,9 +607,9 @@
     "feature_icons_row_8gxDRH",
     "el_featured_product_8GnRaQ",
     "el_benefits_CdwGYX",
+    "el_slider_gqfkaq",
     "el_video_slider_aqxQMm",
     "el_steps_Fkc9Ex",
-    "el_footer_xpVMrL",
-    "el_slider_gqfkaq"
+    "el_footer_xpVMrL"
   ]
 }
