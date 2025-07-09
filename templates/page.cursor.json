@@ -547,6 +547,45 @@
         "newsletter_form_action": "",
         "copyright": "© 2024 Elysia. All Rights Reserved."
       }
+    },
+    "el_slider_gqfkaq": {
+      "type": "el-slider",
+      "blocks": {
+        "video_6QxXYd": {
+          "type": "video",
+          "settings": {
+            "video_url": "",
+            "image_url": "",
+            "alt": ""
+          }
+        },
+        "video_QQL49T": {
+          "type": "video",
+          "settings": {
+            "video_url": "",
+            "image_url": "",
+            "alt": ""
+          }
+        },
+        "video_mMtqmN": {
+          "type": "video",
+          "settings": {
+            "video_url": "",
+            "image_url": "",
+            "alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_6QxXYd",
+        "video_QQL49T",
+        "video_mMtqmN"
+      ],
+      "name": "El Slider",
+      "settings": {
+        "headline": "Piel real, Resultados reales",
+        "subtitle": "Lo aplicas en minutos, te dura todo el día. Ellas te lo muestran."
+      }
     }
   },
   "order": [
@@ -560,6 +599,7 @@
     "el_benefits_CdwGYX",
     "el_video_slider_aqxQMm",
     "el_steps_Fkc9Ex",
-    "el_footer_xpVMrL"
+    "el_footer_xpVMrL",
+    "el_slider_gqfkaq"
   ]
 }
