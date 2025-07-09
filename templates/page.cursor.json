@@ -366,6 +366,68 @@
         "button_text": "Compra el Kit Esencial",
         "button_link": "/"
       }
+    },
+    "el_video_slider_aqxQMm": {
+      "type": "el-video-slider",
+      "blocks": {
+        "slide_X4bKCi": {
+          "type": "slide",
+          "settings": {
+            "video_url": "",
+            "image_alt": "Imagen",
+            "title": "Título del Slide",
+            "desc": "Descripción del slide."
+          }
+        },
+        "slide_qaQkDH": {
+          "type": "slide",
+          "settings": {
+            "video_url": "",
+            "image_alt": "Imagen",
+            "title": "Título del Slide",
+            "desc": "Descripción del slide."
+          }
+        },
+        "slide_BQrWn8": {
+          "type": "slide",
+          "settings": {
+            "video_url": "",
+            "image_alt": "Imagen",
+            "title": "Título del Slide",
+            "desc": "Descripción del slide."
+          }
+        },
+        "slide_rmAdH7": {
+          "type": "slide",
+          "settings": {
+            "video_url": "",
+            "image_alt": "Imagen",
+            "title": "Título del Slide",
+            "desc": "Descripción del slide."
+          }
+        },
+        "slide_CgXUMa": {
+          "type": "slide",
+          "settings": {
+            "video_url": "",
+            "image_alt": "Imagen",
+            "title": "Título del Slide",
+            "desc": "Descripción del slide."
+          }
+        }
+      },
+      "block_order": [
+        "slide_X4bKCi",
+        "slide_qaQkDH",
+        "slide_BQrWn8",
+        "slide_rmAdH7",
+        "slide_CgXUMa"
+      ],
+      "name": "EL Video Slider",
+      "settings": {
+        "title": "Piel real, Resultados reales",
+        "subtitle": "Lo aplicas en minutos, te dura todo el día. Ellas te lo muestran."
+      }
     }
   },
   "order": [
@@ -376,6 +438,7 @@
     "el_media_hero_4NV8ab",
     "feature_icons_row_8gxDRH",
     "el_featured_product_8GnRaQ",
-    "el_benefits_CdwGYX"
+    "el_benefits_CdwGYX",
+    "el_video_slider_aqxQMm"
   ]
 }
