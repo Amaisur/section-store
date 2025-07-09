@@ -1,0 +1,181 @@
+{% comment %} el-slider: Looping Video Slider Section {% endcomment %}
+
+<style>
+.el-slider-container {
+  width: 90vw;
+  margin: 40px auto;
+  overflow: hidden;
+  position: relative;
+  background: #f6f3f1;
+  border-radius: 2rem;
+  max-width: 1400px;
+}
+.el-slider-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(.22,.68,.48,1.02);
+  will-change: transform;
+}
+.el-slide {
+  min-width: 320px;
+  max-width: 320px;
+  margin: 0 18px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px #0001;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.el-slider-btn {
+  position: absolute;
+  bottom: 24px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #dab7d8;
+  background: #fff;
+  color: #b891b9;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .2s;
+}
+.el-slider-btn:hover {
+  background: #f3e1f3;
+}
+.el-slider-prev { left: 45%; transform: translateX(-120%); }
+.el-slider-next { right: 45%; transform: translateX(120%); }
+@media (max-width: 1100px) {
+  .el-slide { min-width: 220px; max-width: 220px; }
+  .el-slider-container { width: 98vw; }
+}
+</style>
+
+<div class="el-slider-container">
+  {% if section.settings.headline != blank %}
+    <h2 style="text-align:center;">{{ section.settings.headline }}</h2>
+  {% endif %}
+  {% if section.settings.subtitle != blank %}
+    <p style="text-align:center;">{{ section.settings.subtitle }}</p>
+  {% endif %}
+  <div class="el-slider-track" id="elSliderTrack-{{ section.id }}">
+    {% for block in section.blocks %}
+      <div class="el-slide">
+        {% if block.settings.video_url != blank %}
+          <video src="{{ block.settings.video_url }}" controls muted playsinline style="width:100%;height:auto;display:block;"></video>
+        {% elsif block.settings.image_url != blank %}
+          <img src="{{ block.settings.image_url }}" alt="{{ block.settings.alt | escape }}" style="width:100%;display:block;">
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  <button class="el-slider-btn el-slider-prev">&#8592;</button>
+  <button class="el-slider-btn el-slider-next">&#8594;</button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const sectionId = '{{ section.id }}';
+  const track = document.getElementById('elSliderTrack-' + sectionId);
+  const slides = Array.from(track.children);
+  const slidesToShow = 3;
+  const slideWidth = slides[0] ? (slides[0].offsetWidth + 36) : 356;
+  // Clone slides for looping
+  for(let i=0; i<slidesToShow; i++) {
+    if(slides[i]) track.appendChild(slides[i].cloneNode(true));
+    if(slides[slides.length-i-1]) track.insertBefore(slides[slides.length-i-1].cloneNode(true), track.firstChild);
+  }
+  let currentIndex = slidesToShow;
+  function updateSlider() {
+    track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+  }
+  updateSlider();
+  const nextBtn = track.parentElement.querySelector('.el-slider-next');
+  const prevBtn = track.parentElement.querySelector('.el-slider-prev');
+  nextBtn.onclick = () => {
+    currentIndex++;
+    updateSlider();
+    if (currentIndex === slides.length + slidesToShow) {
+      setTimeout(() => {
+        track.style.transition = 'none';
+        currentIndex = slidesToShow;
+        updateSlider();
+        track.offsetHeight;
+        track.style.transition = '';
+      }, 500);
+    }
+  };
+  prevBtn.onclick = () => {
+    currentIndex--;
+    updateSlider();
+    if (currentIndex === 0) {
+      setTimeout(() => {
+        track.style.transition = 'none';
+        currentIndex = slides.length;
+        updateSlider();
+        track.offsetHeight;
+        track.style.transition = '';
+      }, 500);
+    }
+  };
+});
+</script>
+
+{% schema %}
+{
+  "name": "El Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Piel real, Resultados reales"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Lo aplicas en minutos, te dura todo el día. Ellas te lo muestran."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video/Image Slide",
+      "settings": [
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL"
+        },
+        {
+          "type": "url",
+          "id": "image_url",
+          "label": "Fallback Image URL"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt Text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "El Slider",
+      "blocks": [
+        { "type": "video", "settings": { "video_url": "", "image_url": "", "alt": "" } },
+        { "type": "video", "settings": { "video_url": "", "image_url": "", "alt": "" } },
+        { "type": "video", "settings": { "video_url": "", "image_url": "", "alt": "" } }
+      ]
+    }
+  ]
+}
+{% endschema %} 
