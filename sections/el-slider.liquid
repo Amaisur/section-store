@@ -93,6 +93,18 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentIndex = slidesToShow;
   function updateSlider() {
     track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+    // Pause all videos except the active one
+    const allSlides = Array.from(track.children);
+    allSlides.forEach((slide, idx) => {
+      const video = slide.querySelector('video');
+      if (video) {
+        if (idx === currentIndex) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+    });
   }
   updateSlider();
   const nextBtn = track.parentElement.querySelector('.el-slider-next');
