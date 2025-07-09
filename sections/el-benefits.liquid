@@ -1,4 +1,4 @@
-{% comment %} EL Benefits Section - Pixel-perfect, responsive, mobile slider, full schema control {% endcomment %}
+{% comment %} EL Benefits Section - Centered image, 3 benefits left, 3 right, mobile slider unchanged {% endcomment %}
 
 <style>
 .el-benefits-section {
@@ -10,31 +10,57 @@
   width: 100%;
   box-sizing: border-box;
   display: flex;
-  gap: 3rem;
-  align-items: center;
+  gap: 0;
+  align-items: stretch;
+  justify-content: center;
+}
+.el-benefits-col {
+  flex: 1 1 30%;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  gap: 2.5rem;
+  min-width: 0;
 }
-.el-benefits-content {
-  flex: 1 1 55%;
+.el-benefits-col.left,
+.el-benefits-col.right {
+  max-width: 260px;
+}
+.el-benefits-col.center {
+  flex: 1 1 40%;
+  align-items: center;
+  justify-content: center;
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
 }
-.el-benefits-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  color: #181818;
-}
-.el-benefits-subtitle {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 1.5rem;
-}
-.el-benefits-list {
+.el-benefits-image {
+  background: #f4f1ef;
+  border-radius: 2rem;
+  padding: 2rem;
+  min-width: 220px;
+  min-height: 340px;
+  max-width: 400px;
+  max-height: 500px;
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+.el-benefits-image img {
+  max-width: 100%;
+  max-height: 420px;
+  border-radius: 1.5rem;
+  object-fit: contain;
+}
+.el-benefits-image-placeholder {
+  width: 180px;
+  height: 340px;
+  background: #e5e0e7;
+  border-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bc9bb2;
+  font-size: 2.2rem;
+  font-weight: 700;
 }
 .el-benefit-item {
   display: flex;
@@ -85,39 +111,21 @@
   font-size: 1rem;
   color: #444;
 }
-.el-benefits-image {
-  flex: 1 1 45%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f4f1ef;
-  border-radius: 2rem;
-  padding: 2rem;
-  min-width: 260px;
-  min-height: 340px;
-  max-width: 400px;
-  max-height: 500px;
+.el-benefits-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #181818;
+  text-align: center;
 }
-.el-benefits-image img {
-  max-width: 100%;
-  max-height: 420px;
-  border-radius: 1.5rem;
-  object-fit: contain;
-}
-.el-benefits-image-placeholder {
-  width: 180px;
-  height: 340px;
-  background: #e5e0e7;
-  border-radius: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #bc9bb2;
-  font-size: 2.2rem;
-  font-weight: 700;
+.el-benefits-subtitle {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 .el-benefits-btn {
-  margin-top: 2.5rem;
+  margin: 2.5rem auto 0 auto;
   background: #bc9bb2;
   color: #fff;
   border: none;
@@ -135,7 +143,6 @@
   background: #a07c9b;
 }
 
-/* Mobile styles & slider */
 @media (max-width: 900px) {
   .el-benefits-section {
     flex-direction: column;
@@ -143,28 +150,21 @@
     padding: 1.2rem 10px 1.5rem 10px;
     align-items: stretch;
   }
-  .el-benefits-content {
-    gap: 1.2rem;
+  .el-benefits-title,
+  .el-benefits-subtitle {
+    text-align: left;
   }
-  .el-benefits-list {
-    flex-direction: row;
-    gap: 0;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+  .el-benefits-col.left,
+  .el-benefits-col.right,
+  .el-benefits-col.center {
+    max-width: 100%;
+    width: 100%;
+    flex: unset;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+  .el-benefits-col.center {
     margin-bottom: 1.2rem;
-  }
-  .el-benefit-item {
-    min-width: 85vw;
-    max-width: 90vw;
-    flex: 0 0 85vw;
-    scroll-snap-align: start;
-    background: #fff;
-    border-radius: 1.2rem;
-    box-shadow: 0 2px 8px rgba(188,155,178,0.07);
-    margin-right: 1.2rem;
-    padding: 1.2rem 1rem;
-    flex-direction: row;
   }
   .el-benefits-image {
     min-width: 180px;
@@ -174,9 +174,12 @@
     padding: 1rem;
     margin: 0 auto;
   }
+  .el-benefits-btn {
+    margin: 2rem 0 0 0;
+  }
 }
 
-/* Slider dots/arrows for mobile */
+/* Mobile slider styles (unchanged) */
 .el-benefits-slider-controls {
   display: none;
 }
@@ -203,54 +206,93 @@
 }
 </style>
 
+<div class="el-benefits-title">{{ section.settings.title }}</div>
+<div class="el-benefits-subtitle">{{ section.settings.subtitle }}</div>
 <div class="el-benefits-section" id="el-benefits-section">
-  <div class="el-benefits-content">
-    <div class="el-benefits-title">{{ section.settings.title }}</div>
-    <div class="el-benefits-subtitle">{{ section.settings.subtitle }}</div>
-    <div class="el-benefits-list" id="el-benefits-list">
-      {% for block in section.blocks %}
-        <div class="el-benefit-item" data-index="{{ forloop.index0 }}">
-          <div class="el-benefit-icon">
-            {% if block.settings.icon != blank %}
-              <img src="{{ block.settings.icon | img_url: '60x' }}" alt="{{ block.settings.icon_alt | default: block.settings.title }}" loading="lazy" />
-            {% else %}
-              <span class="el-benefit-icon-placeholder" aria-hidden="true">★</span>
-            {% endif %}
-          </div>
-          <div class="el-benefit-texts">
-            <div class="el-benefit-title">{{ block.settings.title }}</div>
-            <div class="el-benefit-desc">{{ block.settings.desc }}</div>
-          </div>
+  {% assign left_benefits = section.blocks | slice: 0, 3 %}
+  {% assign right_benefits = section.blocks | slice: 3, 3 %}
+  <div class="el-benefits-col left">
+    {% for block in left_benefits %}
+      <div class="el-benefit-item" data-index="{{ forloop.index0 }}">
+        <div class="el-benefit-icon">
+          {% if block.settings.icon != blank %}
+            <img src="{{ block.settings.icon | img_url: '60x' }}" alt="{{ block.settings.icon_alt | default: block.settings.title }}" loading="lazy" />
+          {% else %}
+            <span class="el-benefit-icon-placeholder" aria-hidden="true">★</span>
+          {% endif %}
         </div>
-      {% endfor %}
-    </div>
-    <div class="el-benefits-slider-controls" id="el-benefits-slider-controls">
-      {% for block in section.blocks %}
-        <button class="el-benefits-slider-dot{% if forloop.first %} active{% endif %}" data-dot-index="{{ forloop.index0 }}" aria-label="Ir a beneficio {{ forloop.index }}"></button>
-      {% endfor %}
-    </div>
-    {% if section.settings.button_text and section.settings.button_link %}
-      <a href="{{ section.settings.button_link }}" class="el-benefits-btn">{{ section.settings.button_text }}</a>
-    {% endif %}
+        <div class="el-benefit-texts">
+          <div class="el-benefit-title">{{ block.settings.title }}</div>
+          <div class="el-benefit-desc">{{ block.settings.desc }}</div>
+        </div>
+      </div>
+    {% endfor %}
   </div>
-  <div class="el-benefits-image">
-    {% if section.settings.product_image != blank %}
-      <img src="{{ section.settings.product_image | img_url: '400x' }}" alt="{{ section.settings.product_image_alt | default: 'Producto' }}" loading="lazy" />
-    {% else %}
-      <div class="el-benefits-image-placeholder" aria-hidden="true">IMG</div>
-    {% endif %}
+  <div class="el-benefits-col center">
+    <div class="el-benefits-image">
+      {% if section.settings.product_image != blank %}
+        <img src="{{ section.settings.product_image | img_url: '400x' }}" alt="{{ section.settings.product_image_alt | default: 'Producto' }}" loading="lazy" />
+      {% else %}
+        <div class="el-benefits-image-placeholder" aria-hidden="true">IMG</div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="el-benefits-col right">
+    {% for block in right_benefits %}
+      <div class="el-benefit-item" data-index="{{ forloop.index0 | plus: 3 }}">
+        <div class="el-benefit-icon">
+          {% if block.settings.icon != blank %}
+            <img src="{{ block.settings.icon | img_url: '60x' }}" alt="{{ block.settings.icon_alt | default: block.settings.title }}" loading="lazy" />
+          {% else %}
+            <span class="el-benefit-icon-placeholder" aria-hidden="true">★</span>
+          {% endif %}
+        </div>
+        <div class="el-benefit-texts">
+          <div class="el-benefit-title">{{ block.settings.title }}</div>
+          <div class="el-benefit-desc">{{ block.settings.desc }}</div>
+        </div>
+      </div>
+    {% endfor %}
   </div>
 </div>
+
+<!-- Mobile slider (unchanged) -->
+<div class="el-benefits-list" id="el-benefits-list" style="display:none">
+  {% for block in section.blocks %}
+    <div class="el-benefit-item" data-index="{{ forloop.index0 }}">
+      <div class="el-benefit-icon">
+        {% if block.settings.icon != blank %}
+          <img src="{{ block.settings.icon | img_url: '60x' }}" alt="{{ block.settings.icon_alt | default: block.settings.title }}" loading="lazy" />
+        {% else %}
+          <span class="el-benefit-icon-placeholder" aria-hidden="true">★</span>
+        {% endif %}
+      </div>
+      <div class="el-benefit-texts">
+        <div class="el-benefit-title">{{ block.settings.title }}</div>
+        <div class="el-benefit-desc">{{ block.settings.desc }}</div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+<div class="el-benefits-slider-controls" id="el-benefits-slider-controls" style="display:none">
+  {% for block in section.blocks %}
+    <button class="el-benefits-slider-dot{% if forloop.first %} active{% endif %}" data-dot-index="{{ forloop.index0 }}" aria-label="Ir a beneficio {{ forloop.index }}"></button>
+  {% endfor %}
+</div>
+{% if section.settings.button_text and section.settings.button_link %}
+  <a href="{{ section.settings.button_link }}" class="el-benefits-btn">{{ section.settings.button_text }}</a>
+{% endif %}
 
 <script>
 (function() {
   function isMobile() {
     return window.innerWidth <= 900;
   }
-  var list = document.getElementById('el-benefits-list');
-  var controls = document.getElementById('el-benefits-slider-controls');
-  var items = list ? list.querySelectorAll('.el-benefit-item') : [];
-  var dots = controls ? controls.querySelectorAll('.el-benefits-slider-dot') : [];
+  var desktopSection = document.getElementById('el-benefits-section');
+  var mobileList = document.getElementById('el-benefits-list');
+  var mobileControls = document.getElementById('el-benefits-slider-controls');
+  var items = mobileList ? mobileList.querySelectorAll('.el-benefit-item') : [];
+  var dots = mobileControls ? mobileControls.querySelectorAll('.el-benefits-slider-dot') : [];
   var current = 0;
   function showSlide(idx) {
     if (!isMobile()) return;
@@ -264,19 +306,22 @@
   }
   function setupSlider() {
     if (!isMobile()) {
-      items.forEach(function(item) { item.style.display = 'flex'; });
-      if (controls) controls.style.display = 'none';
+      if (desktopSection) desktopSection.style.display = '';
+      if (mobileList) mobileList.style.display = 'none';
+      if (mobileControls) mobileControls.style.display = 'none';
       return;
     }
+    if (desktopSection) desktopSection.style.display = 'none';
+    if (mobileList) mobileList.style.display = 'flex';
+    if (mobileControls) mobileControls.style.display = 'flex';
     items.forEach(function(item, i) {
       item.style.display = (i === 0) ? 'flex' : 'none';
     });
-    if (controls) controls.style.display = 'flex';
   }
-  if (list && items.length > 1) {
+  if (items.length > 1) {
     setupSlider();
     window.addEventListener('resize', setupSlider);
-    if (controls) {
+    if (mobileControls) {
       dots.forEach(function(dot, i) {
         dot.addEventListener('click', function() {
           showSlide(i);
@@ -285,10 +330,10 @@
     }
     // Swipe support
     var startX = null;
-    list.addEventListener('touchstart', function(e) {
+    mobileList.addEventListener('touchstart', function(e) {
       startX = e.touches[0].clientX;
     });
-    list.addEventListener('touchend', function(e) {
+    mobileList.addEventListener('touchend', function(e) {
       if (startX === null) return;
       var dx = e.changedTouches[0].clientX - startX;
       if (Math.abs(dx) > 40) {
@@ -297,6 +342,8 @@
       }
       startX = null;
     });
+  } else {
+    setupSlider();
   }
 })();
 </script>
