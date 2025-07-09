@@ -554,7 +554,7 @@
         "video_6QxXYd": {
           "type": "video",
           "settings": {
-            "video_url": "",
+            "video_url": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
             "image_url": "",
             "alt": ""
           }
@@ -562,7 +562,15 @@
         "video_QQL49T": {
           "type": "video",
           "settings": {
-            "video_url": "",
+            "video_url": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
+            "image_url": "",
+            "alt": ""
+          }
+        },
+        "video_8EdVCA": {
+          "type": "video",
+          "settings": {
+            "video_url": "shopify://files/videos/Multicolumn Video – Section Store_2.mp4",
             "image_url": "",
             "alt": ""
           }
@@ -570,7 +578,7 @@
         "video_mMtqmN": {
           "type": "video",
           "settings": {
-            "video_url": "",
+            "video_url": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4",
             "image_url": "",
             "alt": ""
           }
@@ -579,6 +587,7 @@
       "block_order": [
         "video_6QxXYd",
         "video_QQL49T",
+        "video_8EdVCA",
         "video_mMtqmN"
       ],
       "name": "El Slider",
