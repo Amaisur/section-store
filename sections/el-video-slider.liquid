@@ -1,0 +1,363 @@
+{% comment %} EL Video Slider Section - Infinite, draggable, video carousel with dynamic blocks {% endcomment %}
+
+<style>
+.el-video-slider-outer {
+  max-width: 1360px;
+  margin: 2rem auto;
+  padding-inline: 40px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.el-video-slider-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #181818;
+  text-align: center;
+}
+.el-video-slider-subtitle {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.el-video-slider-carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  user-select: none;
+}
+.el-video-slider-track {
+  display: flex;
+  align-items: stretch;
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  will-change: transform;
+}
+.el-video-slider-slide {
+  flex: 0 0 340px;
+  margin: 0 16px;
+  background: #f4f1ef;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 420px;
+}
+.el-video-slider-slide.active {
+  z-index: 2;
+  transform: scale(1.08);
+  box-shadow: 0 6px 32px rgba(0,0,0,0.13);
+}
+.el-video-slider-slide .el-video-slider-media {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.el-video-slider-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.5rem 1.5rem 0 0;
+  background: #000;
+}
+.el-video-slider-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg,rgba(0,0,0,0.18) 0%,rgba(0,0,0,0.38) 100%);
+  z-index: 1;
+}
+.el-video-slider-content {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 2;
+  color: #fff;
+  padding: 1.2rem 1.2rem 1.7rem 1.2rem;
+  text-align: left;
+  background: linear-gradient(0deg,rgba(0,0,0,0.55) 60%,rgba(0,0,0,0.0) 100%);
+}
+.el-video-slider-slide .el-video-slider-mute-btn {
+  position: absolute;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  z-index: 3;
+  background: rgba(0,0,0,0.55);
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.2s;
+}
+.el-video-slider-slide .el-video-slider-mute-btn:active {
+  background: rgba(0,0,0,0.85);
+}
+.el-video-slider-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 1.5rem 0 0 0;
+}
+.el-video-slider-arrow {
+  background: #e5e0e7;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bc9bb2;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.el-video-slider-arrow:active {
+  background: #bc9bb2;
+  color: #fff;
+}
+@media (max-width: 900px) {
+  .el-video-slider-outer {
+    padding-inline: 8px;
+  }
+  .el-video-slider-title,
+  .el-video-slider-subtitle {
+    text-align: left;
+  }
+  .el-video-slider-carousel {
+    width: 100vw;
+    margin-left: -8px;
+    margin-right: -8px;
+  }
+  .el-video-slider-slide {
+    flex: 0 0 80vw;
+    min-width: 220px;
+    min-height: 320px;
+    margin: 0 6px;
+  }
+  .el-video-slider-slide .el-video-slider-media {
+    height: 220px;
+  }
+}
+</style>
+
+<div class="el-video-slider-outer">
+  <div class="el-video-slider-title">{{ section.settings.title }}</div>
+  <div class="el-video-slider-subtitle">{{ section.settings.subtitle }}</div>
+  <div class="el-video-slider-carousel">
+    <div class="el-video-slider-track" id="el-video-slider-track">
+      {% for block in section.blocks %}
+        <div class="el-video-slider-slide" data-index="{{ forloop.index0 }}">
+          <div class="el-video-slider-media">
+            {% if block.settings.video_url != blank %}
+              <video src="{{ block.settings.video_url }}" preload="metadata" playsinline muted loop></video>
+            {% elsif block.settings.image != blank %}
+              <img src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.image_alt | default: block.settings.title }}" style="width:100%;height:100%;object-fit:cover;" />
+            {% else %}
+              <div style="width:100%;height:100%;background:#e5e0e7;display:flex;align-items:center;justify-content:center;color:#bc9bb2;font-size:2rem;">IMG</div>
+            {% endif %}
+            <div class="el-video-slider-overlay"></div>
+            <button class="el-video-slider-mute-btn" style="display:none" aria-label="Mute/Unmute">
+              <span class="mute-icon">🔇</span>
+              <span class="unmute-icon" style="display:none">🔊</span>
+            </button>
+          </div>
+          <div class="el-video-slider-content">
+            <div class="el-video-slider-slide-title">{{ block.settings.title }}</div>
+            <div class="el-video-slider-slide-desc">{{ block.settings.desc }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="el-video-slider-nav">
+    <button class="el-video-slider-arrow" id="el-video-slider-prev" aria-label="Anterior">&#8592;</button>
+    <button class="el-video-slider-arrow" id="el-video-slider-next" aria-label="Siguiente">&#8594;</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  // --- Carousel State ---
+  var track = document.getElementById('el-video-slider-track');
+  var slides = Array.from(track.children);
+  var slideCount = slides.length;
+  var activeIdx = 0;
+  var isDragging = false, startX = 0, currentX = 0, dragOffset = 0;
+  var slideWidth = slides[0] ? slides[0].offsetWidth + 32 : 340 + 32; // margin
+  var autoplay = false;
+
+  // --- Infinite Loop Helpers ---
+  function getLoopedIndex(idx) {
+    return (idx + slideCount) % slideCount;
+  }
+  function updateSlides() {
+    slides.forEach(function(slide, i) {
+      slide.classList.toggle('active', i === activeIdx);
+      var video = slide.querySelector('video');
+      var muteBtn = slide.querySelector('.el-video-slider-mute-btn');
+      if (i === activeIdx && video) {
+        video.play();
+        muteBtn.style.display = 'flex';
+      } else if (video) {
+        video.pause();
+        muteBtn.style.display = 'none';
+      }
+    });
+  }
+  function moveTo(idx, animate) {
+    activeIdx = getLoopedIndex(idx);
+    var offset = -activeIdx * slideWidth;
+    track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.4,0,0.2,1)' : 'none';
+    track.style.transform = 'translateX(' + offset + 'px)';
+    updateSlides();
+  }
+  // --- Drag Logic ---
+  function onDragStart(e) {
+    isDragging = true;
+    startX = (e.touches ? e.touches[0].clientX : e.clientX);
+    currentX = startX;
+    track.style.transition = 'none';
+    document.body.style.cursor = 'grabbing';
+  }
+  function onDragMove(e) {
+    if (!isDragging) return;
+    var x = (e.touches ? e.touches[0].clientX : e.clientX);
+    dragOffset = x - startX;
+    track.style.transform = 'translateX(' + (-activeIdx * slideWidth + dragOffset) + 'px)';
+  }
+  function onDragEnd(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    document.body.style.cursor = '';
+    if (Math.abs(dragOffset) > slideWidth/4) {
+      if (dragOffset < 0) moveTo(activeIdx + 1, true);
+      else moveTo(activeIdx - 1, true);
+    } else {
+      moveTo(activeIdx, true);
+    }
+    dragOffset = 0;
+  }
+  // --- Arrow Navigation ---
+  document.getElementById('el-video-slider-prev').addEventListener('click', function() {
+    moveTo(activeIdx - 1, true);
+  });
+  document.getElementById('el-video-slider-next').addEventListener('click', function() {
+    moveTo(activeIdx + 1, true);
+  });
+  // --- Drag Events ---
+  track.addEventListener('mousedown', onDragStart);
+  track.addEventListener('touchstart', onDragStart, {passive:true});
+  window.addEventListener('mousemove', onDragMove);
+  window.addEventListener('touchmove', onDragMove, {passive:false});
+  window.addEventListener('mouseup', onDragEnd);
+  window.addEventListener('touchend', onDragEnd);
+  // --- Mute/Unmute ---
+  slides.forEach(function(slide) {
+    var video = slide.querySelector('video');
+    var muteBtn = slide.querySelector('.el-video-slider-mute-btn');
+    if (video && muteBtn) {
+      muteBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        video.muted = !video.muted;
+        muteBtn.querySelector('.mute-icon').style.display = video.muted ? '' : 'none';
+        muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : '';
+      });
+      // Set initial state
+      muteBtn.querySelector('.mute-icon').style.display = video.muted ? '' : 'none';
+      muteBtn.querySelector('.unmute-icon').style.display = video.muted ? 'none' : '';
+    }
+  });
+  // --- Responsive ---
+  function updateSlideWidth() {
+    slideWidth = slides[0] ? slides[0].offsetWidth + 32 : 340 + 32;
+    moveTo(activeIdx, false);
+  }
+  window.addEventListener('resize', updateSlideWidth);
+  // --- Infinite Loop (simulate by wrapping index) ---
+  // --- Init ---
+  moveTo(0, false);
+})();
+</script>
+
+{% schema %}
+{
+  "name": "EL Video Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Piel real, Resultados reales"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Lo aplicas en minutos, te dura todo el día. Ellas te lo muestran."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Video Slide",
+      "settings": [
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Fallback Image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image Alt Text",
+          "default": "Imagen"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Slide Title",
+          "default": "Título del Slide"
+        },
+        {
+          "type": "textarea",
+          "id": "desc",
+          "label": "Slide Description",
+          "default": "Descripción del slide."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "EL Video Slider",
+      "blocks": [
+        { "type": "slide" },
+        { "type": "slide" },
+        { "type": "slide" }
+      ]
+    }
+  ]
+}
+{% endschema %} 
