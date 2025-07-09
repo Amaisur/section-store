@@ -85,10 +85,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const slides = Array.from(track.children);
   const slidesToShow = 3;
   const slideWidth = slides[0] ? (slides[0].offsetWidth + 36) : 356;
-  // Clone slides for looping
-  for(let i=0; i<slidesToShow; i++) {
-    if(slides[i]) track.appendChild(slides[i].cloneNode(true));
-    if(slides[slides.length-i-1]) track.insertBefore(slides[slides.length-i-1].cloneNode(true), track.firstChild);
+  // Clone last N slides and prepend (in correct order)
+  for (let i = slides.length - slidesToShow; i < slides.length; i++) {
+    if (slides[i]) track.insertBefore(slides[i].cloneNode(true), track.firstChild);
+  }
+  // Clone first N slides and append
+  for (let i = 0; i < slidesToShow; i++) {
+    if (slides[i]) track.appendChild(slides[i].cloneNode(true));
   }
   let currentIndex = slidesToShow;
   function updateSlider() {
