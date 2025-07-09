@@ -479,6 +479,74 @@
         "info_1": "Envío a todo colombia",
         "info_2": "Garantía por 30 días"
       }
+    },
+    "el_footer_xpVMrL": {
+      "type": "el-footer",
+      "blocks": {
+        "link_mhNa73": {
+          "type": "link",
+          "settings": {
+            "label": "Shop Now",
+            "url": "",
+            "position": "main"
+          }
+        },
+        "link_BRgz4C": {
+          "type": "link",
+          "settings": {
+            "label": "Refund Policy",
+            "url": "",
+            "position": "main"
+          }
+        },
+        "link_BD3VbM": {
+          "type": "link",
+          "settings": {
+            "label": "Privacy Policy",
+            "url": "",
+            "position": "bottom"
+          }
+        },
+        "link_yNg9Jg": {
+          "type": "link",
+          "settings": {
+            "label": "Terms of Service",
+            "url": "",
+            "position": "bottom"
+          }
+        },
+        "social_D6PU8d": {
+          "type": "social",
+          "settings": {
+            "icon": "",
+            "url": ""
+          }
+        },
+        "social_beGxnd": {
+          "type": "social",
+          "settings": {
+            "icon": "",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "link_mhNa73",
+        "link_BRgz4C",
+        "link_BD3VbM",
+        "link_yNg9Jg",
+        "social_D6PU8d",
+        "social_beGxnd"
+      ],
+      "name": "El Footer",
+      "settings": {
+        "newsletter_headline": "Sé parte de Elysia y descubre Tips, promos y noticias solo para ti.",
+        "newsletter_subtitle": "",
+        "newsletter_input_placeholder": "Enter your Email",
+        "newsletter_button_label": "Subscribe Now",
+        "newsletter_form_action": "",
+        "copyright": "© 2024 Elysia. All Rights Reserved."
+      }
     }
   },
   "order": [
@@ -491,6 +559,7 @@
     "el_featured_product_8GnRaQ",
     "el_benefits_CdwGYX",
     "el_video_slider_aqxQMm",
-    "el_steps_Fkc9Ex"
+    "el_steps_Fkc9Ex",
+    "el_footer_xpVMrL"
   ]
 }
