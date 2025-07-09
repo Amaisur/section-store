@@ -1,5 +1,6 @@
 {% comment %} Enhanced swatch logic: use trigger for color, show value for others. On option change, update main image and price. {% endcomment %}
 {% comment %} Add tooltips to all swatches (color and text) showing the value on hover/focus. {% endcomment %}
+{% comment %} Add switch trigger: if option.name matches a block trigger, show swatch; otherwise, show pill with value. Both have tooltips. {% endcomment %}
 
 {% assign el_product = all_products[section.settings.featured_product] %}
 
@@ -101,14 +102,39 @@
     cursor: pointer;
     transition: border 0.2s;
     position: relative;
+    display: none;
   }
   .el-featured-product-swatch-text.selected {
     border: 3px solid #bc9bb2;
     box-shadow: 0 0 0 2px #f4f1ef;
+    display: none;
+  }
+  .el-featured-product-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 32px;
+    padding: 0 1.1rem;
+    border-radius: 1.2rem;
+    border: 2px solid #bc9bb2;
+    background: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #181818;
+    cursor: pointer;
+    margin-right: 0.2rem;
+    position: relative;
+    transition: border 0.2s, background 0.2s;
+  }
+  .el-featured-product-pill.selected {
+    border: 3px solid #bc9bb2;
+    background: #f4f1ef;
+    box-shadow: 0 0 0 2px #f4f1ef;
   }
   /* Tooltip styles */
   .el-featured-product-swatch,
-  .el-featured-product-swatch-text {
+  .el-featured-product-pill {
     position: relative;
   }
   .el-featured-product-tooltip {
@@ -132,9 +158,9 @@
   .el-featured-product-swatch:hover .el-featured-product-tooltip,
   .el-featured-product-swatch:focus .el-featured-product-tooltip,
   .el-featured-product-swatch:focus-visible .el-featured-product-tooltip,
-  .el-featured-product-swatch-text:hover .el-featured-product-tooltip,
-  .el-featured-product-swatch-text:focus .el-featured-product-tooltip,
-  .el-featured-product-swatch-text:focus-visible .el-featured-product-tooltip {
+  .el-featured-product-pill:hover .el-featured-product-tooltip,
+  .el-featured-product-pill:focus .el-featured-product-tooltip,
+  .el-featured-product-pill:focus-visible .el-featured-product-tooltip {
     visibility: visible;
     opacity: 1;
   }
@@ -203,7 +229,7 @@
         {% for option in el_product.options_with_values %}
           <label class="el-featured-product-option-label">{{ option.name | upcase }}</label>
           <div class="el-featured-product-swatches" data-option-index="{{ forloop.index0 }}">
-            {% assign is_trigger = option.name == 'Color' or trigger_options contains option.name | downcase %}
+            {% assign is_trigger = trigger_options contains option.name | downcase %}
             {% for value in option.values %}
               {% if is_trigger %}
                 <div class="el-featured-product-swatch"
@@ -216,7 +242,7 @@
                   <span class="el-featured-product-tooltip">{{ value }}</span>
                 </div>
               {% else %}
-                <div class="el-featured-product-swatch-text"
+                <div class="el-featured-product-pill"
                   data-value="{{ value }}"
                   data-option-index="{{ forloop.parentloop.index0 }}"
                   tabindex="0"
@@ -280,7 +306,7 @@
     var mainImg = document.getElementById('el-featured-product-main-img');
     var priceBox = document.getElementById('el-featured-product-price');
 
-    // Swatch click logic (for both color and text swatches)
+    // Swatch/pill click logic
     swatchGroups.forEach(function(group, optionIdx) {
       group.querySelectorAll('[data-value]').forEach(function(swatch) {
         swatch.addEventListener('click', function() {
