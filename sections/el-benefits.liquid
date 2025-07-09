@@ -1,4 +1,4 @@
-{% comment %} EL Benefits Section - Main image at top on mobile, desktop max-width 1360px and padding-inline 40px, mobile padding-inline 16px {% endcomment %}
+{% comment %} EL Benefits Section - Ensure main image is always visible at the top on mobile, above benefits slider {% endcomment %}
 
 <style>
 .el-benefits-outer {
@@ -26,27 +26,14 @@
   border-radius: 2.5rem;
   padding: 2.5rem 0 2rem 0;
   display: flex;
+  flex-direction: row;
   gap: 0;
   align-items: stretch;
   justify-content: center;
+  position: relative;
 }
-.el-benefits-col {
-  flex: 1 1 30%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2.5rem;
-  min-width: 0;
-}
-.el-benefits-col.left,
-.el-benefits-col.right {
-  max-width: 260px;
-}
-.el-benefits-col.center {
-  flex: 1 1 40%;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+.el-benefits-main-image {
+  display: none;
 }
 .el-benefits-image {
   background: #f4f1ef;
@@ -59,6 +46,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
 }
 .el-benefits-image img {
   max-width: 100%;
@@ -77,6 +65,24 @@
   color: #bc9bb2;
   font-size: 2.2rem;
   font-weight: 700;
+}
+.el-benefits-col {
+  flex: 1 1 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.5rem;
+  min-width: 0;
+}
+.el-benefits-col.left,
+.el-benefits-col.right {
+  max-width: 260px;
+}
+.el-benefits-col.center {
+  flex: 1 1 40%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 .el-benefit-item {
   display: flex;
@@ -160,6 +166,10 @@
     padding: 1.2rem 0 1.5rem 0;
     align-items: stretch;
   }
+  .el-benefits-main-image {
+    display: block;
+    margin-bottom: 1.2rem;
+  }
   .el-benefits-col.left,
   .el-benefits-col.right,
   .el-benefits-col.center {
@@ -170,8 +180,7 @@
     justify-content: flex-start;
   }
   .el-benefits-col.center {
-    margin-bottom: 1.2rem;
-    order: -1;
+    display: none;
   }
   .el-benefits-image {
     min-width: 180px;
@@ -216,6 +225,16 @@
 <div class="el-benefits-outer">
   <div class="el-benefits-title">{{ section.settings.title }}</div>
   <div class="el-benefits-subtitle">{{ section.settings.subtitle }}</div>
+  <!-- Main image always at top on mobile -->
+  <div class="el-benefits-main-image">
+    <div class="el-benefits-image">
+      {% if section.settings.product_image != blank %}
+        <img src="{{ section.settings.product_image | img_url: '400x' }}" alt="{{ section.settings.product_image_alt | default: 'Producto' }}" loading="lazy" />
+      {% else %}
+        <div class="el-benefits-image-placeholder" aria-hidden="true">IMG</div>
+      {% endif %}
+    </div>
+  </div>
   <div class="el-benefits-section" id="el-benefits-section">
     {% assign left_benefits = section.blocks | slice: 0, 3 %}
     {% assign right_benefits = section.blocks | slice: 3, 3 %}
@@ -300,6 +319,7 @@
   var desktopSection = document.getElementById('el-benefits-section');
   var mobileList = document.getElementById('el-benefits-list');
   var mobileControls = document.getElementById('el-benefits-slider-controls');
+  var mainImage = document.querySelector('.el-benefits-main-image');
   var items = mobileList ? mobileList.querySelectorAll('.el-benefit-item') : [];
   var dots = mobileControls ? mobileControls.querySelectorAll('.el-benefits-slider-dot') : [];
   var current = 0;
@@ -318,11 +338,13 @@
       if (desktopSection) desktopSection.style.display = '';
       if (mobileList) mobileList.style.display = 'none';
       if (mobileControls) mobileControls.style.display = 'none';
+      if (mainImage) mainImage.style.display = 'none';
       return;
     }
     if (desktopSection) desktopSection.style.display = 'none';
     if (mobileList) mobileList.style.display = 'flex';
     if (mobileControls) mobileControls.style.display = 'flex';
+    if (mainImage) mainImage.style.display = 'block';
     items.forEach(function(item, i) {
       item.style.display = (i === 0) ? 'flex' : 'none';
     });
