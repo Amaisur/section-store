@@ -67,7 +67,8 @@
     {% for block in section.blocks %}
       <div class="el-slide">
         {% if block.settings.video_url != blank %}
-          {{ block.settings.video_url |  video_tag: autoplay: true }}
+            {%  assign poster_j = block.settings.video_url.preview_image | image_url: width: 600 %}
+          {{ block.settings.video_url |  video_tag: autoplay: true, poster: poster_j }}
         {% elsif block.settings.image_url != blank %}
           <img src="{{ block.settings.image_url }}" alt="{{ block.settings.alt | escape }}" style="width:100%;display:block;">
         {% endif %}
