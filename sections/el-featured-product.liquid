@@ -1,0 +1,296 @@
+{% comment %} Add product picker setting and use selected product for all product data {% endcomment %}
+
+{% assign el_product = all_products[section.settings.featured_product] %}
+
+<style>
+  .el-featured-product-section {
+    background: #fff;
+    border-radius: 2.5rem;
+    padding: 2rem 40px;
+    margin: 2rem auto;
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+  .el-featured-product-image {
+    flex: 1 1 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4f1ef;
+    border-radius: 2rem;
+    padding: 2rem;
+  }
+  .el-featured-product-info {
+    flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .el-featured-product-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+  .el-featured-product-reviews {
+    color: #bc9bb2;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .el-featured-product-desc {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  .el-featured-product-features {
+    margin-bottom: 1rem;
+  }
+  .el-featured-product-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  .el-featured-product-options {
+    margin-bottom: 1.5rem;
+  }
+  .el-featured-product-option-label {
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+  .el-featured-product-swatches {
+    display: flex;
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+  }
+  .el-featured-product-swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #bc9bb2;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border 0.2s;
+  }
+  .el-featured-product-swatch.selected {
+    border: 3px solid #bc9bb2;
+    box-shadow: 0 0 0 2px #f4f1ef;
+  }
+  .el-featured-product-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #181818;
+    margin-bottom: 1rem;
+  }
+  .el-featured-product-atc-btn {
+    background: #bc9bb2;
+    color: #fff;
+    border: none;
+    border-radius: 2rem;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background 0.2s;
+  }
+  .el-featured-product-atc-btn:active {
+    background: #a07c9b;
+  }
+  .el-featured-product-info-row {
+    display: flex;
+    gap: 2rem;
+    font-size: 1rem;
+    color: #666;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .el-featured-product-section {
+      flex-direction: column;
+      gap: 2rem;
+      padding: 1.2rem 10px;
+    }
+    .el-featured-product-image {
+      padding: 1rem;
+    }
+  }
+</style>
+
+<div class="el-featured-product-section" id="el-featured-product-section">
+  <div class="el-featured-product-image">
+    <img src="{{ el_product.featured_image | img_url: '600x' }}" alt="{{ el_product.title }}" style="max-width:100%; border-radius:1.5rem;" loading="lazy" />
+  </div>
+  <div class="el-featured-product-info">
+    <div class="el-featured-product-title">{{ el_product.title }}</div>
+    <div class="el-featured-product-reviews">★★★★★ 12 Reviews</div>
+    <div class="el-featured-product-desc">{{ el_product.description | strip_html | truncate: 300 }}</div>
+    <div class="el-featured-product-features">
+      {% for block in section.blocks %}
+        <div class="el-featured-product-feature">
+          {% if block.settings.icon != blank %}
+            <img src="{{ block.settings.icon | img_url: '40x' }}" alt="icon" style="width:24px;height:24px;object-fit:contain;" loading="lazy" />
+          {% endif %}
+          <span>{{ block.settings.text }}</span>
+        </div>
+      {% endfor %}
+    </div>
+    <form id="el-featured-product-form" action="/cart/add" method="post">
+      <input type="hidden" name="id" value="{{ el_product.selected_or_first_available_variant.id }}" />
+      <div class="el-featured-product-options">
+        {% for option in el_product.options_with_values %}
+          <label class="el-featured-product-option-label">{{ option.name | upcase }}</label>
+          <div class="el-featured-product-swatches" data-option-index="{{ forloop.index0 }}">
+            {% for value in option.values %}
+              <div class="el-featured-product-swatch"
+                data-value="{{ value }}"
+                data-option-index="{{ forloop.parentloop.index0 }}"
+                tabindex="0"
+                role="button"
+                aria-label="{{ value }}">
+                <span style="background: {{ value | handle | replace: '-', '' | prepend: '#' }}; width: 20px; height: 20px; border-radius: 50%; display: inline-block;"></span>
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="el-featured-product-price">
+        {{ el_product.selected_or_first_available_variant.price | money }}
+        {% if el_product.selected_or_first_available_variant.compare_at_price > el_product.selected_or_first_available_variant.price %}
+          <span style="font-size:1rem;color:#bc9bb2;margin-left:1rem;">Save {{ el_product.selected_or_first_available_variant.compare_at_price | minus: el_product.selected_or_first_available_variant.price | money }}</span>
+        {% endif %}
+      </div>
+      <button type="submit" class="el-featured-product-atc-btn" id="el-featured-product-atc-btn">AÑADIR AL CARRITO</button>
+    </form>
+    <div class="el-featured-product-info-row">
+      <span>🚚 Envío a todo Colombia</span>
+      <span>🛡️ Garantía por 30 días</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.elRerenderTargets = [
+    '#el-featured-product-section',
+    // Add more classes/IDs here as needed
+  ];
+  window.elProductVariants = {{ el_product.variants | json }};
+  window.elProductOptions = {{ el_product.options | json }};
+
+  function elFindVariant(selectedOptions) {
+    return window.elProductVariants.find(function(variant) {
+      return variant.options.every(function(opt, idx) {
+        return opt == selectedOptions[idx];
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('el-featured-product-form');
+    var swatchGroups = form.querySelectorAll('.el-featured-product-swatches');
+    var selectedOptions = Array.from(window.elProductOptions).map(function() { return null; });
+    var variantInput = form.querySelector('input[name="id"]');
+    var atcBtn = document.getElementById('el-featured-product-atc-btn');
+
+    // Swatch click logic
+    swatchGroups.forEach(function(group, optionIdx) {
+      group.querySelectorAll('.el-featured-product-swatch').forEach(function(swatch) {
+        swatch.addEventListener('click', function() {
+          // Remove selected from siblings
+          group.querySelectorAll('.el-featured-product-swatch').forEach(function(s) { s.classList.remove('selected'); });
+          swatch.classList.add('selected');
+          selectedOptions[optionIdx] = swatch.getAttribute('data-value');
+          // Find variant
+          var variant = elFindVariant(selectedOptions);
+          if (variant) {
+            variantInput.value = variant.id;
+            // Update price
+            document.querySelector('.el-featured-product-price').innerHTML =
+              Shopify.formatMoney(variant.price) +
+              (variant.compare_at_price > variant.price ? '<span style="font-size:1rem;color:#bc9bb2;margin-left:1rem;">Save ' + Shopify.formatMoney(variant.compare_at_price - variant.price) + '</span>' : '');
+          }
+        });
+      });
+    });
+
+    // AJAX Add to Cart
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      atcBtn.disabled = true;
+      var formData = new FormData(form);
+      fetch('/cart/add.js', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        // Rerender targets by fetching 404 page and replacing HTML
+        window.elRerenderTargets.forEach(function(selector) {
+          fetch('/404')
+            .then(function(res) { return res.text(); })
+            .then(function(html) {
+              var temp = document.createElement('div');
+              temp.innerHTML = html;
+              var newEl = temp.querySelector(selector);
+              var oldEl = document.querySelector(selector);
+              if (newEl && oldEl) {
+                oldEl.innerHTML = newEl.innerHTML;
+              }
+            });
+        });
+        atcBtn.disabled = false;
+      })
+      .catch(function() { atcBtn.disabled = false; });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "EL Featured Product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Featured Product"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Feature text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "EL Featured Product",
+      "blocks": [
+        { "type": "feature" },
+        { "type": "feature" },
+        { "type": "feature" }
+      ]
+    }
+  ]
+}
+{% endschema %} 
