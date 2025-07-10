@@ -3,11 +3,14 @@
 <style>
 .el-slider-container {
   width: 100%;
+  width: 100%;
   margin: 40px auto;
   overflow: hidden;
   position: relative;
   background: #f6f3f1;
   border-radius: 2rem;
+  max-width: 1280px;
+  padding: 0 40px;
   max-width: 1360px;
   padding: 0 40px;
 }
@@ -60,6 +63,11 @@
 @media (max-width: 1100px) {
   .el-slide { min-width: 220px; max-width: 220px; }
   .el-slider-container { width: 98vw; }
+}
+@media (max-width: 768px){
+    .el-slider-container{
+        padding: 0 16px;
+    }
 }
 @media (max-width: 768px){
     .el-slider-container{
