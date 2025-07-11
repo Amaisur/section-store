@@ -11,13 +11,22 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "bl_header_zaJ3rB": {
+      "type": "bl-header",
+      "name": "bl-header",
+      "settings": {
+        "menu": "main-menu"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "bl_header_zaJ3rB"
   ]
 }
