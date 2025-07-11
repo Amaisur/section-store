@@ -19,6 +19,7 @@
     },
     "bl_header_zaJ3rB": {
       "type": "bl-header",
+      "disabled": true,
       "name": "bl-header",
       "settings": {
         "menu": "main-menu"
