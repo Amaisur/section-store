@@ -45,6 +45,7 @@
             "subheading": "Any size from 108\" to 500\" +",
             "button_label": "Shop Now",
             "button_link": "/collections/all",
+            "image": "shopify://shop_images/C4_006d807a-01e8-43f7-90dc-5b78ee00303b.png",
             "vertical_align": "center"
           }
         },
@@ -55,7 +56,8 @@
             "subheading": "Stunning clarity for any environment.",
             "button_label": "Learn More",
             "button_link": "/pages/ultra-hd",
-            "vertical_align": "center"
+            "image": "shopify://shop_images/3_1.png",
+            "vertical_align": "flex-start"
           }
         },
         "slide_ibDHYc": {
@@ -65,6 +67,7 @@
             "subheading": "Professional support from start to finish.",
             "button_label": "Get a Quote",
             "button_link": "/pages/contact",
+            "image": "shopify://shop_images/C1_2.png",
             "vertical_align": "center"
           }
         },
@@ -75,7 +78,8 @@
             "subheading": "Tailored to your space and needs.",
             "button_label": "See Solutions",
             "button_link": "/pages/custom-led",
-            "vertical_align": "center"
+            "image": "shopify://shop_images/HOjFAO51FHPQMhn_1800x1800_6c5db751-b7d8-4654-ad13-105a1d8b9b31.jpg",
+            "vertical_align": "flex-end"
           }
         }
       },
