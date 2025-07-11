@@ -49,7 +49,7 @@
     flex-direction: column;
     justify-content: var(--bl-align, center);
     align-items: flex-start;
-    padding: 0 3vw;
+    padding: 50px 3vw;
     z-index: 2;
     background: none;
   }
@@ -256,13 +256,19 @@
     dragStarted = false;
     cancelAnimationFrame(animationID);
     const movedBy = currentTranslate - prevTranslate;
+    // Calculate the closest slide index
+    const slideWidth = slider.offsetWidth;
+    let newIdx = current;
     if (movedBy < -dragThreshold) {
-      next();
+      newIdx = current + 1;
     } else if (movedBy > dragThreshold) {
-      prev();
+      newIdx = current - 1;
     } else {
-      goTo(current);
+      // Snap to nearest slide
+      const approx = -currentTranslate / slideWidth;
+      newIdx = Math.round(approx);
     }
+    goTo(newIdx);
     setTrackTransition('transform 0.7s cubic-bezier(.4,0,.2,1)');
     document.body.style.userSelect = '';
     window.removeEventListener('mousemove', touchMove);
