@@ -1,0 +1,130 @@
+{% comment %}
+  BrightlinkAV-style features grid section.
+  - Responsive: max-width 1360px, padding-inline 40px (desktop), 16px (mobile)
+  - 4 per row desktop, 2 per row mobile
+  - Each block: heading + link
+{% endcomment %}
+
+<style>
+#shopify-section-{{ section.id }} {
+  max-width: 1360px;
+  padding-inline: 40px;
+  margin: 0 auto;
+}
+.bl-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin: 48px 0;
+}
+.bl-feature-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 32px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: 140px;
+  box-sizing: border-box;
+  transition: box-shadow 0.2s;
+}
+.bl-feature-card:hover {
+  box-shadow: 0 4px 24px 0 rgba(92,166,247,0.08);
+}
+.bl-feature-card__heading {
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 1.5em;
+}
+.bl-feature-card__link {
+  color: #222;
+  font-size: 1em;
+  text-decoration: underline;
+  font-weight: 400;
+  margin-top: auto;
+  transition: color 0.2s;
+}
+.bl-feature-card__link:hover {
+  color: #5ca6f7;
+}
+@media (max-width: 900px) {
+  #shopify-section-{{ section.id }} {
+    padding-inline: 16px;
+  }
+  .bl-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+@media (max-width: 600px) {
+  #shopify-section-{{ section.id }} {
+    padding-inline: 16px;
+  }
+  .bl-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .bl-feature-card {
+    padding: 20px 10px 16px 10px;
+    min-height: 100px;
+  }
+}
+</style>
+
+<div class="bl-features-grid">
+  {% for block in section.blocks %}
+    <div class="bl-feature-card">
+      {% if block.settings.heading != blank %}
+        <div class="bl-feature-card__heading">{{ block.settings.heading }}</div>
+      {% endif %}
+      {% if block.settings.link_label != blank and block.settings.link_url != blank %}
+        <a href="{{ block.settings.link_url }}" class="bl-feature-card__link">{{ block.settings.link_label }}</a>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "bl-features",
+  "class": "bl-features-section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link Label"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "bl-features",
+      "category": "Features",
+      "blocks": [
+        { "type": "feature", "settings": { "heading": "HDMI", "link_label": "Shop all", "link_url": "/collections/hdmi" } },
+        { "type": "feature", "settings": { "heading": "Matrix Switchers", "link_label": "Shop all", "link_url": "/collections/matrix-switchers" } },
+        { "type": "feature", "settings": { "heading": "Video Walls", "link_label": "Shop all", "link_url": "/collections/video-walls" } },
+        { "type": "feature", "settings": { "heading": "Control App", "link_label": "Shop all", "link_url": "/collections/control-app" } }
+      ]
+    }
+  ]
+}
+{% endschema %} 
