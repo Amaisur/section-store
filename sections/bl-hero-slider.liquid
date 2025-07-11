@@ -158,6 +158,65 @@
   let interval;
   const slideCount = slides.length;
 
+  // Drag/Swipe support
+  let isDragging = false;
+  let startX = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let animationID;
+  let dragThreshold = 50;
+
+  function setSliderPosition(translate) {
+    track.style.transform = `translateX(${translate}px)`;
+  }
+
+  function animation() {
+    setSliderPosition(currentTranslate);
+    if (isDragging) requestAnimationFrame(animation);
+  }
+
+  function getPositionX(e) {
+    return e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+  }
+
+  function touchStart(e) {
+    isDragging = true;
+    startX = getPositionX(e);
+    prevTranslate = -current * slider.offsetWidth;
+    currentTranslate = prevTranslate;
+    track.style.transition = 'none';
+    cancelAutoplay();
+    animationID = requestAnimationFrame(animation);
+  }
+
+  function touchMove(e) {
+    if (!isDragging) return;
+    const currentX = getPositionX(e);
+    const diff = currentX - startX;
+    currentTranslate = prevTranslate + diff;
+  }
+
+  function touchEnd() {
+    isDragging = false;
+    cancelAnimationFrame(animationID);
+    const movedBy = currentTranslate - prevTranslate;
+    if (movedBy < -dragThreshold && current < slideCount - 1) {
+      current++;
+    } else if (movedBy > dragThreshold && current > 0) {
+      current--;
+    }
+    goTo(current);
+    track.style.transition = '';
+    startAutoplay();
+  }
+
+  track.addEventListener('mousedown', touchStart);
+  track.addEventListener('touchstart', touchStart, { passive: true });
+  window.addEventListener('mousemove', touchMove);
+  window.addEventListener('touchmove', touchMove, { passive: false });
+  window.addEventListener('mouseup', touchEnd);
+  window.addEventListener('touchend', touchEnd);
+
   // Dots
   function renderDots() {
     dotsContainer.innerHTML = '';
@@ -179,6 +238,7 @@
   // Slide logic
   function goTo(idx) {
     current = idx;
+    track.style.transition = 'transform 0.7s cubic-bezier(.4,0,.2,1)';
     track.style.transform = `translateX(-${100 * current}%)`;
     updateDots(current);
   }
@@ -191,7 +251,7 @@
   function startAutoplay() {
     interval = setInterval(next, 4000);
   }
-  function stopAutoplay() {
+  function cancelAutoplay() {
     clearInterval(interval);
   }
 
@@ -200,7 +260,7 @@
     // No clone needed for simple loop, just reset if needed
   });
 
-  slider.addEventListener('mouseenter', stopAutoplay);
+  slider.addEventListener('mouseenter', cancelAutoplay);
   slider.addEventListener('mouseleave', startAutoplay);
 
   renderDots();
@@ -261,7 +321,53 @@
   "presets": [
     {
       "name": "bl-hero-slider",
-      "category": "Banner"
+      "category": "Banner",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "heading": "Brightlink Small Pitch LED Wall",
+            "subheading": "Any size from 108\" to 500\" +",
+            "button_label": "Shop Now",
+            "button_link": "/collections/all",
+            "image": "",
+            "vertical_align": "center"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "heading": "Ultra HD Video Walls",
+            "subheading": "Stunning clarity for any environment.",
+            "button_label": "Learn More",
+            "button_link": "/pages/ultra-hd",
+            "image": "",
+            "vertical_align": "center"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "heading": "Seamless Installation",
+            "subheading": "Professional support from start to finish.",
+            "button_label": "Get a Quote",
+            "button_link": "/pages/contact",
+            "image": "",
+            "vertical_align": "center"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "heading": "Custom LED Solutions",
+            "subheading": "Tailored to your space and needs.",
+            "button_label": "See Solutions",
+            "button_link": "/pages/custom-led",
+            "image": "",
+            "vertical_align": "center"
+          }
+        }
+      ]
     }
   ]
 }
