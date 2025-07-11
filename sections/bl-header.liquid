@@ -1,0 +1,233 @@
+{% comment %}
+  BrightlinkAV-style header with megamenu, built from scratch.
+  - All classes use bl- prefix
+  - Max-width: 1360px, padding-inline: 40px (desktop), 16px (mobile)
+  - No theme code or dependencies
+  - Pure HTML, CSS, and Liquid
+{% endcomment %}
+
+<style>
+  .bl-header-wrap {
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .bl-header {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding-inline: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 80px;
+    position: relative;
+    z-index: 10;
+  }
+  @media (min-width: 750px) {
+    .bl-header {
+      padding-inline: 40px;
+    }
+  }
+  .bl-header__logo {
+    display: flex;
+    align-items: center;
+    min-width: 120px;
+  }
+  .bl-header__logo-img {
+    max-height: 48px;
+    width: auto;
+    display: block;
+  }
+  .bl-header__menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  .bl-header__menu-list {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .bl-header__menu-item {
+    position: relative;
+  }
+  .bl-header__menu-link {
+    display: block;
+    padding: 16px 0;
+    font-weight: 600;
+    color: #222;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .bl-header__menu-link:hover,
+  .bl-header__menu-link:focus {
+    color: #0074d9;
+  }
+  .bl-header__menu-item--has-children > .bl-header__menu-link::after {
+    content: "▼";
+    font-size: 0.7em;
+    margin-left: 6px;
+    vertical-align: middle;
+    color: #888;
+  }
+  .bl-mega-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100vw;
+    background: #fff;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    padding: 32px 0;
+    z-index: 100;
+  }
+  .bl-header__menu-item--has-children:hover .bl-mega-menu,
+  .bl-header__menu-item--has-children:focus-within .bl-mega-menu {
+    display: block;
+  }
+  .bl-mega-menu__inner {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding-inline: 16px;
+    display: flex;
+    gap: 48px;
+  }
+  @media (min-width: 750px) {
+    .bl-mega-menu__inner {
+      padding-inline: 40px;
+    }
+  }
+  .bl-mega-menu__col {
+    min-width: 180px;
+  }
+  .bl-mega-menu__title {
+    font-weight: 700;
+    color: #222;
+    text-decoration: none;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .bl-mega-menu__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .bl-mega-menu__link {
+    display: block;
+    color: #444;
+    text-decoration: none;
+    padding: 6px 0;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .bl-mega-menu__link:hover,
+  .bl-mega-menu__link:focus {
+    color: #0074d9;
+  }
+  .bl-header__icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .bl-header__icon {
+    color: #222;
+    text-decoration: none;
+    font-size: 1.3em;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .bl-header__cart-count {
+    background: #0074d9;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.8em;
+    padding: 2px 7px;
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    min-width: 20px;
+    text-align: center;
+  }
+</style>
+
+<div class="bl-header-wrap">
+  <header class="bl-header">
+    <div class="bl-header__logo">
+      <a href="{{ routes.root_url }}">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="Logo" class="bl-header__logo-img">
+        {% else %}
+          <span class="bl-header__logo-text">{{ shop.name }}</span>
+        {% endif %}
+      </a>
+    </div>
+    <nav class="bl-header__menu" role="navigation">
+      <ul class="bl-header__menu-list">
+        {% for link in section.settings.menu.links %}
+          <li class="bl-header__menu-item{% if link.links != blank %} bl-header__menu-item--has-children{% endif %}">
+            <a href="{{ link.url }}" class="bl-header__menu-link">{{ link.title }}</a>
+            {% if link.links != blank %}
+              <div class="bl-mega-menu">
+                <div class="bl-mega-menu__inner">
+                  {% for childlink in link.links %}
+                    <div class="bl-mega-menu__col">
+                      <a href="{{ childlink.url }}" class="bl-mega-menu__title">{{ childlink.title }}</a>
+                      {% if childlink.links != blank %}
+                        <ul class="bl-mega-menu__list">
+                          {% for grandchildlink in childlink.links %}
+                            <li><a href="{{ grandchildlink.url }}" class="bl-mega-menu__link">{{ grandchildlink.title }}</a></li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="bl-header__icons">
+      <a href="{{ routes.search_url }}" class="bl-header__icon bl-header__icon--search" aria-label="Search">🔍</a>
+      {% if shop.customer_accounts_enabled %}
+        <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="bl-header__icon bl-header__icon--account" aria-label="Account">👤</a>
+      {% endif %}
+      <a href="{{ routes.cart_url }}" class="bl-header__icon bl-header__icon--cart" aria-label="Cart">🛒
+        {% if cart != empty %}
+          <span class="bl-header__cart-count">{{ cart.item_count }}</span>
+        {% endif %}
+      </a>
+    </div>
+  </header>
+</div>
+
+{% schema %}
+{
+  "name": "bl-header",
+  "class": "bl-header-section",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menu"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    }
+  ],
+  "presets": [
+    {
+      "name": "bl-header",
+      "category": "Header"
+    }
+  ]
+}
+{% endschema %} 
