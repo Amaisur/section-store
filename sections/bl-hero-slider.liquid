@@ -178,69 +178,55 @@
   const track = slider.querySelector('.bl-hero-slider__track');
   const slides = Array.from(track.children);
   const dotsContainer = slider.querySelector('.bl-hero-slider__dots');
-  
-  // Original slide count (without clones)
   const realCount = slides.length;
-  let current = 0; // Start at first real slide (index 0)
+  let current = 0;
 
-  // --- Infinite Loop Setup ---
-  // Clone first two and last two slides for seamless looping
   const firstSlide = slides[0].cloneNode(true);
-  const secondSlide = slides[1] ? slides[1].cloneNode(true) : slides[0].cloneNode(true);
+  const secondFirstSlide = slides[0].cloneNode(true);
   const lastSlide = slides[realCount-1].cloneNode(true);
-  const secondLastSlide = slides[realCount-2] ? slides[realCount-2].cloneNode(true) : slides[realCount-1].cloneNode(true);
+  const secondLastSlide = slides[realCount-1].cloneNode(true);
+  
   firstSlide.classList.add('bl-hero-slider__slide--clone');
-  secondSlide.classList.add('bl-hero-slider__slide--clone');
+  secondFirstSlide.classList.add('bl-hero-slider__slide--clone');
   lastSlide.classList.add('bl-hero-slider__slide--clone');
   secondLastSlide.classList.add('bl-hero-slider__slide--clone');
-  // Append clones to track
-  track.appendChild(firstSlide); // Add clone of first slide at end
-  track.appendChild(secondSlide); // Add clone of second slide at end
-  track.insertBefore(lastSlide, slides[0]); // Add clone of last slide at beginning
-  track.insertBefore(secondLastSlide, slides[0]); // Add clone of second last slide at beginning
-  // Get all slides including clones
+  
+  track.appendChild(firstSlide);
+  track.appendChild(secondFirstSlide);
+  track.insertBefore(lastSlide, slides[0]);
+  track.insertBefore(secondLastSlide, slides[0]);
+  
   const allSlides = Array.from(track.children);
   const totalSlides = allSlides.length;
-  // Set initial position to first real slide (index 2 because we added two clones at start)
   current = 2;
 
-  // --- Track Positioning ---
-  function setTrackTransition(val) { 
-    track.style.transition = val; 
-  }
-  
-  function setTrackPosition(idx) {
-    track.style.transform = `translateX(-${100 * idx}%)`;
-  }
+  function setTrackTransition(val) { track.style.transition = val; }
+  function setTrackPosition(idx) { track.style.transform = `translateX(-${100 * idx}%)`; }
 
-  // Initialize slider position
   setTrackTransition('none');
   setTrackPosition(current);
   setTimeout(() => setTrackTransition('transform 0.7s cubic-bezier(.4,0,.2,1)'), 20);
 
-  // --- Dots Navigation ---
   function renderDots() {
     dotsContainer.innerHTML = '';
     for (let i = 0; i < realCount; i++) {
       const dot = document.createElement('button');
       dot.className = 'bl-hero-slider__dot' + (i === current-2 ? ' bl-hero-slider__dot--active' : '');
       dot.setAttribute('aria-label', 'Go to slide ' + (i+1));
-      dot.addEventListener('click', () => goTo(i+2)); // +2 because we have two clones at start
+      dot.addEventListener('click', () => goTo(i+2));
       dotsContainer.appendChild(dot);
     }
   }
 
   function updateDots() {
-    let activeIndex = current-2; // Adjust for two clones at start
+    let activeIndex = current-2;
     if (activeIndex < 0) activeIndex = realCount-1;
     if (activeIndex >= realCount) activeIndex = 0;
-    
     Array.from(dotsContainer.children).forEach((dot, i) => {
       dot.classList.toggle('bl-hero-slider__dot--active', i === activeIndex);
     });
   }
 
-  // --- Slide Navigation ---
   function goTo(idx, instant = false) {
     current = idx;
     setTrackTransition(instant ? 'none' : 'transform 0.7s cubic-bezier(.4,0,.2,1)');
@@ -248,31 +234,16 @@
     updateDots();
   }
 
-  function next() { 
-    goTo(current + 1); 
-  }
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
 
-  function prev() { 
-    goTo(current - 1); 
-  }
-
-  // --- Infinite Loop Handling ---
   track.addEventListener('transitionend', () => {
-    // If we're on the first or second clone (index 0 or 1), jump to last real slide
-    if (current === 0) {
-      goTo(realCount, true);
-    } else if (current === 1) {
-      goTo(realCount+1, true);
-    }
-    // If we're on the last or second last clone (index totalSlides-1 or totalSlides-2), jump to first real slide
-    else if (current === totalSlides-1) {
-      goTo(2, true);
-    } else if (current === totalSlides-2) {
-      goTo(3, true);
-    }
+    if (current === 0) goTo(realCount, true);
+    else if (current === 1) goTo(realCount + 1, true);
+    else if (current === totalSlides-2) goTo(2, true);
+    else if (current === totalSlides-1) goTo(3, true);
   });
 
-  // --- Drag/Swipe Functionality ---
   let isDragging = false;
   let startX = 0;
   let currentTranslate = 0;
@@ -294,8 +265,6 @@
     cancelAnimationFrame(animationID);
     animationID = requestAnimationFrame(animation);
     slider.style.cursor = 'grabbing';
-    
-    // Add event listeners
     document.addEventListener('mousemove', touchMove);
     document.addEventListener('mouseup', touchEnd);
     document.addEventListener('touchmove', touchMove, { passive: false });
@@ -314,17 +283,12 @@
     isDragging = false;
     cancelAnimationFrame(animationID);
     slider.style.cursor = '';
-    
     const movedBy = currentTranslate - prevTranslate;
     let newIdx = current;
-    
     if (Math.abs(movedBy) > dragThreshold) {
       newIdx = movedBy > 0 ? current - 1 : current + 1;
     }
-    
     goTo(newIdx);
-    
-    // Clean up event listeners
     document.removeEventListener('mousemove', touchMove);
     document.removeEventListener('mouseup', touchEnd);
     document.removeEventListener('touchmove', touchMove);
@@ -333,18 +297,14 @@
 
   function animation() {
     track.style.transform = `translateX(${currentTranslate}px)`;
-    if (isDragging) {
-      animationID = requestAnimationFrame(animation);
-    }
+    if (isDragging) animationID = requestAnimationFrame(animation);
   }
 
-  // Initialize event listeners
   track.addEventListener('mousedown', touchStart);
   track.addEventListener('touchstart', touchStart, { passive: false });
 
-  // Initialize slider
   renderDots();
-  goTo(2, true); // Start at first real slide (index 2 because of clone at start)
+  goTo(2, true);
 })();
 </script>
 
