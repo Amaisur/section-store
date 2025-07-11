@@ -23,10 +23,22 @@
       "settings": {
         "menu": "main-menu"
       }
+    },
+    "bl_banner_4drykY": {
+      "type": "bl-banner",
+      "name": "bl-banner",
+      "settings": {
+        "subtitle": "Brightlink Large Scale Video Walls",
+        "title": "Transforming Spaces With Stunning LED Video Walls",
+        "button_label": "Shop Now",
+        "button_link": "#",
+        "video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4"
+      }
     }
   },
   "order": [
     "main",
-    "bl_header_zaJ3rB"
+    "bl_header_zaJ3rB",
+    "bl_banner_4drykY"
   ]
 }
