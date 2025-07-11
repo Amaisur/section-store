@@ -34,11 +34,65 @@
         "button_link": "#",
         "video": "shopify://files/videos/Multicolumn Video – Section Store_3.mp4"
       }
+    },
+    "bl_hero_slider_PLTmmg": {
+      "type": "bl-hero-slider",
+      "blocks": {
+        "slide_gYiFEU": {
+          "type": "slide",
+          "settings": {
+            "heading": "Brightlink Small Pitch LED Wall",
+            "subheading": "Any size from 108\" to 500\" +",
+            "button_label": "Shop Now",
+            "button_link": "/collections/all",
+            "vertical_align": "center"
+          }
+        },
+        "slide_xErME4": {
+          "type": "slide",
+          "settings": {
+            "heading": "Ultra HD Video Walls",
+            "subheading": "Stunning clarity for any environment.",
+            "button_label": "Learn More",
+            "button_link": "/pages/ultra-hd",
+            "vertical_align": "center"
+          }
+        },
+        "slide_ibDHYc": {
+          "type": "slide",
+          "settings": {
+            "heading": "Seamless Installation",
+            "subheading": "Professional support from start to finish.",
+            "button_label": "Get a Quote",
+            "button_link": "/pages/contact",
+            "vertical_align": "center"
+          }
+        },
+        "slide_jF8nmU": {
+          "type": "slide",
+          "settings": {
+            "heading": "Custom LED Solutions",
+            "subheading": "Tailored to your space and needs.",
+            "button_label": "See Solutions",
+            "button_link": "/pages/custom-led",
+            "vertical_align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_gYiFEU",
+        "slide_xErME4",
+        "slide_ibDHYc",
+        "slide_jF8nmU"
+      ],
+      "name": "bl-hero-slider",
+      "settings": {}
     }
   },
   "order": [
     "main",
     "bl_header_zaJ3rB",
-    "bl_banner_4drykY"
+    "bl_banner_4drykY",
+    "bl_hero_slider_PLTmmg"
   ]
 }
