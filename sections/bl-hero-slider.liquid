@@ -159,62 +159,95 @@
   const track = slider.querySelector('.bl-hero-slider__track');
   const slides = Array.from(track.children);
   const dotsContainer = slider.querySelector('.bl-hero-slider__dots');
-  let current = 0;
+  let current = 1; // Start at first real slide (after clone)
   let interval;
   const slideCount = slides.length;
 
-  // Drag/Swipe support
-  let isDragging = false;
-  let startX = 0;
-  let currentTranslate = 0;
-  let prevTranslate = 0;
-  let animationID;
-  let dragThreshold = 50;
+  // --- Infinite Loop Setup ---
+  // Clone last and first slides
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[slideCount-1].cloneNode(true);
+  firstClone.classList.add('bl-hero-slider__slide--clone');
+  lastClone.classList.add('bl-hero-slider__slide--clone');
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, slides[0]);
+  const allSlides = Array.from(track.children);
+  const realCount = slideCount;
 
-  function setSliderPosition(translate) {
-    track.style.transform = `translateX(${translate}px)`;
+  // Set initial position
+  function setTrackTransition(val) { track.style.transition = val; }
+  function setTrackPosition(idx) {
+    track.style.transform = `translateX(-${100 * idx}%)`;
+  }
+  setTrackTransition('none');
+  setTrackPosition(current);
+  setTimeout(() => setTrackTransition('transform 0.7s cubic-bezier(.4,0,.2,1)'), 20);
+
+  // --- Dots ---
+  function renderDots() {
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < realCount; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'bl-hero-slider__dot' + (i === 0 ? ' bl-hero-slider__dot--active' : '');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i+1));
+      dot.addEventListener('click', () => goTo(i+1));
+      dotsContainer.appendChild(dot);
+    }
+  }
+  function updateDots(idx) {
+    Array.from(dotsContainer.children).forEach((dot, i) => {
+      dot.classList.toggle('bl-hero-slider__dot--active', i === ((idx-1+realCount)%realCount));
+    });
   }
 
-  function animation() {
-    setSliderPosition(currentTranslate);
-    if (isDragging) requestAnimationFrame(animation);
+  // --- Slide Logic ---
+  function goTo(idx, instant) {
+    current = idx;
+    setTrackTransition(instant ? 'none' : 'transform 0.7s cubic-bezier(.4,0,.2,1)');
+    setTrackPosition(current);
+    updateDots(current);
   }
+  function next() { goTo(current+1); }
+  function prev() { goTo(current-1); }
 
-  function getPositionX(e) {
-    return e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
-  }
+  // --- Autoplay ---
+  function startAutoplay() { interval = setInterval(next, 4000); }
+  function cancelAutoplay() { clearInterval(interval); }
 
+  // --- Drag/Swipe ---
+  let isDragging = false, startX = 0, currentTranslate = 0, prevTranslate = 0, animationID, dragThreshold = 50;
+  function setSliderPosition(translate) { track.style.transform = `translateX(${translate}px)`; }
+  function animation() { setSliderPosition(currentTranslate); if (isDragging) requestAnimationFrame(animation); }
+  function getPositionX(e) { return e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX; }
   function touchStart(e) {
     isDragging = true;
     startX = getPositionX(e);
     prevTranslate = -current * slider.offsetWidth;
     currentTranslate = prevTranslate;
-    track.style.transition = 'none';
+    setTrackTransition('none');
     cancelAutoplay();
     animationID = requestAnimationFrame(animation);
   }
-
   function touchMove(e) {
     if (!isDragging) return;
     const currentX = getPositionX(e);
     const diff = currentX - startX;
     currentTranslate = prevTranslate + diff;
   }
-
   function touchEnd() {
     isDragging = false;
     cancelAnimationFrame(animationID);
     const movedBy = currentTranslate - prevTranslate;
-    if (movedBy < -dragThreshold && current < slideCount - 1) {
-      current++;
-    } else if (movedBy > dragThreshold && current > 0) {
-      current--;
+    if (movedBy < -dragThreshold) {
+      next();
+    } else if (movedBy > dragThreshold) {
+      prev();
+    } else {
+      goTo(current);
     }
-    goTo(current);
-    track.style.transition = '';
+    setTrackTransition('transform 0.7s cubic-bezier(.4,0,.2,1)');
     startAutoplay();
   }
-
   track.addEventListener('mousedown', touchStart);
   track.addEventListener('touchstart', touchStart, { passive: true });
   window.addEventListener('mousemove', touchMove);
@@ -222,54 +255,20 @@
   window.addEventListener('mouseup', touchEnd);
   window.addEventListener('touchend', touchEnd);
 
-  // Dots
-  function renderDots() {
-    dotsContainer.innerHTML = '';
-    for (let i = 0; i < slideCount; i++) {
-      const dot = document.createElement('button');
-      dot.className = 'bl-hero-slider__dot' + (i === 0 ? ' bl-hero-slider__dot--active' : '');
-      dot.setAttribute('aria-label', 'Go to slide ' + (i+1));
-      dot.addEventListener('click', () => goTo(i));
-      dotsContainer.appendChild(dot);
-    }
-  }
-
-  function updateDots(idx) {
-    Array.from(dotsContainer.children).forEach((dot, i) => {
-      dot.classList.toggle('bl-hero-slider__dot--active', i === idx);
-    });
-  }
-
-  // Slide logic
-  function goTo(idx) {
-    current = idx;
-    track.style.transition = 'transform 0.7s cubic-bezier(.4,0,.2,1)';
-    track.style.transform = `translateX(-${100 * current}%)`;
-    updateDots(current);
-  }
-
-  function next() {
-    current = (current + 1) % slideCount;
-    goTo(current);
-  }
-
-  function startAutoplay() {
-    interval = setInterval(next, 4000);
-  }
-  function cancelAutoplay() {
-    clearInterval(interval);
-  }
-
-  // Infinite loop effect
+  // --- Infinite Loop Correction ---
   track.addEventListener('transitionend', () => {
-    // No clone needed for simple loop, just reset if needed
+    if (current === 0) {
+      goTo(realCount, true); // jump to last real slide
+    } else if (current === realCount+1) {
+      goTo(1, true); // jump to first real slide
+    }
   });
 
   slider.addEventListener('mouseenter', cancelAutoplay);
   slider.addEventListener('mouseleave', startAutoplay);
 
   renderDots();
-  goTo(0);
+  goTo(1, true);
   startAutoplay();
 })();
 </script>
