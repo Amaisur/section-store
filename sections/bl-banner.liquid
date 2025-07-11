@@ -85,7 +85,7 @@
 
 <section class="bl-banner">
   {% if section.settings.video != blank %}
-    {{ section.settings.video | video_tag: autoplay, loop: true, muted: true, playsinline: true, class: 'bl-banner__media' }}
+    {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, playsinline: trueW }}
   {% elsif section.settings.image != blank %}
     <img class="bl-banner__media" src="{{ section.settings.image | image_url }}" alt="Banner background">
   {% endif %}
