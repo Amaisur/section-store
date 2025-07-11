@@ -184,22 +184,25 @@
   let current = 0; // Start at first real slide (index 0)
 
   // --- Infinite Loop Setup ---
-  // Clone first and last slides for seamless looping
+  // Clone first two and last two slides for seamless looping
   const firstSlide = slides[0].cloneNode(true);
+  const secondSlide = slides[1] ? slides[1].cloneNode(true) : slides[0].cloneNode(true);
   const lastSlide = slides[realCount-1].cloneNode(true);
+  const secondLastSlide = slides[realCount-2] ? slides[realCount-2].cloneNode(true) : slides[realCount-1].cloneNode(true);
   firstSlide.classList.add('bl-hero-slider__slide--clone');
+  secondSlide.classList.add('bl-hero-slider__slide--clone');
   lastSlide.classList.add('bl-hero-slider__slide--clone');
-  
+  secondLastSlide.classList.add('bl-hero-slider__slide--clone');
   // Append clones to track
   track.appendChild(firstSlide); // Add clone of first slide at end
+  track.appendChild(secondSlide); // Add clone of second slide at end
   track.insertBefore(lastSlide, slides[0]); // Add clone of last slide at beginning
-  
+  track.insertBefore(secondLastSlide, slides[0]); // Add clone of second last slide at beginning
   // Get all slides including clones
   const allSlides = Array.from(track.children);
   const totalSlides = allSlides.length;
-  
-  // Set initial position to first real slide (index 1 because we added a clone at start)
-  current = 1;
+  // Set initial position to first real slide (index 2 because we added two clones at start)
+  current = 2;
 
   // --- Track Positioning ---
   function setTrackTransition(val) { 
@@ -220,15 +223,15 @@
     dotsContainer.innerHTML = '';
     for (let i = 0; i < realCount; i++) {
       const dot = document.createElement('button');
-      dot.className = 'bl-hero-slider__dot' + (i === current-1 ? ' bl-hero-slider__dot--active' : '');
+      dot.className = 'bl-hero-slider__dot' + (i === current-2 ? ' bl-hero-slider__dot--active' : '');
       dot.setAttribute('aria-label', 'Go to slide ' + (i+1));
-      dot.addEventListener('click', () => goTo(i+1)); // +1 because we have a clone at start
+      dot.addEventListener('click', () => goTo(i+2)); // +2 because we have two clones at start
       dotsContainer.appendChild(dot);
     }
   }
 
   function updateDots() {
-    let activeIndex = current-1; // Adjust for clone at start
+    let activeIndex = current-2; // Adjust for two clones at start
     if (activeIndex < 0) activeIndex = realCount-1;
     if (activeIndex >= realCount) activeIndex = 0;
     
@@ -255,13 +258,17 @@
 
   // --- Infinite Loop Handling ---
   track.addEventListener('transitionend', () => {
-    // If we're on the first clone (index 0), jump to last real slide
+    // If we're on the first or second clone (index 0 or 1), jump to last real slide
     if (current === 0) {
       goTo(realCount, true);
-    } 
-    // If we're on the last clone (index totalSlides-1), jump to first real slide
+    } else if (current === 1) {
+      goTo(realCount+1, true);
+    }
+    // If we're on the last or second last clone (index totalSlides-1 or totalSlides-2), jump to first real slide
     else if (current === totalSlides-1) {
-      goTo(1, true);
+      goTo(2, true);
+    } else if (current === totalSlides-2) {
+      goTo(3, true);
     }
   });
 
@@ -337,7 +344,7 @@
 
   // Initialize slider
   renderDots();
-  goTo(1, true); // Start at first real slide (index 1 because of clone at start)
+  goTo(2, true); // Start at first real slide (index 2 because of clone at start)
 })();
 </script>
 
