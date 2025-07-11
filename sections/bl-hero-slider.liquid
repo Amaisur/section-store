@@ -164,7 +164,6 @@
   const slideCount = slides.length;
 
   // --- Infinite Loop Setup ---
-  // Clone last and first slides
   const firstClone = slides[0].cloneNode(true);
   const lastClone = slides[slideCount-1].cloneNode(true);
   firstClone.classList.add('bl-hero-slider__slide--clone');
@@ -210,99 +209,83 @@
   function next() { goTo(current+1); }
   function prev() { goTo(current-1); }
 
-  // --- Autoplay ---
-  // function startAutoplay() { interval = setInterval(next, 4000); }
-  // function cancelAutoplay() { clearInterval(interval); }
-
-  // Remove all calls to startAutoplay and cancelAutoplay
-
   // --- Drag/Swipe ---
-  let isDragging = false, startX = 0, currentTranslate = 0, prevTranslate = 0, animationID, dragThreshold = 50;
-  let dragStarted = false;
+  let isDragging = false, startX = 0, currentTranslate = 0, prevTranslate = 0, animationID;
+  const dragThreshold = 50;
+  const slideWidth = slider.offsetWidth;
 
-  function setSliderPosition(translate) { track.style.transform = `translateX(${translate}px)`; }
-  function animation() { setSliderPosition(currentTranslate); if (isDragging) requestAnimationFrame(animation); }
-  function getPositionX(e) { return e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX; }
-
-  function preventSelection(e) {
-    e.preventDefault();
+  function getPositionX(e) {
+    return e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
   }
 
   function touchStart(e) {
-    if (e.type === 'mousedown' && e.button !== 0) return; // Only left mouse button
+    if (e.type === 'mousedown' && e.button !== 0) return;
     isDragging = true;
-    dragStarted = true;
     startX = getPositionX(e);
-    prevTranslate = -current * slider.offsetWidth;
+    prevTranslate = -current * slideWidth;
     currentTranslate = prevTranslate;
     setTrackTransition('none');
+    cancelAnimationFrame(animationID);
     animationID = requestAnimationFrame(animation);
-    document.body.style.userSelect = 'none';
+    slider.style.cursor = 'grabbing';
     document.addEventListener('mousemove', touchMove);
     document.addEventListener('mouseup', touchEnd);
     document.addEventListener('touchmove', touchMove, { passive: false });
     document.addEventListener('touchend', touchEnd);
-    document.addEventListener('mouseleave', touchEnd);
-    e.preventDefault();
   }
+
   function touchMove(e) {
     if (!isDragging) return;
     const currentX = getPositionX(e);
-    const diff = currentX - startX;
-    currentTranslate = prevTranslate + diff;
+    currentTranslate = prevTranslate + currentX - startX;
     e.preventDefault();
   }
-  function touchEnd(e) {
+
+  function touchEnd() {
     if (!isDragging) return;
     isDragging = false;
-    dragStarted = false;
     cancelAnimationFrame(animationID);
+    slider.style.cursor = '';
+    
     const movedBy = currentTranslate - prevTranslate;
-    // Calculate the closest slide index
-    const slideWidth = slider.offsetWidth;
     let newIdx = current;
-    if (movedBy < -dragThreshold) {
-      newIdx = current + 1;
-    } else if (movedBy > dragThreshold) {
-      newIdx = current - 1;
-    } else {
-      // Snap to nearest slide
-      const approx = -currentTranslate / slideWidth;
-      newIdx = Math.round(approx);
+    
+    if (Math.abs(movedBy) > dragThreshold) {
+      newIdx = movedBy > 0 ? current - 1 : current + 1;
     }
+    
     goTo(newIdx);
-    setTrackTransition('transform 0.7s cubic-bezier(.4,0,.2,1)');
-    document.body.style.userSelect = '';
+    cleanupEvents();
+  }
+
+  function animation() {
+    track.style.transform = `translateX(${currentTranslate}px)`;
+    if (isDragging) {
+      animationID = requestAnimationFrame(animation);
+    }
+  }
+
+  function cleanupEvents() {
     document.removeEventListener('mousemove', touchMove);
     document.removeEventListener('mouseup', touchEnd);
     document.removeEventListener('touchmove', touchMove);
     document.removeEventListener('touchend', touchEnd);
-    document.removeEventListener('mouseleave', touchEnd);
-    if (e) e.preventDefault();
   }
+
   track.addEventListener('mousedown', touchStart);
   track.addEventListener('touchstart', touchStart, { passive: false });
-  // Remove global listeners from previous version
-  // window.addEventListener('mousemove', touchMove);
-  // window.addEventListener('touchmove', touchMove, { passive: false });
-  // window.addEventListener('mouseup', touchEnd);
-  // window.addEventListener('touchend', touchEnd);
 
   // --- Infinite Loop Correction ---
   track.addEventListener('transitionend', () => {
     if (current === 0) {
-      goTo(realCount, true); // jump to last real slide
-    } else if (current === realCount+1) {
-      goTo(1, true); // jump to first real slide
+      goTo(realCount, true);
+    } else if (current === realCount + 1) {
+      goTo(1, true);
     }
   });
 
-  // slider.addEventListener('mouseenter', cancelAutoplay);
-  // slider.addEventListener('mouseleave', startAutoplay);
-
   renderDots();
   goTo(1, true);
-  // startAutoplay();
 })();
 </script>
 
