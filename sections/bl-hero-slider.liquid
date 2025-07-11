@@ -238,17 +238,19 @@
     setTrackTransition('none');
     animationID = requestAnimationFrame(animation);
     document.body.style.userSelect = 'none';
-    window.addEventListener('mousemove', touchMove);
-    window.addEventListener('mouseup', touchEnd);
-    window.addEventListener('touchmove', touchMove, { passive: false });
-    window.addEventListener('touchend', touchEnd);
-    window.addEventListener('mouseleave', touchEnd);
+    document.addEventListener('mousemove', touchMove);
+    document.addEventListener('mouseup', touchEnd);
+    document.addEventListener('touchmove', touchMove, { passive: false });
+    document.addEventListener('touchend', touchEnd);
+    document.addEventListener('mouseleave', touchEnd);
+    e.preventDefault();
   }
   function touchMove(e) {
     if (!isDragging) return;
     const currentX = getPositionX(e);
     const diff = currentX - startX;
     currentTranslate = prevTranslate + diff;
+    e.preventDefault();
   }
   function touchEnd(e) {
     if (!isDragging) return;
@@ -271,14 +273,15 @@
     goTo(newIdx);
     setTrackTransition('transform 0.7s cubic-bezier(.4,0,.2,1)');
     document.body.style.userSelect = '';
-    window.removeEventListener('mousemove', touchMove);
-    window.removeEventListener('mouseup', touchEnd);
-    window.removeEventListener('touchmove', touchMove);
-    window.removeEventListener('touchend', touchEnd);
-    window.removeEventListener('mouseleave', touchEnd);
+    document.removeEventListener('mousemove', touchMove);
+    document.removeEventListener('mouseup', touchEnd);
+    document.removeEventListener('touchmove', touchMove);
+    document.removeEventListener('touchend', touchEnd);
+    document.removeEventListener('mouseleave', touchEnd);
+    if (e) e.preventDefault();
   }
   track.addEventListener('mousedown', touchStart);
-  track.addEventListener('touchstart', touchStart, { passive: true });
+  track.addEventListener('touchstart', touchStart, { passive: false });
   // Remove global listeners from previous version
   // window.addEventListener('mousemove', touchMove);
   // window.addEventListener('touchmove', touchMove, { passive: false });
