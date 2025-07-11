@@ -1,0 +1,268 @@
+{% comment %}
+  BrightlinkAV-style hero slider with vanilla JS (no libraries).
+  - Each slide is a block with heading, subheading, button, image, vertical alignment (top, center, bottom)
+  - Smooth sliding, autoplay, infinite loop
+  - All classes use bl- prefix
+  - Fully responsive
+{% endcomment %}
+
+<style>
+  .bl-hero-slider {
+    position: relative;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #fff;
+    aspect-ratio: 3/1;
+  }
+  .bl-hero-slider__track {
+    display: flex;
+    transition: transform 0.7s cubic-bezier(.4,0,.2,1);
+    will-change: transform;
+  }
+  .bl-hero-slider__slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    height: 100%;
+  }
+  .bl-hero-slider__img {
+    width: 60%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    margin-left: auto;
+    background: #f5f5f5;
+  }
+  .bl-hero-slider__content {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: var(--bl-align, center);
+    align-items: flex-start;
+    padding: 0 3vw;
+    z-index: 2;
+  }
+  .bl-hero-slider__heading {
+    color: #5ca6f7;
+    font-size: 2.2em;
+    font-weight: 800;
+    margin-bottom: 0.5em;
+    line-height: 1.1;
+  }
+  .bl-hero-slider__subheading {
+    color: #444;
+    font-size: 1.1em;
+    margin-bottom: 2em;
+  }
+  .bl-hero-slider__button {
+    background: #5ca6f7;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 700;
+    padding: 16px 40px;
+    border: none;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .bl-hero-slider__button:hover,
+  .bl-hero-slider__button:focus {
+    background: #3578e5;
+  }
+  .bl-hero-slider__dots {
+    position: absolute;
+    left: 50%;
+    bottom: 32px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+  }
+  .bl-hero-slider__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #dbeafe;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .bl-hero-slider__dot--active {
+    background: #5ca6f7;
+  }
+  @media (max-width: 900px) {
+    .bl-hero-slider__content {
+      width: 60%;
+      padding: 0 5vw;
+    }
+    .bl-hero-slider__img {
+      width: 40%;
+    }
+  }
+  @media (max-width: 600px) {
+    .bl-hero-slider {
+      aspect-ratio: 1.1/1;
+    }
+    .bl-hero-slider__slide {
+      flex-direction: column;
+    }
+    .bl-hero-slider__content, .bl-hero-slider__img {
+      width: 100%;
+      padding: 0 16px;
+    }
+    .bl-hero-slider__img {
+      margin: 0 auto;
+      height: 180px;
+    }
+  }
+</style>
+
+<div class="bl-hero-slider" id="bl-hero-slider-{{ section.id }}">
+  <div class="bl-hero-slider__track">
+    {% for block in section.blocks %}
+      <div class="bl-hero-slider__slide" style="--bl-align: {{ block.settings.vertical_align }};">
+        <div class="bl-hero-slider__content">
+          {% if block.settings.heading != blank %}
+            <div class="bl-hero-slider__heading">{{ block.settings.heading }}</div>
+          {% endif %}
+          {% if block.settings.subheading != blank %}
+            <div class="bl-hero-slider__subheading">{{ block.settings.subheading }}</div>
+          {% endif %}
+          {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+            <a href="{{ block.settings.button_link }}" class="bl-hero-slider__button">{{ block.settings.button_label }}</a>
+          {% endif %}
+        </div>
+        {% if block.settings.image != blank %}
+          <img class="bl-hero-slider__img" src="{{ block.settings.image | image_url }}" alt="Slide image">
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="bl-hero-slider__dots"></div>
+</div>
+
+<script>
+(function() {
+  const slider = document.getElementById('bl-hero-slider-{{ section.id }}');
+  const track = slider.querySelector('.bl-hero-slider__track');
+  const slides = Array.from(track.children);
+  const dotsContainer = slider.querySelector('.bl-hero-slider__dots');
+  let current = 0;
+  let interval;
+  const slideCount = slides.length;
+
+  // Dots
+  function renderDots() {
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < slideCount; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'bl-hero-slider__dot' + (i === 0 ? ' bl-hero-slider__dot--active' : '');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i+1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function updateDots(idx) {
+    Array.from(dotsContainer.children).forEach((dot, i) => {
+      dot.classList.toggle('bl-hero-slider__dot--active', i === idx);
+    });
+  }
+
+  // Slide logic
+  function goTo(idx) {
+    current = idx;
+    track.style.transform = `translateX(-${100 * current}%)`;
+    updateDots(current);
+  }
+
+  function next() {
+    current = (current + 1) % slideCount;
+    goTo(current);
+  }
+
+  function startAutoplay() {
+    interval = setInterval(next, 4000);
+  }
+  function stopAutoplay() {
+    clearInterval(interval);
+  }
+
+  // Infinite loop effect
+  track.addEventListener('transitionend', () => {
+    // No clone needed for simple loop, just reset if needed
+  });
+
+  slider.addEventListener('mouseenter', stopAutoplay);
+  slider.addEventListener('mouseleave', startAutoplay);
+
+  renderDots();
+  goTo(0);
+  startAutoplay();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "bl-hero-slider",
+  "class": "bl-hero-slider-section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "vertical_align",
+          "label": "Content Vertical Alignment",
+          "options": [
+            { "value": "flex-start", "label": "Top" },
+            { "value": "center", "label": "Center" },
+            { "value": "flex-end", "label": "Bottom" }
+          ],
+          "default": "center"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "bl-hero-slider",
+      "category": "Banner"
+    }
+  ]
+}
+{% endschema %} 
