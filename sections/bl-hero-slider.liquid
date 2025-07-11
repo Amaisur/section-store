@@ -10,9 +10,10 @@
   .bl-hero-slider {
     position: relative;
     width: 100%;
-    max-width: 1600px;
-    margin: 0 auto;
+    margin: 100px auto;
     overflow: hidden;
+    max-width: 1360px;
+    padding: 0 40px;
     background: #fff;
     aspect-ratio: 3/1;
   }
@@ -42,6 +43,12 @@
     z-index: 1;
     pointer-events: none;
     object-fit: contain;
+  }
+  .bl-hero-slider__bg--desktop {
+    display: block;
+  }
+  .bl-hero-slider__img--mobile {
+    display: none;
   }
   .bl-hero-slider__content {
     width: 40%;
@@ -119,13 +126,21 @@
     .bl-hero-slider__slide {
       flex-direction: column;
     }
-    .bl-hero-slider__content, .bl-hero-slider__img {
+    .bl-hero-slider__content {
       width: 100%;
-      padding: 0 16px;
+      padding: 32px 16px 0 16px;
+      position: static;
+      background: none;
     }
-    .bl-hero-slider__img {
-      margin: 0 auto;
+    .bl-hero-slider__bg--desktop {
+      display: none !important;
+    }
+    .bl-hero-slider__img--mobile {
+      display: block;
+      width: 100%;
       height: 180px;
+      object-fit: cover;
+      margin: 0 auto 24px auto;
     }
   }
 </style>
@@ -135,7 +150,7 @@
     {% for block in section.blocks %}
       <div class="bl-hero-slider__slide" style="--bl-align: {{ block.settings.vertical_align }};">
         {% if block.settings.image != blank %}
-          <div class="bl-hero-slider__bg" style="background-image: url('{{ block.settings.image | image_url: width: 1000 }}'); display: block;"></div>
+          <div class="bl-hero-slider__bg bl-hero-slider__bg--desktop" style="background-image: url('{{ block.settings.image | image_url: width: 1000 }}'); display: block;"></div>
         {% endif %}
         <div class="bl-hero-slider__content">
           {% if block.settings.heading != blank %}
@@ -148,6 +163,9 @@
             <a href="{{ block.settings.button_link }}" class="bl-hero-slider__button">{{ block.settings.button_label }}</a>
           {% endif %}
         </div>
+        {% if block.settings.image != blank %}
+          <img class="bl-hero-slider__img bl-hero-slider__img--mobile" src="{{ block.settings.image | image_url: width: 1000 }}" alt="Slide image">
+        {% endif %}
       </div>
     {% endfor %}
   </div>
@@ -160,59 +178,100 @@
   const track = slider.querySelector('.bl-hero-slider__track');
   const slides = Array.from(track.children);
   const dotsContainer = slider.querySelector('.bl-hero-slider__dots');
-  let current = 1; // Start at first real slide (after clone)
-  const slideCount = slides.length;
+  
+  // Original slide count (without clones)
+  const realCount = slides.length;
+  let current = 0; // Start at first real slide (index 0)
 
   // --- Infinite Loop Setup ---
-  const firstClone = slides[0].cloneNode(true);
-  const lastClone = slides[slideCount-1].cloneNode(true);
-  firstClone.classList.add('bl-hero-slider__slide--clone');
-  lastClone.classList.add('bl-hero-slider__slide--clone');
-  track.appendChild(firstClone);
-  track.insertBefore(lastClone, slides[0]);
+  // Clone first and last slides for seamless looping
+  const firstSlide = slides[0].cloneNode(true);
+  const lastSlide = slides[realCount-1].cloneNode(true);
+  firstSlide.classList.add('bl-hero-slider__slide--clone');
+  lastSlide.classList.add('bl-hero-slider__slide--clone');
+  
+  // Append clones to track
+  track.appendChild(firstSlide); // Add clone of first slide at end
+  track.insertBefore(lastSlide, slides[0]); // Add clone of last slide at beginning
+  
+  // Get all slides including clones
   const allSlides = Array.from(track.children);
-  const realCount = slideCount;
+  const totalSlides = allSlides.length;
+  
+  // Set initial position to first real slide (index 1 because we added a clone at start)
+  current = 1;
 
-  // Set initial position
-  function setTrackTransition(val) { track.style.transition = val; }
-  function setTrackPosition(idx) {
-    track.style.transform = `translateX(-${100 * idx}%)`; 
+  // --- Track Positioning ---
+  function setTrackTransition(val) { 
+    track.style.transition = val; 
   }
+  
+  function setTrackPosition(idx) {
+    track.style.transform = `translateX(-${100 * idx}%)`;
+  }
+
+  // Initialize slider position
   setTrackTransition('none');
   setTrackPosition(current);
   setTimeout(() => setTrackTransition('transform 0.7s cubic-bezier(.4,0,.2,1)'), 20);
 
-  // --- Dots ---
+  // --- Dots Navigation ---
   function renderDots() {
     dotsContainer.innerHTML = '';
     for (let i = 0; i < realCount; i++) {
       const dot = document.createElement('button');
-      dot.className = 'bl-hero-slider__dot' + (i === 0 ? ' bl-hero-slider__dot--active' : '');
+      dot.className = 'bl-hero-slider__dot' + (i === current-1 ? ' bl-hero-slider__dot--active' : '');
       dot.setAttribute('aria-label', 'Go to slide ' + (i+1));
-      dot.addEventListener('click', () => goTo(i+1));
+      dot.addEventListener('click', () => goTo(i+1)); // +1 because we have a clone at start
       dotsContainer.appendChild(dot);
     }
   }
-  function updateDots(idx) {
+
+  function updateDots() {
+    let activeIndex = current-1; // Adjust for clone at start
+    if (activeIndex < 0) activeIndex = realCount-1;
+    if (activeIndex >= realCount) activeIndex = 0;
+    
     Array.from(dotsContainer.children).forEach((dot, i) => {
-      dot.classList.toggle('bl-hero-slider__dot--active', i === ((idx-1+realCount)%realCount));
+      dot.classList.toggle('bl-hero-slider__dot--active', i === activeIndex);
     });
   }
 
-  // --- Slide Logic ---
-  function goTo(idx, instant) {
+  // --- Slide Navigation ---
+  function goTo(idx, instant = false) {
     current = idx;
     setTrackTransition(instant ? 'none' : 'transform 0.7s cubic-bezier(.4,0,.2,1)');
     setTrackPosition(current);
-    updateDots(current);
+    updateDots();
   }
-  function next() { goTo(current+1); }
-  function prev() { goTo(current-1); }
 
-  // --- Drag/Swipe ---
-  let isDragging = false, startX = 0, currentTranslate = 0, prevTranslate = 0, animationID;
+  function next() { 
+    goTo(current + 1); 
+  }
+
+  function prev() { 
+    goTo(current - 1); 
+  }
+
+  // --- Infinite Loop Handling ---
+  track.addEventListener('transitionend', () => {
+    // If we're on the first clone (index 0), jump to last real slide
+    if (current === 0) {
+      goTo(realCount, true);
+    } 
+    // If we're on the last clone (index totalSlides-1), jump to first real slide
+    else if (current === totalSlides-1) {
+      goTo(1, true);
+    }
+  });
+
+  // --- Drag/Swipe Functionality ---
+  let isDragging = false;
+  let startX = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let animationID;
   const dragThreshold = 50;
-  const slideWidth = slider.offsetWidth;
 
   function getPositionX(e) {
     return e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
@@ -222,12 +281,14 @@
     if (e.type === 'mousedown' && e.button !== 0) return;
     isDragging = true;
     startX = getPositionX(e);
-    prevTranslate = -current * slideWidth;
+    prevTranslate = -current * track.offsetWidth;
     currentTranslate = prevTranslate;
     setTrackTransition('none');
     cancelAnimationFrame(animationID);
     animationID = requestAnimationFrame(animation);
     slider.style.cursor = 'grabbing';
+    
+    // Add event listeners
     document.addEventListener('mousemove', touchMove);
     document.addEventListener('mouseup', touchEnd);
     document.addEventListener('touchmove', touchMove, { passive: false });
@@ -255,7 +316,12 @@
     }
     
     goTo(newIdx);
-    cleanupEvents();
+    
+    // Clean up event listeners
+    document.removeEventListener('mousemove', touchMove);
+    document.removeEventListener('mouseup', touchEnd);
+    document.removeEventListener('touchmove', touchMove);
+    document.removeEventListener('touchend', touchEnd);
   }
 
   function animation() {
@@ -265,27 +331,13 @@
     }
   }
 
-  function cleanupEvents() {
-    document.removeEventListener('mousemove', touchMove);
-    document.removeEventListener('mouseup', touchEnd);
-    document.removeEventListener('touchmove', touchMove);
-    document.removeEventListener('touchend', touchEnd);
-  }
-
+  // Initialize event listeners
   track.addEventListener('mousedown', touchStart);
   track.addEventListener('touchstart', touchStart, { passive: false });
 
-  // --- Infinite Loop Correction ---
-  track.addEventListener('transitionend', () => {
-    if (current === 0) {
-      goTo(realCount, true);
-    } else if (current === realCount + 1) {
-      goTo(1, true);
-    }
-  });
-
+  // Initialize slider
   renderDots();
-  goTo(1, true);
+  goTo(1, true); // Start at first real slide (index 1 because of clone at start)
 })();
 </script>
 
