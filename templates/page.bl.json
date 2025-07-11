@@ -92,12 +92,58 @@
       ],
       "name": "bl-hero-slider",
       "settings": {}
+    },
+    "bl_features_eVFhgA": {
+      "type": "bl-features",
+      "blocks": {
+        "feature_gGQ3Vr": {
+          "type": "feature",
+          "settings": {
+            "heading": "HDMI",
+            "link_label": "Shop all",
+            "link_url": "/collections/hdmi"
+          }
+        },
+        "feature_UC8KXz": {
+          "type": "feature",
+          "settings": {
+            "heading": "Matrix Switchers",
+            "link_label": "Shop all",
+            "link_url": "/collections/matrix-switchers"
+          }
+        },
+        "feature_LxFhk4": {
+          "type": "feature",
+          "settings": {
+            "heading": "Video Walls",
+            "link_label": "Shop all",
+            "link_url": "/collections/video-walls"
+          }
+        },
+        "feature_cEy9cY": {
+          "type": "feature",
+          "settings": {
+            "heading": "Control App",
+            "link_label": "Shop all",
+            "link_url": "/collections/control-app"
+          }
+        }
+      },
+      "block_order": [
+        "feature_gGQ3Vr",
+        "feature_UC8KXz",
+        "feature_LxFhk4",
+        "feature_cEy9cY"
+      ],
+      "name": "bl-features",
+      "settings": {}
     }
   },
   "order": [
     "main",
     "bl_header_zaJ3rB",
     "bl_banner_4drykY",
-    "bl_hero_slider_PLTmmg"
+    "bl_hero_slider_PLTmmg",
+    "bl_features_eVFhgA"
   ]
 }
