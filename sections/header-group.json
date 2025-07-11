@@ -97,9 +97,9 @@
     },
     "bl-header": {
       "type": "bl-header",
+      "disabled": true,
       "settings": {
-        "menu": "main-menu",
-        "logo": ""
+        "menu": "main-menu"
       }
     },
     "d5_cart_drawer_gUxAwy": {
