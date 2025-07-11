@@ -35,7 +35,7 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    background-size: contain;
+    background-size: cover !important;
     background-repeat: no-repeat;
     background-position: right center;
     z-index: 1;
@@ -134,7 +134,7 @@
     {% for block in section.blocks %}
       <div class="bl-hero-slider__slide" style="--bl-align: {{ block.settings.vertical_align }};">
         {% if block.settings.image != blank %}
-          <div class="bl-hero-slider__bg" style="background-image: url('{{ block.settings.image | image_url: width: 1000 }}');"></div>
+          <div class="bl-hero-slider__bg" style="background-image: url('{{ block.settings.image | image_url: width: 1000 }}'); display: block;"></div>
         {% endif %}
         <div class="bl-hero-slider__content">
           {% if block.settings.heading != blank %}
@@ -160,7 +160,7 @@
   const slides = Array.from(track.children);
   const dotsContainer = slider.querySelector('.bl-hero-slider__dots');
   let current = 1; // Start at first real slide (after clone)
-  let interval;
+  // let interval; // Remove interval for autoplay
   const slideCount = slides.length;
 
   // --- Infinite Loop Setup ---
@@ -211,8 +211,10 @@
   function prev() { goTo(current-1); }
 
   // --- Autoplay ---
-  function startAutoplay() { interval = setInterval(next, 4000); }
-  function cancelAutoplay() { clearInterval(interval); }
+  // function startAutoplay() { interval = setInterval(next, 4000); }
+  // function cancelAutoplay() { clearInterval(interval); }
+
+  // Remove all calls to startAutoplay and cancelAutoplay
 
   // --- Drag/Swipe ---
   let isDragging = false, startX = 0, currentTranslate = 0, prevTranslate = 0, animationID, dragThreshold = 50;
@@ -225,7 +227,7 @@
     prevTranslate = -current * slider.offsetWidth;
     currentTranslate = prevTranslate;
     setTrackTransition('none');
-    cancelAutoplay();
+    // cancelAutoplay();
     animationID = requestAnimationFrame(animation);
   }
   function touchMove(e) {
@@ -246,7 +248,7 @@
       goTo(current);
     }
     setTrackTransition('transform 0.7s cubic-bezier(.4,0,.2,1)');
-    startAutoplay();
+    // startAutoplay();
   }
   track.addEventListener('mousedown', touchStart);
   track.addEventListener('touchstart', touchStart, { passive: true });
@@ -264,12 +266,12 @@
     }
   });
 
-  slider.addEventListener('mouseenter', cancelAutoplay);
-  slider.addEventListener('mouseleave', startAutoplay);
+  // slider.addEventListener('mouseenter', cancelAutoplay);
+  // slider.addEventListener('mouseleave', startAutoplay);
 
   renderDots();
   goTo(1, true);
-  startAutoplay();
+  // startAutoplay();
 })();
 </script>
 
