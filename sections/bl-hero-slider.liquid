@@ -7,16 +7,20 @@
 {% endcomment %}
 
 <style>
+#shopify-section-{{ section.id }} {
+    max-width: 1360px;
+    padding: 0 40px;
+    margin: 0 auto;
+}
   .bl-hero-slider {
     position: relative;
     width: 100%;
     margin: 100px auto;
     overflow: hidden;
-    max-width: 1360px;
-    padding: 0 40px;
     background: #fff;
     aspect-ratio: 3/1;
   }
+
   .bl-hero-slider__track {
     display: flex;
     transition: transform 0.7s cubic-bezier(.4,0,.2,1);
@@ -120,6 +124,9 @@
     }
   }
   @media (max-width: 600px) {
+    #shopify-section-{{ section.id }}{
+        padding: 0 16px;
+    }
     .bl-hero-slider {
       aspect-ratio: 1.1/1;
     }
