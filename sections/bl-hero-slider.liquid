@@ -20,6 +20,7 @@
     display: flex;
     transition: transform 0.7s cubic-bezier(.4,0,.2,1);
     will-change: transform;
+    height: 100%;
   }
   .bl-hero-slider__slide {
     min-width: 100%;
@@ -160,7 +161,6 @@
   const slides = Array.from(track.children);
   const dotsContainer = slider.querySelector('.bl-hero-slider__dots');
   let current = 1; // Start at first real slide (after clone)
-  // let interval; // Remove interval for autoplay
   const slideCount = slides.length;
 
   // --- Infinite Loop Setup ---
@@ -218,17 +218,31 @@
 
   // --- Drag/Swipe ---
   let isDragging = false, startX = 0, currentTranslate = 0, prevTranslate = 0, animationID, dragThreshold = 50;
+  let dragStarted = false;
+
   function setSliderPosition(translate) { track.style.transform = `translateX(${translate}px)`; }
   function animation() { setSliderPosition(currentTranslate); if (isDragging) requestAnimationFrame(animation); }
   function getPositionX(e) { return e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX; }
+
+  function preventSelection(e) {
+    e.preventDefault();
+  }
+
   function touchStart(e) {
+    if (e.type === 'mousedown' && e.button !== 0) return; // Only left mouse button
     isDragging = true;
+    dragStarted = true;
     startX = getPositionX(e);
     prevTranslate = -current * slider.offsetWidth;
     currentTranslate = prevTranslate;
     setTrackTransition('none');
-    // cancelAutoplay();
     animationID = requestAnimationFrame(animation);
+    document.body.style.userSelect = 'none';
+    window.addEventListener('mousemove', touchMove);
+    window.addEventListener('mouseup', touchEnd);
+    window.addEventListener('touchmove', touchMove, { passive: false });
+    window.addEventListener('touchend', touchEnd);
+    window.addEventListener('mouseleave', touchEnd);
   }
   function touchMove(e) {
     if (!isDragging) return;
@@ -236,8 +250,10 @@
     const diff = currentX - startX;
     currentTranslate = prevTranslate + diff;
   }
-  function touchEnd() {
+  function touchEnd(e) {
+    if (!isDragging) return;
     isDragging = false;
+    dragStarted = false;
     cancelAnimationFrame(animationID);
     const movedBy = currentTranslate - prevTranslate;
     if (movedBy < -dragThreshold) {
@@ -248,14 +264,20 @@
       goTo(current);
     }
     setTrackTransition('transform 0.7s cubic-bezier(.4,0,.2,1)');
-    // startAutoplay();
+    document.body.style.userSelect = '';
+    window.removeEventListener('mousemove', touchMove);
+    window.removeEventListener('mouseup', touchEnd);
+    window.removeEventListener('touchmove', touchMove);
+    window.removeEventListener('touchend', touchEnd);
+    window.removeEventListener('mouseleave', touchEnd);
   }
   track.addEventListener('mousedown', touchStart);
   track.addEventListener('touchstart', touchStart, { passive: true });
-  window.addEventListener('mousemove', touchMove);
-  window.addEventListener('touchmove', touchMove, { passive: false });
-  window.addEventListener('mouseup', touchEnd);
-  window.addEventListener('touchend', touchEnd);
+  // Remove global listeners from previous version
+  // window.addEventListener('mousemove', touchMove);
+  // window.addEventListener('touchmove', touchMove, { passive: false });
+  // window.addEventListener('mouseup', touchEnd);
+  // window.addEventListener('touchend', touchEnd);
 
   // --- Infinite Loop Correction ---
   track.addEventListener('transitionend', () => {
