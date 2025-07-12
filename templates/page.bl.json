@@ -225,6 +225,7 @@
         "badge_fnaHFW": {
           "type": "badge",
           "settings": {
+            "icon": "shopify://shop_images/Shipping_80x_ae5891ed-00ce-4b18-9d49-892b535633c9.avif",
             "text": "Fast Free Shipping*",
             "subtext": "*On most in stock items for USA orders."
           }
@@ -232,6 +233,7 @@
         "badge_mdUPAc": {
           "type": "badge",
           "settings": {
+            "icon": "shopify://shop_images/Secure_Payments_80x_8d825126-c9c6-4fab-893d-ffabf68aabe7.avif",
             "text": "Fast Free Shipping*",
             "subtext": "*On most in stock items for USA orders."
           }
