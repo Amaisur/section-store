@@ -59,35 +59,68 @@
   position: relative;
   min-width: 0;
 }
+.bl-thisweek-slider-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.bl-thisweek-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: #e3eaf3;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s;
+}
+.bl-thisweek-arrow svg {
+  width: 22px;
+  height: 22px;
+  fill: #3498db;
+}
+.bl-thisweek-arrow.left { left: -22px; }
+.bl-thisweek-arrow.right { right: -22px; }
+
 .bl-thisweek-slider {
   width: 100%;
   display: flex;
-  gap: 1.5em;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+  scroll-behavior: smooth;
 }
 .bl-thisweek-product-card {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  min-width: 260px;
-  max-width: 280px;
-  flex: 0 0 auto;
+  min-width: 25%;
+  max-width: 25%;
+  flex: 0 0 25%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 1.2em 1em 1.5em 1em;
-  scroll-snap-align: start;
+  padding: 0 0 1.5em 0;
+  margin: 0;
+  border-right: 1px solid #f2f2f2;
   position: relative;
+}
+.bl-thisweek-product-card:last-child {
+  border-right: none;
 }
 .bl-thisweek-product-image {
   width: 100%;
-  height: 160px;
+  height: 180px;
   object-fit: contain;
   margin-bottom: 1em;
   background: #f5f7fa;
-  border-radius: 6px;
+  border-radius: 6px 6px 0 0;
 }
 .bl-thisweek-product-title {
   font-size: 1.1em;
@@ -95,12 +128,14 @@
   color: #222;
   margin-bottom: 0.5em;
   min-height: 2.5em;
+  padding: 0 1em;
 }
 .bl-thisweek-product-price {
   font-size: 1.2em;
   font-weight: 700;
   color: #222;
   margin-bottom: 0.2em;
+  padding: 0 1em;
 }
 .bl-thisweek-product-compare {
   font-size: 1em;
@@ -113,6 +148,7 @@
   color: #444;
   margin-bottom: 0.7em;
   min-height: 3.2em;
+  padding: 0 1em;
 }
 .bl-thisweek-product-btn {
   margin-top: auto;
@@ -126,9 +162,17 @@
   cursor: pointer;
   text-decoration: none;
   transition: background 0.2s;
+  margin-left: 1em;
 }
 .bl-thisweek-product-btn:hover {
   background: #2176bd;
+}
+@media (max-width: 1200px) {
+  .bl-thisweek-product-card, .bl-thisweek-product-card {
+    min-width: 33.3333%;
+    max-width: 33.3333%;
+    flex: 0 0 33.3333%;
+  }
 }
 @media (max-width: 900px) {
   .bl-thisweek-section {
@@ -146,12 +190,12 @@
     padding: 1em 0.2em 1.5em 0.2em;
   }
   .bl-thisweek-slider {
-    gap: 1em;
+    gap: 0;
   }
   .bl-thisweek-product-card {
-    min-width: 210px;
-    max-width: 220px;
-    padding: 1em 0.7em 1.2em 0.7em;
+    min-width: 50%;
+    max-width: 50%;
+    flex: 0 0 50%;
   }
   .bl-thisweek-product-image {
     height: 110px;
@@ -175,6 +219,11 @@
     font-size: 1em;
     padding: 0.6em 1.2em;
   }
+  .bl-thisweek-product-card {
+    min-width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
 }
 </style>
 
@@ -191,33 +240,59 @@
     {% endif %}
   </div>
   <div class="bl-thisweek-right">
-    {% assign featured_collection = section.settings.collection %}
+    {% assign featured_collection = collections[section.settings.collection] %}
     {% if featured_collection != blank and featured_collection.products.size > 0 %}
-      <div class="bl-thisweek-slider">
-        {% for product in featured_collection.products limit: 8 %}
-          <div class="bl-thisweek-product-card">
-            {% if product.featured_image %}
-              <img class="bl-thisweek-product-image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}">
-            {% endif %}
-            <div class="bl-thisweek-product-title">{{ product.title }}</div>
-            <div class="bl-thisweek-product-price">
-              {{ product.price | money }}
-              {% if product.compare_at_price > product.price %}
-                <span class="bl-thisweek-product-compare">{{ product.compare_at_price | money }}</span>
+      <div class="bl-thisweek-slider-wrapper">
+        <button class="bl-thisweek-arrow left" type="button" aria-label="Previous">
+          <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="bl-thisweek-slider" id="bl-thisweek-slider-{{ section.id }}">
+          {% for product in featured_collection.products %}
+            <div class="bl-thisweek-product-card">
+              {% if product.featured_image %}
+                <img class="bl-thisweek-product-image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}">
               {% endif %}
+              <div class="bl-thisweek-product-title">{{ product.title }}</div>
+              <div class="bl-thisweek-product-price">
+                {{ product.price | money }}
+                {% if product.compare_at_price > product.price %}
+                  <span class="bl-thisweek-product-compare">{{ product.compare_at_price | money }}</span>
+                {% endif %}
+              </div>
+              {% if product.description != blank %}
+                <div class="bl-thisweek-product-desc">{{ product.description | strip_html | truncate: 80 }}</div>
+              {% endif %}
+              <a href="{{ product.url }}" class="bl-thisweek-product-btn">View Product</a>
             </div>
-            {% if product.description != blank %}
-              <div class="bl-thisweek-product-desc">{{ product.description | strip_html | truncate: 80 }}</div>
-            {% endif %}
-            <a href="{{ product.url }}" class="bl-thisweek-product-btn">View Product</a>
-          </div>
-        {% endfor %}
+          {% endfor %}
+        </div>
+        <button class="bl-thisweek-arrow right" type="button" aria-label="Next">
+          <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+        </button>
       </div>
     {% else %}
       <div>No products found in this collection.</div>
     {% endif %}
   </div>
 </div>
+
+<script>
+(function() {
+  var slider = document.getElementById('bl-thisweek-slider-{{ section.id }}');
+  if (!slider) return;
+  var leftBtn = slider.parentElement.querySelector('.bl-thisweek-arrow.left');
+  var rightBtn = slider.parentElement.querySelector('.bl-thisweek-arrow.right');
+  var card = slider.querySelector('.bl-thisweek-product-card');
+  if (!card) return;
+  var cardWidth = card.offsetWidth;
+  var visibleCards = 4;
+  function scrollSlider(dir) {
+    slider.scrollBy({ left: dir * cardWidth, behavior: 'smooth' });
+  }
+  leftBtn.addEventListener('click', function() { scrollSlider(-1 * visibleCards); });
+  rightBtn.addEventListener('click', function() { scrollSlider(1 * visibleCards); });
+})();
+</script>
 
 {% schema %}
 {
