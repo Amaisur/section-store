@@ -240,14 +240,14 @@
     {% endif %}
   </div>
   <div class="bl-thisweek-right">
-    {% assign featured_collection = collections[section.settings.collection] %}
+    {% assign featured_collection = section.settings.collection %}
     {% if featured_collection != blank and featured_collection.products.size > 0 %}
       <div class="bl-thisweek-slider-wrapper">
         <button class="bl-thisweek-arrow left" type="button" aria-label="Previous">
           <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
         </button>
         <div class="bl-thisweek-slider" id="bl-thisweek-slider-{{ section.id }}">
-          {% for product in featured_collection.products %}
+          {% for product in featured_collection.products limit: 12 %}
             <div class="bl-thisweek-product-card">
               {% if product.featured_image %}
                 <img class="bl-thisweek-product-image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}">
