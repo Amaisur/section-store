@@ -1,0 +1,154 @@
+<style>
+.bl-featured-blog-section {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding-inline: 40px;
+}
+@media (max-width: 900px) {
+  .bl-featured-blog-section {
+    padding-inline: 16px;
+  }
+}
+.bl-featured-blog-title {
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 2em;
+  color: #111;
+}
+.bl-featured-blog-list {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1em;
+}
+.bl-featured-blog-post {
+  flex: 0 0 calc((100% - 64px) / 3);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  max-width: 420px;
+  scroll-snap-align: start;
+}
+@media (max-width: 900px) {
+  .bl-featured-blog-list {
+    gap: 16px;
+  }
+  .bl-featured-blog-post {
+    flex: 0 0 80vw;
+    min-width: 260px;
+    max-width: 90vw;
+  }
+}
+.bl-featured-blog-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+.bl-featured-blog-content {
+  padding: 1.2em 1em 1.5em 1em;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.bl-featured-blog-post-title {
+  font-size: 1.15em;
+  font-weight: 700;
+  margin-bottom: 0.7em;
+  color: #222;
+  text-decoration: none;
+}
+.bl-featured-blog-meta {
+  font-size: 0.98em;
+  color: #6a7a8c;
+  margin-bottom: 0.5em;
+  display: flex;
+  gap: 0.7em;
+  align-items: center;
+}
+.bl-featured-blog-link {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: auto;
+  transition: color 0.2s;
+}
+.bl-featured-blog-link:hover {
+  color: #217dbb;
+}
+</style>
+
+<div class="bl-featured-blog-section">
+  {% if section.settings.title != blank %}
+    <div class="bl-featured-blog-title">{{ section.settings.title }}</div>
+  {% endif %}
+  <div class="bl-featured-blog-list">
+    {% for block in section.blocks %}
+      {% assign article = block.settings.article %}
+      {% if article != blank %}
+        <div class="bl-featured-blog-post">
+          {% if article.image != blank %}
+            <img class="bl-featured-blog-image" src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title }}">
+          {% endif %}
+          <div class="bl-featured-blog-content">
+            <a class="bl-featured-blog-post-title" href="{{ article.url }}">{{ article.title }}</a>
+            <div class="bl-featured-blog-meta">
+              {% if article.author != blank %}
+                <span>{{ article.author }}</span>
+              {% endif %}
+              {% if article.published_at != blank %}
+                <span>•</span>
+                <span>{{ article.published_at | date: "%b %d, %Y" }}</span>
+              {% endif %}
+            </div>
+            <a class="bl-featured-blog-link" href="{{ article.url }}">Read more</a>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BL Featured Blog Posts",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Blog posts"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "blog_post",
+      "name": "Blog Post",
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "Blog Article"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "BL Featured Blog Posts",
+      "category": "Blog",
+      "blocks": [
+        { "type": "blog_post" },
+        { "type": "blog_post" },
+        { "type": "blog_post" }
+      ]
+    }
+  ]
+}
+{% endschema %} 
