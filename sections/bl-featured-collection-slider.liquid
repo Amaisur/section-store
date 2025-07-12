@@ -281,8 +281,8 @@
       &#8592;
     </button>
     <div class="bl-featured-slider__track">
-      {% assign products = section.settings.collection.products | slice: 0, 12 %}
-      {% for product in products %}
+      {% assign products = section.settings.collection.products %}
+      {% for product in products limit: 12 %}
         <a href="{{ product.url }}" class="bl-featured-slider__card">
           {% if product.compare_at_price > product.price %}
             <span class="bl-featured-slider__badge">Save {{ 100 | times: product.compare_at_price | minus: product.price | divided_by: product.compare_at_price | round }}%</span>
