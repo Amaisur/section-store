@@ -240,8 +240,8 @@
       &#8592;
     </button>
     <div class="bl-featured-slider__track">
-      {% assign products = section.settings.collection.products | slice: 0, 12 %}
-      {% for product in products %}
+      {% assign products = section.settings.collection.products %}
+      {% for product in products limit: 12 %}
         <a href="{{ product.url }}" class="bl-featured-slider__card">
           <div class="bl-featured-slider__image-wrapper">
             {% assign first_image = product.featured_image %}
