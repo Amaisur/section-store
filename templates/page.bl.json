@@ -247,6 +247,38 @@
       "settings": {
         "title": "Why choose us"
       }
+    },
+    "bl_featured_blog_LtpniJ": {
+      "type": "bl-featured-blog",
+      "blocks": {
+        "blog_post_cri3tE": {
+          "type": "blog_post",
+          "settings": {
+            "article": "news/best-cosmetics"
+          }
+        },
+        "blog_post_89cCJA": {
+          "type": "blog_post",
+          "settings": {
+            "article": "news/best-cosmetics"
+          }
+        },
+        "blog_post_cdxDLY": {
+          "type": "blog_post",
+          "settings": {
+            "article": "news/best-cosmetics"
+          }
+        }
+      },
+      "block_order": [
+        "blog_post_cri3tE",
+        "blog_post_89cCJA",
+        "blog_post_cdxDLY"
+      ],
+      "name": "BL Featured Blog Posts",
+      "settings": {
+        "title": "Blog posts"
+      }
     }
   },
   "order": [
@@ -259,6 +291,7 @@
     "bl_featured_collection_slider_4LyyyW",
     "bl_image_banner_cKb3Wa",
     "bl_thisweek_eWWB3J",
-    "bl_trust_badge_e4MpEH"
+    "bl_trust_badge_e4MpEH",
+    "bl_featured_blog_LtpniJ"
   ]
 }
