@@ -1,0 +1,125 @@
+<style>
+.bl-newsletter-section {
+  width: 100%;
+  padding: 60px 0 60px 0;
+  background: linear-gradient(135deg, #0a6cf1 0%, #1e90ff 100%);
+  background-image: url({{ section.settings.bg_image | image_url: width: 2000 }});
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+.bl-newsletter-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10, 108, 241, 0.7);
+  z-index: 1;
+}
+.bl-newsletter-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px 16px;
+}
+.bl-newsletter-title {
+  font-size: 2.2em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+.bl-newsletter-desc {
+  font-size: 1.2em;
+  margin-bottom: 1.5em;
+}
+.bl-newsletter-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.bl-newsletter-input {
+  flex: 1;
+  padding: 16px 18px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 1em;
+  outline: none;
+}
+.bl-newsletter-button {
+  padding: 16px 36px;
+  background: #fff;
+  color: #0a6cf1;
+  font-weight: 700;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.bl-newsletter-button:hover {
+  background: #e6f0ff;
+  color: #0056b3;
+}
+@media (max-width: 600px) {
+  .bl-newsletter-form {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .bl-newsletter-input, .bl-newsletter-button {
+    border-radius: 4px !important;
+    width: 100%;
+  }
+}
+</style>
+
+<div class="bl-newsletter-section">
+  <div class="bl-newsletter-overlay"></div>
+  <div class="bl-newsletter-content">
+    {% if section.settings.title != blank %}
+      <div class="bl-newsletter-title">{{ section.settings.title }}</div>
+    {% endif %}
+    {% if section.settings.desc != blank %}
+      <div class="bl-newsletter-desc">{{ section.settings.desc }}</div>
+    {% endif %}
+    <form class="bl-newsletter-form" method="post" action="/contact#newsletter">
+    <input type="hidden" name="form_type" value="newsletter">
+    <input type="hidden" name="utf8" value="✓">
+      <input class="bl-newsletter-input" type="email" name="contact[email]" placeholder="Your email" required>
+      <button class="bl-newsletter-button" type="submit">Subscribe</button>
+    </form>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BL Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Be the first to know"
+    },
+    {
+      "type": "textarea",
+      "id": "desc",
+      "label": "Description",
+      "default": "Get all the latest information on Events, Sales and Offers.\nSign up for newsletter today."
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image (optional)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL Newsletter",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %} 
