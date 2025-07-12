@@ -1,0 +1,262 @@
+<style>
+.bl-thisweek-section {
+  display: flex;
+  flex-direction: row;
+  background: #f2f2f2;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  min-height: 420px;
+  margin: 0 auto;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+}
+.bl-thisweek-left {
+  flex: 1 1 40%;
+  background: #ededed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3em 2.5em 3em 3em;
+  min-width: 320px;
+}
+.bl-thisweek-title {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.5em;
+}
+.bl-thisweek-subheading {
+  font-size: 1.1em;
+  color: #444;
+  margin-bottom: 2em;
+  max-width: 420px;
+}
+.bl-thisweek-btn {
+  display: inline-block;
+  background: #3498db;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 600;
+  padding: 0.8em 2em;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.bl-thisweek-btn:hover {
+  background: #2176bd;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+}
+.bl-thisweek-right {
+  flex: 2 1 60%;
+  background: #fff;
+  padding: 2em 1.5em 2em 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-width: 0;
+}
+.bl-thisweek-slider {
+  width: 100%;
+  display: flex;
+  gap: 1.5em;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.bl-thisweek-product-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  min-width: 260px;
+  max-width: 280px;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.2em 1em 1.5em 1em;
+  scroll-snap-align: start;
+  position: relative;
+}
+.bl-thisweek-product-image {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 1em;
+  background: #f5f7fa;
+  border-radius: 6px;
+}
+.bl-thisweek-product-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.5em;
+  min-height: 2.5em;
+}
+.bl-thisweek-product-price {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.2em;
+}
+.bl-thisweek-product-compare {
+  font-size: 1em;
+  color: #888;
+  text-decoration: line-through;
+  margin-left: 0.5em;
+}
+.bl-thisweek-product-desc {
+  font-size: 0.98em;
+  color: #444;
+  margin-bottom: 0.7em;
+  min-height: 3.2em;
+}
+.bl-thisweek-product-btn {
+  margin-top: auto;
+  background: #3498db;
+  color: #fff;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 0.6em 1.5em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.bl-thisweek-product-btn:hover {
+  background: #2176bd;
+}
+@media (max-width: 900px) {
+  .bl-thisweek-section {
+    flex-direction: column;
+    min-height: unset;
+  }
+  .bl-thisweek-left {
+    width: 100%;
+    padding: 2em 1em 1.5em 1em;
+    align-items: center;
+    text-align: center;
+  }
+  .bl-thisweek-right {
+    width: 100%;
+    padding: 1em 0.2em 1.5em 0.2em;
+  }
+  .bl-thisweek-slider {
+    gap: 1em;
+  }
+  .bl-thisweek-product-card {
+    min-width: 210px;
+    max-width: 220px;
+    padding: 1em 0.7em 1.2em 0.7em;
+  }
+  .bl-thisweek-product-image {
+    height: 110px;
+  }
+}
+@media (max-width: 600px) {
+  .bl-thisweek-section {
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .bl-thisweek-left {
+    padding: 1.2em 0.5em 1em 0.5em;
+  }
+  .bl-thisweek-title {
+    font-size: 1.2em;
+  }
+  .bl-thisweek-subheading {
+    font-size: 0.98em;
+  }
+  .bl-thisweek-btn {
+    font-size: 1em;
+    padding: 0.6em 1.2em;
+  }
+}
+</style>
+
+<div class="bl-thisweek-section">
+  <div class="bl-thisweek-left">
+    {% if section.settings.title != blank %}
+      <div class="bl-thisweek-title">{{ section.settings.title }}</div>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <div class="bl-thisweek-subheading">{{ section.settings.subheading }}</div>
+    {% endif %}
+    {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="bl-thisweek-btn">{{ section.settings.button_text }}</a>
+    {% endif %}
+  </div>
+  <div class="bl-thisweek-right">
+    {% assign featured_collection = section.settings.collection %}
+    {% if featured_collection != blank and featured_collection.products.size > 0 %}
+      <div class="bl-thisweek-slider">
+        {% for product in featured_collection.products limit: 8 %}
+          <div class="bl-thisweek-product-card">
+            {% if product.featured_image %}
+              <img class="bl-thisweek-product-image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}">
+            {% endif %}
+            <div class="bl-thisweek-product-title">{{ product.title }}</div>
+            <div class="bl-thisweek-product-price">
+              {{ product.price | money }}
+              {% if product.compare_at_price > product.price %}
+                <span class="bl-thisweek-product-compare">{{ product.compare_at_price | money }}</span>
+              {% endif %}
+            </div>
+            {% if product.description != blank %}
+              <div class="bl-thisweek-product-desc">{{ product.description | strip_html | truncate: 80 }}</div>
+            {% endif %}
+            <a href="{{ product.url }}" class="bl-thisweek-product-btn">View Product</a>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div>No products found in this collection.</div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BL This Week",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Interactive Flat Panel"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Brightlink's Interactive panel uses the newest technologies"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL This Week",
+      "category": "Featured"
+    }
+  ]
+}
+{% endschema %} 
