@@ -1,0 +1,109 @@
+<style>
+.bl-trusted-client-section {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 40px 16px;
+}
+.bl-trusted-client-title {
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 2em;
+  color: #111;
+}
+.bl-trusted-client-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.bl-trusted-client-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 32px 20px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 220px;
+  text-align: center;
+}
+.bl-trusted-client-logo {
+  max-width: 120px;
+  max-height: 60px;
+  margin-bottom: 18px;
+  object-fit: contain;
+}
+.bl-trusted-client-name {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #222;
+}
+.bl-trusted-client-desc {
+  font-size: 1em;
+  color: #444;
+}
+</style>
+
+<div class="bl-trusted-client-section">
+  {% if section.settings.title != blank %}
+    <div class="bl-trusted-client-title">{{ section.settings.title }}</div>
+  {% endif %}
+  <div class="bl-trusted-client-grid">
+    {% for block in section.blocks %}
+      <div class="bl-trusted-client-card">
+        {% if block.settings.logo != blank %}
+          <img class="bl-trusted-client-logo" src="{{ block.settings.logo | image_url: width: 200 }}" alt="{{ block.settings.name }}">
+        {% endif %}
+        {% if block.settings.name != blank %}
+          <div class="bl-trusted-client-name">{{ block.settings.name }}</div>
+        {% endif %}
+        {% if block.settings.desc != blank %}
+          <div class="bl-trusted-client-desc">{{ block.settings.desc }}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BL Trusted Clients",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Our Trusted Clients"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "client",
+      "name": "Client",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Client Logo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Client Name"
+        },
+        {
+          "type": "textarea",
+          "id": "desc",
+          "label": "Client Description"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "BL Trusted Clients",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %} 
