@@ -1,54 +1,11 @@
-{% schema %}
-{
-  "name": "BL Image Banner",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "Background Image"
-    },
-    {
-      "type": "text",
-      "id": "headline",
-      "label": "Headline",
-      "default": "Your Headline Here"
-    },
-    {
-      "type": "text",
-      "id": "subheadline",
-      "label": "Subheadline",
-      "default": "Your subheadline or description goes here."
-    },
-    {
-      "type": "text",
-      "id": "button_text",
-      "label": "Button Text",
-      "default": "Learn More"
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": "Button Link"
-    }
-  ],
-  "presets": [
-    {
-      "name": "BL Image Banner",
-      "category": "Banner"
-    }
-  ]
-}
-{% endschema %}
-
 <style>
+#shopify-section-{{ section.id }} {
+ overflow: hidden;
+}
 .bl-image-banner-section {
   position: relative;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  min-height: 340px;
+  width: 100%;
+  aspect-ratio: 150/43;
   display: flex;
   align-items: center;
   justify-content: flex-start; /* Left align content on desktop */
@@ -164,4 +121,46 @@
       <a href="{{ section.settings.button_link }}" class="bl-image-banner-btn">{{ section.settings.button_text }}</a>
     {% endif %}
   </div>
-</div> 
+</div>
+
+{% schema %}
+{
+  "name": "BL Image Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Your Headline Here"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Your subheadline or description goes here."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BL Image Banner",
+      "category": "Banner"
+    }
+  ]
+}
+{% endschema %} 
