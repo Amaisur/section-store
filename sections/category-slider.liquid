@@ -41,7 +41,7 @@
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   padding: 32px;
-  height: 280px;
+  aspect-ratio: 2/1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -54,39 +54,31 @@
   scroll-snap-align: start;
 }
 
-.bl-category-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-  border-color: #5ca6f7;
-}
-
 .bl-category-card__content {
   position: relative;
   z-index: 2;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .bl-category-card__badge {
   display: inline-block;
-  background: #5ca6f7;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.8em;
-  font-weight: 600;
-  align-self: flex-start;
-  margin-bottom: 16px;
+  color: #222;
+  font-size: 1.5em;
+  font-weight: 800;
+  margin-bottom: 8px;
+  text-align: left;
 }
 
 .bl-category-card__title {
   font-size: 1.5em;
   font-weight: 700;
   color: #222;
-  margin-bottom: 16px;
   line-height: 1.2;
+  text-align: left;
 }
 
 .bl-category-card__image {
@@ -121,8 +113,7 @@
   }
   
   .bl-category-card {
-    flex: 0 0 280px;
-    height: 240px;
+    flex: 0 0 30%;
     padding: 24px;
   }
   
