@@ -196,6 +196,17 @@
         "title": "Featured Collection",
         "collection": "all"
       }
+    },
+    "bl_image_banner_cKb3Wa": {
+      "type": "bl-image-banner",
+      "name": "BL Image Banner",
+      "settings": {
+        "background_image": "shopify://shop_images/image.png",
+        "headline": "Your Headline Here",
+        "subheadline": "Your subheadline or description goes here.",
+        "button_text": "Learn More",
+        "button_link": "#"
+      }
     }
   },
   "order": [
@@ -205,6 +216,7 @@
     "bl_hero_slider_PLTmmg",
     "bl_features_eVFhgA",
     "category_slider_tmaBX6",
-    "bl_featured_collection_slider_4LyyyW"
+    "bl_featured_collection_slider_4LyyyW",
+    "bl_image_banner_cKb3Wa"
   ]
 }
