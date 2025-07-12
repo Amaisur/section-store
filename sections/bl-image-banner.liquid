@@ -51,7 +51,7 @@
   min-height: 340px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Left align content on desktop */
   overflow: hidden;
   background: #f5f7fa;
 }
@@ -76,7 +76,7 @@
   color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-start; /* Left align content on desktop */
   gap: 1.2em;
   padding: 2em 1em;
 }
@@ -127,11 +127,11 @@
 @media (max-width: 600px) {
   .bl-image-banner-section {
     min-height: 140px;
-    justify-content: center;
+    justify-content: center; /* Center content horizontally on mobile */
   }
   .bl-image-banner-content {
-    align-items: center;
-    text-align: center;
+    align-items: center; /* Center content horizontally on mobile */
+    text-align: center;  /* Center text on mobile */
     gap: 0.8em;
     padding: 1em 0.2em;
   }
