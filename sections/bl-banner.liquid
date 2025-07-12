@@ -7,151 +7,166 @@
 {% endcomment %}
 
 <style>
-  .bl-banner {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 3/1;
-    display: flex;
-    align-items: stretch;
-    overflow: hidden;
-    background: #0a2c28;
+.bl-banner-section {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  background: #f5f7fa;
+}
+.bl-banner-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.bl-banner-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.08) 60%, rgba(0,0,0,0) 100%);
+  z-index: 2;
+}
+.bl-banner-content {
+  position: relative;
+  z-index: 3;
+  max-width: 600px;
+  margin-left: 7vw;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+.bl-banner-headline {
+  font-size: 2.8em;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #4a90e2;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+.bl-banner-subheadline {
+  font-size: 1.2em;
+  font-weight: 400;
+  color: #e3eaf3;
+  margin-bottom: 0.5em;
+}
+.bl-banner-btn {
+  display: inline-block;
+  background: #3498db;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 600;
+  padding: 0.9em 2.2em;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  margin-top: 0.5em;
+}
+.bl-banner-btn:hover {
+  background: #2176bd;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+}
+@media (max-width: 900px) {
+  .bl-banner-section {
+    min-height: 320px;
   }
-  .bl-banner__media {
-    /* position: absolute; */
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
+  .bl-banner-content {
+    margin-left: 4vw;
+    max-width: 90vw;
   }
-  .bl-banner video{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .bl-banner-headline {
+    font-size: 2em;
   }
-  .bl-banner__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0.00) 40.03%, rgba(0, 0, 0, 0.63) 61.02%, rgba(0, 0, 0, 0.70) 100%);
-    z-index: 2;
-    display: block !important;
-  }
-  .bl-banner__content {
-    position: absolute;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
+}
+@media (max-width: 600px) {
+  .bl-banner-section {
+    min-height: 220px;
     justify-content: center;
-    align-items: flex-start;
-    max-width: 600px;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 48px 16px;
   }
-  @media (min-width: 750px) {
-    .bl-banner__content {
-      padding: 64px 40px;
-    }
+  .bl-banner-content {
+    margin-left: 0;
+    align-items: center;
+    text-align: center;
+    gap: 1em;
   }
-  .bl-banner__subtitle {
-    color: #fff;
-    font-size: 1.1em;
-    font-weight: 500;
-    margin-bottom: 16px;
+  .bl-banner-headline {
+    font-size: 1.3em;
   }
-  .bl-banner__title {
-    color: #fff;
-    font-size: 2.5em;
-    font-weight: 800;
-    margin-bottom: 32px;
-    line-height: 1.1;
+  .bl-banner-subheadline {
+    font-size: 1em;
   }
-  @media (min-width: 750px) {
-    .bl-banner__title {
-      font-size: 3em;
-    }
+  .bl-banner-btn {
+    font-size: 1em;
+    padding: 0.7em 1.5em;
   }
-  .bl-banner__button {
-    background: #5ca6f7;
-    color: #fff;
-    font-size: 1.1em;
-    font-weight: 700;
-    padding: 16px 40px;
-    border: none;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: background 0.2s;
-    cursor: pointer;
-    display: inline-block;
-  }
-  .bl-banner__button:hover,
-  .bl-banner__button:focus {
-    background: #3578e5;
-  }
+}
 </style>
 
-<section class="bl-banner">
-  {% if section.settings.video != blank %}
-    {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, playsinline: trueW }}
-  {% elsif section.settings.image != blank %}
-    <img class="bl-banner__media" src="{{ section.settings.image | image_url }}" alt="Banner background">
+<div class="bl-banner-section">
+  {% if section.settings.background_image != blank %}
+    <img class="bl-banner-bg" src="{{ section.settings.background_image | image_url: width: 1800 }}" alt="Banner background" loading="eager">
   {% endif %}
-  <div class="bl-banner__overlay"></div>
-  <div class="bl-banner__content">
-    {% if section.settings.subtitle != blank %}
-      <div class="bl-banner__subtitle">{{ section.settings.subtitle }}</div>
+  <div class="bl-banner-gradient"></div>
+  <div class="bl-banner-content">
+    {% if section.settings.headline != blank %}
+      <div class="bl-banner-headline">{{ section.settings.headline }}</div>
     {% endif %}
-    {% if section.settings.title != blank %}
-      <div class="bl-banner__title">{{ section.settings.title }}</div>
+    {% if section.settings.subheadline != blank %}
+      <div class="bl-banner-subheadline">{{ section.settings.subheadline }}</div>
     {% endif %}
-    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
-      <a href="{{ section.settings.button_link }}" class="bl-banner__button">{{ section.settings.button_label }}</a>
+    {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="bl-banner-btn">{{ section.settings.button_text }}</a>
     {% endif %}
   </div>
-</section>
+</div>
 
 {% schema %}
 {
-  "name": "bl-banner",
-  "class": "bl-banner-section",
+  "name": "Brightlink Banner",
   "settings": [
     {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "default": "Brightlink Large Scale Video Walls"
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
     },
     {
       "type": "text",
-      "id": "title",
-      "label": "Title",
-      "default": "Transforming Spaces With Stunning LED Video Walls"
+      "id": "headline",
+      "label": "Headline",
+      "default": "With Brightlink you buy quality"
     },
     {
       "type": "text",
-      "id": "button_label",
-      "label": "Button Label",
-      "default": "Shop Now"
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Best quality, best price and best support"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Learn More about Us"
     },
     {
       "type": "url",
       "id": "button_link",
       "label": "Button Link"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image Fallback"
-    },
-    {
-      "type": "video",
-      "id": "video",
-      "label": "Video"
     }
   ],
   "presets": [
     {
-      "name": "bl-banner",
+      "name": "Brightlink Banner",
       "category": "Banner"
     }
   ]
