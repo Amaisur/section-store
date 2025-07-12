@@ -54,7 +54,7 @@
 .bl-featured-slider__track {
   display: flex;
   overflow-x: auto;
-  gap: 0;
+  gap: 32px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 16px;
@@ -64,40 +64,64 @@
 .bl-featured-slider__card {
   background: #fff;
   border: 1px solid #e5e7eb;
+  /* border-radius: 8px; */
+  border-radius: 0;
+  padding: 24px 16px 16px 16px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   cursor: pointer;
   transition: box-shadow 0.3s;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  flex: 0 0 16.7%;
+  flex: 0 0 calc((100% - 160px) / 6);
   scroll-snap-align: start;
+  min-width: 220px;
+  max-width: 260px;
   position: relative;
+  box-shadow: none;
 }
 
 .bl-featured-slider__card:hover {
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
 }
 
+.bl-featured-slider__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #3498db;
+  color: #fff;
+  font-size: 1em;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 0;
+  z-index: 2;
+  line-height: 1.2;
+}
+
 .bl-featured-slider__image-wrapper {
   width: 100%;
-  aspect-ratio: 1/1;
   position: relative;
   margin-bottom: 16px;
+  border-radius: 0;
 }
 
 .bl-featured-slider__image,
 .bl-featured-slider__image--hover {
   width: 100%;
-  height: 100%;
   object-fit: contain;
-  border-radius: 6px;
+  border-radius: 0;
   position: absolute;
   top: 0; left: 0;
   transition: opacity 0.3s;
+  background: #fff;
+  position: relative;
+  display: block;
+  height: auto;
+  min-height: 120px;
 }
 
 .bl-featured-slider__image--hover {
@@ -113,37 +137,59 @@
   opacity: 0;
 }
 
-.bl-featured-slider__title {
-  font-size: 1.1em;
-  font-weight: 600;
-  color: #222;
-  margin: 8px 0 4px 0;
-  text-align: center;
+.bl-featured-slider__price-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .bl-featured-slider__price {
-  font-size: 1.1em;
-  font-weight: 700;
-  color: #1a7f37;
-  margin-bottom: 2px;
+  font-size: 1.5em;
+  font-weight: 400;
+  color: #222;
+  margin-right: 10px;
 }
 
 .bl-featured-slider__compare {
-  font-size: 1em;
-  color: #888;
+  font-size: 1.1em;
+  color: #222;
   text-decoration: line-through;
-  margin-left: 8px;
+  opacity: 0.7;
+}
+
+.bl-featured-slider__title {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #222;
+  margin: 0 0 8px 0;
+  text-align: left;
+  line-height: 1.3;
 }
 
 .bl-featured-slider__stock {
-  font-size: 0.95em;
-  margin-top: 4px;
+  font-size: 1em;
+  margin-top: 8px;
   color: #1a7f37;
-  font-weight: 500;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+
+.bl-featured-slider__stock-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #1a7f37;
+  display: inline-block;
+  margin-right: 6px;
 }
 
 .bl-featured-slider__stock--out {
   color: #c00;
+}
+
+.bl-featured-slider__stock--out .bl-featured-slider__stock-dot {
+  background: #c00;
 }
 
 .bl-featured-slider__arrow {
@@ -152,7 +198,7 @@
   transform: translateY(-50%);
   background: #fff;
   border: 1px solid #e5e7eb;
-  border-radius: 50%;
+  border-radius: 0;
   width: 40px;
   height: 40px;
   display: flex;
@@ -186,7 +232,7 @@
     margin-bottom: 32px;
   }
   .bl-featured-slider__track {
-    gap: 0;
+    gap: 16px;
   }
   .bl-featured-slider__card {
     flex: 0 0 calc((100% - 32px) / 3);
@@ -235,9 +281,12 @@
       &#8592;
     </button>
     <div class="bl-featured-slider__track">
-      {% assign products = section.settings.collection.products %}
-      {% for product in products limit: 12 %}
+      {% assign products = section.settings.collection.products | slice: 0, 12 %}
+      {% for product in products %}
         <a href="{{ product.url }}" class="bl-featured-slider__card">
+          {% if product.compare_at_price > product.price %}
+            <span class="bl-featured-slider__badge">Save {{ 100 | times: product.compare_at_price | minus: product.price | divided_by: product.compare_at_price | round }}%</span>
+          {% endif %}
           <div class="bl-featured-slider__image-wrapper">
             {% assign first_image = product.featured_image %}
             {% assign second_image = product.images[1] %}
@@ -246,17 +295,17 @@
               <img src="{{ second_image | image_url: width: 400 }}" alt="{{ product.title | escape }} second image" class="bl-featured-slider__image--hover" loading="lazy">
             {% endif %}
           </div>
-          <div class="bl-featured-slider__price">
-            {{ product.price | money }}
+          <div class="bl-featured-slider__price-row">
+            <span class="bl-featured-slider__price">{{ product.price | money }}</span>
             {% if product.compare_at_price > product.price %}
               <span class="bl-featured-slider__compare">{{ product.compare_at_price | money }}</span>
             {% endif %}
           </div>
           <div class="bl-featured-slider__title">{{ product.title }}</div>
           {% if product.available %}
-            <div class="bl-featured-slider__stock">In stock</div>
+            <div class="bl-featured-slider__stock"><span class="bl-featured-slider__stock-dot"></span>In stock</div>
           {% else %}
-            <div class="bl-featured-slider__stock bl-featured-slider__stock--out">Out of stock</div>
+            <div class="bl-featured-slider__stock bl-featured-slider__stock--out"><span class="bl-featured-slider__stock-dot"></span>Out of stock</div>
           {% endif %}
         </a>
       {% endfor %}
