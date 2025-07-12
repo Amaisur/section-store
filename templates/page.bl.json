@@ -218,6 +218,35 @@
         "button_link": "#",
         "collection": "all"
       }
+    },
+    "bl_trust_badge_e4MpEH": {
+      "type": "bl-trust-badge",
+      "blocks": {
+        "badge_fnaHFW": {
+          "type": "badge",
+          "settings": {
+            "icon": "shopify://shop_images/Shipping_80x_ae5891ed-00ce-4b18-9d49-892b535633c9.avif",
+            "text": "Fast Free Shipping*",
+            "subtext": "*On most in stock items for USA orders."
+          }
+        },
+        "badge_mdUPAc": {
+          "type": "badge",
+          "settings": {
+            "icon": "shopify://shop_images/Secure_Payments_80x_8d825126-c9c6-4fab-893d-ffabf68aabe7.avif",
+            "text": "Fast Free Shipping*",
+            "subtext": "*On most in stock items for USA orders."
+          }
+        }
+      },
+      "block_order": [
+        "badge_fnaHFW",
+        "badge_mdUPAc"
+      ],
+      "name": "BL Trust Badge",
+      "settings": {
+        "title": "Why choose us"
+      }
     }
   },
   "order": [
@@ -229,6 +258,7 @@
     "category_slider_tmaBX6",
     "bl_featured_collection_slider_4LyyyW",
     "bl_image_banner_cKb3Wa",
-    "bl_thisweek_eWWB3J"
+    "bl_thisweek_eWWB3J",
+    "bl_trust_badge_e4MpEH"
   ]
 }
