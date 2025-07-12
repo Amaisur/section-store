@@ -13,11 +13,20 @@
 .bl-trusted-client-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
+  gap: 0;
+}
+.bl-trusted-client-card-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
 }
 .bl-trusted-client-card {
   background: #fff;
   border-radius: 12px;
+  border: 1.5px solid #e0e0e0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   padding: 32px 20px 24px 20px;
   display: flex;
@@ -25,6 +34,11 @@
   align-items: center;
   min-height: 220px;
   text-align: center;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.bl-trusted-client-card-link:hover .bl-trusted-client-card {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border-color: #3498db;
 }
 .bl-trusted-client-logo {
   max-width: 120px;
@@ -49,17 +63,20 @@
   {% endif %}
   <div class="bl-trusted-client-grid">
     {% for block in section.blocks %}
-      <div class="bl-trusted-client-card">
-        {% if block.settings.logo != blank %}
-          <img class="bl-trusted-client-logo" src="{{ block.settings.logo | image_url: width: 200 }}" alt="{{ block.settings.name }}">
-        {% endif %}
-        {% if block.settings.name != blank %}
-          <div class="bl-trusted-client-name">{{ block.settings.name }}</div>
-        {% endif %}
-        {% if block.settings.desc != blank %}
-          <div class="bl-trusted-client-desc">{{ block.settings.desc }}</div>
-        {% endif %}
-      </div>
+      {% assign client_url = block.settings.url %}
+      <a class="bl-trusted-client-card-link" href="{{ client_url }}" {% if client_url != blank %}target="_blank" rel="noopener"{% endif %}>
+        <div class="bl-trusted-client-card">
+          {% if block.settings.logo != blank %}
+            <img class="bl-trusted-client-logo" src="{{ block.settings.logo | image_url: width: 200 }}" alt="{{ block.settings.name }}">
+          {% endif %}
+          {% if block.settings.name != blank %}
+            <div class="bl-trusted-client-name">{{ block.settings.name }}</div>
+          {% endif %}
+          {% if block.settings.desc != blank %}
+            <div class="bl-trusted-client-desc">{{ block.settings.desc }}</div>
+          {% endif %}
+        </div>
+      </a>
     {% endfor %}
   </div>
 </div>
@@ -94,6 +111,11 @@
           "type": "textarea",
           "id": "desc",
           "label": "Client Description"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Client URL"
         }
       ]
     }
