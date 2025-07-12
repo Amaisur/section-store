@@ -1,0 +1,293 @@
+{% schema %}
+{
+  "name": "bl-featured-collection-slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Featured Collection"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "bl-featured-collection-slider",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %} 
+
+{% comment %}
+  BrightlinkAV-style featured collection slider
+  - Up to 12 products from selected collection
+  - 6 cards visible (desktop), 3 cards (mobile)
+  - Scrollable with arrows (desktop: show on hover, mobile: always visible)
+  - Product card: featured image (swap to second on hover), price, compare-at price, title, in-stock/out-of-stock
+  - Max-width 1360px, padding-inline 40px (desktop), 16px (mobile)
+{% endcomment %}
+
+<style>
+#bl-featured-collection-slider-{{ section.id }} {
+  max-width: 1360px;
+  padding-inline: 40px;
+  margin: 0 auto;
+}
+
+.bl-featured-slider__title {
+  font-size: 2.5em;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 48px;
+  color: #222;
+}
+
+.bl-featured-slider__container {
+  position: relative;
+}
+
+.bl-featured-slider__track {
+  display: flex;
+  overflow-x: auto;
+  gap: 32px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 16px;
+  transition: scroll-left 0.3s;
+}
+
+.bl-featured-slider__card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px 16px 16px 16px;
+  aspect-ratio: 2/3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  flex: 0 0 calc((100% - 160px) / 6);
+  scroll-snap-align: start;
+  min-width: 180px;
+  max-width: 220px;
+  position: relative;
+}
+
+.bl-featured-slider__card:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.bl-featured-slider__image-wrapper {
+  width: 100%;
+  aspect-ratio: 1/1;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.bl-featured-slider__image,
+.bl-featured-slider__image--hover {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  position: absolute;
+  top: 0; left: 0;
+  transition: opacity 0.3s;
+}
+
+.bl-featured-slider__image--hover {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bl-featured-slider__card:hover .bl-featured-slider__image--hover {
+  opacity: 1;
+}
+
+.bl-featured-slider__card:hover .bl-featured-slider__image {
+  opacity: 0;
+}
+
+.bl-featured-slider__title {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #222;
+  margin: 8px 0 4px 0;
+  text-align: center;
+}
+
+.bl-featured-slider__price {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #1a7f37;
+  margin-bottom: 2px;
+}
+
+.bl-featured-slider__compare {
+  font-size: 1em;
+  color: #888;
+  text-decoration: line-through;
+  margin-left: 8px;
+}
+
+.bl-featured-slider__stock {
+  font-size: 0.95em;
+  margin-top: 4px;
+  color: #1a7f37;
+  font-weight: 500;
+}
+
+.bl-featured-slider__stock--out {
+  color: #c00;
+}
+
+.bl-featured-slider__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.bl-featured-slider__arrow--left {
+  left: -20px;
+}
+
+.bl-featured-slider__arrow--right {
+  right: -20px;
+}
+
+.bl-featured-slider__container:hover .bl-featured-slider__arrow {
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  #bl-featured-collection-slider-{{ section.id }} {
+    padding-inline: 16px;
+  }
+  .bl-featured-slider__title {
+    font-size: 2em;
+    margin-bottom: 32px;
+  }
+  .bl-featured-slider__track {
+    gap: 16px;
+  }
+  .bl-featured-slider__card {
+    flex: 0 0 calc((100% - 32px) / 3);
+    min-width: 140px;
+    max-width: 180px;
+    padding: 16px 8px 12px 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .bl-featured-slider__title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  .bl-featured-slider__card {
+    flex: 0 0 120px;
+    min-width: 120px;
+    max-width: 140px;
+    padding: 10px 4px 8px 4px;
+  }
+  .bl-featured-slider__arrow {
+    opacity: 1 !important;
+    width: 32px;
+    height: 32px;
+    left: -10px;
+    right: -10px;
+  }
+}
+
+/* Hide scrollbar but keep functionality */
+.bl-featured-slider__track::-webkit-scrollbar {
+  display: none;
+}
+.bl-featured-slider__track {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+</style>
+
+<div id="bl-featured-collection-slider-{{ section.id }}">
+  {% if section.settings.title != blank %}
+    <h2 class="bl-featured-slider__title">{{ section.settings.title }}</h2>
+  {% endif %}
+  <div class="bl-featured-slider__container">
+    <button class="bl-featured-slider__arrow bl-featured-slider__arrow--left" type="button" aria-label="Scroll left">
+      &#8592;
+    </button>
+    <div class="bl-featured-slider__track">
+      {% assign products = section.settings.collection.products | slice: 0, 12 %}
+      {% for product in products %}
+        <a href="{{ product.url }}" class="bl-featured-slider__card">
+          <div class="bl-featured-slider__image-wrapper">
+            {% assign first_image = product.featured_image %}
+            {% assign second_image = product.images[1] %}
+            <img src="{{ first_image | image_url: width: 400 }}" alt="{{ product.title | escape }}" class="bl-featured-slider__image" loading="lazy">
+            {% if second_image %}
+              <img src="{{ second_image | image_url: width: 400 }}" alt="{{ product.title | escape }} second image" class="bl-featured-slider__image--hover" loading="lazy">
+            {% endif %}
+          </div>
+          <div class="bl-featured-slider__price">
+            {{ product.price | money }}
+            {% if product.compare_at_price > product.price %}
+              <span class="bl-featured-slider__compare">{{ product.compare_at_price | money }}</span>
+            {% endif %}
+          </div>
+          <div class="bl-featured-slider__title">{{ product.title }}</div>
+          {% if product.available %}
+            <div class="bl-featured-slider__stock">In stock</div>
+          {% else %}
+            <div class="bl-featured-slider__stock bl-featured-slider__stock--out">Out of stock</div>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+    <button class="bl-featured-slider__arrow bl-featured-slider__arrow--right" type="button" aria-label="Scroll right">
+      &#8594;
+    </button>
+  </div>
+</div>
+
+<script>
+(function() {
+  var sectionId = "bl-featured-collection-slider-{{ section.id }}";
+  var slider = document.getElementById(sectionId);
+  if (!slider) return;
+  var track = slider.querySelector('.bl-featured-slider__track');
+  var left = slider.querySelector('.bl-featured-slider__arrow--left');
+  var right = slider.querySelector('.bl-featured-slider__arrow--right');
+  var card = slider.querySelector('.bl-featured-slider__card');
+  if (!track || !left || !right || !card) return;
+  var cardWidth = card.offsetWidth + parseInt(getComputedStyle(track).gap || 0);
+  left.addEventListener('click', function() {
+    track.scrollBy({ left: -cardWidth * 3, behavior: 'smooth' });
+  });
+  right.addEventListener('click', function() {
+    track.scrollBy({ left: cardWidth * 3, behavior: 'smooth' });
+  });
+})();
+</script> 
