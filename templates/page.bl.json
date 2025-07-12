@@ -207,6 +207,17 @@
         "button_text": "Learn More",
         "button_link": "#"
       }
+    },
+    "bl_thisweek_eWWB3J": {
+      "type": "bl-thisweek",
+      "name": "BL This Week",
+      "settings": {
+        "title": "Interactive Flat Panel",
+        "subheading": "Brightlink's Interactive panel uses the newest technologies",
+        "button_text": "Shop Now",
+        "button_link": "#",
+        "collection": "all"
+      }
     }
   },
   "order": [
@@ -217,6 +228,7 @@
     "bl_features_eVFhgA",
     "category_slider_tmaBX6",
     "bl_featured_collection_slider_4LyyyW",
-    "bl_image_banner_cKb3Wa"
+    "bl_image_banner_cKb3Wa",
+    "bl_thisweek_eWWB3J"
   ]
 }
