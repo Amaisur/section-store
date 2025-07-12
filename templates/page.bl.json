@@ -188,6 +188,14 @@
       "settings": {
         "title": "Shop by Category"
       }
+    },
+    "bl_featured_collection_slider_4LyyyW": {
+      "type": "bl-featured-collection-slider",
+      "name": "bl-featured-collection",
+      "settings": {
+        "title": "Featured Collection",
+        "collection": "all"
+      }
     }
   },
   "order": [
@@ -196,6 +204,7 @@
     "bl_banner_4drykY",
     "bl_hero_slider_PLTmmg",
     "bl_features_eVFhgA",
-    "category_slider_tmaBX6"
+    "category_slider_tmaBX6",
+    "bl_featured_collection_slider_4LyyyW"
   ]
 }
