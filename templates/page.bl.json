@@ -137,6 +137,57 @@
       ],
       "name": "bl-features",
       "settings": {}
+    },
+    "category_slider_tmaBX6": {
+      "type": "category-slider",
+      "blocks": {
+        "category_PHeyka": {
+          "type": "category",
+          "settings": {
+            "badge": "Popular",
+            "title": "HDMI Cables",
+            "image": "shopify://shop_images/RocketWood.png",
+            "link_url": "/collections/hdmi-cables"
+          }
+        },
+        "category_QxcJCa": {
+          "type": "category",
+          "settings": {
+            "badge": "New",
+            "title": "Matrix Switchers",
+            "image": "shopify://shop_images/EV_5.png",
+            "link_url": "/collections/matrix-switchers"
+          }
+        },
+        "category_reGpQK": {
+          "type": "category",
+          "settings": {
+            "badge": "Featured",
+            "title": "Video Walls",
+            "image": "shopify://shop_images/03_1.png",
+            "link_url": "/collections/video-walls"
+          }
+        },
+        "category_EU7P3G": {
+          "type": "category",
+          "disabled": true,
+          "settings": {
+            "badge": "Hot",
+            "title": "Control Systems",
+            "link_url": "/collections/control-systems"
+          }
+        }
+      },
+      "block_order": [
+        "category_PHeyka",
+        "category_QxcJCa",
+        "category_reGpQK",
+        "category_EU7P3G"
+      ],
+      "name": "bl-category-slider",
+      "settings": {
+        "title": "Shop by Category"
+      }
     }
   },
   "order": [
@@ -144,6 +195,7 @@
     "bl_header_zaJ3rB",
     "bl_banner_4drykY",
     "bl_hero_slider_PLTmmg",
-    "bl_features_eVFhgA"
+    "bl_features_eVFhgA",
+    "category_slider_tmaBX6"
   ]
 }
