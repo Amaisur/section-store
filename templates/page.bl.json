@@ -279,6 +279,89 @@
       "settings": {
         "title": "Blog posts"
       }
+    },
+    "bl_trusted_client_DXfWkn": {
+      "type": "bl-trusted-client",
+      "blocks": {
+        "client_TcNr77": {
+          "type": "client",
+          "settings": {
+            "logo": "shopify://shop_images/box_8905756.png",
+            "name": "City of Mobile Alabama",
+            "desc": ""
+          }
+        },
+        "client_HYDVLg": {
+          "type": "client",
+          "settings": {
+            "logo": "shopify://shop_images/box_8905756.png",
+            "name": "City of Mobile Alabama",
+            "desc": ""
+          }
+        },
+        "client_bkCkMP": {
+          "type": "client",
+          "settings": {
+            "logo": "shopify://shop_images/box_8905756.png",
+            "name": "City of Mobile Alabama",
+            "desc": ""
+          }
+        },
+        "client_8U6G89": {
+          "type": "client",
+          "settings": {
+            "logo": "shopify://shop_images/box_8905756.png",
+            "name": "City of Mobile Alabama",
+            "desc": ""
+          }
+        },
+        "client_tV9p4Q": {
+          "type": "client",
+          "settings": {
+            "logo": "shopify://shop_images/box_8905756.png",
+            "name": "City of Mobile Alabama",
+            "desc": ""
+          }
+        },
+        "client_qwPiFe": {
+          "type": "client",
+          "settings": {
+            "logo": "shopify://shop_images/box_8905756.png",
+            "name": "City of Mobile Alabama",
+            "desc": ""
+          }
+        },
+        "client_QtrUVz": {
+          "type": "client",
+          "settings": {
+            "logo": "shopify://shop_images/box_8905756.png",
+            "name": "City of Mobile Alabama",
+            "desc": ""
+          }
+        },
+        "client_EnWCWF": {
+          "type": "client",
+          "settings": {
+            "logo": "shopify://shop_images/box_8905756.png",
+            "name": "City of Mobile Alabama",
+            "desc": ""
+          }
+        }
+      },
+      "block_order": [
+        "client_TcNr77",
+        "client_HYDVLg",
+        "client_bkCkMP",
+        "client_8U6G89",
+        "client_tV9p4Q",
+        "client_qwPiFe",
+        "client_QtrUVz",
+        "client_EnWCWF"
+      ],
+      "name": "BL Trusted Clients",
+      "settings": {
+        "title": "Our Trusted Clients"
+      }
     }
   },
   "order": [
@@ -292,6 +375,7 @@
     "bl_image_banner_cKb3Wa",
     "bl_thisweek_eWWB3J",
     "bl_trust_badge_e4MpEH",
-    "bl_featured_blog_LtpniJ"
+    "bl_featured_blog_LtpniJ",
+    "bl_trusted_client_DXfWkn"
   ]
 }
