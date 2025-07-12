@@ -1,0 +1,302 @@
+{% comment %}
+  BrightlinkAV-style category slider section with 3 cards visible and scrollable rest
+  - Responsive: max-width 1360px, padding-inline 40px (desktop), 16px (mobile)
+  - Desktop: 3 cards visible, rest scrollable
+  - Mobile: horizontal scroll slider
+  - Half image visible at bottom right, lifts on hover
+  - Whole box clickable
+{% endcomment %}
+
+<style>
+#shopify-section-{{ section.id }} {
+  max-width: 1360px;
+  padding-inline: 40px;
+  margin: 0 auto;
+}
+
+.bl-category-section {
+  margin: 48px 0;
+}
+
+.bl-category-section__title {
+  font-size: 2.5em;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 48px;
+  color: #222;
+}
+
+.bl-category-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 32px;
+  padding-bottom: 16px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bl-category-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 32px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  flex: 0 0 calc((100% - 64px) / 3);
+  scroll-snap-align: start;
+}
+
+.bl-category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border-color: #5ca6f7;
+}
+
+.bl-category-card__content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bl-category-card__badge {
+  display: inline-block;
+  background: #5ca6f7;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 600;
+  align-self: flex-start;
+  margin-bottom: 16px;
+}
+
+.bl-category-card__title {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.bl-category-card__image {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.bl-category-card:hover .bl-category-card__image {
+  transform: translateY(-8px) scale(1.05);
+}
+
+/* Mobile Styles */
+@media (max-width: 900px) {
+  #shopify-section-{{ section.id }} {
+    padding-inline: 16px;
+  }
+  
+  .bl-category-section__title {
+    font-size: 2em;
+    margin-bottom: 32px;
+  }
+  
+  .bl-category-grid {
+    gap: 16px;
+  }
+  
+  .bl-category-card {
+    flex: 0 0 280px;
+    height: 240px;
+    padding: 24px;
+  }
+  
+  .bl-category-card__title {
+    font-size: 1.3em;
+  }
+  
+  .bl-category-card__image {
+    width: 100px;
+    height: 100px;
+    bottom: -15px;
+    right: -15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .bl-category-section__title {
+    font-size: 1.8em;
+    margin-bottom: 24px;
+  }
+  
+  .bl-category-card {
+    flex: 0 0 260px;
+    height: 220px;
+    padding: 20px;
+  }
+  
+  .bl-category-card__title {
+    font-size: 1.2em;
+  }
+  
+  .bl-category-card__image {
+    width: 80px;
+    height: 80px;
+    bottom: -10px;
+    right: -10px;
+  }
+}
+
+/* Hide scrollbar but keep functionality */
+.bl-category-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.bl-category-grid {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+</style>
+
+<div class="bl-category-section">
+  {% if section.settings.title != blank %}
+    <h2 class="bl-category-section__title">{{ section.settings.title }}</h2>
+  {% endif %}
+  
+  <div class="bl-category-grid">
+    {% for block in section.blocks %}
+      {% if block.settings.link_url != blank %}
+        <a href="{{ block.settings.link_url }}" class="bl-category-card">
+      {% else %}
+        <div class="bl-category-card">
+      {% endif %}
+        
+        <div class="bl-category-card__content">
+          {% if block.settings.badge != blank %}
+            <span class="bl-category-card__badge">{{ block.settings.badge }}</span>
+          {% endif %}
+          
+          {% if block.settings.title != blank %}
+            <h3 class="bl-category-card__title">{{ block.settings.title }}</h3>
+          {% endif %}
+        </div>
+        
+        {% if block.settings.image != blank %}
+          <img 
+            src="{{ block.settings.image | image_url: width: 240 }}"
+            alt="{{ block.settings.title | escape }}"
+            class="bl-category-card__image"
+            loading="lazy"
+            width="120"
+            height="120"
+          >
+        {% endif %}
+        
+      {% if block.settings.link_url != blank %}
+        </a>
+      {% else %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "bl-category-slider",
+  "class": "bl-category-slider-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Shop by Category"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge Text",
+          "default": "New"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Title",
+          "default": "Category Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Category Image"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Category Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "bl-category-slider",
+      "category": "Features",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "badge": "Popular",
+            "title": "HDMI Cables",
+            "link_url": "/collections/hdmi-cables"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "badge": "New",
+            "title": "Matrix Switchers",
+            "link_url": "/collections/matrix-switchers"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "badge": "Featured",
+            "title": "Video Walls",
+            "link_url": "/collections/video-walls"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "badge": "Hot",
+            "title": "Control Systems",
+            "link_url": "/collections/control-systems"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %} 
