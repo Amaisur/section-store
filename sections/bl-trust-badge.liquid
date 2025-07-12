@@ -1,0 +1,140 @@
+<style>
+.bl-trust-badge-section {
+  width: 100%;
+  margin: 0 auto 2em auto;
+  text-align: center;
+  padding: 2.5em 0 2em 0;
+}
+.bl-trust-badge-title {
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 2.2em;
+  color: #111;
+}
+.bl-trust-badge-badges {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 7vw;
+  flex-wrap: wrap;
+}
+.bl-trust-badge-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 260px;
+  min-width: 180px;
+  margin: 0 1em;
+}
+.bl-trust-badge-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.2em;
+  object-fit: contain;
+}
+.bl-trust-badge-text {
+  font-size: 1.15em;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.4em;
+}
+.bl-trust-badge-subtext {
+  font-size: 1em;
+  color: #6a7a8c;
+  margin-top: 0.2em;
+}
+@media (max-width: 900px) {
+  .bl-trust-badge-badges {
+    gap: 3vw;
+  }
+  .bl-trust-badge-badge {
+    min-width: 120px;
+    max-width: 180px;
+  }
+  .bl-trust-badge-title {
+    font-size: 1.3em;
+  }
+}
+@media (max-width: 600px) {
+  .bl-trust-badge-badges {
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+  }
+  .bl-trust-badge-badge {
+    min-width: 100px;
+    max-width: 100%;
+  }
+}
+</style>
+
+<div class="bl-trust-badge-section">
+  {% if section.settings.title != blank %}
+    <div class="bl-trust-badge-title">{{ section.settings.title }}</div>
+  {% endif %}
+  <div class="bl-trust-badge-badges">
+    {% for block in section.blocks %}
+      <div class="bl-trust-badge-badge">
+        {% if block.settings.icon != blank %}
+          <img class="bl-trust-badge-icon" src="{{ block.settings.icon | image_url: width: 120 }}" alt="Trust Icon">
+        {% endif %}
+        {% if block.settings.text != blank %}
+          <div class="bl-trust-badge-text">{{ block.settings.text }}</div>
+        {% endif %}
+        {% if block.settings.subtext != blank %}
+          <div class="bl-trust-badge-subtext">{{ block.settings.subtext }}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BL Trust Badge",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Why choose us"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Trust Badge",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Main Text",
+          "default": "Fast Free Shipping*"
+        },
+        {
+          "type": "text",
+          "id": "subtext",
+          "label": "Subtext",
+          "default": "*On most in stock items for USA orders."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "BL Trust Badge",
+      "category": "Badges",
+      "blocks": [
+        { "type": "badge" },
+        { "type": "badge" }
+      ]
+    }
+  ]
+}
+{% endschema %} 
