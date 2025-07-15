@@ -1,4 +1,3 @@
-
 (function () {
   const cart = document.querySelector('.cart-drawer-d5');
   const cartIcon = document.querySelector('#cart-icon-bubble');
