@@ -451,11 +451,10 @@
         background-color: #27ae60;
     }
     .cd-free-shipping-bar__icon-d5 .cd-icon-tag-d5 {
-        background-repeat: no-repeat !important;
-        background-position: center !important;
+        background: url('https://cdn.shopify.com/s/files/1/0562/7763/1105/files/icons8-shipping-50.png?v=1751637244') no-repeat center center;
         width: 25px; 
         height: 25px;
-        background-size: 17px !important;
+        background-size: 17px;
         background-color: #fff;
         border-radius: 50%;
     }
@@ -464,7 +463,7 @@
         padding: 0 16px 20px;
     }
     .cd-icon-tooltip-d5{
-        position: absolute; 
+        position: absolute;
         bottom: -18px;
         font-size: 8px;
         text-wrap: nowrap;
@@ -538,80 +537,39 @@
       </div>
     </div>
     <div class="cd-content-d5">
-     {% comment %}<div class="cd-rewards-bar-d5" render-d5>
-  <div class="cd-free-shipping-bar__content-d5">
-    <p class="cd-free-shipping-bar__text-d5">
-      {% liquid
-        assign total = cart.total_price
-        if section.settings.reward_count == "1"
-        assign t_1 = section.settings.reward_threshold_1 | times: 100
-        elsif section.settings.reward_count == "2"
-        assign t_1 = section.settings.reward_threshold_1 | times: 100
-        assign t_2 = section.settings.reward_threshold_2 | times: 100
-        elsif section.settings.reward_count == "3"
-        assign t_1 = section.settings.reward_threshold_1 | times: 100
-        assign t_2 = section.settings.reward_threshold_2 | times: 100
-        assign t_3 = section.settings.reward_threshold_3 | times: 100
-        endif
-      %}
+      <div class="cd-rewards-bar-d5">
+        {% liquid
+            assign threshold = section.settings.free_shipping
+            assign threshold_in_cents = threshold | times: 100
+            assign total = cart.total_price
+            assign difference = threshold_in_cents | minus: total
+            assign percentage = total | times: 100 | divided_by: threshold_in_cents
+          %}
+         <div class="cd-free-shipping-bar__content-d5">
+            <p class="cd-free-shipping-bar__text-d5" render-d5>
 
-      {% if total > t_3 %} 
-        All <strong>Rewards</strong> Unlocked!
-      {% elsif total > t_2 and total < t_3 %}
-        You Have Unlcoked {{ section.settings.reward_label_1 }} and {% if total > t_2 %}You are <strong>{{ t_3 | minus: total | money }}</strong> from {% endif %} {{ section.settings.reward_label_2 }}
-        {% elsif total > t_1 and total < t_2 %}
-        You are <strong>{{ t_2 | minus: total | money }}</strong> from {{ section.settings.reward_label_1 }}
-       {% endif %}
-    </p>
-  </div>
-  <div class="cd-free-shipping-bar-d5">
-    <div class="cd-free-shipping-bar__inner-d5"></div>
-      {%  liquid 
-        if section.settings.reward_count == "1"
-        assign left_1 = 100
-        elsif section.settings.reward_count == "2"
-        assign left_1 = 50
-        elsif section.settings.reward_count == "3"
-        assign left_1 = 33 
-        endif
-
-        if section.settings.reward_count == "2"
-        assign left_2 = 100
-        elsif section.settings.reward_count == "3"
-        assign left_2 = 66
-        endif
-
-        if section.settings.reward_count == "3"
-        assign left_3 = 100
-        endif
-      %}
-      {% if section.settings.reward_threshold_1 != blank %}
-      <div class="cd-free-shipping-bar__icon-d5" style="left: calc({{ left_1 }}% - 40px);">
-          <span class="cd-icon-tag-d5" style="background-image: url('{{ section.settings.reward_icon_1 |  image_url: width: 50 }}')"></span>
-          <span class="cd-icon-tooltip-d5">
-            {{ section.settings.reward_label_1 }}
-          </span>
+              {% if cart.total_price >= threshold_in_cents %}
+                🎉 You've earned free shipping!
+              {% else %}
+                You're <strong>{{ difference | money }}</strong> away from free shipping!
+              {% endif %}
+            </p>
+          </div>
+        <div class="cd-free-shipping-bar-d5">
+          
+          <div
+            class="cd-free-shipping-bar__inner-d5"
+            style="width: {{ percentage | round: 2 }}%;"
+          ></div>
+           <div render-d5 class="cd-free-shipping-bar__icon-d5 {% if cart.total_price >= threshold_in_cents %}rewards-true{% else %}rewards-false{% endif %}">
+           
+                <span class="cd-icon-check-d5"></span>
+              
+                <span class="cd-icon-tag-d5"></span>
+                <span class="cd-icon-tooltip-d5">Free Shipping</span>
+            </div>
+        </div>
       </div>
-      {% endif %}
-      {% if section.settings.reward_threshold_2 != blank %}
-      <div class="cd-free-shipping-bar__icon-d5" style="left: calc({{ left_2 }}% - 40px);">
-          <span class="cd-icon-tag-d5" style="background-image: url('{{ section.settings.reward_icon_2 |  image_url: width: 50 }}')"></span>
-          <span class="cd-icon-tooltip-d5">
-            {{ section.settings.reward_label_2 }}
-          </span>
-      </div>
-      {% endif %}
-      {% if section.settings.reward_threshold_3 != blank %}
-      <div class="cd-free-shipping-bar__icon-d5" style="left: calc({{ left_3 }}% - 40px);">
-          <span class="cd-icon-tag-d5" style="background-image: url('{{ section.settings.reward_icon_3 |  image_url: width: 50 }}')"></span>
-          <span class="cd-icon-tooltip-d5">
-            {{ section.settings.reward_label_3 }}
-          </span>
-      </div>
-      {% endif %}
-  </div>
-</div>{% endcomment %}
-<div id="cd-rewards-bar-d5"></div>
       <div class="atc-loader-d5">
         <span class="item-loader-d5"></span>
       </div>
@@ -732,68 +690,6 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
       document.querySelector('cart-drawer').remove();
-
-    
-  window.rewardsConfig = {
-    rewardCount: {{ section.settings.reward_count }},
-    thresholds: [
-      {% if section.settings.reward_threshold_1 != blank %}{{ section.settings.reward_threshold_1 | times: 100 }}{% else %}0{% endif %},
-      {% if section.settings.reward_threshold_2 != blank %}{{ section.settings.reward_threshold_2 | times: 100 }}{% else %}0{% endif %},
-      {% if section.settings.reward_threshold_3 != blank %}{{ section.settings.reward_threshold_3 | times: 100 }}{% else %}0{% endif %}
-    ].slice(0, {{ section.settings.reward_count }}),
-    labels: [
-      {% if section.settings.reward_label_1 != blank %}"{{ section.settings.reward_label_1 }}"{% endif %},
-      {% if section.settings.reward_label_2 != blank %},"{{ section.settings.reward_label_2 }}"{% endif %},
-      {% if section.settings.reward_label_3 != blank %},"{{ section.settings.reward_label_3 }}"{% endif %}
-    ].slice(0, {{ section.settings.reward_count }}),
-    icons: [
-      {% if section.settings.reward_icon_1 != blank %}"{{ section.settings.reward_icon_1 | image_url: width:50 }}"{% endif %},
-      {% if section.settings.reward_icon_2 != blank %},"{{ section.settings.reward_icon_2 | image_url: width:50 }}"{% endif %},
-      {% if section.settings.reward_icon_3 != blank %},"{{ section.settings.reward_icon_3 | image_url: width:50 }}"{% endif %}
-    ].slice(0, {{ section.settings.reward_count }}),
-    cartTotal: {{ cart.total_price }}  // in cents/pennies
-  };
-
-
-
-     function initRewardsBar(c, id) {
-  var e = document.getElementById(id);
-  if (!e) return;
-  var rc = c.rewardCount;
-  var t = c.thresholds;
-  var l = c.labels;
-  var i = c.icons;
-  var ct = c.cartTotal;
-  var mt = t[t.length-1]||0;
-  var p = mt ? Math.min(Math.round(ct/mt*100),100) : 0;
-  var h = '<div class="cd-rewards-bar-d5" render-d5>'
-        + '<div class="cd-free-shipping-bar__content-d5">'
-        + '<p class="cd-free-shipping-bar__text-d5"></p>'
-        + '</div>'
-        + '<div class="cd-free-shipping-bar-d5">'
-        + '<div class="cd-free-shipping-bar__inner-d5" style="width:'+p+'%;"></div>';
-  t.forEach(function(v,x){
-    var pos = mt ? v/mt*100 : 0;
-    h += '<div class="cd-free-shipping-bar__icon-d5" style="left:calc('+pos+'% - 40px)">'
-      + '<span class="cd-icon-tag-d5" style="background-image:url(\''+i[x]+'\')"></span>'
-      + '<span class="cd-icon-tooltip-d5">'+l[x]+'</span>'
-      + '</div>';
-  });
-  h += '</div></div>';
-  e.innerHTML = h;
-  var txt = '';
-  if (ct >= mt) {
-    txt = 'All <strong>Rewards</strong> Unlocked!';
-  } else if (rc === 3 && ct >= t[1]) {
-    txt = 'You have unlocked '+l[0]+' and you are <strong>'+(mt-ct)+'</strong> from unlocking '+l[2];
-  } else if (ct >= t[0] && rc >= 2) {
-    txt = 'You are <strong>'+(t[1]-ct)+'</strong> from unlocking '+l[1];
-  } else {
-    txt = 'You are <strong>'+(t[0]-ct)+'</strong> from unlocking '+l[0];
-  }
-  e.querySelector('.cd-free-shipping-bar__text-d5').innerHTML = txt;
-}
-    if (window.rewardsConfig) initRewardsBar(window.rewardsConfig,'cd-rewards-bar-d5');
   })
 </script>
  <a hidden href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble" style="display: none !important;">
@@ -819,104 +715,20 @@
     "name": "D5 Cart Drawer",
     "settings": [
         {
+            "type": "number",
+            "id": "free_shipping",
+            "label": "Free Shipping Amount",
+            "default": 200
+        },
+        {
             "type": "url",
             "id": "empty_cart_page",
             "label": "Empty Cart Drawer Collection URL"
-        },
-        {
-          "type": "select",
-          "id": "reward_count",
-          "label": "Number of Milestones",
-          "default": "2",
-          "options": [
-            {"label": "1","value": "1"},
-            {"label": "2","value": "2"},
-            {"label": "3","value": "3"}
-          ]
-        },
-        {
-          "type": "header",
-          "content": "Free Reward Milestone 1"
-        },
-         {
-            "type": "number",
-            "id": "reward_threshold_1",
-            "label": "Reward Price 1",
-            "default": 200
-          },
-          {
-            "type": "text",
-            "id": "reward_label_1",
-            "label": "Reward Label 1",
-            "default": "Free Shipping"
-          },
-          {
-            "type": "image_picker",
-            "id": "reward_icon_1",
-            "label": "Reward Icon 1"
-          },
-          {
-            "type": "product",
-            "id": "reward_product_1",
-            "label": "Product as a Reward 1",
-            "info": "Selected product can only be added to the cart after a specific milestone is achieved."
-          },
-           {
-          "type": "header",
-          "content": "Free Reward Milestone 2"
-        },
-         {
-            "type": "number",
-            "id": "reward_threshold_2",
-            "label": "Reward Price 2",
-            "default": 400
-          },
-          {
-            "type": "text",
-            "id": "reward_label_2",
-            "label": "Reward Label 2",
-            "default": "Free Product"
-          },
-          {
-            "type": "image_picker",
-            "id": "reward_icon_2",
-            "label": "Reward Icon 2"
-          },
-          {
-            "type": "product",
-            "id": "reward_product_2",
-            "label": "Product as a Reward 2",
-            "info": "Selected product can only be added to the cart after a specific milestone is achieved."
-          },
-           {
-          "type": "header",
-          "content": "Free Reward Milestone 3"
-        },
-         {
-            "type": "number",
-            "id": "reward_threshold_3",
-            "label": "Reward Price 3"
-          },
-          {
-            "type": "text",
-            "id": "reward_label_3",
-            "label": "Reward Label 3"
-          },
-          {
-            "type": "image_picker",
-            "id": "reward_icon_3",
-            "label": "Reward Icon 3"
-          },
-          {
-            "type": "product",
-            "id": "reward_product_3",
-            "label": "Product as a Reward 3",
-            "info": "Selected product can only be added to the cart after a specific milestone is achieved."
-          }
+        }
         ],
     "presets": [
         {
-            "name": "D5 Cart Drawer" 
+            "name": "D5 Cart Drawer"
         }
     ]
 }
