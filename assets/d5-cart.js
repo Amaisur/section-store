@@ -1,60 +1,4 @@
-Umais
-amaisur
-Amaisur
 
-This is the start of the #backup-code channel. 
-Umais — 7/4/2025 8:50 PM
-Cart Drawer.liquid
-<style>
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
-Expand
-message.txt
-19 KB
-Cart Drawer.js
-(function () {
-  const cart = document.querySelector('.cart-drawer-d5');
-  const cartIcon = document.querySelector('#cart-icon-bubble');
-
-  cartIcon.addEventListener('click', (e) => {
-    e.preventDefault();
-Expand
-message.txt
-4 KB
-Umais — 7/8/2025 11:33 PM
-
-(function () {
-  const cart = document.querySelector('.cart-drawer-d5');
-  const cartIcon = document.querySelector('#cart-icon-bubble');
-
-  cartIcon.addEventListener('click', (e) => {
-Expand
-message.txt
-5 KB
-<style>
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
-Expand
-message.txt
-28 KB
-Umais — 7/9/2025 10:41 PM
-pure comfort
-<style>
-  .variant-input-wrap select{
-    width: 100%;
-    max-width: 300px;
-  }
-</style> 
-Expand
-message.txt
-27 KB
-﻿
 (function () {
   const cart = document.querySelector('.cart-drawer-d5');
   const cartIcon = document.querySelector('#cart-icon-bubble');
@@ -106,7 +50,7 @@ message.txt
     const rewardsBar = document.querySelector('.cd-free-shipping-bar__inner-d5');
     if(dataRW){
       let width = dataRW.getAttribute('data-width');
-      rewardsBar.style.width = width;
+      if (window.rewardsConfig) initRewardsBar(window.rewardsConfig,'cd-rewards-bar-d5')
     }
     
   }
@@ -181,4 +125,6 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
     document.body.classList.remove('overflow-hidden');
     })
   })
+
+
 })();
