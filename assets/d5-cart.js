@@ -1,4 +1,3 @@
-
 (function () {
   const cart = document.querySelector('.cart-drawer-d5');
   const cartIcon = document.querySelector('#cart-icon-bubble');
@@ -50,7 +49,7 @@
     const rewardsBar = document.querySelector('.cd-free-shipping-bar__inner-d5');
     if(dataRW){
       let width = dataRW.getAttribute('data-width');
-      if (window.rewardsConfig) initRewardsBar(window.rewardsConfig,'cd-rewards-bar-d5')
+      rewardsBar.style.width = width;
     }
     
   }
@@ -125,6 +124,4 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
     document.body.classList.remove('overflow-hidden');
     })
   })
-
-
 })();
