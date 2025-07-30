@@ -282,12 +282,19 @@
     </script>
   {% render 'sparq-assets' %}
     <script>
-     const originalFetch = window.fetch;
+    const originalFetch = window.fetch;
+
 window.fetch = async function (...args) {
   if (args[0].includes('/add')) {
     console.log('[Fetch Intercept] Request to /add:', args);
-    e.preventDefault();
+    
+    // To actually block the request, you can return a fake response
+    return new Response(JSON.stringify({ message: 'Blocked by intercept' }), {
+      status: 403,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
+
   return originalFetch.apply(this, args);
 };
 
