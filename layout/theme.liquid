@@ -285,13 +285,7 @@ window.fetch = async function (...args) {
 
     </script>
   {% render 'sparq-assets' %}
-    <script>
-      app.use('/api', (req, res, next) => {
-      console.log('API Request Detected:', req.method, req.url);
-      next();
-    });
-
-    </script>
+   
 </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
