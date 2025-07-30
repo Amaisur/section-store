@@ -286,6 +286,7 @@
 window.fetch = async function (...args) {
   if (args[0].includes('/add')) {
     console.log('[Fetch Intercept] Request to /add:', args);
+    e.preventDefault();
   }
   return originalFetch.apply(this, args);
 };
