@@ -281,7 +281,7 @@
       }
     </script>
   {% render 'sparq-assets' %}
-    <script>
+    {% comment %} <script>
     const originalFetch = window.fetch;
 
 window.fetch = async function (...args) {
@@ -299,7 +299,7 @@ window.fetch = async function (...args) {
 };
 
 
-    </script>
+    </script> {% endcomment %}
 </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
