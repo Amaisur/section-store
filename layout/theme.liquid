@@ -310,7 +310,7 @@ window.fetch = async function (...args) {
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
     {%- endif -%}
-    {{ sections 'special' }}
+    {% sections 'special' %}
     {% sections 'header-group' %}
 
 <style>
@@ -492,7 +492,7 @@ function openTab(evt, tabName) {
     <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
   <body>
-     {{ sections 'special' }}
+     {% sections 'special' %}
   </body>
   </html>
 {% endunless %}
