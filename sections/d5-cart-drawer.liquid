@@ -616,7 +616,7 @@
               {% endif %}
             {% elsif section.settings.milestones == '1' %}
               {% if total > mil_1 %}
-                🎉 You've unlocked all rewards!
+                🎉 You've unlocked <strong>{{ section.settings.mile_stone_1 | money }}</strong>!
               {% elsif mil_1 > total %}
                 You are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_1_label }}!
               {% endif %}
