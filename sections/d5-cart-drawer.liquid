@@ -538,13 +538,26 @@
     </div>
     <div class="cd-content-d5">
       <div class="cd-rewards-bar-d5">
-        {% liquid
+        {% comment %} {% liquid
             assign threshold = section.settings.free_shipping
             assign threshold_in_cents = threshold | times: 100
             assign total = cart.total_price
             assign difference = threshold_in_cents | minus: total
             assign percentage = total | times: 100 | divided_by: threshold_in_cents
-          %}
+          %} {% endcomment %}
+            {% liquid
+              assign mil_1 = section.settings.mile_stone_1 | times: 100
+              assign mil_2 = section.settings.mile_stone_2 | times: 100
+              assign mil_3 = section.settings.mile_stone_3 | times: 100
+              assign total = cart.total_price
+              if total > mil_3
+                assign rew_3 = true
+              elsif total > mil_2
+                assign rew_2 = true
+              elsif total > mil_1
+                assign rew_1 = true
+              endif
+            %}
          <div class="cd-free-shipping-bar__content-d5">
             <p class="cd-free-shipping-bar__text-d5" render-d5>
 
