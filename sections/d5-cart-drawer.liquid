@@ -576,9 +576,7 @@
             %}
          <div class="cd-free-shipping-bar__content-d5">
             <p class="cd-free-shipping-bar__text-d5" render-d5>
-              1:{{ rew_1 }}{{ mil_1 }}
-              2:{{ rew_2 }}{{ mil_2 }}
-              3:{{ rew_3 }}{{ mil_3 }}
+             
               {% if cart.total_price >= threshold_in_cents %}
                 🎉 You've earned free shipping!
               {% else %}
@@ -592,13 +590,12 @@
             class="cd-free-shipping-bar__inner-d5"
             style="width: {{ percentage | round: 2 }}%;"
           ></div>
-           <div render-d5 class="cd-free-shipping-bar__icon-d5 {% if cart.total_price >= threshold_in_cents %}rewards-true{% else %}rewards-false{% endif %}">
-           
-                <span class="cd-icon-check-d5"></span>
-              
-                <span class="cd-icon-tag-d5"></span>
-                <span class="cd-icon-tooltip-d5">Free Shipping</span>
-            </div>
+          {% if section.settings.milestones == "1" %}
+           <div render-d5 class="cd-free-shipping-bar__icon-d5 rewards-true rewards-false" style="right: 0">
+                <span class="cd-icon-tag-d5" style="url('{{ section.settings.mile_stone_1_icon | image_url: width: '50px' }}') no-repeat center center"></span>
+                <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_1_label }}</span>
+           </div>
+          {% endif %}
         </div>
       </div>
       <div class="atc-loader-d5">
