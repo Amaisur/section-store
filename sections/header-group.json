@@ -100,7 +100,7 @@
       "name": "D5 Cart Drawer",
       "settings": {
         "empty_cart_page": "shopify://pages/test-atc",
-        "milestones": "3",
+        "milestones": "0",
         "mile_stone_1": 200,
         "mile_stone_1_label": "Free Shipping",
         "mile_stone_1_icon": "shopify://shop_images/icons8-shipping-50.png",
