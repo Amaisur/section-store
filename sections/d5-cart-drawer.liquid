@@ -581,7 +581,10 @@
                  elsif total > mil_1
                     assign difference = mil_2 | minus: total
                     assign rew_1 = true
-                  endif
+                 elsif mil_1 > total
+                    assign difference = mil_1 | minus: total
+                endif
+                
               endif
              
             %}
