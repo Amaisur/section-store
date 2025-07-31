@@ -563,8 +563,8 @@
                 elsif total > mil_1
                   assign rew_1 = true
                 endif
-                assign plus_2 = mil_1 | plus: mil_2
-                assign percentage = total | times: 100 | divided_by: plus_2
+               
+                assign percentage = total | times: 100 | divided_by: mil_2
               elsif section.settings.milestones == "3"
                 assign mil_1 = section.settings.mile_stone_1 | times: 100
                 assign mil_2 = section.settings.mile_stone_2 | times: 100
@@ -593,7 +593,7 @@
             </p>
           </div>
         <div class="cd-free-shipping-bar-d5">
-          asd{{ plus_2 }}
+          
           <div
             class="cd-free-shipping-bar__inner-d5"
             style="width: {{ percentage }}%;"
