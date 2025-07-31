@@ -7,15 +7,33 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- 
 {
   "sections": {
     "main": {
       "type": "main-404",
+      "disabled": true,
       "settings": {}
+    },
+    "d5_cart_drawer_XDm4mC": {
+      "type": "d5-cart-drawer",
+      "name": "D5 Cart Drawer",
+      "settings": {
+        "empty_cart_page": "shopify://pages/test-atc",
+        "milestones": "1",
+        "mile_stone_1": 200,
+        "mile_stone_1_label": "Free Shipping",
+        "mile_stone_1_icon": "shopify://shop_images/icons8-shipping-50.png",
+        "mile_stone_2": 400,
+        "mile_stone_2_label": "Free Product",
+        "mile_stone_2_icon": "shopify://shop_images/box_8905756.png",
+        "mile_stone_3": 600,
+        "mile_stone_3_label": "gift",
+        "mile_stone_3_icon": "shopify://shop_images/Shipping_80x_ae5891ed-00ce-4b18-9d49-892b535633c9.avif"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "d5_cart_drawer_XDm4mC"
   ]
 }
