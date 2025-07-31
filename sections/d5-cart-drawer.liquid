@@ -553,11 +553,12 @@
                 if total > mil_1
                   assign rew_1 = true
                 endif
-                
+                assign difference = mil_1 | minus: total
                 assign percentage = total | times: 100 | divided_by: mil_1
               elsif section.settings.milestones == "2"
                 assign mil_1 = section.settings.mile_stone_1 | times: 100
                 assign mil_2 = section.settings.mile_stone_2 | times: 100
+                assign difference = mil_2 | minus: total
                 assign percentage = total | times: 100 | divided_by: mil_2
                 if total > mil_2
                   assign rew_2 = true
@@ -569,6 +570,7 @@
                 assign mil_1 = section.settings.mile_stone_1 | times: 100
                 assign mil_2 = section.settings.mile_stone_2 | times: 100
                 assign mil_3 = section.settings.mile_stone_3 | times: 100
+                assign difference = mil_3 | minus: total
                 assign percentage = total | times: 100 | divided_by: mil_3
                  if total > mil_3
                     assign rew_3 = true
