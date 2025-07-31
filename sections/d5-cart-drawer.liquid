@@ -560,9 +560,9 @@
             %}
          <div class="cd-free-shipping-bar__content-d5">
             <p class="cd-free-shipping-bar__text-d5" render-d5>
-              1:{{ rew_1 }}
-              2:{{ rew_2 }}
-              3:{{ rew_3 }}
+              1:{{ rew_1 }}{{ mil_1 }}
+              2:{{ rew_2 }}{{ mil_2 }}
+              3:{{ rew_3 }}{{ mil_3 }}
               {% if cart.total_price >= threshold_in_cents %}
                 🎉 You've earned free shipping!
               {% else %}
