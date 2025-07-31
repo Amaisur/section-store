@@ -591,11 +591,32 @@
             %}
          <div class="cd-free-shipping-bar__content-d5">
             <p class="cd-free-shipping-bar__text-d5" render-d5>
-              {% if cart.total_price >= threshold_in_cents %}
-                🎉 You've earned free shipping!
-              {% else %}
-                You're <strong>{{ difference | money }}</strong> away from free shipping!
-              {% endif %}
+              {% if section.settings.milestones == "3" %}
+              {% if total > mil_3 %}
+                🎉 You've unlocked all rewards!
+              {% elsif total > mil_2 %}
+                🎉 You've unlocked {{ section.settings.mile_stone_2_label }} and you are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_3_label }}!
+              {% elsif total > mil_1 %}
+               🎉 You've unlocked {{ section.settings.mile_stone_1_label }} and you are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_2_label }}!
+              {% elsif mil_1 > total %}
+               You are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_1_label }}!
+             {% endif %}
+             {% elsif section.settings.milestones == "2" %}
+              {% if total > mil_2 %}
+              🎉 You've unlocked all rewards!
+            {% elsif total > mil_1 %}
+               🎉 You've unlocked {{ section.settings.mile_stone_1_label }} and you are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_2_label }}!
+              {% elsif mil_1 > total %}
+               You are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_1_label }}!
+             {% endif %}
+             {% elsif section.settings.milestones == "1" %}
+              {% if total > mil_1 %}
+              🎉 You've unlocked all rewards!
+             🎉 You've unlocked {{ section.settings.mile_stone_1_label }} and you are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_2_label }}!
+              {% elsif mil_1 > total %}
+               You are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_1_label }}!
+             {% endif %}
+             {% endif %}
             </p>
           </div>
         <div class="cd-free-shipping-bar-d5">
