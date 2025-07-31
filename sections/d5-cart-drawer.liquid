@@ -546,12 +546,12 @@
             assign percentage = total | times: 100 | divided_by: threshold_in_cents
           %} {% endcomment %}
             {% liquid
-              if section.settings.milestones == 1
+              if section.settings.milestones == "1"
                 assign mil_1 = section.settings.mile_stone_1 | times: 100
-              elsif section.settings.milestones == 2
+              elsif section.settings.milestones == "2"
                 assign mil_1 = section.settings.mile_stone_1 | times: 100
                 assign mil_2 = section.settings.mile_stone_2 | times: 100
-              elsif section.settings.milestones == 3
+              elsif section.settings.milestones == "3"
                 assign mil_1 = section.settings.mile_stone_1 | times: 100
                 assign mil_2 = section.settings.mile_stone_2 | times: 100
                 assign mil_3 = section.settings.mile_stone_3 | times: 100
