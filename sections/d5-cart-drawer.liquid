@@ -595,9 +595,9 @@
               {% if total > mil_3 %}
                 🎉 You've unlocked all rewards!
               {% elsif total > mil_2 %}
-                🎉 You've unlocked {{ section.settings.mile_stone_2_label }} and you are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_3_label }}!
+               🎉 {{ section.settings.mile_stone_2_label }} unlocked and <strong>{{ difference | money }}</strong> more to unlock {{ section.settings.mile_stone_3_label }}!
               {% elsif total > mil_1 %}
-               🎉 You've unlocked {{ section.settings.mile_stone_1_label }} and you are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_2_label }}!
+               🎉 {{ section.settings.mile_stone_1_label }} unlocked and <strong>{{ difference | money }}</strong> more to unlock {{ section.settings.mile_stone_2_label }}!
               {% elsif mil_1 > total %}
                You are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_1_label }}!
              {% endif %}
@@ -605,14 +605,13 @@
               {% if total > mil_2 %}
               🎉 You've unlocked all rewards!
             {% elsif total > mil_1 %}
-               🎉 You've unlocked {{ section.settings.mile_stone_1_label }} and you are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_2_label }}!
+               🎉 {{ section.settings.mile_stone_1_label }} unlocked and <strong>{{ difference | money }}</strong> more to unlock {{ section.settings.mile_stone_2_label }}!
               {% elsif mil_1 > total %}
                You are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_1_label }}!
              {% endif %}
              {% elsif section.settings.milestones == "1" %}
               {% if total > mil_1 %}
               🎉 You've unlocked all rewards!
-             🎉 You've unlocked {{ section.settings.mile_stone_1_label }} and you are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_2_label }}!
               {% elsif mil_1 > total %}
                You are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_1_label }}!
              {% endif %}
