@@ -26,7 +26,7 @@
   }
 
   async function rerenderCart() {
-    const response = await fetch('/pages/404');
+    const response = await fetch('/pages/empty-page');
     const data = await response.text();
     const doc = new DOMParser().parseFromString(data, 'text/html');
     const oldElems = document.querySelectorAll('[render-d5]')
