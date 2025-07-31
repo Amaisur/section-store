@@ -553,6 +553,8 @@
                 if total > mil_1
                   assign rew_1 = true
                 endif
+                
+                assign percentage = total | times: 100 | divided_by: mil_1
               elsif section.settings.milestones == "2"
                 assign mil_1 = section.settings.mile_stone_1 | times: 100
                 assign mil_2 = section.settings.mile_stone_2 | times: 100
@@ -561,6 +563,8 @@
                 elsif total > mil_1
                   assign rew_1 = true
                 endif
+                assign plus_2 = mil_1 | plus: mil_2
+                assign percentage = total | times: 100 | divided_by: plus_2
               elsif section.settings.milestones == "3"
                 assign mil_1 = section.settings.mile_stone_1 | times: 100
                 assign mil_2 = section.settings.mile_stone_2 | times: 100
