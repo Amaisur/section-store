@@ -595,9 +595,9 @@
               {% if total > mil_3 %}
                 🎉 You've unlocked all rewards!
               {% elsif total > mil_2 %}
-               🎉 {{ section.settings.mile_stone_2_label }} unlocked and <strong>{{ difference | money }}</strong> more to unlock {{ section.settings.mile_stone_3_label }}!
+               🎉 {{ section.settings.mile_stone_2_label }} unlocked and <strong>{{ difference | money }}</strong> more for <strong>{{ section.settings.mile_stone_3_label }}</strong>!
               {% elsif total > mil_1 %}
-               🎉 {{ section.settings.mile_stone_1_label }} unlocked and <strong>{{ difference | money }}</strong> more to unlock {{ section.settings.mile_stone_2_label }}!
+               🎉 {{ section.settings.mile_stone_1_label }} unlocked and <strong>{{ difference | money }}</strong> more for <strong>{{ section.settings.mile_stone_2_label }}</strong>!
               {% elsif mil_1 > total %}
                You are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_1_label }}!
              {% endif %}
@@ -605,9 +605,9 @@
               {% if total > mil_2 %}
               🎉 You've unlocked all rewards!
             {% elsif total > mil_1 %}
-               🎉 {{ section.settings.mile_stone_1_label }} unlocked and <strong>{{ difference | money }}</strong> more to unlock {{ section.settings.mile_stone_2_label }}!
+               🎉 {{ section.settings.mile_stone_1_label }} unlocked and <strong>{{ difference | money }}</strong> more for <strong>{{ section.settings.mile_stone_2_label }}</strong>!
               {% elsif mil_1 > total %}
-               You are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_1_label }}!
+               You are <strong>{{ difference | money }}</strong> away from <strong>{{ section.settings.mile_stone_1_label }}</strong>!
              {% endif %}
              {% elsif section.settings.milestones == "1" %}
               {% if total > mil_1 %}
