@@ -714,7 +714,20 @@
 {
     "name": "D5 Cart Drawer",
     "settings": [
-        { 
+        {
+          "type": "header",
+          "content": "Empty Cart Drawer"
+        },
+        {
+            "type": "url",
+            "id": "empty_cart_page",
+            "label": "Empty Cart Drawer Collection URL"
+        },
+        {
+            "type": "header",
+            "content": "Free Milestones"
+        },
+        {   
             "type": "select",
             "id": "milestones",
             "label": "Number of Free Milestone",
@@ -797,11 +810,7 @@
             "visible_if": "{{ section.settings.milestones > 2 }}"
         },
 
-        {
-            "type": "url",
-            "id": "empty_cart_page",
-            "label": "Empty Cart Drawer Collection URL"
-        }
+       
         ],
     "presets": [
         {
