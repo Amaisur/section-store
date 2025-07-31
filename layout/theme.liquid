@@ -1,3 +1,4 @@
+{% unless template contains 'empty-page' %}
 <!doctype html>
 <html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>
@@ -300,7 +301,7 @@ window.fetch = async function (...args) {
 
 
     </script> {% endcomment %}
-{% include 'pagefly-app-header' %}</head>
+</head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
@@ -482,3 +483,16 @@ function openTab(evt, tabName) {
 
   </body>
 </html>
+{% else %}
+  <!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+  </head>
+  <body>
+     {{ content_for_layout }}
+  </body>
+  </html>
+{% endunless %}
