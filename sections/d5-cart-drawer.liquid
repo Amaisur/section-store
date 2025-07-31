@@ -574,13 +574,12 @@
                 assign difference = mil_3 | minus: total
                 assign percentage = total | times: 100 | divided_by: mil_3
                  if total > mil_3
-                assign difference = mil_3 | minus: total
                     assign rew_3 = true
-                    elsif total > mil_2
-                assign difference = mil_2 | minus: total
+                 elsif total > mil_2
+                    assign difference  = mil_2 | minus: total
                     assign rew_2 = true
-                  elsif total > mil_1
-                assign difference = mil_1 | minus: total
+                 elsif total > mil_1
+                    assign difference = mil_1 | minus: total
                     assign rew_1 = true
                   endif
               endif
