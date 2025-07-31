@@ -97,6 +97,7 @@
     },
     "d5_cart_drawer_gUxAwy": {
       "type": "d5-cart-drawer",
+      "disabled": true,
       "name": "D5 Cart Drawer",
       "settings": {
         "empty_cart_page": "shopify://pages/test-atc",
