@@ -576,6 +576,8 @@
                   elsif total > mil_1
                     assign rew_1 = true
                   endif
+                 assign plus_3 = mil_2 | plus: mil_3 | plus: mil_1
+                 assign percentage = total | times: 100 | divided_by: plus_3
               endif
              
             %}
