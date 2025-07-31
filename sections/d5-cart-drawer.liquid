@@ -596,7 +596,7 @@
           
           <div
             class="cd-free-shipping-bar__inner-d5"
-            style="width: {{ percentage | round: 2 }}%;"
+            style="width: {{ percentage }}%;"
           ></div>
           {% if section.settings.milestones == "1" %}
            <div class="cd-free-shipping-bar__icon-d5 rewards-true rewards-false" style="right: 0">
@@ -631,7 +631,7 @@
       <div class="atc-loader-d5">
         <span class="item-loader-d5"></span>
       </div>
-      <div class="cd-cart-items-d5" render-d5 data-width="{{ percentage | round: 2 }}%" shipping-bar-d5>
+      <div class="cd-cart-items-d5" render-d5 data-width="{{ percentage }}%" shipping-bar-d5>
         {% if cart.item_count > 0 %}
       {% for item in cart.items %}
         <div
