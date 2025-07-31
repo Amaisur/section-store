@@ -576,10 +576,10 @@
                  if total > mil_3
                     assign rew_3 = true
                  elsif total > mil_2
-                    assign difference  = mil_2 | minus: total
+                    assign difference  = mil_2 | minus: mil_3
                     assign rew_2 = true
                  elsif total > mil_1
-                    assign difference = mil_1 | minus: total
+                    assign difference = mil_1 | minus: mil_2
                     assign rew_1 = true
                   endif
               endif
