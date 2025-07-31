@@ -595,6 +595,15 @@
                 <span class="cd-icon-tag-d5" style="url('{{ section.settings.mile_stone_1_icon | image_url: width: '50px' }}') no-repeat center center"></span>
                 <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_1_label }}</span>
            </div>
+          {% elsif section.settings.milestones == "2" %}
+           <div render-d5 class="cd-free-shipping-bar__icon-d5 rewards-true rewards-false" style="right: 0">
+                <span class="cd-icon-tag-d5" style="url('{{ section.settings.mile_stone_1_icon | image_url: width: '50px' }}') no-repeat center center"></span>
+                <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_1_label }}</span>
+           </div>
+            <div render-d5 class="cd-free-shipping-bar__icon-d5 rewards-true rewards-false" style="right: 50%">
+                <span class="cd-icon-tag-d5" style="url('{{ section.settings.mile_stone_2_icon | image_url: width: '50px' }}') no-repeat center center"></span>
+                <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_2_label }}</span>
+           </div>
           {% endif %}
         </div>
       </div>
