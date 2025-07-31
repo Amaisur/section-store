@@ -284,7 +284,27 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-  {% include 'pagefly-app-header' %}</head>
+  {% render 'sparq-assets' %}
+    {% comment %} <script>
+    const originalFetch = window.fetch;
+
+window.fetch = async function (...args) {
+  if (args[0].includes('/add')) {
+    console.log('[Fetch Intercept] Request to /add:', args);
+    
+    // To actually block the request, you can return a fake response
+    return new Response(JSON.stringify({ message: 'Blocked by intercept' }), {
+      status: 403,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
+  return originalFetch.apply(this, args);
+};
+
+
+    </script> {% endcomment %}
+{% include 'pagefly-app-header' %}</head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}"><div class="pagefly-container">
               {{ content_for_layout }}
