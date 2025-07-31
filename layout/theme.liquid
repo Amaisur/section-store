@@ -310,7 +310,7 @@ window.fetch = async function (...args) {
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
     {%- endif -%}
-
+{{ sections 'special' }}
     {% sections 'header-group' %}
 
 <style>
