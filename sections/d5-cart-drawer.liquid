@@ -560,7 +560,6 @@
                 assign mil_2 = section.settings.mile_stone_2 | times: 100
                 assign percentage = total | times: 100 | divided_by: mil_2
                 if total > mil_2
-                  assign difference = "you have unlocked all rewards"
                   assign rew_2 = true
                 elsif total > mil_1
                 assign difference = mil_2 | minus: total
@@ -575,8 +574,7 @@
                 assign mil_3 = section.settings.mile_stone_3 | times: 100
                 assign difference = mil_3 | minus: total
                 assign percentage = total | times: 100 | divided_by: mil_3
-                 if total > mil_3
-                    assign difference = "you have unlocked all rewards"  
+                 if total > mil_3 
                     assign rew_3 = true
                  elsif total > mil_2
                     assign difference  = mil_3 | minus: total
