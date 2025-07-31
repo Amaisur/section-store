@@ -604,6 +604,7 @@
             class="cd-free-shipping-bar__inner-d5"
             style="width: {{ percentage | round: 2 }}%;"
           ></div>
+          <div render-d5>
           {% if section.settings.milestones == "1" %}
            <div class="cd-free-shipping-bar__icon-d5 {% if rew_1 %}rewards-true{% else %} rewards-false{% endif %}" style="right: 0">
                 <span class="cd-icon-tag-d5" style="background-image: url('{{ section.settings.mile_stone_1_icon | image_url: width: '50px' }}')"></span>
@@ -632,6 +633,7 @@
                 <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_1_label }}</span>
            </div>
           {% endif %}
+          </div>
         </div>
       </div>
       <div class="atc-loader-d5">
