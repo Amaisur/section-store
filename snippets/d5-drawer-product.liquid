@@ -1,0 +1,18 @@
+<div class="dp-main-d5">
+    <div class="dp-row-d5">
+        <div class="dp-col-d5 dp-img-d5">
+            <img src="{{ product.featured_image | image_url: width: '200px' }}" loading="lazy" alt="{{ product.title }}" width="90" height="90">
+        </div>
+        <div class="dp-col-d5 dp-info-d5">
+            <div class="dp-title-price-d5">
+                <p class="dp-title-d5">{{ product.title }}</p>
+                <div class="dp-price-d5">
+                    <span class="dp-compare-price-d5">{{ product.compare_at_price | money }}</span>
+                    <span class="dp-regular-price-d5">{{ product.price | money }}</span>
+                </div>
+            </div>
+            <form>
+            </form>
+        </div>
+    </div>
+</div>
