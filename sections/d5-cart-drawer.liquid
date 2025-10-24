@@ -757,8 +757,14 @@
           else
             assign reached = false
           endif
-          assign position = forloop.index0 | times: 100 | divided_by: section.blocks.size
+
+          # --- Prevent first icon from being on the left ---
+          # We leave 5% empty on the left, and distribute icons evenly across remaining 95%
+          assign left_offset = 5
+          assign usable_width = 95
+          assign position = left_offset | plus: forloop.index0 | times: usable_width | divided_by: section.blocks.size
         %}
+
         <div class="cd-free-shipping-bar__icon-d5 {% if reached %}rewards-true{% else %}rewards-false{% endif %}" style="right: {{ 100 | minus: position }}%">
           <span class="cd-icon-tag-d5" style="background-image: url('{{ block.settings.mile_stone_icon | image_url: width: 50 }}')"></span>
           <span class="cd-icon-tooltip-d5">{{ block.settings.mile_stone_label }}</span>
