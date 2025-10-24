@@ -29,11 +29,20 @@
             "mile_stone_label": "Free shipping",
             "mile_stone_icon": "shopify://shop_images/Shipping_80x_ae5891ed-00ce-4b18-9d49-892b535633c9.avif"
           }
+        },
+        "reward_63NRRa": {
+          "type": "reward",
+          "settings": {
+            "mile_stone": 800,
+            "mile_stone_label": "Free Braclet",
+            "mile_stone_icon": "shopify://shop_images/box_8905756.png"
+          }
         }
       },
       "block_order": [
         "reward_i8hr4P",
-        "reward_rKTHi4"
+        "reward_rKTHi4",
+        "reward_63NRRa"
       ],
       "name": "D5 Cart Drawer",
       "settings": {
