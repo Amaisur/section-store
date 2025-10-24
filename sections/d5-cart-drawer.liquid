@@ -697,92 +697,97 @@
         </div>
       </div>
       {% endunless %} {% endcomment %}
-       {% unless section.blocks.size == 0 %}
-  <div class="cd-rewards-bar-d5">
-    {% liquid
-      assign total = cart.total_price
-      assign last_milestone = 0
+       <div class="cd-rewards-bar-d5">
+  {% liquid
+    assign total = cart.total_price
+    assign milestones_count = section.blocks.size
+    assign highest_milestone = 0
+    assign current_milestone_index = 0
+    assign next_milestone = 0
+    assign difference = 0
+    assign percentage = 0
 
-      # Find the largest milestone value
-      for block in section.blocks
-        assign current_milestone = block.settings.mile_stone | times: 100
-        if current_milestone > last_milestone
-          assign last_milestone = current_milestone
-        endif
-      endfor
+    for block in section.blocks
+      assign milestone_amount = block.settings.mile_stone | times: 100
+      if milestone_amount > highest_milestone
+        assign highest_milestone = milestone_amount
+      endif
+    endfor
 
-      # Calculate progress percentage
-      assign percentage = total | times: 100 | divided_by: last_milestone
+    assign sorted_blocks = section.blocks | sort: 'settings.mile_stone'
+
+    for block in sorted_blocks
+      assign milestone_amount = block.settings.mile_stone | times: 100
+      if total >= milestone_amount
+        assign current_milestone_index = forloop.index0
+        assign current_milestone_amount = milestone_amount
+        assign current_milestone_label = block.settings.mile_stone_label
+      endif
+    endfor
+
+    assign next_milestone_index = current_milestone_index | plus: 1
+    if next_milestone_index < milestones_count
+      assign next_block = sorted_blocks[next_milestone_index]
+      assign next_milestone = next_block.settings.mile_stone | times: 100
+      assign next_milestone_label = next_block.settings.mile_stone_label
+      assign difference = next_milestone | minus: total
+    else
+      assign next_milestone = highest_milestone
+      assign difference = 0
+    endif
+
+    if highest_milestone > 0
+      assign percentage = total | times: 100 | divided_by: highest_milestone
       if percentage > 100
         assign percentage = 100
       endif
-    %}
+    endif
+  %}
 
-    <div class="cd-free-shipping-bar__content-d5">
-      {% assign unlocked = false %}
-      {% for block in section.blocks %}
-        {% liquid
-          assign milestone_cents = block.settings.mile_stone | times: 100
-        %}
-        {% if total >= milestone_cents %}
-          {% assign unlocked = block %}
-        {% endif %}
-      {% endfor %}
-
-      <p class="cd-free-shipping-bar__text-d5" render-d5>
-        {% if unlocked %}
-          🎉 You've unlocked <strong>{{ unlocked.settings.mile_stone_label }}</strong>!
-          {% assign next_index = unlocked.index0 | plus: 1 %}
-          {% assign next_block = section.blocks[next_index] %}
-          {% if next_block %}
-            and <strong>{{ next_block.settings.mile_stone_label }}</strong> is only
-            <strong>{{ next_block.settings.mile_stone | times: 100 | minus: total | money }}</strong> away!
-          {% else %}
-            You've unlocked all rewards!
-          {% endif %}
+  <div class="cd-free-shipping-bar__content-d5">
+    <p class="cd-free-shipping-bar__text-d5" render-d5>
+      {% if total >= highest_milestone and milestones_count > 0 %}
+        🎉 You've unlocked all rewards!
+      {% elsif next_milestone_index < milestones_count %}
+        {% if current_milestone_index >= 0 %}
+          🎉 {{ current_milestone_label }} unlocked and <strong>{{ difference | money }}</strong> more for <strong>{{ next_milestone_label }}</strong>!
         {% else %}
-          {% assign first_block = section.blocks[0] %}
-          You are <strong>{{ first_block.settings.mile_stone | times: 100 | minus: total | money }}</strong> away from
-          <strong>{{ first_block.settings.mile_stone_label }}</strong>!
+          You are <strong>{{ difference | money }}</strong> away from <strong>{{ next_milestone_label }}</strong>!
         {% endif %}
-      </p>
-    </div>
+      {% elsif milestones_count == 0 %}
+        Add reward milestones in theme editor
+      {% endif %}
+    </p>
+  </div>
 
-    <div class="cd-free-shipping-bar-d5">
-      <div class="cd-free-shipping-bar__inner-d5" style="width: {{ percentage | round: 2 }}%;"></div>
+  <div class="cd-free-shipping-bar-d5">
+    <div
+      class="cd-free-shipping-bar__inner-d5"
+      style="width: {{ percentage }}%;"
+    ></div>
+    <div render-d5>
+      {% for block in sorted_blocks %}
+        {% assign milestone_amount = block.settings.mile_stone | times: 100 %}
+        {% assign position = 100 %}
+        {% if highest_milestone > 0 %}
+          {% assign position = milestone_amount | times: 100 | divided_by: highest_milestone %}
+          {% assign position = 100 | minus: position %}
+        {% endif %}
 
-      {% comment %}
-        We leave 5% space on the left, distribute milestones evenly across the remaining 95%.
-        The right value is clamped to never be negative.
-      {% endcomment %}
-      {% assign left_offset = 5 %}
-      {% assign usable_width = 95 %}
-
-      {% for block in section.blocks %}
-        {% liquid
-          assign milestone_cents = block.settings.mile_stone | times: 100
-          if total >= milestone_cents
-            assign reached = true
-          else
-            assign reached = false
-          endif
-
-          assign position = left_offset | plus: forloop.index0 | times: usable_width | divided_by: section.blocks.size
-          assign safe_position = 100 | minus: position
-          if safe_position < 0
-            assign safe_position = 0
-          endif
-        %}
-
-        <div class="cd-free-shipping-bar__icon-d5 {% if reached %}rewards-true{% else %}rewards-false{% endif %}" style="right: {{ safe_position }}%;">
-          <span class="cd-icon-tag-d5" style="background-image: url('{{ block.settings.mile_stone_icon | image_url: width: 50 }}')"></span>
+        <div
+          class="cd-free-shipping-bar__icon-d5 {% if total >= milestone_amount %}rewards-true{% else %}rewards-false{% endif %}"
+          style="right: {{ position }}%"
+        >
+          <span
+            class="cd-icon-tag-d5"
+            style="background-image: url('{{ block.settings.mile_stone_icon | image_url: width: '50px' }}')"
+          ></span>
           <span class="cd-icon-tooltip-d5">{{ block.settings.mile_stone_label }}</span>
         </div>
       {% endfor %}
     </div>
   </div>
-{% endunless %}
-
+</div>
       <div class="atc-loader-d5">
         <span class="item-loader-d5"></span>
       </div>
