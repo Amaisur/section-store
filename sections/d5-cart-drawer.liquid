@@ -703,6 +703,7 @@
       assign total = cart.total_price
       assign last_milestone = 0
 
+      # Find the largest milestone value
       for block in section.blocks
         assign current_milestone = block.settings.mile_stone | times: 100
         if current_milestone > last_milestone
@@ -710,6 +711,7 @@
         endif
       endfor
 
+      # Calculate progress percentage
       assign percentage = total | times: 100 | divided_by: last_milestone
       if percentage > 100
         assign percentage = 100
@@ -749,6 +751,13 @@
     <div class="cd-free-shipping-bar-d5">
       <div class="cd-free-shipping-bar__inner-d5" style="width: {{ percentage | round: 2 }}%;"></div>
 
+      {% comment %}
+        We leave 5% space on the left, distribute milestones evenly across the remaining 95%.
+        The right value is clamped to never be negative.
+      {% endcomment %}
+      {% assign left_offset = 5 %}
+      {% assign usable_width = 95 %}
+
       {% for block in section.blocks %}
         {% liquid
           assign milestone_cents = block.settings.mile_stone | times: 100
@@ -758,14 +767,14 @@
             assign reached = false
           endif
 
-          # --- Prevent first icon from being on the left ---
-          # We leave 5% empty on the left, and distribute icons evenly across remaining 95%
-          assign left_offset = 5
-          assign usable_width = 95
           assign position = left_offset | plus: forloop.index0 | times: usable_width | divided_by: section.blocks.size
+          assign safe_position = 100 | minus: position
+          if safe_position < 0
+            assign safe_position = 0
+          endif
         %}
 
-        <div class="cd-free-shipping-bar__icon-d5 {% if reached %}rewards-true{% else %}rewards-false{% endif %}" style="right: {{ 100 | minus: position }}%">
+        <div class="cd-free-shipping-bar__icon-d5 {% if reached %}rewards-true{% else %}rewards-false{% endif %}" style="right: {{ safe_position }}%;">
           <span class="cd-icon-tag-d5" style="background-image: url('{{ block.settings.mile_stone_icon | image_url: width: 50 }}')"></span>
           <span class="cd-icon-tooltip-d5">{{ block.settings.mile_stone_label }}</span>
         </div>
