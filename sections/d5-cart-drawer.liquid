@@ -538,7 +538,7 @@
       </div>
     </div>
     <div class="cd-content-d5">
-      {% unless section.settings.milestones == "0" %}
+      {% comment %} {% unless section.settings.milestones == "0" %}
       <div class="cd-rewards-bar-d5">
         {% comment %}
           {% liquid
@@ -696,7 +696,78 @@
           </div>
         </div>
       </div>
-      {% endunless %}
+      {% endunless %} {% endcomment %}
+       {% unless section.blocks.size == 0 %}
+  <div class="cd-rewards-bar-d5">
+    {% liquid
+      assign total = cart.total_price
+      assign last_milestone = 0
+
+      for block in section.blocks
+        assign current_milestone = block.settings.mile_stone | times: 100
+        if current_milestone > last_milestone
+          assign last_milestone = current_milestone
+        endif
+      endfor
+
+      assign percentage = total | times: 100 | divided_by: last_milestone
+      if percentage > 100
+        assign percentage = 100
+      endif
+    %}
+
+    <div class="cd-free-shipping-bar__content-d5">
+      {% assign unlocked = false %}
+      {% for block in section.blocks %}
+        {% liquid
+          assign milestone_cents = block.settings.mile_stone | times: 100
+        %}
+        {% if total >= milestone_cents %}
+          {% assign unlocked = block %}
+        {% endif %}
+      {% endfor %}
+
+      <p class="cd-free-shipping-bar__text-d5" render-d5>
+        {% if unlocked %}
+          🎉 You've unlocked <strong>{{ unlocked.settings.mile_stone_label }}</strong>!
+          {% assign next_index = unlocked.index0 | plus: 1 %}
+          {% assign next_block = section.blocks[next_index] %}
+          {% if next_block %}
+            and <strong>{{ next_block.settings.mile_stone_label }}</strong> is only
+            <strong>{{ next_block.settings.mile_stone | times: 100 | minus: total | money }}</strong> away!
+          {% else %}
+            You've unlocked all rewards!
+          {% endif %}
+        {% else %}
+          {% assign first_block = section.blocks[0] %}
+          You are <strong>{{ first_block.settings.mile_stone | times: 100 | minus: total | money }}</strong> away from
+          <strong>{{ first_block.settings.mile_stone_label }}</strong>!
+        {% endif %}
+      </p>
+    </div>
+
+    <div class="cd-free-shipping-bar-d5">
+      <div class="cd-free-shipping-bar__inner-d5" style="width: {{ percentage | round: 2 }}%;"></div>
+
+      {% for block in section.blocks %}
+        {% liquid
+          assign milestone_cents = block.settings.mile_stone | times: 100
+          if total >= milestone_cents
+            assign reached = true
+          else
+            assign reached = false
+          endif
+          assign position = forloop.index0 | times: 100 | divided_by: section.blocks.size
+        %}
+        <div class="cd-free-shipping-bar__icon-d5 {% if reached %}rewards-true{% else %}rewards-false{% endif %}" style="right: {{ 100 | minus: position }}%">
+          <span class="cd-icon-tag-d5" style="background-image: url('{{ block.settings.mile_stone_icon | image_url: width: 50 }}')"></span>
+          <span class="cd-icon-tooltip-d5">{{ block.settings.mile_stone_label }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endunless %}
+
       <div class="atc-loader-d5">
         <span class="item-loader-d5"></span>
       </div>
@@ -938,6 +1009,31 @@
       "id": "mile_stone_3_icon",
       "label": "Milestone 3 Icon",
       "visible_if": "{{ section.settings.milestones > 2 }}"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "reward",
+      "name": "Reward",
+      "settings": [
+        {
+          "type": "number",
+          "id": "mile_stone",
+          "label": "Milestone amount",
+          "default": 400
+        },
+        {
+          "type": "text",
+          "id": "mile_stone_label",
+          "label": "Milestone Label",
+          "default": "Free Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "mile_stone_icon",
+          "label": "Milestone Icon"
+        },
+      ]
     }
   ],
   "presets": [
