@@ -776,11 +776,11 @@
       style="width: {{ percentage }}%;"
     ></div>
     <div render-d5>
-      {% for block in sorted_blocks reversed %}
+      {% for block in sorted_blocks %}
         {% assign position = 0 %}
         {% if milestones_count > 1 %}
           {% assign segment = 100 | divided_by: milestones_count | minus: 1 %}
-          {% assign position = 100 | minus: segment | times: forloop.index0 %}
+          {% assign position = segment | times: forloop.index0 %}
         {% endif %}
 
         {% assign milestone_amount = block.settings.mile_stone | times: 100 %}
