@@ -13,6 +13,28 @@
   "sections": {
     "d5_cart_drawer_gUxAwy": {
       "type": "d5-cart-drawer",
+      "blocks": {
+        "reward_i8hr4P": {
+          "type": "reward",
+          "settings": {
+            "mile_stone": 400,
+            "mile_stone_label": "Free Product",
+            "mile_stone_icon": "shopify://shop_images/Secure_Payments_80x_8d825126-c9c6-4fab-893d-ffabf68aabe7.avif"
+          }
+        },
+        "reward_rKTHi4": {
+          "type": "reward",
+          "settings": {
+            "mile_stone": 600,
+            "mile_stone_label": "Free shipping",
+            "mile_stone_icon": "shopify://shop_images/Shipping_80x_ae5891ed-00ce-4b18-9d49-892b535633c9.avif"
+          }
+        }
+      },
+      "block_order": [
+        "reward_i8hr4P",
+        "reward_rKTHi4"
+      ],
       "name": "D5 Cart Drawer",
       "settings": {
         "empty_cart_page": "shopify://pages/test-atc",
