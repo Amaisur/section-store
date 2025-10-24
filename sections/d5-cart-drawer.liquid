@@ -702,7 +702,7 @@
     assign total = cart.total_price
     assign milestones_count = section.blocks.size
     assign highest_milestone = 0
-    assign current_milestone_index = 0
+    assign current_milestone_index = -1
     assign next_milestone = 0
     assign difference = 0
     assign percentage = 0
@@ -732,8 +732,20 @@
       assign next_milestone_label = next_block.settings.mile_stone_label
       assign difference = next_milestone | minus: total
     else
-      assign next_milestone = highest_milestone
+      if current_milestone_index >= 0
+        assign next_milestone = highest_milestone
+        assign next_milestone_label = sorted_blocks[current_milestone_index].settings.mile_stone_label
+      else
+        assign next_milestone = sorted_blocks[0].settings.mile_stone | times: 100
+        assign next_milestone_label = sorted_blocks[0].settings.mile_stone_label
+      endif
       assign difference = 0
+    endif
+
+    if current_milestone_index == -1 and milestones_count > 0
+      assign next_milestone = sorted_blocks[0].settings.mile_stone | times: 100
+      assign next_milestone_label = sorted_blocks[0].settings.mile_stone_label
+      assign difference = next_milestone | minus: total
     endif
 
     if highest_milestone > 0
@@ -748,14 +760,12 @@
     <p class="cd-free-shipping-bar__text-d5" render-d5>
       {% if total >= highest_milestone and milestones_count > 0 %}
         🎉 You've unlocked all rewards!
-      {% elsif next_milestone_index < milestones_count %}
-        {% if current_milestone_index >= 0 %}
-          🎉 {{ current_milestone_label }} unlocked and <strong>{{ difference | money }}</strong> more for <strong>{{ next_milestone_label }}</strong>!
-        {% else %}
-          You are <strong>{{ difference | money }}</strong> away from <strong>{{ next_milestone_label }}</strong>!
-        {% endif %}
-      {% elsif milestones_count == 0 %}
-        Add reward milestones in theme editor
+      {% elsif current_milestone_index >= 0 and next_milestone_index < milestones_count %}
+        🎉 {{ current_milestone_label }} unlocked and <strong>{{ difference | money }}</strong> more for <strong>{{ next_milestone_label }}</strong>!
+      {% elsif current_milestone_index >= 0 %}
+        🎉 You've unlocked <strong>{{ current_milestone_label }}</strong>!
+      {% else %}
+        You are <strong>{{ difference | money }}</strong> away from <strong>{{ next_milestone_label }}</strong>!
       {% endif %}
     </p>
   </div>
