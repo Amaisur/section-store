@@ -909,6 +909,9 @@
             {{- section.settings.footer_link_text | default: 'Or continue shopping' -}}
           </a>
         {% endif %}
+        {% if section.settings.p_i != blank %}
+          <img src="{{ section.settings.p_i | image_url: width: '400' }}" alt="payment Icons" width="100%" height="100%">
+        {% endif %}
       {% else %}
         <div class="cd-empty-footer-d5">
           <p class="cd-empty-announcement-d5">Add your favourite items to your cart.</p>
@@ -975,6 +978,11 @@
       "type": "url",
       "id": "footer_link_url",
       "label": "Footer Link Url"
+    },
+    {
+      "type": "image_picker",
+      "id": "p_i",
+      "label": "Payment Icons"
     }
   ],
   "blocks": [
