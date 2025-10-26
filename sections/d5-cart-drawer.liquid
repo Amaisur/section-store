@@ -922,10 +922,10 @@
     </div>
     <div class="cd-footer-d5" render-d5>
       {% if cart.item_count > 0 %}
-        <a href="/checkout" class="cd-checkout-btn-d5">
-          Checkout&nbsp;&nbsp;•&nbsp;&nbsp;<span class="cd-footer-total-price">
+        <a href="/checkout" class="cd-checkout-btn-d5">Proceed To Checkout
+          {% comment %} Checkout&nbsp;&nbsp;•&nbsp;&nbsp;<span class="cd-footer-total-price">
             {{- cart.original_total_price | money -}}
-          </span>
+          </span> {% endcomment %}
         </a>
         {% if section.settings.footer_link_url != blank %}
           <a class="cd-shop-btn-d5" href="{{ section.settings.footer_link_url }}">
