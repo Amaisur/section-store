@@ -538,266 +538,269 @@
       </div>
     </div>
     <div class="cd-content-d5">
-      {% comment %} {% unless section.settings.milestones == "0" %}
-      <div class="cd-rewards-bar-d5">
-        {% comment %}
+      {% comment %}
+        {% unless section.settings.milestones == "0" %}
+        <div class="cd-rewards-bar-d5">
+          {% comment %}
+            {% liquid
+              assign threshold = section.settings.free_shipping
+              assign threshold_in_cents = threshold | times: 100
+              assign total = cart.total_price
+              assign difference = threshold_in_cents | minus: total
+              assign percentage = total | times: 100 | divided_by: threshold_in_cents
+            %}
+          {% endcomment %}
           {% liquid
-            assign threshold = section.settings.free_shipping
-            assign threshold_in_cents = threshold | times: 100
             assign total = cart.total_price
-            assign difference = threshold_in_cents | minus: total
-            assign percentage = total | times: 100 | divided_by: threshold_in_cents
+            if section.settings.milestones == '1'
+              assign mil_1 = section.settings.mile_stone_1 | times: 100
+              if total > mil_1
+                assign rew_1 = true
+              endif
+              assign difference = mil_1 | minus: total
+              assign percentage = total | times: 100 | divided_by: mil_1
+            elsif section.settings.milestones == '2'
+              assign mil_1 = section.settings.mile_stone_1 | times: 100
+              assign mil_2 = section.settings.mile_stone_2 | times: 100
+              assign percentage = total | times: 100 | divided_by: mil_2
+              if total > mil_2
+                assign rew_2 = true
+              elsif total > mil_1
+                assign difference = mil_2 | minus: total
+                assign rew_1 = true
+              elsif mil_1 > total
+                assign difference = mil_1 | minus: total
+              endif
+
+            elsif section.settings.milestones == '3'
+              assign mil_1 = section.settings.mile_stone_1 | times: 100
+              assign mil_2 = section.settings.mile_stone_2 | times: 100
+              assign mil_3 = section.settings.mile_stone_3 | times: 100
+              assign difference = mil_3 | minus: total
+              assign percentage = total | times: 100 | divided_by: mil_3
+              if total > mil_3
+                assign rew_3 = true
+              elsif total > mil_2
+                assign difference = mil_3 | minus: total
+                assign rew_2 = true
+              elsif total > mil_1
+                assign difference = mil_2 | minus: total
+                assign rew_1 = true
+              elsif mil_1 > total
+                assign difference = mil_1 | minus: total
+              endif
+            endif
           %}
-        {% endcomment %}
+          <div class="cd-free-shipping-bar__content-d5">
+            <p class="cd-free-shipping-bar__text-d5" render-d5>
+              {% if section.settings.milestones == '3' %}
+                {% if total > mil_3 %}
+                  🎉 You've unlocked all rewards!
+                {% elsif total > mil_2 %}
+                  🎉 {{ section.settings.mile_stone_2_label }} unlocked and <strong>{{ difference | money }}</strong> more
+                  for <strong>{{ section.settings.mile_stone_3_label }}</strong>!
+                {% elsif total > mil_1 %}
+                  🎉 {{ section.settings.mile_stone_1_label }} unlocked and <strong>{{ difference | money }}</strong> more
+                  for <strong>{{ section.settings.mile_stone_2_label }}</strong>!
+                {% elsif mil_1 > total %}
+                  You are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_1_label }}!
+                {% endif %}
+              {% elsif section.settings.milestones == '2' %}
+                {% if total > mil_2 %}
+                  🎉 You've unlocked all rewards!
+                {% elsif total > mil_1 %}
+                  🎉 {{ section.settings.mile_stone_1_label }} unlocked and <strong>{{ difference | money }}</strong> more
+                  for <strong>{{ section.settings.mile_stone_2_label }}</strong>!
+                {% elsif mil_1 > total %}
+                  You are <strong>{{ difference | money }}</strong> away from
+                  <strong>{{ section.settings.mile_stone_1_label }}</strong>!
+                {% endif %}
+              {% elsif section.settings.milestones == '1' %}
+                {% if total > mil_1 %}
+                  🎉 You've unlocked <strong>{{ section.settings.mile_stone_1_label }}</strong>!
+                {% elsif mil_1 > total %}
+                  You are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_1_label }}!
+                {% endif %}
+              {% endif %}
+            </p>
+          </div>
+          <div class="cd-free-shipping-bar-d5">
+            <div
+              class="cd-free-shipping-bar__inner-d5"
+              style="width: {{ percentage | round: 2 }}%;"
+            ></div>
+            <div render-d5>
+              {% if section.settings.milestones == '1' %}
+                <div
+                  class="cd-free-shipping-bar__icon-d5 {% if rew_1 %}rewards-true{% else %} rewards-false{% endif %}"
+                  style="right: 0"
+                >
+                  <span
+                    class="cd-icon-tag-d5"
+                    style="background-image: url('{{ section.settings.mile_stone_1_icon | image_url: width: '50px' }}')"
+                  ></span>
+                  <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_1_label }}</span>
+                </div>
+              {% elsif section.settings.milestones == '2' %}
+                <div
+                  class="cd-free-shipping-bar__icon-d5 {% if rew_2 %}rewards-true{% else %} rewards-false{% endif %}"
+                  style="right: 0%"
+                >
+                  <span
+                    class="cd-icon-tag-d5"
+                    style="background-image: url('{{ section.settings.mile_stone_2_icon | image_url: width: '50px' }}')"
+                  ></span>
+                  <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_2_label }}</span>
+                </div>
+                <div
+                  class="cd-free-shipping-bar__icon-d5 {% if rew_1 or rew_2 %}rewards-true{% else %} rewards-false{% endif %}"
+                  style="right: 50%"
+                >
+                  <span
+                    class="cd-icon-tag-d5"
+                    style="background-image: url('{{ section.settings.mile_stone_1_icon | image_url: width: '50px' }}')"
+                  ></span>
+                  <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_1_label }}</span>
+                </div>
+              {% elsif section.settings.milestones == '3' %}
+                <div
+                  class="cd-free-shipping-bar__icon-d5 {% if rew_3 %}rewards-true{% else %} rewards-false{% endif %}"
+                  style="right: 0"
+                >
+                  <span
+                    class="cd-icon-tag-d5"
+                    style="background-image: url('{{ section.settings.mile_stone_3_icon | image_url: width: '50px' }}')"
+                  ></span>
+                  <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_3_label }}</span>
+                </div>
+                <div
+                  class="cd-free-shipping-bar__icon-d5 {% if rew_3 or rew_2 %}rewards-true{% else %} rewards-false{% endif %}"
+                  style="right: 33%"
+                >
+                  <span
+                    class="cd-icon-tag-d5"
+                    style="background-image: url('{{ section.settings.mile_stone_2_icon | image_url: width: '50px' }}')"
+                  ></span>
+                  <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_2_label }}</span>
+                </div>
+                <div
+                  class="cd-free-shipping-bar__icon-d5 {% if rew_1 or rew_2 or rew_3 %}rewards-true{% else %} rewards-false{% endif %}"
+                  style="right: 66%"
+                >
+                  <span
+                    class="cd-icon-tag-d5"
+                    style="background-image: url('{{ section.settings.mile_stone_1_icon | image_url: width: '50px' }}')"
+                  ></span>
+                  <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_1_label }}</span>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endunless %}
+      {% endcomment %}
+      <div class="cd-rewards-bar-d5">
         {% liquid
           assign total = cart.total_price
-          if section.settings.milestones == '1'
-            assign mil_1 = section.settings.mile_stone_1 | times: 100
-            if total > mil_1
-              assign rew_1 = true
-            endif
-            assign difference = mil_1 | minus: total
-            assign percentage = total | times: 100 | divided_by: mil_1
-          elsif section.settings.milestones == '2'
-            assign mil_1 = section.settings.mile_stone_1 | times: 100
-            assign mil_2 = section.settings.mile_stone_2 | times: 100
-            assign percentage = total | times: 100 | divided_by: mil_2
-            if total > mil_2
-              assign rew_2 = true
-            elsif total > mil_1
-              assign difference = mil_2 | minus: total
-              assign rew_1 = true
-            elsif mil_1 > total
-              assign difference = mil_1 | minus: total
-            endif
+          assign milestones_count = section.blocks.size
+          assign highest_milestone = 0
+          assign current_milestone_index = -1
+          assign next_milestone = 0
+          assign difference = 0
+          assign percentage = 0
 
-          elsif section.settings.milestones == '3'
-            assign mil_1 = section.settings.mile_stone_1 | times: 100
-            assign mil_2 = section.settings.mile_stone_2 | times: 100
-            assign mil_3 = section.settings.mile_stone_3 | times: 100
-            assign difference = mil_3 | minus: total
-            assign percentage = total | times: 100 | divided_by: mil_3
-            if total > mil_3
-              assign rew_3 = true
-            elsif total > mil_2
-              assign difference = mil_3 | minus: total
-              assign rew_2 = true
-            elsif total > mil_1
-              assign difference = mil_2 | minus: total
-              assign rew_1 = true
-            elsif mil_1 > total
-              assign difference = mil_1 | minus: total
+          for block in section.blocks
+            assign milestone_amount = block.settings.mile_stone | times: 100
+            if milestone_amount > highest_milestone
+              assign highest_milestone = milestone_amount
+            endif
+          endfor
+
+          assign sorted_blocks = section.blocks | sort: 'settings.mile_stone'
+
+          for block in sorted_blocks
+            assign milestone_amount = block.settings.mile_stone | times: 100
+            if total >= milestone_amount
+              assign current_milestone_index = forloop.index0
+              assign current_milestone_amount = milestone_amount
+              assign current_milestone_label = block.settings.mile_stone_label
+            endif
+          endfor
+
+          assign next_milestone_index = current_milestone_index | plus: 1
+          if next_milestone_index < milestones_count
+            assign next_block = sorted_blocks[next_milestone_index]
+            assign next_milestone = next_block.settings.mile_stone | times: 100
+            assign next_milestone_label = next_block.settings.mile_stone_label
+            assign difference = next_milestone | minus: total
+          else
+            if current_milestone_index >= 0
+              assign next_milestone = highest_milestone
+              assign next_milestone_label = sorted_blocks[current_milestone_index].settings.mile_stone_label
+            else
+              assign next_milestone = sorted_blocks[0].settings.mile_stone | times: 100
+              assign next_milestone_label = sorted_blocks[0].settings.mile_stone_label
+            endif
+            assign difference = 0
+          endif
+
+          if current_milestone_index == -1 and milestones_count > 0
+            assign next_milestone = sorted_blocks[0].settings.mile_stone | times: 100
+            assign next_milestone_label = sorted_blocks[0].settings.mile_stone_label
+            assign difference = next_milestone | minus: total
+          endif
+
+          if highest_milestone > 0
+            assign percentage = total | times: 100 | divided_by: highest_milestone
+            if percentage > 100
+              assign percentage = 100
             endif
           endif
         %}
+
         <div class="cd-free-shipping-bar__content-d5">
           <p class="cd-free-shipping-bar__text-d5" render-d5>
-            {% if section.settings.milestones == '3' %}
-              {% if total > mil_3 %}
-                🎉 You've unlocked all rewards!
-              {% elsif total > mil_2 %}
-                🎉 {{ section.settings.mile_stone_2_label }} unlocked and <strong>{{ difference | money }}</strong> more
-                for <strong>{{ section.settings.mile_stone_3_label }}</strong>!
-              {% elsif total > mil_1 %}
-                🎉 {{ section.settings.mile_stone_1_label }} unlocked and <strong>{{ difference | money }}</strong> more
-                for <strong>{{ section.settings.mile_stone_2_label }}</strong>!
-              {% elsif mil_1 > total %}
-                You are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_1_label }}!
-              {% endif %}
-            {% elsif section.settings.milestones == '2' %}
-              {% if total > mil_2 %}
-                🎉 You've unlocked all rewards!
-              {% elsif total > mil_1 %}
-                🎉 {{ section.settings.mile_stone_1_label }} unlocked and <strong>{{ difference | money }}</strong> more
-                for <strong>{{ section.settings.mile_stone_2_label }}</strong>!
-              {% elsif mil_1 > total %}
-                You are <strong>{{ difference | money }}</strong> away from
-                <strong>{{ section.settings.mile_stone_1_label }}</strong>!
-              {% endif %}
-            {% elsif section.settings.milestones == '1' %}
-              {% if total > mil_1 %}
-                🎉 You've unlocked <strong>{{ section.settings.mile_stone_1_label }}</strong>!
-              {% elsif mil_1 > total %}
-                You are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_1_label }}!
-              {% endif %}
+            {% if total >= highest_milestone and milestones_count > 0 %}
+              🎉 You've unlocked all rewards!
+            {% elsif current_milestone_index >= 0 and next_milestone_index < milestones_count %}
+              🎉 {{ current_milestone_label }} unlocked and <strong>{{ difference | money }}</strong> more for
+              <strong>{{ next_milestone_label }}</strong>!
+            {% elsif current_milestone_index >= 0 %}
+              🎉 You've unlocked <strong>{{ current_milestone_label }}</strong>!
+            {% else %}
+              You are <strong>{{ difference | money }}</strong> away from <strong>{{ next_milestone_label }}</strong>!
             {% endif %}
           </p>
         </div>
+
         <div class="cd-free-shipping-bar-d5">
           <div
             class="cd-free-shipping-bar__inner-d5"
-            style="width: {{ percentage | round: 2 }}%;"
+            style="width: {{ percentage }}%;"
           ></div>
           <div render-d5>
-            {% if section.settings.milestones == '1' %}
+            {% for block in sorted_blocks reversed %}
+              {% assign position = 0 %}
+              {% if milestones_count > 1 %}
+                {% assign segment = 100 | divided_by: milestones_count | minus: 1 %}
+                {% assign position = segment | times: forloop.index0 %}
+              {% endif %}
+
+              {% assign milestone_amount = block.settings.mile_stone | times: 100 %}
               <div
-                class="cd-free-shipping-bar__icon-d5 {% if rew_1 %}rewards-true{% else %} rewards-false{% endif %}"
-                style="right: 0"
+                class="cd-free-shipping-bar__icon-d5 {% if total >= milestone_amount %}rewards-true{% else %}rewards-false{% endif %}"
+                style="right: {{ position }}%"
               >
                 <span
                   class="cd-icon-tag-d5"
-                  style="background-image: url('{{ section.settings.mile_stone_1_icon | image_url: width: '50px' }}')"
+                  style="background-image: url('{{ block.settings.mile_stone_icon | image_url: width: '50px' }}')"
                 ></span>
-                <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_1_label }}</span>
+                <span class="cd-icon-tooltip-d5">{{ block.settings.mile_stone_label }}</span>
               </div>
-            {% elsif section.settings.milestones == '2' %}
-              <div
-                class="cd-free-shipping-bar__icon-d5 {% if rew_2 %}rewards-true{% else %} rewards-false{% endif %}"
-                style="right: 0%"
-              >
-                <span
-                  class="cd-icon-tag-d5"
-                  style="background-image: url('{{ section.settings.mile_stone_2_icon | image_url: width: '50px' }}')"
-                ></span>
-                <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_2_label }}</span>
-              </div>
-              <div
-                class="cd-free-shipping-bar__icon-d5 {% if rew_1 or rew_2 %}rewards-true{% else %} rewards-false{% endif %}"
-                style="right: 50%"
-              >
-                <span
-                  class="cd-icon-tag-d5"
-                  style="background-image: url('{{ section.settings.mile_stone_1_icon | image_url: width: '50px' }}')"
-                ></span>
-                <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_1_label }}</span>
-              </div>
-            {% elsif section.settings.milestones == '3' %}
-              <div
-                class="cd-free-shipping-bar__icon-d5 {% if rew_3 %}rewards-true{% else %} rewards-false{% endif %}"
-                style="right: 0"
-              >
-                <span
-                  class="cd-icon-tag-d5"
-                  style="background-image: url('{{ section.settings.mile_stone_3_icon | image_url: width: '50px' }}')"
-                ></span>
-                <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_3_label }}</span>
-              </div>
-              <div
-                class="cd-free-shipping-bar__icon-d5 {% if rew_3 or rew_2 %}rewards-true{% else %} rewards-false{% endif %}"
-                style="right: 33%"
-              >
-                <span
-                  class="cd-icon-tag-d5"
-                  style="background-image: url('{{ section.settings.mile_stone_2_icon | image_url: width: '50px' }}')"
-                ></span>
-                <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_2_label }}</span>
-              </div>
-              <div
-                class="cd-free-shipping-bar__icon-d5 {% if rew_1 or rew_2 or rew_3 %}rewards-true{% else %} rewards-false{% endif %}"
-                style="right: 66%"
-              >
-                <span
-                  class="cd-icon-tag-d5"
-                  style="background-image: url('{{ section.settings.mile_stone_1_icon | image_url: width: '50px' }}')"
-                ></span>
-                <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_1_label }}</span>
-              </div>
-            {% endif %}
+            {% endfor %}
           </div>
         </div>
       </div>
-      {% endunless %} {% endcomment %}
-       <div class="cd-rewards-bar-d5">
-  {% liquid
-    assign total = cart.total_price
-    assign milestones_count = section.blocks.size
-    assign highest_milestone = 0
-    assign current_milestone_index = -1
-    assign next_milestone = 0
-    assign difference = 0
-    assign percentage = 0
-
-    for block in section.blocks
-      assign milestone_amount = block.settings.mile_stone | times: 100
-      if milestone_amount > highest_milestone
-        assign highest_milestone = milestone_amount
-      endif
-    endfor
-
-    assign sorted_blocks = section.blocks | sort: 'settings.mile_stone'
-
-    for block in sorted_blocks
-      assign milestone_amount = block.settings.mile_stone | times: 100
-      if total >= milestone_amount
-        assign current_milestone_index = forloop.index0
-        assign current_milestone_amount = milestone_amount
-        assign current_milestone_label = block.settings.mile_stone_label
-      endif
-    endfor
-
-    assign next_milestone_index = current_milestone_index | plus: 1
-    if next_milestone_index < milestones_count
-      assign next_block = sorted_blocks[next_milestone_index]
-      assign next_milestone = next_block.settings.mile_stone | times: 100
-      assign next_milestone_label = next_block.settings.mile_stone_label
-      assign difference = next_milestone | minus: total
-    else
-      if current_milestone_index >= 0
-        assign next_milestone = highest_milestone
-        assign next_milestone_label = sorted_blocks[current_milestone_index].settings.mile_stone_label
-      else
-        assign next_milestone = sorted_blocks[0].settings.mile_stone | times: 100
-        assign next_milestone_label = sorted_blocks[0].settings.mile_stone_label
-      endif
-      assign difference = 0
-    endif
-
-    if current_milestone_index == -1 and milestones_count > 0
-      assign next_milestone = sorted_blocks[0].settings.mile_stone | times: 100
-      assign next_milestone_label = sorted_blocks[0].settings.mile_stone_label
-      assign difference = next_milestone | minus: total
-    endif
-
-    if highest_milestone > 0
-      assign percentage = total | times: 100 | divided_by: highest_milestone
-      if percentage > 100
-        assign percentage = 100
-      endif
-    endif
-  %}
-
-  <div class="cd-free-shipping-bar__content-d5">
-    <p class="cd-free-shipping-bar__text-d5" render-d5>
-      {% if total >= highest_milestone and milestones_count > 0 %}
-        🎉 You've unlocked all rewards!
-      {% elsif current_milestone_index >= 0 and next_milestone_index < milestones_count %}
-        🎉 {{ current_milestone_label }} unlocked and <strong>{{ difference | money }}</strong> more for <strong>{{ next_milestone_label }}</strong>!
-      {% elsif current_milestone_index >= 0 %}
-        🎉 You've unlocked <strong>{{ current_milestone_label }}</strong>!
-      {% else %}
-        You are <strong>{{ difference | money }}</strong> away from <strong>{{ next_milestone_label }}</strong>!
-      {% endif %}
-    </p>
-  </div>
-
-  <div class="cd-free-shipping-bar-d5">
-    <div
-      class="cd-free-shipping-bar__inner-d5"
-      style="width: {{ percentage }}%;"
-    ></div>
-    <div render-d5>
-      {% for block in sorted_blocks reversed %}
-        {% assign position = 0 %}
-        {% if milestones_count > 1 %}
-          {% assign segment = 100 | divided_by: milestones_count | minus: 1 %}
-          {% assign position = segment | times: forloop.index0 %}
-        {% endif %}
-
-        {% assign milestone_amount = block.settings.mile_stone | times: 100 %}
-        <div
-          class="cd-free-shipping-bar__icon-d5 {% if total >= milestone_amount %}rewards-true{% else %}rewards-false{% endif %}"
-          style="right: {{ position }}%"
-        >
-          <span
-            class="cd-icon-tag-d5"
-            style="background-image: url('{{ block.settings.mile_stone_icon | image_url: width: '50px' }}')"
-          ></span>
-          <span class="cd-icon-tooltip-d5">{{ block.settings.mile_stone_label }}</span>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-</div>
       <div class="atc-loader-d5">
         <span class="item-loader-d5"></span>
       </div>
@@ -901,6 +904,11 @@
             {{- cart.original_total_price | money -}}
           </span>
         </a>
+        {% if section.settings.footer_link_url != blank %}
+          <a class="cd-shop-btn-d5" href="{{ section.settings.footer_link_url }}">
+            {{- section.settings.footer_link_text | default: 'Or continue shopping' -}}
+          </a>
+        {% endif %}
       {% else %}
         <div class="cd-empty-footer-d5">
           <p class="cd-empty-announcement-d5">Add your favourite items to your cart.</p>
@@ -956,89 +964,17 @@
     },
     {
       "type": "header",
-      "content": "Free Milestones"
-    },
-    {
-      "type": "select",
-      "id": "milestones",
-      "label": "Number of Free Milestone",
-      "default": "2",
-      "options": [
-        {
-          "label": "0",
-          "value": "0"
-        },
-        {
-          "label": "1",
-          "value": "1"
-        },
-        {
-          "label": "2",
-          "value": "2"
-        },
-        {
-          "label": "3",
-          "value": "3"
-        }
-      ]
-    },
-    {
-      "type": "number",
-      "id": "mile_stone_1",
-      "label": "Milestone 1 amount",
-      "default": 200,
-      "visible_if": "{{ section.settings.milestones > 0 }}"
+      "content": "Cart Footer"
     },
     {
       "type": "text",
-      "id": "mile_stone_1_label",
-      "label": "Milestone 1 Label",
-      "default": "Free Shipping",
-      "visible_if": "{{ section.settings.milestones > 0 }}"
+      "id": "footer_link_text",
+      "label": "Footer Link Text"
     },
     {
-      "type": "image_picker",
-      "id": "mile_stone_1_icon",
-      "label": "Milestone 1 Icon",
-      "visible_if": "{{ section.settings.milestones > 0 }}"
-    },
-    {
-      "type": "number",
-      "id": "mile_stone_2",
-      "label": "Milestone 2 amount",
-      "default": 400,
-      "visible_if": "{{ section.settings.milestones > 1 }}"
-    },
-    {
-      "type": "text",
-      "id": "mile_stone_2_label",
-      "label": "Milestone 2 Label",
-      "default": "Free Product",
-      "visible_if": "{{ section.settings.milestones > 1 }}"
-    },
-    {
-      "type": "image_picker",
-      "id": "mile_stone_2_icon",
-      "label": "Milestone 2 Icon",
-      "visible_if": "{{ section.settings.milestones > 1 }}"
-    },
-    {
-      "type": "number",
-      "id": "mile_stone_3",
-      "label": "Milestone 3 amount",
-      "visible_if": "{{ section.settings.milestones > 2 }}"
-    },
-    {
-      "type": "text",
-      "id": "mile_stone_3_label",
-      "label": "Milestone 3 Label",
-      "visible_if": "{{ section.settings.milestones > 2 }}"
-    },
-    {
-      "type": "image_picker",
-      "id": "mile_stone_3_icon",
-      "label": "Milestone 3 Icon",
-      "visible_if": "{{ section.settings.milestones > 2 }}"
+      "type": "url",
+      "id": "footer_link_url",
+      "label": "Footer Link Url"
     }
   ],
   "blocks": [
@@ -1062,7 +998,7 @@
           "type": "image_picker",
           "id": "mile_stone_icon",
           "label": "Milestone Icon"
-        },
+        }
       ]
     }
   ],
