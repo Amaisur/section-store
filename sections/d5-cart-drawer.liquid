@@ -947,6 +947,7 @@
     </div>
     <div class="cd-footer-d5" render-d5>
       {% if cart.item_count > 0 %}
+        {% if cart.total_discount > 0 %}
          <div class="cd-footer-discounts-d5">
           <span>Discounts 
               <ul>
@@ -957,6 +958,7 @@
           </span>
           <span>- {{ cart.total_discount | money }}</span>
         </div>
+      {% endif %}
         <div class="cd-footer-total-d5">
           <span>Subtotal</span>
           <span>{{- cart.original_total_price | money -}}</span>
