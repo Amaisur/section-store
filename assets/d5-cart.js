@@ -195,16 +195,16 @@ autoRemoveSp(document)
 function timerD5(){
   const timerElement = document.querySelector('.cd-timer-time-d5');
   const parentElement = document.querySelector('.cd-timer-main-d5');
-  const timerMins = parentElement.querySelector('p').dataset.time;
-  const originalTime = timerElement.textContent;
-  
+  const timerMins = parseInt(parentElement.querySelector('p').dataset.time, 10);
+  const originalTime = timerElement.textContent.split(":")[0];
+
   if (localStorage.getItem("timerEnded") === "true") {
     parentElement.classList.add('timer-end-d5');
     return;
   }
 
   let time = originalTime;
-  const endTime = new Date().getTime() + (timerMins * 60000); // end time for countdown
+  const endTime = new Date().getTime() + (timerMins * 60000);
 
   function updateTimer() {
     const remainingTime = endTime - new Date().getTime();
@@ -218,8 +218,9 @@ function timerD5(){
     timerElement.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
   }
 
-  setInterval(updateTimer, 1000);  // Update every second
+  setInterval(updateTimer, 1000);
   updateTimer();
 } 
-timerD5()
+timerD5();
+
 })();
