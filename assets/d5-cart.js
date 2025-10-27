@@ -51,7 +51,7 @@
       let width = dataRW.getAttribute('data-width');
       rewardsBar.style.width = width;
     }
-    
+    autoRemoveSp(doc)
   }
 
 document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
@@ -163,5 +163,31 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
     el.classList.remove("loading");
   }
 });
+function autoRemoveSp(sele){
+  const autoEl = sele.querySelector('.sp-t-sp-toggle-d5.active.nt-remove-d5');
+if (autoEl) {
+  const key = autoEl.getAttribute('key');
+  if (key) {
+    autoEl.classList.add('loading');
+    try {
+      const res = await fetch("/cart/change.js", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: key, quantity: 0 })
+      });
+      if (res.ok) {
+        autoEl.classList.remove('active', 'loading', 'nt-remove-d5');
+        autoEl.classList.add('nt-add-d5');
+        autoEl.removeAttribute('key');
+        if (typeof rerenderCart === 'function') {
+          await rerenderCart();
+        }
+      }
+    } catch {
+      autoEl.classList.remove('loading');
+    }
+  }
+}
 
+}
 })();
