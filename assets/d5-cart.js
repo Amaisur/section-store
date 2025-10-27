@@ -191,4 +191,34 @@ if (autoEl) {
 
 }
 autoRemoveSp(document)
+
+function timerD5(){
+const timerElement = document.querySelector('.cd-timer-time-d5');
+  const parentElement = document.querySelector('.cd-timer-main-d5');
+  const originalTime = {{ section.settings.time | append: ':00' }};
+  
+  if (localStorage.getItem("timerEnded") === "true") {
+    parentElement.classList.add('timer-end-d5');
+    return;
+  }
+
+  let time = originalTime;
+  const endTime = new Date().getTime() + ({{ section.settings.time }} * 60000); // end time for countdown
+
+  function updateTimer() {
+    const remainingTime = endTime - new Date().getTime();
+    if (remainingTime <= 0) {
+      parentElement.classList.add('timer-end-d5');
+      localStorage.setItem("timerEnded", "true");
+      return;
+    }
+    const minutes = Math.floor(remainingTime / 60000);
+    const seconds = Math.floor((remainingTime % 60000) / 1000);
+    timerElement.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+  }
+
+  setInterval(updateTimer, 1000);  // Update every second
+  updateTimer();
+} 
+timerD5()
 })();
