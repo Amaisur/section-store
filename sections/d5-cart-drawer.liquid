@@ -1083,7 +1083,7 @@
             <form action="{{ routes.cart_add_url }}" method="POST">
               <input type="hidden" name="id" value="{{ sp.first_available_variant.id }}">
               <input type="hidden" name="quantity" value="1">
-            <button type="submit" class="sp-t-switch-d5 {% if cart.item_count == 1 and shipping_protection %}active{% endif %}">
+            <button type="submit" class="sp-t-switch-d5 {% if shipping_protection %}active{% endif %}">
               <div class="sp-t-slider-d5">
                 <div class="sp-t-loader-d5"></div>
                 <div class="sp-t-check-d5">✔</div>
