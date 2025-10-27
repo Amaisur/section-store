@@ -1079,13 +1079,17 @@
             <h6><span>{{ sp.title }}</span><span>{{ sp.price | money }}</span></h6>
             <p>{{ sp.description | strip_html }}</p>
           </div>
-          <div class="sp-toggler-d5" data-variant="{{ sp.first_available_variant.id  }}">
-            <div class="sp-t-switch-d5 {% if cart.item_count == 1 and shipping_protection %}active{% endif %}">
+          <div class="sp-toggler-d5">
+            <form action="{{ routes.cart_add_url }}" method="POST">
+              <input type="hidden" name="id" value="{{ sp.first_available_variant.id }}">
+              <input type="hidden" name="quantity" value="1">
+            <button type="submit" class="sp-t-switch-d5 {% if cart.item_count == 1 and shipping_protection %}active{% endif %}">
               <div class="sp-t-slider-d5">
                 <div class="sp-t-loader-d5"></div>
                 <div class="sp-t-check-d5">✔</div>
               </div>
-            </div>
+            </button>
+          </form>
           </div>
         </div>
         {% endif %}
