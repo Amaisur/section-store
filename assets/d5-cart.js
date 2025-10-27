@@ -195,7 +195,7 @@ autoRemoveSp(document)
 function timerD5(){
   const timerElement = document.querySelector('.cd-timer-time-d5');
   const parentElement = document.querySelector('.cd-timer-main-d5');
-  const timerMins = parentElement.querySelector('p').datasets.time;
+  const timerMins = parentElement.querySelector('p').dataset.time;
   const originalTime = timerElement.textContent;
   
   if (localStorage.getItem("timerEnded") === "true") {
