@@ -98,17 +98,19 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
             val++;
             changeQty(line, val, btn, qtyInput);
         }
-          if (btn.classList.contains('cd-minus-d5') && val > 1) {
-            btn.classList.add('loading');
-            val--;
-            changeQty(line, val, btn, qtyInput);
-        }
           if (btn.classList.contains('cd-remove-d5')) {
             btn.classList.add('loading');
             val = 0;
+            product.classList.add('item--loading');
             changeQty(line, val, btn, qtyInput, product);
-            product.classList.add('item--loading'); 
-        }
+          }
+          if (btn.classList.contains('cd-auto-remove-d5') || qtyInput.classList.contains('cd-auto-remove-d5')) {
+            const val = 0;
+            btn.classList.add('loading');
+            product.classList.add('item--loading');
+            changeQty(line, val, btn, qtyInput, product);
+          }
+
         });
       });
     });
