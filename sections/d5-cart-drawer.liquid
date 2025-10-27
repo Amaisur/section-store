@@ -718,7 +718,7 @@
         {% capture time_content %}
           <span class="cd-timer-time-d5">{{ time }}</span>
         {% endcapture %}
-        <p>{{ section.settings.timer_text | replace: '[[time]]', time_content }}</p>
+        <p data-time="{{ time }}">{{ section.settings.timer_text | replace: '[[time]]', time_content }}</p>
       </div>
     {% endif %}
       {% comment %}
