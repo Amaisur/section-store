@@ -584,6 +584,73 @@
     width: 15px;
     height: 15px;
   }
+  .sp-t-switch-d5 {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+.sp-t-input-d5 {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.sp-t-slider-d5 {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #d0d6dc;
+  border-radius: 30px;
+  transition: background-color 0.4s ease;
+}
+.sp-t-slider-d5:before {
+  content: "";
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.4s ease;
+}
+.sp-t-loader-d5, .sp-t-check-d5 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #fff;
+  transition: opacity 0.3s ease;
+}
+.sp-t-loader-d5 {
+  left: 12px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-top: 2px solid #fff;
+  border-radius: 50%;
+  animation: sp-t-spin-d5 1s linear infinite;
+}
+@keyframes sp-t-spin-d5 {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}
+.sp-t-check-d5 {
+  right: 14px;
+  opacity: 0;
+}
+.sp-t-input-d5:checked + .sp-t-slider-d5 {
+  background-color: #a3b1bf;
+}
+.sp-t-input-d5:checked + .sp-t-slider-d5:before {
+  transform: translateX(30px);
+}
+.sp-t-input-d5:checked + .sp-t-slider-d5 .sp-t-loader-d5 {
+  opacity: 0;
+}
+.sp-t-input-d5:checked + .sp-t-slider-d5 .sp-t-check-d5 {
+  opacity: 1;
+}
 </style>
 
 <div class="cart-drawer-d5 cd-drawer__open">
@@ -971,6 +1038,27 @@
     </div>
     <div class="cd-footer-d5" render-d5>
       {% if cart.item_count > 0 %}
+        {% if section.settings.sp != blank %}
+        <div class="cd-sp-main-d5">
+          {% assign sp = section.settings.sp %}
+          <div class="sp-img-d5">
+            <img src="{{ sp.featured_image | image_url: width: '120' }}" alt="Shipping Protection" width="50" height="50">
+          </div>
+          <div class="sp-content-d5">
+            <h6><span>{{ sp.title }}</span><span>{{ sp.price | money }}</span></h6>
+            <p>{{ sp.description | strip_html }}</p>
+          </div>
+          <div class="sp-toggler-d5">
+            <label class="sp-t-switch-d5">
+              <input type="checkbox" class="sp-t-input-d5">
+              <span class="sp-t-slider-d5">
+                <span class="sp-t-loader-d5"></span>
+                <span class="sp-t-check-d5">✔</span>
+              </span>
+            </label>
+          </div>
+        </div>
+        {% endif %}
         {% if cart.total_discount > 0 %}
          <div class="cd-footer-discounts-d5">
           <span class="cd-discounts-d5">Discounts 
@@ -1073,6 +1161,15 @@
       "type": "image_picker",
       "id": "p_i",
       "label": "Payment Icons"
+    },
+    {
+      "type": "header",
+      "content": "Shipping Protection"
+    },
+    {
+      "type": "product",
+      "id": "sp",
+      "label": "Shipping Protection"
     }
   ],
   "blocks": [
