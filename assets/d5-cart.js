@@ -192,7 +192,7 @@ if (autoEl) {
 }
 autoRemoveSp(document)
 
-function timerD5(){
+function timerD5() {
   const timerElement = document.querySelector('.cd-timer-time-d5');
   const parentElement = document.querySelector('.cd-timer-main-d5');
   const timerMins = parseInt(parentElement.querySelector('p').dataset.time, 10);
@@ -203,24 +203,35 @@ function timerD5(){
     return;
   }
 
-  let time = originalTime;
-  const endTime = new Date().getTime() + (timerMins * 60000);
+  let remainingTime = localStorage.getItem("remainingTime");
+
+  if (!remainingTime) {
+    remainingTime = timerMins * 60000;
+  } else {
+    remainingTime = parseInt(remainingTime, 10);
+  }
+
+  const endTime = new Date().getTime() + remainingTime;
 
   function updateTimer() {
-    const remainingTime = endTime - new Date().getTime();
-    if (remainingTime <= 0) {
+    const timeLeft = endTime - new Date().getTime();
+    if (timeLeft <= 0) {
       parentElement.classList.add('timer-end-d5');
       localStorage.setItem("timerEnded", "true");
+      localStorage.removeItem("remainingTime");
       return;
     }
-    const minutes = Math.floor(remainingTime / 60000);
-    const seconds = Math.floor((remainingTime % 60000) / 1000);
+
+    const minutes = Math.floor(timeLeft / 60000);
+    const seconds = Math.floor((timeLeft % 60000) / 1000);
     timerElement.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+
+    localStorage.setItem("remainingTime", timeLeft);
   }
 
   setInterval(updateTimer, 1000);
   updateTimer();
-} 
+}
 timerD5();
 
 })();
