@@ -190,4 +190,5 @@ if (autoEl) {
 }
 
 }
+autoRemoveSp(document)
 })();
