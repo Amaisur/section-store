@@ -163,7 +163,7 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
     el.classList.remove("loading");
   }
 });
-function autoRemoveSp(sele){
+async function autoRemoveSp(sele){
   const autoEl = sele.querySelector('.sp-t-sp-toggle-d5.active.nt-remove-d5');
 if (autoEl) {
   const key = autoEl.getAttribute('key');
@@ -189,4 +189,5 @@ if (autoEl) {
   }
 }
 
+}
 })();
