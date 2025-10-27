@@ -680,7 +680,7 @@
   100% { transform: translateY(-50%) rotate(360deg); }
 }
 </style>
-
+{% assign sp = section.settings.sp %}
 <div class="cart-drawer-d5 cd-drawer__open">
   <div class="cd-overlay-d5" close-cart-d5></div>
   <div class="cd-inner-d5">
@@ -974,6 +974,9 @@
       <div class="cd-cart-items-d5" render-d5 data-width="{{ percentage | round: 2 }}%" shipping-bar-d5>
         {% if cart.item_count > 0 %}
           {% for item in cart.items %}
+            {% if item.product_id == sp.id %}
+            {% assign shipping_protection = true %}
+            {% endif %}
             <div
               class="cd-item-d5 real-item-d5"
               data-variant-id="{{ item.variant.id }}"
@@ -1068,7 +1071,7 @@
       {% if cart.item_count > 0 %}
         {% if section.settings.sp != blank %}
         <div class="cd-sp-main-d5">
-          {% assign sp = section.settings.sp %}
+          
           <div class="sp-img-d5">
             <img src="{{ sp.featured_image | image_url: width: '120' }}" alt="Shipping Protection" width="50" height="50">
           </div>
@@ -1076,8 +1079,8 @@
             <h6><span>{{ sp.title }}</span><span>{{ sp.price | money }}</span></h6>
             <p>{{ sp.description | strip_html }}</p>
           </div>
-          <div class="sp-toggler-d5">
-            <div class="sp-t-switch-d5">
+          <div class="sp-toggler-d5" data-variant="{{ sp.first_available_variant.id  }}">
+            <div class="sp-t-switch-d5 {% if cart.item_count == 1 and shipping_protection %}active{% endif %}">
               <div class="sp-t-slider-d5">
                 <div class="sp-t-loader-d5"></div>
                 <div class="sp-t-check-d5">✔</div>
