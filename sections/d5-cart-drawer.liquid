@@ -712,6 +712,11 @@
       </div>
     </div>
     <div class="cd-content-d5">
+      {% if section.settings.timer_text != blank %}
+      <div class="cd-timer-main-d5">
+        <p>{{ section.settings.timer_text | replace: '[[timer]]', section.settings.time }}</p>
+      </div>
+    {% endif %}
       {% comment %}
         {% unless section.settings.milestones == "0" %}
         <div class="cd-rewards-bar-d5">
