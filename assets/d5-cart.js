@@ -51,7 +51,7 @@
       let width = dataRW.getAttribute('data-width');
       rewardsBar.style.width = width;
     }
-    autoRemoveSp(doc)
+    await autoRemoveSp(doc)
   }
 
 document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
