@@ -125,7 +125,7 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
     })
   })
 
-  document.addEventListener("click", async (e) => {
+ document.addEventListener("click", async (e) => {
   const el = e.target.closest(".sp-t-sp-toggle-d5");
   if (!el) return;
 
@@ -133,9 +133,7 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
   const key = el.getAttribute("key");
   if (!variantId) return;
 
-  const shouldRemove =
-    el.classList.contains("nt-remove-d5") ||
-    el.classList.contains("active");
+  const shouldRemove = el.classList.contains("active");
 
   el.classList.add("loading");
 
@@ -147,31 +145,23 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
         body: JSON.stringify({ id: key, quantity: 0 })
       });
       if (!res.ok) throw new Error("Remove failed");
-
-      el.classList.remove("active", "loading", "nt-remove-d5");
-      el.classList.add("nt-add-d5");
-      el.removeAttribute("key");
     } else {
+      el.classList.add("active");
       const res = await fetch("/cart/add.js", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: variantId, quantity: 1 })
       });
       if (!res.ok) throw new Error("Add failed");
-
-      const data = await res.json();
-      el.classList.remove("nt-add-d5", "loading");
-      el.classList.add("active", "nt-remove-d5");
-      el.setAttribute("key", data.key);
     }
 
     if (typeof rerenderCart === "function") {
       await rerenderCart();
     }
-
   } catch (err) {
     console.error("SP Toggle Error:", err);
     el.classList.remove("loading");
   }
 });
+
 })();
