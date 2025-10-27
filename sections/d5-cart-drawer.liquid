@@ -712,7 +712,7 @@
       </div>
     </div>
     <div class="cd-content-d5">
-      {% if section.settings.timer_text != blank and cart.item_count < 1 %}
+      {% if section.settings.timer_text != blank and cart.item_count == 0 %}
       <div class="cd-timer-main-d5">
         {% assign time = section.settings.time | append: ':00' %}
         {% capture time_content %}
