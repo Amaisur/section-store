@@ -614,6 +614,29 @@
   border-radius: 50%;
   transition: transform 0.4s ease;
 }
+.sp-t-switch-d5 {
+  position: relative;
+  width: 60px;
+  height: 30px;
+}
+.sp-t-slider-d5 {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #d0d6dc;
+  border-radius: 30px;
+  transition: background 0.4s ease;
+}
+.sp-t-slider-d5:before {
+  content: "";
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  left: 3px;
+  bottom: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.4s ease;
+}
 .sp-t-loader-d5, .sp-t-check-d5 {
   position: absolute;
   top: 50%;
@@ -629,27 +652,31 @@
   border: 2px solid rgba(255,255,255,0.6);
   border-top: 2px solid #fff;
   border-radius: 50%;
-  animation: sp-t-spin-d5 1s linear infinite;
-}
-@keyframes sp-t-spin-d5 {
-  0% { transform: translateY(-50%) rotate(0deg); }
-  100% { transform: translateY(-50%) rotate(360deg); }
+  opacity: 0;
 }
 .sp-t-check-d5 {
   left: 10px;
   opacity: 0;
 }
-.sp-t-input-d5:checked + .sp-t-slider-d5 {
-  background-color: #a3b1bf;
+.sp-t-switch-d5.active .sp-t-slider-d5 {
+  background: #a3b1bf;
 }
-.sp-t-input-d5:checked + .sp-t-slider-d5:before {
+.sp-t-switch-d5.active .sp-t-slider-d5:before {
   transform: translateX(30px);
 }
-.sp-t-input-d5:checked + .sp-t-slider-d5 .sp-t-loader-d5 {
+.sp-t-switch-d5.active .sp-t-check-d5 {
+  opacity: 1;
+}
+.sp-t-switch-d5.loading .sp-t-loader-d5 {
+  opacity: 1;
+  animation: sp-t-spin-d5 1s linear infinite;
+}
+.sp-t-switch-d5.loading .sp-t-check-d5 {
   opacity: 0;
 }
-.sp-t-input-d5:checked + .sp-t-slider-d5 .sp-t-check-d5 {
-  opacity: 1;
+@keyframes sp-t-spin-d5 {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
 }
 </style>
 
@@ -1049,13 +1076,12 @@
             <p>{{ sp.description | strip_html }}</p>
           </div>
           <div class="sp-toggler-d5">
-            <label class="sp-t-switch-d5">
-              <input type="checkbox" class="sp-t-input-d5">
-              <span class="sp-t-slider-d5">
-                <span class="sp-t-loader-d5"></span>
-                <span class="sp-t-check-d5">✔</span>
-              </span>
-            </label>
+            <div class="sp-t-switch-d5">
+              <div class="sp-t-slider-d5">
+                <div class="sp-t-loader-d5"></div>
+                <div class="sp-t-check-d5">✔</div>
+              </div>
+            </div>
           </div>
         </div>
         {% endif %}
