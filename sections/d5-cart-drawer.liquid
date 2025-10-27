@@ -714,7 +714,7 @@
     <div class="cd-content-d5">
       {% if section.settings.timer_text != blank %}
       <div class="cd-timer-main-d5">
-        <p>{{ section.settings.timer_text | replace: '[[timer]]', section.settings.time }}</p>
+        <p>{{ section.settings.timer_text | replace: '[[time]]', section.settings.time }}</p>
       </div>
     {% endif %}
       {% comment %}
