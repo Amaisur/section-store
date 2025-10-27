@@ -604,7 +604,7 @@
     position: absolute;
     height: 22px;
     width: 22px;
-    left: 2px;
+    left: 4px;
     bottom: 4px;
     background: #fff;
     border-radius: 50%;
@@ -955,7 +955,7 @@
               {% assign sp_key = item.key %}
             {% endif %}
             <div
-              class="cd-item-d5 real-item-d5 {% if shipping_protection %}hidden-line-item-d5{% endif %}"
+              class="cd-item-d5 real-item-d5 {% if item.product_id == sp.id %}hidden-line-item-d5{% endif %}"
               data-variant-id="{{ item.variant.id }}"
               data-line-item-key="{{ item.key }}"
             >
