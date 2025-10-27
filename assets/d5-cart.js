@@ -193,9 +193,10 @@ if (autoEl) {
 autoRemoveSp(document)
 
 function timerD5(){
-const timerElement = document.querySelector('.cd-timer-time-d5');
+  const timerElement = document.querySelector('.cd-timer-time-d5');
   const parentElement = document.querySelector('.cd-timer-main-d5');
-  const originalTime = {{ section.settings.time | append: ':00' }};
+  const timerMins = parentElement.querySelector('p').datasets.time;
+  const originalTime = timerElement.textContent;
   
   if (localStorage.getItem("timerEnded") === "true") {
     parentElement.classList.add('timer-end-d5');
@@ -203,7 +204,7 @@ const timerElement = document.querySelector('.cd-timer-time-d5');
   }
 
   let time = originalTime;
-  const endTime = new Date().getTime() + ({{ section.settings.time }} * 60000); // end time for countdown
+  const endTime = new Date().getTime() + (timerMins * 60000); // end time for countdown
 
   function updateTimer() {
     const remainingTime = endTime - new Date().getTime();
