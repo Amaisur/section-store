@@ -196,7 +196,7 @@ function timerD5() {
   const timerElement = document.querySelector('.cd-timer-time-d5');
   const parentElement = document.querySelector('.cd-timer-main-d5');
   const timerMins = parseInt(parentElement.querySelector('p').dataset.time, 10);
-  parentElement.style.opacity = '1';
+  parentElement.querySelector('p').style.opacity = '1';
   const originalTime = timerElement.textContent.split(":")[0];
 
   if (localStorage.getItem("timerEnded") === "true") {
