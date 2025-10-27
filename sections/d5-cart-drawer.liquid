@@ -948,6 +948,7 @@
           {% for item in cart.items %}
             {% if item.product_id == sp.id %}
             {% assign shipping_protection = true %}
+            {% assign sp_key = item.key %}
             {% endif %}
             <div
               class="cd-item-d5 real-item-d5"
@@ -1053,7 +1054,7 @@
           </div>
           <div class="sp-toggler-d5">
            
-            <div class="sp-t-switch-d5 sp-t-sp-toggle-d5 {% if shipping_protection %}active{% endif %}" data-variant="{{ sp.first_available_variant.id }}">
+            <div class="sp-t-switch-d5 sp-t-sp-toggle-d5 {% if shipping_protection %}active {% else %}nt-add-d5{% endif %} {% if cart.item_count == 1 and shipping_protection %}nt-remove-d5{% endif %}" data-variant="{{ sp.first_available_variant.id }}" {% if shipping_protection %}key="{{ sp_key }}"{% endif %}>
               <div class="sp-t-slider-d5">
                 <div class="sp-t-loader-d5"></div>
                 <div class="sp-t-check-d5">✔</div>

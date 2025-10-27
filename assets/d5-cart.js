@@ -124,4 +124,54 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
     document.body.classList.remove('overflow-hidden');
     })
   })
+
+  document.addEventListener("click", async (e) => {
+  const el = e.target.closest(".sp-t-sp-toggle-d5");
+  if (!el) return;
+
+  const variantId = el.dataset.variant;
+  const itemKey = el.getAttribute("key");
+
+  if (!variantId) return;
+
+  el.classList.add("loading");
+
+  try {
+    if (el.classList.contains("nt-add-d5")) {
+      const res = await fetch("/cart/add.js", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: variantId, quantity: 1 })
+      });
+
+      if (!res.ok) throw new Error("Add to cart failed");
+
+      const data = await res.json();
+
+      el.classList.remove("nt-add-d5", "loading");
+      el.classList.add("active", "nt-remove-d5");
+      el.setAttribute("key", data.key);
+    }
+
+    else if (el.classList.contains("nt-remove-d5")) {
+      const key = itemKey || null;
+      if (!key) throw new Error("Missing item key for removal");
+
+      const res = await fetch("/cart/change.js", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: key, quantity: 0 })
+      });
+
+      if (!res.ok) throw new Error("Remove from cart failed");
+
+      el.classList.remove("nt-remove-d5", "active", "loading");
+      el.classList.add("nt-add-d5");
+      el.removeAttribute("key");
+    }
+  } catch (err) {
+    console.error("SP Toggle Error:", err);
+    el.classList.remove("loading");
+  }
+});
 })();
