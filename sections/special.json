@@ -49,7 +49,8 @@
         "empty_cart_page": "shopify://pages/test-atc",
         "footer_link_text": "Or continue shopping",
         "footer_link_url": "shopify://pages/test-atc",
-        "p_i": "shopify://shop_images/payment-icons.webp"
+        "p_i": "shopify://shop_images/payment-icons.webp",
+        "sp": "shipping-protection-2"
       }
     }
   },
