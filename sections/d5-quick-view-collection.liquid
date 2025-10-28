@@ -388,7 +388,7 @@ body{
       {{ coll.all_products_count }}
       {% paginate coll.products by 50 %}
         <div class="cq-row-d5">
-            {% for product in paginate.items %}
+            {% for product in coll.products %}
               <h1>{{ forloop.index }}</h1>
             <div class="cq-card-d5" products-d5>
                 <div class="cq-image-d5">
