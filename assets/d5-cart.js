@@ -263,30 +263,38 @@ document.querySelectorAll('.cd-up-form-d5 .cd-up-variant-select-d5').forEach(fun
 });
 
 function upsellSlider() {
-  const leftBtn = document.querySelector('.up-left-btn-d5');
-  const rightBtn = document.querySelector('.up-right-btn-d5');
-  const scrollContainer = document.querySelector('.cd-up-row-d5');
-
-  leftBtn.addEventListener('click', function () {
-    if (scrollContainer.scrollLeft === 0) {
-      scrollContainer.scrollLeft = scrollContainer.scrollWidth;
-    } else {
-      scrollContainer.scrollBy({
-        left: -200,
+  const containers = document.querySelectorAll('.cd-up-inner-d5');
+  
+  containers.forEach(container => {
+    const row = container.querySelector('.cd-up-row-d5');
+    const leftBtn = container.querySelector('.up-left-btn-d5');
+    const rightBtn = container.querySelector('.up-right-btn-d5');
+    const items = row.querySelectorAll('.cd-up-item-d5');
+    
+    if (items.length === 0) return;
+    
+    const itemWidth = items[0].offsetWidth;
+    const gap = parseInt(getComputedStyle(row).gap) || 0;
+    const scrollAmount = itemWidth + gap;
+    
+    function scroll(direction) {
+      const maxScroll = row.scrollWidth - row.clientWidth;
+      let newScroll = row.scrollLeft + (direction * scrollAmount);
+      
+      if (newScroll < 0) {
+        newScroll = maxScroll;
+      } else if (newScroll > maxScroll) {
+        newScroll = 0;
+      }
+      
+      row.scrollTo({
+        left: newScroll,
         behavior: 'smooth'
       });
     }
-  });
-
-  rightBtn.addEventListener('click', function () {
-    if (scrollContainer.scrollLeft === scrollContainer.scrollWidth - scrollContainer.clientWidth) {
-      scrollContainer.scrollLeft = 0;
-    } else {
-      scrollContainer.scrollBy({
-        left: 200,
-        behavior: 'smooth'
-      });
-    }
+    
+    leftBtn.addEventListener('click', () => scroll(-1));
+    rightBtn.addEventListener('click', () => scroll(1));
   });
 }
 
