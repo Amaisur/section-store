@@ -60,6 +60,7 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
       if (cart) {
         cart.classList.add('cd-drawer__open', 'atc-loading-d5');
       }
+    document.querySelector('.cd-content-d5').scrollTop = 0;
     const btn = form.querySelector('[name="add"]');
     btn.classList.add('loading');
     try {
