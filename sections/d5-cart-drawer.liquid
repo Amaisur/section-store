@@ -1167,7 +1167,7 @@
                   <img class="up-img-d5" src="{{ up.featured_image | image_url: width: 200 }}" width="80" height="80" alt="{{ up.title }}" loading="lazy">
                 </a>
                 <div class="cd-up-item-content-d5">
-                  <h5>{{ up.title }}</h5>
+                  <h5><a href="{{ up.url }}">{{ up.title }}</a></h5>
                   <div class="cd-up-price-d5">
                     <span class="cd-up-comp-price-d5">{{ up.compare_at_price | money }}</span>
                     <span class="cd-up-reg-price-d5">{{ up.price | money }}</span>
