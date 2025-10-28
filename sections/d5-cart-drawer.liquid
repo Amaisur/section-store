@@ -720,6 +720,23 @@
   }
   .cd-up-inner-d5{
     padding: 0 20px;
+    position: relative;
+  }
+  .cdup-carousel-btn-d5{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+  }
+  .cdup-carousel-btn-d5 span{
+    background: transparent;
+    border-color: #000;
+    border-style: solid;
+    border-width: 2px 2px 0 0;
+    height: 7px;
+    margin-bottom: 0;
+    transform: rotate(45deg);
+    width: 7px;
   }
   .cd-up-row-d5{
     display: flex;
@@ -1207,6 +1224,8 @@
       <div class="cd-upsells-main-d5">
         <h4>{{ section.settings.up_h }}</h4>
         <div class="cd-up-inner-d5">
+          <div class="cdup-carousel-btn-d5 up-left-btn-d5"><span></span></div>
+          <div class="cdup-carousel-btn-d5 up-right-btn-d5"><span></span></div>
           <div class="cd-up-row-d5">
             {% for up in section.settings.up %}
               {% unless up.variants.size == 1 and up.first_available_variant.available  %}
