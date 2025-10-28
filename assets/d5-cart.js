@@ -262,4 +262,33 @@ document.querySelectorAll('.cd-up-form-d5 .cd-up-variant-select-d5').forEach(fun
   });
 });
 
+function upsellSlider() {
+  const leftBtn = document.querySelector('.up-left-btn-d5');
+  const rightBtn = document.querySelector('.up-right-btn-d5');
+  const scrollContainer = document.querySelector('.cd-up-row-d5');
+
+  leftBtn.addEventListener('click', function () {
+    scrollContainer.scrollBy({
+      left: -200,
+      behavior: 'smooth'
+    });
+  });
+
+  rightBtn.addEventListener('click', function () {
+    scrollContainer.scrollBy({
+      left: 200,
+      behavior: 'smooth'
+    });
+  });
+
+  scrollContainer.addEventListener('scroll', function () {
+    if (scrollContainer.scrollLeft === 0) {
+      scrollContainer.scrollLeft = scrollContainer.scrollWidth;
+    } else if (scrollContainer.scrollLeft === scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+      scrollContainer.scrollLeft = 0;
+    }
+  });
+}
+
+upsellSlider()
 })();
