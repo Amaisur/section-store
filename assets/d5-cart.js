@@ -60,6 +60,8 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
       if (cart) {
         cart.classList.add('cd-drawer__open', 'atc-loading-d5');
       }
+    const btn = e.querySelector('[name="add"]');
+    btn.classList.add('loading');
     try {
       await fetch("/cart/add", {
         method: "POST",
@@ -69,6 +71,7 @@ document.querySelectorAll('form[action="/cart/add"]').forEach(form => {
       if (typeof rerenderCart === 'function') { 
         await rerenderCart();
         cart.classList.remove('atc-loading-d5');
+        btn.classList.remove('loading');
       }
 
     } catch (error) {
