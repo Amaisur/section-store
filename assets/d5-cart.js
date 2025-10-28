@@ -249,6 +249,7 @@ document.querySelectorAll('.cd-up-form-d5 .cd-up-variant-select-d5').forEach(fun
     const imgUrl = selectedOption.getAttribute('data-img');
     const imgElement = select.closest('.cd-up-item-d5').querySelector('.up-img-d5');
     if (imgUrl) {
+      imgElement.src = '';
       imgElement.src = imgUrl;
     }
   });
