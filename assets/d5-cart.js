@@ -275,7 +275,7 @@ function upsellSlider() {
     
     function scroll(direction) {
       const itemWidth = items[0].offsetWidth;
-      const gap = parseInt(getComputedStyle(row).gap) || 0;
+      const gap = parseInt(getComputedStyle(row).gap) || 15;
       const scrollAmount = itemWidth + gap;
       const maxScroll = row.scrollWidth - row.clientWidth;
       let newScroll = row.scrollLeft + (direction * scrollAmount);
