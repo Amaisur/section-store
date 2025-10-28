@@ -386,8 +386,9 @@ body{
 <div class="cq-main-d5">
     <div class="cq-inner-d5">
       {{ collection.all_products_count }}
+      {% paginate collection.products by 50 %}
         <div class="cq-row-d5">
-            {% for product in collection.products %}
+            {% for product in paginate.products %}
             <div class="cq-card-d5" products-d5>
                 <div class="cq-image-d5">
                     <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}"
@@ -410,6 +411,10 @@ body{
                 </div>
                 {% endfor %}
         </div>
+        {% if paginate.next %}
+    <a href="{{ paginate.next.url }}">Next Page</a>
+  {% endif %}
+        {% endpaginate %}
     </div>
 </div>
 
