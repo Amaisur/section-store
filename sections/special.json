@@ -52,7 +52,7 @@
         "p_i": "shopify://shop_images/payment-icons.webp",
         "sp": "shipping-protection-2",
         "timer_text": "Your products are reserved for [[time]] minutes!",
-        "time": 3000,
+        "time": 20,
         "up_h": "You may also like",
         "up": [
           "everwood",
