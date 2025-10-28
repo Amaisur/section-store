@@ -411,9 +411,9 @@ body{
                 </div>
                 {% endfor %}
         </div>
-        {% if paginate.next %}
-    <a href="{{ paginate.next.url }}">Next Page</a>
-  {% endif %}
+        {% for part in paginate.parts %}
+    <a href="{{ part.url }}">Next Page</a>
+        {% endfor %}
         {% endpaginate %}
     </div>
 </div>
