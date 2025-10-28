@@ -273,18 +273,17 @@ function upsellSlider() {
     
     if (items.length === 0) return;
     
-    const itemWidth = items[0].offsetWidth;
-    const gap = parseInt(getComputedStyle(row).gap) || 0;
-    const scrollAmount = itemWidth + gap;
-    
     function scroll(direction) {
+      const itemWidth = items[0].offsetWidth;
+      const gap = parseInt(getComputedStyle(row).gap) || 0;
+      const scrollAmount = itemWidth + gap;
       const maxScroll = row.scrollWidth - row.clientWidth;
       let newScroll = row.scrollLeft + (direction * scrollAmount);
       
-      if (newScroll < 0) {
-        newScroll = maxScroll;
-      } else if (newScroll > maxScroll) {
+      if (direction > 0 && newScroll >= maxScroll) {
         newScroll = 0;
+      } else if (direction < 0 && newScroll <= 0) {
+        newScroll = maxScroll;
       }
       
       row.scrollTo({
