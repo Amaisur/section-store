@@ -247,7 +247,7 @@ document.querySelectorAll('.cd-up-form-d5 .cd-up-variant-select-d5').forEach(fun
     comparePriceElement.textContent = comparePrice ? comparePrice : '';
 
     const imgUrl = selectedOption.getAttribute('data-img');
-    const imgElement = select.closest('.cd-up-item-d5').querySelector('.up-img-d5 img');
+    const imgElement = select.closest('.cd-up-item-d5').querySelector('.up-img-d5');
     if (imgUrl) {
       imgElement.src = imgUrl;
     }
