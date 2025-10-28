@@ -743,6 +743,7 @@
     max-width: 80px;
     height: 80px;
     background: #fff;
+    display: flex;
   }
   .cd-up-img-d5 img{
     width: 100%;
@@ -751,6 +752,9 @@
   }
   .cd-up-item-content-d5 {
     flex: 1;
+  }
+  .cd-up-item-content-d5 h5{
+    
   }
 </style>
 {% assign sp = section.settings.sp %}
@@ -1159,9 +1163,9 @@
                 
               
               <div class="cd-up-item-d5">
-                <div class="cd-up-img-d5">
+                <a href="{{ up.url }}" class="cd-up-img-d5">
                   <img class="up-img-d5" src="{{ up.featured_image | image_url: width: 200 }}" width="80" height="80" alt="{{ up.title }}" loading="lazy">
-                </div>
+                </a>
                 <div class="cd-up-item-content-d5">
                   <h5>{{ up.title }}</h5>
                   <div class="cd-up-price-d5">
