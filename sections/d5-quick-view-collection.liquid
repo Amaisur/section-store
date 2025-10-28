@@ -388,7 +388,7 @@ body{
       {{ collection.all_products_count }}
       {% paginate collection.products by 50 %}
         <div class="cq-row-d5">
-            {% for product in paginate.items %}
+            {% for product in collection.products %}
             <div class="cq-card-d5" products-d5>
                 <div class="cq-image-d5">
                     <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}"
