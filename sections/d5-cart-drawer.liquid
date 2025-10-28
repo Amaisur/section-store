@@ -1121,11 +1121,15 @@
                   </div>
                   <form class="cd-up-form-d5" action="{{ routes.cart_add_url }}" method="POST">
                     <input type="hidden" value="1" name="quantity">
+                    {% if up.variants.size > 1 %}
                     <select name="id" class="cd-up-variant-select-d5">
                       {% for variant in up.variants %}
-                        <option value="{{ variant.id }}" data-regular="{{ variant.price | money }}" data-compare="{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money }}{% endif %}" {% if variant.featured_image %}data-img="{{ variant.featured_image | image_url: width: 200 }}"{% endif %}>{{ variant.title }}</option>
+                        <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %} data-regular="{{ variant.price | money }}" data-compare="{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money }}{% endif %}" {% if variant.featured_image %}data-img="{{ variant.featured_image | image_url: width: 200 }}"{% endif %}>{{ variant.title }}</option>
                       {% endfor %}
                     </select>
+                  {% else %}
+                    <input type="hidden" value="{{ up.first_available_variant.id }}" name="id">
+                  {% endif %}
                     <button name="add" type="submit">Add</button>
                   </form>
                 </div>
