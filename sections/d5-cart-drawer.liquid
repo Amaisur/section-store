@@ -703,6 +703,9 @@
     transform: translateY(-15px);
     border-bottom: 1px solid rgb(170, 170, 170);
   }
+  .cd-hide-upsell-d5 .cd-upsells-main-d5{
+    display: none !important;
+  }
 </style>
 {% assign sp = section.settings.sp %}
 <div class="cart-drawer-d5 cd-drawer__open">
@@ -1004,7 +1007,7 @@
       <div class="atc-loader-d5">
         <span class="item-loader-d5"></span>
       </div>
-      <div class="cd-cart-items-d5" render-d5 data-width="{{ percentage | round: 2 }}%" shipping-bar-d5>
+      <div class="cd-cart-items-d5 {% if cart.item_count == 0 %}cd-hide-upsell-d5{% endif %}" render-d5 data-width="{{ percentage | round: 2 }}%" shipping-bar-d5>
         {% if cart.item_count > 0 %}
           {% for item in cart.items %}
             {% if item.product_id == sp.id %}
@@ -1100,7 +1103,7 @@
           </div>
         {% endif %}
       </div>
-      {% if section.settings.up != blank and cart.item_count > 0 %}
+      {% if section.settings.up != blank %}
       <div class="cd-upsells-main-d5">
         <h4>{{ section.settings.up_h }}</h4>
         <div class="cd-up-inner-d5">
