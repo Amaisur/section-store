@@ -268,27 +268,28 @@ function upsellSlider() {
   const scrollContainer = document.querySelector('.cd-up-row-d5');
 
   leftBtn.addEventListener('click', function () {
-    scrollContainer.scrollBy({
-      left: -200,
-      behavior: 'smooth'
-    });
+    if (scrollContainer.scrollLeft === 0) {
+      scrollContainer.scrollLeft = scrollContainer.scrollWidth;
+    } else {
+      scrollContainer.scrollBy({
+        left: -200,
+        behavior: 'smooth'
+      });
+    }
   });
 
   rightBtn.addEventListener('click', function () {
-    scrollContainer.scrollBy({
-      left: 200,
-      behavior: 'smooth'
-    });
-  });
-
-  scrollContainer.addEventListener('scroll', function () {
-    if (scrollContainer.scrollLeft === 0) {
-      scrollContainer.scrollLeft = scrollContainer.scrollWidth;
-    } else if (scrollContainer.scrollLeft === scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+    if (scrollContainer.scrollLeft === scrollContainer.scrollWidth - scrollContainer.clientWidth) {
       scrollContainer.scrollLeft = 0;
+    } else {
+      scrollContainer.scrollBy({
+        left: 200,
+        behavior: 'smooth'
+      });
     }
   });
 }
+
 
 upsellSlider()
 })();
