@@ -412,7 +412,7 @@ body{
                 {% endfor %}
         </div>
         {% for part in paginate.parts %}
-    <a href="{{ part.url }}">Next Page</a>
+    <a href="{{ part.url }}">Next Page {{ part.title }}</a>
         {% endfor %}
         {% endpaginate %}
     </div>
