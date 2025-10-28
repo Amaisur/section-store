@@ -236,18 +236,18 @@ function timerD5() {
 timerD5();
 document.querySelectorAll('.cd-up-form-d5 .cd-up-variant-select-d5').forEach(function(select) {
   select.addEventListener('change', function() {
-    var selectedOption = select.options[select.selectedIndex];
+    const selectedOption = select.options[select.selectedIndex];
 
-    var regularPrice = selectedOption.getAttribute('data-regular');
-    var priceElement = select.closest('.cd-up-item-d5').querySelector('.cd-up-reg-price-d5');
+    const regularPrice = selectedOption.getAttribute('data-regular');
+    const priceElement = select.closest('.cd-up-item-d5').querySelector('.cd-up-reg-price-d5');
     priceElement.textContent = regularPrice;
 
-    var comparePrice = selectedOption.getAttribute('data-compare');
-    var comparePriceElement = select.closest('.cd-up-item-d5').querySelector('.cd-up-comp-price-d5');
+    const comparePrice = selectedOption.getAttribute('data-compare');
+    const comparePriceElement = select.closest('.cd-up-item-d5').querySelector('.cd-up-comp-price-d5');
     comparePriceElement.textContent = comparePrice ? comparePrice : '';
 
-    var imgUrl = selectedOption.getAttribute('data-img');
-    var imgElement = select.closest('.cd-up-item-d5').querySelector('.up-img-d5 img');
+    const imgUrl = selectedOption.getAttribute('data-img');
+    const imgElement = select.closest('.cd-up-item-d5').querySelector('.up-img-d5 img');
     if (imgUrl) {
       imgElement.src = imgUrl;
     }
