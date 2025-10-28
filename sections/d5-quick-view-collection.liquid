@@ -387,7 +387,7 @@ body{
     <div class="cq-inner-d5">
       {{ collection.all_products_count }}
         <div class="cq-row-d5">
-            {% for product in collection.all_products %}
+            {% for product in collection.products %}
             <div class="cq-card-d5" products-d5>
                 <div class="cq-image-d5">
                     <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}"
