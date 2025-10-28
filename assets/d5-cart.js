@@ -263,7 +263,7 @@ document.querySelectorAll('.cd-up-form-d5 .cd-up-variant-select-d5').forEach(fun
 });
 
 function upsellSlider() {
-  const containers = document.querySelectorAll('.cd-up-inner-d5');
+  const containers = document.querySelectorAll('.up-slider-d5');
   
   containers.forEach(container => {
     const row = container.querySelector('.cd-up-row-d5');
