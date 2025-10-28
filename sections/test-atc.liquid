@@ -1,6 +1,6 @@
 <h2>Products</h2>
 {% assign collection = section.settings.collection %}
-{% for product in collection.all_products %}
+{% for product in all_products %}
   <div class="atc-product">
     <h3>{{ product.title }}</h3>
     <form class="atc-form" action="/cart/add">
