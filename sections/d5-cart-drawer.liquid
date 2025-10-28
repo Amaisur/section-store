@@ -1100,6 +1100,22 @@
           </div>
         {% endif %}
       </div>
+      {% if section.settings.up != blank %}
+      <div class="cd-upsells-main-d5">
+        <h4>{{ section.settings.up_h }}</h4>
+        <div class="cd-up-inner-d5">
+          <div class="cd-up-row-d5">
+            {% for up in section.settings.up %}
+              <div class="cd-up-item-d5">
+                <div class="cd-up-img-d5">
+                  <img src="{{ up.featured_image | image_url: width: 200 }}" width="80" height="80" alt="{{ up.title }}">
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
     </div>
     <div class="cd-footer-d5" render-d5>
       {% if cart.item_count > 0 %}
