@@ -1109,6 +1109,9 @@
         <div class="cd-up-inner-d5">
           <div class="cd-up-row-d5">
             {% for up in section.settings.up %}
+              {% unless up.variants.size == 1 and up.first_available_variant.available  %}
+                
+              
               <div class="cd-up-item-d5">
                 <div class="cd-up-img-d5">
                   <img class="up-img-d5" src="{{ up.featured_image | image_url: width: 200 }}" width="80" height="80" alt="{{ up.title }}" loading="lazy">
@@ -1134,6 +1137,7 @@
                   </form>
                 </div>
               </div>
+              {% endunless %}
             {% endfor %}
           </div>
         </div>
