@@ -1,4 +1,4 @@
-{% assign coll = section.settings.collection %}
+{% comment %} {% assign coll = section.settings.collection %} {% endcomment %}
 <style>
 body{
     --product-color: #dd2c6c;
@@ -385,6 +385,7 @@ body{
 
 <div class="cq-main-d5">
     <div class="cq-inner-d5">
+      {% assign coll = collections[block.settings.collection] %}
       {{ coll.all_products_count }}
       {% paginate coll.products by 10  %}
         <div class="cq-row-d5">
