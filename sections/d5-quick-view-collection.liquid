@@ -386,7 +386,7 @@ body{
 <div class="cq-main-d5">
     <div class="cq-inner-d5">
       {{ coll.all_products_count }}
-      {% paginate coll.products by '20' %}
+      {% paginate coll.products by coll.all_products_count  %}
         <div class="cq-row-d5">
             {% for product in coll.products  %}
             <div class="cq-card-d5" products-d5>
