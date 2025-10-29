@@ -388,7 +388,7 @@ body{
       {{ coll.all_products_count }}
       {% paginate coll.products by 10  %}
         <div class="cq-row-d5">
-            {% for product in coll.products  %}
+            {% for product in coll.products limit: 10  %}
             <div class="cq-card-d5" products-d5>
                 <div class="cq-image-d5">
                     <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}"
