@@ -385,7 +385,7 @@ body{
 
 <div class="cq-main-d5">
     <div class="cq-inner-d5">
-      {% assign coll = collections[block.settings.collection] %}
+      {% assign coll = collections[section.settings.collection] %}
       {{ coll.all_products_count }}
       {% paginate coll.products by 10  %}
         <div class="cq-row-d5">
