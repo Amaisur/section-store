@@ -213,6 +213,11 @@
         transition: all .2s;
     }
 
+    .cd-qty-btn-d5 span svg{
+        width: 17.5px;
+        height: 17.5px;
+    }
+
     .cd-qty-btn-d5:hover {
         background: #0000000d;
     }
@@ -495,8 +500,8 @@
     }
 
     .cd-free-shipping-bar__text-d5 {
-        font-size: 14px;
-        color: #333;
+        font-size: 16px;
+        color: #000;
         text-align: center;
         width: 100%;
     }
@@ -531,7 +536,7 @@
         position: absolute;
         bottom: -18px;
         font-size: 8px;
-        text-wrap: nowrap;
+        white-space: nowrap;
         letter-spacing: 0.2px;
     }
     .cd-totalprice-d5{
@@ -570,9 +575,9 @@
       width: 100%;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 3px 10px;
       line-height: 1;
-      justify-content: end;
+      justify-content: flex-end;
     }
     .total-price-d5-cd{
       font-weight: 600;
@@ -584,7 +589,7 @@
       opacity: .6;
       text-decoration: line-through;
     }
-    .cd-prices-d5 p .cd-compare-price{
+    .cd-prices-d5 p .cd-regular-price{
       font-size: 15px;
       color: #000;
       font-weight: 500;
@@ -595,7 +600,7 @@
       font-weight: 500;
       width: 100%;
       display: flex;
-      justify-content: end;
+      justify-content: flex-end;
     }
     .cd-qty-price-d5{
       display: flex;
@@ -925,6 +930,7 @@
     font-size: 13px;
     line-height: 1;
     font-weight: 400;
+    white-space: nowrap;
   }
   @media (max-width: 750px){
     .cd-inner-d5{
@@ -951,6 +957,12 @@
     }
     .cdup-carousel-btn-d5{
       width: 20px;
+    }
+    .cd-item-img-d5{
+      max-width: 70px;
+    }
+    .sp-t-check-d5{
+      font-size: 10px;
     }
   }
 </style>
