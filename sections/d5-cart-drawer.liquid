@@ -21,6 +21,7 @@
     h5 {
         font-size: 15px;
         font-weight: 600;
+        margin: 0;
     }
 
     h6,
@@ -59,7 +60,7 @@
         background: #fff;
         box-shadow: 0 0 8px 1px #7f7b7b75;
         position: fixed;
-        height: 100vh;
+        height: 100%;
         top: 0;
         right: -500px;
         z-index: 999999;
@@ -101,9 +102,13 @@
     }
 
     .cd-close-d5 {
-        width: 22px;
-        height: 22px;
+        width: 30px;
+        height: 30px;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f0f0f0;
     }
 
     .cd-item-d5 {
@@ -148,6 +153,14 @@
         display: flex;
         align-items: center;
         gap: 6px;
+        opacity: .6;
+        margin: 5px 0;
+    }
+
+    .cd-otpions-d5 h5, .cd-otpions-d5 p{
+      color: #000;
+      font-size: 14px;
+      font-weight: 400;
     }
 
     .cd-title-price-d5 h4 {
@@ -155,7 +168,8 @@
     }
 
     .cd-quantity-d5 {
-        width: 105px;
+        min-width: 105px;
+        max-width: 105px;
         height: 30px;
         display: flex;
         border: 1px solid #ddd;
@@ -165,7 +179,11 @@
         border: none;
     }
 
-    .cd-qty-input-d5 {
+    .cd-quantity-d5 .cd-qty-input-d5 {
+        border: none;
+        width: unset;
+        max-width: unset;
+        margin: 0;
         width: 45px;
         text-align: center;
         border: none;
@@ -227,6 +245,11 @@
         background: rgba(255, 255, 255, .5);
         z-index: 7;
         opacity: 0;
+        display: none;
+    }
+
+    .item--loading .item-light-overlay-d5{
+        display: block;
     }
 
     .item-loader-d5 {
@@ -287,6 +310,7 @@
         justify-content: space-between;
         width: 100%;
         gap: 16px;
+        margin: 0;
     }
 
     .cd-title-price-d5 h4 a {
@@ -394,7 +418,6 @@
         border-top: 1px solid rgba(0, 0, 0, .1);
         background: #f6f6f7;
         position: sticky;
-        bottom: 0;
     }
 
     .cd-footer-d5 .cd-checkout-btn-d5 {
@@ -428,16 +451,35 @@
 
     .cd-free-shipping-bar-d5 {
         position: relative;
-        background-color: #f0f0f0;
-        height: 10px;
+        height: 8px;
         width: 100%;
         margin: 20px 0;
         border-radius: 8px;
     }
 
+    .cd-shipping-points-d5{
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .cd-shipping-point-d5{
+        position: relative;
+        height: 100%;
+        flex: 1;;
+        display: flex;
+        align-items: center;
+    }
+
+    .cd-rw-bar-d5{
+        flex: 1;
+        background: #f0f0f0;
+        height: 100%;
+    }
+
     .cd-free-shipping-bar__inner-d5 {
         height: 100%;
-        background-color: #27ae60;
+        background-color: #007f4e;
         transition: width 0.5s ease-out;
         max-width: 100%;
         display: block !important;
@@ -460,20 +502,18 @@
     }
 
     .cd-free-shipping-bar__icon-d5 {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
-        border: 1px solid #27ae60;
         display: flex;
-        background: #fff;
+        background: #f0f0f0;
         justify-content: center;
         align-items: center;
-        position: absolute;
-        top: -17px;
-        right: 0;
+        box-shadow: 2px 0 0 1px #ffff;
+        transform: translateX(-3px);
     }
     .cd-free-shipping-bar__icon-d5.rewards-true{
-        background-color: #27ae60;
+        background-color: #007f4e;
     }
     .cd-free-shipping-bar__icon-d5 .cd-icon-tag-d5 {
         width: 25px;
@@ -481,7 +521,6 @@
         background-size: 17px !important;
         background-position: center;
         background-repeat: no-repeat;
-        background-color: #fff;
         border-radius: 50%;
     }
 
@@ -526,16 +565,43 @@
       font-weight: 300;
       color: #111;
     }
-    .cd-prices-d5{
+    .cd-prices-d5 p{
       display: flex;
       width: 100%;
       align-items: center;
-      justify-content: space-between;
-      padding-right: 30px;
+      flex-wrap: wrap;
+      gap: 10px;
+      line-height: 1;
+      justify-content: end;
     }
     .total-price-d5-cd{
       font-weight: 600;
       color: #000;
+    }
+    .cd-prices-d5 p .cd-compare-price{
+      font-size: 15px;
+      color: #000;
+      opacity: .6;
+      text-decoration: line-through;
+    }
+    .cd-prices-d5 p .cd-compare-price{
+      font-size: 15px;
+      color: #000;
+      font-weight: 500;
+    }
+    .cd-prices-d5 p .cd-save-price{
+      color: #007F4E;
+      font-size: 15px;
+      font-weight: 500;
+      width: 100%;
+      display: flex;
+      justify-content: end;
+    }
+    .cd-qty-price-d5{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
     }
     .cd-footer-total-d5{
       display: flex;
@@ -571,6 +637,7 @@
       display: flex;
       align-items: center;
       gap: 5px;
+      margin: 0;
     }
     .cd-discounts-d5 ul li{
       padding: 2px 4px;
@@ -581,6 +648,7 @@
       background: rgba(0,0,0,.05);
       color: rgb(88,88,88);
       font-weight: 600;
+      margin: 0;
     }
     .cd-discounts-d5 li svg{
       width: 15px;
@@ -588,8 +656,8 @@
     }
   .sp-t-switch-d5 {
     position: relative;
-    width: 60px;
-    height: 30px;
+    width: 54px;
+    height: 27px;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -600,12 +668,13 @@
     background: #d0d6dc;
     border-radius: 30px;
     transition: background 0.4s ease;
+    box-shadow: 0 0 0px 2px #fff, 0 0 6px 0px #0000006e;
   }
   .sp-t-slider-d5:before {
     content: "";
     position: absolute;
-    height: 22px;
-    width: 22px;
+    height: 19px;
+    width: 19px;
     left: 4px;
     bottom: 4px;
     background: #fff;
@@ -638,7 +707,7 @@
     background:rgb(13, 205, 141);
   }
   .sp-t-switch-d5.active .sp-t-slider-d5:before {
-    transform: translateX(30px);
+    transform: translateX(26px);
   }
   .sp-t-switch-d5.active .sp-t-check-d5 {
     opacity: 1;
@@ -664,9 +733,9 @@
     margin-bottom: 10px;
   }
   .cd-sp-main-d5 .sp-img-d5{
-    min-width: 50px;
-    max-width: 50px;
-    max-height: 50px;
+    min-width: 60px;
+    max-width: 60px;
+    max-height: 60px;
     background:rgba(221, 221, 221, 0.79);
   }
   .cd-sp-main-d5 .sp-img-d5 img{
@@ -719,7 +788,7 @@
     margin-bottom: 12px;
   }
   .cd-up-inner-d5{
-    padding: 0 20px;
+    padding: 0 30px;
     position: relative;
   }
   .cdup-carousel-btn-d5{
@@ -731,7 +800,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    width: 20px;
+    width: 30px;
     justify-content: center;
   }
   .cdup-carousel-btn-d5 span{
@@ -766,19 +835,20 @@
     min-width: 100%;
     max-width: 100%;
     scroll-snap-align: start;
-    padding: 5px;
+    padding: 15px;
     background: #F1F1F1;
     display: flex;
     gap: 15px;
     justify-content: space-between;
+    align-items: center;
   }
   .cd-up-row-d5::-webkit-scrollbar{
     display: none !important;
   }
   .cd-up-img-d5{
-    min-width: 80px;
-    max-width: 80px;
-    height: 80px;
+    min-width: 90px;
+    max-width: 90px;
+    height: 90px;
     background: #fff;
     display: flex;
   }
@@ -816,6 +886,7 @@
   .cd-up-reg-price-d5{
     font-size: 14px;
     color: #000;
+    font-weight: 500;
   }
   .cd-up-form-d5{
     display: flex;
@@ -823,11 +894,15 @@
     justify-content: end;
   }
   .cd-up-form-d5 button, .cd-up-form-d5 select{
-    height: 30px;
+    height: 36px;
     width: 100%;
     max-width: calc(50% - 5px);
     cursor: pointer;
     font-size: 14px;
+  }
+  .cd-up-form-d5 select{
+    padding: 0 10px;
+    margin: 0;
   }
   .cd-up-form-d5 button{
     font-weight: 600;
@@ -835,11 +910,21 @@
     background: #000;
     border: 1px solid #000;
     outline: none;
-    height: 36px;
   }
   .cd-up-form-d5 button.loading{
     opacity: .5;
     pointer-events: none;
+  }
+  .cd-item-discounts-d5 ul{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding: 8px 0 5px;
+  }
+  .cd-item-discounts-d5 ul li{
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 400;
   }
   @media (max-width: 750px){
     .cd-inner-d5{
@@ -848,13 +933,29 @@
     .cd-header-d5,.cd-footer-d5{
       padding: 20px;
     }
-    .cd-rewards-bar-d5, .cd-item-d5{
+    .cd-rewards-bar-d5, .cd-item-d5, .cd-up-inner-d5{
       padding-inline: 20px;
+    }
+    .cd-sp-main-d5 .sp-img-d5{
+      min-width: 50px;
+      max-width: 50px;
+      max-height: 50px;
+    }
+    .cd-up-img-d5{
+      min-width: 80px;
+      max-width: 80px;
+      height: 80px;
+    }
+    .cd-up-item-d5{
+      padding: 5px;
+    }
+    .cdup-carousel-btn-d5{
+      width: 20px;
     }
   }
 </style>
 {% assign sp = section.settings.sp %}
-<div class="cart-drawer-d5 cd-drawer__open">
+<div class="cart-drawer-d5">
   <div class="cd-overlay-d5" close-cart-d5></div>
   <div class="cd-inner-d5">
     <div class="cd-header-d5">
@@ -879,177 +980,20 @@
     </div>
     <div class="cd-content-d5">
       {% if section.settings.timer_text != blank %}
-      <div class="cd-timer-main-d5">
-        {% assign time = section.settings.time | append: ':00' %}
-        {% capture time_content %}
+        <div class="cd-timer-main-d5">
+          {% assign time = section.settings.time | append: ':00' %}
+          {% capture time_content %}
           <span class="cd-timer-time-d5">{{ time }}</span>
         {% endcapture %}
-        <p data-time="{{ time }}">{{ section.settings.timer_text | replace: '[[time]]', time_content }}</p>
-      </div>
-    {% endif %}
-      {% comment %}
-        {% unless section.settings.milestones == "0" %}
-        <div class="cd-rewards-bar-d5">
-          {% comment %}
-            {% liquid
-              assign threshold = section.settings.free_shipping
-              assign threshold_in_cents = threshold | times: 100
-              assign total = cart.total_price
-              assign difference = threshold_in_cents | minus: total
-              assign percentage = total | times: 100 | divided_by: threshold_in_cents
-            %}
-          {% endcomment %}
-          {% liquid
-            assign total = cart.total_price
-            if section.settings.milestones == '1'
-              assign mil_1 = section.settings.mile_stone_1 | times: 100
-              if total > mil_1
-                assign rew_1 = true
-              endif
-              assign difference = mil_1 | minus: total
-              assign percentage = total | times: 100 | divided_by: mil_1
-            elsif section.settings.milestones == '2'
-              assign mil_1 = section.settings.mile_stone_1 | times: 100
-              assign mil_2 = section.settings.mile_stone_2 | times: 100
-              assign percentage = total | times: 100 | divided_by: mil_2
-              if total > mil_2
-                assign rew_2 = true
-              elsif total > mil_1
-                assign difference = mil_2 | minus: total
-                assign rew_1 = true
-              elsif mil_1 > total
-                assign difference = mil_1 | minus: total
-              endif
-
-            elsif section.settings.milestones == '3'
-              assign mil_1 = section.settings.mile_stone_1 | times: 100
-              assign mil_2 = section.settings.mile_stone_2 | times: 100
-              assign mil_3 = section.settings.mile_stone_3 | times: 100
-              assign difference = mil_3 | minus: total
-              assign percentage = total | times: 100 | divided_by: mil_3
-              if total > mil_3
-                assign rew_3 = true
-              elsif total > mil_2
-                assign difference = mil_3 | minus: total
-                assign rew_2 = true
-              elsif total > mil_1
-                assign difference = mil_2 | minus: total
-                assign rew_1 = true
-              elsif mil_1 > total
-                assign difference = mil_1 | minus: total
-              endif
-            endif
-          %}
-          <div class="cd-free-shipping-bar__content-d5">
-            <p class="cd-free-shipping-bar__text-d5" render-d5>
-              {% if section.settings.milestones == '3' %}
-                {% if total > mil_3 %}
-                  🎉 You've unlocked all rewards!
-                {% elsif total > mil_2 %}
-                  🎉 {{ section.settings.mile_stone_2_label }} unlocked and <strong>{{ difference | money }}</strong> more
-                  for <strong>{{ section.settings.mile_stone_3_label }}</strong>!
-                {% elsif total > mil_1 %}
-                  🎉 {{ section.settings.mile_stone_1_label }} unlocked and <strong>{{ difference | money }}</strong> more
-                  for <strong>{{ section.settings.mile_stone_2_label }}</strong>!
-                {% elsif mil_1 > total %}
-                  You are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_1_label }}!
-                {% endif %}
-              {% elsif section.settings.milestones == '2' %}
-                {% if total > mil_2 %}
-                  🎉 You've unlocked all rewards!
-                {% elsif total > mil_1 %}
-                  🎉 {{ section.settings.mile_stone_1_label }} unlocked and <strong>{{ difference | money }}</strong> more
-                  for <strong>{{ section.settings.mile_stone_2_label }}</strong>!
-                {% elsif mil_1 > total %}
-                  You are <strong>{{ difference | money }}</strong> away from
-                  <strong>{{ section.settings.mile_stone_1_label }}</strong>!
-                {% endif %}
-              {% elsif section.settings.milestones == '1' %}
-                {% if total > mil_1 %}
-                  🎉 You've unlocked <strong>{{ section.settings.mile_stone_1_label }}</strong>!
-                {% elsif mil_1 > total %}
-                  You are <strong>{{ difference | money }}</strong> away from {{ section.settings.mile_stone_1_label }}!
-                {% endif %}
-              {% endif %}
-            </p>
-          </div>
-          <div class="cd-free-shipping-bar-d5">
-            <div
-              class="cd-free-shipping-bar__inner-d5"
-              style="width: {{ percentage | round: 2 }}%;"
-            ></div>
-            <div render-d5>
-              {% if section.settings.milestones == '1' %}
-                <div
-                  class="cd-free-shipping-bar__icon-d5 {% if rew_1 %}rewards-true{% else %} rewards-false{% endif %}"
-                  style="right: 0"
-                >
-                  <span
-                    class="cd-icon-tag-d5"
-                    style="background-image: url('{{ section.settings.mile_stone_1_icon | image_url: width: '50px' }}')"
-                  ></span>
-                  <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_1_label }}</span>
-                </div>
-              {% elsif section.settings.milestones == '2' %}
-                <div
-                  class="cd-free-shipping-bar__icon-d5 {% if rew_2 %}rewards-true{% else %} rewards-false{% endif %}"
-                  style="right: 0%"
-                >
-                  <span
-                    class="cd-icon-tag-d5"
-                    style="background-image: url('{{ section.settings.mile_stone_2_icon | image_url: width: '50px' }}')"
-                  ></span>
-                  <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_2_label }}</span>
-                </div>
-                <div
-                  class="cd-free-shipping-bar__icon-d5 {% if rew_1 or rew_2 %}rewards-true{% else %} rewards-false{% endif %}"
-                  style="right: 50%"
-                >
-                  <span
-                    class="cd-icon-tag-d5"
-                    style="background-image: url('{{ section.settings.mile_stone_1_icon | image_url: width: '50px' }}')"
-                  ></span>
-                  <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_1_label }}</span>
-                </div>
-              {% elsif section.settings.milestones == '3' %}
-                <div
-                  class="cd-free-shipping-bar__icon-d5 {% if rew_3 %}rewards-true{% else %} rewards-false{% endif %}"
-                  style="right: 0"
-                >
-                  <span
-                    class="cd-icon-tag-d5"
-                    style="background-image: url('{{ section.settings.mile_stone_3_icon | image_url: width: '50px' }}')"
-                  ></span>
-                  <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_3_label }}</span>
-                </div>
-                <div
-                  class="cd-free-shipping-bar__icon-d5 {% if rew_3 or rew_2 %}rewards-true{% else %} rewards-false{% endif %}"
-                  style="right: 33%"
-                >
-                  <span
-                    class="cd-icon-tag-d5"
-                    style="background-image: url('{{ section.settings.mile_stone_2_icon | image_url: width: '50px' }}')"
-                  ></span>
-                  <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_2_label }}</span>
-                </div>
-                <div
-                  class="cd-free-shipping-bar__icon-d5 {% if rew_1 or rew_2 or rew_3 %}rewards-true{% else %} rewards-false{% endif %}"
-                  style="right: 66%"
-                >
-                  <span
-                    class="cd-icon-tag-d5"
-                    style="background-image: url('{{ section.settings.mile_stone_1_icon | image_url: width: '50px' }}')"
-                  ></span>
-                  <span class="cd-icon-tooltip-d5">{{ section.settings.mile_stone_1_label }}</span>
-                </div>
-              {% endif %}
-            </div>
-          </div>
+          <p data-time="{{ time }}">{{ section.settings.timer_text | replace: '[[time]]', time_content }}</p>
         </div>
-        {% endunless %}
-      {% endcomment %}
+      {% endif %}
+
       <div class="cd-rewards-bar-d5">
         {% liquid
+          assign helper = all_products['d5-discount-product']
+          assign one_usd_local = helper.price | divided_by: 100.0
+
           assign total = cart.total_price
           assign milestones_count = section.blocks.size
           assign highest_milestone = 0
@@ -1059,42 +1003,44 @@
           assign percentage = 0
 
           for block in section.blocks
-            assign milestone_amount = block.settings.mile_stone | times: 100
+            assign milestone_amount = block.settings.mile_stone | times: one_usd_local | times: 100
             if milestone_amount > highest_milestone
               assign highest_milestone = milestone_amount
             endif
+            assign text = block.settings.text
           endfor
 
           assign sorted_blocks = section.blocks | sort: 'settings.mile_stone'
 
           for block in sorted_blocks
-            assign milestone_amount = block.settings.mile_stone | times: 100
+            assign milestone_amount = block.settings.mile_stone | times: one_usd_local | times: 100
             if total >= milestone_amount
               assign current_milestone_index = forloop.index0
               assign current_milestone_amount = milestone_amount
               assign current_milestone_label = block.settings.mile_stone_label
+              
             endif
           endfor
 
           assign next_milestone_index = current_milestone_index | plus: 1
           if next_milestone_index < milestones_count
             assign next_block = sorted_blocks[next_milestone_index]
-            assign next_milestone = next_block.settings.mile_stone | times: 100
+            assign next_milestone = next_block.settings.mile_stone | times: one_usd_local | times: 100
             assign next_milestone_label = next_block.settings.mile_stone_label
             assign difference = next_milestone | minus: total
           else
             if current_milestone_index >= 0
-              assign next_milestone = highest_milestone
+              assign next_milestone = sorted_blocks[current_milestone_index].settings.mile_stone | times: one_usd_local | times: 100
               assign next_milestone_label = sorted_blocks[current_milestone_index].settings.mile_stone_label
             else
-              assign next_milestone = sorted_blocks[0].settings.mile_stone | times: 100
+              assign next_milestone = sorted_blocks[0].settings.mile_stone | times: one_usd_local | times: 100
               assign next_milestone_label = sorted_blocks[0].settings.mile_stone_label
             endif
             assign difference = 0
           endif
 
           if current_milestone_index == -1 and milestones_count > 0
-            assign next_milestone = sorted_blocks[0].settings.mile_stone | times: 100
+            assign next_milestone = sorted_blocks[0].settings.mile_stone | times: one_usd_local | times: 100
             assign next_milestone_label = sorted_blocks[0].settings.mile_stone_label
             assign difference = next_milestone | minus: total
           endif
@@ -1109,36 +1055,79 @@
 
         <div class="cd-free-shipping-bar__content-d5">
           <p class="cd-free-shipping-bar__text-d5" render-d5>
+            
+            {% capture var_next %}
+              <strong>{{ next_milestone_label }}</strong>
+            {% endcapture %}
+            {% capture var_current %}
+              <strong>{{ current_milestone_label }}</strong>
+            {% endcapture %}
+            {% capture var_price %}
+              <strong>{{ difference | money_without_trailing_zeros }}</strong>
+            {% endcapture %}
+          
             {% if total >= highest_milestone and milestones_count > 0 %}
-              🎉 You've unlocked all rewards!
+              {{section.settings.mi_final}}
             {% elsif current_milestone_index >= 0 and next_milestone_index < milestones_count %}
-              🎉 {{ current_milestone_label }} unlocked and <strong>{{ difference | money }}</strong> more for
-              <strong>{{ next_milestone_label }}</strong>!
+              {% assign text = section.settings.mil_2
+                | replace: '[current]', var_current
+                | replace: '[next]', var_next
+                | replace: '[price]', var_price
+              %}
+              {{ text }}
             {% elsif current_milestone_index >= 0 %}
-              🎉 You've unlocked <strong>{{ current_milestone_label }}</strong>!
+              {% assign text = section.settings.mil_2
+                | replace: '[current]', var_current
+                | replace: '[next]', var_next
+                | replace: '[price]', var_price
+              %}
+              {{ text }}
             {% else %}
-              You are <strong>{{ difference | money }}</strong> away from <strong>{{ next_milestone_label }}</strong>!
+              {% assign text = section.settings.mil_1
+                | replace: '[next]', var_next
+                | replace: '[price]', var_price
+              %}
+              {{ text }}
             {% endif %}
           </p>
         </div>
 
         <div class="cd-free-shipping-bar-d5">
-          <div
-            class="cd-free-shipping-bar__inner-d5"
-            style="width: {{ percentage }}%;"
-          ></div>
-          <div render-d5>
-            {% for block in sorted_blocks reversed %}
-              {% assign position = 0 %}
-              {% if milestones_count > 1 %}
-                {% assign segment = 100 | divided_by: milestones_count | minus: 1 %}
-                {% assign position = segment | times: forloop.index0 %}
-              {% endif %}
+          <div class="cd-shipping-points-d5">
+            {% assign previous_milestone = 0 %}
 
-              {% assign milestone_amount = block.settings.mile_stone | times: 100 %}
+            {% for block in section.blocks %}
+              {% liquid
+                assign milestone = block.settings.mile_stone
+                assign milestone_local = milestone | times: one_usd_local
+                assign previous_milestone_local = previous_milestone | times: one_usd_local
+                assign cart_price = cart.total_price | divided_by: 100
+
+                assign width = 0
+
+                if cart_price > previous_milestone_local
+                  assign relative_progress = cart_price | minus: previous_milestone_local
+                  assign milestone_range = milestone_local | minus: previous_milestone_local
+                  assign width = relative_progress | times: 100 | divided_by: milestone_range
+
+                  if width > 100
+                    assign width = 100
+                  endif
+                endif
+              %}
+
+              <div class="cd-shipping-point-d5">
+                <div class="cd-rw-bar-d5">
+                <div
+                  class="cd-free-shipping-bar__inner-d5"
+                  style="width: {{ width | round: 2 }}%;"
+                ></div>
+              </div>
+
               <div
-                class="cd-free-shipping-bar__icon-d5 {% if total >= milestone_amount %}rewards-true{% else %}rewards-false{% endif %}"
-                style="right: {{ position }}%"
+                class="cd-free-shipping-bar__icon-d5 {% if cart_price >= milestone_local %}rewards-true{% else %}rewards-false{% endif %}"
+                render-d5
+                data-width="{{ width | round: 2 }}%"
               >
                 <span
                   class="cd-icon-tag-d5"
@@ -1146,14 +1135,23 @@
                 ></span>
                 <span class="cd-icon-tooltip-d5">{{ block.settings.mile_stone_label }}</span>
               </div>
+            </div>
+
+              {% assign previous_milestone = milestone %}
             {% endfor %}
           </div>
         </div>
       </div>
+
       <div class="atc-loader-d5">
         <span class="item-loader-d5"></span>
       </div>
-      <div class="cd-cart-items-d5 {% if cart.item_count == 0 %}cd-hide-upsell-d5{% endif %}" render-d5 data-width="{{ percentage | round: 2 }}%" shipping-bar-d5>
+      <div
+        class="cd-cart-items-d5 {% if cart.item_count == 0 %}cd-hide-upsell-d5{% endif %}"
+        render-d5
+        data-width="{{ percentage | round: 2 }}%"
+        shipping-bar-d5
+      >
         {% if cart.item_count > 0 %}
           {% for item in cart.items %}
             {% if item.product_id == sp.id %}
@@ -1186,18 +1184,6 @@
                       {% render 'd5-delete-icon' %}
                     </div>
                   </h4>
-                  <div class="cd-prices-d5">
-                    <p>
-                      <span class="cd-regular-price">{{ item.original_price | money }}</span>
-                      <span class="cd-compare-price">{{ item.product.final_price | money }}</span>
-                    </p>
-                    {% if item.quantity > 1 %}
-                      <p class="cd-total-price-d5">
-                        <span class="cd-totalprice-d5">Total Price</span>
-                        <span class="total-price-d5-cd">{{ item.original_price | times: item.quantity | money }}</span>
-                      </p>
-                    {% endif %}
-                  </div>
                 </div>
                 {%- if item.product.has_only_default_variant == false
                   or item.properties.size != 0
@@ -1214,30 +1200,80 @@
                     {% endif %}
                   </div>
                 {% endif %}
-                <div class="cd-quantity-d5">
-                  {% assign qty = item.variant.inventory_management %}
-                  <div class="cd-qty-btn-d5 is-loader-d5 {% if item.quantity == 1 %}cd-remove-d5{% else %}cd-minus-d5{% endif %}">
-                    <span class="btn-text-d5">
-                      <svg viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M5 10c0-.414.336-.75.75-.75h8.5c.414 0 .75.336.75.75s-.336.75-.75.75h-8.5c-.414 0-.75-.336-.75-.75Z"></path>
-                      </svg>
-                    </span>
-                    <span class="btn-loader-d5"></span>
+                <div class="cd-qty-price-d5">
+                  <div class="cd-quantity-d5">
+                    {% assign qty = item.variant.inventory_management %}
+                    <div class="cd-qty-btn-d5 is-loader-d5 {% if item.quantity == 1 %}cd-remove-d5{% else %}cd-minus-d5{% endif %}">
+                      <span class="btn-text-d5">
+                        <svg viewBox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M5 10c0-.414.336-.75.75-.75h8.5c.414 0 .75.336.75.75s-.336.75-.75.75h-8.5c-.414 0-.75-.336-.75-.75Z"></path>
+                        </svg>
+                      </span>
+                      <span class="btn-loader-d5"></span>
+                    </div>
+                    <input
+                      type="text"
+                      value="{{ item.quantity }}"
+                      data-max="{% if qty %}{%if item.variant.inventory_quantity > 1 %}{{ item.variant.inventory_quantity }}{% else %}0{% endif %}{% else %}999{% endif %}"
+                      readonly
+                      class="cd-qty-input-d5"
+                    >
+                    <div class="cd-qty-btn-d5 cd-plus-d5 is-loader-d5">
+                      <span class="btn-text-d5">
+                        <svg viewBox="0 0 20 20">
+                          <path d="M10.75 5.75c0-.414-.336-.75-.75-.75s-.75.336-.75.75v3.5h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5Z"></path>
+                        </svg>
+                      </span>
+                      <span class="btn-loader-d5"></span>
+                    </div>
                   </div>
-                  <input
-                    type="text"
-                    value="{{ item.quantity }}"
-                    data-max="{% if qty %}{%if item.variant.inventory_quantity > 1 %}{{ item.variant.inventory_quantity }}{% else %}0{% endif %}{% else %}999{% endif %}"
-                    readonly
-                    class="cd-qty-input-d5"
-                  >
-                  <div class="cd-qty-btn-d5 cd-plus-d5 is-loader-d5">
-                    <span class="btn-text-d5">
-                      <svg viewBox="0 0 20 20">
-                        <path d="M10.75 5.75c0-.414-.336-.75-.75-.75s-.75.336-.75.75v3.5h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5Z"></path>
-                      </svg>
-                    </span>
-                    <span class="btn-loader-d5"></span>
+                  <div class="cd-prices-d5">
+                    <p>
+                      {% assign var_price = item.variant.compare_at_price | times: item.quantity %}
+                      {% if var_price > item.final_line_price %}
+                        <span class="cd-compare-price">
+                          {{- item.variant.compare_at_price | times: item.quantity | money_without_trailing_zeros -}}
+                        </span>
+                      {% endif %}
+                      <span class="cd-regular-price">
+                        {{- item.final_line_price | money_without_trailing_zeros -}}
+                      </span>
+                      {% if var_price > item.final_line_price %}
+                        <span class="cd-save-price"
+                          >(Save
+                          {{
+                            var_price
+                            | minus: item.final_line_price
+                            | money_without_trailing_zeros
+                          -}}
+                          )</span
+                        >
+                      {% endif %}
+                      {% assign discount_amount = item.line_level_discount_allocations | sum: 'amount' %}
+
+                      {% if discount_amount > 0 %}
+                        <div class="cd-discounts-d5 cd-item-discounts-d5">
+                          <ul>
+                            {% for discount in item.discounts %}
+                              <li>
+                                <svg viewBox="0 0 20 20">
+                                  <path d="M13 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path><path fill-rule="evenodd" d="M11.276 3.5a3.75 3.75 0 0 0-2.701 1.149l-4.254 4.417a2.75 2.75 0 0 0 .036 3.852l2.898 2.898a2.5 2.5 0 0 0 3.502.033l4.747-4.571a3.25 3.25 0 0 0 .996-2.341v-2.187a3.25 3.25 0 0 0-3.25-3.25h-1.974Zm-1.62 2.19a2.25 2.25 0 0 1 1.62-.69h1.974c.966 0 1.75.784 1.75 1.75v2.187c0 .475-.194.93-.536 1.26l-4.747 4.572a1 1 0 0 1-1.401-.014l-2.898-2.898a1.25 1.25 0 0 1-.016-1.75l4.253-4.418Z"></path>
+                                </svg>
+                                <span>{{ discount.title }}</span>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      {% endif %}
+                    </p>
+                    {% comment %}
+                      {% if item.quantity > 1 %}
+                        <p class="cd-total-price-d5">
+                          <span class="cd-totalprice-d5">Total Price</span>
+                          <span class="total-price-d5-cd">{{ item.original_price | times: item.quantity | money }}</span>
+                        </p>
+                      {% endif %}
+                    {% endcomment %}
                   </div>
                 </div>
               </div>
@@ -1250,49 +1286,70 @@
         {% endif %}
       </div>
       {% if section.settings.up != blank %}
-      <div class="cd-upsells-main-d5">
-        <h4>{{ section.settings.up_h }}</h4>
-        <div class="cd-up-inner-d5 {% if section.settings.up_type == 'slider' %}up-slider-d5{% else %}up-list-d5{% endif %}">
-          {% if section.settings.up_type == 'slider' %}
-          <div class="cdup-carousel-btn-d5 up-left-btn-d5"><span></span></div>
-          <div class="cdup-carousel-btn-d5 up-right-btn-d5"><span></span></div>
-          {% endif %}
-          <div class="cd-up-row-d5">
-            {% for up in section.settings.up %}
-              {% unless up.variants.size == 1 and up.first_available_variant.available  %}
-                
-              
-              <div class="cd-up-item-d5">
-                <a href="{{ up.url }}" class="cd-up-img-d5">
-                  <img class="up-img-d5" src="{{ up.featured_image | image_url: width: 200 }}" width="80" height="80" alt="{{ up.title }}" loading="lazy">
-                </a>
-                <div class="cd-up-item-content-d5">
-                  <h5><a href="{{ up.url }}">{{ up.title }}</a></h5>
-                  <div class="cd-up-price-d5">
-                    <span class="cd-up-comp-price-d5">{{ up.compare_at_price | money }}</span>
-                    <span class="cd-up-reg-price-d5">{{ up.price | money }}</span>
+        <div class="cd-upsells-main-d5">
+          <h4>{{ section.settings.up_h }}</h4>
+          <div class="cd-up-inner-d5 {% if section.settings.up_type == 'slider' %}up-slider-d5{% else %}up-list-d5{% endif %}">
+            {% if section.settings.up_type == 'slider' %}
+              <div class="cdup-carousel-btn-d5 up-left-btn-d5"><span></span></div>
+              <div class="cdup-carousel-btn-d5 up-right-btn-d5"><span></span></div>
+            {% endif %}
+            <div class="cd-up-row-d5">
+              {% for up in section.settings.up %}
+                {% unless up.variants.size == 1 and up.first_available_variant.available %}
+                  <div class="cd-up-item-d5">
+                    <a href="{{ up.url }}" class="cd-up-img-d5">
+                      <img
+                        class="up-img-d5"
+                        src="{{ up.featured_image | image_url: width: 200 }}"
+                        width="80"
+                        height="80"
+                        alt="{{ up.title }}"
+                        loading="lazy"
+                      >
+                    </a>
+                    <div class="cd-up-item-content-d5">
+                      <h5>
+                        <a href="{{ up.url }}">{{ up.title }}</a>
+                      </h5>
+                      <div class="cd-up-price-d5">
+                        <span class="cd-up-comp-price-d5">
+                          {%- if up.compare_at_price > up.price %}{{ up.compare_at_price | money }}{% endif -%}
+                        </span>
+                        <span class="cd-up-reg-price-d5">{{ up.price | money }}</span>
+                      </div>
+                      <form class="cd-up-form-d5" action="{{ routes.cart_add_url }}" method="POST">
+                        <input type="hidden" value="1" name="quantity">
+                        {% if up.variants.size > 1 %}
+                          <select name="id" class="cd-up-variant-select-d5">
+                            {% for variant in up.variants %}
+                              <option
+                                value="{{ variant.id }}"
+                                {% unless variant.available %}
+                                  disabled
+                                {% endunless %}
+                                data-regular="{{ variant.price | money }}"
+                                data-compare="{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money }}{% endif %}"
+                                {% if variant.featured_image %}
+                                  data-img="{{ variant.featured_image | image_url: width: 200 }}"
+                                {% endif %}
+                              >
+                                {{ variant.title }}
+                              </option>
+                            {% endfor %}
+                          </select>
+                        {% else %}
+                          <input type="hidden" value="{{ up.first_available_variant.id }}" name="id">
+                        {% endif %}
+                        <button name="add" type="submit">Add</button>
+                      </form>
+                    </div>
                   </div>
-                  <form class="cd-up-form-d5" action="{{ routes.cart_add_url }}" method="POST">
-                    <input type="hidden" value="1" name="quantity">
-                    {% if up.variants.size > 1 %}
-                    <select name="id" class="cd-up-variant-select-d5">
-                      {% for variant in up.variants %}
-                        <option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %} data-regular="{{ variant.price | money }}" data-compare="{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money }}{% endif %}" {% if variant.featured_image %}data-img="{{ variant.featured_image | image_url: width: 200 }}"{% endif %}>{{ variant.title }}</option>
-                      {% endfor %}
-                    </select>
-                  {% else %}
-                    <input type="hidden" value="{{ up.first_available_variant.id }}" name="id">
-                  {% endif %}
-                    <button name="add" type="submit">Add</button>
-                  </form>
-                </div>
-              </div>
-              {% endunless %}
-            {% endfor %}
+                {% endunless %}
+              {% endfor %}
+            </div>
           </div>
         </div>
-      </div>
-    {% endif %}
+      {% endif %}
     </div>
     <div class="cd-footer-d5" render-d5>
       {% if cart.item_count > 0 %}
@@ -1347,9 +1404,9 @@
             <span>- {{ cart.total_discount | money }}</span>
           </div>
         {% endif %}
-        <div class="cd-footer-total-d5">
+        <div class="cd-footer-total-d5" data-total-price="{{ cart.total_price }}">
           <span>Subtotal</span>
-          <span>{{- cart.original_total_price | money -}}</span>
+          <span>{{- cart.total_price | money -}}</span>
         </div>
         <a href="/checkout" class="cd-checkout-btn-d5"
           >Proceed To Checkout
@@ -1473,7 +1530,7 @@
     },
     {
       "type": "header",
-      "content": "Upsells",
+      "content": "Upsells"
     },
     {
       "type": "text",
@@ -1492,10 +1549,34 @@
       "label": "Upsell Type",
       "default": "slider",
       "options": [
-        {"label": "Carousel", "value": "slider"},
-        {"label": "List", "value": "list"}
+        { "label": "Carousel", "value": "slider" },
+        { "label": "List", "value": "list" }
       ]
-    }
+    },
+    {
+      "type": "header",
+      "content": "Milestones Rewards"
+    },
+    {
+      "type": "text",
+      "id": "mi_final",
+      "label": "All Rewards unlcoked text",
+      "default": "All Rewards Unlocked"
+    },
+    {
+      "type": "text",
+      "id": "mil_1",
+      "label": "Initial Mile Stone Text",
+      "default": "Just [price] for [next]",
+      "info": "Variables:[next], [price]"
+    },
+    {
+      "type": "text",
+      "id": "mil_2",
+      "label": "Initial Mile Stone Text",
+      "default": "Unlocked [current] and [price] more for [next]",
+      "info": "Variables:[next], [price], [current]"
+    },
   ],
   "blocks": [
     {
@@ -1519,6 +1600,7 @@
           "id": "mile_stone_icon",
           "label": "Milestone Icon"
         }
+       
       ]
     }
   ],
