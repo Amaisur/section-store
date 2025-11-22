@@ -16,6 +16,7 @@
       "blocks": {
         "reward_i8hr4P": {
           "type": "reward",
+          "disabled": true,
           "settings": {
             "mile_stone": 400,
             "mile_stone_label": "Free Product",
@@ -24,6 +25,7 @@
         },
         "reward_rKTHi4": {
           "type": "reward",
+          "disabled": true,
           "settings": {
             "mile_stone": 600,
             "mile_stone_label": "Free shipping",
@@ -32,6 +34,7 @@
         },
         "reward_63NRRa": {
           "type": "reward",
+          "disabled": true,
           "settings": {
             "mile_stone": 800,
             "mile_stone_label": "Free Braclet",
@@ -61,7 +64,10 @@
           "daniel-knit-sweater",
           "grace-flared-jeans"
         ],
-        "up_type": "slider"
+        "up_type": "slider",
+        "mi_final": "All Rewards Unlocked",
+        "mil_1": "Just [price] for [next]",
+        "mil_2": "Unlocked [current] and [price] more for [next]"
       }
     }
   },
