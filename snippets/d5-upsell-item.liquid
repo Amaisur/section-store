@@ -1,0 +1,45 @@
+<div class="cd-up-item-d5">
+  <a href="{{ product.url }}" class="cd-up-img-d5">
+    <img
+      class="up-img-d5"
+      src="{{ product.featured_image | image_url: width: 200 }}"
+      width="80"
+      height="80"
+      alt="{{ product.title }}"
+      loading="lazy"
+    >
+  </a>
+  <div class="cd-up-item-content-d5">
+    <h5>
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h5>
+    <div class="cd-up-price-d5">
+      <span class="cd-up-comp-price-d5">
+        {%- if product.compare_at_price > product.price %}{{ product.compare_at_price | money }}{% endif -%}
+      </span>
+      <span class="cd-up-reg-price-d5">{{ product.price | money }}</span>
+    </div>
+    <form class="cd-up-form-d5" action="{{ routes.cart_add_url }}" method="POST">
+      <input type="hidden" value="1" name="quantity">
+      {% if product.variants.size > 1 %}
+        <select name="id" class="cd-up-variant-select-d5">
+          {% for variant in product.variants %}
+            <option
+              value="{{ variant.id }}"
+              {% unless variant.available %}disabled{% endunless %}
+              data-regular="{{ variant.price | money }}"
+              data-compare="{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money }}{% endif %}"
+              {% if variant.featured_image %}data-img="{{ variant.featured_image | image_url: width: 200 }}"{% endif %}
+            >
+              {{ variant.title }}
+            </option>
+          {% endfor %}
+        </select>
+      {% else %}
+        <input type="hidden" value="{{ product.first_available_variant.id }}" name="id">
+        <input type="hidden" value="{{ product..id }}" name="product-id">
+      {% endif %}
+      <button name="add" type="submit">Add</button>
+    </form>
+  </div>
+</div>
