@@ -16,7 +16,15 @@
     }
   }
 {%- endstyle -%}
-
+<!-- Add this to your cart page or cart drawer -->
+<div class="discount-input">
+  <input type="text" 
+         id="discount-code" 
+         placeholder="Enter discount code"
+         class="discount-input-field">
+  <button id="apply-discount" class="discount-button">Apply</button>
+  <div id="discount-message" class="discount-message"></div>
+</div>
 <div
   class="gradient color-{{ section.settings.color_scheme }}{% if cart == empty %} is-empty{% endif %}"
   id="main-cart-footer"
