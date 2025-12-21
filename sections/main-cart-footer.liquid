@@ -25,6 +25,83 @@
   <button id="apply-discount" class="discount-button">Apply</button>
   <div id="discount-message" class="discount-message"></div>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const discountInput = document.getElementById('discount-code');
+  const applyButton = document.getElementById('apply-discount');
+  const messageDiv = document.getElementById('discount-message');
+  
+  if (!applyButton || !discountInput) return;
+  
+  applyButton.addEventListener('click', applyDiscount);
+  discountInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') applyDiscount();
+  });
+  
+  function applyDiscount() {
+    const discountCode = discountInput.value.trim();
+    
+    if (!discountCode) {
+      showMessage('Please enter a discount code', 'error');
+      return;
+    }
+    
+    // Show loading state
+    applyButton.textContent = 'Applying...';
+    applyButton.disabled = true;
+    
+    // Prepare the request payload
+    const payload = {
+      discount: discountCode
+    };
+    
+    // Send the request to Shopify's cart update endpoint
+    fetch('/cart/update.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.errors) {
+        // Handle Shopify's validation errors
+        const errorMsg = data.errors.discount || 'Invalid discount code';
+        showMessage(errorMsg, 'error');
+      } else {
+        // Success - update the cart UI
+        showMessage('Discount applied successfully!', 'success');
+        
+        // Reload the cart to reflect changes
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      showMessage('An error occurred. Please try again.', 'error');
+    })
+    .finally(() => {
+      // Reset button state
+      applyButton.textContent = 'Apply';
+      applyButton.disabled = false;
+    });
+  }
+  
+  function showMessage(message, type) {
+    messageDiv.textContent = message;
+    messageDiv.className = `discount-message ${type}`;
+    
+    // Clear message after 5 seconds
+    setTimeout(() => {
+      messageDiv.textContent = '';
+      messageDiv.className = 'discount-message';
+    }, 5000);
+  }
+});
+</script>
 <div
   class="gradient color-{{ section.settings.color_scheme }}{% if cart == empty %} is-empty{% endif %}"
   id="main-cart-footer"
