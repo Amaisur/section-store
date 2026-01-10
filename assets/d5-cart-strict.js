@@ -254,7 +254,7 @@ function escapeHtml(text) {
 
 document.body.addEventListener('submit', async (e) => {
   const form = e.target;
-  if (form.action && form.action.includes('/cart/add')) {
+  if (form.classList.contains('cd-up-form-d5')) {
     e.preventDefault();
     
     if (form.classList.contains('processing') || isProcessingCartAdd) {
