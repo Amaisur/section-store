@@ -1,0 +1,841 @@
+{% if product.metafields.custom.specific_media_only.value == true %}
+  <style>
+    .vm-container-d5 {
+                max-width: 1200px;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .vm-main-viewer-d5 {
+                position: relative;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .vm-slider-wrapper-d5 {
+                overflow-x: auto;
+                overflow-y: hidden;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .vm-slider-wrapper-d5::-webkit-scrollbar, .vm-thumbnails-wrapper-d5::-webkit-scrollbar {
+                display: none;
+            }
+
+            .vm-slider-d5 {
+                display: flex;
+                width: 100%;
+            }
+
+            .vm-slide-d5 {
+                flex: 0 0 100%;
+                scroll-snap-align: start;
+                scroll-snap-stop: always;
+            }
+
+            .vm-slide-d5 img,
+            .vm-slide-d5 video {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            .vm-nav-button-d5 {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                border: none;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: opacity 0.3s;
+                z-index: 10;
+            }
+
+            .vm-nav-button-d5:hover {
+                opacity: 0.8;
+            }
+
+            .vm-nav-button-d5:disabled {
+                opacity: 0.3;
+                cursor: not-allowed;
+            }
+
+            .vm-prev-button-d5 {
+                left: 20px;
+            }
+
+            .vm-next-button-d5 {
+                right: 20px;
+            }
+
+            .vm-thumbnails-container-d5 {
+                position: relative;
+                padding: 0;
+                max-width: calc(100% - 60px);
+                margin: 0 auto;
+            }
+
+            .vm-thumbnails-wrapper-d5 {
+                overflow-x: auto;
+                overflow-y: hidden;
+                scroll-behavior: smooth;
+                scroll-snap-type: x mandatory;
+            }
+
+            .vm-thumbnails-d5 {
+                display: flex;
+                gap: 10px;
+                padding: 10px 0;
+            }
+
+            .vm-thumbnail-d5 {
+                flex-shrink: 0;
+                aspect-ratio: 1/1;
+                height: 79px;
+                border-radius: 6px;
+                overflow: hidden;
+                cursor: pointer;
+                border: 3px solid transparent;
+                transition: all 0.3s;
+                scroll-snap-align: center;
+            }
+
+            {% comment %} .vm-thumbnail-d5:hover {
+                opacity: 0.9;
+                transform: scale(1.05);
+            } {% endcomment %}
+
+            .vm-thumbnail-active-d5 {
+                border-color: #000;
+                opacity: 1;
+            }
+
+            .vm-thumbnail-d5 img,
+            .vm-thumbnail-d5 video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                pointer-events: none;
+            }
+
+            .vm-thumb-nav-button-d5 {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: opacity 0.3s;
+                z-index: 5;
+            }
+
+            .vm-thumb-nav-button-d5:hover {
+                opacity: 0.8;
+            }
+
+            .vm-thumb-prev-d5 {
+                left: -30px;
+            }
+
+            .vm-thumb-next-d5 {
+                right: -30px;
+            }
+
+            .vm-counter-d5 {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 8px 16px;
+                border-radius: 20px;
+                font-size: 14px;
+            }
+            .vm-slide-d5.order-0, .vm-thumbnail-d5.order-0{
+              
+            }
+            .vm-counter-d5{
+              display: none !important;
+            }
+            @media(max-width: 750px){
+              .vm-thumbnails-container-d5{
+                padding: 0;
+                max-width: 100%;
+              }
+              .vm-thumb-nav-button-d5{
+                display: none !important;
+              }
+              .vm-main-viewer-d5{
+                margin-bottom: 0;
+              }
+              .vm-container-d5{
+                margin-bottom: 20px;
+              }
+              .vm-nav-button-d5{
+                width: 30px;
+                height: 30px;
+                box-shadow: 0px 0px 7px #00000063;
+              }
+              .vm-next-button-d5{
+                right: 0;
+              }
+              .vm-prev-button-d5{
+                left: 0;
+              }
+              .vm-counter-d5 {
+                display: none !important;
+                bottom: 3px;
+                padding: 0px 16px;
+                border-radius: 5px;
+                background: #fff;
+                box-shadow: 0 0 4px #00000099;
+            }
+            }
+  </style>
+
+<div class="vm-container-d5">
+  <div class="vm-main-viewer-d5">
+    <div id="vm-slider-wrapper-d5" class="vm-slider-wrapper-d5">
+      <div id="vm-slider-d5" class="vm-slider-d5">
+        {% assign fi_variant = product.selected_or_first_available_variant %}
+        {% assign v_title = fi_variant.title | downcase | replace: ' ', '' %}
+        {% if fi_variant.featured_media != blank %}
+           <div class="vm-slide-d5 {% if fi_variant.featured_media != blank %} order-0{% endif %}" id="{{ media.id }}">
+              <img 
+                src="{{ fi_variant.featured_media | image_url: width: 800 }}" 
+                srcset="
+                  {{ fi_variant.featured_media | image_url: width: 400 }} 400w, 
+                  {{ fi_variant.featured_media | image_url: width: 800 }} 800w, 
+                  {{ fi_variant.featured_media | image_url: width: 1200 }} 1200w" 
+                sizes="(max-width: 600px) 400px, 
+                      (max-width: 1024px) 800px, 
+                      1200px"
+                width="100%"
+                height="100%"
+                alt="{{product.title}} - {{ media.alt }}"
+              >
+
+            </div>
+          {% endif %}
+        {% for media in product.media %}
+          {% assign media_alt = media.alt | downcase | replace: ' ', '' %}
+          
+          {% if v_title contains media_alt and media != fi_variant.featured_media %}
+            <div class="vm-slide-d5 {% if fi_variant.featured_media != blank %} order-0{% endif %}" id="{{ media.id }}">
+             <img 
+              class="" 
+              src="{{ media | image_url: width: 800 }}" 
+              srcset="
+                {{ media | image_url: width: 400 }} 400w, 
+                {{ media | image_url: width: 800 }} 800w, 
+                {{ media | image_url: width: 1200 }} 1200w" 
+              sizes="(max-width: 600px) 400px, 
+                    (max-width: 1024px) 800px, 
+                    1200px"
+              alt="{{product.title}} - {{ media.alt }}"
+              width="100%"
+              height="100%"
+            >
+
+            </div>
+          {% elsif media_alt == 'all' %}
+            <div class="vm-slide-d5" id="{{ media.id }}">
+              <img 
+  class="" 
+  src="{{ media | image_url: width: 800 }}" 
+  srcset="
+    {{ media | image_url: width: 400 }} 400w, 
+    {{ media | image_url: width: 800 }} 800w, 
+    {{ media | image_url: width: 1200 }} 1200w" 
+  sizes="(max-width: 600px) 400px, 
+         (max-width: 1024px) 800px, 
+         1200px"
+  alt="{{product.title}} - {{ media.alt }}"
+  width="100%"
+              height="100%"
+>
+
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <button id="vm-prev-d5" class="vm-nav-button-d5 vm-prev-button-d5">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button id="vm-next-d5" class="vm-nav-button-d5 vm-next-button-d5">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+    <div id="vm-counter-d5" class="vm-counter-d5"></div>
+  </div>
+
+  <div class="vm-thumbnails-container-d5">
+    <button id="vm-thumb-prev-d5" class="vm-thumb-nav-button-d5 vm-thumb-prev-d5">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <div id="vm-thumbnails-wrapper-d5" class="vm-thumbnails-wrapper-d5">
+      <div id="vm-thumbnails-d5" class="vm-thumbnails-d5">
+        {% assign fi_variant = product.selected_or_first_available_variant %}
+        {% assign v_title = fi_variant.title | downcase | replace: ' ', '' %}
+        {% if fi_variant.featured_media != blank %}
+             <div class="vm-thumbnail-d5 {% if fi_variant.featured_media != blank %} order-0{% endif %}" data-media-id="{{ media.id }}">
+              <img class="" src="{{ fi_variant.featured_media | image_url: width: 200 }}" alt="{{product.title}} - {{ media.alt }}" width="79" height="79">
+            </div>
+          {% endif %}
+        {% for media in product.media %}
+          {% assign media_alt = media.alt | downcase | replace: ' ', '' %}
+          
+          {% if v_title contains media_alt and media != fi_variant.featured_media %}
+            <div class="vm-thumbnail-d5 {% if fi_variant.featured_media != blank %} order-0{% endif %}" data-media-id="{{ media.id }}">
+              <img class="" src="{{ media | image_url: width: 200 }}" alt="{{product.title}} - {{ media.alt }}" width="79" height="79">
+            </div>
+          {% elsif media_alt == 'all' %}
+            <div class="vm-thumbnail-d5" data-media-id="{{ media.id }}">
+              <img src="{{ media | image_url: width: 200 }}" alt="{{product.title}} - {{ media.alt }}" width="79" height="79">
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <button id="vm-thumb-next-d5" class="vm-thumb-nav-button-d5 vm-thumb-next-d5">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  (function () {
+    let activeIndex = 0;
+    let totalSlides = 0;
+    let scrollHandler = null;
+    let clickHandlers = [];
+    let slideMediaIds = [];
+
+    const state = {
+      sliderWrapper: null,
+      slider: null,
+      prevBtn: null,
+      nextBtn: null,
+      thumbnailsWrapper: null,
+      thumbPrevBtn: null,
+      thumbNextBtn: null,
+      counter: null,
+      thumbnails: null,
+      slides: null
+    };
+
+    function cleanup() {
+      if (scrollHandler && state.sliderWrapper) {
+        state.sliderWrapper.removeEventListener('scroll', scrollHandler);
+      }
+
+      clickHandlers.forEach(({ element, handler }) => {
+        if (element) {
+          element.removeEventListener('click', handler);
+        }
+      });
+      clickHandlers = [];
+    }
+
+    function handleScroll() {
+      const scrollLeft = state.sliderWrapper.scrollLeft;
+      const slideWidth = state.sliderWrapper.offsetWidth;
+      const newIndex = Math.round(scrollLeft / slideWidth);
+
+      if (newIndex !== activeIndex) {
+        activeIndex = newIndex;
+        updateGallery();
+      }
+    }
+
+    function scrollToSlide(index) {
+      activeIndex = index;
+      const slideWidth = state.sliderWrapper.offsetWidth;
+      state.sliderWrapper.scrollLeft = slideWidth * index;
+      updateGallery();
+    }
+
+    function scrollToSlideByMediaId(mediaId) {
+      const index = slideMediaIds.indexOf(mediaId);
+      if (index !== -1) {
+        scrollToSlide(index);
+      }
+    }
+
+    function updateGallery() {
+      state.counter.textContent = `${activeIndex + 1} / ${totalSlides}`;
+
+      const currentMediaId = slideMediaIds[activeIndex];
+
+      state.thumbnails.forEach((thumb) => {
+        const thumbMediaId = thumb.dataset.mediaId;
+        if (thumbMediaId === currentMediaId) {
+          thumb.classList.add('vm-thumbnail-active-d5');
+          scrollToActiveThumbnail(thumb);
+        } else {
+          thumb.classList.remove('vm-thumbnail-active-d5');
+        }
+      });
+
+      state.prevBtn.disabled = activeIndex === 0;
+      state.nextBtn.disabled = activeIndex === totalSlides - 1;
+    }
+
+    function scrollToActiveThumbnail(thumb) {
+      const wrapper = state.thumbnailsWrapper;
+      const thumbLeft = thumb.offsetLeft;
+      const thumbWidth = thumb.offsetWidth;
+      const wrapperScroll = wrapper.scrollLeft;
+      const wrapperWidth = wrapper.offsetWidth;
+
+      const thumbRight = thumbLeft + thumbWidth;
+      const visibleLeft = wrapperScroll;
+      const visibleRight = wrapperScroll + wrapperWidth;
+
+      if (thumbLeft < visibleLeft) {
+        wrapper.scrollLeft = thumbLeft - 20;
+      } else if (thumbRight > visibleRight) {
+        wrapper.scrollLeft = thumbRight - wrapperWidth + 20;
+      }
+    }
+
+    function addClickHandler(element, handler) {
+      element.addEventListener('click', handler);
+      clickHandlers.push({ element, handler });
+    }
+
+    function init() {
+      cleanup();
+      activeIndex = 0;
+      
+      state.sliderWrapper = document.getElementById('vm-slider-wrapper-d5');
+      state.slider = document.getElementById('vm-slider-d5');
+      state.prevBtn = document.getElementById('vm-prev-d5');
+      state.nextBtn = document.getElementById('vm-next-d5');
+      state.thumbnailsWrapper = document.getElementById('vm-thumbnails-wrapper-d5');
+      state.thumbPrevBtn = document.getElementById('vm-thumb-prev-d5');
+      state.thumbNextBtn = document.getElementById('vm-thumb-next-d5');
+      state.counter = document.getElementById('vm-counter-d5');
+
+      state.slides = Array.from(state.slider.querySelectorAll('.vm-slide-d5'));
+      totalSlides = state.slides.length;
+
+      slideMediaIds = state.slides.map(slide => slide.id);
+
+      state.thumbnails = Array.from(document.querySelectorAll('.vm-thumbnail-d5'));
+
+      // Set initial active thumbnail
+      const initialMediaId = slideMediaIds[0];
+      state.thumbnails.forEach((thumb) => {
+        if (thumb.dataset.mediaId === initialMediaId) {
+          thumb.classList.add('vm-thumbnail-active-d5');
+        } else {
+          thumb.classList.remove('vm-thumbnail-active-d5');
+        }
+      });
+
+      state.thumbnails.forEach((thumb) => {
+        const mediaId = thumb.dataset.mediaId;
+        addClickHandler(thumb, () => scrollToSlideByMediaId(mediaId));
+      });
+
+      scrollHandler = handleScroll;
+      state.sliderWrapper.addEventListener('scroll', scrollHandler);
+
+      addClickHandler(state.prevBtn, () => {
+        if (activeIndex > 0) {
+          scrollToSlide(activeIndex - 1);
+        }
+      });
+
+      addClickHandler(state.nextBtn, () => {
+        if (activeIndex < totalSlides - 1) {
+          scrollToSlide(activeIndex + 1);
+        }
+      });
+
+      addClickHandler(state.thumbPrevBtn, () => {
+        state.thumbnailsWrapper.scrollLeft -= 200;
+      });
+
+      addClickHandler(state.thumbNextBtn, () => {
+        state.thumbnailsWrapper.scrollLeft += 200;
+      });
+
+      const keyHandler = (e) => {
+        if (e.key === 'ArrowLeft' && activeIndex > 0) {
+          scrollToSlide(activeIndex - 1);
+        } else if (e.key === 'ArrowRight' && activeIndex < totalSlides - 1) {
+          scrollToSlide(activeIndex + 1);
+        }
+      };
+      document.addEventListener('keydown', keyHandler);
+      clickHandlers.push({ element: document, handler: keyHandler });
+
+      updateGallery();
+    }
+
+    window.vmInitGalleryD5 = init;
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+
+
+  {% comment %}
+    Renders a product media gallery. Should be used with 'media-gallery.js'
+    Also see 'product-media-modal'
+
+    Accepts:
+    - product: {Object} Product liquid object
+    - variant_images: {Array} Product images associated with a variant
+    - limit: {Number} (optional) When passed, limits the number of media items to render
+
+    Usage:
+    {% render 'product-media-gallery' %}
+  {% endcomment %}
+{% else %}
+  {%- liquid
+    if section.settings.hide_variants and variant_images.size == product.media.size
+      assign single_media_visible = true
+    endif
+
+    if limit == 1
+      assign single_media_visible = true
+    endif
+
+    assign media_count = product.media.size
+    if section.settings.hide_variants and media_count > 1 and variant_images.size > 0
+      assign media_count = media_count | minus: variant_images.size | plus: 1
+    endif
+
+    if media_count == 1 or single_media_visible
+      assign single_media_visible_mobile = true
+    endif
+
+    if media_count == 0 or single_media_visible_mobile or section.settings.mobile_thumbnails == 'show' or section.settings.mobile_thumbnails == 'columns' and media_count < 3
+      assign hide_mobile_slider = true
+    endif
+
+    if section.settings.media_size == 'large'
+      assign media_width = 0.65
+    elsif section.settings.media_size == 'medium'
+      assign media_width = 0.55
+    elsif section.settings.media_size == 'small'
+      assign media_width = 0.45
+    endif
+  -%}
+
+  <media-gallery
+    id="MediaGallery-{{ section.id }}"
+    role="region"
+    {% if section.settings.enable_sticky_info %}
+      class="product__column-sticky"
+    {% endif %}
+    aria-label="{{ 'products.product.media.gallery_viewer' | t }}"
+    data-desktop-layout="{{ section.settings.gallery_layout }}"
+  >
+    <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
+    <slider-component id="GalleryViewer-{{ section.id }}" class="slider-mobile-gutter">
+      <a class="skip-to-content-link button visually-hidden quick-add-hidden" href="#ProductInfo-{{ section.id }}">
+        {{ 'accessibility.skip_to_product_info' | t }}
+      </a>
+      <ul
+        id="Slider-Gallery-{{ section.id }}"
+        class="product__media-list contains-media grid grid--peek list-unstyled slider slider--mobile"
+        role="list"
+      >
+        {%- if product.selected_or_first_available_variant.featured_media != null -%}
+          {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
+          <li
+            id="Slide-{{ section.id }}-{{ featured_media.id }}"
+            class="product__media-item grid__item slider__slide is-active{% if single_media_visible %} product__media-item--single{% endif %}{% if featured_media.media_type != 'image' %} product__media-item--full{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+            data-media-id="{{ section.id }}-{{ featured_media.id }}"
+          >
+            {%- assign media_position = 1 -%}
+            {% render 'product-thumbnail',
+              media: featured_media,
+              media_count: media_count,
+              position: media_position,
+              desktop_layout: section.settings.gallery_layout,
+              mobile_layout: section.settings.mobile_thumbnails,
+              loop: section.settings.enable_video_looping,
+              modal_id: section.id,
+              xr_button: true,
+              media_width: media_width,
+              media_fit: section.settings.media_fit,
+              constrain_to_viewport: section.settings.constrain_to_viewport,
+              lazy_load: false
+            %}
+          </li>
+        {%- endif -%}
+        {%- for media in product.media -%}
+          {% if media_position >= limit
+            or media_position >= 1
+            and section.settings.hide_variants
+            and variant_images contains media.src
+          %}
+            {% continue %}
+          {% endif %}
+
+          {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
+            <li
+              id="Slide-{{ section.id }}-{{ media.id }}"
+              class="product__media-item grid__item slider__slide{% if single_media_visible %} product__media-item--single{% endif %}{% if product.selected_or_first_available_variant.featured_media == nil and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+              data-media-id="{{ section.id }}-{{ media.id }}"
+            >
+              {%- liquid
+                assign media_position = media_position | default: 0 | plus: 1
+                assign lazy_load = false
+                if media_position > 1
+                  assign lazy_load = true
+                endif
+              -%}
+              {% render 'product-thumbnail',
+                media: media,
+                media_count: media_count,
+                position: media_position,
+                desktop_layout: section.settings.gallery_layout,
+                mobile_layout: section.settings.mobile_thumbnails,
+                loop: section.settings.enable_video_looping,
+                modal_id: section.id,
+                xr_button: true,
+                media_width: media_width,
+                media_fit: section.settings.media_fit,
+                constrain_to_viewport: section.settings.constrain_to_viewport,
+                lazy_load: lazy_load
+              %}
+            </li>
+          {%- endunless -%}
+        {%- endfor -%}
+      </ul>
+      <div class="slider-buttons quick-add-hidden{% if hide_mobile_slider %} small-hide{% endif %}">
+        <button
+          type="button"
+          class="slider-button slider-button--prev"
+          name="previous"
+          aria-label="{{ 'general.slider.previous_slide' | t }}"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </span>
+        </button>
+        <div class="slider-counter caption">
+          <span class="slider-counter--current">1</span>
+          <span aria-hidden="true"> / </span>
+          <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+          <span class="slider-counter--total">{{ media_count }}</span>
+        </div>
+        <button
+          type="button"
+          class="slider-button slider-button--next"
+          name="next"
+          aria-label="{{ 'general.slider.next_slide' | t }}"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </span>
+        </button>
+      </div>
+    </slider-component>
+    {%- if first_3d_model -%}
+      <button
+        class="button button--full-width product__xr-button"
+        type="button"
+        aria-label="{{ 'products.product.xr_button_label' | t }}"
+        data-shopify-xr
+        data-shopify-model3d-id="{{ first_3d_model.id }}"
+        data-shopify-title="{{ product.title | escape }}"
+        data-shopify-xr-hidden
+      >
+        <span class="svg-wrapper">
+          {{- 'icon-3d-model.svg' | inline_asset_content -}}
+        </span>
+        {{ 'products.product.xr_button' | t }}
+      </button>
+    {%- endif -%}
+    {%- liquid
+      assign is_not_limited_to_single_item = false
+      if limit == null or limit > 1
+        assign is_not_limited_to_single_item = true
+      endif
+    -%}
+    {%- if is_not_limited_to_single_item
+      and media_count > 1
+      and section.settings.gallery_layout contains 'thumbnail'
+      or section.settings.mobile_thumbnails == 'show'
+    -%}
+      <slider-component
+        id="GalleryThumbnails-{{ section.id }}"
+        class="thumbnail-slider slider-mobile-gutter quick-add-hidden{% unless section.settings.gallery_layout contains 'thumbnail' %} medium-hide large-up-hide{% endunless %}{% if section.settings.mobile_thumbnails != 'show' %} small-hide{% endif %}{% if media_count <= 3 %} thumbnail-slider--no-slide{% endif %}"
+      >
+        <button
+          type="button"
+          class="slider-button slider-button--prev{% if media_count <= 3 %} small-hide{% endif %}{% if media_count <= 4 %} medium-hide large-up-hide{% endif %}"
+          name="previous"
+          aria-label="{{ 'general.slider.previous_slide' | t }}"
+          aria-controls="GalleryThumbnails-{{ section.id }}"
+          data-step="3"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </span>
+        </button>
+        <ul
+          id="Slider-Thumbnails-{{ section.id }}"
+          class="thumbnail-list list-unstyled slider slider--mobile{% if section.settings.gallery_layout == 'thumbnail_slider' %} slider--tablet-up{% endif %}"
+        >
+          {%- capture sizes -%}
+          (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width | minus: 100 | times: media_width | round }} - 4rem) / 4),
+          (min-width: 990px) calc(({{ media_width | times: 100 }}vw - 4rem) / 4),
+          (min-width: 750px) calc((100vw - 15rem) / 8),
+          calc((100vw - 8rem) / 3)
+        {%- endcapture -%}
+
+          {%- if featured_media != null -%}
+            {%- liquid
+              capture media_index
+                if featured_media.media_type == 'model'
+                  increment model_index
+                elsif featured_media.media_type == 'video' or featured_media.media_type == 'external_video'
+                  increment video_index
+                elsif featured_media.media_type == 'image'
+                  increment image_index
+                endif
+              endcapture
+              assign media_index = media_index | plus: 1
+            -%}
+            <li
+              id="Slide-Thumbnails-{{ section.id }}-0"
+              class="thumbnail-list__item slider__slide{% if section.settings.hide_variants and variant_images contains featured_media.src %} thumbnail-list_item--variant{% endif %}"
+              data-target="{{ section.id }}-{{ featured_media.id }}"
+              data-media-position="{{ media_index }}"
+            >
+              {%- capture thumbnail_id -%}
+              Thumbnail-{{ section.id }}-0
+            {%- endcapture -%}
+              <button
+                class="thumbnail global-media-settings global-media-settings--no-shadow"
+                aria-label="{%- if featured_media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media_index }}{%- elsif featured_media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media_index }}{%- elsif featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media_index }}{%- endif -%}"
+                aria-current="true"
+                aria-controls="GalleryViewer-{{ section.id }}"
+                aria-describedby="{{ thumbnail_id }}"
+              >
+                {{
+                  featured_media.preview_image
+                  | image_url: width: 416
+                  | image_tag:
+                    loading: 'lazy',
+                    sizes: sizes,
+                    widths: '54, 74, 104, 162, 208, 324, 416',
+                    id: thumbnail_id,
+                    alt: featured_media.alt
+                  | escape
+                }}
+              </button>
+            </li>
+          {%- endif -%}
+          {%- for media in product.media -%}
+            {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
+              {%- liquid
+                capture media_index
+                  if media.media_type == 'model'
+                    increment model_index
+                  elsif media.media_type == 'video' or media.media_type == 'external_video'
+                    increment video_index
+                  elsif media.media_type == 'image'
+                    increment image_index
+                  endif
+                endcapture
+                assign media_index = media_index | plus: 1
+              -%}
+              <li
+                id="Slide-Thumbnails-{{ section.id }}-{{ forloop.index }}"
+                class="thumbnail-list__item slider__slide{% if section.settings.hide_variants and variant_images contains media.src %} thumbnail-list_item--variant{% endif %}"
+                data-target="{{ section.id }}-{{ media.id }}"
+                data-media-position="{{ media_index }}"
+              >
+                {%- if media.media_type == 'model' -%}
+                  <span class="thumbnail__badge" aria-hidden="true">
+                    <span class="svg-wrapper">
+                      {{- 'icon-3d-model.svg' | inline_asset_content -}}
+                    </span>
+                  </span>
+                {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
+                  <span class="thumbnail__badge" aria-hidden="true">
+                    <span class="svg-wrapper">
+                      {{- 'icon-play.svg' | inline_asset_content -}}
+                    </span>
+                  </span>
+                {%- endif -%}
+                {%- capture thumbnail_id -%}
+                Thumbnail-{{ section.id }}-{{ forloop.index }}
+              {%- endcapture -%}
+                <button
+                  class="thumbnail global-media-settings global-media-settings--no-shadow"
+                  aria-label="{%- if media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media_index }}{%- elsif media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media_index }}{%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media_index }}{%- endif -%}"
+                  {% if media == product.selected_or_first_available_variant.featured_media
+                    or product.selected_or_first_available_variant.featured_media == null
+                    and forloop.index == 1
+                  %}
+                    aria-current="true"
+                  {% endif %}
+                  aria-controls="GalleryViewer-{{ section.id }}"
+                  aria-describedby="{{ thumbnail_id }}"
+                >
+                  {{
+                    media.preview_image
+                    | image_url: width: 416
+                    | image_tag:
+                      loading: 'lazy',
+                      sizes: sizes,
+                      widths: '54, 74, 104, 162, 208, 324, 416',
+                      id: thumbnail_id,
+                      alt: media.alt
+                    | escape
+                  }}
+                </button>
+              </li>
+            {%- endunless -%}
+          {%- endfor -%}
+        </ul>
+        <button
+          type="button"
+          class="slider-button slider-button--next{% if media_count <= 3 %} small-hide{% endif %}{% if media_count <= 4 %} medium-hide large-up-hide{% endif %}"
+          name="next"
+          aria-label="{{ 'general.slider.next_slide' | t }}"
+          aria-controls="GalleryThumbnails-{{ section.id }}"
+          data-step="3"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </span>
+        </button>
+      </slider-component>
+    {%- endif -%}
+  </media-gallery>
+{% endif %}
