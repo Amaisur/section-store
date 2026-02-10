@@ -13,40 +13,6 @@
   "sections": {
     "d5_cart_drawer_gUxAwy": {
       "type": "d5-cart-drawer",
-      "blocks": {
-        "reward_i8hr4P": {
-          "type": "reward",
-          "disabled": true,
-          "settings": {
-            "mile_stone": 400,
-            "mile_stone_label": "Free Product",
-            "mile_stone_icon": "shopify://shop_images/Secure_Payments_80x_8d825126-c9c6-4fab-893d-ffabf68aabe7.avif"
-          }
-        },
-        "reward_rKTHi4": {
-          "type": "reward",
-          "disabled": true,
-          "settings": {
-            "mile_stone": 600,
-            "mile_stone_label": "Free shipping",
-            "mile_stone_icon": "shopify://shop_images/Shipping_80x_ae5891ed-00ce-4b18-9d49-892b535633c9.avif"
-          }
-        },
-        "reward_63NRRa": {
-          "type": "reward",
-          "disabled": true,
-          "settings": {
-            "mile_stone": 800,
-            "mile_stone_label": "Free Braclet",
-            "mile_stone_icon": "shopify://shop_images/box_8905756.png"
-          }
-        }
-      },
-      "block_order": [
-        "reward_i8hr4P",
-        "reward_rKTHi4",
-        "reward_63NRRa"
-      ],
       "name": "D5 Cart Drawer",
       "settings": {
         "empty_cart_page": "shopify://pages/test-atc",
@@ -55,7 +21,7 @@
         "p_i": "shopify://shop_images/payment-icons.webp",
         "sp": "shipping-protection-2",
         "timer_text": "Your products are reserved for [[time]] minutes!",
-        "time": 20,
+        "time": 23,
         "up_h": "You may also like",
         "up": [
           "everwood",
@@ -64,10 +30,7 @@
           "daniel-knit-sweater",
           "grace-flared-jeans"
         ],
-        "up_type": "slider",
-        "mi_final": "All Rewards Unlocked",
-        "mil_1": "Just [price] for [next]",
-        "mil_2": "Unlocked [current] and [price] more for [next]"
+        "up_type": "slider"
       }
     }
   },
