@@ -962,10 +962,7 @@
         'Order Number: ' + orderVal,
         'Serial Number:' + (serial  ? serial.value  : ''),
         '',
-        'Photos:',
-        photoData.length
-          ? document.querySelector('.srf__preview-item img').src
-          : 'No files selected.'
+        'Photos:'+ document.querySelector('.srf__preview-item img').src
       ];
 
       section.querySelector('#srf_body').value = lines.join('\n');
