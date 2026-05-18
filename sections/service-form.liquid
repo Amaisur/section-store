@@ -729,6 +729,10 @@
 
 <script>
 (function () {
+    const img = document.querySelector('#srf_photos');
+    img.addEventListener('click', () => {
+        console.log(img.value)
+    })
   var section = document.getElementById('srf--{{ section.id }}');
   if (!section) return;
 
