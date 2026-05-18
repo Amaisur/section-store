@@ -1,0 +1,987 @@
+<style>
+    .srf__section { padding: 4rem 0; }
+
+.srf__container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.srf__heading {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+
+.srf__subheading {
+  text-align: center;
+  opacity: 0.65;
+  font-size: 14px;
+  margin: 0 0 2.5rem;
+}
+
+/* ── Progress ── */
+.srf__progress {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.srf__progress::before {
+  content: '';
+  position: absolute;
+  top: 19px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 2px;
+  background: #e5e5e5;
+  z-index: 0;
+}
+
+.srf__progress-fill {
+  position: absolute;
+  top: 19px;
+  left: 50%;
+  transform: translateX(-50%) translateX(-160px);
+  height: 2px;
+  width: 0;
+  background: rgba(var(--color-button), var(--alpha-button-background));
+  transition: width 0.4s ease;
+  z-index: 1;
+}
+
+.srf__progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 160px;
+  position: relative;
+  z-index: 2;
+}
+
+.srf__step-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #e5e5e5;
+  background: rgb(var(--color-background));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  color: #aaa;
+  transition: all 0.3s;
+}
+
+.srf__step-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #aaa;
+  transition: color 0.3s;
+}
+
+.srf__progress-step.is-active .srf__step-circle {
+  border-color: rgba(var(--color-button), var(--alpha-button-background));
+  background: rgba(var(--color-button), var(--alpha-button-background));
+  color: rgb(var(--color-button-text));
+}
+
+.srf__progress-step.is-active .srf__step-label { color: rgba(var(--color-button), var(--alpha-button-background)); }
+
+.srf__progress-step.is-done .srf__step-circle {
+  border-color: rgba(var(--color-button), var(--alpha-button-background));
+  background: rgba(var(--color-button), var(--alpha-button-background));
+  color: rgb(var(--color-button-text));
+}
+
+.srf__progress-step.is-done .srf__step-label { color: rgba(var(--color-button), var(--alpha-button-background)); }
+
+/* ── Stage panels ── */
+.srf__stage { display: none; }
+.srf__stage.is-active { display: block; }
+
+.srf__stage-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+}
+
+.srf__stage-desc {
+  font-size: 13px;
+  opacity: 0.6;
+  margin: 0 0 2rem;
+}
+
+/* ── Category cards ── */
+.srf__category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+
+.srf__category-card input[type='radio'] { display: none; }
+
+.srf__category-card label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 1.25rem 1rem;
+  border: 2px solid #e5e5e5;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+  line-height: 1.3;
+}
+
+.srf__category-card label:hover { border-color: rgba(var(--color-button), 0.5); }
+
+.srf__category-card input:checked + label {
+  border-color: rgba(var(--color-button), var(--alpha-button-background));
+  background: rgba(var(--color-button), 0.06);
+}
+
+.srf__cat-icon { font-size: 1.8rem; }
+
+/* ── Fields ── */
+.srf__field { margin-bottom: 1.25rem; }
+
+.srf__label {
+  display: block;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.srf__required { color: #e00; margin-left: 2px; }
+
+.srf__select-wrap { position: relative; }
+
+.srf__select-wrap::after {
+  content: '';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-top-color: #666;
+  pointer-events: none;
+}
+
+.srf__select,
+.srf__input,
+.srf__textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #e5e5e5;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  transition: border-color 0.2s;
+  appearance: none;
+}
+
+.srf__select:focus,
+.srf__input:focus,
+.srf__textarea:focus {
+  outline: none;
+  border-color: rgba(var(--color-button), var(--alpha-button-background));
+}
+
+.srf__textarea { min-height: 110px; resize: vertical; }
+
+.srf__select.has-error,
+.srf__input.has-error,
+.srf__textarea.has-error { border-color: #e00; }
+
+.srf__field-error {
+  display: none;
+  font-size: 12px;
+  color: #e00;
+  margin-top: 4px;
+}
+
+/* ── Problem groups ── */
+.srf__problem-groups { margin-bottom: 2rem; }
+
+.srf__problem-group {
+  border: 1.5px solid #e5e5e5;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.srf__group-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  background: #f7f7f7;
+  user-select: none;
+  gap: 8px;
+}
+
+.srf__group-toggle svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.25s;
+}
+
+.srf__problem-group.is-open .srf__group-toggle svg { transform: rotate(180deg); }
+
+.srf__group-body {
+  display: none;
+  padding: 12px 16px;
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+}
+
+.srf__problem-group.is-open .srf__group-body { display: grid; }
+
+.srf__check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.srf__check-item input[type='checkbox'] {
+  width: 15px;
+  height: 15px;
+  margin-top: 1px;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: rgba(var(--color-button), var(--alpha-button-background));
+}
+
+.srf__problems-error {
+  display: none;
+  font-size: 12px;
+  color: #e00;
+  margin-bottom: 8px;
+}
+
+/* ── Info grid ── */
+.srf__info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1.5rem;
+}
+
+.srf__field.col-full { grid-column: 1 / -1; }
+
+/* ── File upload ── */
+.srf__file-drop {
+  border: 2px dashed #e5e5e5;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  position: relative;
+}
+
+.srf__file-drop:hover { border-color: rgba(var(--color-button), 0.5); }
+
+.srf__file-drop input[type='file'] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.srf__file-drop-text { font-size: 13px; color: #888; pointer-events: none; }
+.srf__file-drop-text strong { display: block; color: rgb(var(--color-foreground)); margin-bottom: 4px; }
+.srf__file-names { font-size: 12px; margin-top: 6px; color: rgba(var(--color-button), var(--alpha-button-background)); }
+
+/* ── Stage error banner ── */
+.srf__stage-error {
+  display: none;
+  background: #fff3f3;
+  border: 1px solid #ffcdd2;
+  color: #b71c1c;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 1rem;
+}
+
+/* ── Buttons ── */
+.srf__buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e5e5;
+}
+
+.srf__btn {
+  padding: 11px 28px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, background 0.2s;
+  font-family: inherit;
+  border: none;
+}
+
+.srf__btn--primary {
+  background: rgba(var(--color-button), var(--alpha-button-background));
+  color: rgb(var(--color-button-text));
+}
+
+.srf__btn--primary:hover { opacity: 0.82; }
+
+.srf__btn--secondary {
+  background: transparent;
+  border: 1.5px solid #ddd;
+  color: rgb(var(--color-foreground));
+}
+
+.srf__btn--secondary:hover { border-color: #999; }
+
+/* ── Confirmation ── */
+.srf__confirmation {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.srf__confirm-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+.srf__confirmation h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 1rem; }
+.srf__confirmation p { max-width: 520px; margin: 0 auto; line-height: 1.7; opacity: 0.7; font-size: 14px; }
+
+/* ── Mobile ── */
+@media (max-width: 749px) {
+  .srf__progress::before { width: 200px; }
+  .srf__progress-fill { transform: translateX(-50%) translateX(-100px); }
+  .srf__progress-step { width: 100px; }
+  .srf__category-grid { grid-template-columns: repeat(2, 1fr); }
+  .srf__group-body { grid-template-columns: 1fr; }
+  .srf__info-grid { grid-template-columns: 1fr; }
+  .srf__buttons { flex-direction: column-reverse; }
+  .srf__btn { width: 100%; text-align: center; }
+  .srf__section { padding: 2rem 0; }
+}
+
+</style>
+
+<section
+  id="srf--{{ section.id }}"
+  class="srf__section color-{{ section.settings.color_scheme }} gradient"
+>
+  <div class="page-width">
+    <div class="srf__container">
+
+      {% form 'contact' %}
+
+        {% if form.posted_successfully? %}
+
+          <div class="srf__confirmation">
+            <div class="srf__confirm-icon">✅</div>
+            <h2>Request Received</h2>
+            <p>
+              Thank you. Your service request has been received. Our support team will review
+              your case and contact you as soon as possible. Please note that incomplete or
+              unclear information may delay processing.
+            </p>
+          </div>
+
+        {% else %}
+
+          {% if section.settings.heading != blank %}
+            <h1 class="srf__heading">{{ section.settings.heading }}</h1>
+          {% endif %}
+          {% if section.settings.subheading != blank %}
+            <p class="srf__subheading">{{ section.settings.subheading }}</p>
+          {% endif %}
+
+          <!-- Hidden compiled fields sent to Shopify contact form -->
+          <input type="hidden" name="contact[subject]" id="srf_subject">
+          <input type="hidden" name="contact[body]" id="srf_body">
+          <input type="hidden" name="contact[email]" id="srf_email_hidden">
+          <input type="hidden" name="contact[name]" id="srf_name_hidden">
+
+          <!-- Progress bar -->
+          <div class="srf__progress" aria-label="Form progress">
+            <div class="srf__progress-fill" id="srf_progress_fill"></div>
+            <div class="srf__progress-step is-active" data-step="1">
+              <div class="srf__step-circle">1</div>
+              <div class="srf__step-label">Product</div>
+            </div>
+            <div class="srf__progress-step" data-step="2">
+              <div class="srf__step-circle">2</div>
+              <div class="srf__step-label">Problem</div>
+            </div>
+            <div class="srf__progress-step" data-step="3">
+              <div class="srf__step-circle">3</div>
+              <div class="srf__step-label">Details</div>
+            </div>
+          </div>
+
+          <!-- ══════════════════════════════════════════
+               STAGE 1 — Product Selection
+          ══════════════════════════════════════════ -->
+          <div class="srf__stage is-active" data-stage="1">
+            <h2 class="srf__stage-title">Select Your Product</h2>
+            <p class="srf__stage-desc">Choose the product category and model that your request is about.</p>
+
+            <div class="srf__stage-error" id="srf_error_1">Please select a product category before continuing.</div>
+
+            <p class="srf__label">Product category <span class="srf__required">*</span></p>
+            <div class="srf__category-grid" id="srf_category_grid">
+              <div class="srf__category-card">
+                <input type="radio" name="srf_category" id="cat_electric" value="Electric Screen">
+                <label for="cat_electric">
+                  <span class="srf__cat-icon">⚡</span>Electric Screen
+                </label>
+              </div>
+              <div class="srf__category-card">
+                <input type="radio" name="srf_category" id="cat_manual" value="Manual Screen">
+                <label for="cat_manual">
+                  <span class="srf__cat-icon">🖐</span>Manual Screen
+                </label>
+              </div>
+              <div class="srf__category-card">
+                <input type="radio" name="srf_category" id="cat_fixed" value="Fixed Frame Screen">
+                <label for="cat_fixed">
+                  <span class="srf__cat-icon">🖼</span>Fixed Frame Screen
+                </label>
+              </div>
+              <div class="srf__category-card">
+                <input type="radio" name="srf_category" id="cat_floor" value="Floor Rising Screen">
+                <label for="cat_floor">
+                  <span class="srf__cat-icon">⬆️</span>Floor Rising Screen
+                </label>
+              </div>
+              <div class="srf__category-card">
+                <input type="radio" name="srf_category" id="cat_ust" value="UST Screen">
+                <label for="cat_ust">
+                  <span class="srf__cat-icon">📽</span>UST Screen
+                </label>
+              </div>
+              <div class="srf__category-card">
+                <input type="radio" name="srf_category" id="cat_accessory" value="Accessory">
+                <label for="cat_accessory">
+                  <span class="srf__cat-icon">🔧</span>Accessory
+                </label>
+              </div>
+              <div class="srf__category-card">
+                <input type="radio" name="srf_category" id="cat_spare" value="Spare Part">
+                <label for="cat_spare">
+                  <span class="srf__cat-icon">🔩</span>Spare Part
+                </label>
+              </div>
+            </div>
+
+            <div class="srf__field" id="srf_model_field">
+              <label class="srf__label" for="srf_model">Product model / series <span class="srf__required">*</span></label>
+              <div class="srf__select-wrap">
+                <select class="srf__select" id="srf_model" name="srf_model">
+                  <option value="">— Select a category first —</option>
+                </select>
+              </div>
+              <div class="srf__field-error" id="srf_model_error">Please select a product model.</div>
+            </div>
+
+            <div class="srf__buttons">
+              <button type="button" class="srf__btn srf__btn--primary" data-next="2">Next →</button>
+            </div>
+          </div>
+
+          <!-- ══════════════════════════════════════════
+               STAGE 2 — Problem Selection
+          ══════════════════════════════════════════ -->
+          <div class="srf__stage" data-stage="2">
+            <h2 class="srf__stage-title">Describe the Problem</h2>
+            <p class="srf__stage-desc">Select all issues that apply. Multiple selections are allowed.</p>
+
+            <div class="srf__stage-error" id="srf_error_2">Please describe the problem in the text field below.</div>
+
+            <div class="srf__problem-groups">
+
+              <div class="srf__problem-group is-open">
+                <div class="srf__group-toggle">
+                  Screen Surface &amp; Fabric Issues
+                  <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+                </div>
+                <div class="srf__group-body">
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen fabric is torn"> Screen fabric is torn</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen edge is torn or detached"> Screen edge is torn or detached</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Scratch on screen surface"> Scratch on screen surface</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Stain or dirt on screen surface"> Stain or dirt on screen surface</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Wrinkles or waves on screen"> Wrinkles or waves on screen</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen does not roll up evenly"> Screen does not roll up evenly</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen damaged during transport"> Screen damaged during transport</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen material has color differences"> Screen material has color differences</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen has pressure marks"> Screen has pressure marks</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen has visible dents or deformation"> Visible dents or deformation</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Projection image is not clear"> Projection image is not clear</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen not compatible with projector"> Not compatible with projector</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Ambient light rejection / contrast not as expected"> ALR / contrast not as expected</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Hotspot or reflection problem"> Hotspot or reflection problem</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Moiré effect or texture visible during projection"> Moiré effect or texture visible</label>
+                </div>
+              </div>
+
+              <div class="srf__problem-group">
+                <div class="srf__group-toggle">
+                  Motor &amp; Electrical Issues
+                  <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+                </div>
+                <div class="srf__group-body">
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Motor does not work"> Motor does not work</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen does not move up or down"> Screen does not move up or down</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen stops during movement"> Screen stops during movement</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Motor makes unusual noise"> Motor makes unusual noise</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Remote control does not work"> Remote control does not work</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Trigger function does not work"> Trigger function does not work</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Wall switch does not work"> Wall switch does not work</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Power cable or plug issue"> Power cable or plug issue</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Limit settings are incorrect"> Limit settings are incorrect</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen moves in wrong direction"> Screen moves in wrong direction</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen only works intermittently"> Screen only works intermittently</label>
+                </div>
+              </div>
+
+              <div class="srf__problem-group">
+                <div class="srf__group-toggle">
+                  Frame, Housing &amp; Mechanical Issues
+                  <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+                </div>
+                <div class="srf__group-body">
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Case or housing is damaged"> Case or housing is damaged</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="End cap is damaged"> End cap is damaged</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Frame is bent"> Frame is bent</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Frame part is missing"> Frame part is missing</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Installation bracket is missing or damaged"> Bracket missing or damaged</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen is not level after installation"> Screen not level after install</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen does not fit into housing"> Screen does not fit into housing</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Tension cable is damaged"> Tension cable is damaged</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Tab-tension system not working properly"> Tab-tension not working</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Floor-rising mechanism does not work"> Floor-rising mechanism issue</label>
+                </div>
+              </div>
+
+              <div class="srf__problem-group">
+                <div class="srf__group-toggle">
+                  Accessories &amp; Missing Parts
+                  <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+                </div>
+                <div class="srf__group-body">
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Remote control missing"> Remote control missing</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Wall switch missing"> Wall switch missing</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Brackets missing"> Brackets missing</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screws or installation parts missing"> Screws / install parts missing</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Manual missing"> Manual missing</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Wrong accessory received"> Wrong accessory received</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Wrong product received"> Wrong product received</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Spare part request"> Spare part request</label>
+                </div>
+              </div>
+
+              <div class="srf__problem-group">
+                <div class="srf__group-toggle">
+                  Order, Delivery &amp; Return
+                  <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+                </div>
+                <div class="srf__group-body">
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Product arrived damaged"> Product arrived damaged</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Packaging was damaged"> Packaging was damaged</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Wrong item delivered"> Wrong item delivered</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Item no longer needed"> Item no longer needed</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Customer ordered the wrong size"> Ordered the wrong size</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Customer ordered the wrong model"> Ordered the wrong model</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Product incompatible with setup"> Product incompatible with setup</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Return request within withdrawal period"> Return within withdrawal period</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Warranty / service request"> Warranty / service request</label>
+                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Paid repair request"> Paid repair request</label>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="srf__field">
+              <label class="srf__label" for="srf_description">
+                Problem description <span class="srf__required">*</span>
+              </label>
+              <textarea
+                class="srf__textarea"
+                id="srf_description"
+                name="srf_description"
+                placeholder="Please describe the problem in as much detail as possible — when it occurred, what you observed, steps already taken, etc."
+              ></textarea>
+              <div class="srf__field-error" id="srf_desc_error">Please describe the problem.</div>
+            </div>
+
+            <div class="srf__buttons">
+              <button type="button" class="srf__btn srf__btn--secondary" data-back="1">← Back</button>
+              <button type="button" class="srf__btn srf__btn--primary" data-next="3">Next →</button>
+            </div>
+          </div>
+
+          <!-- ══════════════════════════════════════════
+               STAGE 3 — Customer & Case Information
+          ══════════════════════════════════════════ -->
+          <div class="srf__stage" data-stage="3">
+            <h2 class="srf__stage-title">Your Information</h2>
+            <p class="srf__stage-desc">All fields marked with * are required to process your request.</p>
+
+            <div class="srf__stage-error" id="srf_error_3">Please fill in all required fields.</div>
+
+            <div class="srf__info-grid">
+
+              <div class="srf__field">
+                <label class="srf__label" for="srf_name">Full name <span class="srf__required">*</span></label>
+                <input class="srf__input" type="text" id="srf_name" name="srf_name" autocomplete="name">
+                <div class="srf__field-error" id="srf_name_error">Name is required.</div>
+              </div>
+
+              <div class="srf__field">
+                <label class="srf__label" for="srf_company">Company name</label>
+                <input class="srf__input" type="text" id="srf_company" name="srf_company" autocomplete="organization">
+              </div>
+
+              <div class="srf__field">
+                <label class="srf__label" for="srf_email">Email address <span class="srf__required">*</span></label>
+                <input class="srf__input" type="email" id="srf_email" name="srf_email" autocomplete="email">
+                <div class="srf__field-error" id="srf_email_error">A valid email address is required.</div>
+              </div>
+
+              <div class="srf__field">
+                <label class="srf__label" for="srf_phone">Phone number <span class="srf__required">*</span></label>
+                <input class="srf__input" type="tel" id="srf_phone" name="srf_phone" autocomplete="tel">
+                <div class="srf__field-error" id="srf_phone_error">Phone number is required.</div>
+              </div>
+
+              <div class="srf__field col-full">
+                <label class="srf__label" for="srf_address">Full address <span class="srf__required">*</span></label>
+                <input class="srf__input" type="text" id="srf_address" name="srf_address" autocomplete="street-address" placeholder="Street, city, postal code, country">
+                <div class="srf__field-error" id="srf_address_error">Address is required.</div>
+              </div>
+
+              <div class="srf__field">
+                <label class="srf__label" for="srf_order">Order number <span class="srf__required">*</span></label>
+                <input class="srf__input" type="text" id="srf_order" name="srf_order" placeholder="e.g. #1234">
+                <div class="srf__field-error" id="srf_order_error">Order number is required.</div>
+              </div>
+
+              <div class="srf__field">
+                <label class="srf__label" for="srf_serial">Serial number <span class="srf__required">*</span></label>
+                <input class="srf__input" type="text" id="srf_serial" name="srf_serial" placeholder="Found on product label">
+                <div class="srf__field-error" id="srf_serial_error">Serial number is required.</div>
+              </div>
+
+              <div class="srf__field col-full">
+                <label class="srf__label">Product &amp; problem photos</label>
+                <div class="srf__file-drop">
+                  <input type="file" id="srf_photos" name="srf_photos" accept="image/*" multiple>
+                  <div class="srf__file-drop-text">
+                    <strong>Click to upload photos</strong>
+                    JPG, PNG, WEBP — multiple files allowed
+                  </div>
+                  <div class="srf__file-names" id="srf_file_names"></div>
+                </div>
+                <p style="font-size:12px;color:#888;margin-top:6px;">
+                  If photos cannot be attached, please send them to <strong>{{ section.settings.support_email }}</strong> quoting your order number.
+                </p>
+              </div>
+
+            </div>
+
+            <div class="srf__buttons">
+              <button type="button" class="srf__btn srf__btn--secondary" data-back="2">← Back</button>
+              <button type="submit" class="srf__btn srf__btn--primary" id="srf_submit">Submit Request</button>
+            </div>
+          </div>
+
+        {% endif %}
+      {% endform %}
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var section = document.getElementById('srf--{{ section.id }}');
+  if (!section) return;
+
+  var current = 1;
+
+  var models = {
+    'Electric Screen':    ['Saker', 'Saker Tab-Tension', 'Evanesce', 'Evanesce Tab-Tension', 'Spectrum', 'VMAX', 'Kestrel', 'Aeon', 'Other / I am not sure'],
+    'Manual Screen':      ['Spectrum', 'VMAX', 'Manual', 'Manual Tab-Tension', 'Other / I am not sure'],
+    'Fixed Frame Screen': ['Aeon', 'EZ Frame', 'CineTension', 'AcousticPro', 'Other / I am not sure'],
+    'Floor Rising Screen':['Yard Master', 'Yard Master 2', 'Other / I am not sure'],
+    'UST Screen':         ['AcousticPro UST', 'Aeon CLR', 'Other / I am not sure'],
+    'Accessory':          ['Remote Control', 'Wall Switch', 'Bracket Kit', 'Cable', 'Other / I am not sure'],
+    'Spare Part':         ['I am not sure — please describe below']
+  };
+
+  function goTo(stage) {
+    section.querySelectorAll('.srf__stage').forEach(function (el) {
+      el.classList.remove('is-active');
+    });
+    var target = section.querySelector('[data-stage="' + stage + '"]');
+    if (target) target.classList.add('is-active');
+
+    section.querySelectorAll('.srf__progress-step').forEach(function (el) {
+      var s = parseInt(el.dataset.step, 10);
+      el.classList.toggle('is-done', s < stage);
+      el.classList.toggle('is-active', s === stage);
+    });
+
+    var fill = section.querySelector('#srf_progress_fill');
+    if (fill) fill.style.width = (stage - 1) * 50 + '%';
+
+    current = stage;
+    window.scrollTo({ top: section.offsetTop - 20, behavior: 'smooth' });
+  }
+
+  /* ── Model dropdown ── */
+  var modelSelect = section.querySelector('#srf_model');
+  section.querySelectorAll('input[name="srf_category"]').forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      var list = models[this.value] || [];
+      modelSelect.innerHTML = '<option value="">— Select model —</option>';
+      list.forEach(function (m) {
+        var opt = document.createElement('option');
+        opt.value = m;
+        opt.textContent = m;
+        modelSelect.appendChild(opt);
+      });
+      modelSelect.disabled = false;
+    });
+  });
+
+  /* ── Accordion toggles ── */
+  section.querySelectorAll('.srf__group-toggle').forEach(function (toggle) {
+    toggle.addEventListener('click', function () {
+      this.closest('.srf__problem-group').classList.toggle('is-open');
+    });
+  });
+
+  /* ── File names display ── */
+  var photoInput = section.querySelector('#srf_photos');
+  if (photoInput) {
+    photoInput.addEventListener('change', function () {
+      var names = Array.from(this.files).map(function (f) { return f.name; }).join(', ');
+      var display = section.querySelector('#srf_file_names');
+      if (display) display.textContent = names;
+    });
+  }
+
+  /* ── Validation ── */
+  function showError(id, show) {
+    var el = section.querySelector('#' + id);
+    if (el) el.style.display = show ? 'block' : 'none';
+  }
+
+  function markField(id, invalid) {
+    var el = section.querySelector('#' + id);
+    if (el) el.classList.toggle('has-error', invalid);
+  }
+
+  function validateStage1() {
+    var cat = section.querySelector('input[name="srf_category"]:checked');
+    var model = section.querySelector('#srf_model');
+    var ok = true;
+
+    if (!cat) {
+      showError('srf_error_1', true);
+      ok = false;
+    } else {
+      showError('srf_error_1', false);
+    }
+
+    if (cat && (!model || !model.value)) {
+      markField('srf_model', true);
+      showError('srf_model_error', true);
+      ok = false;
+    } else {
+      markField('srf_model', false);
+      showError('srf_model_error', false);
+    }
+
+    return ok;
+  }
+
+  function validateStage2() {
+    var desc = section.querySelector('#srf_description');
+    var ok = true;
+
+    if (!desc || !desc.value.trim()) {
+      markField('srf_description', true);
+      showError('srf_desc_error', true);
+      showError('srf_error_2', true);
+      ok = false;
+    } else {
+      markField('srf_description', false);
+      showError('srf_desc_error', false);
+      showError('srf_error_2', false);
+    }
+
+    return ok;
+  }
+
+  function validateStage3() {
+    var fields = [
+      { id: 'srf_name',    errId: 'srf_name_error',    check: function (v) { return v.trim().length > 0; } },
+      { id: 'srf_email',   errId: 'srf_email_error',   check: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); } },
+      { id: 'srf_phone',   errId: 'srf_phone_error',   check: function (v) { return v.trim().length > 0; } },
+      { id: 'srf_address', errId: 'srf_address_error', check: function (v) { return v.trim().length > 0; } },
+      { id: 'srf_order',   errId: 'srf_order_error',   check: function (v) { return v.trim().length > 0; } },
+      { id: 'srf_serial',  errId: 'srf_serial_error',  check: function (v) { return v.trim().length > 0; } }
+    ];
+    var ok = true;
+
+    fields.forEach(function (f) {
+      var el = section.querySelector('#' + f.id);
+      var valid = el && f.check(el.value);
+      markField(f.id, !valid);
+      showError(f.errId, !valid);
+      if (!valid) ok = false;
+    });
+
+    showError('srf_error_3', !ok);
+    return ok;
+  }
+
+  /* ── Navigation ── */
+  section.addEventListener('click', function (e) {
+    var next = e.target.closest('[data-next]');
+    var back = e.target.closest('[data-back]');
+
+    if (next) {
+      var to = parseInt(next.dataset.next, 10);
+      var valid = (to === 2 && validateStage1()) || (to === 3 && validateStage2());
+      if (valid) goTo(to);
+    }
+
+    if (back) {
+      goTo(parseInt(back.dataset.back, 10));
+    }
+  });
+
+  /* ── Build & submit ── */
+  var form = section.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      if (!validateStage3()) { e.preventDefault(); return; }
+
+      var cat    = section.querySelector('input[name="srf_category"]:checked');
+      var model  = section.querySelector('#srf_model');
+      var desc   = section.querySelector('#srf_description');
+      var checks = Array.from(section.querySelectorAll('input[name="srf_problems[]"]:checked')).map(function (c) { return c.value; });
+      var name   = section.querySelector('#srf_name');
+      var email  = section.querySelector('#srf_email');
+      var phone  = section.querySelector('#srf_phone');
+      var company= section.querySelector('#srf_company');
+      var address= section.querySelector('#srf_address');
+      var order  = section.querySelector('#srf_order');
+      var serial = section.querySelector('#srf_serial');
+
+      var orderVal  = order  ? order.value.trim()  : '';
+      var modelVal  = model  ? model.value          : '';
+      var catVal    = cat    ? cat.value             : '';
+      var problems  = checks.length ? checks.join(', ') : 'None selected';
+
+      section.querySelector('#srf_subject').value =
+        'Service Request – ' + orderVal + ' – ' + modelVal + ' – ' + catVal;
+
+      section.querySelector('#srf_name_hidden').value  = name  ? name.value  : '';
+      section.querySelector('#srf_email_hidden').value = email ? email.value : '';
+
+      var lines = [
+        '=== SERVICE REQUEST ===',
+        '',
+        '--- Product ---',
+        'Category:     ' + catVal,
+        'Model/Series: ' + modelVal,
+        '',
+        '--- Problems Reported ---',
+        problems,
+        '',
+        '--- Description ---',
+        desc ? desc.value : '',
+        '',
+        '--- Customer Information ---',
+        'Name:         ' + (name    ? name.value    : ''),
+        'Company:      ' + (company ? company.value : 'N/A'),
+        'Email:        ' + (email   ? email.value   : ''),
+        'Phone:        ' + (phone   ? phone.value   : ''),
+        'Address:      ' + (address ? address.value : ''),
+        '',
+        '--- Order Details ---',
+        'Order Number: ' + orderVal,
+        'Serial Number:' + (serial  ? serial.value  : ''),
+        '',
+        'Photos: Customer was asked to attach files or send separately.'
+      ];
+
+      section.querySelector('#srf_body').value = lines.join('\n');
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Service Request Form",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Service & Support Request"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Please complete all steps so our team can process your request without delays."
+    },
+    {
+      "type": "text",
+      "id": "support_email",
+      "label": "Support email (shown for photo fallback)",
+      "default": "support@elitescreens.eu"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Service Request Form"
+    }
+  ]
+}
+{% endschema %}
