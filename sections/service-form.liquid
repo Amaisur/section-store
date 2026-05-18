@@ -787,11 +787,14 @@
 
   /* ── File names display ── */
   var photoInput = section.querySelector('#srf_photos');
+  var photoURLs = [];
   if (photoInput) {
     photoInput.addEventListener('change', function () {
-      var names = Array.from(this.files).map(function (f) { return f.name; }).join(', ');
+      photoURLs = Array.from(this.files).map(function (f) {
+        return { name: f.name, url: URL.createObjectURL(f) };
+      });
       var display = section.querySelector('#srf_file_names');
-      if (display) display.textContent = names;
+      if (display) display.textContent = photoURLs.map(function (f) { return f.name; }).join(', ');
     });
   }
 
@@ -940,7 +943,10 @@
         'Order Number: ' + orderVal,
         'Serial Number:' + (serial  ? serial.value  : ''),
         '',
-        'Photos: Customer was asked to attach files or send separately.'
+        'Photos:',
+        photoURLs.length
+          ? photoURLs.map(function (f) { return '  ' + f.name + '\n  ' + f.url; }).join('\n')
+          : '  No files selected.'
       ];
 
       section.querySelector('#srf_body').value = lines.join('\n');
@@ -985,3 +991,5 @@
   ]
 }
 {% endschema %}
+
+
