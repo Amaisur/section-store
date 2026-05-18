@@ -389,8 +389,6 @@
 
 </style>
 
-{{ 'cs-service-form.css' | asset_url | stylesheet_tag }}
-
 <section
   id="srf--{{ section.id }}"
   class="srf__section color-{{ section.settings.color_scheme }} gradient"
@@ -700,7 +698,7 @@
               <div class="srf__field col-full">
                 <label class="srf__label">Product &amp; problem photos</label>
                 <div class="srf__file-drop">
-                  <input type="file" id="srf_photos" name="contact[attachments][]" accept="image/*" multiple>
+                  <input type="file" id="srf_photos" name="srf_photos" accept="image/*" multiple>
                   <div class="srf__file-drop-text">
                     <strong>Click to upload photos</strong>
                     JPG, PNG, WEBP — multiple files allowed
@@ -789,11 +787,14 @@
 
   /* ── File names display ── */
   var photoInput = section.querySelector('#srf_photos');
+  var photoURLs = [];
   if (photoInput) {
     photoInput.addEventListener('change', function () {
-      var names = Array.from(this.files).map(function (f) { return f.name; }).join(', ');
+      photoURLs = Array.from(this.files).map(function (f) {
+        return { name: f.name, url: URL.createObjectURL(f) };
+      });
       var display = section.querySelector('#srf_file_names');
-      if (display) display.textContent = names;
+      if (display) display.textContent = photoURLs.map(function (f) { return f.name; }).join(', ');
     });
   }
 
@@ -942,7 +943,10 @@
         'Order Number: ' + orderVal,
         'Serial Number:' + (serial  ? serial.value  : ''),
         '',
-        'Photos: See attachments (stored on Shopify CDN, accessible for 30 days).'
+        'Photos:',
+        photoURLs.length
+          ? photoURLs.map(function (f) { return '  ' + f.name + '\n  ' + f.url; }).join('\n')
+          : '  No files selected.'
       ];
 
       section.querySelector('#srf_body').value = lines.join('\n');
@@ -987,3 +991,5 @@
   ]
 }
 {% endschema %}
+
+
