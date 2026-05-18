@@ -96,9 +96,20 @@
         "padding_bottom": 36,
         "animation": "fade"
       }
+    },
+    "service_form_HYgDkX": {
+      "type": "service-form",
+      "name": "Service Request Form",
+      "settings": {
+        "color_scheme": "",
+        "heading": "Service & Support Request",
+        "subheading": "Please complete all steps so our team can process your request without delays.",
+        "support_email": "support@elitescreens.eu"
+      }
     }
   },
   "order": [
-    "cursor_ai_3T3Re8"
+    "cursor_ai_3T3Re8",
+    "service_form_HYgDkX"
   ]
 }
