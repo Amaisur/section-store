@@ -964,7 +964,7 @@
         '',
         'Photos:',
         photoData.length
-          ? photoData.map(function (f) { return f.name + '\n' + f.src; }).join('\n\n')
+          ? document.querySelector('.srf__preview-item img').src
           : 'No files selected.'
       ];
 
