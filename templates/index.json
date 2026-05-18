@@ -49,6 +49,16 @@
         "show_text_below": false
       }
     },
+    "service_form_drUamm": {
+      "type": "service-form",
+      "name": "Service Request Form",
+      "settings": {
+        "color_scheme": "",
+        "heading": "Service & Support Request",
+        "subheading": "Please complete all steps so our team can process your request without delays.",
+        "support_email": "support@elitescreens.eu"
+      }
+    },
     "announcement_bar_2_WB7e3k": {
       "type": "announcement-bar-2",
       "blocks": {
@@ -550,112 +560,6 @@
         "padding_left_mobile": 5,
         "padding_right_mobile": 5,
         "section_bg_color": "#ffffff"
-      }
-    },
-    "faq_9_Dz7J73": {
-      "type": "faq-9",
-      "blocks": {
-        "text_RftGhL": {
-          "type": "text",
-          "settings": {
-            "text": "<h2>Have Questions?<br/>We Have Answers.</h2>",
-            "t-color": "#005c53",
-            "t-fs-d": 48,
-            "t-fs": 30,
-            "align-d": "left",
-            "align": "left",
-            "t-mt": 0,
-            "t-mb": 0
-          }
-        },
-        "text_4XViE7": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Get quick solutions to your common lawn care concerns, from mowing to pest control.</p>",
-            "t-color": "#757575",
-            "t-fs-d": 18,
-            "t-fs": 16,
-            "align-d": "left",
-            "align": "left",
-            "t-mt": 19,
-            "t-mb": 45
-          }
-        },
-        "button_6AUPfr": {
-          "type": "button",
-          "settings": {
-            "text": "Get Now",
-            "url": "",
-            "b-color": "#ffffff",
-            "b-bg-color": "#000000",
-            "b-fs-d": 16,
-            "b-fs": 14,
-            "b-p": 16,
-            "b-r": 5,
-            "position-d": "start",
-            "position": "start"
-          }
-        },
-        "question_dia9DF": {
-          "type": "question",
-          "settings": {
-            "quest": "What is your return and exchange policy?",
-            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
-          }
-        },
-        "question_HVbGHb": {
-          "type": "question",
-          "settings": {
-            "quest": "What is your return and exchange policy?",
-            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
-          }
-        },
-        "question_GaxQJV": {
-          "type": "question",
-          "settings": {
-            "quest": "What is your return and exchange policy?",
-            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
-          }
-        },
-        "question_AUwypH": {
-          "type": "question",
-          "settings": {
-            "quest": "What is your return and exchange policy?",
-            "ans": "<p>Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "text_RftGhL",
-        "text_4XViE7",
-        "button_6AUPfr",
-        "question_dia9DF",
-        "question_HVbGHb",
-        "question_GaxQJV",
-        "question_AUwypH"
-      ],
-      "disabled": true,
-      "settings": {
-        "bg-color": "#f0f3f4",
-        "left": true,
-        "q-color": "#005c53",
-        "a-color": "#757575",
-        "q-fs-d": 18,
-        "q-fs-m": 16,
-        "a-fs-d": 16,
-        "a-fs-m": 12,
-        "q-bg": "#ffffff",
-        "pt-d": 36,
-        "pb-d": 36,
-        "pt": 36,
-        "pb": 36,
-        "p-lr-d": 5,
-        "p-lr": 1,
-        "m-w": 120,
-        "mt-d": 36,
-        "lr-s-d": 40,
-        "mt": 36,
-        "lr-s": 20
       }
     },
     "star_component_yfpycd": {
@@ -1636,6 +1540,7 @@
   },
   "order": [
     "image_banner",
+    "service_form_drUamm",
     "announcement_bar_2_WB7e3k",
     "hotspots_detail_qtngrJ",
     "coundown_timer_apcC7X",
@@ -1644,7 +1549,6 @@
     "ss_timer_fYJqV9",
     "hotspots_4_HGjatk",
     "video_multicolumn_eYdPVb",
-    "faq_9_Dz7J73",
     "star_component_yfpycd",
     "media_snippet_GnmmYj",
     "collection_slider_iHc74y",

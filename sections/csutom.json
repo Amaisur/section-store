@@ -99,6 +99,7 @@
     },
     "service_form_HYgDkX": {
       "type": "service-form",
+      "disabled": true,
       "name": "Service Request Form",
       "settings": {
         "color_scheme": "",
