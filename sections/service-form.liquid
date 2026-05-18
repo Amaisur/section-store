@@ -246,10 +246,10 @@
 
 .srf__problem-group.is-open .srf__group-toggle svg { transform: rotate(180deg); }
 
+/* FIX: removed duplicate `display: none` line */
 .srf__group-body {
   display: none;
   padding: 12px 16px;
-  display: none;
   grid-template-columns: 1fr 1fr;
   gap: 8px 16px;
 }
@@ -315,6 +315,23 @@
 .srf__file-drop-text { font-size: 13px; color: #888; pointer-events: none; }
 .srf__file-drop-text strong { display: block; color: rgb(var(--color-foreground)); margin-bottom: 4px; }
 .srf__file-names { font-size: 12px; margin-top: 6px; color: rgba(var(--color-button), var(--alpha-button-background)); }
+
+.srf__preview-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 6px 0 0;
+  padding: 4px 8px;
+  background: #f7f7f7;
+  border-radius: 6px;
+  font-size: 12px;
+}
+.srf__preview-item img {
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 4px;
+}
 
 /* ── Stage error banner ── */
 .srf__stage-error {
@@ -697,18 +714,22 @@
                 <div class="srf__field-error" id="srf_serial_error">Serial number is required.</div>
               </div>
 
+              {%- comment -%}
+                FIX: removed `multiple` — Shopify contact form only accepts ONE attachment.
+                If users have multiple photos, they should email them per the fallback note.
+              {%- endcomment -%}
               <div class="srf__field col-full">
-                <label class="srf__label">Product &amp; problem photos</label>
+                <label class="srf__label">Product &amp; problem photo</label>
                 <div class="srf__file-drop">
-                  <input type="file" id="srf_photos" name="contact[attachment]" accept="image/*" multiple>
+                  <input type="file" id="srf_photos" name="contact[attachment]" accept="image/*">
                   <div class="srf__file-drop-text">
-                    <strong>Click to upload photos</strong>
-                    JPG, PNG, WEBP — multiple files allowed
+                    <strong>Click to upload a photo</strong>
+                    JPG, PNG, WEBP — one file
                   </div>
                   <div class="srf__file-previews" id="srf_file_names"></div>
                 </div>
                 <p style="font-size:12px;color:#888;margin-top:6px;">
-                  If photos cannot be attached, please send them to <strong>{{ section.settings.support_email }}</strong> quoting your order number.
+                  If you have additional photos, please send them to <strong>{{ section.settings.support_email }}</strong> quoting your order number.
                 </p>
               </div>
 
@@ -728,11 +749,8 @@
 </section>
 
 <script>
+/* FIX: entire script wrapped in IIFE; stray top-level debug listener removed */
 (function () {
-    const img = document.querySelector('#srf_photos');
-    img.addEventListener('change', () => {
-        console.log(img.value)
-    })
   var section = document.getElementById('srf--{{ section.id }}');
   if (!section) return;
 
@@ -764,6 +782,11 @@
     var fill = section.querySelector('#srf_progress_fill');
     if (fill) fill.style.width = (stage - 1) * 50 + '%';
 
+    /* FIX: clear any lingering stage error banners when navigating */
+    section.querySelectorAll('.srf__stage-error').forEach(function (el) {
+      el.style.display = 'none';
+    });
+
     current = stage;
     window.scrollTo({ top: section.offsetTop - 20, behavior: 'smooth' });
   }
@@ -792,25 +815,30 @@
   });
 
   /* ── File preview ── */
+  /* FIX: simplified — store just filenames, render preview safely,
+     no more reading `.value` (always a fake path), no `photoData.src` hack */
   var photoInput = section.querySelector('#srf_photos');
-  var photoData = [];
+  var photoNames = [];
   if (photoInput) {
     photoInput.addEventListener('change', function () {
       var files = Array.from(this.files);
-      var inputVal = this.value;
-      photoData = [];
+      photoNames = files.map(function (f) { return f.name; });
       var display = section.querySelector('#srf_file_names');
-      if (display) display.innerHTML = '';
-      files.forEach(function (f, i) {
-        photoData.push({ name: f.name, src: i === 0 ? inputVal : f.name });
+      if (!display) return;
+      display.innerHTML = '';
+      files.forEach(function (f) {
         var reader = new FileReader();
         reader.onload = function (e) {
-          if (display) {
-            var item = document.createElement('div');
-            item.className = 'srf__preview-item';
-            item.innerHTML = '<img src="' + e.target.result + '" alt="' + f.name + '"><span>' + f.name + '</span>';
-            display.appendChild(item);
-          }
+          var item = document.createElement('div');
+          item.className = 'srf__preview-item';
+          var img = document.createElement('img');
+          img.src = e.target.result;
+          img.alt = f.name;
+          var span = document.createElement('span');
+          span.textContent = f.name;
+          item.appendChild(img);
+          item.appendChild(span);
+          display.appendChild(item);
         };
         reader.readAsDataURL(f);
       });
@@ -938,12 +966,16 @@
       section.querySelector('#srf_name_hidden').value  = name  ? name.value  : '';
       section.querySelector('#srf_email_hidden').value = email ? email.value : '';
 
+      /* FIX: list filenames instead of crashing on missing photo or
+         dumping a giant base64 data URL into the email body */
+      var photosLine = photoNames.length ? photoNames.join(', ') : 'None attached';
+
       var lines = [
         '=== SERVICE REQUEST ===',
         '',
         '--- Product ---',
-        'Category:     ' + catVal,
-        'Model/Series: ' + modelVal,
+        'Category:      ' + catVal,
+        'Model/Series:  ' + modelVal,
         '',
         '--- Problems Reported ---',
         problems,
@@ -952,17 +984,17 @@
         desc ? desc.value : '',
         '',
         '--- Customer Information ---',
-        'Name:         ' + (name    ? name.value    : ''),
-        'Company:      ' + (company ? company.value : 'N/A'),
-        'Email:        ' + (email   ? email.value   : ''),
-        'Phone:        ' + (phone   ? phone.value   : ''),
-        'Address:      ' + (address ? address.value : ''),
+        'Name:          ' + (name    ? name.value    : ''),
+        'Company:       ' + (company ? company.value : 'N/A'),
+        'Email:         ' + (email   ? email.value   : ''),
+        'Phone:         ' + (phone   ? phone.value   : ''),
+        'Address:       ' + (address ? address.value : ''),
         '',
         '--- Order Details ---',
-        'Order Number: ' + orderVal,
-        'Serial Number:' + (serial  ? serial.value  : ''),
+        'Order Number:  ' + orderVal,
+        'Serial Number: ' + (serial  ? serial.value  : ''),
         '',
-        'Photos:'+ document.querySelector('.srf__preview-item img').src
+        'Photos:        ' + photosLine
       ];
 
       section.querySelector('#srf_body').value = lines.join('\n');
@@ -1007,5 +1039,3 @@
   ]
 }
 {% endschema %}
-
-
