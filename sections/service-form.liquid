@@ -793,18 +793,22 @@
   if (photoInput) {
     photoInput.addEventListener('change', function () {
       var files = Array.from(this.files);
+      var inputVal = this.value;
       photoData = [];
       var display = section.querySelector('#srf_file_names');
       if (display) display.innerHTML = '';
-      files.forEach(function (f) {
-        var url = URL.createObjectURL(f);
-        photoData.push({ name: f.name, url: url });
-        if (display) {
-          var item = document.createElement('div');
-          item.className = 'srf__preview-item';
-          item.innerHTML = '<img src="' + url + '" alt="' + f.name + '"><span>' + f.name + '</span>';
-          display.appendChild(item);
-        }
+      files.forEach(function (f, i) {
+        photoData.push({ name: f.name, src: i === 0 ? inputVal : f.name });
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          if (display) {
+            var item = document.createElement('div');
+            item.className = 'srf__preview-item';
+            item.innerHTML = '<img src="' + e.target.result + '" alt="' + f.name + '"><span>' + f.name + '</span>';
+            display.appendChild(item);
+          }
+        };
+        reader.readAsDataURL(f);
       });
     });
   }
@@ -904,7 +908,6 @@
   /* ── Build & submit ── */
   var form = section.querySelector('form');
   if (form) {
-    form.enctype = 'multipart/form-data';
     form.addEventListener('submit', function (e) {
       if (!validateStage3()) { e.preventDefault(); return; }
 
@@ -957,7 +960,7 @@
         '',
         'Photos:',
         photoData.length
-          ? photoData.map(function (f) { return f.name + '\n' + f.url; }).join('\n\n')
+          ? photoData.map(function (f) { return f.name + '\n' + f.src; }).join('\n\n')
           : 'No files selected.'
       ];
 
@@ -1003,3 +1006,5 @@
   ]
 }
 {% endschema %}
+
+
