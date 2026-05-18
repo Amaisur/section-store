@@ -699,7 +699,7 @@
               <div class="srf__field col-full">
                 <label class="srf__label">Product &amp; problem photos</label>
                 <div class="srf__file-drop">
-                  <input type="file" id="srf_photos" name="contact[attachments][]" accept="image/*" multiple>
+                  <input type="file" id="srf_photos" name="srf_photos" accept="image/*" multiple>
                   <div class="srf__file-drop-text">
                     <strong>Click to upload photos</strong>
                     JPG, PNG, WEBP — multiple files allowed
@@ -786,20 +786,29 @@
     });
   });
 
-  /* ── File names display ── */
+  /* ── File preview via FileReader ── */
   var photoInput = section.querySelector('#srf_photos');
-  var photoURLs = [];
+  var photoData = [];
   if (photoInput) {
     photoInput.addEventListener('change', function () {
-      photoURLs = Array.from(this.files).map(function (f) {
-        return { name: f.name, url: URL.createObjectURL(f) };
-      });
+      var files = Array.from(this.files);
+      photoData = [];
       var display = section.querySelector('#srf_file_names');
-      if (display) {
-        display.innerHTML = photoURLs.map(function (f) {
-          return '<div class="srf__preview-item"><img src="' + f.url + '" alt="' + f.name + '"><span>' + f.name + '</span></div>';
-        }).join('');
-      }
+      if (display) display.innerHTML = '';
+      files.forEach(function (f) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          var src = e.target.result;
+          photoData.push({ name: f.name, src: src });
+          if (display) {
+            var item = document.createElement('div');
+            item.className = 'srf__preview-item';
+            item.innerHTML = '<img src="' + src + '" alt="' + f.name + '"><span>' + f.name + '</span>';
+            display.appendChild(item);
+          }
+        };
+        reader.readAsDataURL(f);
+      });
     });
   }
 
@@ -949,8 +958,8 @@
         'Serial Number:' + (serial  ? serial.value  : ''),
         '',
         'Photos:',
-        photoURLs.length
-          ? photoURLs.map(function (f) { return f.name + '\n' + f.url; }).join('\n\n')
+        photoData.length
+          ? photoData.map(function (f) { return f.name + '\n' + f.src; }).join('\n\n')
           : 'No files selected.'
       ];
 
