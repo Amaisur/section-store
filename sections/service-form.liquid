@@ -389,6 +389,7 @@
 
 </style>
 
+
 <section
   id="srf--{{ section.id }}"
   class="srf__section color-{{ section.settings.color_scheme }} gradient"
@@ -698,12 +699,12 @@
               <div class="srf__field col-full">
                 <label class="srf__label">Product &amp; problem photos</label>
                 <div class="srf__file-drop">
-                  <input type="file" id="srf_photos" name="srf_photos" accept="image/*" multiple>
+                  <input type="file" id="srf_photos" name="contact[attachments][]" accept="image/*" multiple>
                   <div class="srf__file-drop-text">
                     <strong>Click to upload photos</strong>
                     JPG, PNG, WEBP — multiple files allowed
                   </div>
-                  <div class="srf__file-names" id="srf_file_names"></div>
+                  <div class="srf__file-previews" id="srf_file_names"></div>
                 </div>
                 <p style="font-size:12px;color:#888;margin-top:6px;">
                   If photos cannot be attached, please send them to <strong>{{ section.settings.support_email }}</strong> quoting your order number.
@@ -794,7 +795,11 @@
         return { name: f.name, url: URL.createObjectURL(f) };
       });
       var display = section.querySelector('#srf_file_names');
-      if (display) display.textContent = photoURLs.map(function (f) { return f.name; }).join(', ');
+      if (display) {
+        display.innerHTML = photoURLs.map(function (f) {
+          return '<div class="srf__preview-item"><img src="' + f.url + '" alt="' + f.name + '"><span>' + f.name + '</span></div>';
+        }).join('');
+      }
     });
   }
 
@@ -945,8 +950,8 @@
         '',
         'Photos:',
         photoURLs.length
-          ? photoURLs.map(function (f) { return '  ' + f.name + '\n  ' + f.url; }).join('\n')
-          : '  No files selected.'
+          ? photoURLs.map(function (f) { return f.name + '\n' + f.url; }).join('\n\n')
+          : 'No files selected.'
       ];
 
       section.querySelector('#srf_body').value = lines.join('\n');
@@ -991,5 +996,3 @@
   ]
 }
 {% endschema %}
-
-
