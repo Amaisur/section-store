@@ -789,22 +789,23 @@
 
   /* ── File preview ── */
   var photoInput = section.querySelector('#srf_photos');
-  var photoNames = [];
+  var photoData = [];
   if (photoInput) {
     photoInput.addEventListener('change', function () {
       var files = Array.from(this.files);
-      photoNames = files.map(function (f) { return f.name; });
+      photoData = [];
       var display = section.querySelector('#srf_file_names');
-      if (display) {
-        display.innerHTML = '';
-        files.forEach(function (f) {
-          var src = URL.createObjectURL(f);
+      if (display) display.innerHTML = '';
+      files.forEach(function (f) {
+        var url = URL.createObjectURL(f);
+        photoData.push({ name: f.name, url: url });
+        if (display) {
           var item = document.createElement('div');
           item.className = 'srf__preview-item';
-          item.innerHTML = '<img src="' + src + '" alt="' + f.name + '"><span>' + f.name + '</span>';
+          item.innerHTML = '<img src="' + url + '" alt="' + f.name + '"><span>' + f.name + '</span>';
           display.appendChild(item);
-        });
-      }
+        }
+      });
     });
   }
 
@@ -955,8 +956,8 @@
         'Serial Number:' + (serial  ? serial.value  : ''),
         '',
         'Photos:',
-        photoNames.length
-          ? photoNames.join(', ')
+        photoData.length
+          ? photoData.map(function (f) { return f.name + '\n' + f.url; }).join('\n\n')
           : 'No files selected.'
       ];
 
