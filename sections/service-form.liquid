@@ -698,17 +698,16 @@
               </div>
 
               <div class="srf__field col-full">
-                <label class="srf__label" for="srf_drive_link">Photos &amp; videos (Google Drive link)</label>
-                <input
-                  class="srf__input"
-                  type="url"
-                  id="srf_drive_link"
-                  name="srf_drive_link"
-                  placeholder="https://drive.google.com/drive/folders/..."
-                >
-                <p style="font-size:12px;color:#888;margin-top:6px;">
-                  Upload your photos/videos to Google Drive → right-click the file or folder → <strong>Share</strong> → set to <strong>Anyone with the link</strong> → paste the link above.
-                </p>
+                <label class="srf__label">Photos &amp; videos</label>
+                <div class="srf__file-drop">
+                  <input type="file" id="srf_photos" name="srf_photos" accept="image/*,video/*" multiple>
+                  <div class="srf__file-drop-text">
+                    <strong>Click to upload photos &amp; videos</strong>
+                    Images and videos — multiple files allowed
+                  </div>
+                  <div class="srf__file-previews" id="srf_file_names"></div>
+                </div>
+                <p style="font-size:12px;color:#888;margin-top:6px;">Files are uploaded securely. Links will be included in your request.</p>
               </div>
 
             </div>
@@ -786,6 +785,60 @@
     });
   });
 
+
+  /* ── Cloudinary upload ── */
+  var photoInput = section.querySelector('#srf_photos');
+  var uploadedFiles = [];
+  var pendingUploads = 0;
+
+  if (photoInput) {
+    photoInput.addEventListener('change', function () {
+      var files = Array.from(this.files);
+      uploadedFiles = [];
+      pendingUploads = 0;
+      var display = section.querySelector('#srf_file_names');
+      if (display) display.innerHTML = '';
+
+      files.forEach(function (f) {
+        var isVideo = f.type.startsWith('video/');
+        var item = document.createElement('div');
+        item.className = 'srf__preview-item';
+        item.innerHTML = (isVideo
+          ? '<div class="srf__preview-thumb">🎬</div>'
+          : '<img src="" alt="' + f.name + '">') +
+          '<span>' + f.name + '</span>' +
+          '<div class="srf__upload-status">Uploading…</div>';
+        if (display) display.appendChild(item);
+
+        pendingUploads++;
+        var fd = new FormData();
+        fd.append('file', f);
+        fd.append('upload_preset', 'ml_default');
+
+        fetch('https://api.cloudinary.com/v1_1/dm4v7mwpw/auto/upload', { method: 'POST', body: fd })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            pendingUploads--;
+            var status = item.querySelector('.srf__upload-status');
+            if (data.secure_url) {
+              uploadedFiles.push({ name: f.name, url: data.secure_url });
+              if (status) status.textContent = '✓ Uploaded';
+              if (!isVideo) {
+                var img = item.querySelector('img');
+                if (img) img.src = data.secure_url;
+              }
+            } else {
+              if (status) status.textContent = '✗ Failed';
+            }
+          })
+          .catch(function () {
+            pendingUploads--;
+            var status = item.querySelector('.srf__upload-status');
+            if (status) status.textContent = '✗ Failed';
+          });
+      });
+    });
+  }
 
   /* ── Validation ── */
   function showError(id, show) {
@@ -884,6 +937,12 @@
   if (form) {
     form.addEventListener('submit', function (e) {
       if (!validateStage3()) { e.preventDefault(); return; }
+      if (pendingUploads > 0) {
+        e.preventDefault();
+        showError('srf_error_3', true);
+        section.querySelector('#srf_error_3').textContent = 'Please wait — files are still uploading.';
+        return;
+      }
 
       var cat    = section.querySelector('input[name="srf_category"]:checked');
       var model  = section.querySelector('#srf_model');
@@ -896,7 +955,6 @@
       var address= section.querySelector('#srf_address');
       var order  = section.querySelector('#srf_order');
       var serial = section.querySelector('#srf_serial');
-      var drive  = section.querySelector('#srf_drive_link');
 
       var orderVal  = order  ? order.value.trim()  : '';
       var modelVal  = model  ? model.value          : '';
@@ -934,7 +992,9 @@
         'Serial Number:' + (serial  ? serial.value  : ''),
         '',
         'Media:',
-        (drive && drive.value.trim()) ? drive.value.trim() : 'No link provided.'
+        uploadedFiles.length
+          ? uploadedFiles.map(function (f) { return f.name + ': ' + f.url; }).join('\n')
+          : 'No files uploaded.'
       ];
 
       section.querySelector('#srf_body').value = lines.join('\n');
