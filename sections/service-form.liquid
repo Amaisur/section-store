@@ -707,7 +707,21 @@
                   </div>
                   <div class="srf__file-previews" id="srf_file_names"></div>
                 </div>
-                <p style="font-size:12px;color:#888;margin-top:6px;">Files are uploaded securely. Links will be included in your request.</p>
+                <p style="font-size:12px;color:#888;margin-top:6px;">Files upload automatically when you submit. Images &amp; videos supported.</p>
+              </div>
+
+              <div class="srf__field col-full">
+                <label class="srf__label" for="srf_drive_link">Or paste a Google Drive / cloud link <span style="font-weight:400;opacity:.6;">(optional)</span></label>
+                <input
+                  class="srf__input"
+                  type="url"
+                  id="srf_drive_link"
+                  name="srf_drive_link"
+                  placeholder="https://drive.google.com/..."
+                >
+                <p style="font-size:12px;color:#888;margin-top:6px;">
+                  If you already have files on Google Drive — set sharing to <strong>Anyone with the link</strong> and paste it here.
+                </p>
               </div>
 
             </div>
@@ -786,57 +800,33 @@
   });
 
 
-  /* ── Cloudinary upload ── */
+  /* ── File select → preview only ── */
   var photoInput = section.querySelector('#srf_photos');
-  var uploadedFiles = [];
-  var pendingUploads = 0;
+  var selectedFiles = [];
 
   if (photoInput) {
     photoInput.addEventListener('change', function () {
-      var files = Array.from(this.files);
-      uploadedFiles = [];
-      pendingUploads = 0;
       var display = section.querySelector('#srf_file_names');
-      if (display) display.innerHTML = '';
-
-      files.forEach(function (f) {
+      Array.from(this.files).forEach(function (f) {
+        var idx = selectedFiles.length;
+        selectedFiles.push(f);
         var isVideo = f.type.startsWith('video/');
         var item = document.createElement('div');
         item.className = 'srf__preview-item';
-        item.innerHTML = (isVideo
-          ? '<div class="srf__preview-thumb">🎬</div>'
-          : '<img src="" alt="' + f.name + '">') +
-          '<span>' + f.name + '</span>' +
-          '<div class="srf__upload-status">Uploading…</div>';
+        item.innerHTML =
+          '<button type="button" class="srf__preview-remove" aria-label="Remove">×</button>' +
+          (isVideo
+            ? '<div class="srf__preview-thumb">🎬</div>'
+            : '<img src="' + URL.createObjectURL(f) + '" alt="' + f.name + '">') +
+          '<span class="srf__preview-name">' + f.name + '</span>' +
+          '<div class="srf__upload-status"></div>';
+        item.querySelector('.srf__preview-remove').addEventListener('click', function () {
+          selectedFiles[idx] = null;
+          item.remove();
+        });
         if (display) display.appendChild(item);
-
-        pendingUploads++;
-        var fd = new FormData();
-        fd.append('file', f);
-        fd.append('upload_preset', 'ml_default');
-
-        fetch('https://api.cloudinary.com/v1_1/dm4v7mwpw/auto/upload', { method: 'POST', body: fd })
-          .then(function (r) { return r.json(); })
-          .then(function (data) {
-            pendingUploads--;
-            var status = item.querySelector('.srf__upload-status');
-            if (data.secure_url) {
-              uploadedFiles.push({ name: f.name, url: data.secure_url });
-              if (status) status.textContent = '✓ Uploaded';
-              if (!isVideo) {
-                var img = item.querySelector('img');
-                if (img) img.src = data.secure_url;
-              }
-            } else {
-              if (status) status.textContent = '✗ Failed';
-            }
-          })
-          .catch(function () {
-            pendingUploads--;
-            var status = item.querySelector('.srf__upload-status');
-            if (status) status.textContent = '✗ Failed';
-          });
       });
+      this.value = '';
     });
   }
 
@@ -936,68 +926,108 @@
   var form = section.querySelector('form');
   if (form) {
     form.addEventListener('submit', function (e) {
-      if (!validateStage3()) { e.preventDefault(); return; }
-      if (pendingUploads > 0) {
-        e.preventDefault();
-        showError('srf_error_3', true);
-        section.querySelector('#srf_error_3').textContent = 'Please wait — files are still uploading.';
+      e.preventDefault();
+      if (!validateStage3()) return;
+
+      var filesToUpload = selectedFiles.filter(Boolean);
+      var submitBtn = section.querySelector('#srf_submit');
+
+      function buildAndSubmit(cloudinaryFiles) {
+        var cat     = section.querySelector('input[name="srf_category"]:checked');
+        var model   = section.querySelector('#srf_model');
+        var desc    = section.querySelector('#srf_description');
+        var checks  = Array.from(section.querySelectorAll('input[name="srf_problems[]"]:checked')).map(function (c) { return c.value; });
+        var name    = section.querySelector('#srf_name');
+        var email   = section.querySelector('#srf_email');
+        var phone   = section.querySelector('#srf_phone');
+        var company = section.querySelector('#srf_company');
+        var address = section.querySelector('#srf_address');
+        var order   = section.querySelector('#srf_order');
+        var serial  = section.querySelector('#srf_serial');
+        var drive   = section.querySelector('#srf_drive_link');
+
+        var orderVal  = order  ? order.value.trim() : '';
+        var modelVal  = model  ? model.value        : '';
+        var catVal    = cat    ? cat.value           : '';
+        var problems  = checks.length ? checks.join(', ') : 'None selected';
+        var driveLink = drive  && drive.value.trim() ? drive.value.trim() : '';
+
+        section.querySelector('#srf_subject').value =
+          'Service Request – ' + orderVal + ' – ' + modelVal + ' – ' + catVal;
+        section.querySelector('#srf_name_hidden').value  = name  ? name.value  : '';
+        section.querySelector('#srf_email_hidden').value = email ? email.value : '';
+
+        var mediaLines = [];
+        if (cloudinaryFiles.length) {
+          cloudinaryFiles.forEach(function (f) { mediaLines.push(f.name + ': ' + f.url); });
+        }
+        if (driveLink) mediaLines.push('Google Drive: ' + driveLink);
+        if (!mediaLines.length) mediaLines.push('No media provided.');
+
+        var lines = [
+          '=== SERVICE REQUEST ===', '',
+          '--- Product ---',
+          'Category:     ' + catVal,
+          'Model/Series: ' + modelVal, '',
+          '--- Problems Reported ---',
+          problems, '',
+          '--- Description ---',
+          desc ? desc.value : '', '',
+          '--- Customer Information ---',
+          'Name:         ' + (name    ? name.value    : ''),
+          'Company:      ' + (company ? company.value : 'N/A'),
+          'Email:        ' + (email   ? email.value   : ''),
+          'Phone:        ' + (phone   ? phone.value   : ''),
+          'Address:      ' + (address ? address.value : ''), '',
+          '--- Order Details ---',
+          'Order Number: ' + orderVal,
+          'Serial Number:' + (serial  ? serial.value  : ''), '',
+          '--- Media ---'
+        ].concat(mediaLines);
+
+        section.querySelector('#srf_body').value = lines.join('\n');
+        form.submit();
+      }
+
+      if (filesToUpload.length === 0) {
+        buildAndSubmit([]);
         return;
       }
 
-      var cat    = section.querySelector('input[name="srf_category"]:checked');
-      var model  = section.querySelector('#srf_model');
-      var desc   = section.querySelector('#srf_description');
-      var checks = Array.from(section.querySelectorAll('input[name="srf_problems[]"]:checked')).map(function (c) { return c.value; });
-      var name   = section.querySelector('#srf_name');
-      var email  = section.querySelector('#srf_email');
-      var phone  = section.querySelector('#srf_phone');
-      var company= section.querySelector('#srf_company');
-      var address= section.querySelector('#srf_address');
-      var order  = section.querySelector('#srf_order');
-      var serial = section.querySelector('#srf_serial');
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Uploading…'; }
 
-      var orderVal  = order  ? order.value.trim()  : '';
-      var modelVal  = model  ? model.value          : '';
-      var catVal    = cat    ? cat.value             : '';
-      var problems  = checks.length ? checks.join(', ') : 'None selected';
+      var cloudinaryFiles = [];
+      var completed = 0;
 
-      section.querySelector('#srf_subject').value =
-        'Service Request – ' + orderVal + ' – ' + modelVal + ' – ' + catVal;
+      filesToUpload.forEach(function (f) {
+        var statusEl = null;
+        section.querySelectorAll('.srf__preview-name').forEach(function (el) {
+          if (el.textContent === f.name) statusEl = el.nextElementSibling;
+        });
+        if (statusEl) statusEl.textContent = 'Uploading…';
 
-      section.querySelector('#srf_name_hidden').value  = name  ? name.value  : '';
-      section.querySelector('#srf_email_hidden').value = email ? email.value : '';
+        var fd = new FormData();
+        fd.append('file', f);
+        fd.append('upload_preset', 'ml_default');
 
-      var lines = [
-        '=== SERVICE REQUEST ===',
-        '',
-        '--- Product ---',
-        'Category:     ' + catVal,
-        'Model/Series: ' + modelVal,
-        '',
-        '--- Problems Reported ---',
-        problems,
-        '',
-        '--- Description ---',
-        desc ? desc.value : '',
-        '',
-        '--- Customer Information ---',
-        'Name:         ' + (name    ? name.value    : ''),
-        'Company:      ' + (company ? company.value : 'N/A'),
-        'Email:        ' + (email   ? email.value   : ''),
-        'Phone:        ' + (phone   ? phone.value   : ''),
-        'Address:      ' + (address ? address.value : ''),
-        '',
-        '--- Order Details ---',
-        'Order Number: ' + orderVal,
-        'Serial Number:' + (serial  ? serial.value  : ''),
-        '',
-        'Media:',
-        uploadedFiles.length
-          ? uploadedFiles.map(function (f) { return f.name + ': ' + f.url; }).join('\n')
-          : 'No files uploaded.'
-      ];
-
-      section.querySelector('#srf_body').value = lines.join('\n');
+        fetch('https://api.cloudinary.com/v1_1/dm4v7mwpw/auto/upload', { method: 'POST', body: fd })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (data.secure_url) {
+              cloudinaryFiles.push({ name: f.name, url: data.secure_url });
+              if (statusEl) statusEl.textContent = '✓ Done';
+            } else {
+              if (statusEl) statusEl.textContent = '✗ Failed';
+            }
+          })
+          .catch(function () {
+            if (statusEl) statusEl.textContent = '✗ Failed';
+          })
+          .then(function () {
+            completed++;
+            if (completed === filesToUpload.length) buildAndSubmit(cloudinaryFiles);
+          });
+      });
     });
   }
 })();
