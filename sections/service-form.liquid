@@ -404,12 +404,8 @@
 
           <div class="srf__confirmation">
             <div class="srf__confirm-icon">✅</div>
-            <h2>Request Received</h2>
-            <p>
-              Thank you. Your service request has been received. Our support team will review
-              your case and contact you as soon as possible. Please note that incomplete or
-              unclear information may delay processing.
-            </p>
+            <h2>{{ section.settings.confirm_title | default: 'Request Received' }}</h2>
+            <p>{{ section.settings.confirm_message | default: 'Thank you. Your service request has been received. Our support team will review your case and contact you as soon as possible. Please note that incomplete or unclear information may delay processing.' }}</p>
           </div>
 
         {% else %}
@@ -432,15 +428,15 @@
             <div class="srf__progress-fill" id="srf_progress_fill"></div>
             <div class="srf__progress-step is-active" data-step="1">
               <div class="srf__step-circle">1</div>
-              <div class="srf__step-label">Product</div>
+              <div class="srf__step-label">{{ section.settings.step_1_label | default: 'Product' }}</div>
             </div>
             <div class="srf__progress-step" data-step="2">
               <div class="srf__step-circle">2</div>
-              <div class="srf__step-label">Problem</div>
+              <div class="srf__step-label">{{ section.settings.step_2_label | default: 'Problem' }}</div>
             </div>
             <div class="srf__progress-step" data-step="3">
               <div class="srf__step-circle">3</div>
-              <div class="srf__step-label">Details</div>
+              <div class="srf__step-label">{{ section.settings.step_3_label | default: 'Details' }}</div>
             </div>
           </div>
 
@@ -448,69 +444,63 @@
                STAGE 1 — Product Selection
           ══════════════════════════════════════════ -->
           <div class="srf__stage is-active" data-stage="1">
-            <h2 class="srf__stage-title">Select Your Product</h2>
-            <p class="srf__stage-desc">Choose the product category and model that your request is about.</p>
+            <h2 class="srf__stage-title">{{ section.settings.s1_title | default: 'Select Your Product' }}</h2>
+            <p class="srf__stage-desc">{{ section.settings.s1_desc | default: 'Choose the product category and model that your request is about.' }}</p>
 
-            <div class="srf__stage-error" id="srf_error_1">Please select a product category before continuing.</div>
+            <div class="srf__stage-error" id="srf_error_1">{{ section.settings.s1_error_cat | default: 'Please select a product category before continuing.' }}</div>
 
-            <p class="srf__label">Product category <span class="srf__required">*</span></p>
+            <p class="srf__label">{{ section.settings.s1_cat_label | default: 'Product category' }} <span class="srf__required">*</span></p>
             <div class="srf__category-grid" id="srf_category_grid">
-              <div class="srf__category-card">
-                <input type="radio" name="srf_category" id="cat_electric" value="Electric Screen">
-                <label for="cat_electric">
-                  <span class="srf__cat-icon">⚡</span>Electric Screen
-                </label>
-              </div>
-              <div class="srf__category-card">
-                <input type="radio" name="srf_category" id="cat_manual" value="Manual Screen">
-                <label for="cat_manual">
-                  <span class="srf__cat-icon">🖐</span>Manual Screen
-                </label>
-              </div>
-              <div class="srf__category-card">
-                <input type="radio" name="srf_category" id="cat_fixed" value="Fixed Frame Screen">
-                <label for="cat_fixed">
-                  <span class="srf__cat-icon">🖼</span>Fixed Frame Screen
-                </label>
-              </div>
-              <div class="srf__category-card">
-                <input type="radio" name="srf_category" id="cat_floor" value="Floor Rising Screen">
-                <label for="cat_floor">
-                  <span class="srf__cat-icon">⬆️</span>Floor Rising Screen
-                </label>
-              </div>
-              <div class="srf__category-card">
-                <input type="radio" name="srf_category" id="cat_ust" value="UST Screen">
-                <label for="cat_ust">
-                  <span class="srf__cat-icon">📽</span>UST Screen
-                </label>
-              </div>
-              <div class="srf__category-card">
-                <input type="radio" name="srf_category" id="cat_accessory" value="Accessory">
-                <label for="cat_accessory">
-                  <span class="srf__cat-icon">🔧</span>Accessory
-                </label>
-              </div>
-              <div class="srf__category-card">
-                <input type="radio" name="srf_category" id="cat_spare" value="Spare Part">
-                <label for="cat_spare">
-                  <span class="srf__cat-icon">🔩</span>Spare Part
-                </label>
-              </div>
+              {% for i in (1..10) %}
+                {% assign ch_key = 'ch_' | append: i %}
+                {% assign cat_name = section.settings[ch_key] | strip_html | strip %}
+                {% if cat_name != blank %}
+                  {% if i == 1 %}
+                    {% assign model_prefix = 'c1_v' %}
+                  {% else %}
+                    {% assign model_prefix = 'v' | append: i | append: '_' %}
+                  {% endif %}
+                  {% assign models_list = '' %}
+                  {% for j in (1..10) %}
+                    {% assign model_key = model_prefix | append: j %}
+                    {% assign model_val = section.settings[model_key] %}
+                    {% if model_val != blank %}
+                      {% unless models_list == '' %}{% assign models_list = models_list | append: '|' %}{% endunless %}
+                      {% assign models_list = models_list | append: model_val %}
+                    {% endif %}
+                  {% endfor %}
+                  {% assign ce_key = 'ce_' | append: i %}
+                  {% assign ci_key = 'ci_' | append: i %}
+                  {% assign cat_emoji = section.settings[ce_key] %}
+                  {% assign cat_image = section.settings[ci_key] %}
+                  {% assign cat_id = 'cat_' | append: i %}
+                  <div class="srf__category-card">
+                    <input type="radio" name="srf_category" id="{{ cat_id }}" value="{{ cat_name | escape }}" data-models="{{ models_list | escape }}">
+                    <label for="{{ cat_id }}">
+                      {% if cat_image %}
+                        <span class="srf__cat-icon"><img src="{{ cat_image | image_url: width: 40 }}" alt="{{ cat_name }}" width="24" height="24" loading="lazy"></span>
+                      {% elsif cat_emoji != blank %}
+                        <span class="srf__cat-icon">{{ cat_emoji }}</span>
+                      {% endif %}
+                      {{ section.settings[ch_key] }}
+                    </label>
+                  </div>
+                {% endif %}
+              {% endfor %}
             </div>
 
             <div class="srf__field" id="srf_model_field">
-              <label class="srf__label" for="srf_model">Product model / series <span class="srf__required">*</span></label>
+              <label class="srf__label" for="srf_model">{{ section.settings.s1_model_label | default: 'Product model / series' }} <span class="srf__required">*</span></label>
               <div class="srf__select-wrap">
                 <select class="srf__select" id="srf_model" name="srf_model">
-                  <option value="">— Select a category first —</option>
+                  <option value="">{{ section.settings.s1_model_placeholder | default: '— Select a category first —' }}</option>
                 </select>
               </div>
-              <div class="srf__field-error" id="srf_model_error">Please select a product model.</div>
+              <div class="srf__field-error" id="srf_model_error">{{ section.settings.s1_error_model | default: 'Please select a product model.' }}</div>
             </div>
 
             <div class="srf__buttons">
-              <button type="button" class="srf__btn srf__btn--primary" data-next="2">Next →</button>
+              <button type="button" class="srf__btn srf__btn--primary" data-next="2">{{ section.settings.s1_next_btn | default: 'Next →' }}</button>
             </div>
           </div>
 
@@ -518,130 +508,52 @@
                STAGE 2 — Problem Selection
           ══════════════════════════════════════════ -->
           <div class="srf__stage" data-stage="2">
-            <h2 class="srf__stage-title">Describe the Problem</h2>
-            <p class="srf__stage-desc">Select all issues that apply. Multiple selections are allowed.</p>
+            <h2 class="srf__stage-title">{{ section.settings.s2_title | default: 'Describe the Problem' }}</h2>
+            <p class="srf__stage-desc">{{ section.settings.s2_desc | default: 'Select all issues that apply. Multiple selections are allowed.' }}</p>
 
-            <div class="srf__stage-error" id="srf_error_2">Please describe the problem in the text field below.</div>
+            <div class="srf__stage-error" id="srf_error_2">{{ section.settings.s2_error | default: 'Please describe the problem in the text field below.' }}</div>
 
             <div class="srf__problem-groups">
-
-              <div class="srf__problem-group is-open">
-                <div class="srf__group-toggle">
-                  Screen Surface &amp; Fabric Issues
-                  <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-                </div>
-                <div class="srf__group-body">
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen fabric is torn"> Screen fabric is torn</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen edge is torn or detached"> Screen edge is torn or detached</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Scratch on screen surface"> Scratch on screen surface</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Stain or dirt on screen surface"> Stain or dirt on screen surface</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Wrinkles or waves on screen"> Wrinkles or waves on screen</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen does not roll up evenly"> Screen does not roll up evenly</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen damaged during transport"> Screen damaged during transport</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen material has color differences"> Screen material has color differences</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen has pressure marks"> Screen has pressure marks</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen has visible dents or deformation"> Visible dents or deformation</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Projection image is not clear"> Projection image is not clear</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen not compatible with projector"> Not compatible with projector</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Ambient light rejection / contrast not as expected"> ALR / contrast not as expected</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Hotspot or reflection problem"> Hotspot or reflection problem</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Moiré effect or texture visible during projection"> Moiré effect or texture visible</label>
-                </div>
-              </div>
-
-              <div class="srf__problem-group">
-                <div class="srf__group-toggle">
-                  Motor &amp; Electrical Issues
-                  <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-                </div>
-                <div class="srf__group-body">
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Motor does not work"> Motor does not work</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen does not move up or down"> Screen does not move up or down</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen stops during movement"> Screen stops during movement</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Motor makes unusual noise"> Motor makes unusual noise</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Remote control does not work"> Remote control does not work</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Trigger function does not work"> Trigger function does not work</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Wall switch does not work"> Wall switch does not work</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Power cable or plug issue"> Power cable or plug issue</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Limit settings are incorrect"> Limit settings are incorrect</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen moves in wrong direction"> Screen moves in wrong direction</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen only works intermittently"> Screen only works intermittently</label>
-                </div>
-              </div>
-
-              <div class="srf__problem-group">
-                <div class="srf__group-toggle">
-                  Frame, Housing &amp; Mechanical Issues
-                  <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-                </div>
-                <div class="srf__group-body">
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Case or housing is damaged"> Case or housing is damaged</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="End cap is damaged"> End cap is damaged</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Frame is bent"> Frame is bent</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Frame part is missing"> Frame part is missing</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Installation bracket is missing or damaged"> Bracket missing or damaged</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen is not level after installation"> Screen not level after install</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screen does not fit into housing"> Screen does not fit into housing</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Tension cable is damaged"> Tension cable is damaged</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Tab-tension system not working properly"> Tab-tension not working</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Floor-rising mechanism does not work"> Floor-rising mechanism issue</label>
-                </div>
-              </div>
-
-              <div class="srf__problem-group">
-                <div class="srf__group-toggle">
-                  Accessories &amp; Missing Parts
-                  <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-                </div>
-                <div class="srf__group-body">
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Remote control missing"> Remote control missing</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Wall switch missing"> Wall switch missing</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Brackets missing"> Brackets missing</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Screws or installation parts missing"> Screws / install parts missing</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Manual missing"> Manual missing</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Wrong accessory received"> Wrong accessory received</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Wrong product received"> Wrong product received</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Spare part request"> Spare part request</label>
-                </div>
-              </div>
-
-              <div class="srf__problem-group">
-                <div class="srf__group-toggle">
-                  Order, Delivery &amp; Return
-                  <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-                </div>
-                <div class="srf__group-body">
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Product arrived damaged"> Product arrived damaged</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Packaging was damaged"> Packaging was damaged</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Wrong item delivered"> Wrong item delivered</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Item no longer needed"> Item no longer needed</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Customer ordered the wrong size"> Ordered the wrong size</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Customer ordered the wrong model"> Ordered the wrong model</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Product incompatible with setup"> Product incompatible with setup</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Return request within withdrawal period"> Return within withdrawal period</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Warranty / service request"> Warranty / service request</label>
-                  <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="Paid repair request"> Paid repair request</label>
-                </div>
-              </div>
-
+              {% for block in section.blocks %}
+                {% if block.type == 'problem' %}
+                  {% assign assign_cats = block.settings.assign_categories | strip %}
+                  <div class="srf__problem-group{% if forloop.first %} is-open{% endif %}"
+                       data-assign-categories="{{ assign_cats | escape }}"
+                       {{ block.shopify_attributes }}>
+                    <div class="srf__group-toggle">
+                      {{ block.settings.heading }}
+                      <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+                    </div>
+                    <div class="srf__group-body">
+                      {% for j in (1..20) %}
+                        {% assign p_key = 'p' | append: j %}
+                        {% assign p_val = block.settings[p_key] %}
+                        {% if p_val != blank %}
+                          <label class="srf__check-item"><input type="checkbox" name="srf_problems[]" value="{{ p_val | escape }}"> {{ p_val }}</label>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
             </div>
 
             <div class="srf__field">
               <label class="srf__label" for="srf_description">
-                Problem description <span class="srf__required">*</span>
+                {{ section.settings.s2_desc_label | default: 'Problem description' }} <span class="srf__required">*</span>
               </label>
               <textarea
                 class="srf__textarea"
                 id="srf_description"
                 name="srf_description"
-                placeholder="Please describe the problem in as much detail as possible — when it occurred, what you observed, steps already taken, etc."
+                placeholder="{{ section.settings.s2_desc_placeholder | default: 'Please describe the problem in as much detail as possible — when it occurred, what you observed, steps already taken, etc.' | escape }}"
               ></textarea>
-              <div class="srf__field-error" id="srf_desc_error">Please describe the problem.</div>
+              <div class="srf__field-error" id="srf_desc_error">{{ section.settings.s2_desc_error | default: 'Please describe the problem.' }}</div>
             </div>
 
             <div class="srf__buttons">
-              <button type="button" class="srf__btn srf__btn--secondary" data-back="1">← Back</button>
-              <button type="button" class="srf__btn srf__btn--primary" data-next="3">Next →</button>
+              <button type="button" class="srf__btn srf__btn--secondary" data-back="1">{{ section.settings.s2_back_btn | default: '← Back' }}</button>
+              <button type="button" class="srf__btn srf__btn--primary" data-next="3">{{ section.settings.s2_next_btn | default: 'Next →' }}</button>
             </div>
           </div>
 
@@ -649,86 +561,96 @@
                STAGE 3 — Customer & Case Information
           ══════════════════════════════════════════ -->
           <div class="srf__stage" data-stage="3">
-            <h2 class="srf__stage-title">Your Information</h2>
-            <p class="srf__stage-desc">All fields marked with * are required to process your request.</p>
+            <h2 class="srf__stage-title">{{ section.settings.s3_title | default: 'Your Information' }}</h2>
+            <p class="srf__stage-desc">{{ section.settings.s3_desc | default: 'All fields marked with * are required to process your request.' }}</p>
 
-            <div class="srf__stage-error" id="srf_error_3">Please fill in all required fields.</div>
+            <div class="srf__stage-error" id="srf_error_3">{{ section.settings.s3_error | default: 'Please fill in all required fields.' }}</div>
 
             <div class="srf__info-grid">
 
               <div class="srf__field">
-                <label class="srf__label" for="srf_name">Full name <span class="srf__required">*</span></label>
+                <label class="srf__label" for="srf_name">{{ section.settings.s3_name_label | default: 'Full name' }} <span class="srf__required">*</span></label>
                 <input class="srf__input" type="text" id="srf_name" name="srf_name" autocomplete="name">
-                <div class="srf__field-error" id="srf_name_error">Name is required.</div>
+                <div class="srf__field-error" id="srf_name_error">{{ section.settings.s3_name_error | default: 'Name is required.' }}</div>
               </div>
 
               <div class="srf__field">
-                <label class="srf__label" for="srf_company">Company name</label>
+                <label class="srf__label" for="srf_company">{{ section.settings.s3_company_label | default: 'Company name' }}</label>
                 <input class="srf__input" type="text" id="srf_company" name="srf_company" autocomplete="organization">
               </div>
 
               <div class="srf__field">
-                <label class="srf__label" for="srf_email">Email address <span class="srf__required">*</span></label>
+                <label class="srf__label" for="srf_email">{{ section.settings.s3_email_label | default: 'Email address' }} <span class="srf__required">*</span></label>
                 <input class="srf__input" type="email" id="srf_email" name="srf_email" autocomplete="email">
-                <div class="srf__field-error" id="srf_email_error">A valid email address is required.</div>
+                <div class="srf__field-error" id="srf_email_error">{{ section.settings.s3_email_error | default: 'A valid email address is required.' }}</div>
               </div>
 
               <div class="srf__field">
-                <label class="srf__label" for="srf_phone">Phone number <span class="srf__required">*</span></label>
+                <label class="srf__label" for="srf_phone">{{ section.settings.s3_phone_label | default: 'Phone number' }} <span class="srf__required">*</span></label>
                 <input class="srf__input" type="tel" id="srf_phone" name="srf_phone" autocomplete="tel">
-                <div class="srf__field-error" id="srf_phone_error">Phone number is required.</div>
+                <div class="srf__field-error" id="srf_phone_error">{{ section.settings.s3_phone_error | default: 'Phone number is required.' }}</div>
               </div>
 
               <div class="srf__field col-full">
-                <label class="srf__label" for="srf_address">Full address <span class="srf__required">*</span></label>
-                <input class="srf__input" type="text" id="srf_address" name="srf_address" autocomplete="street-address" placeholder="Street, city, postal code, country">
-                <div class="srf__field-error" id="srf_address_error">Address is required.</div>
+                <label class="srf__label" for="srf_address">{{ section.settings.s3_address_label | default: 'Full address' }} <span class="srf__required">*</span></label>
+                <input class="srf__input" type="text" id="srf_address" name="srf_address" autocomplete="street-address" placeholder="{{ section.settings.s3_address_placeholder | default: 'Street, city, postal code, country' | escape }}">
+                <div class="srf__field-error" id="srf_address_error">{{ section.settings.s3_address_error | default: 'Address is required.' }}</div>
               </div>
 
               <div class="srf__field">
-                <label class="srf__label" for="srf_order">Order number <span class="srf__required">*</span></label>
-                <input class="srf__input" type="text" id="srf_order" name="srf_order" placeholder="e.g. #1234">
-                <div class="srf__field-error" id="srf_order_error">Order number is required.</div>
+                <label class="srf__label" for="srf_order">{{ section.settings.s3_order_label | default: 'Order number' }} <span class="srf__required">*</span></label>
+                <input class="srf__input" type="text" id="srf_order" name="srf_order" placeholder="{{ section.settings.s3_order_placeholder | default: 'e.g. #1234' | escape }}">
+                <div class="srf__field-error" id="srf_order_error">{{ section.settings.s3_order_error | default: 'Order number is required.' }}</div>
               </div>
 
               <div class="srf__field">
-                <label class="srf__label" for="srf_serial">Serial number <span class="srf__required">*</span></label>
-                <input class="srf__input" type="text" id="srf_serial" name="srf_serial" placeholder="Found on product label">
-                <div class="srf__field-error" id="srf_serial_error">Serial number is required.</div>
+                <label class="srf__label" for="srf_serial">{{ section.settings.s3_serial_label | default: 'Serial number' }} <span class="srf__required">*</span></label>
+                <input class="srf__input" type="text" id="srf_serial" name="srf_serial" placeholder="{{ section.settings.s3_serial_placeholder | default: 'Found on product label' | escape }}">
+                <div class="srf__field-error" id="srf_serial_error">{{ section.settings.s3_serial_error | default: 'Serial number is required.' }}</div>
               </div>
 
               <div class="srf__field col-full">
-                <label class="srf__label">Photos &amp; videos</label>
+                <label class="srf__label">{{ section.settings.s3_photos_label | default: 'Photos & videos' }}</label>
                 <div class="srf__file-drop">
                   <input type="file" id="srf_photos" name="srf_photos" accept="image/*,video/*" multiple>
                   <div class="srf__file-drop-text">
-                    <strong>Click to upload photos &amp; videos</strong>
-                    Images and videos — multiple files allowed
+                    <strong>{{ section.settings.s3_photos_upload | default: 'Click to upload photos & videos' }}</strong>
+                    {{ section.settings.s3_photos_hint | default: 'Images and videos — multiple files allowed' }}
                   </div>
                   <div class="srf__file-previews" id="srf_file_names"></div>
                 </div>
-                <p style="font-size:12px;color:#888;margin-top:6px;">Files upload automatically when you submit. Images &amp; videos supported.</p>
+                <p style="font-size:12px;color:#888;margin-top:6px;">{{ section.settings.s3_photos_note | default: 'Files upload automatically when you submit. Images & videos supported.' }}</p>
               </div>
 
               <div class="srf__field col-full">
-                <label class="srf__label" for="srf_drive_link">Or paste a Google Drive / cloud link <span style="font-weight:400;opacity:.6;">(optional)</span></label>
+                <label class="srf__label" for="srf_drive_link">{{ section.settings.s3_drive_label | default: 'Or paste a Google Drive / cloud link' }} <span style="font-weight:400;opacity:.6;">(optional)</span></label>
                 <input
                   class="srf__input"
                   type="url"
                   id="srf_drive_link"
                   name="srf_drive_link"
-                  placeholder="https://drive.google.com/..."
+                  placeholder="{{ section.settings.s3_drive_placeholder | default: 'https://drive.google.com/...' | escape }}"
                 >
                 <p style="font-size:12px;color:#888;margin-top:6px;">
-                  If you already have files on Google Drive — set sharing to <strong>Anyone with the link</strong> and paste it here.
+                  {{ section.settings.s3_drive_note | default: 'If you already have files on Google Drive — set sharing to <strong>Anyone with the link</strong> and paste it here.' }}
                 </p>
               </div>
 
             </div>
 
+            {% if section.settings.consent_text != blank %}
+              <div class="srf__field col-full srf__consent-wrap">
+                <label class="srf__consent-label">
+                  <input type="checkbox" id="srf_consent" name="srf_consent">
+                  <span>{{ section.settings.consent_text }}</span>
+                </label>
+                <div class="srf__field-error" id="srf_consent_error">{{ section.settings.consent_error | default: 'You must accept the terms before submitting.' }}</div>
+              </div>
+            {% endif %}
+
             <div class="srf__buttons">
-              <button type="button" class="srf__btn srf__btn--secondary" data-back="2">← Back</button>
-              <button type="submit" class="srf__btn srf__btn--primary" id="srf_submit">Submit Request</button>
+              <button type="button" class="srf__btn srf__btn--secondary" data-back="2">{{ section.settings.s3_back_btn | default: '← Back' }}</button>
+              <button type="submit" class="srf__btn srf__btn--primary" id="srf_submit" data-uploading="{{ section.settings.s3_uploading_text | default: 'Uploading…' | escape }}">{{ section.settings.s3_submit_btn | default: 'Submit Request' }}</button>
             </div>
           </div>
 
@@ -745,16 +667,7 @@
   if (!section) return;
 
   var current = 1;
-
-  var models = {
-    'Electric Screen':    ['Saker', 'Saker Tab-Tension', 'Evanesce', 'Evanesce Tab-Tension', 'Spectrum', 'VMAX', 'Kestrel', 'Aeon', 'Other / I am not sure'],
-    'Manual Screen':      ['Spectrum', 'VMAX', 'Manual', 'Manual Tab-Tension', 'Other / I am not sure'],
-    'Fixed Frame Screen': ['Aeon', 'EZ Frame', 'CineTension', 'AcousticPro', 'Other / I am not sure'],
-    'Floor Rising Screen':['Yard Master', 'Yard Master 2', 'Other / I am not sure'],
-    'UST Screen':         ['AcousticPro UST', 'Aeon CLR', 'Other / I am not sure'],
-    'Accessory':          ['Remote Control', 'Wall Switch', 'Bracket Kit', 'Cable', 'Other / I am not sure'],
-    'Spare Part':         ['I am not sure — please describe below']
-  };
+  var modelPlaceholder2 = {{ section.settings.s1_model_placeholder_2 | default: '— Select model —' | json }};
 
   function goTo(stage) {
     section.querySelectorAll('.srf__stage').forEach(function (el) {
@@ -776,12 +689,25 @@
     window.scrollTo({ top: section.offsetTop - 20, behavior: 'smooth' });
   }
 
-  /* ── Model dropdown ── */
+  /* ── Category filter for problem groups ── */
+  function filterProblemGroups(categoryName) {
+    section.querySelectorAll('.srf__problem-group').forEach(function (group) {
+      var assignCats = (group.dataset.assignCategories || '').trim();
+      if (!assignCats) {
+        group.style.display = '';
+        return;
+      }
+      var cats = assignCats.split(',').map(function (c) { return c.trim().toLowerCase(); });
+      group.style.display = cats.indexOf(categoryName.toLowerCase()) !== -1 ? '' : 'none';
+    });
+  }
+
+  /* ── Model dropdown from data-models attribute ── */
   var modelSelect = section.querySelector('#srf_model');
   section.querySelectorAll('input[name="srf_category"]').forEach(function (radio) {
     radio.addEventListener('change', function () {
-      var list = models[this.value] || [];
-      modelSelect.innerHTML = '<option value="">— Select model —</option>';
+      var list = (this.dataset.models || '').split('|').filter(Boolean);
+      modelSelect.innerHTML = '<option value="">' + modelPlaceholder2 + '</option>';
       list.forEach(function (m) {
         var opt = document.createElement('option');
         opt.value = m;
@@ -789,6 +715,7 @@
         modelSelect.appendChild(opt);
       });
       modelSelect.disabled = false;
+      filterProblemGroups(this.value);
     });
   });
 
@@ -798,7 +725,6 @@
       this.closest('.srf__problem-group').classList.toggle('is-open');
     });
   });
-
 
   /* ── File select → preview only ── */
   var photoInput = section.querySelector('#srf_photos');
@@ -902,6 +828,14 @@
       if (!valid) ok = false;
     });
 
+    var consentBox = section.querySelector('#srf_consent');
+    if (consentBox && !consentBox.checked) {
+      showError('srf_consent_error', true);
+      ok = false;
+    } else if (consentBox) {
+      showError('srf_consent_error', false);
+    }
+
     showError('srf_error_3', !ok);
     return ok;
   }
@@ -936,7 +870,6 @@
         var cat     = section.querySelector('input[name="srf_category"]:checked');
         var model   = section.querySelector('#srf_model');
         var desc    = section.querySelector('#srf_description');
-        var checks  = Array.from(section.querySelectorAll('input[name="srf_problems[]"]:checked')).map(function (c) { return c.value; });
         var name    = section.querySelector('#srf_name');
         var email   = section.querySelector('#srf_email');
         var phone   = section.querySelector('#srf_phone');
@@ -949,8 +882,23 @@
         var orderVal  = order  ? order.value.trim() : '';
         var modelVal  = model  ? model.value        : '';
         var catVal    = cat    ? cat.value           : '';
-        var problems  = checks.length ? checks.join(', ') : 'None selected';
         var driveLink = drive  && drive.value.trim() ? drive.value.trim() : '';
+
+        var problemGroups = [];
+        section.querySelectorAll('.srf__problem-group').forEach(function (group) {
+          var toggle = group.querySelector('.srf__group-toggle');
+          var headingText = '';
+          if (toggle) {
+            toggle.childNodes.forEach(function (node) {
+              if (node.nodeType === 3) headingText += node.textContent;
+            });
+            headingText = headingText.trim();
+          }
+          var checkedItems = Array.from(group.querySelectorAll('input[name="srf_problems[]"]:checked')).map(function (c) { return c.value; });
+          if (checkedItems.length) {
+            problemGroups.push({ heading: headingText || 'Other', items: checkedItems });
+          }
+        });
 
         section.querySelector('#srf_subject').value =
           'Service Request – ' + orderVal + ' – ' + modelVal + ' – ' + catVal;
@@ -964,13 +912,23 @@
         if (driveLink) mediaLines.push('Google Drive: ' + driveLink);
         if (!mediaLines.length) mediaLines.push('No media provided.');
 
+        var problemLines = ['--- Problems Reported ---', ''];
+        if (problemGroups.length) {
+          problemGroups.forEach(function (g) {
+            problemLines.push(g.heading + ':');
+            g.items.forEach(function (item) { problemLines.push('  • ' + item); });
+            problemLines.push('');
+          });
+        } else {
+          problemLines.push('None selected', '');
+        }
+
         var lines = [
           '=== SERVICE REQUEST ===', '',
           '--- Product ---',
           'Category:     ' + catVal,
-          'Model/Series: ' + modelVal, '',
-          '--- Problems Reported ---',
-          problems, '',
+          'Model/Series: ' + modelVal, ''
+        ].concat(problemLines).concat([
           '--- Description ---',
           desc ? desc.value : '', '',
           '--- Customer Information ---',
@@ -983,7 +941,7 @@
           'Order Number: ' + orderVal,
           'Serial Number:' + (serial  ? serial.value  : ''), '',
           '--- Media ---'
-        ].concat(mediaLines);
+        ]).concat(mediaLines);
 
         section.querySelector('#srf_body').value = lines.join('\n');
         form.submit();
@@ -994,7 +952,10 @@
         return;
       }
 
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Uploading…'; }
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = submitBtn.dataset.uploading || 'Uploading…';
+      }
 
       var cloudinaryFiles = [];
       var completed = 0;
@@ -1058,8 +1019,674 @@
     {
       "type": "text",
       "id": "support_email",
-      "label": "Support email (shown for photo fallback)",
+      "label": "Support email",
       "default": "support@elitescreens.eu"
+    },
+    {
+      "type": "header",
+      "content": "Confirmation Message"
+    },
+    {
+      "type": "text",
+      "id": "confirm_title",
+      "label": "Success title",
+      "default": "Request Received"
+    },
+    {
+      "type": "textarea",
+      "id": "confirm_message",
+      "label": "Success message",
+      "default": "Thank you. Your service request has been received. Our support team will review your case and contact you as soon as possible. Please note that incomplete or unclear information may delay processing."
+    },
+    {
+      "type": "header",
+      "content": "Progress Steps"
+    },
+    {
+      "type": "text",
+      "id": "step_1_label",
+      "label": "Step 1 label",
+      "default": "Product"
+    },
+    {
+      "type": "text",
+      "id": "step_2_label",
+      "label": "Step 2 label",
+      "default": "Problem"
+    },
+    {
+      "type": "text",
+      "id": "step_3_label",
+      "label": "Step 3 label",
+      "default": "Details"
+    },
+    {
+      "type": "header",
+      "content": "Stage 1 — Product"
+    },
+    {
+      "type": "text",
+      "id": "s1_title",
+      "label": "Stage title",
+      "default": "Select Your Product"
+    },
+    {
+      "type": "text",
+      "id": "s1_desc",
+      "label": "Stage description",
+      "default": "Choose the product category and model that your request is about."
+    },
+    {
+      "type": "text",
+      "id": "s1_cat_label",
+      "label": "Category field label",
+      "default": "Product category"
+    },
+    {
+      "type": "text",
+      "id": "s1_model_label",
+      "label": "Model field label",
+      "default": "Product model / series"
+    },
+    {
+      "type": "text",
+      "id": "s1_model_placeholder",
+      "label": "Model placeholder (no category selected)",
+      "default": "— Select a category first —"
+    },
+    {
+      "type": "text",
+      "id": "s1_model_placeholder_2",
+      "label": "Model placeholder (after selecting category)",
+      "default": "— Select model —"
+    },
+    {
+      "type": "text",
+      "id": "s1_next_btn",
+      "label": "Next button text",
+      "default": "Next →"
+    },
+    {
+      "type": "text",
+      "id": "s1_error_cat",
+      "label": "Error: no category selected",
+      "default": "Please select a product category before continuing."
+    },
+    {
+      "type": "text",
+      "id": "s1_error_model",
+      "label": "Error: no model selected",
+      "default": "Please select a product model."
+    },
+    {
+      "type": "header",
+      "content": "Stage 2 — Problem"
+    },
+    {
+      "type": "text",
+      "id": "s2_title",
+      "label": "Stage title",
+      "default": "Describe the Problem"
+    },
+    {
+      "type": "text",
+      "id": "s2_desc",
+      "label": "Stage description",
+      "default": "Select all issues that apply. Multiple selections are allowed."
+    },
+    {
+      "type": "text",
+      "id": "s2_desc_label",
+      "label": "Description field label",
+      "default": "Problem description"
+    },
+    {
+      "type": "textarea",
+      "id": "s2_desc_placeholder",
+      "label": "Description field placeholder",
+      "default": "Please describe the problem in as much detail as possible — when it occurred, what you observed, steps already taken, etc."
+    },
+    {
+      "type": "text",
+      "id": "s2_back_btn",
+      "label": "Back button text",
+      "default": "← Back"
+    },
+    {
+      "type": "text",
+      "id": "s2_next_btn",
+      "label": "Next button text",
+      "default": "Next →"
+    },
+    {
+      "type": "text",
+      "id": "s2_error",
+      "label": "Error: stage banner",
+      "default": "Please describe the problem in the text field below."
+    },
+    {
+      "type": "text",
+      "id": "s2_desc_error",
+      "label": "Error: description field empty",
+      "default": "Please describe the problem."
+    },
+    {
+      "type": "header",
+      "content": "Stage 3 — Your Information"
+    },
+    {
+      "type": "text",
+      "id": "s3_title",
+      "label": "Stage title",
+      "default": "Your Information"
+    },
+    {
+      "type": "text",
+      "id": "s3_desc",
+      "label": "Stage description",
+      "default": "All fields marked with * are required to process your request."
+    },
+    {
+      "type": "text",
+      "id": "s3_error",
+      "label": "Error: required fields missing",
+      "default": "Please fill in all required fields."
+    },
+    {
+      "type": "text",
+      "id": "s3_name_label",
+      "label": "Name label",
+      "default": "Full name"
+    },
+    {
+      "type": "text",
+      "id": "s3_name_error",
+      "label": "Name field error",
+      "default": "Name is required."
+    },
+    {
+      "type": "text",
+      "id": "s3_company_label",
+      "label": "Company label",
+      "default": "Company name"
+    },
+    {
+      "type": "text",
+      "id": "s3_email_label",
+      "label": "Email label",
+      "default": "Email address"
+    },
+    {
+      "type": "text",
+      "id": "s3_email_error",
+      "label": "Email field error",
+      "default": "A valid email address is required."
+    },
+    {
+      "type": "text",
+      "id": "s3_phone_label",
+      "label": "Phone label",
+      "default": "Phone number"
+    },
+    {
+      "type": "text",
+      "id": "s3_phone_error",
+      "label": "Phone field error",
+      "default": "Phone number is required."
+    },
+    {
+      "type": "text",
+      "id": "s3_address_label",
+      "label": "Address label",
+      "default": "Full address"
+    },
+    {
+      "type": "text",
+      "id": "s3_address_placeholder",
+      "label": "Address placeholder",
+      "default": "Street, city, postal code, country"
+    },
+    {
+      "type": "text",
+      "id": "s3_address_error",
+      "label": "Address field error",
+      "default": "Address is required."
+    },
+    {
+      "type": "text",
+      "id": "s3_order_label",
+      "label": "Order number label",
+      "default": "Order number"
+    },
+    {
+      "type": "text",
+      "id": "s3_order_placeholder",
+      "label": "Order number placeholder",
+      "default": "e.g. #1234"
+    },
+    {
+      "type": "text",
+      "id": "s3_order_error",
+      "label": "Order number field error",
+      "default": "Order number is required."
+    },
+    {
+      "type": "text",
+      "id": "s3_serial_label",
+      "label": "Serial number label",
+      "default": "Serial number"
+    },
+    {
+      "type": "text",
+      "id": "s3_serial_placeholder",
+      "label": "Serial number placeholder",
+      "default": "Found on product label"
+    },
+    {
+      "type": "text",
+      "id": "s3_serial_error",
+      "label": "Serial number field error",
+      "default": "Serial number is required."
+    },
+    {
+      "type": "text",
+      "id": "s3_photos_label",
+      "label": "Photos & videos label",
+      "default": "Photos & videos"
+    },
+    {
+      "type": "text",
+      "id": "s3_photos_upload",
+      "label": "Upload button text",
+      "default": "Click to upload photos & videos"
+    },
+    {
+      "type": "text",
+      "id": "s3_photos_hint",
+      "label": "Upload hint",
+      "default": "Images and videos — multiple files allowed"
+    },
+    {
+      "type": "text",
+      "id": "s3_photos_note",
+      "label": "Upload note",
+      "default": "Files upload automatically when you submit. Images & videos supported."
+    },
+    {
+      "type": "text",
+      "id": "s3_drive_label",
+      "label": "Cloud link label",
+      "default": "Or paste a Google Drive / cloud link"
+    },
+    {
+      "type": "text",
+      "id": "s3_drive_placeholder",
+      "label": "Cloud link placeholder",
+      "default": "https://drive.google.com/..."
+    },
+    {
+      "type": "text",
+      "id": "s3_drive_note",
+      "label": "Cloud link note",
+      "default": "If you already have files on Google Drive — set sharing to Anyone with the link and paste it here."
+    },
+    {
+      "type": "text",
+      "id": "s3_back_btn",
+      "label": "Back button text",
+      "default": "← Back"
+    },
+    {
+      "type": "text",
+      "id": "s3_submit_btn",
+      "label": "Submit button text",
+      "default": "Submit Request"
+    },
+    {
+      "type": "text",
+      "id": "s3_uploading_text",
+      "label": "Uploading state text",
+      "default": "Uploading…"
+    },
+    {
+      "type": "header",
+      "content": "Consent Checkbox"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "consent_text",
+      "label": "Consent label",
+      "info": "Leave blank to hide the checkbox. Supports links for privacy policy, etc.",
+      "default": "I agree to the processing of my personal data in accordance with the <a href=\"/pages/privacy-policy\">Privacy Policy</a>."
+    },
+    {
+      "type": "text",
+      "id": "consent_error",
+      "label": "Error: consent not checked",
+      "default": "You must accept the terms before submitting."
+    },
+    {
+      "type": "header",
+      "content": "Category 1"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "ch_1",
+      "label": "Heading",
+      "default": "Electric Screen"
+    },
+    {
+      "type": "text",
+      "id": "ce_1",
+      "label": "Emoji / Icon text",
+      "default": "⚡"
+    },
+    {
+      "type": "image_picker",
+      "id": "ci_1",
+      "label": "Icon image (overrides emoji)"
+    },
+    { "type": "text", "id": "c1_v1", "label": "Model 1", "default": "Saker" },
+    { "type": "text", "id": "c1_v2", "label": "Model 2", "default": "Saker Tab-Tension" },
+    { "type": "text", "id": "c1_v3", "label": "Model 3", "default": "Evanesce" },
+    { "type": "text", "id": "c1_v4", "label": "Model 4", "default": "Evanesce Tab-Tension" },
+    { "type": "text", "id": "c1_v5", "label": "Model 5", "default": "Spectrum" },
+    { "type": "text", "id": "c1_v6", "label": "Model 6", "default": "VMAX" },
+    { "type": "text", "id": "c1_v7", "label": "Model 7", "default": "Kestrel" },
+    { "type": "text", "id": "c1_v8", "label": "Model 8", "default": "Aeon" },
+    { "type": "text", "id": "c1_v9", "label": "Model 9", "default": "Other/I am not sure" },
+    { "type": "text", "id": "c1_v10", "label": "Model 10" },
+    {
+      "type": "header",
+      "content": "Category 2"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "ch_2",
+      "label": "Heading",
+      "default": "Manual Screen"
+    },
+    {
+      "type": "text",
+      "id": "ce_2",
+      "label": "Emoji / Icon text",
+      "default": "🖐"
+    },
+    {
+      "type": "image_picker",
+      "id": "ci_2",
+      "label": "Icon image (overrides emoji)"
+    },
+    { "type": "text", "id": "v2_1", "label": "Model 1", "default": "Spectrum" },
+    { "type": "text", "id": "v2_2", "label": "Model 2", "default": "VMAX" },
+    { "type": "text", "id": "v2_3", "label": "Model 3", "default": "Manual" },
+    { "type": "text", "id": "v2_4", "label": "Model 4", "default": "Manual Tab-Tension" },
+    { "type": "text", "id": "v2_5", "label": "Model 5", "default": "Other/I am not sure" },
+    { "type": "text", "id": "v2_6", "label": "Model 6" },
+    { "type": "text", "id": "v2_7", "label": "Model 7" },
+    { "type": "text", "id": "v2_8", "label": "Model 8" },
+    { "type": "text", "id": "v2_9", "label": "Model 9" },
+    { "type": "text", "id": "v2_10", "label": "Model 10" },
+    {
+      "type": "header",
+      "content": "Category 3"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "ch_3",
+      "label": "Heading",
+      "default": "Fixed Frame Screen"
+    },
+    {
+      "type": "text",
+      "id": "ce_3",
+      "label": "Emoji / Icon text",
+      "default": "🖼"
+    },
+    {
+      "type": "image_picker",
+      "id": "ci_3",
+      "label": "Icon image (overrides emoji)"
+    },
+    { "type": "text", "id": "v3_1", "label": "Model 1", "default": "Aeon" },
+    { "type": "text", "id": "v3_2", "label": "Model 2", "default": "EZ Frame" },
+    { "type": "text", "id": "v3_3", "label": "Model 3", "default": "CineTension" },
+    { "type": "text", "id": "v3_4", "label": "Model 4", "default": "AcousticPro" },
+    { "type": "text", "id": "v3_5", "label": "Model 5", "default": "Other/I am not sure" },
+    { "type": "text", "id": "v3_6", "label": "Model 6" },
+    { "type": "text", "id": "v3_7", "label": "Model 7" },
+    { "type": "text", "id": "v3_8", "label": "Model 8" },
+    { "type": "text", "id": "v3_9", "label": "Model 9" },
+    { "type": "text", "id": "v3_10", "label": "Model 10" },
+    {
+      "type": "header",
+      "content": "Category 4"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "ch_4",
+      "label": "Heading",
+      "default": "Floor Rising Screen"
+    },
+    {
+      "type": "text",
+      "id": "ce_4",
+      "label": "Emoji / Icon text",
+      "default": "⬆️"
+    },
+    {
+      "type": "image_picker",
+      "id": "ci_4",
+      "label": "Icon image (overrides emoji)"
+    },
+    { "type": "text", "id": "v4_1", "label": "Model 1", "default": "Yard Master" },
+    { "type": "text", "id": "v4_2", "label": "Model 2", "default": "Yard Master 2" },
+    { "type": "text", "id": "v4_3", "label": "Model 3", "default": "Other/I am not sure" },
+    { "type": "text", "id": "v4_4", "label": "Model 4" },
+    { "type": "text", "id": "v4_5", "label": "Model 5" },
+    { "type": "text", "id": "v4_6", "label": "Model 6" },
+    { "type": "text", "id": "v4_7", "label": "Model 7" },
+    { "type": "text", "id": "v4_8", "label": "Model 8" },
+    { "type": "text", "id": "v4_9", "label": "Model 9" },
+    { "type": "text", "id": "v4_10", "label": "Model 10" },
+    {
+      "type": "header",
+      "content": "Category 5"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "ch_5",
+      "label": "Heading",
+      "default": "UST Screen"
+    },
+    {
+      "type": "text",
+      "id": "ce_5",
+      "label": "Emoji / Icon text",
+      "default": "📽"
+    },
+    {
+      "type": "image_picker",
+      "id": "ci_5",
+      "label": "Icon image (overrides emoji)"
+    },
+    { "type": "text", "id": "v5_1", "label": "Model 1", "default": "AcousticPro UST" },
+    { "type": "text", "id": "v5_2", "label": "Model 2", "default": "Aeon CLR" },
+    { "type": "text", "id": "v5_3", "label": "Model 3", "default": "Other/I am not sure" },
+    { "type": "text", "id": "v5_4", "label": "Model 4" },
+    { "type": "text", "id": "v5_5", "label": "Model 5" },
+    { "type": "text", "id": "v5_6", "label": "Model 6" },
+    { "type": "text", "id": "v5_7", "label": "Model 7" },
+    { "type": "text", "id": "v5_8", "label": "Model 8" },
+    { "type": "text", "id": "v5_9", "label": "Model 9" },
+    { "type": "text", "id": "v5_10", "label": "Model 10" },
+    {
+      "type": "header",
+      "content": "Category 6"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "ch_6",
+      "label": "Heading",
+      "default": "Accessory"
+    },
+    {
+      "type": "text",
+      "id": "ce_6",
+      "label": "Emoji / Icon text",
+      "default": "🔧"
+    },
+    {
+      "type": "image_picker",
+      "id": "ci_6",
+      "label": "Icon image (overrides emoji)"
+    },
+    { "type": "text", "id": "v6_1", "label": "Model 1", "default": "Remote Control" },
+    { "type": "text", "id": "v6_2", "label": "Model 2", "default": "Wall Switch" },
+    { "type": "text", "id": "v6_3", "label": "Model 3", "default": "Bracket Kit" },
+    { "type": "text", "id": "v6_4", "label": "Model 4", "default": "Cable" },
+    { "type": "text", "id": "v6_5", "label": "Model 5", "default": "Other/I am not sure" },
+    { "type": "text", "id": "v6_6", "label": "Model 6" },
+    { "type": "text", "id": "v6_7", "label": "Model 7" },
+    { "type": "text", "id": "v6_8", "label": "Model 8" },
+    { "type": "text", "id": "v6_9", "label": "Model 9" },
+    { "type": "text", "id": "v6_10", "label": "Model 10" },
+    {
+      "type": "header",
+      "content": "Category 7"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "ch_7",
+      "label": "Heading",
+      "default": "Spare Part"
+    },
+    {
+      "type": "text",
+      "id": "ce_7",
+      "label": "Emoji / Icon text",
+      "default": "🔩"
+    },
+    {
+      "type": "image_picker",
+      "id": "ci_7",
+      "label": "Icon image (overrides emoji)"
+    },
+    { "type": "text", "id": "v7_1", "label": "Model 1", "default": "I am not sure — please describe below" },
+    { "type": "text", "id": "v7_2", "label": "Model 2" },
+    { "type": "text", "id": "v7_3", "label": "Model 3" },
+    { "type": "text", "id": "v7_4", "label": "Model 4" },
+    { "type": "text", "id": "v7_5", "label": "Model 5" },
+    { "type": "text", "id": "v7_6", "label": "Model 6" },
+    { "type": "text", "id": "v7_7", "label": "Model 7" },
+    { "type": "text", "id": "v7_8", "label": "Model 8" },
+    { "type": "text", "id": "v7_9", "label": "Model 9" },
+    { "type": "text", "id": "v7_10", "label": "Model 10" },
+    {
+      "type": "header",
+      "content": "Category 8"
+    },
+    { "type": "inline_richtext", "id": "ch_8", "label": "Heading" },
+    { "type": "text", "id": "ce_8", "label": "Emoji / Icon text" },
+    { "type": "image_picker", "id": "ci_8", "label": "Icon image (overrides emoji)" },
+    { "type": "text", "id": "v8_1", "label": "Model 1" },
+    { "type": "text", "id": "v8_2", "label": "Model 2" },
+    { "type": "text", "id": "v8_3", "label": "Model 3" },
+    { "type": "text", "id": "v8_4", "label": "Model 4" },
+    { "type": "text", "id": "v8_5", "label": "Model 5" },
+    { "type": "text", "id": "v8_6", "label": "Model 6" },
+    { "type": "text", "id": "v8_7", "label": "Model 7" },
+    { "type": "text", "id": "v8_8", "label": "Model 8" },
+    { "type": "text", "id": "v8_9", "label": "Model 9" },
+    { "type": "text", "id": "v8_10", "label": "Model 10" },
+    {
+      "type": "header",
+      "content": "Category 9"
+    },
+    { "type": "inline_richtext", "id": "ch_9", "label": "Heading" },
+    { "type": "text", "id": "ce_9", "label": "Emoji / Icon text" },
+    { "type": "image_picker", "id": "ci_9", "label": "Icon image (overrides emoji)" },
+    { "type": "text", "id": "v9_1", "label": "Model 1" },
+    { "type": "text", "id": "v9_2", "label": "Model 2" },
+    { "type": "text", "id": "v9_3", "label": "Model 3" },
+    { "type": "text", "id": "v9_4", "label": "Model 4" },
+    { "type": "text", "id": "v9_5", "label": "Model 5" },
+    { "type": "text", "id": "v9_6", "label": "Model 6" },
+    { "type": "text", "id": "v9_7", "label": "Model 7" },
+    { "type": "text", "id": "v9_8", "label": "Model 8" },
+    { "type": "text", "id": "v9_9", "label": "Model 9" },
+    { "type": "text", "id": "v9_10", "label": "Model 10" },
+    {
+      "type": "header",
+      "content": "Category 10"
+    },
+    { "type": "inline_richtext", "id": "ch_10", "label": "Heading" },
+    { "type": "text", "id": "ce_10", "label": "Emoji / Icon text" },
+    { "type": "image_picker", "id": "ci_10", "label": "Icon image (overrides emoji)" },
+    { "type": "text", "id": "v10_1", "label": "Model 1" },
+    { "type": "text", "id": "v10_2", "label": "Model 2" },
+    { "type": "text", "id": "v10_3", "label": "Model 3" },
+    { "type": "text", "id": "v10_4", "label": "Model 4" },
+    { "type": "text", "id": "v10_5", "label": "Model 5" },
+    { "type": "text", "id": "v10_6", "label": "Model 6" },
+    { "type": "text", "id": "v10_7", "label": "Model 7" },
+    { "type": "text", "id": "v10_8", "label": "Model 8" },
+    { "type": "text", "id": "v10_9", "label": "Model 9" },
+    { "type": "text", "id": "v10_10", "label": "Model 10" }
+  ],
+  "blocks": [
+    {
+      "type": "problem",
+      "name": "Problem Group",
+      "settings": [
+        {
+          "type": "text",
+          "id": "assign_categories",
+          "label": "Assign to categories",
+          "info": "Enter category names separated by commas (e.g. Electric Screen, Manual Screen). Leave blank to show for all categories."
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Group heading"
+        },
+        { "type": "text", "id": "p1", "label": "Problem 1" },
+        { "type": "text", "id": "p2", "label": "Problem 2" },
+        { "type": "text", "id": "p3", "label": "Problem 3" },
+        { "type": "text", "id": "p4", "label": "Problem 4" },
+        { "type": "text", "id": "p5", "label": "Problem 5" },
+        { "type": "text", "id": "p6", "label": "Problem 6" },
+        { "type": "text", "id": "p7", "label": "Problem 7" },
+        { "type": "text", "id": "p8", "label": "Problem 8" },
+        { "type": "text", "id": "p9", "label": "Problem 9" },
+        { "type": "text", "id": "p10", "label": "Problem 10" },
+        { "type": "text", "id": "p11", "label": "Problem 11" },
+        { "type": "text", "id": "p12", "label": "Problem 12" },
+        { "type": "text", "id": "p13", "label": "Problem 13" },
+        { "type": "text", "id": "p14", "label": "Problem 14" },
+        { "type": "text", "id": "p15", "label": "Problem 15" },
+        { "type": "text", "id": "p16", "label": "Problem 16" },
+        { "type": "text", "id": "p17", "label": "Problem 17" },
+        { "type": "text", "id": "p18", "label": "Problem 18" },
+        { "type": "text", "id": "p19", "label": "Problem 19" },
+        { "type": "text", "id": "p20", "label": "Problem 20" }
+      ]
+    },
+    {
+      "type": "customer_info",
+      "name": "Customer Info Fields",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "subheading",
+          "label": "Sub Heading"
+        }
+      ]
     }
   ],
   "presets": [
@@ -1069,6 +1696,7 @@
   ]
 }
 {% endschema %}
+
 
 
 
