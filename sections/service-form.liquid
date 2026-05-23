@@ -8,11 +8,7 @@
     <div class="srf__container">
 
       {% form 'contact' %}
-        <input
-    type="hidden"
-    name="contact[subject]"
-    value="Service Request Form"
-  >
+  
         {% if form.posted_successfully? %}
 
           <div class="srf__confirmation">
@@ -31,7 +27,7 @@
           {% endif %}
 
           <!-- Hidden compiled fields sent to Shopify contact form -->
-          <input type="hidden" name="contact[subject]" id="srf_subject">
+          <input type="hidden" name="contact[subject]" id="srf_subject" value="Service Request Form">
           <input type="hidden" name="contact[body]" id="srf_body">
           <input type="hidden" name="contact[email]" id="srf_email_hidden">
           <input type="hidden" name="contact[name]" id="srf_name_hidden">
