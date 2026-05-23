@@ -8,7 +8,11 @@
     <div class="srf__container">
 
       {% form 'contact' %}
-
+        <input
+    type="hidden"
+    name="contact[subject]"
+    value="Service Request Form"
+  >
         {% if form.posted_successfully? %}
 
           <div class="srf__confirmation">
