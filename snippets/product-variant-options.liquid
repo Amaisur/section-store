@@ -45,7 +45,6 @@
           endif
       endcase
     endfor
-
     if value.swatch.image
       assign image_url = value.swatch.image | image_url: width: 50
       assign swatch_value = 'url(' | append: image_url | append: ')'
@@ -55,6 +54,7 @@
       assign swatch_value = nil
     endif
   -%}
+{{ value.swatch.color }}
 
   {%- capture input_id -%}
     {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
