@@ -174,6 +174,11 @@
         "type": "shopify://apps/discounty/blocks/sdk/d65eb522-0d94-499f-9831-d4b3301f5340",
         "disabled": false,
         "settings": {}
+      },
+      "1237768128942541700": {
+        "type": "shopify://apps/tackon/blocks/tackon/019a23ff-4b69-767e-a4e6-dfdef874af04",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
