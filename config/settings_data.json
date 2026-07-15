@@ -187,7 +187,7 @@
       },
       "14290525482620723479": {
         "type": "shopify://apps/insurance-surcharge/blocks/app-embed/019f5295-33be-7b84-8474-d9e5a1768b5b",
-        "disabled": true,
+        "disabled": false,
         "settings": {}
       }
     },
