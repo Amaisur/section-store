@@ -175,18 +175,8 @@
         "disabled": false,
         "settings": {}
       },
-      "1237768128942541700": {
-        "type": "shopify://apps/tackon/blocks/tackon/019a23ff-4b69-767e-a4e6-dfdef874af04",
-        "disabled": true,
-        "settings": {}
-      },
       "6720888622058470745": {
         "type": "shopify://apps/test-app/blocks/cart-surcharge/019f6741-7a38-7461-9a0d-9cad3245a772",
-        "disabled": false,
-        "settings": {}
-      },
-      "14290525482620723479": {
-        "type": "shopify://apps/insurance-surcharge/blocks/app-embed/019f5295-33be-7b84-8474-d9e5a1768b5b",
         "disabled": false,
         "settings": {}
       }
