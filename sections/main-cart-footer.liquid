@@ -391,8 +391,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
   (()=>{
     console.log('gs')
-  const form = document.querySelector('form[action="/cart"]');
-  form.addEventListener('submit', (e) => {
+  const form = document.querySelector('#checkout');
+  form.addEventListener('click', (e) => {
     e.preventDefault();
     console.log('oo')
      ensureSurchargeInCart().then(function () {
