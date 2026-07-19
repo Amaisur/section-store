@@ -20,6 +20,12 @@
     "cart-footer": {
       "type": "main-cart-footer",
       "blocks": {
+        "test_app_order_protection_widget_qk9YFQ": {
+          "type": "shopify://apps/test-app/blocks/order-protection-widget/019f6746-708c-75c2-a417-81d04587acaf",
+          "settings": {
+            "label": "Add Order Protection"
+          }
+        },
         "subtotal": {
           "type": "subtotal",
           "settings": {}
@@ -27,18 +33,12 @@
         "buttons": {
           "type": "buttons",
           "settings": {}
-        },
-        "test_app_order_protection_widget_9tmy6m": {
-          "type": "shopify://apps/test-app/blocks/order-protection-widget/019f6741-7a38-7461-9a0d-9cad3245a772",
-          "settings": {
-            "label": "Add Order Protection"
-          }
         }
       },
       "block_order": [
+        "test_app_order_protection_widget_qk9YFQ",
         "subtotal",
-        "buttons",
-        "test_app_order_protection_widget_9tmy6m"
+        "buttons"
       ],
       "settings": {
         "color_scheme": "scheme-1",
