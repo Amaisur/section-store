@@ -388,7 +388,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 </script>
-
+<script>
+  (()=>{
+  const form = document.querySelector('form[action="/cart"]');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('oo')
+     ensureSurchargeInCart().then(function () {
+    // ...your other work after, then navigate/submit...
+    console.log('hhe')
+  });
+  })
+  })()
+</script>
 {% schema %}
 {
   "name": "t:sections.main-cart-footer.name",
