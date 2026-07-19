@@ -158,13 +158,6 @@
     },
     "content_for_index": [],
     "blocks": {
-      "sparqAppEmbedBlock": {
-        "type": "shopify://apps/product-filter-search-app/blocks/sparq-app-embed-dropdown/8fd7d3d6-d46d-4322-92f0-3e36acf0ae32",
-        "disabled": false,
-        "settings": {
-          "dropdown_template": "{% render 'sparq-dropdown' %}"
-        }
-      },
       "pagefly-page-builder": {
         "type": "shopify://apps/pagefly-page-builder/blocks/app-embed/83e179f7-59a0-4589-8c66-c0dddf959200",
         "disabled": true,
@@ -179,6 +172,15 @@
         "type": "shopify://apps/insurance-surcharge/blocks/app-embed/019f7bab-c54c-72a9-8ebd-9bd9e48aee68",
         "disabled": false,
         "settings": {}
+      },
+      "sparqAppEmbedBlock": {
+        "type": "shopify://apps/product-filter-search-app/blocks/sparq-app-embed-dropdown/8fd7d3d6-d46d-4322-92f0-3e36acf0ae32",
+        "disabled": true,
+        "settings": {
+          "dropdown_template": "{% render 'sparq-dropdown' %}",
+          "theme_css": "{{ shop.metafields.sparq.css }}",
+          "theme_js": "{{ shop.metafields.sparq.javascript }}"
+        }
       }
     },
     "color_schemes": {
