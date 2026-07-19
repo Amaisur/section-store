@@ -341,14 +341,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 </noscript>
 
                 <button
-                  type="submit"
+                  type="button"
                   id="checkout"
                   class="cart__checkout-button button"
-                  name="checkout"
                   {% if cart == empty %}
                     disabled
                   {% endif %}
-                  form="cart"
                 >
                   {{ 'sections.cart.checkout' | t }}
                 </button>
