@@ -572,7 +572,8 @@
       "order_summary": {
         "pickup_unavailable_banner_body": {
           "ship_to_address_instead_html": "{{ link }} abc"
-        }
+        },
+        "group_title_label": "abcss"
       },
       "general": {
         "full_title": "ANCSS"
