@@ -569,8 +569,10 @@
   },
   "shopify": {
     "checkout": {
-      "general": {
-        "contact_us_html": "abc"
+      "order_summary": {
+        "pickup_unavailable_banner_body": {
+          "ship_to_address_instead_html": "{{ link }} abc"
+        }
       }
     }
   }
