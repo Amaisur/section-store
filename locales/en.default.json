@@ -566,5 +566,12 @@
       "signup_form_success": "We will send you an email right before we open!",
       "password_link": "Enter using password"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "general": {
+        "contact_us_html": "abc"
+      }
+    }
   }
 }
