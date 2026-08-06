@@ -574,7 +574,8 @@
           "ship_to_address_instead_html": "{{ link }} abc"
         },
         "group_title_label": "abcss",
-        "order_discounts_apply_to_local_shop": "<strong style=\"text-transform:uppercase\">abc</strong>"
+        "order_discounts_apply_to_local_shop": "<strong style=\"text-transform:uppercase\">abc</strong>",
+        "title": "<strong style=\"text-transform:uppercase\">abc</strong>"
       },
       "general": {
         "full_title": "ANCSS"
