@@ -578,8 +578,8 @@
       "general": {
         "full_title": "ANCSS"
       },
-      "payment": {
-        "subscription_agreement_cancelled": "abc"
+      "shop_policies": {
+        "purchase_options_cancellation_policy": "abc"
       }
     }
   }
